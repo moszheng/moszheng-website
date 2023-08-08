@@ -1,6 +1,6 @@
 <script setup>
 import Footer from './components/Footer.vue'
-import WorksBlock from './components/Works_block.vue'
+import WorksBlock from './components/WorksBlock.vue'
 import { ref } from 'vue'
 import WorksData from './data/WorksData.json'
 
