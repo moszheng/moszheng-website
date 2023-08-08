@@ -123,5 +123,5 @@ import { ref } from 'vue'
         </div>  
     </main>
 </div>
-<footer />
+<Footer />
 </template>

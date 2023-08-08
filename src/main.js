@@ -15,11 +15,16 @@ const routes = [
     { path: '/contact', component: Contact }
 ];
   
+
+//old method
+// createApp(App).mount('#app')
+
+// Router method
 const router = createRouter({
     history: createWebHistory(),
     routes
 });
-  
+
 const app = createApp({});
 app.use(router);
 app.mount('#app');

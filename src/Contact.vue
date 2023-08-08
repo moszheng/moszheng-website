@@ -31,5 +31,5 @@ import { ref } from 'vue'
         </div>
     </div>
 </main>
-<footer />
+<Footer />
 </template>
