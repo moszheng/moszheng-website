@@ -1,5 +1,6 @@
 <script setup>
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 import WorksBlock from './components/Works_block.vue'
 import { ref } from 'vue'
 import WorksData from './data/WorksData.json'
@@ -48,15 +49,7 @@ import WorksData from './data/WorksData.json'
 			</div>
 		</div>
   	</main>
-	<footer class="text-muted">
-		<div class="container">
-			<p class="float-right">
-				<a href="#">Back to top</a>
-			</p>
-			<p>Copyright © 2023 moszheng All rights reserved.</p>
-			<p><a href="../../">Visit the homepage</a> .</p>
-		</div>
-	</footer>
+	<footer />
 	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		<!-- <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 512 499.36" role="img"> -->
 		<symbol id="icon-twitter" viewBox="0 0 512 416.32">
