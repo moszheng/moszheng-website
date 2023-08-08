@@ -4,11 +4,11 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue'
-import Home from './Home.vue'
-import Works from './Works.vue'
+import Home from './views/Home.vue'
+import Works from './views/Works.vue'
 import WorksPage from './components/WorksPage.vue'
-import About from './About.vue'
-import Contact from './Contact.vue'
+import About from './views/About.vue'
+import Contact from './views/Contact.vue'
 
 const routes = [
     { path: '/', component: Home },

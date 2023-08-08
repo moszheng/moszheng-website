@@ -1,65 +1,54 @@
 <script setup>
-import Footer from './components/Footer.vue'
 import { ref } from 'vue'
-import WorksData from './data/WorksData.json'
+
+const backgroundImage = ref('../src/img/02_gha56_01.png');
+const bgStyles = ref(`background-image: url(${backgroundImage.value});`);
+
+const bg_image = [
+    '../src/img/01_gma29.jpg', 
+    '../src/img/03_SWSX_01.jpg',
+    '../src/img/05_GMA32_01.png',
+    '../src/img/04_KK_01.png',
+    '../src/img/02_gha56_01.png',
+];
+
+let index = 0;
+
+setInterval(() => {
+      
+  backgroundImage.value = `url(${bg_image[index]})`;
+  bgStyles.value = `background-image: url(${bg_image[index]});`;
+  index = (index + 1) % bg_image.length;
+      
+}, 3500);
 
 </script>
+
 <template>
-    <main class="row flex-xl-nowrap">
-		<!-- Columns filter Bar -->
-		<aside class="col col-xl-1 bd-sidebar bg-white">
-			<ul class="list-unstyled ps-0">
-				<li class="my-2">
-				<div class="mt-4 mb-3">
-					<button class="btn btn-toggle align-items-center rounded collapsed advance-filter-button" 
-					data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-					<svg id="icon_filter">
-						<use xlink:href="#icon-filter-category"></use>
-					</svg>
-					<span class="t-bold">Works </span>
-					</button>
-				</div>
-				<!-- Filters -->
-				<div class="collapse" id="orders-collapse">
-					<ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small ps-3">
-						<li v-for="item in WorksData.project" class="mb-2">
-							<a :href=item.url title="Link to project" target="_blank" rel="noopener" >
-								{{item.name}}
-							</a>
-						</li>
-					</ul>
-				</div>
-				</li>
-				<li class="border-top"></li>
-			</ul>
-		</aside>
-		<!----- Main Content----->
-		<div class="col-xl-11 py-md-3 pl-md-5 px-xl-3 bd-content">
-			<div class="row">
-				<!-- <WorksBlock v-for="item in WorksData.project"
-					:name = "item.name"
-					:company = "item.company"
-					:url= "item.url"
-					:img= "item.img"
-					:date= "item.date">
-				</WorksBlock> -->
-				<div  v-for="item in WorksData.project" class="col-md-4">
-					<div class="card mb-4 text-white">
-						<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.name } }" title="Link to project">
-							<img :src=item.img class="card-img" alt="...">
-							<div class="works-text text-white px-3">
-								<h5 class="card-title">{{ item.name }}</h5>
-								<h6 class="card-title">@{{ item.company }}</h6>
-								<p class="card-text">{{ item.date }}</p>
-							</div>
-						</router-link>
-					</div>
-				</div>
-			</div>
-		</div>
-  	</main>
-	<Footer />
-	<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <div class="border-bottom"></div>
+  <main class="">
+    <section class="" >
+      <!----- BG ----->
+      <div class="index_bg_cover" id="index_bg_cover" :style="bgStyles">
+        <div class="index_bg_overlay d-flex justify-content-center align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.55); transform: scale(1.001);">
+          <div class="row">
+            <!----- Main Content----->
+            <div class="col-xl-7 col-lg-6 col-md-0"></div>
+            <div class="col-xl-5 col-lg-6 col-md-12 px-5 text-white">
+              <h5 class="mb-2">Freelance 3D Generalist</h5>
+              <h1 class="mb-5">Sheng Wen (Mos) Cheng</h1>
+              <div class="mb-5">
+                A 3D Generalist and Motion Designer freelancer based in Taiwan.
+                Offering professional design services for digital arts and product motion design, catering to companies and brands.
+              </div>
+              <button type="button" class="btn btn-primary index-btn" onclick="window.location.href='works.html'">Explore</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
 		<!-- <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 512 499.36" role="img"> -->
 		<symbol id="icon-twitter" viewBox="0 0 512 416.32">
 			<path d="M160.83 416.32c193.2 0 298.92-160.22 298.92-298.92 0-4.51 0-9-.2-13.52A214 214 0 0 0 512 49.38a212.93 212.93 0 0 1-60.44 16.6 105.7 105.7 0 0 0 46.3-58.19 209 209 0 0 1-66.79 25.37 105.09 105.09 0 0 0-181.73 71.91 116.12 116.12 0 0 0 2.66 24c-87.28-4.3-164.73-46.3-216.56-109.82A105.48 105.48 0 0 0 68 159.6a106.27 106.27 0 0 1-47.53-13.11v1.43a105.28 105.28 0 0 0 84.21 103.06 105.67 105.67 0 0 1-47.33 1.84 105.06 105.06 0 0 0 98.14 72.94A210.72 210.72 0 0 1 25 370.84a202.17 202.17 0 0 1-25-1.43 298.85 298.85 0 0 0 160.83 46.92"></path>
@@ -92,26 +81,20 @@ import WorksData from './data/WorksData.json'
 </template>
 
 <style>
-.card{
-  display: block;
-  transition: 0.4s ease; /* scale */
+.index_bg_cover{
+  position: relative;
+  height: 92vh;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  transition: background 1.2s linear; 
 }
-.works-text{
-  position: absolute;
-  bottom: 0; 
-  /* left: 0; */
-  width: 100%;
-  overflow: hidden;
-  background: linear-gradient( transparent, rgba(0, 0, 0, 0.7));
-  height: 25%; /*transforms*/
-  opacity: 0;
-  transition: .4s ease; /* 添加过渡效果 */
-}
-.card:hover{
-  transform: scale(1.01); 
-}  
-.card:hover .works-text {
-  height: 30%;
-  opacity: 1;
+.index-btn{
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: hsla(0, 0%, 95.3%, 0.25);
+  /* outline: solid; */
+  box-shadow: none;
+  border: 1px; 
 }
 </style>
