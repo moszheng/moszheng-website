@@ -89,29 +89,6 @@ body {
 .float-right {
   float: right;
 }
-/*---------- Works page-----------*/
-.card{
-  display: block;
-  transition: 0.4s ease; /* scale */
-}
-.works-text{
-  position: absolute;
-  bottom: 0; 
-  /* left: 0; */
-  width: 100%;
-  overflow: hidden;
-  background: linear-gradient( transparent, rgba(0, 0, 0, 0.7));
-  height: 25%; /*transforms*/
-  opacity: 0;
-  transition: .4s ease; /* 添加过渡效果 */
-}
-.card:hover{
-  transform: scale(1.01); 
-}  
-.card:hover .works-text {
-  height: 30%;
-  opacity: 1;
-}
 
 /* Font Setting */
 h2 {
