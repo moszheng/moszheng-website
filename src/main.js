@@ -13,7 +13,7 @@ import Contact from './Contact.vue'
 const routes = [
     { path: '/', component: Home },
     { path: '/works', component: Works },
-    { path: '/works/:name', component: WorksPage },
+    { path: '/works/:projecturl', name:'WorksPage',component: WorksPage, props: true},
     { path: '/about', component: About },
     { path: '/contact', component: Contact }
 ];

@@ -1,6 +1,5 @@
 <script setup>
 import Footer from './components/Footer.vue'
-import WorksBlock from './components/WorksBlock.vue'
 import { ref } from 'vue'
 import WorksData from './data/WorksData.json'
 
@@ -37,13 +36,25 @@ import WorksData from './data/WorksData.json'
 		<!----- Main Content----->
 		<div class="col-xl-11 py-md-3 pl-md-5 px-xl-3 bd-content">
 			<div class="row">
-				<WorksBlock v-for="item in WorksData.project"
+				<!-- <WorksBlock v-for="item in WorksData.project"
 					:name = "item.name"
 					:company = "item.company"
 					:url= "item.url"
 					:img= "item.img"
 					:date= "item.date">
-				</WorksBlock>
+				</WorksBlock> -->
+				<div  v-for="item in WorksData.project" class="col-md-4">
+					<div class="card mb-4 text-white">
+						<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.name } }" title="Link to project">
+							<img :src=item.img class="card-img" alt="...">
+							<div class="works-text text-white px-3">
+								<h5 class="card-title">{{ item.name }}</h5>
+								<h6 class="card-title">@{{ item.company }}</h6>
+								<p class="card-text">{{ item.date }}</p>
+							</div>
+						</router-link>
+					</div>
+				</div>
 			</div>
 		</div>
   	</main>
