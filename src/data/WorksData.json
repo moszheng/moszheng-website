@@ -2,8 +2,9 @@
     "project" : [
         {
             "name" : "金曲29",
-            "date" : "2018/12/12",
-            "url" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "date" : "2018 DEC",
+            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "video" : "123",
             "img" : "./src/img/01_gma29.jpg",
             "company" : "JL Design",
             "msg":"test content"
@@ -11,40 +12,45 @@
         
         {
             "name" : "金馬56",
-            "date" : "2018/12/12",
-            "url" : "https://www.behance.net/gallery/89590877/56-Golden-Horse-Awards-56th-Logo-Bumper-Breakdown",
+            "date" : "2019 Nov",
+            "behance" : "https://www.behance.net/gallery/89590877/56-Golden-Horse-Awards-56th-Logo-Bumper-Breakdown",
+            "video" : "123",
             "img" : "./src/img/02_gha56_01.png",
             "company" : "JL Design",
             "msg":"test content"
         },
         {
             "name" : "SWSX",
-            "date" : "2018",
-            "url" : "https://www.behance.net/gallery/127287095/Taiwan-HYPE-EXHIBITION-Logo-Animation",
+            "date" : "2019",
+            "behance" : "https://www.behance.net/gallery/127287095/Taiwan-HYPE-EXHIBITION-Logo-Animation",
+            "video" : "123",
             "img" : "./src/img/03_SWSX_01.jpg",
             "company" : "JL Design",
             "msg":"test content"
         },
         {
             "name" : "KKcompany",
-            "date" : "2022",
-            "url" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "date" : "2021 AUG",
+            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "video" : "123",
             "img" : "./src/img/04_KK_01.png",
             "company" : "MixCode",
             "msg": "test content"
         },
         {
             "name" : "金曲32",
-            "date" : "2022",
-            "url" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "date" : "2021 JUN",
+            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "video" : "123",
             "img" : "./src/img/05_GMA32_01.png",
             "company" : "MixCode",
             "msg":"test content"
         },
         {
             "name" : "金曲30",
-            "date" : "2018/12/12",
-            "url" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "date" : "2019 JUN",
+            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "video" : "123",
             "img" : "",
             "company" : "JL Design",
             "msg":"test content"

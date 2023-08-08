@@ -14,7 +14,7 @@ import NotFound from './views/NotFound.vue'
 const routes = [
     { path: '/', component: Home },
     { path: '/works', component: Works },
-    { path: '/works/:projecturl', name:'WorksPage',component: WorksPage, props: true},
+    { path: '/works/:projecturl', name:'WorksPage', component: WorksPage, props: true},
     { path: '/about', component: About },
     { path: '/contact', component: Contact },
     { path: '/:catchAll(.*)', component: NotFound },

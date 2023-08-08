@@ -36,13 +36,6 @@ import WorksData from '../data/WorksData.json'
 		<!----- Main Content----->
 		<div class="col-xl-11 py-md-3 pl-md-5 px-xl-3 bd-content">
 			<div class="row">
-				<!-- <WorksBlock v-for="item in WorksData.project"
-					:name = "item.name"
-					:company = "item.company"
-					:url= "item.url"
-					:img= "item.img"
-					:date= "item.date">
-				</WorksBlock> -->
 				<div  v-for="item in WorksData.project" class="col-md-4">
 					<div class="card mb-4 text-white">
 						<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.name } }" title="Link to project">
