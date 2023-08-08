@@ -1,5 +1,4 @@
 <script setup>
-import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import WorksBlock from './components/Works_block.vue'
 import { ref } from 'vue'
@@ -7,7 +6,6 @@ import WorksData from './data/WorksData.json'
 
 </script>
 <template>
-    <Header />
     <main class="row flex-xl-nowrap">
 		<!-- Columns filter Bar -->
 		<aside class="col col-xl-1 bd-sidebar bg-white">

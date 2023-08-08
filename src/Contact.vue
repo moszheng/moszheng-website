@@ -1,12 +1,9 @@
 <script setup>
-import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import { ref } from 'vue'
 
-
 </script>
 <template>
-<Header />
 <main class="container">
     <div class="row py-5">
         <div class="col-xl-6">

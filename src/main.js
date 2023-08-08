@@ -4,20 +4,17 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue'
+import Home from './Home.vue'
 import Works from './Works.vue'
 import About from './About.vue'
 import Contact from './Contact.vue'
 
 const routes = [
-    { path: '/', component: App },
+    { path: '/', component: Home },
     { path: '/works', component: Works },
     { path: '/about', component: About },
     { path: '/contact', component: Contact }
 ];
-  
-
-//old method
-// createApp(App).mount('#app')
 
 // Router method
 const router = createRouter({
@@ -25,6 +22,4 @@ const router = createRouter({
     routes
 });
 
-const app = createApp({});
-app.use(router);
-app.mount('#app');
+createApp(App).use(router).mount('#app')

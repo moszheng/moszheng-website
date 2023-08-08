@@ -1,12 +1,9 @@
 <script setup>
-import Header from './components/Header.vue'
 import Footer from './components/Footer.vue'
 import { ref } from 'vue'
 
-
 </script>
 <template>
-<Header />
 <div class="container">
     <main class="row mx-md-5 mx-1 px-md-5 px-1 py-5">
     <!-- <main class="row mx-5 px-5 py-5"> -->

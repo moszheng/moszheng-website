@@ -1,5 +1,4 @@
 <script setup>
-import Header from './components/Header.vue'
 import { ref } from 'vue'
 
 const backgroundImage = ref('./src/img/02_gha56_01.png');
@@ -26,7 +25,6 @@ setInterval(() => {
 </script>
 
 <template>
-  <Header />
   <div class="border-bottom"></div>
   <main class="">
     <section class="" >
