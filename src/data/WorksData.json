@@ -4,7 +4,7 @@
             "name" : "金曲29",
             "date" : "2018 DEC",
             "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
-            "video" : "123",
+            "video" : "https://player.vimeo.com/video/276425004?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0",
             "img" : "./src/img/01_gma29.jpg",
             "company" : "JL Design",
             "msg":"test content"
@@ -14,7 +14,7 @@
             "name" : "金馬56",
             "date" : "2019 Nov",
             "behance" : "https://www.behance.net/gallery/89590877/56-Golden-Horse-Awards-56th-Logo-Bumper-Breakdown",
-            "video" : "123",
+            "video" : "https://player.vimeo.com/video/376095266?h=ab7fdd486e&color=ffffff&title=0&byline=0&portrait=0",
             "img" : "./src/img/02_gha56_01.png",
             "company" : "JL Design",
             "msg":"test content"
@@ -23,7 +23,7 @@
             "name" : "SWSX",
             "date" : "2019",
             "behance" : "https://www.behance.net/gallery/127287095/Taiwan-HYPE-EXHIBITION-Logo-Animation",
-            "video" : "123",
+            "video" : "https://player.vimeo.com/video/474537396?h=c38970ba07&color=ffffff&title=0&byline=0&portrait=0",
             "img" : "./src/img/03_SWSX_01.jpg",
             "company" : "JL Design",
             "msg":"test content"
@@ -54,6 +54,16 @@
             "img" : "",
             "company" : "JL Design",
             "msg":"test content"
+        },
+        {
+            "name" : "大慶證券債券＋系列產品形象影片 AVCG PGN Image Video",
+            "date" : "",
+            "behance" : "",
+            "video" : "",
+            "img" : "./src/img/06_PGN_01.jpg",
+            "company" : "JL Design",
+            "msg":"test content"
         }
+        
     ]
 }
