@@ -1,7 +1,7 @@
 {
     "project" : [
         {
-            "name" : "金曲29",
+            "name" : "金曲29 最佳原住民語專輯獎",
             "date" : "2018 DEC",
             "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
             "video" : "https://player.vimeo.com/video/276425004?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0",
@@ -9,7 +9,6 @@
             "company" : "JL Design",
             "msg":"test content"
         },
-        
         {
             "name" : "金馬56",
             "date" : "2019 Nov",
@@ -32,8 +31,17 @@
             "name" : "KKcompany",
             "date" : "2021 AUG",
             "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
-            "video" : "123",
+            "video" : "https://player.vimeo.com/video/681776633?h=1a3ad53487&title=0&byline=0&portrait=0",
             "img" : "./src/img/04_KK_01.png",
+            "company" : "MixCode",
+            "msg": "test content"
+        },
+        {
+            "name" : "GOGORO VIVA",
+            "date" : "2022",
+            "behance" : "https://www.behance.net/gallery/119028733/Gogoro-VIVA-MIX",
+            "video" : "https://player.vimeo.com/video/545803846?h=617ca34cbd&color=ffffff&title=0&byline=0&portrait=0",
+            "img" : "./src/img/07_VIVA_01.jpg",
             "company" : "MixCode",
             "msg": "test content"
         },
@@ -47,23 +55,40 @@
             "msg":"test content"
         },
         {
-            "name" : "金曲30",
-            "date" : "2019 JUN",
-            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
-            "video" : "123",
-            "img" : "",
-            "company" : "JL Design",
-            "msg":"test content"
-        },
-        {
             "name" : "大慶證券債券＋系列產品形象影片 AVCG PGN Image Video",
-            "date" : "",
+            "date" : "2020",
             "behance" : "",
             "video" : "",
             "img" : "./src/img/06_PGN_01.jpg",
             "company" : "JL Design",
             "msg":"test content"
+        },
+        {
+            "name" : "聲林之王",
+            "date" : "2018",
+            "behance" : "https://www.behance.net/gallery/74073727/Jungle-Voice",
+            "video" : "https://player.vimeo.com/video/294759428?h=3994184e99&color=ffffff&title=0&byline=0&portrait=0",
+            "img" : "./src/img/08_JV_01.jpg",
+            "company" : "JL Design",
+            "msg":"test content"
+        },
+        {
+            "name" : "金曲29 最佳國語男歌手",
+            "date" : "2018 DEC",
+            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "video" : "https://player.vimeo.com/video/276425004?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0",
+            "img" : "./src/img/01_gma29.jpg",
+            "company" : "JL Design",
+            "msg":"test content"
+        },
+        {
+            "name" : "Honor of Kings International Championship Promo",
+            "date" : "2022",
+            "behance" : "https://www.behance.net/gallery/158101281/2022",
+            "video" : "https://player.vimeo.com/video/681776633?h=1a3ad53487&title=0&byline=0&portrait=0",
+            "img" : "./src/img/09_HoK_01.png",
+            "company" : "MixCode",
+            "msg": "test content"
         }
-        
     ]
 }
