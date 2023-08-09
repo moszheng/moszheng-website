@@ -2,6 +2,8 @@
 import Footer from '../components/Footer.vue'
 import { ref } from 'vue'
 
+const profile_image = '../src/img/profile.png';
+
 </script>
 <template>
 <div class="container">
@@ -10,7 +12,7 @@ import { ref } from 'vue'
         <div class="col-xxl-4 col-xl-5">
             <div class="text-center">
                 <div class="mb-4 ">
-                    <img class="avatar avatar-user width-full border color-bg-default" alt="" src="../img/profile.PNG">
+                    <img class="avatar avatar-user width-full border color-bg-default" alt="" :src=profile_image>
                 </div>
                 <h3 class="mb-1 ">Sheng Wen (Mos) Cheng</h3>
                 <span class="mb-4">@moszheng</span>
