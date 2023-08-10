@@ -1,16 +1,19 @@
 <script setup>
 import { ref } from 'vue'
 
-const backgroundImage = ref('../src/img/02_gha56_01.png');
-const bgStyles = ref(`background-image: url(${backgroundImage.value});`);
+// preloading
+// const bg_image= new Image();
 
 const bg_image = [
-    '../src/img/01_gma29.jpg', 
-    '../src/img/03_SWSX_01.jpg',
-    '../src/img/05_GMA32_01.png',
-    '../src/img/04_KK_01.png',
-    '../src/img/02_gha56_01.png',
+  '../src/img/01_gma29.jpg', 
+  '../src/img/03_SWSX_01.jpg',
+  '../src/img/05_GMA32_01.png',
+  '../src/img/04_KK_01.png',
+  '../src/img/02_gha56_01.png',
 ];
+
+const backgroundImage = ref('../src/img/02_gha56_01.png');
+const bgStyles = ref(`background-image: url(${backgroundImage.value});`);
 
 let index = 0;
 

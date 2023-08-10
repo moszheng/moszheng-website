@@ -48,8 +48,8 @@
         {
             "name" : "金曲32",
             "date" : "2021 JUN",
-            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
-            "video" : "123",
+            "behance" : "https://www.behance.net/gallery/126656689/32-GMA32-Stage-Background-Design",
+            "video" : "https://player.vimeo.com/video/619733081?h=395f00412a&title=0&byline=0&portrait=0",
             "img" : "./src/img/05_GMA32_01.png",
             "company" : "MixCode",
             "msg":"test content"
