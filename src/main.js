@@ -12,11 +12,11 @@ import Contact from './views/Contact.vue'
 import NotFound from './views/NotFound.vue'
 
 const routes = [
-    { path: '/', component: Home },
-    { path: '/works', component: Works },
+    { path: '/',name:'Home', component: Home },
+    { path: '/works', name:'Works', component: Works },
     { path: '/works/:projecturl', name:'WorksPage', component: WorksPage, props: true},
-    { path: '/about', component: About },
-    { path: '/contact', component: Contact },
+    { path: '/about', name:'About', component: About },
+    { path: '/contact', name:'Contact', component: Contact },
     { path: '/:catchAll(.*)', component: NotFound },
 ];
 

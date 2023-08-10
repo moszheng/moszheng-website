@@ -17,10 +17,10 @@
           <!-- Canvas -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav mx-lg-4">
-                  <li class="nav-item"><router-link to="/" class="nav-link link-dark px-2 active" aria-current="page">Home</router-link></li>
-                  <li class="nav-item"><router-link to="/works" class="nav-link link-dark px-2">Works</router-link></li>
-                  <li class="nav-item"><router-link to="/about" class="nav-link link-dark px-2">About</router-link></li>
-                  <li class="nav-item"><router-link to="/contact" class="nav-link link-dark px-2">Contact</router-link></li>
+                  <li class="nav-item"><router-link :to="{ name : 'Home' }" class="nav-link link-dark px-2 active" aria-current="page">Home</router-link></li>
+                  <li class="nav-item"><router-link :to="{ name : 'Works' }" class="nav-link link-dark px-2">Works</router-link></li>
+                  <li class="nav-item"><router-link :to="{ name : 'About' }" class="nav-link link-dark px-2">About</router-link></li>
+                  <li class="nav-item"><router-link :to="{ name : 'Contact' }" class="nav-link link-dark px-2">Contact</router-link></li>
               </ul>
               <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
                   <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
