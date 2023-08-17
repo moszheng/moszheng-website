@@ -7,7 +7,9 @@ import LoadingPage from "./views/Loading.vue";
   <nav class="container navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
       <div class="container-fluid">
           <div class="navbar-brand flex-column flex-md-row align-items-center">
-              <h3 class="t-bold mx-lg-3">moszheng.design</h3>
+                <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
+                    <h3 class="t-bold mx-lg-3">moszheng.design</h3>
+                </router-link>
           </div>
           <!-- navbar button -->
           <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +20,6 @@ import LoadingPage from "./views/Loading.vue";
           <!-- Canvas -->
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="nav mx-lg-4">
-                  <li class="nav-item"><router-link :to="{ name : 'Home' }" class="nav-link link-dark px-2 active" aria-current="page">Home</router-link></li>
                   <li class="nav-item"><router-link :to="{ name : 'Works' }" class="nav-link link-dark px-2">Works</router-link></li>
                   <li class="nav-item"><router-link :to="{ name : 'About' }" class="nav-link link-dark px-2">About</router-link></li>
                   <li class="nav-item"><router-link :to="{ name : 'Contact' }" class="nav-link link-dark px-2">Contact</router-link></li>
@@ -112,5 +113,74 @@ import LoadingPage from "./views/Loading.vue";
 .fade-enter-from,
 .fade-leave-to {
   opacity: 0;
+}
+
+/*---------------nav bar---------------------*/
+header  {
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  background-color: hsla(0, 0%, 95.3%, 0.75);
+}
+/*-------- nav bar toggler icon------*/
+.navbar-toggler{
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transition: .5s ease-in-out;
+}
+/*Cancel default outline*/
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus{
+  outline: none;
+  box-shadow: none;
+  border: 0; 
+}
+.navbar-toggler span {
+  margin: 0;
+  padding: 0;
+}
+.toggler-icon{
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: black;
+  border-radius: 1px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+.middle-bar {
+  margin-top: 0px;
+}
+
+/*-----*/
+.navbar-toggler .top-bar{
+  margin-top: 0px;
+  transform: rotate(135deg);
+}
+.navbar-toggler .mid-bar{
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.navbar-toggler .bot-bar{
+  margin-top: 0px;
+  transform: rotate(-135deg);
+}
+/*-----*/
+.navbar-toggler.collapsed .top-bar{
+  margin-top: -15px;
+  transform: rotate(0deg);
+}
+.navbar-toggler.collapsed .mid-bar{
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.navbar-toggler.collapsed .bot-bar{
+  margin-top: 15px;
+  transform: rotate(0deg);
 }
 </style>

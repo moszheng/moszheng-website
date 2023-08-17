@@ -126,9 +126,9 @@ const profile_image = '../src/img/profile.png';
         </div>
         <div class="mb-5">
             <h2 class="mb-4">Skill</h2>
-            <div class="row px-md-5">
-                <div v-for="item in LogoData.logo" class="col-2">
-                    <img :src=item.img alt="..." class="img-thumbnail">
+            <div class="row px-md-5 align-items-center">
+                <div v-for="item in LogoData.logo" class="col-2 px-lg-4 py-3">
+                    <img :src=item.img :alt=item.name class="img-thumbnail">
                 </div>
             </div>
             
