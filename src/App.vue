@@ -1,4 +1,5 @@
 <script>
+import LoadingPage from "./views/Loading.vue";
 
 </script>
 <template>
@@ -52,10 +53,16 @@
   </nav>
   <div class="border-bottom"></div>
 </header>
-
-<router-view v-slot="{Component}">
+<router-view v-slot="{ Component }">
     <Transition name="fade" mode="out-in">
-        <component :is="Component"></component>
+        <Suspense>
+            <template #default>
+                <component :is="Component"></component>
+            </template>
+            <template #fallback>
+                <LoadingPage/>
+            </template>
+        </Suspense>
     </Transition>
 </router-view>
 

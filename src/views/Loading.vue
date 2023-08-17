@@ -1,13 +1,15 @@
+<script setup>
+
+</script>
 <template>
-<main class="text-center">
-    <div class = "">
-        <h1>404</h1>
-        <h3>Page Not Found</h3>
+<div class="container">
+    <div class = "loading">
+        <div class="spinner-border" role="status"></div>
     </div>
-</main>
+</div>
 </template>
 <style>
-.text-center{
+.loading{
     position: absolute;
     top: 0;
     left: 0;

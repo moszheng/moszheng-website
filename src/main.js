@@ -11,6 +11,7 @@ import About from './views/About.vue'
 import Contact from './views/Contact.vue'
 import NotFound from './views/NotFound.vue'
 
+
 const routes = [
     { path: '/',name:'Home', component: Home },
     { path: '/works', name:'Works', component: Works },
