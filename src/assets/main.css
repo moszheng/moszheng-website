@@ -1,5 +1,11 @@
 @import './base.css';
 
+body{
+  /* background: #e6e6e6; */
+  font-family: "PingFang TC","Noto Sans TC","Segoe UI",Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important; 
+  -webkit-font-smoothing: antialiased;
+}
+
 /*nav bar*/
 header  {
   -webkit-backdrop-filter: blur(8px);
@@ -70,12 +76,6 @@ header  {
 }
 
 /**/
-body {
-  
-  font-family: "PingFang TC","Noto Sans TC","Segoe UI",Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important; 
-  -webkit-font-smoothing: antialiased;
-
-}
 .container {
   max-width: 1500px !important;
 }
@@ -85,19 +85,20 @@ body {
   height: 260px; 
   height: auto;
 }
+
 /*------ Footer-----------*/
 .float-right {
   float: right;
 }
 
 /* Font Setting */
-h2 {
-  text-align: center;
-  font-size: 18px;
-  text-transform: uppercase;
+
+h2, h3 {
+  /* font-size: 18px; */
+  /* text-transform: uppercase; */
   letter-spacing: 1px;
   font-weight: bold !important;
-  padding: 30px 0;
+  /* padding: 30px 0; */
 }
 
 .t-bold {

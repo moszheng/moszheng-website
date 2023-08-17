@@ -28,7 +28,7 @@ setInterval(() => {
 </script>
 
 <template>
-  <div class="border-bottom"></div>
+  
   <main class="">
     <section class="" >
       <!----- BG ----->
