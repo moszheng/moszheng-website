@@ -1,0 +1,36 @@
+{
+    "logo" : [
+        {
+            "name" : "AE",
+            "img" : "./src/assets/AE_icon.png"
+        },
+        {
+            "name" : "C4D",
+            "img" : "./src/assets/C4D_icon.png"
+        },
+        {
+            "name" : "Houdini",
+            "img" : "./src/assets/Houdini_icon.png"
+        },
+        {
+            "name" : "Redshift",
+            "img" : "./src/assets/Redshift_icon.png"
+        },
+        {
+            "name" : "Zbrush",
+            "img" : "./src/assets/Zbrush.svg"
+        },
+        {
+            "name" : "SubstanceDesigner",
+            "img" : "./src/assets/SubstanceDesigner_icon.png"
+        },
+        {
+            "name" : "Python",
+            "img" : "./src/assets/Python_icon.png"
+        },
+        {
+            "name" : "Vue",
+            "img" : "./src/assets/Vue_icon.svg"
+        }
+    ]
+}

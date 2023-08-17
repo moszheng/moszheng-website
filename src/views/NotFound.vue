@@ -1,5 +1,5 @@
 <template>
-<main class="text-center">
+<main class="text-center notfound">
     <div class = "">
         <h1>404</h1>
         <h3>Page Not Found</h3>
@@ -7,7 +7,7 @@
 </main>
 </template>
 <style>
-.text-center{
+.notfound{
     position: absolute;
     top: 0;
     left: 0;
