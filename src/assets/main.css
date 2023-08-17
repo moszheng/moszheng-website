@@ -13,7 +13,7 @@ body{
 
 /* Font Setting */
 
-h2, h3 {
+h1, h2, h3 {
   /* font-size: 18px; */
   /* text-transform: uppercase; */
   letter-spacing: 1px;

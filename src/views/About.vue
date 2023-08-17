@@ -10,38 +10,52 @@ const profile_image = '../src/img/profile.png';
 <template>
 <div>
     <main class="container">
-        <div class="row mx-md-5 mx-1 px-md-5 px-1 py-5">
-        <!-- <main class="row mx-5 px-5 py-5"> -->
-            <div class="col-xxl-4 col-xl-5">
-                <div class="text-center">
+        <!-- Intro -->
+        <div class="AboutIntro row mx-md-5 mx-1 px-md-5 px-1 py-5">
+            <div class="d-flex col-xl-5">
+                <div class="align-self-center text-center">
                     <div class="mb-4 ">
-                        <img class="avatar avatar-user width-full border color-bg-default" alt="" :src=profile_image>
+                        <img class="avatar avatar-user width-full border" alt="" :src=profile_image>
                     </div>
-                    <h3 class="mb-1 ">Sheng Wen (Mos) Cheng</h3>
-                    <span class="mb-4">@moszheng</span>
                 </div>
-                
-                <ul>
-                    <li>behance.net/moszheng</li>
-                    <li>moszheng.design@gmail.com</li>
-                    <li>Taipei, Taiwan</li>
-                </ul>
             </div>
-            <div class="col-xxl-8 col-xl-7 mt-xl-0 mt-4">
-                <div class="my-4 pe-3">
-                    <h2 class="mb-4">Hi, My name is Mos Zheng, </h2>
-                    <h2 class="mb-4">A 3D Generalist and Motion Designer freelancer based in Taiwan.</h2>
+            <div class="col-xl-7 mt-xl-0 mt-4 px-5 ">
+                <div class="mb-4  ">
+                    <h1 class="mb-5">Hi, My name is Mos Zheng, </h1>
+                    <h3 class="mb-5">A 3D Generalist and Motion Designer freelancer based in Taiwan.</h3>
 
                     <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
 
                     <p>For any inquiries, please send me an email</p>
                 </div>
+                <div class=" ">
+                    <div class="mb-2">
+                        <svg id="icon_twitter">
+                            <use xlink:href="#icon-behance"></use>
+                        </svg>
+                        <span class="ms-3">behance.net/moszheng</span>
+                        
+                    </div>
+                    <div class="mb-2">                        
+                        <svg id="icon_twitter">
+                            <use xlink:href="#bi-envelope-fill"></use>
+                        </svg>
+                        <span class="ms-3">moszheng.design@gmail.com</span>
+                    </div>
+                    <div class="mb-2">
+                        <svg id="icon_twitter">
+                            <use xlink:href="#bi-geo-alt-fill"></use>
+                        </svg>
+                        <span class="ms-3">Taipei, Taiwan</span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row mb-5 px-md-5 px-1 ">
-            <div class="col-xxl-8 col-xl-7 mt-xl-0 mt-4">
+        <!-- Experience -->
+        <div class="AboutExp px-md-5 px-1 mb-5">
+            <div class="mt-xl-0 mt-4">
                 <div class="mb-4">
-                    <h3 class="mb-4 ">Experience</h3>
+                    <h3 class="mb-4">Experience</h3>
                     <div class="px-xl-3">
                         <!-- Freelance -->
                         <div class="my-4">
@@ -130,8 +144,8 @@ const profile_image = '../src/img/profile.png';
                 </div>
             </div> 
         </div>
-        <!-- skill -->
-        <div class="mb-5 px-md-5 px-1 ">
+        <!-- Skill -->
+        <div class="AboutSkill mb-5 px-md-5 px-1 ">
             <h2 class="mb-4">Skill</h2>
             <div class="row px-md-5 align-items-center">
                 <div v-for="item in LogoData.logo" class="col-2 px-lg-4 py-3">
@@ -165,11 +179,13 @@ const profile_image = '../src/img/profile.png';
 </template>
 
 <style>
-
+.AboutIntro, .AboutExp, .AboutSkill{
+    min-height: 1080px; 
+}
 .avatar-user {
   border-radius: 50% !important;
-  width: 260px;
-  height: 260px; 
+  width: 350px;
+  height: 350px; 
   height: auto;
 }
 
