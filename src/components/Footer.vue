@@ -9,3 +9,10 @@
     </div>
 </footer>
 </template>
+
+<style>
+/*------ Footer-----------*/
+.float-right {
+  float: right;
+}
+</style>

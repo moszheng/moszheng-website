@@ -20,19 +20,25 @@ const profile_image = '../src/img/profile.png';
                     <h3 class="mb-1 ">Sheng Wen (Mos) Cheng</h3>
                     <span class="mb-4">@moszheng</span>
                 </div>
-                <div class="my-4 pe-3">
-                    <p>Hi, My name is Mos Zheng, A 3D Generalist and Motion Designer freelancer based in Taiwan.</p>
-
-                    <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
-
-                    <p>For any inquiries, please send me an email</p>
-                </div>
+                
                 <ul>
                     <li>behance.net/moszheng</li>
                     <li>moszheng.design@gmail.com</li>
                     <li>Taipei, Taiwan</li>
                 </ul>
             </div>
+            <div class="col-xxl-8 col-xl-7 mt-xl-0 mt-4">
+                <div class="my-4 pe-3">
+                    <h2 class="mb-4">Hi, My name is Mos Zheng, </h2>
+                    <h2 class="mb-4">A 3D Generalist and Motion Designer freelancer based in Taiwan.</h2>
+
+                    <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
+
+                    <p>For any inquiries, please send me an email</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-5 px-md-5 px-1 ">
             <div class="col-xxl-8 col-xl-7 mt-xl-0 mt-4">
                 <div class="mb-4">
                     <h3 class="mb-4 ">Experience</h3>
@@ -122,9 +128,10 @@ const profile_image = '../src/img/profile.png';
                         </ul>
                     </div>
                 </div>
-            </div>  
+            </div> 
         </div>
-        <div class="mb-5">
+        <!-- skill -->
+        <div class="mb-5 px-md-5 px-1 ">
             <h2 class="mb-4">Skill</h2>
             <div class="row px-md-5 align-items-center">
                 <div v-for="item in LogoData.logo" class="col-2 px-lg-4 py-3">
@@ -133,7 +140,7 @@ const profile_image = '../src/img/profile.png';
             </div>
             
         </div>
-        <div class="mb-4">
+        <div class="mb-4 px-md-5 px-1 ">
             <h2>Recent Project</h2>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                 <div class="row">
@@ -158,6 +165,14 @@ const profile_image = '../src/img/profile.png';
 </template>
 
 <style>
+
+.avatar-user {
+  border-radius: 50% !important;
+  width: 260px;
+  height: 260px; 
+  height: auto;
+}
+
 .img-thumbnail{
     border:0;
 }
