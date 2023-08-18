@@ -1,6 +1,7 @@
 <script setup>
 
 </script>
+
 <template>
 <div class="container">
     <div class = "loading">
@@ -8,6 +9,7 @@
     </div>
 </div>
 </template>
+
 <style>
 .loading{
     position: absolute;

@@ -5,7 +5,7 @@ import { ref } from 'vue'
 </script>
 <template>
 <div>
-    <main class="container">
+    <main class="Contact container">
         <div class="row py-5">
             <div class="col-xl-6">
                 
@@ -32,3 +32,8 @@ import { ref } from 'vue'
     <Footer />
 </div>
 </template>
+<style>
+.Contact{
+    min-height: 1080px;
+}
+</style>
