@@ -12,7 +12,6 @@ import About from './views/About.vue'
 import Contact from './views/Contact.vue'
 import NotFound from './views/NotFound.vue'
 
-
 const scroll = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,

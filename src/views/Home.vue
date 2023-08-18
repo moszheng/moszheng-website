@@ -28,8 +28,7 @@ setInterval(() => {
 </script>
 
 <template>
-  
-  <main class="">
+  <main class="Home">
     <section class="" >
       <!----- BG ----->
       <div class="index_bg_cover" id="index_bg_cover" :style="bgStyles">
@@ -41,8 +40,9 @@ setInterval(() => {
               <h5 class="mb-2">Freelance 3D Generalist</h5>
               <h1 class="mb-5">Sheng Wen (Mos) Cheng</h1>
               <div class="mb-5">
-                A 3D Generalist and Motion Designer freelancer based in Taiwan.
-                Offering professional design services for digital arts and product motion design, catering to companies and brands.
+                <p>A 3D Generalist and Motion Designer based in Taiwan.</p>
+                <p>Offering professional design services for digital arts and product motion design, 
+                  catering to companies and brands.</p>
               </div>
               <router-link to="/works">
                 <button type="button" class="btn btn-primary index-btn">Explore</button>

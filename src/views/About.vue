@@ -22,8 +22,8 @@ const profile_image = '../src/img/profile.png';
             </div>
             <div class="col-xl-7 mt-xl-0 mt-4 px-md-5 ">
                 <div class="mb-4">
-                    <h1 class="mb-5" data-scroll>Hi, My name is Mos Zheng</h1>
-                    <h3 class="mb-5">A 3D Generalist and Motion Designer freelancer based in Taiwan.</h3>
+                    <h1 class="mb-5" data-scroll>Mos Zheng</h1>
+                    <h3 class="mb-5">A 3D Generalist and Motion Designer based in Taiwan.</h3>
 
                     <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
 
@@ -55,18 +55,20 @@ const profile_image = '../src/img/profile.png';
         </section>
         <!-- Experience -->
         <!-- d-flex align-items-center -->
-        <div class="AboutExp px-md-5 px-1 my-5" data-scroll-section>
+        <section class="AboutExp px-lg-5 px-1 my-5" data-scroll-section>
             <div class="mt-xl-0 mt-4">
                 <div class="row mb-4">
                     <!-- title -->
-                    <div class="col-md-3">
+                    <div class="col-lg-3">
                         <h3 class="mb-4">Experience</h3>
                     </div>
-                    <div class="col-md-9 px-xl-3">
+                    <div class="col-lg-9 px-xl-3">
                         <!-- Freelance -->
                         <div class="row">
                             <div class="col-2 my-4">
-                                <div class="col text-center">2023 - Now</div>
+                                <div class="col text-center">
+                                    <p>2023 - Now</p>
+                                </div>
                             </div>
                             <div class="col-1"></div>
                             <div class="col my-4">
@@ -90,7 +92,9 @@ const profile_image = '../src/img/profile.png';
                         <!-- Mixcode -->
                         <div class="row">
                             <div class="col-2 my-4">
-                                <div class="col text-center">2021 - 2022</div>
+                                <div class="col text-center">
+                                    <p>2021 - 2022</p>
+                                </div>
                             </div>
                             <div class="col-1"></div>
                             <div class="col my-4">
@@ -115,7 +119,9 @@ const profile_image = '../src/img/profile.png';
                         <!-- JL -->
                         <div class="row">
                             <div class="col-2 my-4">
-                                <div class="col text-center">2018 - 2021</div>
+                                <div class="col text-center">
+                                    <p>2018 - 2021</p>
+                                </div>
                             </div>
                             <div class="col-1"></div>
                             <div class="col my-4">
@@ -139,48 +145,48 @@ const profile_image = '../src/img/profile.png';
                 </div>
             </div> 
             <div class="border-top"></div>
-        </div>
+        </section>
         
         <!-- Skill -->
-        <div class="AboutSkill px-md-5 px-1 my-5" data-scroll-section>
+        <section class="AboutSkill px-lg-5 px-1 my-5" data-scroll-section>
             <div class="row">
                 <div class="col-md-3">
                     <h2 class="mb-4 ">Service & Skill</h2>
                 </div>
                 <div class="col px-md-5 ">
                     <div class="row mb-5">
-                        <div class="col-md-6">
-                            <h3 class="mb-4">Motion Design</h3>
-                            <h5>Modeling</h5>
-                            <h5>Texturing</h5>
-                            <h5>Lighting</h5>
-                            <h5>Rendering</h5>
-                            <h5>Compositing</h5>
-                            <h5>VFX Simulating</h5>
+                        <div class="col-md-6 mb-md-0 mb-5">
+                            <h3 class="mb-5">Motion Design</h3>
+                            <h5 class="mb-3">Modeling</h5>
+                            <h5 class="mb-3">Texturing</h5>
+                            <h5 class="mb-3">Lighting</h5>
+                            <h5 class="mb-3">Rendering</h5>
+                            <h5 class="mb-3">Compositing</h5>
+                            <h5 class="mb-3">VFX Simulating</h5>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="mb-4">Development</h3>
-                            <h5>C4D Python Plug-in</h5>
-                            <h5>After Effects Scripts</h5>
-                            <h5>Project Workflow R&D</h5>
-                            <h5>Frontend Developing</h5>
+                            <h3 class="mb-5">Development</h3>
+                            <h5 class="mb-3">C4D Python Plug-in</h5>
+                            <h5 class="mb-3">After Effects Scripts</h5>
+                            <h5 class="mb-3">Project Workflow R&D</h5>
+                            <h5 class="mb-3">Frontend Developing</h5>
                         </div>
                     </div>
                     <!-- LOGO -->
                     <div class="row d-flex align-items-center pe-md-5">
-                        <div v-for="item in LogoData.logo" class="col-2 px-lg-4 py-lg-3">
+                        <div v-for="item in LogoData.logo" class="col-lg-2 col-3 px-xl-4 py-xl-3 px-2 py-2">
                             <img :src=item.img :alt=item.name class="img-thumbnail">
                         </div>
                     </div>
                 </div>
             </div>
-            
-        </div>
-        <div class="mb-4 px-md-5 px-1 ">
+        </section>
+        <!-- Recent Prj -->
+        <section class="mb-4 px-md-5 px-1 " data-scroll-section>
             <h2>Recent Project</h2>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                 <div class="row">
-                    <div  v-for="item in WorksData.project" class="col-md-6">
+                    <div  v-for="item in WorksData.project.slice(0,4)" class="col-md-6">
                         <div class="card mb-4 text-white">
                             <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.name } }" title="Link to project">
                                 <img :src=item.img class="card-img" alt="...">
@@ -194,7 +200,7 @@ const profile_image = '../src/img/profile.png';
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </main>
     <Footer />
 </div>
@@ -205,7 +211,7 @@ const profile_image = '../src/img/profile.png';
     min-height: 1080px; 
 }
 .avatar-user {
-  border-radius: 50% !important;
+  /* border-radius: 50% !important; */
   width: 320px;
   height: 320px; 
   height: auto;
