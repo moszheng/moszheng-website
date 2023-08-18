@@ -20,7 +20,7 @@ const profile_image = '../src/img/profile.png';
                 </div>
             </div>
             <div class="col-xl-7 mt-xl-0 mt-4 px-md-5 ">
-                <div class="mb-5">
+                <div class="mb-4">
                     <h1 class="mb-5">Hi, My name is Mos Zheng</h1>
                     <h3 class="mb-5">A 3D Generalist and Motion Designer freelancer based in Taiwan.</h3>
 
@@ -76,12 +76,12 @@ const profile_image = '../src/img/profile.png';
                                 </div>
                                 <ul>
                                     <li>
-                                        Primarily work remotely as a freelance artist, 
-                                        specializing in a diverse range of disciplines such as 3D artwork, visual effects (VFX), and motion graphics.
+                                        <p>Primarily work remotely as a freelance artist, 
+                                        specializing in a diverse range of disciplines such as 3D artwork, visual effects (VFX), and motion graphics.</p>
                                     </li>
                                     <li>
-                                        Developing various programs and websites, 
-                                        and founded a brand called "SlothFellas" released a set of tools designed to assist creators in working more efficiently.
+                                        <p>Developing various programs and websites, 
+                                        and founded a brand called <strong>"SlothFellas"</strong> released a set of tools designed to assist creators in working more efficiently.</p>
                                     </li>
                                 </ul>
                             </div>
@@ -100,11 +100,12 @@ const profile_image = '../src/img/profile.png';
                                 </div>
                                 <ul>
                                     <li>
-                                        Specialize in procedural NFT character development, 
+                                        <p>Specialize in procedural NFT character development, 
                                         utilizing Python and JavaScript to create custom Cinema 4D and AfterEffects plug-ins.
+                                        </p>
                                     </li>
                                     <li>
-                                        Executing and developing motion graphics, 3D animations.
+                                        <p>Executing and developing motion graphics, 3D animations.</p>
                                     </li>
                                 </ul>
                             </div>
@@ -118,17 +119,17 @@ const profile_image = '../src/img/profile.png';
                             <div class="col-1"></div>
                             <div class="col my-4">
                                 <div class="row mb-3">
-                                    <h4 class="col">JL design</h4>
+                                    <h4 class="col">JL Design</h4>
                                     
                                     <div>Intern, Motion Designer</div>
                                 </div>
                                 <ul>
                                     <li>
-                                        Exploring and implementing new techniques, including PBR texturing, lighting, and rendering, 
-                                        to enhance the visual quality of projects.
+                                        <p>Exploring and implementing new techniques, including PBR texturing, lighting, and rendering, 
+                                        to enhance the visual quality of projects.</p>
                                     </li>
                                     <li>
-                                        Creating highly detailed models with smooth topology, ensuring realistic animations.
+                                        <p>Creating highly detailed models with smooth topology, ensuring realistic animations.</p>
                                     </li>
                                 </ul>
                             </div>
@@ -152,14 +153,16 @@ const profile_image = '../src/img/profile.png';
                             <h5>Modeling</h5>
                             <h5>Texturing</h5>
                             <h5>Lighting</h5>
+                            <h5>Rendering</h5>
                             <h5>Compositing</h5>
                             <h5>VFX Simulating</h5>
                         </div>
                         <div class="col-md-6">
                             <h3 class="mb-4">Development</h3>
-                            <h5>C4D Python Scripts</h5>
+                            <h5>C4D Python Plug-in</h5>
+                            <h5>After Effects Scripts</h5>
+                            <h5>Project Workflow R&D</h5>
                             <h5>Frontend Developing</h5>
-                            <h5>Workflow R&D</h5>
                         </div>
                     </div>
                     <!-- LOGO -->

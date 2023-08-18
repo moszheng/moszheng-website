@@ -1,11 +1,5 @@
 @import './base.css';
 
-/* @font-face {
-  font-family: 'DM Sans';
-  font-style: normal;
-  src: url('./DMSans-Bold.ttf') format('ttf');
-} */
-
 body{
   /* background: #e6e6e6; */
   font-family: 'DM Sans', "PingFang TC", "Noto Sans TC",
@@ -25,6 +19,9 @@ h1, h2, h3, h4 {
   letter-spacing: 1px;
   font-weight: bold !important;
   /* padding: 30px 0; */
+}
+p{
+  font-size: 18px;
 }
 
 .t-bold {
