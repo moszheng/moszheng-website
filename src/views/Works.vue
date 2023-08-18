@@ -8,19 +8,17 @@ import WorksData from '../data/WorksData.json'
 <div>
     <main class="flex-xl-nowrap">
 		<!----- Main Content----->
-		<div class="py-md-3 pl-md-5 px-xl-3 bd-content">
-			<div class="row">
-				<div  v-for="item in WorksData.project" class="col-md-4">
-					<div class="card mb-4 text-white">
-						<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.name } }" title="Link to project">
-							<img :src=item.img class="card-img" alt="...">
-							<div class="works-text text-white px-3">
-								<h5 class="card-title">{{ item.name }}</h5>
-								<h6 class="card-title">@{{ item.company }}</h6>
-								<p class="card-text">{{ item.date }}</p>
-							</div>
-						</router-link>
-					</div>
+		<div class="row py-md-3 pl-md-5 px-xl-3 bd-content">
+			<div  v-for="item in WorksData.project" class="col-md-4">
+				<div class="card mb-4 text-white">
+					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" title="Link to project">
+						<img :src=item.img class="card-img" alt="...">
+						<div class="works-text text-white px-3">
+							<h5 class="card-title">{{ item.name }}</h5>
+							<h6 class="card-title">@{{ item.company }}</h6>
+							<p class="card-text">{{ item.date }}</p>
+						</div>
+					</router-link>
 				</div>
 			</div>
 		</div>

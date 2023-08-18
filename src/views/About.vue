@@ -22,8 +22,8 @@ const profile_image = '../src/img/profile.png';
             </div>
             <div class="col-xl-7 mt-xl-0 mt-4 px-md-5 ">
                 <div class="mb-4">
-                    <h1 class="mb-5" data-scroll>Mos Zheng</h1>
-                    <h3 class="mb-5">A 3D Generalist and Motion Designer based in Taiwan.</h3>
+                    <h1 class="mb-5" data-scroll>Sheng Wen Cheng</h1>
+                    <h3 class="mb-5">A <strong>3D Generalist</strong> and <strong>Motion Designer</strong> based in Taiwan.</h3>
 
                     <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
 
@@ -126,7 +126,7 @@ const profile_image = '../src/img/profile.png';
                             <div class="col-1"></div>
                             <div class="col my-4">
                                 <div class="row mb-3">
-                                    <h4 class="col">JL Design</h4>
+                                    <h4 class="col">JL DESIGN .</h4>
                                     
                                     <div>Intern, Motion Designer</div>
                                 </div>
@@ -212,8 +212,8 @@ const profile_image = '../src/img/profile.png';
 }
 .avatar-user {
   /* border-radius: 50% !important; */
-  width: 320px;
-  height: 320px; 
+  width: 500px;
+  height: 500px; 
   height: auto;
 }
 

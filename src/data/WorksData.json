@@ -2,24 +2,79 @@
     "project" : [
         {
             "name" : "金曲29 最佳原住民語專輯獎",
-            "date" : "2018 DEC",
+            "en_name" : "Golden Melody Awards Ceremony 29th - Best Aboriginal Album",
+            "url_name" : "gma29_baa",
+            "date" : "2018 Dec",
             "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
             "video" : "https://player.vimeo.com/video/276425004?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0",
             "img" : "./src/img/01_gma29.jpg",
             "company" : "JL Design",
-            "msg":"test content"
+            "msg" : "test content",
+            "credit" : 
+            {
+                "客戶 Client": "文化部 Ministry of Culture",
+                "典禮總統籌 Event Production": "源活 YOUNG HOPE",
+                "視覺總監 Executive Creative Director": "羅申駿 JL",
+                "視覺影像統籌 Creative Agency": "JL DESIGN",
+                "監製 Executive Producer": "巫安琪 Angela Moo、蔡卓翰 Johan Tsai",
+                "專案總監 Head of Project Management": "蔡佳穎 Chia Ying Tsai",
+                "創意總監 Creative Director": "蔡旻驊 David Tsai",
+                "美術指導 Art Director": "魏良恩 Lance Wei、洪湘茹 Hsiang Ju Hung",
+                "製作統籌 Project Manager": "林志翰 Ryan Lin",
+                "典禮視覺／影像音樂設計 Music": "MUSDM.com",
+                "音效協力": "Dear Post Audio Production Ltd.",
+                "Voice-over": "盧廣仲 Crowd Lu",
+                "最佳原住民語專輯入圍影片插畫設計": "王妤璇 Yu-Hsuan Wang",
+                "最佳原住民語專輯入圍影片動態設計": "JL DESIGN （鄭盛文 Mos Zheng 、劉瓅涵 Hank Liu ）",
+                "最佳原住民語專輯入圍影片片頭歌曲": "在這土地上 On This Land",
+                "歌手／樂團": "巴賴 Balai"
+            }
         },
         {
-            "name" : "金馬56",
+            "name" : "金馬56 Logo Bumper",
+            "en_name" : "Golden Horse Awards 56th - Logo Bumper",
+            "url_name" : "gha56",
             "date" : "2019 Nov",
             "behance" : "https://www.behance.net/gallery/89590877/56-Golden-Horse-Awards-56th-Logo-Bumper-Breakdown",
             "video" : "https://player.vimeo.com/video/376095266?h=ab7fdd486e&color=ffffff&title=0&byline=0&portrait=0",
             "img" : "./src/img/02_gha56_01.png",
             "company" : "JL Design",
-            "msg":"test content"
+            "msg":"test content",
+            "credit" : 
+            {
+                "金馬56主視覺及典禮視覺總監": "羅申駿 JL",
+                "客戶": "台北金馬影展執行委員會",
+                "典禮視覺影像設計": "JL DESIGN",
+                "監製": "巫安琪 蔡卓翰",
+                "專案總監": "蔡佳穎",
+                "創意總監": "蔡旻驊",
+                "副創意總監": "魏良恩",
+                "美術指導": "洪湘茹",
+                "製作統籌": "林志翰",
+                "製作群": "黃婷鈺、陳品聿 、蔡潔凡、張玉典、許雅婷、柯季芸",
+                "宣傳協力": "王日暄",
+                "主視覺設計": "洪湘茹、簡宥箴、陳施澄",
+                "設計師＆動畫師": "齊慕夷、鄭盛文、林俊德、何展鴻、許峻良、詹游丞、何佳珍、Lucas Gaston Casagrande、張伊暉、蔡瑋廷、方智弘、李威、Hai Le",
+                "舞台視覺設計": "JL DESIGN（洪湘茹、齊慕夷、鄭盛文、林俊德）、野人創意設計有限公司（陳志育、吳昱緯、黃敏琇、林玟誼）",
+                "典禮視覺／影像音樂設計及統籌": "MUSDM",
+                "製作人": "余佳倫、徐文",
+                "製作協力": "佘以安",
+                "音樂": "徐文、余佳倫、cheer、楊子霆、李火生、張藝、林昀駿、王韻筑、余昊益",
+                "聲音設計": "楊子霆、cheer",
+                "聲音後期": "楊子霆、張育維",
+                "聲音設計協力": "Deer Post Audio Production Ltd.",
+                "錄音師": "林先敏",
+                "擬音製作": "高偉晏",
+                "音效剪輯": "林先敏",
+                "特別感謝": "小飛俠、陳維良",
+                "典禮視覺字體提供": "文鼎科技開發股份有限公司"
+              }
+              
         },
         {
-            "name" : "SWSX",
+            "name" : "Taiwan HYPE",
+            "en_name" : "Taiwan HYPE - Logo Animation",
+            "url_name" : "taiwanhype",
             "date" : "2019",
             "behance" : "https://www.behance.net/gallery/127287095/Taiwan-HYPE-EXHIBITION-Logo-Animation",
             "video" : "https://player.vimeo.com/video/474537396?h=c38970ba07&color=ffffff&title=0&byline=0&portrait=0",
@@ -29,8 +84,10 @@
         },
         {
             "name" : "KKcompany",
-            "date" : "2021 AUG",
-            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "en_name" : "KKcompany",
+            "url_name" : "kkcompany",
+            "date" : "2021 Aug",
+            "behance" : "https://www.behance.net/gallery/131950969/KK-Company",
             "video" : "https://player.vimeo.com/video/681776633?h=1a3ad53487&title=0&byline=0&portrait=0",
             "img" : "./src/img/04_KK_01.png",
             "company" : "MixCode",
@@ -38,6 +95,8 @@
         },
         {
             "name" : "GOGORO VIVA",
+            "en_name" : "GOGORO VIVA",
+            "url_name" : "ggrviva",
             "date" : "2022",
             "behance" : "https://www.behance.net/gallery/119028733/Gogoro-VIVA-MIX",
             "video" : "https://player.vimeo.com/video/545803846?h=617ca34cbd&color=ffffff&title=0&byline=0&portrait=0",
@@ -46,8 +105,10 @@
             "msg": "test content"
         },
         {
-            "name" : "金曲32",
-            "date" : "2021 JUN",
+            "name" : "金曲32 舞台視覺設計",
+            "en_name" : "Golden Melody Awards Ceremony 32th - Stage Background Design",
+            "url_name" : "gma32",
+            "date" : "2021 Jun",
             "behance" : "https://www.behance.net/gallery/126656689/32-GMA32-Stage-Background-Design",
             "video" : "https://player.vimeo.com/video/619733081?h=395f00412a&title=0&byline=0&portrait=0",
             "img" : "./src/img/05_GMA32_01.png",
@@ -55,7 +116,9 @@
             "msg":"test content"
         },
         {
-            "name" : "大慶證券債券＋系列產品形象影片 AVCG PGN Image Video",
+            "name" : "大慶證券債券＋系列產品形象影片",
+            "en_name" : "AVCG PGN Image Video",
+            "url_name" : "PGN",
             "date" : "2020",
             "behance" : "",
             "video" : "",
@@ -65,6 +128,8 @@
         },
         {
             "name" : "聲林之王",
+            "en_name" : "Jungle Voice - Logo Production",
+            "url_name" : "Jungle_Voice",
             "date" : "2018",
             "behance" : "https://www.behance.net/gallery/74073727/Jungle-Voice",
             "video" : "https://player.vimeo.com/video/294759428?h=3994184e99&color=ffffff&title=0&byline=0&portrait=0",
@@ -74,15 +139,19 @@
         },
         {
             "name" : "金曲29 最佳國語男歌手",
+            "en_name" : "Golden Melody Awards Ceremony 29th - Best Male Mandarin Singer",
+            "url_name" : "gma29_bmms",
             "date" : "2018 DEC",
-            "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
+            "behance" : "https://www.behance.net/gallery/67350257/29-Best-Male-Mandarin-Singer",
             "video" : "https://player.vimeo.com/video/276425004?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0",
             "img" : "./src/img/01_gma29.jpg",
             "company" : "JL Design",
             "msg":"test content"
         },
         {
-            "name" : "Honor of Kings International Championship Promo",
+            "name" : "王者榮耀世界冠軍盃 前導宣傳片",
+            "en_name" : "Honor of Kings International Championship Promo",
+            "url_name" : "gha56",
             "date" : "2022",
             "behance" : "https://www.behance.net/gallery/158101281/2022",
             "video" : "https://player.vimeo.com/video/681776633?h=1a3ad53487&title=0&byline=0&portrait=0",
