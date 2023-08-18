@@ -13,14 +13,14 @@ const profile_image = '../src/img/profile.png';
         <!-- Intro -->
         <section class="AboutIntro d-flex align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section>
             <!-- profile image -->
-            <div class="col-xl-5" data-scroll data-scroll-speed="-1">
+            <div class="col-xl-6" data-scroll data-scroll-speed="-2">
                 <div class="align-self-center text-center">
                     <div class="mb-4 ">
                         <img class="avatar avatar-user width-full border" alt="" :src=profile_image>
                     </div>
                 </div>
             </div>
-            <div class="col-xl-7 mt-xl-0 mt-4 px-md-5 ">
+            <div class="col-xl-6 mt-xl-0 mt-4 px-md-5 ">
                 <div class="mb-4">
                     <h1 class="mb-5" data-scroll>Sheng Wen Cheng</h1>
                     <h3 class="mb-5">A <strong>3D Generalist</strong> and <strong>Motion Designer</strong> based in Taiwan.</h3>
@@ -51,7 +51,12 @@ const profile_image = '../src/img/profile.png';
                     </div>
                 </div>
             </div>
-            <div class="border-top"></div>
+            <div class="container-fluid text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                </svg>
+            </div>
+            <!-- <div class="border-top"></div> -->
         </section>
         <!-- Experience -->
         <!-- d-flex align-items-center -->
@@ -99,8 +104,7 @@ const profile_image = '../src/img/profile.png';
                             <div class="col-1"></div>
                             <div class="col my-4">
                                 <div class="row mb-3">
-                                    <h4 class="col">Mixcode</h4>
-                                    
+                                    <h4 class="col">MixCode</h4>
                                     <div>Motion Designer</div>
                                 </div>
                                 <ul>
@@ -212,8 +216,7 @@ const profile_image = '../src/img/profile.png';
 }
 .avatar-user {
   /* border-radius: 50% !important; */
-  width: 500px;
-  height: 500px; 
+  width: 50vh;
   height: auto;
 }
 

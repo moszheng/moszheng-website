@@ -1,5 +1,12 @@
 <script setup>
 import LoadingPage from "./views/Loading.vue";
+import LocomotiveScroll from 'locomotive-scroll';
+
+const scroll = new LocomotiveScroll({
+    el: document.querySelector('[data-scroll-container]'),
+    smooth: true,
+    lerp: 0.08
+});
 
 </script>
 <template>
