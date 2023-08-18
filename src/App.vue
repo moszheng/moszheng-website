@@ -3,7 +3,7 @@ import LoadingPage from "./views/Loading.vue";
 
 </script>
 <template>
-<header class="sticky-top">
+<header class="sticky-top" data-scroll-sticky>
   <nav class="container navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
       <div class="container-fluid">
           <div class="navbar-brand flex-column flex-md-row align-items-center">

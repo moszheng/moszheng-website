@@ -8,11 +8,12 @@ const profile_image = '../src/img/profile.png';
 
 </script>
 <template>
-<div>
+<div class="about">
     <main class="container">
         <!-- Intro -->
-        <div class="AboutIntro d-flex align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5">
-            <div class="col-xl-5">
+        <section class="AboutIntro d-flex align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section>
+            <!-- profile image -->
+            <div class="col-xl-5" data-scroll data-scroll-speed="-1">
                 <div class="align-self-center text-center">
                     <div class="mb-4 ">
                         <img class="avatar avatar-user width-full border" alt="" :src=profile_image>
@@ -21,7 +22,7 @@ const profile_image = '../src/img/profile.png';
             </div>
             <div class="col-xl-7 mt-xl-0 mt-4 px-md-5 ">
                 <div class="mb-4">
-                    <h1 class="mb-5">Hi, My name is Mos Zheng</h1>
+                    <h1 class="mb-5" data-scroll>Hi, My name is Mos Zheng</h1>
                     <h3 class="mb-5">A 3D Generalist and Motion Designer freelancer based in Taiwan.</h3>
 
                     <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
@@ -50,11 +51,11 @@ const profile_image = '../src/img/profile.png';
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="border-top"></div>
+            <div class="border-top"></div>
+        </section>
         <!-- Experience -->
         <!-- d-flex align-items-center -->
-        <div class="AboutExp px-md-5 px-1 my-5">
+        <div class="AboutExp px-md-5 px-1 my-5" data-scroll-section>
             <div class="mt-xl-0 mt-4">
                 <div class="row mb-4">
                     <!-- title -->
@@ -137,11 +138,11 @@ const profile_image = '../src/img/profile.png';
                     </div>
                 </div>
             </div> 
-            
+            <div class="border-top"></div>
         </div>
-        <div class="border-top"></div>
+        
         <!-- Skill -->
-        <div class="AboutSkill px-md-5 px-1 my-5">
+        <div class="AboutSkill px-md-5 px-1 my-5" data-scroll-section>
             <div class="row">
                 <div class="col-md-3">
                     <h2 class="mb-4 ">Service & Skill</h2>
