@@ -26,7 +26,7 @@ const profile_image = '../src/img/profile.png';
 
                     <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
 
-                    <p>For any inquiries, please send me an email</p>
+                    <p>For any inquiries,<strong> please send me an email </strong></p>
                 </div>
                 <div class=" ">
                     <div class="mb-3">

@@ -1,9 +1,15 @@
 @import './base.css';
 
+/* @font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  src: url('./DMSans-Bold.ttf') format('ttf');
+} */
+
 body{
   /* background: #e6e6e6; */
-  font-family: "Neue Haas Grotesk","DM Sans", "PingFang TC", "Noto Sans TC",
-  "Segoe UI", Helvetica,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" !important; 
+  font-family: 'DM Sans', "PingFang TC", "Noto Sans TC",
+  "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important; 
   -webkit-font-smoothing: antialiased;
 }
 
