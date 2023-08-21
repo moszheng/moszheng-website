@@ -1,16 +1,9 @@
 <script setup>
 import LoadingPage from "./views/Loading.vue";
-import LocomotiveScroll from 'locomotive-scroll';
-
-const scroll = new LocomotiveScroll({
-    el: document.querySelector('[data-scroll-container]'),
-    smooth: true,
-    lerp: 0.08
-});
 
 </script>
 <template>
-<header class="sticky-top" data-scroll-sticky>
+<header class="sticky-top">
     <nav class="container navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
         <div class="container-fluid">
             <div class="navbar-brand flex-column flex-md-row align-items-center">
@@ -61,7 +54,7 @@ const scroll = new LocomotiveScroll({
     </nav>
 <div class="border-bottom"></div>
 </header>
-
+<!--  -->
 <router-view v-slot="{ Component }">
     <Transition name="fade" mode="out-in">
         <Suspense>

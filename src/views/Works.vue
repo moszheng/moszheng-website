@@ -5,8 +5,8 @@ import WorksData from '../data/WorksData.json'
 
 </script>
 <template>
-<div>
-    <main class="flex-xl-nowrap">
+<div data-scroll-container>
+    <main class="flex-xl-nowrap" data-scroll-section>
 		<!----- Main Content----->
 		<div class="row py-md-3 pl-md-5 px-xl-3 bd-content">
 			<div  v-for="item in WorksData.project" class="col-md-4">

@@ -3,17 +3,44 @@ import Footer from '../components/Footer.vue'
 import { ref } from 'vue'
 import WorksData from '../data/WorksData.json'
 import LogoData from '../data/LogoData.json'
+import gsap from 'gsap'
 
 const profile_image = '../src/img/profile.png';
 
+const motiondesign = [
+    { name : 'Modeling'},
+    { name : 'Texturing'},
+    { name : 'Lighting'},
+    { name : 'Rendering'},
+    { name : 'Compositing'},
+    { name : 'VFX Simulating'}
+]
+
+const beforeEnter = (el) => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(100px)'
+
+}
+
+const enter = (el, done) => {
+    gsap.to(el, {
+        
+        opacity:1 ,
+        y: 0,
+        duration: 0.8,
+        onComplete: done
+
+    })
+}
+
 </script>
 <template>
-<div class="about">
-    <main class="container">
+<div class="about" >
+    <main class="container-fluid">
         <!-- Intro -->
-        <section class="AboutIntro d-flex align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section>
+        <section class="AboutIntro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section data-scroll>
             <!-- profile image -->
-            <div class="col-xl-6" data-scroll data-scroll-speed="-2">
+            <div class="col-xl-6">
                 <div class="align-self-center text-center">
                     <div class="mb-4 ">
                         <img class="avatar avatar-user width-full border" alt="" :src=profile_image>
@@ -52,6 +79,9 @@ const profile_image = '../src/img/profile.png';
                 </div>
             </div>
             <div class="container-fluid text-center">
+                <!-- <button class="btn-scroll-down btn-scroll-down-white" aria-label="Scroll Down">
+                    
+                </button> -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                 </svg>
@@ -60,7 +90,7 @@ const profile_image = '../src/img/profile.png';
         </section>
         <!-- Experience -->
         <!-- d-flex align-items-center -->
-        <section class="AboutExp px-lg-5 px-1 my-5" data-scroll-section>
+        <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-1" data-scroll-section>
             <div class="mt-xl-0 mt-4">
                 <div class="row mb-4">
                     <!-- title -->
@@ -148,25 +178,25 @@ const profile_image = '../src/img/profile.png';
                     </div>
                 </div>
             </div> 
-            <div class="border-top"></div>
         </section>
         
         <!-- Skill -->
-        <section class="AboutSkill px-lg-5 px-1 my-5" data-scroll-section>
+        <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-1 py-5 text-white" data-scroll-section>
             <div class="row">
                 <div class="col-md-3">
-                    <h2 class="mb-4 ">Service & Skill</h2>
+                    <h2 class="mb-4 " data-scroll data-scroll-speed="2">Service & Skill</h2>
                 </div>
                 <div class="col px-md-5 ">
                     <div class="row mb-5">
                         <div class="col-md-6 mb-md-0 mb-5">
                             <h3 class="mb-5">Motion Design</h3>
-                            <h5 class="mb-3">Modeling</h5>
-                            <h5 class="mb-3">Texturing</h5>
-                            <h5 class="mb-3">Lighting</h5>
-                            <h5 class="mb-3">Rendering</h5>
-                            <h5 class="mb-3">Compositing</h5>
-                            <h5 class="mb-3">VFX Simulating</h5>
+                            <TransitionGroup
+                                appear
+                                @before-enter="beforeEnter"
+                                @enter="enter"
+                            >
+                                <h5 class="mb-3" v-for="item in motiondesign" data-scroll>{{item.name}}</h5>
+                            </TransitionGroup>
                         </div>
                         <div class="col-md-6">
                             <h3 class="mb-5">Development</h3>
@@ -211,8 +241,24 @@ const profile_image = '../src/img/profile.png';
 </template>
 
 <style>
+main{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
 .AboutIntro, .AboutExp, .AboutSkill{
-    min-height: 1080px; 
+    /* min-height: 1080px;  */
+    min-height: 100vh; 
+}
+.AboutExp{
+    background-color: rgb(228, 228, 228);
+}
+
+.AboutSkill{
+    background-color: rgb(22, 22, 22);
+}
+.img-thumbnail{
+    background: none;
 }
 .avatar-user {
   /* border-radius: 50% !important; */

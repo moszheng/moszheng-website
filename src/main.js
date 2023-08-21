@@ -1,5 +1,5 @@
 import './assets/main.css'
-
+// import LocomotiveScroll from 'locomotive-scroll';
 
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router';
@@ -12,8 +12,6 @@ import About from './views/About.vue'
 import Contact from './views/Contact.vue'
 import NotFound from './views/NotFound.vue'
 
-
-
 const routes = [
     { path: '/',name:'Home', component: Home },
     { path: '/works', name:'Works', component: Works },
@@ -22,6 +20,13 @@ const routes = [
     { path: '/contact', name:'Contact', component: Contact },
     { path: '/:catchAll(.*)', component: NotFound },
 ];
+
+
+// const scroll = new LocomotiveScroll({
+//     el: document.querySelector('[data-scroll-container]'),
+//     smooth: true,
+//     lerp: 0.08
+// });
 
 // Router method
 const router = createRouter({
