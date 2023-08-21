@@ -1,9 +1,10 @@
 <script setup>
-import Footer from '../components/Footer.vue'
 import { ref } from 'vue'
+import gsap from 'gsap'
+
+import Footer from '../components/Footer.vue'
 import WorksData from '../data/WorksData.json'
 import LogoData from '../data/LogoData.json'
-import gsap from 'gsap'
 
 const profile_image = '../src/img/profile.png';
 
@@ -16,20 +17,27 @@ const motiondesign = [
     { name : 'VFX Simulating'}
 ]
 
+const development = [
+    { name : 'C4D Python Plug-in'},
+    { name : 'After Effects Scripts'},
+    { name : 'Project Workflow R&D'},
+    { name : 'Frontend Developing'}
+]
+
 const beforeEnter = (el) => {
+    // console.log("bb")
     el.style.opacity = 0;
     el.style.transform = 'translateY(100px)'
 
 }
 
 const enter = (el, done) => {
+    // console.log("cc")
     gsap.to(el, {
-        
         opacity:1 ,
         y: 0,
-        duration: 0.8,
+        duration: el.dataset.index * 0.4,
         onComplete: done
-
     })
 }
 
@@ -49,7 +57,9 @@ const enter = (el, done) => {
             </div>
             <div class="col-xl-6 mt-xl-0 mt-4 px-md-5 ">
                 <div class="mb-4">
+                    
                     <h1 class="mb-5" data-scroll>Sheng Wen Cheng</h1>
+                    
                     <h3 class="mb-5">A <strong>3D Generalist</strong> and <strong>Motion Designer</strong> based in Taiwan.</h3>
 
                     <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
@@ -191,19 +201,24 @@ const enter = (el, done) => {
                         <div class="col-md-6 mb-md-0 mb-5">
                             <h3 class="mb-5">Motion Design</h3>
                             <TransitionGroup
-                                appear
+                                appear    
+                                :css="false"    
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                             >
-                                <h5 class="mb-3" v-for="item in motiondesign" data-scroll>{{item.name}}</h5>
+                                <h5 class="mb-3" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"> {{item.name}} </h5>
                             </TransitionGroup>
                         </div>
                         <div class="col-md-6">
                             <h3 class="mb-5">Development</h3>
-                            <h5 class="mb-3">C4D Python Plug-in</h5>
-                            <h5 class="mb-3">After Effects Scripts</h5>
-                            <h5 class="mb-3">Project Workflow R&D</h5>
-                            <h5 class="mb-3">Frontend Developing</h5>
+                            <TransitionGroup
+                                appear    
+                                :css="false"    
+                                @before-enter="beforeEnter"
+                                @enter="enter"
+                            >
+                            <h5 class="mb-3" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
+                            </TransitionGroup>
                         </div>
                     </div>
                     <!-- LOGO -->

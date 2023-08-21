@@ -57,14 +57,15 @@ import LoadingPage from "./views/Loading.vue";
 <!--  -->
 <router-view v-slot="{ Component }">
     <Transition name="fade" mode="out-in">
-        <Suspense>
+        <!-- <Suspense>
             <template #default>
                 <component :is="Component"></component>
             </template>
             <template #fallback>
                 <LoadingPage></LoadingPage>
             </template>
-        </Suspense>
+        </Suspense> -->
+        <component :is="Component"></component>
     </Transition>
 </router-view>
 
