@@ -27,16 +27,16 @@ import LoadingPage from "./views/Loading.vue";
                     </ul>
                     <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
                         <li class="nav-item col-3 col-md-auto">
-                            <a class="nav-link p-2" href="https://github.com/moszheng" target="_blank" rel="noopener">
-                                <svg id="icon_github">
-                                    <use xlink:href="#icon-github"></use>
+                            <a class="nav-link p-2" href="https://www.behance.net/moszheng" target="_blank" rel="noopener">
+                                <svg id="icon_twitter">
+                                    <use xlink:href="#icon-behance"></use>
                                 </svg>
                             </a>
                         </li>
                         <li class="nav-item col-3 col-md-auto">
-                            <a class="nav-link p-2" href="https://www.behance.net/moszheng" target="_blank" rel="noopener">
-                                <svg id="icon_twitter">
-                                    <use xlink:href="#icon-behance"></use>
+                            <a class="nav-link p-2" href="https://github.com/moszheng" target="_blank" rel="noopener">
+                                <svg id="icon_github">
+                                    <use xlink:href="#icon-github"></use>
                                 </svg>
                             </a>
                         </li>

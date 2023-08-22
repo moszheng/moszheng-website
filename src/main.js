@@ -28,6 +28,8 @@ const routes = [
 //     lerp: 0.08
 // });
 
+console.log(scroll)
+
 // Router method
 const router = createRouter({
     history: createWebHistory(),

@@ -9,7 +9,6 @@ import LogoData from '../data/LogoData.json'
 const profile_image = '../src/img/profile.png';
 
 const profile_link = [
-    { text : 'behance.net/moszheng', icon : "#icon-behance" },
     { text : 'moszheng.design@gmail.com', icon : "#bi-envelope-fill" },
     { text : 'Taipei, Taiwan', icon : "#bi-geo-alt-fill" },
 ]
@@ -45,7 +44,7 @@ const enter = (el, done) => {
     gsap.to(el, {
         opacity:1 ,
         y: 0,
-        duration: el.dataset.index * 0.2,
+        duration: el.dataset.index * 0.4,
         onComplete: done
     })
 }
@@ -72,10 +71,10 @@ const leave = (el, done) => {
 
 </script>
 <template>
-<div class="about" >
-    <main class="container-fluid">
+<div class="About" data-scroll-section>
+    <main class="container-fluid" data-scroll-section>
         <!-- Intro -->
-        <section class="AboutIntro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section data-scroll>
+        <section class="AboutIntro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section>
             <!-- profile image -->
             <div class="col-xl-6">
                 <div class="align-self-center text-center">
@@ -98,20 +97,49 @@ const leave = (el, done) => {
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
 
-                        <h3 class="mb-5">A <strong>3D Generalist</strong> and <strong>Motion Designer</strong> based in Taiwan.</h3>
+                        <h3 class="mb-5">
+                            A <strong>3D Generalist</strong> and <strong>Motion Designer</strong>  <br> based in Taiwan.
+                        </h3>
 
                     </Transition>
 
-                    <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
+                    <p>Focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</p>
 
-                    <p>For any inquiries,<strong> please send me an email </strong></p>
+                    <p>Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
+                        designed to enhance workflows and simplify processes.</p>
+
+                    <p>For any inquiries,<strong> please contact me</strong></p>
                 </div>
+
+                <ul class="navbar-nav flex-row flex-wrap mb-4">
+                    <li class="nav-item col-3 col-md-auto">
+                        <a class="nav-link p-2" href="https://www.behance.net/moszheng" target="_blank" rel="noopener">
+                            <svg id="icon_twitter">
+                                <use xlink:href="#icon-behance"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item col-3 col-md-auto">
+                        <a class="nav-link p-2" href="https://github.com/moszheng" target="_blank" rel="noopener">
+                            <svg id="icon_github">
+                                <use xlink:href="#icon-github"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item col-3 col-md-auto">
+                        <a class="nav-link p-2" href="https://www.instagram.com/slothfellas/" target="_blank" rel="noopener">
+                            <svg id="icon_twitter">
+                                <use xlink:href="#icon-instagram"></use>
+                            </svg>
+                        </a>
+                    </li>
+                </ul>
 
                 <TransitionGroup appear :css="false"    
                     @before-enter="beforeEnter"
                     @enter="enter"
                 >   
-                   <div v-for="(item, index) in profile_link" :key="item.text" :data-index="index" class="mb-3">
+                   <div v-for="(item, index) in profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
                         <svg id="icon_twitter">
                             <use :xlink:href="item.icon"></use>
                         </svg>
@@ -120,18 +148,13 @@ const leave = (el, done) => {
                 </TransitionGroup>
             </div>
             <div class="container-fluid text-center">
-                <!-- <button class="btn-scroll-down btn-scroll-down-white" aria-label="Scroll Down">
-                    
-                </button> -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                 </svg>
             </div>
-            <!-- <div class="border-top"></div> -->
         </section>
         <!-- Experience -->
-        <!-- d-flex align-items-center -->
-        <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-1 text-white" data-scroll-section>
+        <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white" data-scroll-section>
             <div class="mt-xl-0 mt-4">
                 <div class="row mb-4">
                     <!-- title -->
@@ -226,10 +249,10 @@ const leave = (el, done) => {
         </section>
         
         <!-- Skill -->
-        <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-1 py-5" data-scroll-section>
+        <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5" data-scroll-section>
             <div class="row">
                 <div class="col-md-3">
-                    <h2 class="mb-4 " data-scroll data-scroll-speed="2">Service & Skill</h2>
+                    <h2 class="mb-4 " data-scroll data-scroll-speed="1">Service & Skill</h2>
                 </div>
                 <div class="col px-md-5 ">
                     <div class="row mb-5">
@@ -282,6 +305,15 @@ const leave = (el, done) => {
                 </div>
             </div>
         </section>
+        <div class="container-fluid text-center">
+            <!-- <button class="btn-scroll-down btn-scroll-down-white" aria-label="Scroll Down">
+                
+            </button> -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+            </svg>
+            <p>BACK TO TOP</p>
+        </div>
     </main>
     <Footer />
 </div>

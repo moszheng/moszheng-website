@@ -11,9 +11,9 @@ const prjdata = WorksData.project.find(item => item.url_name == props.projecturl
 
 </script>
 <template>
-<div>
+<div class="WorksPage">
     <!-- video -->
-    <div class="ratio ratio-16x9 mb-5">
+    <div class="ratio ratio-16x9 mb-5" data-scroll-section>
         <iframe :src=prjdata.video allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
