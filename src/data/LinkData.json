@@ -1,0 +1,30 @@
+{
+    "socialmedia" : [
+        { 
+            "url" : "https://www.behance.net/moszheng",
+            "icon" : "#icon-behance"
+        },
+        { 
+            "url" : "https://www.instagram.com/slothfellas/",
+            "icon" : "#icon-linkedin"
+        },
+        { 
+            "url" : "https://github.com/moszheng",
+            "icon" : "#icon-github"
+        },
+        { 
+            "url" : "https://www.instagram.com/slothfellas/",
+            "icon" : "#icon-instagram"
+        }
+    ],
+    "profile_link" : [
+        { 
+            "text" : "moszheng.design@gmail.com", 
+            "icon" : "#bi-envelope-fill" 
+        },
+        {   
+            "text" : "Taipei, Taiwan", 
+            "icon" : "#bi-geo-alt-fill" 
+        }
+    ]
+}

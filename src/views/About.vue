@@ -3,15 +3,11 @@ import { ref } from 'vue'
 import gsap from 'gsap'
 
 import Footer from '../components/Footer.vue'
+import LinkData from '../data/LinkData.json'
 import WorksData from '../data/WorksData.json'
 import LogoData from '../data/LogoData.json'
 
 const profile_image = '../src/img/profile.png';
-
-const profile_link = [
-    { text : 'moszheng.design@gmail.com', icon : "#bi-envelope-fill" },
-    { text : 'Taipei, Taiwan', icon : "#bi-geo-alt-fill" },
-]
 
 const motiondesign = [
     { name : 'Modeling'},
@@ -112,31 +108,10 @@ const leave = (el, done) => {
                 </div>
 
                 <ul class="navbar-nav flex-row flex-wrap mb-4">
-                    <li class="nav-item col-3 col-md-auto">
-                        <a class="nav-link p-2" href="https://www.behance.net/moszheng" target="_blank" rel="noopener">
+                    <li v-for="item in LinkData.socialmedia" class="nav-item col-3 col-md-auto">
+                        <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                             <svg id="icon_twitter">
-                                <use xlink:href="#icon-behance"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="nav-item col-3 col-md-auto">
-                        <a class="nav-link p-2" href="https://www.instagram.com/slothfellas/" target="_blank" rel="noopener">
-                            <svg id="icon_twitter">
-                                <use xlink:href="#icon-linkedin"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="nav-item col-3 col-md-auto">
-                        <a class="nav-link p-2" href="https://github.com/moszheng" target="_blank" rel="noopener">
-                            <svg id="icon_github">
-                                <use xlink:href="#icon-github"></use>
-                            </svg>
-                        </a>
-                    </li>
-                    <li class="nav-item col-3 col-md-auto">
-                        <a class="nav-link p-2" href="https://www.instagram.com/slothfellas/" target="_blank" rel="noopener">
-                            <svg id="icon_twitter">
-                                <use xlink:href="#icon-instagram"></use>
+                                <use :xlink:href="item.icon"></use>
                             </svg>
                         </a>
                     </li>
@@ -146,7 +121,7 @@ const leave = (el, done) => {
                     @before-enter="beforeEnter"
                     @enter="enter"
                 >   
-                   <div v-for="(item, index) in profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
+                   <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
                         <svg id="icon_twitter">
                             <use :xlink:href="item.icon"></use>
                         </svg>
@@ -155,11 +130,18 @@ const leave = (el, done) => {
                 </TransitionGroup>
             </div>
             <div class="container-fluid text-center">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
-                </svg>
+                <a href="#" class="nav-link p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+                    </svg>
+                </a>
             </div>
         </section>
+
+        <!-- <section class="imgBanner">
+            <img src="../img/03_SWSX_01.jpg" class="img-fluid">
+        </section> -->
+
         <!-- Experience -->
         <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white" data-scroll-section>
             <div class="mt-xl-0 mt-4">
@@ -252,7 +234,9 @@ const leave = (el, done) => {
                         </div>
                     </div>
                 </div>
+                
             </div> 
+            
         </section>
         
         <!-- Skill -->
@@ -333,6 +317,10 @@ main{
     padding-left: 0 !important;
 }
 
+.imgBanner{
+    overflow : hidden;
+    height: 30vh; 
+}
 .AboutIntro, .AboutExp, .AboutSkill{
     min-height: 100vh; 
 }

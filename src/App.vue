@@ -1,4 +1,5 @@
 <script setup>
+import LinkData from './data/LinkData.json'
 import LoadingPage from "./views/Loading.vue";
 
 </script>
@@ -26,31 +27,10 @@ import LoadingPage from "./views/Loading.vue";
                         <li class="nav-item"><router-link :to="{ name : 'Contact' }" class="nav-link link-dark px-2">Contact</router-link></li>
                     </ul>
                     <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-                        <li class="nav-item col-3 col-md-auto">
-                            <a class="nav-link p-2" href="https://www.behance.net/moszheng" target="_blank" rel="noopener">
+                        <li v-for="item in LinkData.socialmedia" class="nav-item col-3 col-md-auto">
+                            <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                                 <svg id="icon_twitter">
-                                    <use xlink:href="#icon-behance"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="nav-item col-3 col-md-auto">
-                            <a class="nav-link p-2" href="https://www.linkedin.com/in/moszheng/" target="_blank" rel="noopener">
-                                <svg id="icon_twitter">
-                                    <use xlink:href="#icon-linkedin"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="nav-item col-3 col-md-auto">
-                            <a class="nav-link p-2" href="https://github.com/moszheng" target="_blank" rel="noopener">
-                                <svg id="icon_github">
-                                    <use xlink:href="#icon-github"></use>
-                                </svg>
-                            </a>
-                        </li>
-                        <li class="nav-item col-3 col-md-auto">
-                            <a class="nav-link p-2" href="https://www.instagram.com/slothfellas/" target="_blank" rel="noopener">
-                                <svg id="icon_twitter">
-                                    <use xlink:href="#icon-instagram"></use>
+                                    <use :xlink:href="item.icon"></use>
                                 </svg>
                             </a>
                         </li>

@@ -1,4 +1,6 @@
 <script setup>
+import gsap from 'gsap'
+
 import Footer from './Footer.vue'
 import WorksData from '../data/WorksData.json'
 import { ref } from 'vue'
@@ -9,6 +11,19 @@ const props = defineProps({
 
 const prjdata = WorksData.project.find(item => item.url_name == props.projecturl);
 
+const beforeEnter = (el) => {
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(50px)'
+
+}
+const sigleEnter = (el, done) => {
+    gsap.to(el, {
+        opacity: 1 ,
+        y: 0,
+        duration: 1,
+        onComplete: done
+    })
+}
 </script>
 <template>
 <div class="WorksPage">
@@ -18,7 +33,13 @@ const prjdata = WorksData.project.find(item => item.url_name == props.projecturl
     </div>
     <main class="container">
         <div class="TitleDsc mb-5 mx-md-3 mx-1 px-md-5">
-            <h3 class="mb-3">{{ prjdata.en_name}}</h3>
+            <Transition name="move" mode="out-in" appear
+                @before-enter="beforeEnter"
+                @enter="sigleEnter">
+
+                <h3 class="mb-3">{{ prjdata.en_name}}</h3>
+
+            </Transition>
             <h6 class="mb-3">@{{prjdata.company}}</h6>
             <p class="mb-4">{{prjdata.date}}</p>
             <a class="" :href=prjdata.behance target="_blank" rel="noopener">
@@ -33,10 +54,10 @@ const prjdata = WorksData.project.find(item => item.url_name == props.projecturl
             </a>
         </div>
         <section class="WorkDsc row mx-md-3 mx-1 px-md-5">
-            <div class="col-md-5 d-flex ">
+            <div class="col-md-5">
                 <div class="imgContainer">
                     <!-- prjdata.img -->
-                    <img src="../img/02_gha56_01.png" class="" alt="...">
+                    <img src="../img/02_gha56_01.png" class="img-fluid " alt="...">
                 </div>
             </div>
             <!-- Right Content -->
@@ -66,6 +87,7 @@ const prjdata = WorksData.project.find(item => item.url_name == props.projecturl
     
     <!-- Other Prj -->
     <section class="container-fluid OtherPrj px-md-5 px-1 " data-scroll-section>
+
         <h2 class="text-white my-4">Other Project</h2>
         <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
             <div class="row">
@@ -115,11 +137,20 @@ main{
     overflow : hidden;
     width: 40vh;
     /* height: 600px; */
+    position: relative;
     height: 50vh;
 }
 .imgContainer img{
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: none; /* 取消最大宽度限制 */
+    max-height: none; /* 取消最大高度限制 */
+    /* object-fit: cover; */
+    /* height: 50vh; */
+    
+    /* scale : 200%; */
     transition: .5s;
 }
 .imgContainer:hover img{
