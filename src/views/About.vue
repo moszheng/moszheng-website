@@ -79,7 +79,7 @@ const leave = (el, done) => {
             <div class="col-xl-6">
                 <div class="align-self-center text-center">
                     <div class="mb-4 ">
-                        <img class="avatar avatar-user width-full border" alt="" :src=profile_image>
+                        <img class="avatar-user img-fluid" alt="profile_image" :src=profile_image>
                     </div>
                 </div>
             </div>
@@ -116,6 +116,13 @@ const leave = (el, done) => {
                         <a class="nav-link p-2" href="https://www.behance.net/moszheng" target="_blank" rel="noopener">
                             <svg id="icon_twitter">
                                 <use xlink:href="#icon-behance"></use>
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item col-3 col-md-auto">
+                        <a class="nav-link p-2" href="https://www.instagram.com/slothfellas/" target="_blank" rel="noopener">
+                            <svg id="icon_twitter">
+                                <use xlink:href="#icon-linkedin"></use>
                             </svg>
                         </a>
                     </li>
@@ -279,7 +286,7 @@ const leave = (el, done) => {
                     <!-- LOGO -->
                     <div class="row d-flex align-items-center pe-md-5">
                         <div v-for="item in LogoData.logo" class="col-lg-2 col-3 px-xl-4 py-xl-3 px-2 py-2">
-                            <img :src=item.img :alt=item.name class="img-fluid">
+                            <img :src=item.img :alt=item.name class="img-fluid skillLogo">
                         </div>
                     </div>
                 </div>
@@ -306,13 +313,12 @@ const leave = (el, done) => {
             </div>
         </section>
         <div class="container-fluid text-center">
-            <!-- <button class="btn-scroll-down btn-scroll-down-white" aria-label="Scroll Down">
-                
-            </button> -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
-            </svg>
-            <p>BACK TO TOP</p>
+            <a href="#" class="nav-link p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                </svg>
+                <p>BACK TO TOP</p>
+            </a>
         </div>
     </main>
     <Footer />
@@ -337,16 +343,20 @@ main{
 .AboutSkill{
     background-color: rgb(228, 228, 228);
 }
-.img-thumbnail{
-    background: none;
-}
+
+/*------ Img --------*/
+
 .avatar-user {
   /* border-radius: 50% !important; */
   width: 50vh;
   height: auto;
 }
 
-.img-fluid{
+.skillLogo{
     scale: 50%;
+}
+
+.img-thumbnail{
+    background: none;
 }
 </style>

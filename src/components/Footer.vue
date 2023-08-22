@@ -1,17 +1,18 @@
 <template>
-<footer class="text-muted">
-    <div class="container">
-        <p class="float-right">
-            <a href="#">Back to top</a>
-        </p>
-        <p>Copyright © 2023 moszheng All rights reserved.</p>
-        <p><a href="../../">Visit the homepage</a> .</p>
+<footer class="d-flex justify-content-center align-items-center">
+    <div class="container  text-white px-lg-5 py-2" >
+        <p>Copyright © 2023 moszheng.</p>
     </div>
 </footer>
 </template>
 
 <style>
 /*------ Footer-----------*/
+footer{
+    background: #0e0e0e;
+    min-height: 15vh;
+}
+
 .float-right {
   float: right;
 }
