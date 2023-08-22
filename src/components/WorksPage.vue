@@ -13,6 +13,10 @@ const prjdata = WorksData.project.find(item => item.url_name == props.projecturl
 
 /* vimeo id to vimeo_page and vimeo_embed */
 
+// const vimeo_page = WorksData.project.map(item => item.video + "123")
+const vimeo_page = "https://vimeo.com/" + prjdata.video ;
+const vimeo_embed = "https://player.vimeo.com/video/" + prjdata.video + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";
+
 /* ----------------- */
 const beforeEnter = (el) => {
     el.style.opacity = 0;
@@ -32,7 +36,7 @@ const sigleEnter = (el, done) => {
 <div class="WorksPage">
     <!-- video -->
     <div class="ratio ratio-16x9 mb-5" data-scroll-section>
-        <iframe :src=prjdata.video allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe :src=vimeo_embed allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
         <div class="TitleDsc mb-5 mx-md-3 mx-1 px-md-5">
@@ -50,7 +54,8 @@ const sigleEnter = (el, done) => {
                     <use xlink:href="#icon-behance"></use>
                 </svg>
             </a>
-            <a class="" :href=prjdata.video target="_blank" rel="noopener">
+            <!-- vimeo Link -->
+            <a class="" :href=vimeo_page target="_blank" rel="noopener">
                 <svg id="icon_twitter">
                     <use xlink:href="#icon-vimeo"></use>
                 </svg>
@@ -116,9 +121,11 @@ const sigleEnter = (el, done) => {
 <style>
 
 /* -----Section------ */
+
 main{
     padding-right: 0 !important;
     padding-left: 0 !important;
+    
 }
 
 .TitleDsc{
