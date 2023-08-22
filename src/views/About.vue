@@ -8,6 +8,12 @@ import LogoData from '../data/LogoData.json'
 
 const profile_image = '../src/img/profile.png';
 
+const profile_link = [
+    { text : 'behance.net/moszheng', icon : "#icon-behance" },
+    { text : 'moszheng.design@gmail.com', icon : "#bi-envelope-fill" },
+    { text : 'Taipei, Taiwan', icon : "#bi-geo-alt-fill" },
+]
+
 const motiondesign = [
     { name : 'Modeling'},
     { name : 'Texturing'},
@@ -24,10 +30,13 @@ const development = [
     { name : 'Frontend Developing'}
 ]
 
+
+/* Transition GSAP */
+
 const beforeEnter = (el) => {
     // console.log("bb")
     el.style.opacity = 0;
-    el.style.transform = 'translateY(100px)'
+    el.style.transform = 'translateY(50px)'
 
 }
 
@@ -36,6 +45,26 @@ const enter = (el, done) => {
     gsap.to(el, {
         opacity:1 ,
         y: 0,
+        duration: el.dataset.index * 0.2,
+        onComplete: done
+    })
+}
+
+const sigleEnter = (el, done) => {
+    // console.log("cc")
+    gsap.to(el, {
+        opacity: 1 ,
+        y: 0,
+        duration: 1,
+        onComplete: done
+    })
+}
+
+const leave = (el, done) => {
+    // console.log("cc")
+    gsap.to(el, {
+        opacity: 0 ,
+        y: 80,
         duration: el.dataset.index * 0.4,
         onComplete: done
     })
@@ -57,36 +86,38 @@ const enter = (el, done) => {
             </div>
             <div class="col-xl-6 mt-xl-0 mt-4 px-md-5 ">
                 <div class="mb-4">
-                    
-                    <h1 class="mb-5" data-scroll>Sheng Wen Cheng</h1>
-                    
-                    <h3 class="mb-5">A <strong>3D Generalist</strong> and <strong>Motion Designer</strong> based in Taiwan.</h3>
+                    <Transition name="move" mode="out-in" appear
+                        @before-enter="beforeEnter"
+                        @enter="sigleEnter">
+                        
+                        <h1 class="mb-5">Sheng Wen Cheng</h1>
+
+                    </Transition>
+
+                    <Transition name="move" mode="out-in" appear 
+                        @before-enter="beforeEnter"
+                        @enter="sigleEnter">
+
+                        <h3 class="mb-5">A <strong>3D Generalist</strong> and <strong>Motion Designer</strong> based in Taiwan.</h3>
+
+                    </Transition>
 
                     <p>I established Slothfellas, a platform that provides C4D plugins and After Effects scripts,  designed to enhance workflows and simplify processes.</p>
 
                     <p>For any inquiries,<strong> please send me an email </strong></p>
                 </div>
-                <div class=" ">
-                    <div class="mb-3">
+
+                <TransitionGroup appear :css="false"    
+                    @before-enter="beforeEnter"
+                    @enter="enter"
+                >   
+                   <div v-for="(item, index) in profile_link" :key="item.text" :data-index="index" class="mb-3">
                         <svg id="icon_twitter">
-                            <use xlink:href="#icon-behance"></use>
+                            <use :xlink:href="item.icon"></use>
                         </svg>
-                        <span class="ms-3">behance.net/moszheng</span>
-                        
-                    </div>
-                    <div class="mb-3">                        
-                        <svg id="icon_twitter">
-                            <use xlink:href="#bi-envelope-fill"></use>
-                        </svg>
-                        <span class="ms-3">moszheng.design@gmail.com</span>
-                    </div>
-                    <div class="mb-3">
-                        <svg id="icon_twitter">
-                            <use xlink:href="#bi-geo-alt-fill"></use>
-                        </svg>
-                        <span class="ms-3">Taipei, Taiwan</span>
-                    </div>
-                </div>
+                        <span class="ms-3">{{ item.text }}</span>
+                    </div> 
+                </TransitionGroup>
             </div>
             <div class="container-fluid text-center">
                 <!-- <button class="btn-scroll-down btn-scroll-down-white" aria-label="Scroll Down">
@@ -100,13 +131,17 @@ const enter = (el, done) => {
         </section>
         <!-- Experience -->
         <!-- d-flex align-items-center -->
-        <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-1" data-scroll-section>
+        <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-1 text-white" data-scroll-section>
             <div class="mt-xl-0 mt-4">
                 <div class="row mb-4">
                     <!-- title -->
-                    <div class="col-lg-3">
-                        <h3 class="mb-4">Experience</h3>
-                    </div>
+                    <Transition name="move" mode="out-in" appear
+                        @before-enter="beforeEnter"
+                        @enter="sigleEnter">
+                        <div class="col-lg-3">
+                            <h3 class="mb-4">Experience</h3>
+                        </div>
+                    </Transition>
                     <div class="col-lg-9 px-xl-3">
                         <!-- Freelance -->
                         <div class="row">
@@ -191,7 +226,7 @@ const enter = (el, done) => {
         </section>
         
         <!-- Skill -->
-        <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-1 py-5 text-white" data-scroll-section>
+        <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-1 py-5" data-scroll-section>
             <div class="row">
                 <div class="col-md-3">
                     <h2 class="mb-4 " data-scroll data-scroll-speed="2">Service & Skill</h2>
@@ -200,20 +235,17 @@ const enter = (el, done) => {
                     <div class="row mb-5">
                         <div class="col-md-6 mb-md-0 mb-5">
                             <h3 class="mb-5">Motion Design</h3>
-                            <TransitionGroup
-                                appear    
-                                :css="false"    
+                            <TransitionGroup appear :css="false"    
                                 @before-enter="beforeEnter"
                                 @enter="enter"
+                                @leave="leave"
                             >
                                 <h5 class="mb-3" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"> {{item.name}} </h5>
                             </TransitionGroup>
                         </div>
                         <div class="col-md-6">
                             <h3 class="mb-5">Development</h3>
-                            <TransitionGroup
-                                appear    
-                                :css="false"    
+                            <TransitionGroup appear :css="false"    
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                             >
@@ -224,7 +256,7 @@ const enter = (el, done) => {
                     <!-- LOGO -->
                     <div class="row d-flex align-items-center pe-md-5">
                         <div v-for="item in LogoData.logo" class="col-lg-2 col-3 px-xl-4 py-xl-3 px-2 py-2">
-                            <img :src=item.img :alt=item.name class="img-thumbnail">
+                            <img :src=item.img :alt=item.name class="img-fluid">
                         </div>
                     </div>
                 </div>
@@ -237,7 +269,7 @@ const enter = (el, done) => {
                 <div class="row">
                     <div  v-for="item in WorksData.project.slice(0,4)" class="col-md-6">
                         <div class="card mb-4 text-white">
-                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.name } }" title="Link to project">
+                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" title="Link to project">
                                 <img :src=item.img class="card-img" alt="...">
                                 <div class="works-text text-white px-3">
                                     <h5 class="card-title">{{ item.name }}</h5>
@@ -256,21 +288,22 @@ const enter = (el, done) => {
 </template>
 
 <style>
+
+/*-----------------------*/
 main{
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
 
 .AboutIntro, .AboutExp, .AboutSkill{
-    /* min-height: 1080px;  */
     min-height: 100vh; 
 }
 .AboutExp{
-    background-color: rgb(228, 228, 228);
+    background-color: rgb(22, 22, 22) ;
 }
 
 .AboutSkill{
-    background-color: rgb(22, 22, 22);
+    background-color: rgb(228, 228, 228);
 }
 .img-thumbnail{
     background: none;
@@ -281,7 +314,7 @@ main{
   height: auto;
 }
 
-.img-thumbnail{
-    border:0;
+.img-fluid{
+    scale: 50%;
 }
 </style>

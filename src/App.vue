@@ -111,7 +111,6 @@ import LoadingPage from "./views/Loading.vue";
 
 .fade-enter-active {
     transition: opacity 1s ease;
-    /* transform: translateX(10px) */
 }
 .fade-leave-active {
     transition: opacity 0.5s ease;
