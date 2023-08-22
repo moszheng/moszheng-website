@@ -28,47 +28,56 @@ setInterval(() => {
 </script>
 
 <template>
-  <main class="Home">
-    <section class="" >
-      <!----- BG ----->
-      <div class="index_bg_cover" id="index_bg_cover" :style="bgStyles">
-        <div class="index_bg_overlay d-flex justify-content-center align-items-center h-100" style="background-color: rgba(0, 0, 0, 0.55); transform: scale(1.001);">
-          <div class="row">
-            <!----- Main Content----->
-            <div class="col-xl-7 col-lg-6 col-md-0"></div>
-            <div class="col-xl-5 col-lg-6 col-md-12 px-5 text-white">
-              <h5 class="mb-2">Freelance 3D Generalist</h5>
-              <h1 class="mb-5">Sheng Wen (Mos) Cheng</h1>
-              <div class="mb-5">
-                <p>A 3D Generalist and Motion Designer based in Taiwan.</p>
-                <p>Offering professional design services for digital arts and product motion design, 
-                  catering to companies and brands.</p>
-              </div>
-              <router-link to="/works">
-                <button type="button" class="btn btn-primary index-btn">Explore</button>
-              </router-link>
+  <main class="Home ">
+    <!----- BG ----->
+    <div id="index_bg_cover" :style="bgStyles"></div>
+    <!--  Intro ---->
+    <div class="index_info container d-flex justify-content-end align-items-center">
+          <!----- Main Content----->
+          <div class="mx-5 px-5 text-white">  
+            <h5 class="mb-2">Freelance 3D Generalist</h5>
+            <h1 class="mb-5">Sheng Wen (Mos) Cheng</h1>
+            <div class="mb-5">
+              <p>A 3D Generalist and Motion Designer based in Taiwan.</p>
+              <p>Offering professional design services for digital arts and product motion design, 
+                <br>catering to companies and brands.</p>
             </div>
+            <router-link to="/works">
+              <button type="button" class="btn btn-primary index-btn">Explore</button>
+            </router-link>
           </div>
-        </div>
       </div>
-    </section>
   </main>
 </template>
 
 <style>
-.index_bg_cover{
-  position: relative;
-  height: 92vh;
+#index_bg_cover{
+  position: absolute;
+  width: 100%;
+  height: 90vh;
+
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  object-fit: cover;
+  
+  filter: brightness(55%);
+  z-index: -1;
   transition: background 1.2s linear; 
 }
+.index_info{
+  /* position: absolute; */
+  height: 90vh;
+  z-index: 1;
+  
+}
+/* Button */
 .index-btn{
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   background-color: hsla(0, 0%, 95.3%, 0.25);
   /* outline: solid; */
+  min-width: 10vh;
   box-shadow: none;
   border: 1px; 
 }
