@@ -15,6 +15,10 @@
         { 
             "url" : "https://www.instagram.com/slothfellas/",
             "icon" : "#icon-instagram"
+        },
+        { 
+            "url" : "https://www.facebook.com/profile.php?id=100090856254723",
+            "icon" : "#icon-facebook"
         }
     ],
     "profile_link" : [

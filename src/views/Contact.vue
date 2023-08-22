@@ -34,6 +34,6 @@ import { ref } from 'vue'
 </template>
 <style>
 .Contact{
-    min-height: 1080px;
+    min-height: 80vh;
 }
 </style>

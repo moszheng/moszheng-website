@@ -10,7 +10,7 @@ import WorksData from '../data/WorksData.json'
 		<!----- Main Content----->
 		<div class="row py-md-3 pl-md-5 px-xl-3 bd-content">
 			<div  v-for="item in WorksData.project" class="col-md-4">
-				<div class="card mb-md-4 mb-1 text-white">
+				<div class="card mb-md-3 mb-1 text-white">
 					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" title="Link to project">
 						<img :src=item.img class="card-img" alt="...">
 						<div class="works-text text-white px-3">

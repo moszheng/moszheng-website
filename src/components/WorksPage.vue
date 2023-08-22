@@ -11,6 +11,9 @@ const props = defineProps({
 
 const prjdata = WorksData.project.find(item => item.url_name == props.projecturl);
 
+/* vimeo id to vimeo_page and vimeo_embed */
+
+/* ----------------- */
 const beforeEnter = (el) => {
     el.style.opacity = 0;
     el.style.transform = 'translateY(50px)'
@@ -144,6 +147,7 @@ main{
     position: absolute;
     top: 50%;
     left: 50%;
+    object-fit: cover;
     transform: translate(-50%, -50%);
     max-width: none; /* 取消最大宽度限制 */
     max-height: none; /* 取消最大高度限制 */
