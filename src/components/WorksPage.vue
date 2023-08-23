@@ -80,8 +80,11 @@ const sigleEnter = (el, done) => {
             <!-- Right Content -->
             <div class="col-md-5">
                 <div class="">
-                    <p>The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.</p>
-                    <p>During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally.</p>
+                    <!-- <p>The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.</p>
+                    <p>During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally.</p> -->
+                    <p v-for="item in prjdata.msg">
+                        {{item}}
+                    </p>
                 </div>
             </div>
         </section>
@@ -110,7 +113,7 @@ const sigleEnter = (el, done) => {
                 <div class="row">
                     <div  v-for="item in shuffleprj" class="col-md-4">
                         <div class="card mb-4 text-white">
-                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" title="Link to project">
+                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
                                 <img :src=img_location(item.img) class="card-img" alt="...">
                                 <div class="works-text text-white px-3">
                                     <h5 class="card-title">{{ item.name }}</h5>
