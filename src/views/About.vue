@@ -285,7 +285,7 @@ const leave = (el, done) => {
                 <div class="row">
                     <div  v-for="item in WorksData.project.slice(0,4)" class="col-md-6">
                         <div class="card mb-4 text-white">
-                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" title="Link to project">
+                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
                                 <img :src=img_location(item.img) class="card-img" alt="...">
                                 <div class="works-text text-white px-3">
                                     <h5 class="card-title">{{ item.name }}</h5>

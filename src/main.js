@@ -12,10 +12,21 @@ import About from './views/About.vue'
 import Contact from './views/Contact.vue'
 import NotFound from './views/NotFound.vue'
 
+
 const routes = [
     { path: '/',name:'Home', component: Home },
     { path: '/works', name:'Works', component: Works },
-    { path: '/works/:projecturl', name:'WorksPage', component: WorksPage, props: true},
+    { 
+        path: '/works/:projecturl', 
+        name:'WorksPage', 
+        component: WorksPage, 
+        beforeEnter: (to, from) => {
+            // reject the navigation
+            console.log("beforeEnter")
+            return true
+          },
+        props: true
+    },
     { path: '/about', name:'About', component: About },
     { path: '/contact', name:'Contact', component: Contact },
     { path: '/:catchAll(.*)', component: NotFound },
@@ -28,7 +39,7 @@ const routes = [
 //     lerp: 0.08
 // });
 
-console.log(scroll)
+// console.log(scroll)
 
 // Router method
 const router = createRouter({

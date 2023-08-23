@@ -7,7 +7,18 @@ import { ref } from 'vue'
 
 
 const props = defineProps({
-    projecturl: String
+    projecturl: String,
+    beforeRouteEnter (to, from, next) {
+        console.log("beforeRouteEnter")
+        next(vm => {
+            // access to component public instance via `vm`
+            console.log("beforeRouteEnter_next")
+        })
+    },
+    beforeRouteLeave (to, from) {
+        const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+        if (!answer) return false
+    }
 })
 
 const prjdata = WorksData.project.find(item => item.url_name == props.projecturl);
@@ -19,7 +30,7 @@ const img_location = (item) => { return '../src/img/'+ item }
 const vimeo_page = "https://vimeo.com/" + prjdata.video ;
 const vimeo_embed = "https://player.vimeo.com/video/" + prjdata.video + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";
 
-let shuffleprj = WorksData.project.sort(() => Math.random() - 0.5).slice(0,3)
+let shuffleprj = WorksData.project.sort(() => Math.random() - 0.5).slice(0,3);
 
 /* --------Animation--------- */
 

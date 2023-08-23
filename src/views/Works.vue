@@ -15,7 +15,7 @@ const img_location = (item) => { return '../src/img/'+ item }
 			<div  v-for="item in WorksData.project" class="col-md-4">
 				<div class="card mb-md-3 mb-1 text-white">
 					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
-						<img :src=img_location(item.img) class="card-img" alt="...">
+						<img :src=img_location(item.img) class="card-img" :alt="item.name">
 						<div class="works-text text-white px-3">
 							<h5 class="card-title">{{ item.name }}</h5>
 							<h6 class="card-title">@{{ item.company }}</h6>
