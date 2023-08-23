@@ -5,21 +5,14 @@ import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from './App.vue'
-import Home from './views/Home.vue'
-import Works from './views/Works.vue'
-import WorksPage from './components/WorksPage.vue'
-import About from './views/About.vue'
-import Contact from './views/Contact.vue'
-import NotFound from './views/NotFound.vue'
-
 
 const routes = [
-    { path: '/',name:'Home', component: Home },
-    { path: '/works', name:'Works', component: Works },
+    { path: '/', name:'Home', component: () => import('./views/Home.vue')},
+    { path: '/works', name:'Works', component: () => import('./views/Works.vue')},
     { 
         path: '/works/:projecturl', 
         name:'WorksPage', 
-        component: WorksPage, 
+        component: () => import('./components/WorksPage.vue'), 
         beforeEnter: (to, from) => {
             // reject the navigation
             console.log("beforeEnter")
@@ -27,9 +20,9 @@ const routes = [
           },
         props: true
     },
-    { path: '/about', name:'About', component: About },
-    { path: '/contact', name:'Contact', component: Contact },
-    { path: '/:catchAll(.*)', component: NotFound },
+    { path: '/about', name:'About', component: () => import('./views/About.vue') },
+    { path: '/contact', name:'Contact', component: () => import('./views/Contact.vue')  },
+    { path: '/:catchAll(.*)', component: () => import('./views/NotFound.vue') },
 ];
 
 
