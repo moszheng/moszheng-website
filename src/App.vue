@@ -1,8 +1,64 @@
 <script setup>
+import { ref } from 'vue'
+import gsap from 'gsap'
+
 import LinkData from './data/LinkData.json'
 import LoadingPage from "./views/Loading.vue";
 
-// const socialbar 
+const show = ref(false)
+
+/* Nav Bar social */
+
+const rotateButton = () => {
+    
+    show.value = !show.value
+    
+    gsap.to('#icon_plus', {
+        
+        rotation: '+=135',
+        duration: 0.5,
+        // ease: Power4,
+        onComplete: () => {
+            // button.style.transform = 'none'; // 重置按钮的旋转
+        },
+    });
+    
+}
+
+function onBeforeEnter(el) {
+    gsap.set(el, {
+        // x: 40 - el.dataset.index * 5,
+        width:0,
+        opacity: 0
+    })
+}
+  
+function onEnter(el, done) {
+    gsap.to(el, {
+        // x: '10vw',
+        width: '3vw', //
+        duration: 1,
+    })
+    gsap.to(el, {
+        delay: 0.1 * el.dataset.index,
+        opacity: 1,
+        duration: 1,
+        onComplete: done
+    })
+}
+
+function onLeave(el, done) {
+	gsap.to(el, {
+        
+        // x: 40 - el.dataset.index * 5,
+        width: 0,
+        opacity: 0,
+        duration: 1,
+        onComplete: done
+        // ease: 'elastic.inOut(1.5, 1)' // amp, duration
+    })
+}
+
 </script>
 <template>
 <header class="sticky-top">
@@ -25,25 +81,32 @@ import LoadingPage from "./views/Loading.vue";
             <!-- Canvas -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                    <ul class="nav mx-lg-5">
+                    <ul class="nav mx-lg-4">
                         <li class="nav-item"><router-link :to="{ name : 'Works' }" class="nav-link link-dark px-2">Works</router-link></li>
                         <li class="nav-item"><router-link :to="{ name : 'About' }" class="nav-link link-dark px-2">About</router-link></li>
                         <li class="nav-item"><router-link :to="{ name : 'Contact' }" class="nav-link link-dark px-2">Contact</router-link></li>
                     </ul>
-                    <button class="btn justify-content-around" type="button" @click="socialbar">
-                        <svg id="icon_twitter">
+                    <div class="navbar-nav flex-row flex-wrap ms-md-auto">
+                        <TransitionGroup 
+                            @before-enter="onBeforeEnter"
+                            @enter="onEnter"
+                            @leave="onLeave"
+                        >   
+                            <div v-for="(item, index) in LinkData.socialmedia" v-show="show" :key="item.url" :data-index="index" class="nav-item col-3 col-md-auto">
+                                <a class="nav-link nav-link link-dark px-2" :href="item.url" target="_blank" rel="noopener">
+                                    <svg id="icon_twitter">
+                                        <use :xlink:href="item.icon"></use>
+                                    </svg>
+                                </a>
+                            </div>
+                            
+                        </TransitionGroup>
+                    </div>
+                    <button class="toggler-icon-xl" type="button" @click="rotateButton">
+                        <svg id="icon_plus">
                             <use xlink:href="#icon-plus"></use>
                         </svg>
                     </button>
-                    <!-- <ul class="navbar-nav flex-row flex-wrap ms-md-auto">
-                        <li v-for="item in LinkData.socialmedia" class="nav-item col-3 col-md-auto">
-                            <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
-                                <svg id="icon_twitter">
-                                    <use :xlink:href="item.icon"></use>
-                                </svg>
-                            </a>
-                        </li>
-                    </ul> -->
                 </div>
              </div>
         </div>
@@ -152,14 +215,21 @@ header  {
     height: 100px;
 }
 
+
 /*-------- nav bar toggler icon------*/
+
 .navbar-toggler{
   width: 20px;
   height: 20px;
   position: relative;
   transition: .5s ease-in-out;
 }
+
+.toggler-icon-xl{
+    background: none;
+}
 /*Cancel default outline*/
+.toggler-icon-xl,
 .navbar-toggler,
 .navbar-toggler:focus,
 .navbar-toggler:active,
