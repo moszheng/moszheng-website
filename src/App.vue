@@ -16,8 +16,8 @@ const rotateButton = () => {
     gsap.to('#icon_plus', {
         
         rotation: '+=135',
-        duration: 0.5,
-        // ease: Power4,
+        duration: 0.8,
+        ease: "power3.inOut", //expo.inOut
         onComplete: () => {
             // button.style.transform = 'none'; // 重置按钮的旋转
         },
@@ -28,19 +28,18 @@ const rotateButton = () => {
 function onBeforeEnter(el) {
     gsap.set(el, {
         // x: 40 - el.dataset.index * 5,
-        width:0,
+        width: 0,
         opacity: 0
     })
 }
   
 function onEnter(el, done) {
     gsap.to(el, {
-        // x: '10vw',
-        width: '3vw', //
+        width: '4.5vh',
         duration: 1,
     })
     gsap.to(el, {
-        delay: 0.1 * el.dataset.index,
+        delay: 0.5 - 0.1 * el.dataset.index,
         opacity: 1,
         duration: 1,
         onComplete: done
@@ -48,9 +47,16 @@ function onEnter(el, done) {
 }
 
 function onLeave(el, done) {
+    gsap.to(el, {
+        
+        delay: 0.2 - 0.05 * el.dataset.index,
+        opacity: 0,
+        duration: 1,
+    })
+
 	gsap.to(el, {
         
-        // x: 40 - el.dataset.index * 5,
+        // delay: 0.1 * el.dataset.index,
         width: 0,
         opacity: 0,
         duration: 1,
@@ -64,6 +70,7 @@ function onLeave(el, done) {
 <header class="sticky-top">
     <nav class="container navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
         <div class="container-fluid">
+            <!-- LOGO -->
             <div class="navbar-brand flex-column flex-md-row align-items-center">
                 <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
                     <!-- <h2 class="t-bold mx-lg-3 my-md-4">moszheng.design</h2> -->
@@ -72,7 +79,7 @@ function onLeave(el, done) {
                     </svg>
                 </router-link>
             </div>
-            <!-- navbar button -->
+            <!-- navbar responsive button -->
             <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="toggler-icon top-bar"></span>
                 <span class="toggler-icon mid-bar"></span>
@@ -80,38 +87,47 @@ function onLeave(el, done) {
             </button>
             <!-- Canvas -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
-                    <ul class="nav mx-lg-4">
-                        <li class="nav-item"><router-link :to="{ name : 'Works' }" class="nav-link link-dark px-2">Works</router-link></li>
-                        <li class="nav-item"><router-link :to="{ name : 'About' }" class="nav-link link-dark px-2">About</router-link></li>
-                        <li class="nav-item"><router-link :to="{ name : 'Contact' }" class="nav-link link-dark px-2">Contact</router-link></li>
-                    </ul>
-                    <div class="navbar-nav flex-row flex-wrap ms-md-auto">
-                        <TransitionGroup 
-                            @before-enter="onBeforeEnter"
-                            @enter="onEnter"
-                            @leave="onLeave"
-                        >   
-                            <div v-for="(item, index) in LinkData.socialmedia" v-show="show" :key="item.url" :data-index="index" class="nav-item col-3 col-md-auto">
-                                <a class="nav-link nav-link link-dark px-2" :href="item.url" target="_blank" rel="noopener">
-                                    <svg id="icon_twitter">
-                                        <use :xlink:href="item.icon"></use>
-                                    </svg>
-                                </a>
+                <!--   flex-wrap  -->
+                <div class="d-flex ms-md-auto">
+                    <ul class="navbar-nav mx-lg-4">
+                        <li class="nav-item d-flex align-items-center">
+                            <router-link :to="{ name : 'Works' }" class="nav-link link-dark px-2 me-md-4">Works</router-link>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <router-link :to="{ name : 'About' }" class="nav-link link-dark px-2 me-md-4">About</router-link>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <router-link :to="{ name : 'Contact' }" class="nav-link link-dark px-2 me-md-4">Contact</router-link>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <!--   icons  -->
+                            <div class="navbar-nav flex-row flex-wrap ms-md-auto">
+                                <TransitionGroup 
+                                    @before-enter="onBeforeEnter"
+                                    @enter="onEnter"
+                                    @leave="onLeave"
+                                >   
+                                    <div v-for="(item, index) in LinkData.socialmedia" v-show="show" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
+                                        <a class="nav-link nav-link link-dark px-lg-2 mx-1" :href="item.url" target="_blank" rel="noopener">
+                                            <svg id="icon_twitter">
+                                                <use :xlink:href="item.icon"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </TransitionGroup>
                             </div>
-                            
-                        </TransitionGroup>
-                    </div>
-                    <button class="toggler-icon-xl" type="button" @click="rotateButton">
-                        <svg id="icon_plus">
-                            <use xlink:href="#icon-plus"></use>
-                        </svg>
-                    </button>
+                            <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
+                                <svg id="icon_plus">
+                                    <use xlink:href="#icon-plus"></use>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
                 </div>
              </div>
         </div>
     </nav>
-<div class="border-bottom"></div>
+<!-- <div class="border-bottom"></div> -->
 </header>
 <!--  -->
 <router-view v-slot="{ Component }">
@@ -206,18 +222,15 @@ function onLeave(el, done) {
 /*---------------nav bar---------------------*/
 header  {
   -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background-color: hsla(0, 0%, 98.3%, 0.75);
+  backdrop-filter: blur(20px);
+  background-color: hsla(0, 0%, 100%, 0.65);
 }
-
 #mosLogo {
     width: 150px;
     height: 100px;
 }
 
-
 /*-------- nav bar toggler icon------*/
-
 .navbar-toggler{
   width: 20px;
   height: 20px;
