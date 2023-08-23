@@ -5,19 +5,24 @@ import Footer from './Footer.vue'
 import WorksData from '../data/WorksData.json'
 import { ref } from 'vue'
 
+
 const props = defineProps({
     projecturl: String
 })
 
 const prjdata = WorksData.project.find(item => item.url_name == props.projecturl);
 
-/* vimeo id to vimeo_page and vimeo_embed */
+// Return Real route
+const img_location = (item) => { return '../src/img/'+ item }
 
-// const vimeo_page = WorksData.project.map(item => item.video + "123")
+/* vimeo id to vimeo_page and vimeo_embed */
 const vimeo_page = "https://vimeo.com/" + prjdata.video ;
 const vimeo_embed = "https://player.vimeo.com/video/" + prjdata.video + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";
 
-/* ----------------- */
+let shuffleprj = WorksData.project.sort(() => Math.random() - 0.5).slice(0,3)
+
+/* --------Animation--------- */
+
 const beforeEnter = (el) => {
     el.style.opacity = 0;
     el.style.transform = 'translateY(50px)'
@@ -32,6 +37,7 @@ const sigleEnter = (el, done) => {
     })
 }
 </script>
+
 <template>
 <div class="WorksPage">
     <!-- video -->
@@ -49,23 +55,26 @@ const sigleEnter = (el, done) => {
             </Transition>
             <h6 class="mb-3">@{{prjdata.company}}</h6>
             <p class="mb-4">{{prjdata.date}}</p>
-            <a class="" :href=prjdata.behance target="_blank" rel="noopener">
-                <svg id="icon_twitter">
-                    <use xlink:href="#icon-behance"></use>
-                </svg>
-            </a>
-            <!-- vimeo Link -->
-            <a class="" :href=vimeo_page target="_blank" rel="noopener">
-                <svg id="icon_twitter">
-                    <use xlink:href="#icon-vimeo"></use>
-                </svg>
-            </a>
+            <div>
+                <a class="me-3" :href=prjdata.behance target="_blank" rel="noopener">
+                    <svg id="icon_twitter">
+                        <use xlink:href="#icon-behance"></use>
+                    </svg>
+                </a>
+                <!-- vimeo Link -->
+                <a class="" :href=vimeo_page target="_blank" rel="noopener">
+                    <svg id="icon_twitter">
+                        <use xlink:href="#icon-vimeo"></use>
+                    </svg>
+                </a>
+            </div>
         </div>
         <section class="WorkDsc row mx-md-3 mx-1 px-md-5">
             <div class="col-md-5">
                 <div class="imgContainer">
-                    <!-- prjdata.img -->
-                    <img src="../img/02_gha56_01.png" class="img-fluid " alt="...">
+                    <!-- -->
+                    <img :src="img_location(prjdata.img)" class="img-fluid " alt="...">
+                    <!-- <img src="../img/02_gha56_01.png" class="img-fluid " alt="..."> -->
                 </div>
             </div>
             <!-- Right Content -->
@@ -95,20 +104,21 @@ const sigleEnter = (el, done) => {
     
     <!-- Other Prj -->
     <section class="container-fluid OtherPrj px-md-5 px-1 " data-scroll-section>
-
-        <h2 class="text-white my-4">Other Project</h2>
-        <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
-            <div class="row">
-                <div  v-for="item in WorksData.project.slice(0,3)" class="col-md-4">
-                    <div class="card mb-4 text-white">
-                        <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" title="Link to project">
-                            <img :src=item.img class="card-img" alt="...">
-                            <div class="works-text text-white px-3">
-                                <h5 class="card-title">{{ item.name }}</h5>
-                                <h6 class="card-title">@{{ item.company }}</h6>
-                                <p class="card-text">{{ item.date }}</p>
-                            </div>
-                        </router-link>
+        <div class="container">
+            <h2 class="text-white my-4">Other Project</h2>
+            <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
+                <div class="row">
+                    <div  v-for="item in shuffleprj" class="col-md-4">
+                        <div class="card mb-4 text-white">
+                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" title="Link to project">
+                                <img :src=img_location(item.img) class="card-img" alt="...">
+                                <div class="works-text text-white px-3">
+                                    <h5 class="card-title">{{ item.name }}</h5>
+                                    <h6 class="card-title">@{{ item.company }}</h6>
+                                    <p class="card-text">{{ item.date }}</p>
+                                </div>
+                            </router-link>
+                        </div>
                     </div>
                 </div>
             </div>

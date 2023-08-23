@@ -4,11 +4,14 @@ import { ref } from 'vue'
 // preloading
 // const bg_image= new Image();
 
+const img_location = '../src/img/'
+
 const bg_image = [
   '../src/img/01_gma29.jpg', 
   '../src/img/03_SWSX_01.jpg',
   '../src/img/05_GMA32_01.png',
   '../src/img/04_KK_01.png',
+  '../src/img/07_VIVA_01.jpg',
   '../src/img/02_gha56_01.png',
 ];
 
@@ -28,7 +31,7 @@ setInterval(() => {
 </script>
 
 <template>
-  <main class="Home ">
+  <main class="Home">
     <!----- BG ----->
     <div id="index_bg_cover" :style="bgStyles"></div>
     <!--  Intro ---->
@@ -51,8 +54,10 @@ setInterval(() => {
 </template>
 
 <style>
+
 #index_bg_cover{
   position: absolute;
+  /* top: 0; */
   width: 100%;
   height: 90vh;
 
@@ -67,10 +72,11 @@ setInterval(() => {
 }
 .index_info{
   /* position: absolute; */
-  height: 90vh;
+  height: 90vh; 
+  top: 0;
   z-index: 1;
   
-}
+} 
 /* Button */
 .index-btn{
   -webkit-backdrop-filter: blur(8px);

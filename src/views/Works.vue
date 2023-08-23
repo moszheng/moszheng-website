@@ -3,6 +3,9 @@ import Footer from '../components/Footer.vue'
 import { ref } from 'vue'
 import WorksData from '../data/WorksData.json'
 
+// Return Real route
+const img_location = (item) => { return '../src/img/'+ item }
+
 </script>
 <template>
 <div data-scroll-container>
@@ -12,7 +15,7 @@ import WorksData from '../data/WorksData.json'
 			<div  v-for="item in WorksData.project" class="col-md-4">
 				<div class="card mb-md-3 mb-1 text-white">
 					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
-						<img :src=item.img class="card-img" alt="...">
+						<img :src=img_location(item.img) class="card-img" alt="...">
 						<div class="works-text text-white px-3">
 							<h5 class="card-title">{{ item.name }}</h5>
 							<h6 class="card-title">@{{ item.company }}</h6>
@@ -34,29 +37,3 @@ import WorksData from '../data/WorksData.json'
 	<Footer />
 </div>
 </template>
-
-<style>
-.card{
-  display: block;
-  transition: 0.4s ease; /* scale */
-}
-.works-text{
-  position: absolute;
-  bottom: 0; 
-  /* left: 0; */
-  width: 100%;
-  overflow: hidden;
-  background: linear-gradient( transparent, rgba(0, 0, 0, 0.7));
-  height: 25%; /*transforms*/
-  opacity: 0;
-  transition: .4s ease; /* 添加过渡效果 */
-}
-.card:hover{
-  transform: scale(1.01); 
-}  
-.card:hover .works-text {
-  height: 30%;
-  opacity: 1;
-}
-
-</style>

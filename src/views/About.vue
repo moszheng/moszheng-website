@@ -7,6 +7,8 @@ import LinkData from '../data/LinkData.json'
 import WorksData from '../data/WorksData.json'
 import LogoData from '../data/LogoData.json'
 
+// Return Real route
+const img_location = (item) => { return '../src/img/'+ item }
 const profile_image = '../src/img/profile.png';
 
 const motiondesign = [
@@ -284,7 +286,7 @@ const leave = (el, done) => {
                     <div  v-for="item in WorksData.project.slice(0,4)" class="col-md-6">
                         <div class="card mb-4 text-white">
                             <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" title="Link to project">
-                                <img :src=item.img class="card-img" alt="...">
+                                <img :src=img_location(item.img) class="card-img" alt="...">
                                 <div class="works-text text-white px-3">
                                     <h5 class="card-title">{{ item.name }}</h5>
                                     <h6 class="card-title">@{{ item.company }}</h6>
