@@ -1,36 +1,43 @@
 <script setup>
+import { ref } from 'vue'
+import { onBeforeRouteUpdate } from 'vue-router'
 import gsap from 'gsap'
 
 import Footer from './Footer.vue'
 import WorksData from '../data/WorksData.json'
-import { ref } from 'vue'
-import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 
 const props = defineProps({
 
     projecturl: String,
+
 })
 
-onBeforeRouteLeave((to, from) => {
-    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
-    if (!answer) return false
-})
-onBeforeRouteUpdate(async (to, from, next) => {
-    console.log("beforeRouteUpdate")
-    console.log(to.params.projecturl)
-    console.log(from.params.projecturl)
-    // props.projecturl= to.params.projecturl;
-    next();
-})
+const prjdata = ref('null');
+prjdata.value = WorksData.project.find(item => item.url_name == props.projecturl);
 
-const prjdata = WorksData.project.find(item => item.url_name == props.projecturl);
-
-// Return Real route
+// Transfer Data
+const vimeo_page =  (item) => { return "https://vimeo.com/" + item ;}
+const vimeo_embed = (item) => { return "https://player.vimeo.com/video/" + item + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";}
 const img_location = (item) => { return '../src/img/'+ item }
 
-/* vimeo id to vimeo_page and vimeo_embed */
-const vimeo_page = "https://vimeo.com/" + prjdata.video ;
-const vimeo_embed = "https://player.vimeo.com/video/" + prjdata.video + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";
+/* ---------Router Fix-----------*/
+
+const getWorksData = (id) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(
+                WorksData.project.find(item => item.url_name == id)
+            )
+        }, 750)
+    })
+}
+
+onBeforeRouteUpdate(async (to, from) => {
+    // console.log("beforeRouteUpdate")
+    if (to.params.projecturl !== from.params.projecturl) {
+        prjdata.value = await getWorksData(to.params.projecturl);
+    }
+})
 
 let shuffleprj = WorksData.project.sort(() => Math.random() - 0.5).slice(0,3);
 
@@ -55,7 +62,7 @@ const sigleEnter = (el, done) => {
 <div class="WorksPage">
     <!-- video -->
     <div class="ratio ratio-16x9 mb-5" data-scroll-section>
-        <iframe :src=vimeo_embed allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe :src=vimeo_embed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
         <div class="TitleDsc mb-5 mx-md-3 mx-1 px-md-5">
@@ -75,7 +82,7 @@ const sigleEnter = (el, done) => {
                     </svg>
                 </a>
                 <!-- vimeo Link -->
-                <a class="" :href=vimeo_page target="_blank" rel="noopener">
+                <a class="" :href=vimeo_page(prjdata.video) target="_blank" rel="noopener">
                     <svg id="icon_twitter">
                         <use xlink:href="#icon-vimeo"></use>
                     </svg>

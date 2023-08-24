@@ -61,8 +61,9 @@ const router = createRouter({
     },
 });
 
-// router.beforeEach((to, from) => {
+// router.beforeEach((to, from, next) => {
 //     console.log("beforeEach_to : " , to)
+//     next()
 // })
 
 createApp(App).use(router).mount('#app')
