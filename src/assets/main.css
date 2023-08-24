@@ -33,7 +33,6 @@ input {
 }
 
 /*----------Works Block----------  */
-
 .card{
   overflow : hidden;
   display: block;
@@ -42,20 +41,26 @@ input {
   border: 0; 
   transition: 0.4s ease; /* scale */
 }
-.works-text{
+.works-black, .works-text{
   position: absolute;
   bottom: 0; 
-  /* left: 0; */
   width: 100%;
   overflow: hidden;
-  background: linear-gradient( transparent, rgba(0, 0, 0, 0.7));
-  height: 25%; /*transforms*/
   opacity: 0;
+}
+.works-text{
+  height: 25%; 
   transition: .4s ease;
+}
+.works-black{
+  background: linear-gradient( transparent, rgba(0, 0, 0, 0.75));
+  height: 20%; 
+  transition: .6s ease;
 }
 .card-img{
-  transition: .4s ease;
+  transition: .5s ease;
 }
+/* Hover*/
 .card:hover{
   transform: scale(1.005); 
 }  
@@ -63,8 +68,12 @@ input {
   height: 30%;
   opacity: 1;
 }
+.card:hover .works-black {
+  height: 50%;
+  opacity: 1;
+}
 .card:hover .card-img {
-  transform: scale(1.1); 
+  transform: scale(1.2); 
 }
 /*------------ svg icon --------*/
 

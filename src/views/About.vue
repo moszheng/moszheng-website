@@ -287,7 +287,8 @@ const leave = (el, done) => {
                         <div class="card mb-4 text-white">
                             <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
                                 <img :src=img_location(item.img) class="card-img" alt="...">
-                                <div class="works-text text-white px-3">
+                                <div class="works-black"></div>
+                                <div class="works-text text-white px-4">
                                     <h5 class="card-title">{{ item.name }}</h5>
                                     <h6 class="card-title">@{{ item.company }}</h6>
                                     <p class="card-text">{{ item.date }}</p>

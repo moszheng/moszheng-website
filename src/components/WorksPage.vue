@@ -67,7 +67,7 @@ const sigleEnter = (el, done) => {
         <iframe :src=vimeo_embed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
-        <div class="TitleDsc mb-5 mx-md-3 mx-1 px-md-5">
+        <div class="TitleDsc mb-5 mx-md-3 mx-2 px-md-5">
             <Transition name="move" mode="out-in" appear
                 @before-enter="beforeEnter"
                 @enter="sigleEnter">
@@ -91,8 +91,8 @@ const sigleEnter = (el, done) => {
                 </a>
             </div>
         </div>
-        <section class="WorkDsc row mx-md-3 mx-1 px-md-5">
-            <div class="col-md-5">
+        <section class="WorkDsc row mx-md-3 mx-1 mb-md-0 mb-5 px-md-5">
+            <div class="col-md-5 mb-md-0 mb-5">
                 <div class="imgContainer">
                     <!-- -->
                     <img :src="img_location(prjdata.img)" class="img-fluid " alt="...">
@@ -111,16 +111,16 @@ const sigleEnter = (el, done) => {
             </div>
         </section>
         <!-- Credit -->
-        <div class="Credit row px-md-5 mb-5">
-            <div class="col">
+        <div class="Credit row mx-md-3 mx-1 px-md-5 mb-5">
+            <div class="col-md-5">
                 
             </div>
             <!-- Right Content -->
-            <div class="col-md-7 col">
+            <div class="col-md-7">
                 <h4 class="mb-5">Credit</h4>
                 <div v-for = "value, key in prjdata.credit" class="row">
-                    <p class="col-lg-4">{{key}}</p>
-                    <p class="col-lg-8">{{value}}</p>
+                    <p class="col-lg-4 col">{{key}}</p>
+                    <p class="col-lg-8 col">{{value}}</p>
                 </div>
             </div>
         </div>
@@ -129,7 +129,7 @@ const sigleEnter = (el, done) => {
     
     <!-- Other Prj -->
     <section class="container-fluid OtherPrj px-md-5 px-1 " data-scroll-section>
-        <div class="container">
+        <div class="container ">
             <h2 class="text-white my-4">Other Project</h2>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                 <div class="row">
@@ -138,7 +138,8 @@ const sigleEnter = (el, done) => {
                             <!-- routerlink -->
                             <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
                                 <img :src=img_location(item.img) class="card-img" alt="...">
-                                <div class="works-text text-white px-3">
+                                <div class="works-black"></div>
+                                <div class="works-text text-white px-4">
                                     <h5 class="card-title">{{ item.name }}</h5>
                                     <h6 class="card-title">@{{ item.company }}</h6>
                                     <p class="card-text">{{ item.date }}</p>
@@ -163,18 +164,17 @@ main{
     padding-left: 0 !important;
     
 }
-
 .TitleDsc{
     min-height: 25vh;
 }
-
 .WorkDsc, .Credit{
     min-height: 60vh;
 }
-
 .OtherPrj{
     min-height: 40vh;
-    background-color: rgb(22, 22, 22);
+    display: flex;
+    align-items: center;
+    background-color: #0e0e0e;
 }
 
 /* img */
