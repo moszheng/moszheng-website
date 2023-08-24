@@ -39,7 +39,9 @@ onBeforeRouteUpdate(async (to, from) => {
     }
 })
 
-let shuffleprj = WorksData.project.sort(() => Math.random() - 0.5).slice(0,3);
+// Other Project Random method
+const excludeprj = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name) // array exclude current item
+const shuffleprj = excludeprj.sort(() => Math.random() - 0.5).slice(0,3); // 2. shuffle array, pick top 3 item
 
 /* --------Animation--------- */
 
