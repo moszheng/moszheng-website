@@ -7,22 +7,40 @@ import { createRouter, createWebHistory } from 'vue-router';
 import App from './App.vue'
 
 const routes = [
-    { path: '/', name:'Home', component: () => import('./views/Home.vue')},
-    { path: '/works', name:'Works', component: () => import('./views/Works.vue')},
+    { 
+        path: '/', 
+        name:'Home', 
+        component: () => import('./views/Home.vue')
+    },
+    { 
+        path: '/works', 
+        name:'Works', 
+        component: () => import('./views/Works.vue')
+    },
     { 
         path: '/works/:projecturl', 
         name:'WorksPage', 
         component: () => import('./components/WorksPage.vue'), 
-        beforeEnter: (to, from) => {
-            // reject the navigation
-            console.log("beforeEnter")
-            return true
-          },
+        // beforeEnter: (to, from) => {
+        //     console.log("beforeEnter")
+        //     return true
+        // },
         props: true
     },
-    { path: '/about', name:'About', component: () => import('./views/About.vue') },
-    { path: '/contact', name:'Contact', component: () => import('./views/Contact.vue')  },
-    { path: '/:catchAll(.*)', component: () => import('./views/NotFound.vue') },
+    { 
+        path: '/about', 
+        name:'About', 
+        component: () => import('./views/About.vue') 
+    },
+    { 
+        path: '/contact', 
+        name:'Contact', 
+        component: () => import('./views/Contact.vue') 
+    },
+    { 
+        path: '/:catchAll(.*)', 
+        component: () => import('./views/NotFound.vue') 
+    },
 ];
 
 
@@ -31,7 +49,6 @@ const routes = [
 //     smooth: true,
 //     lerp: 0.08
 // });
-
 // console.log(scroll)
 
 // Router method
@@ -43,5 +60,9 @@ const router = createRouter({
         return { top: 0,behavior: 'smooth', }
     },
 });
+
+// router.beforeEach((to, from) => {
+//     console.log("beforeEach_to : " , to)
+// })
 
 createApp(App).use(router).mount('#app')

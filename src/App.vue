@@ -129,8 +129,9 @@ function onLeave(el, done) {
     </nav>
 <!-- <div class="border-bottom"></div> -->
 </header>
-<!--  -->
-<router-view v-slot="{ Component }">
+
+<!-- :key="$route.path" -->
+<router-view v-slot="{ Component }" >
     <Transition name="fade" mode="out-in">
         <!-- <Suspense>
             <template #default>

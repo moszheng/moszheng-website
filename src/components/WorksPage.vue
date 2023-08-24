@@ -4,21 +4,23 @@ import gsap from 'gsap'
 import Footer from './Footer.vue'
 import WorksData from '../data/WorksData.json'
 import { ref } from 'vue'
-
+import { onBeforeRouteLeave, onBeforeRouteUpdate } from 'vue-router'
 
 const props = defineProps({
+
     projecturl: String,
-    beforeRouteEnter (to, from, next) {
-        console.log("beforeRouteEnter")
-        next(vm => {
-            // access to component public instance via `vm`
-            console.log("beforeRouteEnter_next")
-        })
-    },
-    beforeRouteLeave (to, from) {
-        const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
-        if (!answer) return false
-    }
+})
+
+onBeforeRouteLeave((to, from) => {
+    const answer = window.confirm('Do you really want to leave? you have unsaved changes!')
+    if (!answer) return false
+})
+onBeforeRouteUpdate(async (to, from, next) => {
+    console.log("beforeRouteUpdate")
+    console.log(to.params.projecturl)
+    console.log(from.params.projecturl)
+    // props.projecturl= to.params.projecturl;
+    next();
 })
 
 const prjdata = WorksData.project.find(item => item.url_name == props.projecturl);
@@ -124,6 +126,7 @@ const sigleEnter = (el, done) => {
                 <div class="row">
                     <div  v-for="item in shuffleprj" class="col-md-4">
                         <div class="card mb-4 text-white">
+                            <!-- routerlink -->
                             <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
                                 <img :src=img_location(item.img) class="card-img" alt="...">
                                 <div class="works-text text-white px-3">
