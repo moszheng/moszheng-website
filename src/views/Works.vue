@@ -12,9 +12,9 @@ onMounted(() => {
     // initialize masonry
     var row = document.querySelector("[data-masonry]");
     new Masonry(row, {
-      // options
-      percentPosition: true,
-	  
+      	// options
+		percentPosition: true,
+	  	gutter: 20
     });
 });
 
@@ -32,9 +32,10 @@ function randomHeight(){
 		<!----- Main Content----->
 		<!-- py-md-3 pl-md-5 px-xl-3 -->
 		<!-- -->
+		<!-- data-masonry='{"percentPosition": true }' -->
 		<div class="row" data-masonry='{"percentPosition": true }'>
-			<div  v-for="item in WorksData.project" class="col-md-4 customcol">
-				<div class="card mb-md-3 mb-1 text-white" :style="randomHeight()">
+			<div v-for="item in WorksData.project" class="col-4">
+				<div class="card text-white" :style="randomHeight()">
 					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
 						<img :src=img_location(item.img) class="card-img" :alt="item.name" >
 						<div class="works-black"></div>
@@ -61,10 +62,8 @@ function randomHeight(){
 </template>
 
 <style>
-.customcol{
-	padding: none !important;
-	/* padding-right: calc(var(--bs-gutter-x) * .5);
-    padding-left: calc(var(--bs-gutter-x) * .5); */
+.card{
+	margin-bottom: 35px;
 }
 .card-img{
   	position: absolute;
