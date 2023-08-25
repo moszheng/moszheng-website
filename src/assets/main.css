@@ -61,9 +61,9 @@ input {
   transition: .8s ease;
 }
 /* Hover*/
-.card:hover{
+/* .card:hover{
   transform: scale(1.005); 
-}  
+}   */
 .card:hover .works-text {
   height: 30%;
   opacity: 1;

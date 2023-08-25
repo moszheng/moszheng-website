@@ -14,7 +14,7 @@ onMounted(() => {
     new Masonry(row, {
       	// options
 		percentPosition: true,
-	  	gutter: 20
+	  	// gutter: 20
     });
 });
 
@@ -24,6 +24,8 @@ function randomHeight(){
 	let rnd = Math.floor( Math.random()*( max - min + 1 )) + min 
 
 	return "height:"+ rnd + "vh";
+	// return `height: ${ rnd } vh`
+	
 }
 </script>
 <template>
@@ -33,8 +35,8 @@ function randomHeight(){
 		<!-- py-md-3 pl-md-5 px-xl-3 -->
 		<!-- -->
 		<!-- data-masonry='{"percentPosition": true }' -->
-		<div class="row" data-masonry='{"percentPosition": true }'>
-			<div v-for="item in WorksData.project" class="col-4">
+		<div class="row pt-5" data-masonry='{"percentPosition": true }'>
+			<div v-for="item in WorksData.project" class="col-md-4 col">
 				<div class="card text-white" :style="randomHeight()">
 					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
 						<img :src=img_location(item.img) class="card-img" :alt="item.name" >

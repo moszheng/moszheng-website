@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import gsap from 'gsap'
 
 import Footer from '../components/Footer.vue'
@@ -27,9 +27,7 @@ const development = [
     { name : 'Frontend Developing'}
 ]
 
-
 /* Transition GSAP */
-
 const isVisible = ref(false);
 
 // Create an Intersection Observer
@@ -48,18 +46,36 @@ const observer = new IntersectionObserver(
 
 // Attach the observer to the target element
 onMounted(() => {
-  observer.observe(
-    document.querySelector('.isVisible'));
-  
+    observer.observe(
+        document.querySelector('.isVisible')
+    );
+    window.addEventListener('scroll', handleScroll);
+});
+onBeforeUnmount(() => {
+  window.removeEventListener('scroll', handleScroll);
 });
 
+/* Scroll picture*/
+const scrollPosition =  ref(0)
+
+const handleScroll = () => {
+    scrollPosition.value = window.scrollY;
+    
+    gsap.to('.avatar-user', {
+        y: scrollPosition.value * .1,
+        duration: .2,
+        ease: 'power1',
+        // onComplete: done
+    });
+};
+
+/* GSAP */
 const beforeEnter = (el) => {
     // console.log("bb")
     el.style.opacity = 0;
     el.style.transform = 'translateY(50px)'
 
 }
-
 const enter = (el, done) => {
     // console.log("cc")
     gsap.to(el, {
@@ -71,7 +87,6 @@ const enter = (el, done) => {
         onComplete: done
     })
 }
-
 const sigleEnter = (el, done) => {
     // console.log("cc")
     gsap.to(el, {
@@ -99,11 +114,9 @@ const leave = (el, done) => {
         <!-- Intro -->
         <section class="AboutIntro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section>
             <!-- profile image -->
-            <div class="col-xl-6">
-                <div class="align-self-center text-center">
-                    <div class="mb-4 ">
-                        <img class="avatar-user img-fluid" alt="profile_image" :src=profile_image>
-                    </div>
+            <div class="col-xl-6 d-flex align-items-center justify-content-center">
+                <div class="userContainer mb-md-0 mb-4" >
+                    <img class="avatar-user img-fluid" alt="profile_image" :src=profile_image>
                 </div>
             </div>
             <div class="col-xl-6 mt-xl-0 mt-4 px-md-5 ">
@@ -178,7 +191,7 @@ const leave = (el, done) => {
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
                         <div class="col-lg-3">
-                            <h3 class="mb-4" v-if="isVisible">Experience</h3>
+                            <h3 class="mb-4">Experience</h3>
                         </div>
                     </Transition>
                     <div class="col-lg-9 px-xl-3">
@@ -316,7 +329,7 @@ const leave = (el, done) => {
             </div>
         </section>
         <!-- Recent Prj -->
-        <section class="mb-4 px-md-5 px-1 " data-scroll-section>
+        <!-- <section class="mb-4 px-md-5 px-1 " data-scroll-section>
             <h2>Recent Project</h2>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                 <div class="row">
@@ -335,7 +348,7 @@ const leave = (el, done) => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <div class="container-fluid text-center">
             <a href="#" class="nav-link p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
@@ -373,11 +386,18 @@ main{
 }
 
 /*------ Img --------*/
-
+.userContainer{
+    position: relative;
+    width: 50vh;
+    height: 50vh; 
+    overflow: hidden;
+}
 .avatar-user {
-  /* border-radius: 50% !important; */
-  width: 50vh;
-  height: auto;
+    position: absolute;
+	top: 0;
+	left: 0;
+    transform: scale(1.2);
+	object-fit: cover;
 }
 
 .skillLogo{

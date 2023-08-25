@@ -1,8 +1,10 @@
-import './assets/main.css'
-// import LocomotiveScroll from 'locomotive-scroll';
-
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router';
+
+import './assets/main.css'
+// import LocomotiveScroll from 'locomotive-scroll';
+// Import our custom CSS
+import './scss/styles.scss'
 
 import App from './App.vue'
 
