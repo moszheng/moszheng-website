@@ -184,112 +184,108 @@ const leave = (el, done) => {
 
         <!-- Experience -->
         <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white" data-scroll-section>
-            <div class="mt-xl-0 mt-4">
-                <div class="row mb-4">
-                    <!-- title -->
-                    <Transition name="move" mode="out-in"
-                        @before-enter="beforeEnter"
-                        @enter="sigleEnter">
-                        <div class="col-lg-3">
-                            <h3 class="mb-4">Experience</h3>
-                        </div>
-                    </Transition>
-                    <div class="col-lg-9 px-xl-3">
-                        <!-- Freelance -->
-                        <div class="row">
-                            <div class="col-2 my-4">
-                                <div class="col text-center">
-                                    <p>2023 - Now</p>
-                                </div>
-                            </div>
-                            <div class="col-1"></div>
-                            <div class="col my-4">
-                                <div class="row mb-3">
-                                    <h4 class="col">Freelance</h4>
-                                    
-                                    <div>3D Generalist</div>
-                                </div>
-                                <ul>
-                                    <li>
-                                        <p>Primarily work remotely as a freelance artist, 
-                                        specializing in a diverse range of disciplines such as 3D artwork, visual effects (VFX), and motion graphics.</p>
-                                    </li>
-                                    <li>
-                                        <p>Developing various programs and websites, 
-                                        and founded a brand called <strong>"SlothFellas"</strong> released a set of tools designed to assist creators in working more efficiently.</p>
-                                    </li>
-                                </ul>
+            <div class="row mt-xl-0 mt-4 mb-4">
+                <!-- title -->
+                <Transition name="move" mode="out-in"
+                    @before-enter="beforeEnter"
+                    @enter="sigleEnter">
+                    <div class="col-lg-3">
+                        <h3 class="mb-4">Experience</h3>
+                    </div>
+                </Transition>
+                <div class="col-lg-9 px-xl-3">
+                    <!-- Freelance -->
+                    <div class="row">
+                        <div class="col-2 my-4">
+                            <div class="col text-center">
+                                <p>2023 - Now</p>
                             </div>
                         </div>
-                        <!-- Mixcode -->
-                        <div class="row">
-                            <div class="col-2 my-4">
-                                <div class="col text-center">
-                                    <p>2021 - 2022</p>
-                                </div>
+                        <div class="col-1"></div>
+                        <div class="col my-4">
+                            <div class="row mb-3">
+                                <h4 class="col">Freelance</h4>
+                                
+                                <div>3D Generalist</div>
                             </div>
-                            <div class="col-1"></div>
-                            <div class="col my-4">
-                                <div class="row mb-3">
-                                    <h4 class="col">MixCode</h4>
-                                    <div>Motion Designer</div>
-                                </div>
-                                <ul>
-                                    <li>
-                                        <p>Specialize in procedural NFT character development, 
-                                        utilizing Python and JavaScript to create custom Cinema 4D and AfterEffects plug-ins.
-                                        </p>
-                                    </li>
-                                    <li>
-                                        <p>Executing and developing motion graphics, 3D animations.</p>
-                                    </li>
-                                </ul>
+                            <ul>
+                                <li>
+                                    <p>Primarily work remotely as a freelance artist, 
+                                    specializing in a diverse range of disciplines such as 3D artwork, visual effects (VFX), and motion graphics.</p>
+                                </li>
+                                <li>
+                                    <p>Developing various programs and websites, 
+                                    and founded a brand called <strong>"SlothFellas"</strong> released a set of tools designed to assist creators in working more efficiently.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Mixcode -->
+                    <div class="row">
+                        <div class="col-2 my-4">
+                            <div class="col text-center">
+                                <p>2021 - 2022</p>
                             </div>
                         </div>
-                        
-                        <!-- JL -->
-                        <div class="row">
-                            <div class="col-2 my-4">
-                                <div class="col text-center">
-                                    <p>2018 - 2021</p>
-                                </div>
+                        <div class="col-1"></div>
+                        <div class="col my-4">
+                            <div class="row mb-3">
+                                <h4 class="col">MixCode</h4>
+                                <div>Motion Designer</div>
                             </div>
-                            <div class="col-1"></div>
-                            <div class="col my-4">
-                                <div class="row mb-3">
-                                    <h4 class="col">JL DESIGN .</h4>
-                                    
-                                    <div>Intern, Motion Designer</div>
-                                </div>
-                                <ul>
-                                    <li>
-                                        <p>Exploring and implementing new techniques, including PBR texturing, lighting, and rendering, 
-                                        to enhance the visual quality of projects.</p>
-                                    </li>
-                                    <li>
-                                        <p>Creating highly detailed models with smooth topology, ensuring realistic animations.</p>
-                                    </li>
-                                </ul>
+                            <ul>
+                                <li>
+                                    <p>Specialize in procedural NFT character development, 
+                                    utilizing Python and JavaScript to create custom Cinema 4D and AfterEffects plug-ins.
+                                    </p>
+                                </li>
+                                <li>
+                                    <p>Executing and developing motion graphics, 3D animations.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- JL -->
+                    <div class="row">
+                        <div class="col-2 my-4">
+                            <div class="col text-center">
+                                <p>2018 - 2021</p>
                             </div>
+                        </div>
+                        <div class="col-1"></div>
+                        <div class="col my-4">
+                            <div class="row mb-3">
+                                <h4 class="col">JL DESIGN .</h4>
+                                
+                                <div>Intern, Motion Designer</div>
+                            </div>
+                            <ul>
+                                <li>
+                                    <p>Exploring and implementing new techniques, including PBR texturing, lighting, and rendering, 
+                                    to enhance the visual quality of projects.</p>
+                                </li>
+                                <li>
+                                    <p>Creating highly detailed models with smooth topology, ensuring realistic animations.</p>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                
-            </div> 
-            
+            </div>
         </section>
         
         <!-- Skill -->
         <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5" data-scroll-section>
-            <div class="row">
-                <div class="col-md-3">
+            <div class="row mt-xl-0 mt-4 mb-4">
+                <div class="col-lg-3">
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
                     <h2 class="mb-4 " v-if="isVisible" data-scroll data-scroll-speed="1">Service & Skill</h2>
                     </Transition>
                 </div>
-                <div class="col px-md-5 ">
+                <div class="col-lg-9 px-md-5 ">
                     <div class="row mb-5">
                         <div class="col-md-6 mb-md-0 mb-5 isVisible">
                             <Transition name="move" mode="out-in"
@@ -377,6 +373,8 @@ main{
 .AboutIntro, .AboutExp, .AboutSkill{
     min-height: 100vh; 
 }
+
+/* BG color */
 .AboutExp{
     background-color: rgb(22, 22, 22) ;
 }
@@ -401,7 +399,8 @@ main{
 }
 
 .skillLogo{
-    scale: 50%;
+    /* scale: 50%; */
+    width: 7.5vh;
 }
 
 .img-thumbnail{
