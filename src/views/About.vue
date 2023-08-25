@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import gsap from 'gsap'
 
 import Footer from '../components/Footer.vue'
@@ -30,6 +30,30 @@ const development = [
 
 /* Transition GSAP */
 
+const isVisible = ref(false);
+
+
+// Create an Intersection Observer
+const observer = new IntersectionObserver(
+
+  (entries) => {
+    if (entries[0].isIntersecting) {
+      isVisible.value = true;
+      console.log(isVisible.value)
+      console.log("observed")
+      observer.disconnect(); // Disconnect the observer after triggering
+    }
+  },
+  { threshold: 0.5 } // Adjust the threshold as needed
+);
+
+// Attach the observer to the target element
+onMounted(() => {
+  observer.observe(
+    document.querySelector('.isVisible'));
+  
+});
+
 const beforeEnter = (el) => {
     // console.log("bb")
     el.style.opacity = 0;
@@ -42,7 +66,9 @@ const enter = (el, done) => {
     gsap.to(el, {
         opacity:1 ,
         y: 0,
-        duration: el.dataset.index * 0.4,
+        delay: el.dataset.index * 0.125 + 0.5,
+        duration: 0.4,
+        ease: "power3.Out",
         onComplete: done
     })
 }
@@ -87,7 +113,7 @@ const leave = (el, done) => {
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
                         
-                        <h1 class="mb-5">Sheng Wen Cheng</h1>
+                        <h1 class="mb-5" >Sheng Wen Cheng</h1>
 
                     </Transition>
 
@@ -149,11 +175,11 @@ const leave = (el, done) => {
             <div class="mt-xl-0 mt-4">
                 <div class="row mb-4">
                     <!-- title -->
-                    <Transition name="move" mode="out-in" appear
+                    <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
                         <div class="col-lg-3">
-                            <h3 class="mb-4">Experience</h3>
+                            <h3 class="mb-4" v-if="isVisible">Experience</h3>
                         </div>
                     </Transition>
                     <div class="col-lg-9 px-xl-3">
@@ -245,27 +271,39 @@ const leave = (el, done) => {
         <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5" data-scroll-section>
             <div class="row">
                 <div class="col-md-3">
-                    <h2 class="mb-4 " data-scroll data-scroll-speed="1">Service & Skill</h2>
+                    <Transition name="move" mode="out-in"
+                        @before-enter="beforeEnter"
+                        @enter="sigleEnter">
+                    <h2 class="mb-4 " v-if="isVisible" data-scroll data-scroll-speed="1">Service & Skill</h2>
+                    </Transition>
                 </div>
                 <div class="col px-md-5 ">
                     <div class="row mb-5">
-                        <div class="col-md-6 mb-md-0 mb-5">
-                            <h3 class="mb-5">Motion Design</h3>
-                            <TransitionGroup appear :css="false"    
+                        <div class="col-md-6 mb-md-0 mb-5 isVisible">
+                            <Transition name="move" mode="out-in"
+                                @before-enter="beforeEnter"
+                                @enter="sigleEnter">
+                                <h3 class="mb-5" v-if="isVisible">Motion Design</h3>
+                            </Transition>
+                            <TransitionGroup :css="false"    
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                                 @leave="leave"
                             >
-                                <h5 class="mb-3" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"> {{item.name}} </h5>
+                                <h5 class="mb-3 " v-if="isVisible" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"> {{item.name}} </h5>
                             </TransitionGroup>
                         </div>
                         <div class="col-md-6">
-                            <h3 class="mb-5">Development</h3>
-                            <TransitionGroup appear :css="false"    
+                            <Transition name="move" mode="out-in"
+                                @before-enter="beforeEnter"
+                                @enter="sigleEnter">
+                                <h3 class="mb-5" v-if="isVisible">Development</h3>
+                            </Transition>
+                            <TransitionGroup :css="false"    
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                             >
-                            <h5 class="mb-3" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
+                            <h5 class="mb-3" v-if="isVisible" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
                             </TransitionGroup>
                         </div>
                     </div>
