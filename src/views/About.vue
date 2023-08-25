@@ -9,7 +9,8 @@ import LogoData from '../data/LogoData.json'
 
 // Return Real route
 const img_location = (item) => { return '../src/img/'+ item }
-const profile_image = '../src/img/profile.png';
+const profile_image_1 = '../src/img/profile_1.png';
+const profile_image_2 = '../src/img/profile_2.png';
 
 const motiondesign = [
     { name : 'Modeling'},
@@ -36,8 +37,8 @@ const observer = new IntersectionObserver(
   (entries) => {
     if (entries[0].isIntersecting) {
       isVisible.value = true;
-      console.log(isVisible.value)
-      console.log("observed")
+    //   console.log(isVisible.value)
+    //   console.log("observed")
       observer.disconnect(); // Disconnect the observer after triggering
     }
   },
@@ -52,7 +53,7 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll);
 });
 onBeforeUnmount(() => {
-  window.removeEventListener('scroll', handleScroll);
+    window.removeEventListener('scroll', handleScroll);
 });
 
 /* Scroll picture*/
@@ -60,11 +61,18 @@ const scrollPosition =  ref(0)
 
 const handleScroll = () => {
     scrollPosition.value = window.scrollY;
-    
-    gsap.to('.avatar-user', {
-        y: scrollPosition.value * .1,
-        duration: .2,
+    // portrait
+    gsap.to('.avatar-user_1', {
+        y: scrollPosition.value * .15,
+        duration: .3,
         ease: 'power1',
+        // onComplete: done
+    });
+    // BG
+    gsap.to('.avatar-user_2', {
+        y: scrollPosition.value * .45,
+        duration: .35,
+        ease: 'power2',
         // onComplete: done
     });
 };
@@ -115,7 +123,8 @@ const leave = (el, done) => {
             <!-- profile image -->
             <div class="col-xl-6 d-flex align-items-center justify-content-center">
                 <div class="userContainer mb-md-0 mb-4" >
-                    <img class="avatar-user img-fluid" alt="profile_image" :src=profile_image>
+                    <img class="avatar-user_1 img-fluid" alt="profile_image" :src=profile_image_1>
+                    <img class="avatar-user_2 img-fluid" alt="profile_image" :src=profile_image_2>
                 </div>
             </div>
             <div class="col-xl-6 mt-xl-0 mt-4 px-md-5 ">
@@ -385,14 +394,22 @@ main{
     height: 50vh; 
     overflow: hidden;
 }
-.avatar-user {
+.avatar-user_1{
     position: absolute;
 	top: 0;
 	left: 0;
     transform: scale(1.2);
 	object-fit: cover;
+    z-index: 20;
 }
-
+.avatar-user_2 {
+    position: absolute;
+	top: 0;
+	left: 0;
+    transform: scale(1.2);
+	object-fit: cover;
+    z-index: 10;
+}
 .skillLogo{
     /* scale: 50%; */
     width: 7.5vh;

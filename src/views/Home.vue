@@ -37,7 +37,7 @@ setInterval(() => {
     <!--  Intro ---->
     <div class="index_info container d-flex justify-content-end align-items-center">
           <!----- Main Content----->
-          <div class="mx-5 px-5 text-white">  
+          <div class="mx-lg-5 px-lg-5 text-white">  
             <h5 class="mb-2">Freelance 3D Generalist</h5>
             <h1 class="mb-5">Sheng Wen (Mos) Cheng</h1>
             <div class="mb-5">

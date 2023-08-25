@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 
 import './assets/main.css'
 // import LocomotiveScroll from 'locomotive-scroll';
+
 // Import our custom CSS
 import './scss/styles.scss'
 
