@@ -7,18 +7,10 @@ body{
   -webkit-font-smoothing: antialiased;
 }
 
-.container {
-  max-width: 2000px !important;
-}
-
 /* Font Setting */
-
 h1, h2, h3, h4 {
-  /* font-size: 18px; */
-  /* text-transform: uppercase; */
   letter-spacing: 1px;
   font-weight: bold !important;
-  /* padding: 30px 0; */
 }
 p{
   font-size: 18px;
@@ -61,9 +53,7 @@ input {
   transition: .8s ease;
 }
 /* Hover*/
-/* .card:hover{
-  transform: scale(1.005); 
-}   */
+
 .card:hover .works-text {
   height: 30%;
   opacity: 1;

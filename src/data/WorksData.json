@@ -78,6 +78,50 @@
               
         },
         {
+            "name" : "金馬57",
+            "en_name" : "Golden Horse Awards 57th - ",
+            "url_name" : "gha57",
+            "date" : "2020 Nov",
+            "behance" : "https://www.behance.net/gallery/126685047/Golden-Horse-Award-Ceremony-57th57-",
+            "video" : "376095266",
+            "img" : "10_gha57_01.png",
+            "company" : "JL Design",
+            "msg" : [
+                "The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.",
+                "During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally."
+            ],
+            "credit" : 
+            {
+                "金馬56主視覺及典禮視覺總監": "羅申駿 JL",
+                "客戶": "台北金馬影展執行委員會",
+                "典禮視覺影像設計": "JL DESIGN",
+                "監製": "巫安琪 蔡卓翰",
+                "專案總監": "蔡佳穎",
+                "創意總監": "蔡旻驊",
+                "副創意總監": "魏良恩",
+                "美術指導": "洪湘茹",
+                "製作統籌": "林志翰",
+                "製作群": "黃婷鈺、陳品聿 、蔡潔凡、張玉典、許雅婷、柯季芸",
+                "宣傳協力": "王日暄",
+                "主視覺設計": "洪湘茹、簡宥箴、陳施澄",
+                "設計師＆動畫師": "齊慕夷、鄭盛文、林俊德、何展鴻、許峻良、詹游丞、何佳珍、Lucas Gaston Casagrande、張伊暉、蔡瑋廷、方智弘、李威、Hai Le",
+                "舞台視覺設計": "JL DESIGN（洪湘茹、齊慕夷、鄭盛文、林俊德）、野人創意設計有限公司（陳志育、吳昱緯、黃敏琇、林玟誼）",
+                "典禮視覺／影像音樂設計及統籌": "MUSDM",
+                "製作人": "余佳倫、徐文",
+                "製作協力": "佘以安",
+                "音樂": "徐文、余佳倫、cheer、楊子霆、李火生、張藝、林昀駿、王韻筑、余昊益",
+                "聲音設計": "楊子霆、cheer",
+                "聲音後期": "楊子霆、張育維",
+                "聲音設計協力": "Deer Post Audio Production Ltd.",
+                "錄音師": "林先敏",
+                "擬音製作": "高偉晏",
+                "音效剪輯": "林先敏",
+                "特別感謝": "小飛俠、陳維良",
+                "典禮視覺字體提供": "文鼎科技開發股份有限公司"
+              }
+              
+        },
+        {
             "name" : "Taiwan HYPE",
             "en_name" : "Taiwan HYPE - Logo Animation",
             "url_name" : "taiwanhype",
@@ -312,6 +356,20 @@
               
         },
         {
+            "name" : "MixCode NFT",
+            "en_name" : "Honor of Kings International Championship Promo",
+            "url_name" : "NFT",
+            "date" : "2022",
+            "behance" : "https://www.behance.net/gallery/158101281/2022",
+            "video" : "",
+            "img" : "09_HoK_01.png",
+            "company" : "MixCode",
+            "msg" : [
+                "The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.",
+                "During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally."
+            ]
+        },
+        {
             "name" : "王者榮耀世界冠軍盃 前導宣傳片",
             "en_name" : "Honor of Kings International Championship Promo",
             "url_name" : "hok_promo",
@@ -324,6 +382,21 @@
                 "The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.",
                 "During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally."
             ]
+        },
+        {
+            "name" : "BooBoo",
+            "en_name" : "BooBoo",
+            "url_name" : "BooBoo",
+            "date" : "2016",
+            "behance" : "-",
+            "video" : "-",
+            "img" : "11_BooBoo_01.png",
+            "company" : "-",
+            "msg" : [
+                "The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.",
+                "During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally."
+            ],
+            "credit" : "-"
         }
     ]
 }

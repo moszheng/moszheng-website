@@ -106,7 +106,6 @@ const leave = (el, done) => {
         onComplete: done
     })
 }
-
 </script>
 <template>
 <div class="About" data-scroll-section>
@@ -146,7 +145,6 @@ const leave = (el, done) => {
 
                     <p>For any inquiries,<strong> please contact me</strong></p>
                 </div>
-
                 <ul class="navbar-nav flex-row flex-wrap mb-4">
                     <li v-for="item in LinkData.socialmedia" class="nav-item col-3 col-md-auto">
                         <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
@@ -156,7 +154,6 @@ const leave = (el, done) => {
                         </a>
                     </li>
                 </ul>
-
                 <TransitionGroup appear :css="false"    
                     @before-enter="beforeEnter"
                     @enter="enter"
@@ -177,11 +174,9 @@ const leave = (el, done) => {
                 </a>
             </div>
         </section>
-
         <!-- <section class="imgBanner">
             <img src="../img/03_SWSX_01.jpg" class="img-fluid">
         </section> -->
-
         <!-- Experience -->
         <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white" data-scroll-section>
             <div class="row mt-xl-0 mt-4 mb-4">
@@ -274,7 +269,7 @@ const leave = (el, done) => {
                 </div>
             </div>
         </section>
-        
+
         <!-- Skill -->
         <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5" data-scroll-section>
             <div class="row mt-xl-0 mt-4 mb-4">
@@ -401,9 +396,5 @@ main{
 .skillLogo{
     /* scale: 50%; */
     width: 7.5vh;
-}
-
-.img-thumbnail{
-    background: none;
 }
 </style>
