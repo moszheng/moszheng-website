@@ -31,6 +31,10 @@
         {
             "name" : "Vue",
             "img" : "./src/assets/Vue_icon.svg"
+        },
+        {
+            "name" : "Bootstrap",
+            "img" : "./src/assets/Bootstrap_icon.svg"
         }
     ]
 }
