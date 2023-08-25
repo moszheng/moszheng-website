@@ -1,21 +1,42 @@
 <script setup>
+import { ref, onMounted } from 'vue'
+import Masonry from "masonry-layout"
+
 import Footer from '../components/Footer.vue'
-import { ref } from 'vue'
 import WorksData from '../data/WorksData.json'
 
 // Return Real route
 const img_location = (item) => { return '../src/img/'+ item }
 
+onMounted(() => {
+    // initialize masonry
+    var row = document.querySelector("[data-masonry]");
+    new Masonry(row, {
+      // options
+      percentPosition: true,
+	  
+    });
+});
+
+function randomHeight(){
+	let max = 50;
+	let min = 25;
+	let rnd = Math.floor( Math.random()*( max - min + 1 )) + min 
+
+	return "height:"+ rnd + "vh";
+}
 </script>
 <template>
 <div data-scroll-container>
-    <main class="flex-xl-nowrap" data-scroll-section>
+    <main class="container flex-xl-nowrap" data-scroll-section>
 		<!----- Main Content----->
-		<div class="row py-md-3 pl-md-5 px-xl-3 bd-content">
-			<div  v-for="item in WorksData.project" class="col-md-4">
-				<div class="card mb-md-3 mb-1 text-white">
+		<!-- py-md-3 pl-md-5 px-xl-3 -->
+		<!-- -->
+		<div class="row" data-masonry='{"percentPosition": true }'>
+			<div  v-for="item in WorksData.project" class="col-md-4 customcol">
+				<div class="card mb-md-3 mb-1 text-white" :style="randomHeight()">
 					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
-						<img :src=img_location(item.img) class="card-img" :alt="item.name">
+						<img :src=img_location(item.img) class="card-img" :alt="item.name" >
 						<div class="works-black"></div>
 						<div class="works-text text-white px-4">
 							<h5 class="card-title">{{ item.name }}</h5>
@@ -38,3 +59,21 @@ const img_location = (item) => { return '../src/img/'+ item }
 	<Footer />
 </div>
 </template>
+
+<style>
+.customcol{
+	padding: none !important;
+	/* padding-right: calc(var(--bs-gutter-x) * .5);
+    padding-left: calc(var(--bs-gutter-x) * .5); */
+}
+.card-img{
+  	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* vertical-align: middle; */
+  	transition: .8s ease;
+}
+</style>

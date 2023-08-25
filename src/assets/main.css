@@ -39,7 +39,7 @@ input {
   outline: none;
   box-shadow: none;
   border: 0; 
-  transition: 0.4s ease; /* scale */
+  transition: 0.5s ease; /* scale */
 }
 .works-black, .works-text{
   position: absolute;
@@ -58,7 +58,7 @@ input {
   transition: .6s ease;
 }
 .card-img{
-  transition: .5s ease;
+  transition: .8s ease;
 }
 /* Hover*/
 .card:hover{

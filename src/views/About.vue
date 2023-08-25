@@ -32,7 +32,6 @@ const development = [
 
 const isVisible = ref(false);
 
-
 // Create an Intersection Observer
 const observer = new IntersectionObserver(
 
