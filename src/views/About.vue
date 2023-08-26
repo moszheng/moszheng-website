@@ -6,6 +6,7 @@ import Footer from '../components/Footer.vue'
 import LinkData from '../data/LinkData.json'
 import WorksData from '../data/WorksData.json'
 import LogoData from '../data/LogoData.json'
+import ExpData from '../data/Experience.json'
 
 // Return Real route
 const img_location = (item) => { return '../src/img/'+ item }
@@ -35,21 +36,29 @@ const isVisible = ref(false);
 const observer = new IntersectionObserver(
 
   (entries) => {
-    if (entries[0].isIntersecting) {
-      isVisible.value = true;
-    //   console.log(isVisible.value)
-    //   console.log("observed")
-      observer.disconnect(); // Disconnect the observer after triggering
-    }
+
+    entries.forEach( entry =>{
+
+        if (entry.isIntersecting) {
+            isVisible.value = true;
+            console.log(isVisible.value)
+            console.log("observed")
+            // observer.disconnect(); // Disconnect the observer after triggering
+        }
+    });
   },
   { threshold: 0.5 } // Adjust the threshold as needed
 );
 
 // Attach the observer to the target element
 onMounted(() => {
-    observer.observe(
-        document.querySelector('.isVisible')
-    );
+    
+    const targets = document.querySelectorAll('.isVisible')
+    console.log(targets)
+    for (const item of targets){
+        observer.observe(item);
+    }
+
     window.addEventListener('scroll', handleScroll);
 });
 onBeforeUnmount(() => {
@@ -89,7 +98,7 @@ const enter = (el, done) => {
     gsap.to(el, {
         opacity:1 ,
         y: 0,
-        delay: el.dataset.index * 0.125 + 0.5,
+        delay: el.dataset.index * 0.2 + 0.8,
         duration: 0.4,
         ease: "power3.Out",
         onComplete: done
@@ -154,7 +163,7 @@ const leave = (el, done) => {
 
                     <p>For any inquiries,<strong> please contact me</strong></p>
                 </div>
-                <ul class="navbar-nav flex-row flex-wrap mb-4">
+                <ul class="navbar-nav flex-row mb-4">
                     <li v-for="item in LinkData.socialmedia" class="nav-item col-3 col-md-auto">
                         <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                             <svg id="icon_twitter">
@@ -188,93 +197,59 @@ const leave = (el, done) => {
         </section> -->
         <!-- Experience -->
         <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white" data-scroll-section>
-            <div class="row mt-xl-0 mt-4 mb-4">
+            <div class="row mt-xl-0 mt-4 mb-4 isVisible">
                 <!-- title -->
-                <Transition name="move" mode="out-in"
-                    @before-enter="beforeEnter"
-                    @enter="sigleEnter">
-                    <div class="col-lg-3">
-                        <h3 class="mb-4">Experience</h3>
-                    </div>
-                </Transition>
+                <div class="col-lg-3" >
+                    <Transition name="move" mode="out-in"
+                        @before-enter="beforeEnter"
+                        @enter="sigleEnter">
+                        
+                            <h3 class="mb-4" v-if="isVisible">Experience</h3>
+                        
+                    </Transition>
+                </div>
                 <div class="col-lg-9 px-xl-3">
-                    <!-- Freelance -->
-                    <div class="row">
-                        <div class="col-2 my-4">
-                            <div class="col text-center">
-                                <p>2023 - Now</p>
+                    <TransitionGroup :css="false"    
+                        @before-enter="beforeEnter"
+                        @enter="enter"
+                        @leave="leave"
+                    >
+                    <div class="mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                        <div class="row">
+                            <!-- duration -->
+                            <div class="col-2">
+                                <div class="col text-center">
+                                    <p>{{item.duration}}</p>
+                                </div>
+                            </div>
+                            <!-- Mid -->
+                            <div class="col-1">-</div>
+                            <!-- Content -->
+                            <div class="col-7">
+                                <div class="row">
+                                    <h4 class="col">{{ item.company }}</h4>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-1"></div>
-                        <div class="col my-4">
-                            <div class="row mb-3">
-                                <h4 class="col">Freelance</h4>
-                                
-                                <div>3D Generalist</div>
+                        <div class="row" >
+                            <!-- duration -->
+                            <div class="col-2"></div>
+                            <!-- Mid -->
+                            <div class="col-1"></div>
+                            <!-- Content -->
+                            <div class="col-7">
+                                <div class="row mb-4">
+                                    <div>{{ item.title }}</div>
+                                </div>
+                                <ul class="">
+                                    <li v-for="content in item.detail">
+                                        <p>{{ content }}</p>
+                                    </li>
+                                </ul>
                             </div>
-                            <ul>
-                                <li>
-                                    <p>Primarily work remotely as a freelance artist, 
-                                    specializing in a diverse range of disciplines such as 3D artwork, visual effects (VFX), and motion graphics.</p>
-                                </li>
-                                <li>
-                                    <p>Developing various programs and websites, 
-                                    and founded a brand called <strong>"SlothFellas"</strong> released a set of tools designed to assist creators in working more efficiently.</p>
-                                </li>
-                            </ul>
                         </div>
                     </div>
-                    <!-- Mixcode -->
-                    <div class="row">
-                        <div class="col-2 my-4">
-                            <div class="col text-center">
-                                <p>2021 - 2022</p>
-                            </div>
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col my-4">
-                            <div class="row mb-3">
-                                <h4 class="col">MixCode</h4>
-                                <div>Motion Designer</div>
-                            </div>
-                            <ul>
-                                <li>
-                                    <p>Specialize in procedural NFT character development, 
-                                    utilizing Python and JavaScript to create custom Cinema 4D and AfterEffects plug-ins.
-                                    </p>
-                                </li>
-                                <li>
-                                    <p>Executing and developing motion graphics, 3D animations.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <!-- JL -->
-                    <div class="row">
-                        <div class="col-2 my-4">
-                            <div class="col text-center">
-                                <p>2018 - 2021</p>
-                            </div>
-                        </div>
-                        <div class="col-1"></div>
-                        <div class="col my-4">
-                            <div class="row mb-3">
-                                <h4 class="col">JL DESIGN .</h4>
-                                
-                                <div>Intern, Motion Designer</div>
-                            </div>
-                            <ul>
-                                <li>
-                                    <p>Exploring and implementing new techniques, including PBR texturing, lighting, and rendering, 
-                                    to enhance the visual quality of projects.</p>
-                                </li>
-                                <li>
-                                    <p>Creating highly detailed models with smooth topology, ensuring realistic animations.</p>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                    </TransitionGroup>
                 </div>
             </div>
         </section>

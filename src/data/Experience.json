@@ -1,0 +1,34 @@
+{
+    "experience" : [
+        { 
+            "company" : "Freelance",
+            "duration" : "2023 - Now",
+            "title" : "3D Generalist",
+            "detail" : 
+            [
+                "Primarily work remotely as a freelance artist, specializing in a diverse range of disciplines such as 3D artwork, visual effects (VFX), and motion graphics.",
+                "Developing various programs and websites, and founded a brand called <strong>SlothFellas</strong> released a set of tools designed to assist creators in working more efficiently."
+            ]
+        },
+        { 
+            "company" : "MixCode",
+            "duration" : "2021 - 2022",
+            "title" : "Motion Designer",
+            "detail" : 
+            [
+                "Specialize in procedural NFT character development, utilizing Python and JavaScript to create custom Cinema 4D and AfterEffects plug-ins.",
+                "Executing and developing motion graphics, 3D animations."
+            ]
+        },
+        { 
+            "company" : "JL DESIGN .",
+            "duration" : "2018 - 2021",
+            "title" : "Intern, Motion Designer",
+            "detail" : 
+            [
+                "Exploring and implementing new techniques, including PBR texturing, lighting, and rendering, to enhance the visual quality of projects.",
+                "Creating highly detailed models with smooth topology, ensuring realistic animations."
+            ]
+        }
+    ]
+}
