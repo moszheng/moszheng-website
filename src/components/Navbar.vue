@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useRoute, onBeforeRouteUpdate } from 'vue-router'
 import gsap from 'gsap'
 
@@ -14,12 +14,18 @@ const showIcon = ref(false)
 const route = useRoute();
 const isHome = ref(true);
 
-isHome.value = route.name === 'Home';
+onMounted(() => {
+    // isHome.value = route.name === 'Home';   
+});
+
+// isHome.value = computed(() => route.name === 'Home');
+isHome.value = route.name === 'Home';  
 console.log("isHome", isHome.value)
 
 function colormode() {
 
     if(isHome.value){
+        // console.log("fill:#FFF; color:#FFF;")
         return "fill:#FFF; color:#FFF;"
     }
     return "fill:#000; color:0;"
@@ -123,7 +129,7 @@ function onLeave(el, done) {
                                 >   
                                     <div v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
                                         <a class="nav-link nav-link link-dark px-lg-2 mx-1" :href="item.url" target="_blank" rel="noopener">
-                                            <svg id="icon_twitter">
+                                            <svg id="icon_twitter" :style="colormode()">
                                                 <use :xlink:href="item.icon"></use>
                                             </svg>
                                         </a>
