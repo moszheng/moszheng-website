@@ -25,7 +25,6 @@ function randomHeight(){
 
 	return "height:"+ rnd + "vh";
 	// return `height: ${ rnd } vh`
-	
 }
 </script>
 <template>

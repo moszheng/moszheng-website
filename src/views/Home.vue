@@ -86,9 +86,9 @@ setInterval(() => {
 
 #index-bgcover{
   position: absolute;
-  /* top: 0; */
+  top: 0;
   width: 100%;
-  height: 90vh;
+  height: 100vh;
 
   background-repeat: no-repeat;
   background-position: center center;

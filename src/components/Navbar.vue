@@ -1,0 +1,211 @@
+<script setup>
+import { ref, onMounted } from 'vue'
+import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+import gsap from 'gsap'
+
+import LinkData from '../data/LinkData.json'
+
+/* Nav Bar social */
+const rotateButton = () => {
+    
+    show.value = !show.value
+    
+    gsap.to('#icon_plus', {
+        
+        rotation: '+=135',
+        duration: 0.8,
+        ease: "power3.inOut", //expo.inOut
+        onComplete: () => {
+            // button.style.transform = 'none'; // 重置按钮的旋转
+        },
+    });    
+}
+function onBeforeEnter(el) {
+    gsap.set(el, {
+        // x: 40 - el.dataset.index * 5,
+        width: 0,
+        opacity: 0
+    })
+} 
+function onEnter(el, done) {
+    gsap.to(el, {
+        width: '4.5vh',
+        duration: 1,
+    })
+    gsap.to(el, {
+        delay: 0.5 - 0.1 * el.dataset.index,
+        opacity: 1,
+        duration: 1,
+        onComplete: done
+    })
+}
+
+function onLeave(el, done) {
+    gsap.to(el, {
+        
+        delay: 0.2 - 0.05 * el.dataset.index,
+        opacity: 0,
+        duration: 1,
+    })
+	gsap.to(el, {
+        
+        // delay: 0.1 * el.dataset.index,
+        width: 0,
+        opacity: 0,
+        duration: 1,
+        onComplete: done
+        // ease: 'elastic.inOut(1.5, 1)' // amp, duration
+    })
+}
+</script>
+
+<template>
+    <header class="sticky-top">
+    <nav class="container navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
+        <div class="container-fluid">
+            <!-- LOGO -->
+            <div class="navbar-brand flex-column flex-md-row align-items-center">
+                <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
+                    <!-- <h2 class="t-bold mx-lg-3 my-md-4">moszheng.design</h2> -->
+                    <svg id="mos-logo">
+                        <use xlink:href="#icon-mosLogo"></use>
+                    </svg>
+                </router-link>
+            </div>
+            <!-- navbar responsive button -->
+            <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="toggler-icon top-bar"></span>
+                <span class="toggler-icon mid-bar"></span>
+                <span class="toggler-icon bot-bar"></span>
+            </button>
+            <!-- Canvas -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!--   flex-wrap  -->
+                <div class="d-flex ms-md-auto">
+                    <ul class="navbar-nav mx-lg-4">
+                        <li class="nav-item d-flex align-items-center">
+                            <router-link :to="{ name : 'Works' }" class="nav-link link-dark px-2 me-md-4">Works</router-link>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <router-link :to="{ name : 'About' }" class="nav-link link-dark px-2 me-md-4">About</router-link>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <router-link :to="{ name : 'Contact' }" class="nav-link link-dark px-2 me-md-4">Contact</router-link>
+                        </li>
+                        <li class="nav-item d-flex align-items-center">
+                            <!--   icons  -->
+                            <div class="navbar-nav flex-row flex-wrap ms-md-auto">
+                                <TransitionGroup 
+                                    @before-enter="onBeforeEnter"
+                                    @enter="onEnter"
+                                    @leave="onLeave"
+                                >   
+                                    <div v-for="(item, index) in LinkData.socialmedia" v-show="show" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
+                                        <a class="nav-link nav-link link-dark px-lg-2 mx-1" :href="item.url" target="_blank" rel="noopener">
+                                            <svg id="icon_twitter">
+                                                <use :xlink:href="item.icon"></use>
+                                            </svg>
+                                        </a>
+                                    </div>
+                                </TransitionGroup>
+                            </div>
+                            <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
+                                <svg id="icon_plus">
+                                    <use xlink:href="#icon-plus"></use>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+             </div>
+        </div>
+    </nav>
+<!-- <div class="border-bottom"></div> -->
+</header>
+</template>
+<style>
+header  {
+  /* -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(20px);
+  background-color: hsla(0, 0%, 100%, 0.65); */
+  background-color: hsla(0, 0%, 100%, 0);
+}
+
+#mos-logo {
+    width: 150px;
+    height: 100px;
+    /* fill: #FFF; */
+    transition: .01s ease;
+}
+#mos-logo:hover{
+    fill: #ff5100;
+}
+
+/*-------- nav bar toggler icon------*/
+.navbar-toggler{
+  width: 20px;
+  height: 20px;
+  position: relative;
+  transition: .5s ease-in-out;
+}
+
+.toggler-icon-xl{
+    background: none;
+}
+/*Cancel default outline*/
+.toggler-icon-xl,
+.navbar-toggler,
+.navbar-toggler:focus,
+.navbar-toggler:active,
+.navbar-toggler-icon:focus{
+  outline: none;
+  box-shadow: none;
+  border: 0; 
+}
+.navbar-toggler span {
+  margin: 0;
+  padding: 0;
+}
+.toggler-icon{
+  display: block;
+  position: absolute;
+  height: 3px;
+  width: 100%;
+  background: black;
+  border-radius: 1px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: .25s ease-in-out;
+}
+.middle-bar {
+  margin-top: 0px;
+}
+
+/*-----*/
+.navbar-toggler .top-bar{
+  margin-top: 0px;
+  transform: rotate(135deg);
+}
+.navbar-toggler .mid-bar{
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.navbar-toggler .bot-bar{
+  margin-top: 0px;
+  transform: rotate(-135deg);
+}
+/*-----*/
+.navbar-toggler.collapsed .top-bar{
+  margin-top: -15px;
+  transform: rotate(0deg);
+}
+.navbar-toggler.collapsed .mid-bar{
+  opacity: 1;
+  filter: alpha(opacity=100);
+}
+.navbar-toggler.collapsed .bot-bar{
+  margin-top: 15px;
+  transform: rotate(0deg);
+}
+</style>

@@ -13,12 +13,12 @@ const routes = [
     { 
         path: '/', 
         name:'Home', 
-        component: () => import('./views/Home.vue')
+        component: () => import('./views/Home.vue'),
     },
     { 
         path: '/works', 
         name:'Works', 
-        component: () => import('./views/Works.vue')
+        component: () => import('./views/Works.vue'),
     },
     { 
         path: '/works/:projecturl', 
