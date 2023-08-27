@@ -41,8 +41,8 @@ const observer = new IntersectionObserver(
 
         if (entry.isIntersecting) {
             isVisible.value = true;
-            console.log(isVisible.value)
-            console.log("observed")
+            // console.log(isVisible.value)
+            // console.log("observed")
             // observer.disconnect(); // Disconnect the observer after triggering
         }
     });
@@ -54,7 +54,7 @@ const observer = new IntersectionObserver(
 onMounted(() => {
     
     const targets = document.querySelectorAll('.isVisible')
-    console.log(targets)
+    // console.log(targets)
     for (const item of targets){
         observer.observe(item);
     }

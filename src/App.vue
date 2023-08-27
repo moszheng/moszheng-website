@@ -1,22 +1,11 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import { useRoute, onBeforeRouteUpdate } from 'vue-router'
-import gsap from 'gsap'
-
 import LoadingPage from "./views/Loading.vue";
 import Navbar from "./components/Navbar.vue";
 
-const show = ref(false)
-const route = useRoute();
-const isHome = ref(false);
-
-console.log(route.name)
-
 </script>
 <template>
-<Navbar/>
+<Navbar :key="$route.path"/>
 
-<!-- :key="$route.path" -->
 <router-view v-slot="{ Component }" >
     <Transition name="fade" mode="out-in">
         <!-- <Suspense>

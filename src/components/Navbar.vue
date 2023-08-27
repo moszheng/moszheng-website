@@ -1,14 +1,34 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { useRoute, onBeforeRouteUpdate } from 'vue-router'
 import gsap from 'gsap'
 
 import LinkData from '../data/LinkData.json'
 
+const props = defineProps({
+    key: String,
+})
+const showIcon = ref(false)
+
+/* Color mode */
+const route = useRoute();
+const isHome = ref(true);
+
+isHome.value = route.name === 'Home';
+console.log("isHome", isHome.value)
+
+function colormode() {
+
+    if(isHome.value){
+        return "fill:#FFF; color:#FFF;"
+    }
+    return "fill:#000; color:0;"
+}
+
 /* Nav Bar social */
 const rotateButton = () => {
     
-    show.value = !show.value
+    showIcon.value = !showIcon.value
     
     gsap.to('#icon_plus', {
         
@@ -66,10 +86,11 @@ function onLeave(el, done) {
             <!-- LOGO -->
             <div class="navbar-brand flex-column flex-md-row align-items-center">
                 <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
-                    <!-- <h2 class="t-bold mx-lg-3 my-md-4">moszheng.design</h2> -->
-                    <svg id="mos-logo">
-                        <use xlink:href="#icon-mosLogo"></use>
-                    </svg>
+                    <Transition name="fade" mode="out-in">
+                        <svg id="mos-logo" :style="colormode()">
+                            <use xlink:href="#icon-mosLogo"></use>
+                        </svg>
+                    </Transition>
                 </router-link>
             </div>
             <!-- navbar responsive button -->
@@ -84,13 +105,13 @@ function onLeave(el, done) {
                 <div class="d-flex ms-md-auto">
                     <ul class="navbar-nav mx-lg-4">
                         <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'Works' }" class="nav-link link-dark px-2 me-md-4">Works</router-link>
+                            <router-link :to="{ name : 'Works' }" class="nav-link px-2 me-md-4" :style="colormode()">Works</router-link>
                         </li>
                         <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'About' }" class="nav-link link-dark px-2 me-md-4">About</router-link>
+                            <router-link :to="{ name : 'About' }" class="nav-link px-2 me-md-4" :style="colormode()">About</router-link>
                         </li>
                         <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'Contact' }" class="nav-link link-dark px-2 me-md-4">Contact</router-link>
+                            <router-link :to="{ name : 'Contact' }" class="nav-link px-2 me-md-4" :style="colormode()">Contact</router-link>
                         </li>
                         <li class="nav-item d-flex align-items-center">
                             <!--   icons  -->
@@ -100,7 +121,7 @@ function onLeave(el, done) {
                                     @enter="onEnter"
                                     @leave="onLeave"
                                 >   
-                                    <div v-for="(item, index) in LinkData.socialmedia" v-show="show" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
+                                    <div v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
                                         <a class="nav-link nav-link link-dark px-lg-2 mx-1" :href="item.url" target="_blank" rel="noopener">
                                             <svg id="icon_twitter">
                                                 <use :xlink:href="item.icon"></use>
@@ -110,7 +131,7 @@ function onLeave(el, done) {
                                 </TransitionGroup>
                             </div>
                             <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
-                                <svg id="icon_plus">
+                                <svg id="icon_plus" :style="colormode()">
                                     <use xlink:href="#icon-plus"></use>
                                 </svg>
                             </button>
@@ -134,8 +155,7 @@ header  {
 #mos-logo {
     width: 150px;
     height: 100px;
-    /* fill: #FFF; */
-    transition: .01s ease;
+    transition: .5s ease;
 }
 #mos-logo:hover{
     fill: #ff5100;

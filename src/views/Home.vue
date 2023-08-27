@@ -64,7 +64,8 @@ setInterval(() => {
     <!----- BG ----->
     <div id="index-bgcover" :style="bgStyles"></div>
     <!--  Intro ---->
-    <div class="index-info container d-flex justify-content-end align-items-center">
+    <div class="index-info">
+      <div class="container d-flex justify-content-end align-items-center h-100">
         <!----- Main Content----->
         <div class="mx-lg-5 px-lg-5 text-white">  
           <h5 class="mb-2">Freelance 3D Generalist</h5>
@@ -78,17 +79,18 @@ setInterval(() => {
             <button type="button" class="btn btn-primary index-btn">Explore</button>
           </router-link>
         </div>
+      </div>
     </div>
   </main>
 </template>
 
 <style>
-
 #index-bgcover{
   position: absolute;
   top: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%; 
+  z-index: -1;
 
   background-repeat: no-repeat;
   background-position: center center;
@@ -96,16 +98,15 @@ setInterval(() => {
   object-fit: cover;
   
   filter: brightness(55%);
-  z-index: -1;
   transition: background 1.2s linear; 
 }
 .index-info{
-  /* position: absolute; */
-  height: 90vh; 
+  position: absolute;
   top: 0;
+  width: 100%;
+  height: 100%; 
   z-index: 1;
-  
-} 
+}
 /* Button */
 .index-btn{
   -webkit-backdrop-filter: blur(8px);
