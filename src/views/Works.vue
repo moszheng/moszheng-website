@@ -63,7 +63,7 @@ function randomHeight(){
 </div>
 </template>
 
-<style>
+<style scoped>
 .card{
 	margin-bottom: 35px;
 }
