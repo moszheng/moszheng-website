@@ -12,10 +12,14 @@ const props = defineProps({
 
 })
 
+// data initial
 const prjdata = ref('null');
+const shuffleprj = ref('null');
 prjdata.value = WorksData.project.find(item => item.url_name == props.projecturl);
+shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0,3); // 2. shuffle array, pick top 3 item
 
 // Transfer Data
+// Other Project Random method
 const vimeo_page =  (item) => { return "https://vimeo.com/" + item ;}
 const vimeo_embed = (item) => { return "https://player.vimeo.com/video/" + item + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";}
 const img_location = (item) => { return '../src/img/'+ item }
@@ -36,12 +40,9 @@ onBeforeRouteUpdate(async (to, from) => {
     // console.log("beforeRouteUpdate")
     if (to.params.projecturl !== from.params.projecturl) {
         prjdata.value = await getWorksData(to.params.projecturl);
+        shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0,3);
     }
 })
-
-// Other Project Random method
-const excludeprj = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name) // array exclude current item
-const shuffleprj = excludeprj.sort(() => Math.random() - 0.5).slice(0,3); // 2. shuffle array, pick top 3 item
 
 /* --------Animation--------- */
 
