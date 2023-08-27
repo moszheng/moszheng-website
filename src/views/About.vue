@@ -128,7 +128,7 @@ const leave = (el, done) => {
 <div class="About" data-scroll-section>
     <main class="container-fluid" data-scroll-section>
         <!-- Intro -->
-        <section class="AboutIntro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section>
+        <section class="about-intro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section>
             <!-- profile image -->
             <div class="col-xl-6 d-flex align-items-center justify-content-center">
                 <div class="userContainer mb-md-0 mb-4" >
@@ -192,11 +192,11 @@ const leave = (el, done) => {
                 </a>
             </div>
         </section>
-        <!-- <section class="imgBanner">
+        <!-- <section class="img-banner">
             <img src="../img/03_SWSX_01.jpg" class="img-fluid">
         </section> -->
         <!-- Experience -->
-        <section class="AboutExp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white" data-scroll-section>
+        <section class="about-exp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white" data-scroll-section>
             <div class="row mt-xl-0 mt-4 mb-4 isVisible">
                 <!-- title -->
                 <div class="col-lg-3" >
@@ -255,7 +255,7 @@ const leave = (el, done) => {
         </section>
 
         <!-- Skill -->
-        <section class="AboutSkill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5" data-scroll-section>
+        <section class="about-skill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5" data-scroll-section>
             <div class="row mt-xl-0 mt-4 mb-4">
                 <div class="col-lg-3">
                     <Transition name="move" mode="out-in"
@@ -297,7 +297,7 @@ const leave = (el, done) => {
                     <!-- LOGO -->
                     <div class="row d-flex align-items-center pe-md-5">
                         <div v-for="item in LogoData.logo" class="col-lg-2 col-3 px-xl-4 py-xl-3 px-2 py-2">
-                            <img :src=item.img :alt=item.name class="img-fluid skillLogo">
+                            <img :src=item.img :alt=item.name class="img-fluid skill-logo">
                         </div>
                     </div>
                 </div>
@@ -345,20 +345,20 @@ main{
     padding-left: 0 !important;
 }
 
-.imgBanner{
+.img-banner{
     overflow : hidden;
     height: 30vh; 
 }
-.AboutIntro, .AboutExp, .AboutSkill{
+.about-intro, .about-exp, .about-skill{
     min-height: 100vh; 
 }
 
 /* BG color */
-.AboutExp{
+.about-exp{
     background-color: rgb(22, 22, 22) ;
 }
 
-.AboutSkill{
+.about-skill{
     background-color: rgb(228, 228, 228);
 }
 
@@ -385,7 +385,7 @@ main{
 	object-fit: cover;
     z-index: 10;
 }
-.skillLogo{
+.skill-logo{
     /* scale: 50%; */
     width: 7.5vh;
 }
