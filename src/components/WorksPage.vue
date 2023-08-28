@@ -32,7 +32,7 @@ const getWorksData = (id) => {
             resolve(
                 WorksData.project.find(item => item.url_name == id)
             )
-        }, 750)
+        }, 0)
     })
 }
 

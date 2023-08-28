@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar.vue";
 <template>
 <Navbar :key="$route.path"/>
 
-<router-view v-slot="{ Component }" >
+<router-view v-slot="{ Component, route }" >
     <Transition name="fade" mode="out-in">
         <!-- <Suspense>
             <template #default>
@@ -16,7 +16,7 @@ import Navbar from "./components/Navbar.vue";
                 <LoadingPage></LoadingPage>
             </template>
         </Suspense> -->
-        <component :is="Component"></component>
+        <component :is="Component" :key="route.path"></component>
     </Transition>
 </router-view>
 
