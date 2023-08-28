@@ -66,14 +66,4 @@ function randomHeight(){
 .card{
 	margin-bottom: 35px;
 }
-.card-img{
-  	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	/* vertical-align: middle; */
-  	transition: .8s ease;
-}
 </style>

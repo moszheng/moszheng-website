@@ -183,16 +183,6 @@ main{
 	margin-bottom: 35px;
     height: 25vh;
 }
-.card-img{
-  	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	/* vertical-align: middle; */
-  	transition: .8s ease;
-}
 
 /* img */
 
@@ -207,13 +197,12 @@ main{
     position: absolute;
     top: 50%;
     left: 50%;
-    object-fit: cover;
     transform: translate(-50%, -50%);
-    max-width: none; /* 取消最大宽度限制 */
-    max-height: none; /* 取消最大高度限制 */
+    max-width: none;
+    max-height: none;
+    object-fit: cover;
     /* object-fit: cover; */
     /* height: 50vh; */
-    
     /* scale : 200%; */
     transition: .5s;
 }
