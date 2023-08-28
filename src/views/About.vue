@@ -32,41 +32,41 @@ const development = [
 /*------------ Transition GSAP --------------------*/
 
 const isVisible = ref(false);
+const isVisible1 = ref(false);
 
 let options = {
   root: document.querySelector(".About"),
-  threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
+  threshold: [0.2]
 };
-
 let prevRatio = 0;
-
-const callback = (entries, observer) => { 
-
-    entries.forEach(entry => {
-
+const callback = (entries) => { 
+    entries.forEach(entry=> {
         const {intersectionRatio, target} = entry;
-        
         if (intersectionRatio > prevRatio) {
-
             isVisible.value = true;
-            // target.style.backgroundColor = `rgba(40, 40, 190, ${intersectionRatio})`; 
-            console.log(target, target.test)
         }
-        prevRatio = intersectionRatio;
-        console.log(prevRatio)
+    });
+};
+const callback1 = (entries) => { 
+    entries.forEach(entry=> {
+        const {intersectionRatio, target} = entry;
+        if (intersectionRatio > prevRatio) {
+            isVisible1.value = true;
+        }
     });
 };
 // Create an Intersection Observer
 const observer = new IntersectionObserver( callback, options );
+const observer1 = new IntersectionObserver( callback1, options );
 
 // Attach the observer to the target element
 onMounted(() => {
-    
     const targets = document.querySelectorAll('.isVisible')
-    // console.log(targets)
-    for (const item of targets){
-        observer.observe(item);
-    }
+    // for (const item of targets){
+    //     observer.observe(item);
+    // }
+    observer.observe(targets[0]);
+    observer1.observe(targets[1]);
 
     window.addEventListener('scroll', handleScroll);
 });
@@ -270,7 +270,7 @@ const leave = (el, done) => {
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-                    <h2 class="mb-4 " v-if="isVisible" data-scroll data-scroll-speed="1">Service & Skill</h2>
+                    <h2 class="mb-4 " v-if="isVisible1" data-scroll data-scroll-speed="1">Service & Skill</h2>
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-md-5 ">
@@ -279,27 +279,27 @@ const leave = (el, done) => {
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
-                                <h3 class="mb-5" v-if="isVisible">Motion Design</h3>
+                                <h3 class="mb-5" v-if="isVisible1">Motion Design</h3>
                             </Transition>
                             <TransitionGroup :css="false"    
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                                 @leave="leave"
                             >
-                                <h5 class="mb-3 " v-if="isVisible" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"> {{item.name}} </h5>
+                                <h5 class="mb-3 " v-if="isVisible1" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"> {{item.name}} </h5>
                             </TransitionGroup>
                         </div>
                         <div class="col-md-6">
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
-                                <h3 class="mb-5" v-if="isVisible">Development</h3>
+                                <h3 class="mb-5" v-if="isVisible1">Development</h3>
                             </Transition>
                             <TransitionGroup :css="false"    
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                             >
-                            <h5 class="mb-3" v-if="isVisible" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
+                            <h5 class="mb-3" v-if="isVisible1" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
                             </TransitionGroup>
                         </div>
                     </div>
