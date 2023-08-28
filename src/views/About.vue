@@ -43,14 +43,18 @@ const changeNavbarState = (state) => {
 
 let options = {
   root: document.querySelector(".About"),
-  threshold: [0.2]
+  threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
 };
 let prevRatio = 0;
 const callback = (entries) => { 
     entries.forEach(entry=> {
         const {intersectionRatio, target} = entry;
-        if (intersectionRatio > prevRatio) {
+        console.log("intersectionRatio", intersectionRatio)
+        if (intersectionRatio > 0.3) {
             isVisible.value = true;
+        }
+        // Change Darkmode
+        if (intersectionRatio > 0.8) {
             changeNavbarState(true)
         }
         else{changeNavbarState(false)}
@@ -214,8 +218,8 @@ const leave = (el, done) => {
             <img src="../img/03_SWSX_01.jpg" class="img-fluid">
         </section> -->
         <!-- Experience -->
-        <section class="about-exp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white" data-scroll-section>
-            <div class="row mt-xl-0 mt-4 mb-4 isVisible">
+        <section class="about-exp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white isVisible" data-scroll-section>
+            <div class="row mt-xl-0 mt-4 mb-4">
                 <!-- title -->
                 <div class="col-lg-3" >
                     <Transition name="move" mode="out-in"

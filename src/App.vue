@@ -9,7 +9,7 @@ const darkmode = store.state.navbardarkmode;
 
 </script>
 <template>
-<Navbar :is-active="navbardarkmode" :key="$route.path"/>
+<Navbar :key="$route.path"/>
 
 <router-view v-slot="{ Component, route }" >
     <Transition name="fade" mode="out-in">

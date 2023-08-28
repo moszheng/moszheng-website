@@ -1,31 +1,19 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import { useRoute, onBeforeRouteUpdate } from 'vue-router'
 import { useStore } from 'vuex';
 import gsap from 'gsap'
 
 import LinkData from '../data/LinkData.json'
 
-const props = defineProps({
-    key: String,
-})
 const showIcon = ref(false)
 
-/* Color mode */
+/*---- Color mode --------*/
 const store = useStore();
-const darkmode = store.state.navbardarkmode;
-const route = useRoute();
 
 // update Darkmode 
-function colormode() {
-
-    // console.log("darkmode", darkmode)
-
-    if(darkmode){
-        return "fill:#FFF; color:#FFF;"
-    }
-    return "fill:#000; color:0;"
-}
+const colormode = computed(() => {
+  return store.state.navbardarkmode ? "fill:#FFF; color:#FFF;" : "fill:#000; color:#000;";
+});
 
 /* Nav Bar social */
 const rotateButton = () => {
@@ -89,7 +77,7 @@ function onLeave(el, done) {
             <div class="navbar-brand flex-column flex-md-row align-items-center">
                 <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
                     <Transition name="fade" mode="out-in">
-                        <svg id="mos-logo" :style="colormode()">
+                        <svg id="mos-logo" :style="colormode">
                             <use xlink:href="#icon-mosLogo"></use>
                         </svg>
                     </Transition>
@@ -98,17 +86,17 @@ function onLeave(el, done) {
             <!-- navbar responsive button -->
             <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="toggler-icon top-bar">
-                    <svg id="icon_twitter" :style="colormode()">
+                    <svg id="icon_twitter" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
                 <span class="toggler-icon mid-bar">
-                    <svg id="icon_twitter" :style="colormode()">
+                    <svg id="icon_twitter" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
                 <span class="toggler-icon bot-bar">
-                    <svg id="icon_twitter" :style="colormode()">
+                    <svg id="icon_twitter" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
@@ -119,13 +107,13 @@ function onLeave(el, done) {
                 <div class="d-flex ms-md-auto">
                     <ul class="navbar-nav mx-lg-4">
                         <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'Works' }" class="nav-link px-2 me-md-4" :style="colormode()">Works</router-link>
+                            <router-link :to="{ name : 'Works' }" class="nav-link px-2 me-md-4" :style="colormode">Works</router-link>
                         </li>
                         <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'About' }" class="nav-link px-2 me-md-4" :style="colormode()">About</router-link>
+                            <router-link :to="{ name : 'About' }" class="nav-link px-2 me-md-4" :style="colormode">About</router-link>
                         </li>
                         <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'Contact' }" class="nav-link px-2 me-md-4" :style="colormode()">Contact</router-link>
+                            <router-link :to="{ name : 'Contact' }" class="nav-link px-2 me-md-4" :style="colormode">Contact</router-link>
                         </li>
                         <li class="nav-item d-flex align-items-center">
                             <!--   icons  -->
@@ -137,7 +125,7 @@ function onLeave(el, done) {
                                 >   
                                     <div v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
                                         <a class="nav-link nav-link link-dark px-lg-2 mx-1" :href="item.url" target="_blank" rel="noopener">
-                                            <svg id="icon_twitter" :style="colormode()">
+                                            <svg id="icon_twitter" :style="colormode">
                                                 <use :xlink:href="item.icon"></use>
                                             </svg>
                                         </a>
@@ -145,7 +133,7 @@ function onLeave(el, done) {
                                 </TransitionGroup>
                             </div>
                             <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
-                                <svg id="icon_plus" :style="colormode()">
+                                <svg id="icon_plus" :style="colormode">
                                     <use xlink:href="#icon-plus"></use>
                                 </svg>
                             </button>
@@ -169,12 +157,11 @@ header  {
 #mos-logo {
     width: 150px;
     height: 100px;
-    transition: .5s ease;
+    transition: .8s ease;
 }
-#mos-logo:hover{
-    fill: #ff5100;
+.nav-link, .icon_plus{
+    transition: .8s ease;
 }
-
 /*-------- nav bar toggler icon------*/
 .navbar-toggler{
   width: 20px;
