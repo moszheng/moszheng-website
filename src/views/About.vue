@@ -29,26 +29,35 @@ const development = [
     { name : 'Frontend Developing'}
 ]
 
-/* Transition GSAP */
+/*------------ Transition GSAP --------------------*/
+
 const isVisible = ref(false);
 
-// Create an Intersection Observer
-const observer = new IntersectionObserver(
+let options = {
+  root: document.querySelector(".About"),
+  threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
+};
 
-  (entries) => {
+let prevRatio = 0;
 
-    entries.forEach( entry =>{
+const callback = (entries, observer) => { 
 
-        if (entry.isIntersecting) {
+    entries.forEach(entry => {
+
+        const {intersectionRatio, target} = entry;
+        
+        if (intersectionRatio > prevRatio) {
+
             isVisible.value = true;
-            // console.log(isVisible.value)
-            // console.log("observed")
-            // observer.disconnect(); // Disconnect the observer after triggering
+            // target.style.backgroundColor = `rgba(40, 40, 190, ${intersectionRatio})`; 
+            console.log(target, target.test)
         }
+        prevRatio = intersectionRatio;
+        console.log(prevRatio)
     });
-  },
-  { threshold: 0.5 } // Adjust the threshold as needed
-);
+};
+// Create an Intersection Observer
+const observer = new IntersectionObserver( callback, options );
 
 // Attach the observer to the target element
 onMounted(() => {
@@ -256,7 +265,7 @@ const leave = (el, done) => {
 
         <!-- Skill -->
         <section class="about-skill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5" data-scroll-section>
-            <div class="row mt-xl-0 mt-4 mb-4">
+            <div class="skill row mt-xl-0 mt-4 mb-4 isVisible">
                 <div class="col-lg-3">
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
@@ -266,7 +275,7 @@ const leave = (el, done) => {
                 </div>
                 <div class="col-lg-9 px-md-5 ">
                     <div class="row mb-5">
-                        <div class="col-md-6 mb-md-0 mb-5 isVisible">
+                        <div class="col-md-6 mb-md-0 mb-5">
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
