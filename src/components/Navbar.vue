@@ -101,9 +101,21 @@ function onLeave(el, done) {
             </div>
             <!-- navbar responsive button -->
             <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="toggler-icon top-bar"></span>
-                <span class="toggler-icon mid-bar"></span>
-                <span class="toggler-icon bot-bar"></span>
+                <span class="toggler-icon top-bar">
+                    <svg id="icon_twitter" :style="colormode()">
+                        <use xlink:href="#icon-line"></use>
+                    </svg>
+                </span>
+                <span class="toggler-icon mid-bar">
+                    <svg id="icon_twitter" :style="colormode()">
+                        <use xlink:href="#icon-line"></use>
+                    </svg>
+                </span>
+                <span class="toggler-icon bot-bar">
+                    <svg id="icon_twitter" :style="colormode()">
+                        <use xlink:href="#icon-line"></use>
+                    </svg>
+                </span>
             </button>
             <!-- Canvas -->
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -197,8 +209,6 @@ header  {
   position: absolute;
   height: 3px;
   width: 100%;
-  background: black;
-  border-radius: 1px;
   opacity: 1;
   left: 0;
   transform: rotate(0deg);
