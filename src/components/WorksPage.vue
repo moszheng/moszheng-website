@@ -68,7 +68,7 @@ const sigleEnter = (el, done) => {
         <iframe :src=vimeo_embed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
-        <div class="TitleDsc mb-5 mx-md-3 mx-2 px-md-5">
+        <div class="title-section mb-5 mx-md-3 mx-2 px-md-5">
             <Transition name="move" mode="out-in" appear
                 @before-enter="beforeEnter"
                 @enter="sigleEnter">
@@ -92,7 +92,7 @@ const sigleEnter = (el, done) => {
                 </a>
             </div>
         </div>
-        <section class="WorkDsc row mx-md-3 mx-1 mb-md-0 mb-5 px-md-5">
+        <section class="work-section row mx-md-3 mx-1 mb-md-0 mb-5 px-md-5">
             <div class="col-md-5 mb-md-0 mb-5">
                 <div class="imgContainer">
                     <!-- -->
@@ -111,8 +111,8 @@ const sigleEnter = (el, done) => {
                 </div>
             </div>
         </section>
-        <!-- Credit -->
-        <div class="Credit row mx-md-3 mx-1 px-md-5 mb-5">
+        <!-- credit -->
+        <div class="credit row mx-md-3 mx-1 px-md-5 mb-5">
             <div class="col-md-5">
                 
             </div>
@@ -165,10 +165,10 @@ main{
     padding-left: 0 !important;
     
 }
-.TitleDsc{
+.title-section{
     min-height: 25vh;
 }
-.WorkDsc, .Credit{
+.work-section, .credit{
     min-height: 60vh;
 }
 .OtherPrj{
@@ -176,6 +176,22 @@ main{
     display: flex;
     align-items: center;
     background-color: #0e0e0e;
+}
+
+/* Card */
+.card{
+	margin-bottom: 35px;
+    height: 25vh;
+}
+.card-img{
+  	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	/* vertical-align: middle; */
+  	transition: .8s ease;
 }
 
 /* img */
