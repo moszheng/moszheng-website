@@ -1,10 +1,15 @@
 <script setup>
+import { useStore } from 'vuex';
+
 import LoadingPage from "./views/Loading.vue";
 import Navbar from "./components/Navbar.vue";
 
+const store = useStore();
+const darkmode = store.state.navbardarkmode;
+
 </script>
 <template>
-<Navbar :key="$route.path"/>
+<Navbar :is-active="navbardarkmode" :key="$route.path"/>
 
 <router-view v-slot="{ Component, route }" >
     <Transition name="fade" mode="out-in">

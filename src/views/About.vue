@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { useStore } from 'vuex';
 import gsap from 'gsap'
 
 import Footer from '../components/Footer.vue'
@@ -34,6 +35,12 @@ const development = [
 const isVisible = ref(false);
 const isVisible1 = ref(false);
 
+const store = useStore();
+const changeNavbarState = (state) => {
+    console.log("changenavstate", state)
+  store.commit('changeNavbarState', state);
+};
+
 let options = {
   root: document.querySelector(".About"),
   threshold: [0.2]
@@ -44,7 +51,9 @@ const callback = (entries) => {
         const {intersectionRatio, target} = entry;
         if (intersectionRatio > prevRatio) {
             isVisible.value = true;
+            changeNavbarState(true)
         }
+        else{changeNavbarState(false)}
     });
 };
 const callback1 = (entries) => { 

@@ -1,5 +1,6 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router';
+import { createStore } from 'vuex'
 
 import './assets/main.css'
 // import LocomotiveScroll from 'locomotive-scroll';
@@ -64,9 +65,29 @@ const router = createRouter({
     },
 });
 
-// router.beforeEach((to, from, next) => {
-//     console.log("beforeEach_to : " , to)
-//     next()
-// })
+// if enter to home page, update navbar state
+router.beforeEach((to, from, next) => {
+    
+    if(to.name == 'Home'){
+        store.commit('changeNavbarState', true);
+    }
+    else{
+        store.commit('changeNavbarState', false);
+    }
+    next()
+})
 
-createApp(App).use(router).mount('#app')
+const store = createStore({
+    state () {
+        return {
+            navbardarkmode: true,
+        }
+    },
+    mutations: {
+        changeNavbarState(state, isActive) {
+            state.navbardarkmode = isActive;
+        },
+    }
+})
+
+createApp(App).use(store).use(router).mount('#app')

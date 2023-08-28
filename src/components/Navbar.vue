@@ -1,6 +1,7 @@
 <script setup>
 import { ref, onMounted, computed } from 'vue'
 import { useRoute, onBeforeRouteUpdate } from 'vue-router'
+import { useStore } from 'vuex';
 import gsap from 'gsap'
 
 import LinkData from '../data/LinkData.json'
@@ -11,21 +12,16 @@ const props = defineProps({
 const showIcon = ref(false)
 
 /* Color mode */
+const store = useStore();
+const darkmode = store.state.navbardarkmode;
 const route = useRoute();
-const isHome = ref(true);
 
-onMounted(() => {
-    // isHome.value = route.name === 'Home';   
-});
-
-// isHome.value = computed(() => route.name === 'Home');
-isHome.value = route.name === 'Home';  
-console.log("isHome", isHome.value)
-
+// update Darkmode 
 function colormode() {
 
-    if(isHome.value){
-        // console.log("fill:#FFF; color:#FFF;")
+    // console.log("darkmode", darkmode)
+
+    if(darkmode){
         return "fill:#FFF; color:#FFF;"
     }
     return "fill:#000; color:0;"
