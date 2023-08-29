@@ -35,13 +35,13 @@ input {
 }
 .works-black, .works-text{
   position: absolute;
-  bottom: 0; 
+  bottom: 0;
   width: 100%;
   overflow: hidden;
   opacity: 0;
 }
 .works-text{
-  height: 25%; 
+  height: 10vh;
   transition: .4s ease;
 }
 .works-black{
@@ -61,11 +61,12 @@ input {
 /* Hover*/
 
 .card:hover .works-text {
-  height: 30%;
+  /* height: 30%; */
+  bottom: 0; 
   opacity: 1;
 }
 .card:hover .works-black {
-  height: 50%;
+  height: 70%;
   opacity: 1;
 }
 .card:hover .card-img {
