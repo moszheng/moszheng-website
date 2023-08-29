@@ -48,18 +48,18 @@ const routes = [
 ];
 
 // Lenis
-const lenis = new Lenis()
+// const lenis = new Lenis()
 
-lenis.on('scroll', (e) => {
-  console.log(e)
-})
+// lenis.on('scroll', (e) => {
+// //   console.log(e)
+// })
 
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
-}
+// function raf(time) {
+//   lenis.raf(time)
+//   requestAnimationFrame(raf)
+// }
 
-requestAnimationFrame(raf)
+// requestAnimationFrame(raf)
 
 // Router method
 const router = createRouter({
@@ -73,14 +73,13 @@ const router = createRouter({
 
 // if enter to home page, update navbar state
 router.beforeEach((to, from, next) => {
-
-    if (to.name == 'Home'){
+    if (to.name == 'Home') {
         store.commit('changeNavbarState', true);
     }
     else {
         store.commit('changeNavbarState', false);
     }
-    next()
+    next();
 })
 
 const store = createStore({
