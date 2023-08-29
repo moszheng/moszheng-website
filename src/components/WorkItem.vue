@@ -3,7 +3,7 @@ import { ref } from 'vue'
 import { onBeforeRouteUpdate } from 'vue-router'
 import gsap from 'gsap'
 
-import Footer from './Footer.vue'
+import FooterItem from './FooterItem.vue'
 import WorksData from '../data/WorksData.json'
 
 const props = defineProps({
@@ -20,9 +20,9 @@ shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.va
 
 // Transfer Data
 // Other Project Random method
-const vimeo_page = (item) => { return "https://vimeo.com/" + item;}
-const vimeo_embed = (item) => { return "https://player.vimeo.com/video/" + item + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";}
-const img_location = (item) => { return '../src/img/'+ item }
+const vimeo_page = (item) => {return "https://vimeo.com/" + item;}
+const vimeo_embed = (item) => {return "https://player.vimeo.com/video/" + item + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";}
+const img_location = (item) => {return '../src/img/'+ item}
 
 /* ---------Router Fix-----------*/
 
@@ -102,8 +102,6 @@ const sigleEnter = (el, done) => {
             <!-- Right Content -->
             <div class="col-md-5">
                 <div class="">
-                    <!-- <p>The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.</p>
-                    <p>During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally.</p> -->
                     <p v-for="item in prjdata.msg">
                         {{item}}
                     </p>
@@ -148,7 +146,7 @@ const sigleEnter = (el, done) => {
             </div>
         </div>
     </section>
-    <Footer />
+    <FooterItem />
 </div>
 </template>
 <style>

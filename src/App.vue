@@ -1,6 +1,6 @@
 <script setup>
 // import LoadingPage from './views/Loading.vue';
-import Navbar from './components/Navbar.vue'
+import Navbar from './components/NavbarItem.vue'
 
 </script>
 <template>

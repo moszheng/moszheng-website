@@ -3,7 +3,7 @@ import {ref, onMounted, onBeforeUnmount} from 'vue'
 import {useStore} from 'vuex'
 import gsap from 'gsap'
 
-import Footer from '../components/Footer.vue'
+import FooterItem from '../components/FooterItem.vue'
 import LinkData from '../data/LinkData.json'
 // import WorksData from '../data/WorksData.json';
 import LogoData from '../data/LogoData.json'
@@ -354,7 +354,7 @@ const leave = (el, done) => {
             </a>
         </div>
     </main>
-    <Footer />
+    <FooterItem />
 </div>
 </template>
 

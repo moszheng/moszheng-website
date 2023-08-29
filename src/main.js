@@ -14,17 +14,17 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: () => import('./views/Home.vue'),
+        component: () => import('./views/HomePage.vue'),
     },
     {
         path: '/works',
         name: 'Works',
-        component: () => import('./views/Works.vue'),
+        component: () => import('./views/WorksPage.vue'),
     },
     {
         path: '/works/:projecturl',
         name: 'WorksPage',
-        component: () => import('./components/WorksPage.vue'),
+        component: () => import('./components/WorkItem.vue'),
         // beforeEnter: (to, from) => {
         //     console.log("beforeEnter")
         //     return true
@@ -34,16 +34,16 @@ const routes = [
     {
         path: '/about',
         name: 'About',
-        component: () => import('./views/About.vue'),
+        component: () => import('./views/AboutPage.vue'),
     },
     {
         path: '/contact',
         name: 'Contact',
-        component: () => import('./views/Contact.vue'),
+        component: () => import('./views/ContactPage.vue'),
     },
     {
         path: '/:catchAll(.*)',
-        component: () => import('./views/NotFound.vue'),
+        component: () => import('./views/NotFoundPage.vue'),
     },
 ];
 
