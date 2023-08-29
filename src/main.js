@@ -47,13 +47,7 @@ const routes = [
     },
 ];
 
-
-// const scroll = new LocomotiveScroll({
-//     el: document.querySelector('[data-scroll-container]'),
-//     smooth: true,
-//     lerp: 0.08
-// });
-// console.log(scroll)
+// Lenis
 const lenis = new Lenis()
 
 lenis.on('scroll', (e) => {
