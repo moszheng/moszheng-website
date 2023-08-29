@@ -147,10 +147,10 @@ const leave = (el, done) => {
 }
 </script>
 <template>
-<div class="About" data-scroll-section>
-    <main class="container-fluid" data-scroll-section>
+<div class="About">
+    <main class="container-fluid">
         <!-- Intro -->
-        <section class="about-intro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5" data-scroll-section>
+        <section class="about-intro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5">
             <!-- profile image -->
             <div class="col-xl-6 d-flex align-items-center justify-content-center">
                 <div class="userContainer mb-md-0 mb-4" >
@@ -218,7 +218,7 @@ const leave = (el, done) => {
             <img src="../img/03_SWSX_01.jpg" class="img-fluid">
         </section> -->
         <!-- Experience -->
-        <section class="about-exp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white isVisible" data-scroll-section>
+        <section class="about-exp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white isVisible">
             <div class="row mt-xl-0 mt-4 mb-4">
                 <!-- title -->
                 <div class="col-lg-3" >
@@ -277,13 +277,13 @@ const leave = (el, done) => {
         </section>
 
         <!-- Skill -->
-        <section class="about-skill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5" data-scroll-section>
+        <section class="about-skill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5">
             <div class="skill row mt-xl-0 mt-4 mb-4 isVisible">
                 <div class="col-lg-3">
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-                    <h2 class="mb-4 " v-if="isVisible1" data-scroll data-scroll-speed="1">Service & Skill</h2>
+                    <h2 class="mb-4 " v-if="isVisible1">Service & Skill</h2>
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-md-5 ">
@@ -326,7 +326,7 @@ const leave = (el, done) => {
             </div>
         </section>
         <!-- Recent Prj -->
-        <!-- <section class="mb-4 px-md-5 px-1 " data-scroll-section>
+        <!-- <section class="mb-4 px-md-5 px-1 ">
             <h2>Recent Project</h2>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                 <div class="row">

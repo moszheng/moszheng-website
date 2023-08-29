@@ -28,8 +28,8 @@ function randomHeight(){
 }
 </script>
 <template>
-<div data-scroll-container>
-    <main class="container flex-xl-nowrap" data-scroll-section>
+<div>
+    <main class="container flex-xl-nowrap">
 		<!----- Main Content----->
 		<!-- py-md-3 pl-md-5 px-xl-3 -->
 		<!-- -->
