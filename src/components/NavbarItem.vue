@@ -46,7 +46,6 @@ function onEnter(el, done) {
         onComplete: done,
     });
 };
-
 function onLeave(el, done) {
     gsap.to(el, {
         delay: 0.2 - 0.05 * el.dataset.index,

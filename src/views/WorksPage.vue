@@ -12,19 +12,16 @@ onMounted(() => {
     // initialize masonry
     const row = document.querySelector("[data-masonry]");
     new Masonry(row, {
-		// options
 		percentPosition: true,
-		// gutter: 20
     });
 });
 
-function randomHeight(){
+function randomHeight() {
 	const rndmax = 50;
 	const rndmin = 25;
 	const rnd = Math.floor( Math.random()*( rndmax - rndmin + 1 )) + rndmin;
 
-	return "height:"+ rnd + "vh";
-	// return `height: ${ rnd } vh`
+	return `height: ${ rnd }vh`;
 };
 </script>
 <template>

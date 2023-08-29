@@ -31,5 +31,6 @@ module.exports = {
     'linebreak-style': ['off', 'windows'],
     'indent': ['off', 2],
     'max-len': ['error', {code: 180}],
+    'require-jsdoc': 0,
   },
 };

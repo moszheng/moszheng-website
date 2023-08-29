@@ -36,17 +36,17 @@ const isVisible1 = ref(false);
 
 const store = useStore();
 const changeNavbarState = (state) => {
-    console.log('changenavstate', state)
-  store.commit('changeNavbarState', state);
+    console.log('changenavstate', state);
+    store.commit('changeNavbarState', state);
 };
 
 const options = {
   root: document.querySelector('.About'),
-  threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
+  threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
 };
 const prevRatio = 0;
 const callback = (entries) => {
-    entries.forEach(entry=> {
+    entries.forEach((entry)=> {
         const {intersectionRatio, target} = entry;
         // console.log('intersectionRatio', intersectionRatio)
         if (intersectionRatio > 0.3) {
@@ -54,13 +54,15 @@ const callback = (entries) => {
         }
         // Change Darkmode
         if (intersectionRatio > 0.8) {
-            changeNavbarState(true)
+            changeNavbarState(true);
         }
-        else {changeNavbarState(false)}
+        else {
+            changeNavbarState(false);
+        }
     });
 };
 const callback1 = (entries) => {
-    entries.forEach(entry=> {
+    entries.forEach((entry)=> {
         const {intersectionRatio, target} = entry;
         if (intersectionRatio > prevRatio) {
             isVisible1.value = true;
@@ -166,7 +168,7 @@ const leave = (el, done) => {
 
                     </Transition>
 
-                    <Transition name="move" mode="out-in" appear 
+                    <Transition name="move" mode="out-in" appear
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
 
@@ -316,7 +318,7 @@ const leave = (el, done) => {
                     </div>
                     <!-- LOGO -->
                     <div class="row d-flex align-items-center pe-md-5">
-                        <div v-for="item in LogoData.logo" class="col-lg-2 col-3 px-xl-4 py-xl-3 px-2 py-2">
+                        <div v-for="item in LogoData.logo" :key="item.name" class="col-lg-2 col-3 px-xl-4 py-xl-3 px-2 py-2">
                             <img :src=item.img :alt=item.name class="img-fluid skill-logo">
                         </div>
                     </div>
