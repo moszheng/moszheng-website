@@ -4,7 +4,7 @@ import { createStore } from 'vuex'
 
 import './assets/main.css'
 // import LocomotiveScroll from 'locomotive-scroll';
-
+import Lenis from '@studio-freight/lenis'
 // Import our custom CSS
 import './scss/styles.scss'
 
@@ -54,6 +54,18 @@ const routes = [
 //     lerp: 0.08
 // });
 // console.log(scroll)
+const lenis = new Lenis()
+
+lenis.on('scroll', (e) => {
+  console.log(e)
+})
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
 
 // Router method
 const router = createRouter({
