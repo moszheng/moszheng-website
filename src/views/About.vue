@@ -1,55 +1,54 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
-import { useStore } from 'vuex';
+import {ref, onMounted, onBeforeUnmount} from 'vue'
+import {useStore} from 'vuex'
 import gsap from 'gsap'
 
 import Footer from '../components/Footer.vue'
 import LinkData from '../data/LinkData.json'
-import WorksData from '../data/WorksData.json'
+// import WorksData from '../data/WorksData.json';
 import LogoData from '../data/LogoData.json'
 import ExpData from '../data/Experience.json'
 
 // Return Real route
-const img_location = (item) => { return '../src/img/'+ item }
 const profile_image_1 = '../src/img/profile_1.png';
 const profile_image_2 = '../src/img/profile_2.png';
 
 const motiondesign = [
-    { name : 'Modeling'},
-    { name : 'Texturing'},
-    { name : 'Lighting'},
-    { name : 'Rendering'},
-    { name : 'Compositing'},
-    { name : 'VFX Simulating'}
-]
+    {name: 'Modeling'},
+    {name: 'Texturing'},
+    {name: 'Lighting'},
+    {name: 'Rendering'},
+    {name: 'Compositing'},
+    {name: 'VFX Simulating'},
+];
 
 const development = [
-    { name : 'C4D Python Plug-in'},
-    { name : 'After Effects Scripts'},
-    { name : 'Project Workflow R&D'},
-    { name : 'Frontend Developing'}
-]
+    {name: 'C4D Python Plug-in'},
+    {name: 'After Effects Scripts'},
+    {name: 'Project Workflow R&D'},
+    {name: 'Frontend Developing'},
+];
 
-/*------------ Transition GSAP --------------------*/
+/* ------------ Transition GSAP --------------------*/
 
 const isVisible = ref(false);
 const isVisible1 = ref(false);
 
 const store = useStore();
 const changeNavbarState = (state) => {
-    console.log("changenavstate", state)
+    console.log('changenavstate', state)
   store.commit('changeNavbarState', state);
 };
 
 let options = {
-  root: document.querySelector(".About"),
+  root: document.querySelector('.About'),
   threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
 };
 let prevRatio = 0;
-const callback = (entries) => { 
+const callback = (entries) => {
     entries.forEach(entry=> {
         const {intersectionRatio, target} = entry;
-        console.log("intersectionRatio", intersectionRatio)
+        // console.log('intersectionRatio', intersectionRatio)
         if (intersectionRatio > 0.3) {
             isVisible.value = true;
         }
@@ -57,10 +56,10 @@ const callback = (entries) => {
         if (intersectionRatio > 0.8) {
             changeNavbarState(true)
         }
-        else{changeNavbarState(false)}
+        else {changeNavbarState(false)}
     });
 };
-const callback1 = (entries) => { 
+const callback1 = (entries) => {
     entries.forEach(entry=> {
         const {intersectionRatio, target} = entry;
         if (intersectionRatio > prevRatio) {
@@ -88,7 +87,7 @@ onBeforeUnmount(() => {
 });
 
 /* Scroll picture*/
-const scrollPosition =  ref(0)
+const scrollPosition = ref(0);
 
 const handleScroll = () => {
     scrollPosition.value = window.scrollY;
@@ -114,37 +113,37 @@ const beforeEnter = (el) => {
     el.style.opacity = 0;
     el.style.transform = 'translateY(50px)'
 
-}
+};
 const enter = (el, done) => {
     // console.log("cc")
     gsap.to(el, {
-        opacity:1 ,
+        opacity: 1,
         y: 0,
         delay: el.dataset.index * 0.2 + 0.8,
         duration: 0.4,
-        ease: "power3.Out",
-        onComplete: done
-    })
-}
+        ease: 'power3.Out',
+        onComplete: done,
+    });
+};
 const sigleEnter = (el, done) => {
     // console.log("cc")
     gsap.to(el, {
-        opacity: 1 ,
+        opacity: 1,
         y: 0,
         duration: 1,
-        onComplete: done
-    })
-}
+        onComplete: done,
+    });
+};
 
 const leave = (el, done) => {
     // console.log("cc")
     gsap.to(el, {
-        opacity: 0 ,
+        opacity: 0,
         y: 80,
         duration: el.dataset.index * 0.4,
-        onComplete: done
-    })
-}
+        onComplete: done,
+    });
+};
 </script>
 <template>
 <div class="About">
@@ -163,7 +162,7 @@ const leave = (el, done) => {
                     <Transition name="move" mode="out-in" appear
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-                        
+
                         <h1 class="mb-5" >Sheng Wen Cheng</h1>
 
                     </Transition>
@@ -194,16 +193,16 @@ const leave = (el, done) => {
                         </a>
                     </li>
                 </ul>
-                <TransitionGroup appear :css="false"    
+                <TransitionGroup appear :css="false"
                     @before-enter="beforeEnter"
                     @enter="enter"
-                >   
+                >
                    <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
                         <svg id="icon_twitter">
                             <use :xlink:href="item.icon"></use>
                         </svg>
                         <span class="ms-3">{{ item.text }}</span>
-                    </div> 
+                    </div>
                 </TransitionGroup>
             </div>
             <div class="container-fluid text-center">
@@ -369,10 +368,10 @@ main{
 
 .img-banner{
     overflow : hidden;
-    height: 30vh; 
+    height: 30vh;
 }
 .about-intro, .about-exp, .about-skill{
-    min-height: 100vh; 
+    min-height: 100vh;
 }
 
 /* BG color */
@@ -388,23 +387,23 @@ main{
 .userContainer{
     position: relative;
     width: 50vh;
-    height: 50vh; 
+    height: 50vh;
     overflow: hidden;
 }
 .avatar-user_1{
     position: absolute;
-	top: 0;
-	left: 0;
+    top: 0;
+    left: 0;
     transform: scale(1.2);
-	object-fit: cover;
+    object-fit: cover;
     z-index: 20;
 }
 .avatar-user_2 {
     position: absolute;
-	top: 0;
-	left: 0;
+    top: 0;
+    left: 0;
     transform: scale(1.2);
-	object-fit: cover;
+    object-fit: cover;
     z-index: 10;
 }
 .skill-logo{

@@ -8,7 +8,6 @@ import { ref } from 'vue'
     <main class="Contact container">
         <div class="row py-5">
             <div class="col-xl-6">
-                
             </div>
             <div class="col-xl-6">
                 <form name="submit-to-google-sheet">

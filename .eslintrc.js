@@ -28,5 +28,8 @@ module.exports = {
     'vue',
   ],
   'rules': {
+    'linebreak-style': ['off', 'windows'],
+    'indent': ['off', 2],
+    'max-len': ['error', {code: 140}],
   },
 };

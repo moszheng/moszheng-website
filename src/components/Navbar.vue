@@ -1,72 +1,67 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
-import { useStore } from 'vuex';
+import {ref, computed} from 'vue'
+import {useStore} from 'vuex'
 import gsap from 'gsap'
 
 import LinkData from '../data/LinkData.json'
 
-const showIcon = ref(false)
+const showIcon = ref(false);
 
-/*---- Color mode --------*/
+/* ---- Color mode --------*/
 const store = useStore();
 
-// update Darkmode 
+// update Darkmode
 const colormode = computed(() => {
-  return store.state.navbardarkmode ? "fill:#FFF; color:#FFF;" : "fill:#000; color:#000;";
+  return store.state.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
 });
 
 /* Nav Bar social */
 const rotateButton = () => {
-    
-    showIcon.value = !showIcon.value
-    
+    showIcon.value = !showIcon.value;
     gsap.to('#icon_plus', {
-        
         rotation: '+=135',
         duration: 0.8,
-        ease: "power3.inOut", //expo.inOut
+        ease: 'power3.inOut',
         onComplete: () => {
-            // button.style.transform = 'none'; // 重置按钮的旋转
+            // button.style.transform = 'none';
         },
-    });    
-}
+    });
+};
 function onBeforeEnter(el) {
     gsap.set(el, {
         // x: 40 - el.dataset.index * 5,
         width: 0,
-        opacity: 0
-    })
-} 
+        opacity: 0,
+    });
+};
 function onEnter(el, done) {
     gsap.to(el, {
         width: '4.5vh',
         duration: 1,
-    })
+    });
     gsap.to(el, {
         delay: 0.5 - 0.1 * el.dataset.index,
         opacity: 1,
         duration: 1,
-        onComplete: done
-    })
-}
+        onComplete: done,
+    });
+};
 
 function onLeave(el, done) {
     gsap.to(el, {
-        
         delay: 0.2 - 0.05 * el.dataset.index,
         opacity: 0,
         duration: 1,
-    })
-	gsap.to(el, {
-        
+    });
+    gsap.to(el, {
         // delay: 0.1 * el.dataset.index,
         width: 0,
         opacity: 0,
         duration: 1,
-        onComplete: done
+        onComplete: done,
         // ease: 'elastic.inOut(1.5, 1)' // amp, duration
-    })
-}
+    });
+};
 </script>
 
 <template>
@@ -118,11 +113,11 @@ function onLeave(el, done) {
                         <li class="nav-item d-flex align-items-center">
                             <!--   icons  -->
                             <div class="navbar-nav flex-row flex-wrap ms-md-auto">
-                                <TransitionGroup 
+                                <TransitionGroup
                                     @before-enter="onBeforeEnter"
                                     @enter="onEnter"
                                     @leave="onLeave"
-                                >   
+                                >
                                     <div v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
                                         <a class="nav-link nav-link link-dark px-lg-2 mx-1" :href="item.url" target="_blank" rel="noopener">
                                             <svg id="icon_twitter" :style="colormode">
@@ -181,7 +176,7 @@ header  {
 .navbar-toggler-icon:focus{
   outline: none;
   box-shadow: none;
-  border: 0; 
+  border: 0;
 }
 .navbar-toggler span {
   margin: 0;

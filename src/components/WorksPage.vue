@@ -20,7 +20,7 @@ shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.va
 
 // Transfer Data
 // Other Project Random method
-const vimeo_page =  (item) => { return "https://vimeo.com/" + item ;}
+const vimeo_page = (item) => { return "https://vimeo.com/" + item;}
 const vimeo_embed = (item) => { return "https://player.vimeo.com/video/" + item + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";}
 const img_location = (item) => { return '../src/img/'+ item }
 
@@ -48,15 +48,14 @@ onBeforeRouteUpdate(async (to, from) => {
 
 const beforeEnter = (el) => {
     el.style.opacity = 0;
-    el.style.transform = 'translateY(50px)'
-
+    el.style.transform = 'translateY(50px)';
 }
 const sigleEnter = (el, done) => {
     gsap.to(el, {
-        opacity: 1 ,
+        opacity: 1,
         y: 0,
         duration: 1,
-        onComplete: done
+        onComplete: done,
     })
 }
 </script>
@@ -114,7 +113,6 @@ const sigleEnter = (el, done) => {
         <!-- credit -->
         <div class="credit row mx-md-3 mx-1 px-md-5 mb-5">
             <div class="col-md-5">
-                
             </div>
             <!-- Right Content -->
             <div class="col-md-7">
@@ -125,9 +123,7 @@ const sigleEnter = (el, done) => {
                 </div>
             </div>
         </div>
-        
     </main>
-    
     <!-- Other Prj -->
     <section class="container-fluid OtherPrj px-md-5 px-1 " data-scroll-section>
         <div class="container ">
@@ -152,7 +148,6 @@ const sigleEnter = (el, done) => {
             </div>
         </div>
     </section>
-    
     <Footer />
 </div>
 </template>
@@ -163,7 +158,6 @@ const sigleEnter = (el, done) => {
 main{
     padding-right: 0 !important;
     padding-left: 0 !important;
-    
 }
 .title-section{
     min-height: 25vh;
@@ -180,7 +174,7 @@ main{
 
 /* Card */
 .card{
-	margin-bottom: 35px;
+    margin-bottom: 35px;
     height: 25vh;
 }
 

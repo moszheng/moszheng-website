@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router';
+import { createRouter, createWebHistory } from 'vue-router'
 import { createStore } from 'vuex'
 
 import './assets/main.css'
@@ -11,39 +11,39 @@ import './scss/styles.scss'
 import App from './App.vue'
 
 const routes = [
-    { 
-        path: '/', 
-        name:'Home', 
+    {
+        path: '/',
+        name: 'Home',
         component: () => import('./views/Home.vue'),
     },
-    { 
-        path: '/works', 
-        name:'Works', 
+    {
+        path: '/works',
+        name: 'Works',
         component: () => import('./views/Works.vue'),
     },
-    { 
-        path: '/works/:projecturl', 
-        name:'WorksPage', 
-        component: () => import('./components/WorksPage.vue'), 
+    {
+        path: '/works/:projecturl',
+        name: 'WorksPage',
+        component: () => import('./components/WorksPage.vue'),
         // beforeEnter: (to, from) => {
         //     console.log("beforeEnter")
         //     return true
         // },
-        props: true
+        props: true,
     },
-    { 
-        path: '/about', 
-        name:'About', 
-        component: () => import('./views/About.vue') 
+    {
+        path: '/about',
+        name: 'About',
+        component: () => import('./views/About.vue'),
     },
-    { 
-        path: '/contact', 
-        name:'Contact', 
-        component: () => import('./views/Contact.vue') 
+    {
+        path: '/contact',
+        name: 'Contact',
+        component: () => import('./views/Contact.vue'),
     },
-    { 
-        path: '/:catchAll(.*)', 
-        component: () => import('./views/NotFound.vue') 
+    {
+        path: '/:catchAll(.*)',
+        component: () => import('./views/NotFound.vue'),
     },
 ];
 
@@ -67,24 +67,24 @@ const router = createRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
         // always scroll to top
-        return { top: 0,behavior: 'smooth', }
+        return {top: 0, behavior: 'smooth',}
     },
 });
 
 // if enter to home page, update navbar state
 router.beforeEach((to, from, next) => {
-    
-    if(to.name == 'Home'){
+
+    if (to.name == 'Home'){
         store.commit('changeNavbarState', true);
     }
-    else{
+    else {
         store.commit('changeNavbarState', false);
     }
     next()
 })
 
 const store = createStore({
-    state () {
+    state() {
         return {
             navbardarkmode: true,
         }

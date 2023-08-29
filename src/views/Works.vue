@@ -1,35 +1,35 @@
 <script setup>
-import { ref, onMounted } from 'vue'
-import Masonry from "masonry-layout"
+import {onMounted} from 'vue'
+import Masonry from 'masonry-layout'
 
 import Footer from '../components/Footer.vue'
 import WorksData from '../data/WorksData.json'
 
 // Return Real route
-const img_location = (item) => { return '../src/img/'+ item }
+const img_location = (item) => {return '../src/img/'+ item};
 
 onMounted(() => {
     // initialize masonry
-    var row = document.querySelector("[data-masonry]");
+    const row = document.querySelector("[data-masonry]");
     new Masonry(row, {
-      	// options
+		// options
 		percentPosition: true,
-	  	// gutter: 20
+		// gutter: 20
     });
 });
 
 function randomHeight(){
 	let max = 50;
 	let min = 25;
-	let rnd = Math.floor( Math.random()*( max - min + 1 )) + min 
+	let rnd = Math.floor( Math.random()*( max - min + 1 )) + min;
 
 	return "height:"+ rnd + "vh";
 	// return `height: ${ rnd } vh`
-}
+};
 </script>
 <template>
 <div>
-    <main class="container flex-xl-nowrap">
+	<main class="container flex-xl-nowrap">
 		<!----- Main Content----->
 		<!-- py-md-3 pl-md-5 px-xl-3 -->
 		<!-- -->
@@ -57,7 +57,7 @@ function randomHeight(){
                 <p>BACK TO TOP</p>
             </a>
         </div>
-  	</main>
+	</main>
 	<Footer />
 </div>
 </template>
