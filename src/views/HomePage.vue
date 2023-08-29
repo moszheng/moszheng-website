@@ -3,7 +3,7 @@ import {ref, onMounted} from 'vue'
 
 // preloading
 // const preloadimages = ref([]);
-const bg_image = [
+const bgImage = [
   '../src/img/01_gma29.jpg',
   '../src/img/03_SWSX_01.jpg',
   '../src/img/05_GMA32_01.png',
@@ -12,15 +12,15 @@ const bg_image = [
   '../src/img/02_gha56_01.png',
 ];
 
-const backgroundImage = ref(bg_image[0]);
-const bgStyles = ref(`background-image: url(${bg_image[0]});`);
+const backgroundImage = ref(bgImage[0]);
+const bgStyles = ref(`background-image: url(${bgImage[0]});`);
 
 let index = 0;
 
 // method1 Function to preload images
 // const preloadImages = async () => {
 //   try {
-//     const promises = bg_image.map(url => {
+//     const promises = bgImage.map(url => {
 //       return new Promise((resolve, reject) => {
 //         const img = new Image();
 //         img.onload = resolve;
@@ -29,7 +29,7 @@ let index = 0;
 //       });
 //     });
 //     await Promise.all(promises);
-//     preloadimages.value = bg_image.map(url => ({ url, loaded: true }));
+//     preloadimages.value = bgImage.map(url => ({ url, loaded: true }));
 //     console.log("preload finish")
 //   } catch (error) {
 //     console.error('Error preloading images:', error);
@@ -39,7 +39,7 @@ let index = 0;
 
 // method2
 onMounted(() => {
-  bg_image.forEach((image) => {
+  bgImage.forEach((image) => {
     const img = new Image();
     img.src = image;
   });
@@ -50,9 +50,9 @@ setInterval(() => {
   // bgStyles.value = `background-image: url(${preloadimages.value[index].url});`;
   // index = (index + 1) % preloadimages.value.length;
 
-  backgroundImage.value = `url(${bg_image[index]})`;
-  bgStyles.value = `background-image: url(${bg_image[index]});`;
-  index = (index + 1) % bg_image.length;
+  backgroundImage.value = `url(${bgImage[index]})`;
+  bgStyles.value = `background-image: url(${bgImage[index]});`;
+  index = (index + 1) % bgImage.length;
 }, 3500);
 
 </script>

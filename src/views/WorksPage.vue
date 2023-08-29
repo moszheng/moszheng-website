@@ -6,7 +6,7 @@ import FooterItem from '../components/FooterItem.vue'
 import WorksData from '../data/WorksData.json'
 
 // Return Real route
-const img_location = (item) => {return '../src/img/'+ item};
+const imgLocation = (item) => {return '../src/img/'+ item};
 
 onMounted(() => {
     // initialize masonry
@@ -19,9 +19,9 @@ onMounted(() => {
 });
 
 function randomHeight(){
-	let max = 50;
-	let min = 25;
-	let rnd = Math.floor( Math.random()*( max - min + 1 )) + min;
+	const rndmax = 50;
+	const rndmin = 25;
+	const rnd = Math.floor( Math.random()*( rndmax - rndmin + 1 )) + rndmin;
 
 	return "height:"+ rnd + "vh";
 	// return `height: ${ rnd } vh`
@@ -38,7 +38,7 @@ function randomHeight(){
 			<div v-for="item in WorksData.project" class="col-md-4 col">
 				<div class="card text-white" :style="randomHeight()">
 					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
-						<img :src=img_location(item.img) class="card-img" :alt="item.name" >
+						<img :src=imgLocation(item.img) class="card-img" :alt="item.name" >
 						<div class="works-black"></div>
 						<div class="works-text text-white px-4">
 							<h5 class="card-title">{{ item.name }}</h5>

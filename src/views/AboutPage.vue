@@ -10,8 +10,8 @@ import LogoData from '../data/LogoData.json'
 import ExpData from '../data/Experience.json'
 
 // Return Real route
-const profile_image_1 = '../src/img/profile_1.png';
-const profile_image_2 = '../src/img/profile_2.png';
+const profileImage1 = '../src/img/profile_1.png';
+const profileImage2 = '../src/img/profile_2.png';
 
 const motiondesign = [
     {name: 'Modeling'},
@@ -40,11 +40,11 @@ const changeNavbarState = (state) => {
   store.commit('changeNavbarState', state);
 };
 
-let options = {
+const options = {
   root: document.querySelector('.About'),
   threshold: [0, 0.2, 0.4, 0.6, 0.8, 1]
 };
-let prevRatio = 0;
+const prevRatio = 0;
 const callback = (entries) => {
     entries.forEach(entry=> {
         const {intersectionRatio, target} = entry;
@@ -73,7 +73,7 @@ const observer1 = new IntersectionObserver( callback1, options );
 
 // Attach the observer to the target element
 onMounted(() => {
-    const targets = document.querySelectorAll('.isVisible')
+    const targets = document.querySelectorAll('.isVisible');
     // for (const item of targets){
     //     observer.observe(item);
     // }
@@ -111,8 +111,7 @@ const handleScroll = () => {
 const beforeEnter = (el) => {
     // console.log("bb")
     el.style.opacity = 0;
-    el.style.transform = 'translateY(50px)'
-
+    el.style.transform = 'translateY(50px)';
 };
 const enter = (el, done) => {
     // console.log("cc")
@@ -153,8 +152,8 @@ const leave = (el, done) => {
             <!-- profile image -->
             <div class="col-xl-6 d-flex align-items-center justify-content-center">
                 <div class="userContainer mb-md-0 mb-4" >
-                    <img class="avatar-user_1 img-fluid" alt="profile_image" :src=profile_image_1>
-                    <img class="avatar-user_2 img-fluid" alt="profile_image" :src=profile_image_2>
+                    <img class="avatar-user_1 img-fluid" alt="profile_image" :src=profileImage1>
+                    <img class="avatar-user_2 img-fluid" alt="profile_image" :src=profileImage2>
                 </div>
             </div>
             <div class="col-xl-6 mt-xl-0 mt-4 px-md-5 ">
@@ -224,9 +223,9 @@ const leave = (el, done) => {
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-                        
+
                             <h3 class="mb-4" v-if="isVisible">Experience</h3>
-                        
+
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-xl-3">
@@ -293,7 +292,7 @@ const leave = (el, done) => {
                                 @enter="sigleEnter">
                                 <h3 class="mb-5" v-if="isVisible1">Motion Design</h3>
                             </Transition>
-                            <TransitionGroup :css="false"    
+                            <TransitionGroup :css="false"
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                                 @leave="leave"
@@ -307,7 +306,7 @@ const leave = (el, done) => {
                                 @enter="sigleEnter">
                                 <h3 class="mb-5" v-if="isVisible1">Development</h3>
                             </Transition>
-                            <TransitionGroup :css="false"    
+                            <TransitionGroup :css="false"
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                             >
