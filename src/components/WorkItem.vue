@@ -20,9 +20,9 @@ shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.va
 
 // Transfer Data
 // Other Project Random method
-const vimeo_page = (item) => {return "https://vimeo.com/" + item;}
-const vimeo_embed = (item) => {return "https://player.vimeo.com/video/" + item + "?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0";}
-const img_location = (item) => {return '../src/img/'+ item}
+const vimeoPage = (item) => {return `https://vimeo.com/${ item }`;}
+const vimeoEmbed = (item) => {return `https://player.vimeo.com/video/${ item }?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`;}
+const imgLocation = (item) => {return '../src/img/'+ item}
 
 /* ---------Router Fix-----------*/
 
@@ -64,7 +64,7 @@ const sigleEnter = (el, done) => {
 <div class="WorksPage">
     <!-- video -->
     <div class="ratio ratio-16x9 mb-5" data-scroll-section>
-        <iframe :src=vimeo_embed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
         <div class="title-section mb-5 mx-md-3 mx-2 px-md-5">
@@ -84,7 +84,7 @@ const sigleEnter = (el, done) => {
                     </svg>
                 </a>
                 <!-- vimeo Link -->
-                <a class="" :href=vimeo_page(prjdata.video) target="_blank" rel="noopener">
+                <a class="" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
                     <svg id="icon_twitter">
                         <use xlink:href="#icon-vimeo"></use>
                     </svg>
@@ -95,7 +95,7 @@ const sigleEnter = (el, done) => {
             <div class="col-md-5 mb-md-0 mb-5">
                 <div class="imgContainer">
                     <!-- -->
-                    <img :src="img_location(prjdata.img)" class="img-fluid " alt="...">
+                    <img :src="imgLocation(prjdata.img)" class="img-fluid " alt="...">
                     <!-- <img src="../img/02_gha56_01.png" class="img-fluid " alt="..."> -->
                 </div>
             </div>
@@ -132,7 +132,7 @@ const sigleEnter = (el, done) => {
                         <div class="card mb-4 text-white">
                             <!-- routerlink -->
                             <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
-                                <img :src=img_location(item.img) class="card-img" alt="...">
+                                <img :src=imgLocation(item.img) class="card-img" alt="...">
                                 <div class="works-black"></div>
                                 <div class="works-text text-white px-4">
                                     <h5 class="card-title">{{ item.name }}</h5>
