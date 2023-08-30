@@ -1,5 +1,5 @@
 <script setup>
-import FooterItem from '../components/FooterItem.vue'
+import FooterItem from '@/components/FooterItem.vue'
 import { ref } from 'vue'
 
 </script>

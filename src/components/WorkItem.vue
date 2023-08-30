@@ -4,7 +4,7 @@ import { onBeforeRouteUpdate } from 'vue-router'
 import gsap from 'gsap'
 
 import FooterItem from './FooterItem.vue'
-import WorksData from '../data/WorksData.json'
+import WorksData from '@/data/WorksData.json'
 
 const props = defineProps({
 

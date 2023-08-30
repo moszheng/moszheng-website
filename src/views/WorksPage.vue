@@ -2,8 +2,8 @@
 import {onMounted} from 'vue'
 import Masonry from 'masonry-layout'
 
-import FooterItem from '../components/FooterItem.vue'
-import WorksData from '../data/WorksData.json'
+import FooterItem from '@/components/FooterItem.vue'
+import WorksData from '@/data/WorksData.json'
 
 // Return Real route
 const imgLocation = (item) => {return '../src/img/'+ item};

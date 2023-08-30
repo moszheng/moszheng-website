@@ -3,11 +3,11 @@ import {ref, onMounted, onBeforeUnmount} from 'vue'
 import { useNavStore } from '@/stores/navstore'
 import gsap from 'gsap'
 
-import FooterItem from '../components/FooterItem.vue'
-import LinkData from '../data/LinkData.json'
+import FooterItem from '@/components/FooterItem.vue'
+import LinkData from '@/data/LinkData.json'
 // import WorksData from '../data/WorksData.json';
-import LogoData from '../data/LogoData.json'
-import ExpData from '../data/Experience.json'
+import LogoData from '@/data/LogoData.json'
+import ExpData from '@/data/Experience.json'
 
 // Return Real route
 const profileImage1 = '../src/img/profile_1.png';
