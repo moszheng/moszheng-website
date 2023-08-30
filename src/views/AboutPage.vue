@@ -12,22 +12,8 @@ import ExpData from '@/data/Experience.json'
 // Return Real route
 const profileImage1 = '../src/img/profile_1.png';
 const profileImage2 = '../src/img/profile_2.png';
-
-const motiondesign = [
-    {name: 'Modeling'},
-    {name: 'Texturing'},
-    {name: 'Lighting'},
-    {name: 'Rendering'},
-    {name: 'Compositing'},
-    {name: 'VFX Simulating'},
-];
-
-const development = [
-    {name: 'C4D Python Plug-in'},
-    {name: 'After Effects Scripts'},
-    {name: 'Project Workflow R&D'},
-    {name: 'Frontend Developing'},
-];
+const motiondesign = ExpData.service.motiondesign;
+const development = ExpData.service.development;
 
 /* ------------ Transition GSAP --------------------*/
 

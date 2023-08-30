@@ -30,5 +30,21 @@
                 "Creating highly detailed models with smooth topology, ensuring realistic animations."
             ]
         }
-    ]
+    ],
+    "service" :{
+        "motiondesign" : [
+            {"name": "Modeling"},
+            {"name": "Texturing"},
+            {"name": "Lighting"},
+            {"name": "Rendering"},
+            {"name": "Compositing"},
+            {"name": "VFX Simulating"}
+        ],
+        "development" : [
+            {"name": "C4D Python Plug-in"},
+            {"name": "After Effects Scripts"},
+            {"name": "Project Workflow R&D"},
+            {"name": "Frontend Developing"}
+        ]
+    }
 }
