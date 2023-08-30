@@ -1,10 +1,10 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory } from 'vue-router'
-import { createStore } from 'vuex'
+import { createPinia } from 'pinia'
+import {useNavStore} from '@/stores/navstore'
 
 import './assets/main.css'
-// import LocomotiveScroll from 'locomotive-scroll';
-import Lenis from '@studio-freight/lenis'
+// import Lenis from '@studio-freight/lenis'
 // Import our custom CSS
 import './scss/styles.scss'
 
@@ -71,28 +71,35 @@ const router = createRouter({
     },
 });
 
+
+
+// Pinia store
+const pinia = createPinia()
+
 // if enter to home page, update navbar state
 router.beforeEach((to, from, next) => {
+    const store = useNavStore();
+
     if (to.name == 'Home') {
-        store.commit('changeNavbarState', true);
+        store.navbardarkmode = true;
     }
     else {
-        store.commit('changeNavbarState', false);
+        store.navbardarkmode = false;
     }
     next();
 })
 
-const store = createStore({
-    state() {
-        return {
-            navbardarkmode: true,
-        }
-    },
-    mutations: {
-        changeNavbarState(state, isActive) {
-            state.navbardarkmode = isActive;
-        },
-    }
-})
+// const store = createStore({
+//     state() {
+//         return {
+//             navbardarkmode: true,
+//         }
+//     },
+//     mutations: {
+//         changeNavbarState(state, isActive) {
+//             state.navbardarkmode = isActive;
+//         },
+//     }
+// })
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App).use(pinia).use(router).mount('#app')

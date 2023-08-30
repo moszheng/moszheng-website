@@ -1,6 +1,6 @@
 <script setup>
 import {ref, onMounted, onBeforeUnmount} from 'vue'
-import {useStore} from 'vuex'
+import { useNavStore } from '@/stores/navstore'
 import gsap from 'gsap'
 
 import FooterItem from '../components/FooterItem.vue'
@@ -34,10 +34,9 @@ const development = [
 const isVisible = ref(false);
 const isVisible1 = ref(false);
 
-const store = useStore();
+const store = useNavStore();
 const changeNavbarState = (state) => {
-    console.log('changenavstate', state);
-    store.commit('changeNavbarState', state);
+    store.navbardarkmode = state;
 };
 
 const options = {

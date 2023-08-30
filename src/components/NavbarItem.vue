@@ -1,21 +1,22 @@
 <script setup>
 import {ref, computed} from 'vue'
-import {useStore} from 'vuex'
+import {useNavStore} from '@/stores/navstore'
 import gsap from 'gsap'
 
 import LinkData from '../data/LinkData.json'
 
-const showIcon = ref(false);
-
-/* ---- Color mode --------*/
-const store = useStore();
+/* ---------- Color mode --------*/
+const store = useNavStore();
 
 // update Darkmode
 const colormode = computed(() => {
-  return store.state.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
+    console.log(store.navbardarkmode)
+    return store.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
 });
 
 /* Nav Bar social */
+const showIcon = ref(false);
+
 const rotateButton = () => {
     showIcon.value = !showIcon.value;
     gsap.to('#icon_plus', {
