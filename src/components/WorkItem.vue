@@ -20,8 +20,8 @@ shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.va
 
 // Transfer Data
 // Other Project Random method
-const vimeoPage = (item) => {return `https://vimeo.com/${ item }`;}
-const vimeoEmbed = (item) => {return `https://player.vimeo.com/video/${ item }?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`;}
+const vimeoPage = (item) => {return `https://vimeo.com/${ item }`}
+const vimeoEmbed = (item) => {return `https://player.vimeo.com/video/${ item }?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`}
 const imgLocation = (item) => {return '../src/img/'+ item}
 
 /* ---------Router Fix-----------*/

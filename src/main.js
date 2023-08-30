@@ -71,8 +71,6 @@ const router = createRouter({
     },
 });
 
-
-
 // Pinia store
 const pinia = createPinia()
 
@@ -88,18 +86,5 @@ router.beforeEach((to, from, next) => {
     }
     next();
 })
-
-// const store = createStore({
-//     state() {
-//         return {
-//             navbardarkmode: true,
-//         }
-//     },
-//     mutations: {
-//         changeNavbarState(state, isActive) {
-//             state.navbardarkmode = isActive;
-//         },
-//     }
-// })
 
 createApp(App).use(pinia).use(router).mount('#app')
