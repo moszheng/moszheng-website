@@ -16,7 +16,7 @@ const props = defineProps({
 const prjdata = ref('null');
 const shuffleprj = ref('null');
 prjdata.value = WorksData.project.find(item => item.url_name == props.projecturl);
-shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0,3); // 2. shuffle array, pick top 3 item
+shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0, 3); // 2. shuffle array, pick top 3 item
 
 // Transfer Data
 // Other Project Random method
@@ -30,7 +30,7 @@ const getWorksData = (id) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
             resolve(
-                WorksData.project.find(item => item.url_name == id)
+                WorksData.project.find(item => item.url_name == id),
             )
         }, 0)
     })

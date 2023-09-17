@@ -272,7 +272,8 @@ const leave = (el, done) => {
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-md-5 ">
-                    <div class="row mb-5">
+                    <!-- Text -->
+                    <div class="about-skill-text row mb-5">
                         <div class="col-md-6 mb-md-0 mb-5">
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
@@ -369,7 +370,9 @@ main{
 .about-skill{
     background-color: rgb(228, 228, 228);
 }
-
+.about-skill-text{
+    min-height: 20vh;
+}
 /*------ Img --------*/
 .userContainer{
     position: relative;
