@@ -1,15 +1,13 @@
 <script setup>
-import { ref } from 'vue'
-import { onBeforeRouteUpdate } from 'vue-router'
+import {ref, onMounted, onBeforeUnmount} from 'vue'
+import {onBeforeRouteUpdate} from 'vue-router'
 import gsap from 'gsap'
 
 import FooterItem from './FooterItem.vue'
 import WorksData from '@/data/WorksData.json'
 
 const props = defineProps({
-
     projecturl: String,
-
 })
 
 // data initial
@@ -43,6 +41,26 @@ onBeforeRouteUpdate(async (to, from) => {
         shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0,3);
     }
 })
+
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+});
+onBeforeUnmount(() => {
+    window.removeEventListener('scroll', handleScroll);
+});
+
+
+/* Scroll picture*/
+const scrollPosition = ref(0);
+
+const handleScroll = () => {
+    scrollPosition.value = window.scrollY;
+    gsap.to('.imgContainer-img', {
+        y: scrollPosition.value * .15,
+        duration: .1,
+        ease: 'power1',
+    });
+};
 
 /* --------Animation--------- */
 
@@ -92,11 +110,10 @@ const sigleEnter = (el, done) => {
             </div>
         </div>
         <section class="work-section row mx-md-3 mx-1 mb-md-0 mb-5 px-md-5">
+            <!-- img -->
             <div class="col-md-5 mb-md-0 mb-5">
                 <div class="imgContainer">
-                    <!-- -->
-                    <img :src="imgLocation(prjdata.img)" class="img-fluid " alt="...">
-                    <!-- <img src="../img/02_gha56_01.png" class="img-fluid " alt="..."> -->
+                    <img :src="imgLocation(prjdata.img)" class="imgContainer-img img-fluid " alt="...">
                 </div>
             </div>
             <!-- Right Content -->
@@ -179,26 +196,20 @@ main{
 /* img */
 
 .imgContainer{
-    overflow : hidden;
-    width: 40vh;
-    /* height: 600px; */
     position: relative;
+    width: 40vh;
     height: 50vh;
+    overflow: hidden;
 }
 .imgContainer img{
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    width: 1920px;
+    height: 1080px;
+    top: -50%;
+    left: -50%;
+    /* transform: scale(1.2); */
     max-width: none;
     max-height: none;
     object-fit: cover;
-    /* object-fit: cover; */
-    /* height: 50vh; */
-    /* scale : 200%; */
-    transition: .5s;
-}
-.imgContainer:hover img{
-    scale: 120%;
 }
 </style>
