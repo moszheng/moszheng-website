@@ -10,7 +10,7 @@ const store = useNavStore();
 
 // update Darkmode
 const colormode = computed(() => {
-    console.log(store.navbardarkmode)
+    // console.log(store.navbardarkmode)
     return store.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
 });
 

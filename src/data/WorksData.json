@@ -381,7 +381,22 @@
             "msg" : [
                 "The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.",
                 "During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally."
-            ]
+            ],
+            "credit" : 
+            {
+                "代理商 Agency": "北京優艾聯合創意 Beijing UIDWORKS",
+                "監製 Executive Producer": "柯鈞譯 Chiunyi Ko、李孟栩 TuBo Lee",
+                "藝術總監 Art Director": "陳安 Julian Chen",
+                "專案製片 Producer": "謝淑香 Aka Tse、沈柏賢 Sam Shen",
+                "分鏡腳本 Storyboard": "曾子庭 Tim Tseng",
+                "動態腳本 Motionboard": "鄭盛文 Mos Zheng",
+                "美術設定 Style Frame": "陳安 Julian Chen、鄭盛文 Mos Zheng",
+                "動畫製作 3D Animator": "陳安 Julian Chen、鄭盛文 Mos Zheng、短波組影像 shortwave film",
+                "角色動畫 3D Character Animation": "張之萓 Chewie Chang",
+                "角色骨架 3D Character Rigging": "夢想動畫MoonShine Animation",
+                "獎盃模型 3D Trophy Modeling": "黑綿羊映畫 Black Sheep Studio",
+                "合成 Compositing": "陳安 Julian Chen、鄭盛文 Mos Zheng、短波組影像 shortwave film"
+            }
         },
         {
             "name" : "BooBoo",

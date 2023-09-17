@@ -205,11 +205,11 @@ main{
     height: 50vh;
     overflow: hidden;
 }
-.imgContainer img{
+.imgContainer-img{
     position: absolute;
     width: 1920px;
     height: 1080px;
-    top: -60%;
+    top: -50%;
     left: -130%;
     /* transform: scale(1.2); */
     max-width: none;
