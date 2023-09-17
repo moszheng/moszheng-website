@@ -109,15 +109,15 @@ const sigleEnter = (el, done) => {
                 </a>
             </div>
         </div>
-        <section class="work-section row mx-md-3 mx-1 mb-md-0 mb-5 px-md-5">
+        <section class="work-section row mx-md-3 mx-1 mb-xl-0  mb-5 px-md-5">
             <!-- img -->
-            <div class="col-md-5 mb-md-0 mb-5">
+            <div class="col-xl-5 mb-md-0 mb-5">
                 <div class="imgContainer">
                     <img :src="imgLocation(prjdata.img)" class="imgContainer-img img-fluid " alt="...">
                 </div>
             </div>
             <!-- Right Content -->
-            <div class="col-md-5">
+            <div class="col-xl-5">
                 <div class="">
                     <p v-for="item in prjdata.msg">
                         {{item}}
@@ -127,10 +127,10 @@ const sigleEnter = (el, done) => {
         </section>
         <!-- credit -->
         <div class="credit row mx-md-3 mx-1 px-md-5 mb-5">
-            <div class="col-md-5">
+            <div class="col-xl-5">
             </div>
             <!-- Right Content -->
-            <div class="col-md-7">
+            <div class="col-xl-7">
                 <h4 class="mb-5">Credit</h4>
                 <div v-for = "value, key in prjdata.credit" class="row">
                     <p class="col-lg-4 col">{{key}}</p>
@@ -145,7 +145,7 @@ const sigleEnter = (el, done) => {
             <h2 class="text-white my-4">Other Project</h2>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                 <div class="row">
-                    <div  v-for="item in shuffleprj" class="col-md-4">
+                    <div  v-for="item in shuffleprj" class="col-xl-4">
                         <div class="card mb-4 text-white">
                             <!-- routerlink -->
                             <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
@@ -174,9 +174,13 @@ main{
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
-.title-section{
-    min-height: 25vh;
+
+@media only screen and (min-width: 1200px) {
+    .title-section{
+        min-height: 25vh;
+    }
 }
+
 .work-section, .credit{
     min-height: 60vh;
 }
@@ -205,8 +209,8 @@ main{
     position: absolute;
     width: 1920px;
     height: 1080px;
-    top: -50%;
-    left: -50%;
+    top: -60%;
+    left: -130%;
     /* transform: scale(1.2); */
     max-width: none;
     max-height: none;
