@@ -102,7 +102,7 @@ function onLeave(el, done) {
                 <div class="d-flex ms-md-auto">
                     <ul class="navbar-nav mx-lg-4">
                         <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'Works' }" class="nav-link px-2 me-md-4" :style="colormode">Works</router-link>
+                            <router-link :to="{ name : 'WorksPage' }" class="nav-link px-2 me-md-4" :style="colormode">Works</router-link>
                         </li>
                         <li class="nav-item d-flex align-items-center">
                             <router-link :to="{ name : 'Showreel' }" class="nav-link px-2 me-md-4" :style="colormode">Showreel</router-link>

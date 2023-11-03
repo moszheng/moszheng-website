@@ -155,7 +155,7 @@ const sigleEnter = (el, done) => {
                     <div  v-for="item in shuffleprj" class="col-xl-4">
                         <div class="card mb-4 text-white">
                             <!-- routerlink -->
-                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
+                            <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
                                 <img :src=imgLocation(item.img) class="card-img" alt="...">
                                 <div class="works-black"></div>
                                 <div class="works-text text-white px-4">

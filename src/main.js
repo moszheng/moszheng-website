@@ -14,41 +14,37 @@ const routes = [
     {
         path: '/',
         name: 'Home',
-        component: () => import('./views/HomePage.vue'),
+        component: () => import('@/views/HomePage.vue'),
     },
     {
         path: '/works',
-        name: 'Works',
-        component: () => import('./views/WorksPage.vue'),
+        name: 'WorksPage',
+        component: () => import('@/views/WorksPage.vue'),
     },
     {
         path: '/works/:projecturl',
-        name: 'WorksPage',
-        component: () => import('./components/WorkItem.vue'),
-        // beforeEnter: (to, from) => {
-        //     console.log("beforeEnter")
-        //     return true
-        // },
+        name: 'WorksItem',
+        component: () => import('@/components/WorkItem.vue'),
         props: true,
     },
     {
         path: '/showreel',
         name: 'Showreel',
-        component: () => import('./views/Showreel.vue'),
+        component: () => import('@/views/Showreel.vue'),
     },
     {
         path: '/about',
         name: 'About',
-        component: () => import('./views/AboutPage.vue'),
+        component: () => import('@/views/AboutPage.vue'),
     },
     {
         path: '/contact',
         name: 'Contact',
-        component: () => import('./views/ContactPage.vue'),
+        component: () => import('@/views/ContactPage.vue'),
     },
     {
         path: '/:catchAll(.*)',
-        component: () => import('./views/NotFoundPage.vue'),
+        component: () => import('@/views/NotFoundPage.vue'),
     },
 ];
 

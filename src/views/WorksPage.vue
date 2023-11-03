@@ -34,7 +34,7 @@ function randomHeight() {
 		<div class="row pt-5" data-masonry='{"percentPosition": true }'>
 			<div v-for="item in WorksData.project" class="col-md-4 col">
 				<div class="card text-white" :style="randomHeight()">
-					<router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
+					<router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
 						<img :src=imgLocation(item.img) class="card-img" :alt="item.name" >
 						<div class="works-black"></div>
 						<div class="works-text text-white px-4">
