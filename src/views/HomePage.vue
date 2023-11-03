@@ -73,7 +73,7 @@ setInterval(() => {
             <p>Offering professional design services for digital arts and product motion design,
               <br>catering to companies and brands.</p>
           </div>
-          <router-link to="/works">
+          <router-link :to="{ name : 'WorksPage' }">
             <button type="button" class="btn btn-primary index-btn">Explore</button>
           </router-link>
         </div>

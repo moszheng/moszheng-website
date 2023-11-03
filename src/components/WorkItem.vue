@@ -86,7 +86,7 @@ const sigleEnter = (el, done) => {
 </script>
 
 <template>
-<div class="WorksPage">
+<div class="WorksItem">
     <!-- video -->
     <div class="ratio ratio-16x9 mb-5" data-scroll-section>
         <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
