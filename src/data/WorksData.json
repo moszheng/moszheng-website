@@ -6,7 +6,7 @@
             "url_name" : "gma29_baa",
             "date" : "2018 Dec",
             "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
-            "video" : "276425004",
+            "video" : ["vimeo","276425004"],
             "img" : "01_gma29.jpg",
             "company" : "JL Design",
             "msg" : [
@@ -39,7 +39,7 @@
             "url_name" : "gha56",
             "date" : "2019 Nov",
             "behance" : "https://www.behance.net/gallery/89590877/56-Golden-Horse-Awards-56th-Logo-Bumper-Breakdown",
-            "video" : "376095266",
+            "video" : ["vimeo","376095266"],
             "img" : "02_gha56_01.png",
             "company" : "JL Design",
             "msg" : [
@@ -84,7 +84,7 @@
             "url_name" : "gha57",
             "date" : "2020 Nov",
             "behance" : "https://www.behance.net/gallery/126685047/Golden-Horse-Award-Ceremony-57th57-",
-            "video" : "558850163",
+            "video" : ["vimeo","558850163"],
             "img" : "10_gha57_01.png",
             "company" : "JL Design",
             "msg" : [
@@ -126,7 +126,7 @@
             "url_name" : "taiwanhype",
             "date" : "2019",
             "behance" : "https://www.behance.net/gallery/127287095/Taiwan-HYPE-EXHIBITION-Logo-Animation",
-            "video" : "474537396",
+            "video" : ["vimeo","474537396"],
             "img" : "03_SWSX_01.jpg",
             "company" : "JL Design",
             "msg" : [
@@ -165,7 +165,7 @@
             "url_name" : "kkcompany",
             "date" : "2021 Aug",
             "behance" : "https://www.behance.net/gallery/131950969/KK-Company",
-            "video" : "681776633",
+            "video" : ["vimeo","681776633"],
             "img" : "04_KK_01.png",
             "company" : "MixCode",
             "msg" : [
@@ -195,7 +195,7 @@
             "url_name" : "ggrviva",
             "date" : "2022",
             "behance" : "https://www.behance.net/gallery/119028733/Gogoro-VIVA-MIX",
-            "video" : "545803846",
+            "video" : ["vimeo","545803846"],
             "img" : "07_VIVA_01.jpg",
             "company" : "MixCode",
             "msg" : [
@@ -224,7 +224,7 @@
             "url_name" : "gma32",
             "date" : "2021 Jun",
             "behance" : "https://www.behance.net/gallery/126656689/32-GMA32-Stage-Background-Design",
-            "video" : "619733081",
+            "video" : ["vimeo","619733081"],
             "img" : "05_GMA32_01.png",
             "company" : "MixCode",
             "msg" : [
@@ -255,7 +255,7 @@
             "url_name" : "PGN",
             "date" : "2020",
             "behance" : "https://www.behance.net/gallery/126718383/AVCG-PGN-Image-Video",
-            "video" : "522731725",
+            "video" : ["vimeo","522731725"],
             "img" : "06_PGN_01.jpg",
             "company" : "JL Design",
             "msg" : [
@@ -286,7 +286,7 @@
             "url_name" : "Jungle_Voice",
             "date" : "2018",
             "behance" : "https://www.behance.net/gallery/74073727/Jungle-Voice",
-            "video" : "294759428",
+            "video" : ["vimeo", "294759428"],
             "img" : "08_JV_01.jpg",
             "company" : "JL Design",
             "msg" : [
@@ -315,7 +315,7 @@
             "url_name" : "gma29_bmms",
             "date" : "2018 DEC",
             "behance" : "https://www.behance.net/gallery/67350257/29-Best-Male-Mandarin-Singer",
-            "video" : "276567094",
+            "video" : ["vimeo","276567094"],
             "img" : "01_gma29_bmm.png",
             "company" : "JL Design",
             "msg" : [
@@ -354,7 +354,7 @@
             "url_name" : "hok_promo",
             "date" : "2022",
             "behance" : "https://www.behance.net/gallery/158101281/2022",
-            "video" : "",
+            "video" : ["youtube", "1-oFPzdmQIA"],
             "img" : "09_HoK_01.png",
             "company" : "MixCode",
             "msg" : [
