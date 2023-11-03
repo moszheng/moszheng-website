@@ -32,6 +32,11 @@ const routes = [
         props: true,
     },
     {
+        path: '/showreel',
+        name: 'Showreel',
+        component: () => import('./views/Showreel.vue'),
+    },
+    {
         path: '/about',
         name: 'About',
         component: () => import('./views/AboutPage.vue'),
