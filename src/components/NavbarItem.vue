@@ -14,11 +14,28 @@ const colormode = computed(() => {
     return store.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
 });
 
+/* Click toggle than Change BG */
+const ChangBGtoggle = ref(false);
+const ChangBG = () => {
+    ChangBGtoggle.value = !ChangBGtoggle.value
+    const h = document.getElementsByTagName('header')[0]
+
+    if (ChangBGtoggle.value) { 
+        h.style.backgroundColor = "#FFF";
+        store.navbardarkmode = false;
+    }
+    else { 
+        h.style.backgroundColor = "hsla(0, 0%, 100%, 0)";
+        // store.navbardarkmode = true;
+    }
+}
+
 /* Nav Bar social */
 const showIcon = ref(false);
 
 const rotateButton = () => {
     showIcon.value = !showIcon.value;
+    // motion
     gsap.to('#icon_plus', {
         rotation: '+=135',
         duration: 0.8,
@@ -28,6 +45,8 @@ const rotateButton = () => {
         },
     });
 };
+
+/* Enter animation */
 function onBeforeEnter(el) {
     gsap.set(el, {
         // x: 40 - el.dataset.index * 5,
@@ -65,7 +84,7 @@ function onLeave(el, done) {
 </script>
 
 <template>
-    <header class="sticky-top">
+<header class="sticky-top">
     <nav class="container navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
         <div class="container-fluid">
             <!-- LOGO -->
@@ -79,7 +98,7 @@ function onLeave(el, done) {
                 </router-link>
             </div>
             <!-- navbar responsive button -->
-            <button class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button @click="ChangBG" class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="toggler-icon top-bar">
                     <svg id="icon_twitter" :style="colormode">
                         <use xlink:href="#icon-line"></use>
@@ -145,15 +164,9 @@ function onLeave(el, done) {
 </header>
 </template>
 <style>
-/* Homepage mobile collapse need to fill background*/
-@media only screen and (max-width: 1200px) {
-    header  {
-        background-color: hsla(0, 0%, 100%, 0);
-    }
-}
-
 header  {
   background-color: hsla(0, 0%, 100%, 0);
+  transition: .5s ease;
 }
 
 #mos-logo {

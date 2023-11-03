@@ -132,7 +132,7 @@ const leave = (el, done) => {
 };
 
 function ScrollNext() {
-	window.scrollTo(0, window.screen.height);
+    window.scrollTo(0, window.screen.height);
 }
 
 </script>
@@ -196,13 +196,13 @@ function ScrollNext() {
                     </div>
                 </TransitionGroup>
             </div>
-            <div class="container-fluid text-center">
+            <!-- <div class="container-fluid text-center">
                 <a @click="ScrollNext()" class="nav-link p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
                     </svg>
                 </a>
-            </div>
+            </div> -->
         </section>
         <!-- <section class="img-banner">
             <img src="../img/03_SWSX_01.jpg" class="img-fluid">
@@ -221,13 +221,13 @@ function ScrollNext() {
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-xl-3">
-                    <TransitionGroup :css="false"    
+                    <TransitionGroup :css="false"
                         @before-enter="beforeEnter"
                         @enter="enter"
                         @leave="leave"
                     >
                     <div class="mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
-                        <div class="row">
+                        <div class="row mb-xl-3">
                             <!-- duration -->
                             <div class="col-2">
                                 <div class="col text-center">
@@ -240,6 +240,7 @@ function ScrollNext() {
                             <div class="col-7">
                                 <div class="row">
                                     <h4 class="col">{{ item.company }}</h4>
+                                    <div>{{ item.title }}</div>
                                 </div>
                             </div>
                         </div>
@@ -250,9 +251,6 @@ function ScrollNext() {
                             <div class="col-1"></div>
                             <!-- Content -->
                             <div class="col-7">
-                                <div class="row mb-4">
-                                    <div>{{ item.title }}</div>
-                                </div>
                                 <ul class="">
                                     <li v-for="content in item.detail">
                                         <p>{{ content }}</p>
@@ -384,6 +382,12 @@ main{
     width: 50vh;
     height: 50vh;
     overflow: hidden;
+}
+
+@media only screen and (max-width: 960px) {
+    .avatar-user_1, .avatar-user_2{
+        transform: scale(1.5);
+    }
 }
 .avatar-user_1{
     position: absolute;
