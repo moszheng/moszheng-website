@@ -3,6 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import { createPinia } from 'pinia'
 import {useNavStore} from '@/stores/navstore'
 
+import WorkPage from '@/views/WorksPage.vue'
+
 import './assets/main.css'
 // import Lenis from '@studio-freight/lenis'
 // Import our custom CSS
@@ -19,7 +21,8 @@ const routes = [
     {
         path: '/works',
         name: 'WorksPage',
-        component: () => import('@/views/WorksPage.vue'),
+        // component: () => import('@/views/WorksPage.vue'),
+        component: WorkPage,
     },
     {
         path: '/works/:projecturl',
