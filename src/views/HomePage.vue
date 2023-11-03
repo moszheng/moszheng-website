@@ -15,27 +15,7 @@ const bgImage = [
 const backgroundImage = ref(bgImage[0]);
 const bgStyles = ref(`background-image: url(${bgImage[0]});`);
 
-let index = 0;
-
-// method1 Function to preload images
-// const preloadImages = async () => {
-//   try {
-//     const promises = bgImage.map(url => {
-//       return new Promise((resolve, reject) => {
-//         const img = new Image();
-//         img.onload = resolve;
-//         img.onerror = reject;
-//         img.src = url;
-//       });
-//     });
-//     await Promise.all(promises);
-//     preloadimages.value = bgImage.map(url => ({ url, loaded: true }));
-//     console.log("preload finish")
-//   } catch (error) {
-//     console.error('Error preloading images:', error);
-//   }
-// };
-// onMounted(preloadImages)
+const index = ref(0);
 
 // method2
 onMounted(() => {
@@ -46,13 +26,9 @@ onMounted(() => {
 });
 
 setInterval(() => {
-  // backgroundImage.value = `url(${preloadimages.value[index].url})`;
-  // bgStyles.value = `background-image: url(${preloadimages.value[index].url});`;
-  // index = (index + 1) % preloadimages.value.length;
-
-  backgroundImage.value = `url(${bgImage[index]})`;
-  bgStyles.value = `background-image: url(${bgImage[index]});`;
-  index = (index + 1) % bgImage.length;
+  backgroundImage.value = `url(${bgImage[index.value]})`;
+  bgStyles.value = `background-image: url(${bgImage[index.value]});`;
+  index.value = (index.value + 1) % bgImage.length;
 }, 3500);
 
 </script>
