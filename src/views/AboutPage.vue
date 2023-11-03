@@ -132,7 +132,6 @@ const leave = (el, done) => {
 };
 
 function ScrollNext() {
-    // const windowheight = 
 	window.scrollTo(0, window.screen.height);
 }
 

@@ -145,10 +145,14 @@ function onLeave(el, done) {
 </header>
 </template>
 <style>
+/* Homepage mobile collapse need to fill background*/
+@media only screen and (max-width: 1200px) {
+    header  {
+        background-color: hsla(0, 0%, 100%, 0);
+    }
+}
+
 header  {
-  /* -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(20px);
-  background-color: hsla(0, 0%, 100%, 0.65); */
   background-color: hsla(0, 0%, 100%, 0);
 }
 

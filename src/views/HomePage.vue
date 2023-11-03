@@ -59,6 +59,13 @@ setInterval(() => {
 </template>
 
 <style>
+/* Mobile */
+@media only screen and (max-width: 1024px) {
+  .index-btn{
+    width: 80vw;
+  }
+}
+
 #index-bgcover{
   position: absolute;
   top: 0;
@@ -81,11 +88,11 @@ setInterval(() => {
   z-index: 1;
 }
 /* Button */
+
 .index-btn{
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   background-color: hsla(0, 0%, 95.3%, 0.25);
-  /* outline: solid; */
   min-width: 10vh;
   box-shadow: none;
   border: 1px;

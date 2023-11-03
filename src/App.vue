@@ -9,15 +9,15 @@ import Navbar from './components/NavbarItem.vue'
 
 <router-view v-slot="{ Component, route }" >
     <Transition name="fade" mode="out-in">
-        <Suspense>
+        <!-- <Suspense>
             <template #default>
                 <component :is="Component" :key="route.path"></component>
             </template>
             <template #fallback>
                 <LoadingPage></LoadingPage>
             </template>
-        </Suspense>
-        <!-- <component :is="Component" :key="route.path"></component> -->
+        </Suspense> -->
+        <component :is="Component" :key="route.path"></component>
     </Transition>
 </router-view>
 

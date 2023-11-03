@@ -17,11 +17,16 @@ onMounted(() => {
 });
 
 function randomHeight() {
+	if (window.screen.width > 960){
 	const rndmax = 50;
 	const rndmin = 25;
 	const rnd = Math.floor( Math.random()*( rndmax - rndmin + 1 )) + rndmin;
 
 	return `height: ${ rnd }vh`;
+	}
+	else {
+		return `height: 30vh`;
+	}
 };
 
 function scrolltop() {
@@ -32,12 +37,8 @@ function scrolltop() {
 <template>
 <div>
 	<main class="container flex-xl-nowrap">
-		<!----- Main Content----->
-		<!-- py-md-3 pl-md-5 px-xl-3 -->
-		<!-- -->
-		<!-- data-masonry='{"percentPosition": true }' -->
 		<div class="row pt-5" data-masonry='{"percentPosition": true }'>
-			<div v-for="item in WorksData.project" class="col-md-4 col">
+			<div v-for="item in WorksData.project" class="col-lg-4 col">
 				<div class="card text-white" :style="randomHeight()">
 					<router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
 						<img :src=imgLocation(item.img) class="card-img" :alt="item.name" >
