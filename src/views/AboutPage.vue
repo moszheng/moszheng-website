@@ -325,6 +325,21 @@ function ScrollNext() {
 
 <style>
 
+/* Mobile */
+@media only screen and (max-width: 960px) {
+    #icon_twitter{
+        width: 25px;
+        height: 25px;
+    }
+    .avatar-user_1, .avatar-user_2{
+        transform: scale(1.5);
+    }
+    p {
+        font-size: 0.75rem; /*0.9*/
+    }
+}
+
+
 /*-----------------------*/
 main{
     padding-right: 0 !important;
@@ -358,15 +373,6 @@ main{
     overflow: hidden;
 }
 
-@media only screen and (max-width: 960px) {
-    #icon_twitter{
-        width: 25px;
-        height: 25px;
-    }
-    .avatar-user_1, .avatar-user_2{
-        transform: scale(1.5);
-    }
-}
 .avatar-user_1{
     position: absolute;
     top: 0;

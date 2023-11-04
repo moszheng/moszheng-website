@@ -17,7 +17,7 @@ const colormode = computed(() => {
 /* Click toggle than Change BG */
 const ChangBGtoggle = ref(false);
 const ChangBG = () => {
-    ChangBGtoggle.value = !ChangBGtoggle.value
+    ChangBGtoggle.value = !ChangBGtoggle.value;
     const h = document.getElementsByTagName('header')[0]
 
     if (ChangBGtoggle.value) { 
