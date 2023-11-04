@@ -157,7 +157,6 @@ function ScrollNext() {
                         <h1 class="mb-5" >Sheng Wen Cheng</h1>
 
                     </Transition>
-
                     <Transition name="move" mode="out-in" appear
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
@@ -167,7 +166,6 @@ function ScrollNext() {
                         </h3>
 
                     </Transition>
-
                     <p>Focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</p>
 
                     <p>Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
@@ -175,8 +173,9 @@ function ScrollNext() {
 
                     <p>For any inquiries,<strong> please contact me</strong></p>
                 </div>
+                <!-- Social media -->
                 <ul class="navbar-nav flex-row mb-4">
-                    <li v-for="item in LinkData.socialmedia" class="nav-item col-3 col-md-auto">
+                    <li v-for="item in LinkData.socialmedia" class="nav-item col-2 col-md-auto">
                         <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                             <svg id="icon_twitter">
                                 <use :xlink:href="item.icon"></use>
@@ -184,6 +183,7 @@ function ScrollNext() {
                         </a>
                     </li>
                 </ul>
+                <!-- Contact info -->
                 <TransitionGroup appear :css="false"
                     @before-enter="beforeEnter"
                     @enter="enter"
@@ -204,9 +204,6 @@ function ScrollNext() {
                 </a>
             </div> -->
         </section>
-        <!-- <section class="img-banner">
-            <img src="../img/03_SWSX_01.jpg" class="img-fluid">
-        </section> -->
         <!-- Experience -->
         <section class="about-exp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white isVisible">
             <div class="row mt-xl-0 mt-4 mb-4">
@@ -215,9 +212,7 @@ function ScrollNext() {
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-
-                            <h3 class="mb-4" v-if="isVisible">Experience</h3>
-
+                            <h3 class="mb-xl-4 mb-5" v-if="isVisible">Experience</h3>
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-xl-3">
@@ -227,30 +222,30 @@ function ScrollNext() {
                         @leave="leave"
                     >
                     <div class="mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
-                        <div class="row mb-xl-3">
+                        <!-- Job -->
+                        <div class="row mb-xl-3 mb-2">
                             <!-- duration -->
-                            <div class="col-2">
+                            <div class="col-xl-2 col-1">
                                 <div class="col text-center">
                                     <p>{{item.duration}}</p>
                                 </div>
                             </div>
                             <!-- Mid -->
-                            <div class="col-1">-</div>
+                            <div class="col-xl-1 col-1">-</div>
                             <!-- Content -->
-                            <div class="col-7">
+                            <div class="col-xl-7 col-9">
                                 <div class="row">
-                                    <h4 class="col">{{ item.company }}</h4>
-                                    <div>{{ item.title }}</div>
+                                    <h4 class="col">{{ item.title }}</h4>
+                                    <div>{{ item.company }}</div>
                                 </div>
                             </div>
                         </div>
+                        <!-- Job content -->
                         <div class="row" >
-                            <!-- duration -->
-                            <div class="col-2"></div>
-                            <!-- Mid -->
-                            <div class="col-1"></div>
+                            <div class="col-xl-2 col-0"></div>
+                            <div class="col-xl-1 col-2"></div>
                             <!-- Content -->
-                            <div class="col-7">
+                            <div class="col-xl-7 col-10">
                                 <ul class="">
                                     <li v-for="content in item.detail">
                                         <p>{{ content }}</p>
@@ -271,17 +266,17 @@ function ScrollNext() {
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-                    <h2 class="mb-4 " v-if="isVisible1">Service & Skill</h2>
+                    <h2 class="mb-md-4 mb-5" v-if="isVisible1">Service & Skill</h2>
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-md-5 ">
                     <!-- Text -->
                     <div class="about-skill-text row mb-5">
-                        <div class="col-md-6 mb-md-0 mb-5">
+                        <div class="col-md-6 mb-md-0 mb-4">
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
-                                <h3 class="mb-5" v-if="isVisible1">Motion Design</h3>
+                                <h3 class="mb-md-5 mb-4" v-if="isVisible1">Motion Design</h3>
                             </Transition>
                             <TransitionGroup :css="false"
                                 @before-enter="beforeEnter"
@@ -295,7 +290,7 @@ function ScrollNext() {
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
-                                <h3 class="mb-5" v-if="isVisible1">Development</h3>
+                                <h3 class="mb-md-5 mb-4" v-if="isVisible1">Development</h3>
                             </Transition>
                             <TransitionGroup :css="false"
                                 @before-enter="beforeEnter"
@@ -314,28 +309,7 @@ function ScrollNext() {
                 </div>
             </div>
         </section>
-        <!-- Recent Prj -->
-        <!-- <section class="mb-4 px-md-5 px-1 ">
-            <h2>Recent Project</h2>
-            <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
-                <div class="row">
-                    <div  v-for="item in WorksData.project.slice(0,4)" class="col-md-6">
-                        <div class="card mb-4 text-white">
-                            <router-link :to="{ name : 'WorksPage' , params : { projecturl: item.url_name } }" :title="item.name">
-                                <img :src=img_location(item.img) class="card-img" alt="...">
-                                <div class="works-black"></div>
-                                <div class="works-text text-white px-4">
-                                    <h5 class="card-title">{{ item.name }}</h5>
-                                    <h6 class="card-title">@{{ item.company }}</h6>
-                                    <p class="card-text">{{ item.date }}</p>
-                                </div>
-                            </router-link>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section> -->
-        <div class="container-fluid text-center">
+        <div class="about-end container-fluid text-center">
             <a href="#" class="nav-link p-2">
             <!-- <a href="#anchor" onclick="lenis.scrollTo('#anchor')" class="nav-link p-2"> -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
@@ -370,7 +344,7 @@ main{
     background-color: rgb(22, 22, 22) ;
 }
 
-.about-skill{
+.about-skill, .about-end{
     background-color: rgb(228, 228, 228);
 }
 .about-skill-text{
@@ -385,6 +359,10 @@ main{
 }
 
 @media only screen and (max-width: 960px) {
+    #icon_twitter{
+        width: 25px;
+        height: 25px;
+    }
     .avatar-user_1, .avatar-user_2{
         transform: scale(1.5);
     }
