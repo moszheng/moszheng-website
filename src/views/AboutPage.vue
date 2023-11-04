@@ -61,9 +61,6 @@ const observer1 = new IntersectionObserver( callback1, options );
 // Attach the observer to the target element
 onMounted(() => {
     const targets = document.querySelectorAll('.isVisible');
-    // for (const item of targets){
-    //     observer.observe(item);
-    // }
     observer.observe(targets[0]);
     observer1.observe(targets[1]);
 

@@ -14,6 +14,21 @@ onMounted(() => {
     new Masonry(row, {
 		percentPosition: true,
     });
+
+	// Preloading status
+	const preloadimg = document.querySelectorAll('.card-img');
+
+	function loaded(img){
+		img.target.classList.add("loaded")
+	}
+
+	preloadimg.forEach(function (img) {
+		if(img.complete){
+			loaded(img)
+		}else{
+			img.addEventListener("load", loaded)
+		}
+	});
 });
 
 function randomHeight() {
@@ -35,13 +50,14 @@ function scrolltop() {
 
 </script>
 <template>
-<div>
+<div class="WorksPage">
 	<main class="container flex-xl-nowrap">
 		<div class="row pt-5" data-masonry='{"percentPosition": true }'>
 			<div v-for="item in WorksData.project" class="col-lg-4 col">
 				<div class="card text-white" :style="randomHeight()">
 					<router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
-						<img :src=imgLocation(item.img) class="card-img" :alt="item.name" >
+						<!-- replaceimg -->
+						<img :src=imgLocation(item.img) class="card-img" :alt="item.name">
 						<div class="works-black"></div>
 						<div class="works-text text-white px-4">
 							<h5 class="card-title">{{ item.name }}</h5>
@@ -70,4 +86,15 @@ function scrolltop() {
 .card{
 	margin-bottom: 35px;
 }
+
+.card-img.loaded{
+	opacity: 1;
+	transition: all 0.5s;
+}
+.card-img{
+	background-color: aqua;
+	opacity: 0;
+}
+
 </style>
+

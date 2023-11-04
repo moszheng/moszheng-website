@@ -2,7 +2,6 @@
 import {ref, onMounted} from 'vue'
 
 // preloading
-// const preloadimages = ref([]);
 const bgImage = [
   '../src/img/01_gma29.jpg',
   '../src/img/03_SWSX_01.jpg',
@@ -12,12 +11,9 @@ const bgImage = [
   '../src/img/02_gha56_01.png',
 ];
 
-const backgroundImage = ref(bgImage[0]);
 const bgStyles = ref(`background-image: url(${bgImage[0]});`);
-
 const index = ref(0);
 
-// method2
 onMounted(() => {
   bgImage.forEach((image) => {
     const img = new Image();
@@ -26,10 +22,9 @@ onMounted(() => {
 });
 
 setInterval(() => {
-  backgroundImage.value = `url(${bgImage[index.value]})`;
-  bgStyles.value = `background-image: url(${bgImage[index.value]});`;
-  index.value = (index.value + 1) % bgImage.length;
-}, 3500);
+    bgStyles.value = `background-image: url(${bgImage[index.value]});`;
+    index.value = (index.value + 1) % bgImage.length;
+}, 1000);
 
 </script>
 
