@@ -1,8 +1,7 @@
 <script setup>
-import {ref, onMounted} from 'vue'
+import {ref, computed, onMounted} from 'vue'
 import gsap from 'gsap'
 
-// preloading
 const bgImage = [
   '../src/img/01_gma29.jpg',
   '../src/img/03_SWSX_01.jpg',
@@ -14,34 +13,46 @@ const bgImage = [
 
 const bgindex = ref(0);
 
+const finishloadimg = ref(0);
+const finishloading = computed(() => finishloadimg.value === bgImage.length);
+
 onMounted(() => {
   bgImage.forEach((image) => {
     const img = new Image();
     img.src = image;
   });
+
+  // Preloading status
+  const preloadimg = document.querySelectorAll('.lazy');
+  function loaded(img) {
+    finishloadimg.value++;
+  }
+  preloadimg.forEach(function(img) {
+    if (img.complete) {
+      loaded(img)
+    } else {
+      img.addEventListener("load", loaded)
+    }
+  });
 });
 
-/* BG2 */
-const slid = ref([true, true, true, true, true, true]);
+/* BG Slidershow */
+const slider = ref([true, true, true, true, true, true]);
 
-function bgStyles(index) {
-  return `background-image: url(${bgImage[index]}); z-index:${ 6-index}` 
-}
+function bgStyles(index) {return `z-index:${ 6-index};`}
 
 setInterval(() => {
-  const oldi = bgindex.value;
+  const oldindex = bgindex.value;
   bgindex.value = (bgindex.value + 1) % bgImage.length;
   if (bgindex.value == 0) {
-    slid.value = [true, true, true, true, true, true];
+    slider.value = [true, true, true, true, true, true];
   } else {
-    slid.value[bgindex.value] = true;
-    slid.value[oldi] = false;
+    slider.value[bgindex.value] = true;
+    slider.value[oldindex] = false;
   }
 }, 4000);
 
-
 /* Transition GSAP */
-
 const beforeEnter = (el) => {
     el.style.opacity = 0;
 };
@@ -54,11 +65,9 @@ const enter = (el, done) => {
         onComplete: done,
     });
 };
-
 const beforeleave = (el) => {
     el.style.opacity = 1;
 };
-
 const leave = (el, done) => {
     // console.log("cc")
     gsap.to(el, {
@@ -68,16 +77,45 @@ const leave = (el, done) => {
     });
 };
 
+/* Loading */
+const loadingLeave = (el, done) => {
+    // console.log("cc")
+    gsap.to(el, {
+        opacity: 0,
+        delay: 1.5,
+        duration: 0.8,
+        ease: 'power3.Out',
+        onComplete: done,
+    });
+};
 </script>
 
 <template>
   <main class="Home">
+    <!-- Loading Page -->
+    <Transition name="move" mode="out-in"
+      @before-enter="beforeEnter" @enter="enter"
+      @leave="loadingLeave"
+    >
+      <div class="index-loading" v-show="!finishloading">
+        <div class="container d-flex justify-content-center align-items-center h-100">
+          <svg id="mos-logo">
+            <use xlink:href="#icon-mosLogo"></use>
+          </svg>
+        </div>
+      </div>
+    </Transition>
     <!----- BG ----->
-    <TransitionGroup name="move" mode="out-in" @before-enter="beforeEnter" @enter="enter" @before-leave="beforeleave" @leave="leave">
-      <div class="index-bgcover" v-for="(item, index) in bgImage"
-        v-show="slid[index]"
-        :key = "item"
-        :style="bgStyles(index)"></div>
+    <TransitionGroup name="move" mode="out-in"
+      @before-enter="beforeEnter" @enter="enter"
+      @before-leave="beforeleave" @leave="leave"
+    >
+      <img v-for="(item, index) in bgImage" :key="item"
+        v-show="slider[index]"
+        :src=bgImage[index] alt="image"
+        :style="bgStyles(index)"
+        class="index-bgcover lazy"
+      >
     </TransitionGroup>
     <!--  Intro ---->
     <div class="index-info">
@@ -107,7 +145,19 @@ const leave = (el, done) => {
     width: 80vw;
   }
 }
-
+#mos-logo {
+    width: 21vh;
+    height: 14vh;
+    transition: .8s ease;
+}
+.index-loading{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #FFF;
+  z-index: 20;
+}
 .index-bgcover{
   position: absolute;
   top: 0;
@@ -126,8 +176,8 @@ const leave = (el, done) => {
   height: 100%;
   z-index: 10;
 }
-/* Button */
 
+/* Button */
 .index-btn{
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);

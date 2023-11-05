@@ -67,16 +67,16 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll);
 
     // Preloading status
-	const preloadimg = document.querySelectorAll('.lazy');
+    const preloadimg = document.querySelectorAll('.lazy');
 
-    function loaded(img){
+    function loaded(img) {
         img.target.classList.add("loaded")
     }
 
     preloadimg.forEach(function (img) {
-        if(img.complete){
+        if (img.complete) {
             loaded(img)
-        }else{
+        } else {
             img.addEventListener("load", loaded)
         }
     });

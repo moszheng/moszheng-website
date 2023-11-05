@@ -163,7 +163,7 @@ function onLeave(el, done) {
 <!-- <div class="border-bottom"></div> -->
 </header>
 </template>
-<style>
+<style scoped>
 header  {
   background-color: hsla(0, 0%, 100%, 0);
   transition: .5s ease;
