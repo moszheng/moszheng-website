@@ -1,56 +1,15 @@
 <script setup>
-import {ref, computed, onMounted} from 'vue'
+import {ref} from 'vue'
 import gsap from 'gsap'
 
-const bgImage = [
-  '../src/img/01_gma29.jpg',
-  '../src/img/03_SWSX_01.jpg',
-  '../src/img/05_GMA32_01.png',
-  '../src/img/04_KK_01.png',
-  '../src/img/07_VIVA_01.jpg',
-  '../src/img/02_gha56_01.png',
-];
+// Loading Page
+const finishloading = ref(false);
 
-const bgindex = ref(0);
-
-const finishloadimg = ref(0);
-const finishloading = computed(() => finishloadimg.value === bgImage.length);
-
-onMounted(() => {
-  bgImage.forEach((image) => {
-    const img = new Image();
-    img.src = image;
-  });
-
-  // Preloading status
-  const preloadimg = document.querySelectorAll('.lazy');
-  function loaded(img) {
-    finishloadimg.value++;
-  }
-  preloadimg.forEach(function(img) {
-    if (img.complete) {
-      loaded(img)
-    } else {
-      img.addEventListener("load", loaded)
-    }
-  });
-});
-
-/* BG Slidershow */
-const slider = ref([true, true, true, true, true, true]);
-
-function bgStyles(index) {return `z-index:${ 6-index};`}
-
-setInterval(() => {
-  const oldindex = bgindex.value;
-  bgindex.value = (bgindex.value + 1) % bgImage.length;
-  if (bgindex.value == 0) {
-    slider.value = [true, true, true, true, true, true];
-  } else {
-    slider.value[bgindex.value] = true;
-    slider.value[oldindex] = false;
-  }
-}, 4000);
+function onMyFrameLoad() {
+  console.log("loading finished")
+  finishloading.value = true;
+  console.log(finishloading.value)
+};
 
 /* Transition GSAP */
 const beforeEnter = (el) => {
@@ -76,7 +35,6 @@ const leave = (el, done) => {
         onComplete: done,
     });
 };
-
 /* Loading */
 const loadingLeave = (el, done) => {
     // console.log("cc")
@@ -106,17 +64,14 @@ const loadingLeave = (el, done) => {
       </div>
     </Transition>
     <!----- BG ----->
-    <TransitionGroup name="move" mode="out-in"
-      @before-enter="beforeEnter" @enter="enter"
-      @before-leave="beforeleave" @leave="leave"
-    >
-      <img v-for="(item, index) in bgImage" :key="item"
-        v-show="slider[index]"
-        :src=bgImage[index] alt="image"
-        :style="bgStyles(index)"
-        class="index-bgcover lazy"
-      >
-    </TransitionGroup>
+    <div class="index-bgcover">
+      <iframe
+        src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3" 
+        allow="autoplay"
+        @load="onMyFrameLoad"
+        ></iframe>
+    </div>
+
     <!--  Intro ---->
     <div class="index-info">
       <div class="container d-flex justify-content-end align-items-center h-100">
@@ -161,13 +116,28 @@ const loadingLeave = (el, done) => {
 .index-bgcover{
   position: absolute;
   top: 0;
-  width: 100%;
-  height: 100%;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  overflow: hidden;
   object-fit: cover;
   filter: brightness(55%);
+}
+iframe {
+  position: absolute;
+  height: 60vw;
+  width: 170vh;
+  min-height: 100%;
+  min-width: 100%;
+  max-width: none;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  box-sizing: border-box;
+  pointer-events: none;
 }
 .index-info{
   position: absolute;
