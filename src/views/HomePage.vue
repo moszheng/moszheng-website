@@ -1,5 +1,6 @@
 <script setup>
 import {ref, onMounted} from 'vue'
+import gsap from 'gsap'
 
 // preloading
 const bgImage = [
@@ -11,8 +12,7 @@ const bgImage = [
   '../src/img/02_gha56_01.png',
 ];
 
-const bgStyles = ref(`background-image: url(${bgImage[0]});`);
-const index = ref(0);
+const bgindex = ref(0);
 
 onMounted(() => {
   bgImage.forEach((image) => {
@@ -21,17 +21,64 @@ onMounted(() => {
   });
 });
 
+/* BG2 */
+const slid = ref([true, true, true, true, true, true]);
+
+function bgStyles(index) {
+  return `background-image: url(${bgImage[index]}); z-index:${ 6-index}` 
+}
+
 setInterval(() => {
-    bgStyles.value = `background-image: url(${bgImage[index.value]});`;
-    index.value = (index.value + 1) % bgImage.length;
-}, 1000);
+  const oldi = bgindex.value;
+  bgindex.value = (bgindex.value + 1) % bgImage.length;
+  if (bgindex.value == 0) {
+    slid.value = [true, true, true, true, true, true];
+  } else {
+    slid.value[bgindex.value] = true;
+    slid.value[oldi] = false;
+  }
+}, 4000);
+
+
+/* Transition GSAP */
+
+const beforeEnter = (el) => {
+    el.style.opacity = 0;
+};
+const enter = (el, done) => {
+    // console.log("cc")
+    gsap.to(el, {
+        opacity: 1,
+        duration: 1,
+        ease: 'power3.Out',
+        onComplete: done,
+    });
+};
+
+const beforeleave = (el) => {
+    el.style.opacity = 1;
+};
+
+const leave = (el, done) => {
+    // console.log("cc")
+    gsap.to(el, {
+        opacity: 0,
+        duration: 1.2,
+        onComplete: done,
+    });
+};
 
 </script>
 
 <template>
   <main class="Home">
     <!----- BG ----->
-    <div id="index-bgcover" :style="bgStyles"></div>
+    <TransitionGroup name="move" mode="out-in" @before-enter="beforeEnter" @enter="enter" @before-leave="beforeleave" @leave="leave">
+      <div class="index-bgcover" v-for="(item, index) in bgImage"
+        v-show="slid[index]"
+        :key = "item"
+        :style="bgStyles(index)"></div>
+    </TransitionGroup>
     <!--  Intro ---->
     <div class="index-info">
       <div class="container d-flex justify-content-end align-items-center h-100">
@@ -61,26 +108,23 @@ setInterval(() => {
   }
 }
 
-#index-bgcover{
+.index-bgcover{
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
-
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
   object-fit: cover;
   filter: brightness(55%);
-  transition: background 1.2s linear;
 }
 .index-info{
   position: absolute;
   top: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 10;
 }
 /* Button */
 
@@ -93,3 +137,4 @@ setInterval(() => {
   border: 1px;
 }
 </style>
+
