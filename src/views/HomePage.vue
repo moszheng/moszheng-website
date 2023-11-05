@@ -93,7 +93,7 @@ const loadingLeave = (el, done) => {
   </main>
 </template>
 
-<style>
+<style scoped>
 /* Mobile */
 @media only screen and (max-width: 1024px) {
   .index-btn{
