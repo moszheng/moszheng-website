@@ -65,6 +65,21 @@ onMounted(() => {
     observer1.observe(targets[1]);
 
     window.addEventListener('scroll', handleScroll);
+
+    // Preloading status
+	const preloadimg = document.querySelectorAll('.lazy');
+
+    function loaded(img){
+        img.target.classList.add("loaded")
+    }
+
+    preloadimg.forEach(function (img) {
+        if(img.complete){
+            loaded(img)
+        }else{
+            img.addEventListener("load", loaded)
+        }
+    });
 });
 onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
@@ -77,15 +92,15 @@ const handleScroll = () => {
     scrollPosition.value = window.scrollY;
     // portrait
     gsap.to('.avatar-user_1', {
-        y: scrollPosition.value * .15,
-        duration: .3,
+        y: scrollPosition.value * .05,
+        duration: .1,
         ease: 'power1',
         // onComplete: done
     });
     // BG
     gsap.to('.avatar-user_2', {
-        y: scrollPosition.value * .45,
-        duration: .35,
+        y: scrollPosition.value * .15,
+        duration: .15,
         ease: 'power2',
         // onComplete: done
     });
@@ -141,8 +156,8 @@ function ScrollNext() {
             <!-- profile image -->
             <div class="col-xl-6 d-flex align-items-center justify-content-center">
                 <div class="userContainer mb-md-0 mb-4" >
-                    <img class="avatar-user_1 img-fluid" alt="profile_image" :src=profileImage1>
-                    <img class="avatar-user_2 img-fluid" alt="profile_image" :src=profileImage2>
+                    <img class="avatar-user_1 img-fluid lazy" alt="profile_image" :src=profileImage1>
+                    <img class="avatar-user_2 img-fluid lazy" alt="profile_image" :src=profileImage2>
                 </div>
             </div>
             <div class="col-xl-6 mt-xl-0 mt-4 px-md-5 ">
@@ -336,6 +351,15 @@ function ScrollNext() {
     }
 }
 
+/* lazy load*/
+.lazy.loaded{
+	opacity: 1;
+	transition: all 0.5s;
+}
+.lazy{
+	opacity: 0;
+}
+
 
 /*-----------------------*/
 main{
@@ -368,13 +392,14 @@ main{
     width: 50vh;
     height: 50vh;
     overflow: hidden;
+    background-color: rgb(235, 235, 235);
 }
 
 .avatar-user_1{
     position: absolute;
     top: 0;
     left: 0;
-    transform: scale(1.2);
+    transform: scale(1.25);
     object-fit: cover;
     z-index: 20;
 }
@@ -382,7 +407,7 @@ main{
     position: absolute;
     top: 0;
     left: 0;
-    transform: scale(1.2);
+    transform: scale(1.3);
     object-fit: cover;
     z-index: 10;
 }

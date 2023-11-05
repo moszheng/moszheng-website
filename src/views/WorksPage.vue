@@ -16,7 +16,7 @@ onMounted(() => {
     });
 
 	// Preloading status
-	const preloadimg = document.querySelectorAll('.card-img');
+	const preloadimg = document.querySelectorAll('.lazy');
 
 	function loaded(img){
 		img.target.classList.add("loaded")
@@ -57,7 +57,7 @@ function scrolltop() {
 				<div class="card text-white" :style="randomHeight()">
 					<router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
 						<!-- replaceimg -->
-						<img :src=imgLocation(item.img) class="card-img" :alt="item.name">
+						<img :src=imgLocation(item.img) class="card-img lazy" :alt="item.name">
 						<div class="works-black"></div>
 						<div class="works-text text-white px-4">
 							<h5 class="card-title">{{ item.name }}</h5>
@@ -84,15 +84,15 @@ function scrolltop() {
 
 <style scoped>
 .card{
+	background-color: rgb(235, 235, 235);
 	margin-bottom: 35px;
 }
 
-.card-img.loaded{
+.lazy.loaded{
 	opacity: 1;
 	transition: all 0.5s;
 }
-.card-img{
-	background-color: aqua;
+.lazy{
 	opacity: 0;
 }
 
