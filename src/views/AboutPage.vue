@@ -335,7 +335,7 @@ function ScrollNext() {
 </div>
 </template>
 
-<style>
+<style scoped>
 
 /* Mobile */
 @media only screen and (max-width: 960px) {

@@ -17,15 +17,15 @@ onMounted(() => {
 
 	// Preloading status
 	const preloadimg = document.querySelectorAll('.lazy');
-
-	function loaded(img){
+	// console.log(preloadimg)
+	function loaded(img) {
 		img.target.classList.add("loaded")
 	}
 
 	preloadimg.forEach(function (img) {
-		if(img.complete){
+		if(img.complete) {
 			loaded(img)
-		}else{
+		} else {
 			img.addEventListener("load", loaded)
 		}
 	});
@@ -57,7 +57,7 @@ function scrolltop() {
 				<div class="card text-white" :style="randomHeight()">
 					<router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
 						<!-- replaceimg -->
-						<img :src=imgLocation(item.img) class="card-img lazy" :alt="item.name">
+						<img :src=imgLocation(item.img_md) class="card-img lazy" :alt="item.name">
 						<div class="works-black"></div>
 						<div class="works-text text-white px-4">
 							<h5 class="card-title">{{ item.name }}</h5>

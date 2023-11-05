@@ -83,7 +83,7 @@ const loadingLeave = (el, done) => {
     gsap.to(el, {
         opacity: 0,
         delay: 1.5,
-        duration: 0.8,
+        duration: 0.75,
         ease: 'power3.Out',
         onComplete: done,
     });

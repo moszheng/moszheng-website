@@ -116,15 +116,15 @@ const sigleEnter = (el, done) => {
                 </a>
             </div>
         </div>
-        <section class="work-section row mx-md-3 mx-1 mb-xl-0  mb-5 px-md-5">
+        <section class="work-section row mx-md-3 mx-1 mb-xl-0 mb-5 px-md-5">
             <!-- img -->
-            <div class="col-xl-5 mb-md-0 mb-5">
+            <div class="col-xxl-5 mb-md-0 mb-5">
                 <div class="imgContainer">
-                    <img :src="imgLocation(prjdata.img)" class="imgContainer-img img-fluid " alt="...">
+                    <img :src="imgLocation(prjdata.img_md)" class="imgContainer-img img-fluid " alt="...">
                 </div>
             </div>
             <!-- Right Content -->
-            <div class="col-xl-5">
+            <div class="col-xxl-5">
                 <div class="">
                     <p v-for="item in prjdata.msg">
                         {{item}}
@@ -156,7 +156,7 @@ const sigleEnter = (el, done) => {
                         <div class="card mb-4 text-white">
                             <!-- routerlink -->
                             <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
-                                <img :src=imgLocation(item.img) class="card-img" alt="...">
+                                <img :src=imgLocation(item.img_md) class="card-img" alt="...">
                                 <div class="works-black"></div>
                                 <div class="works-text text-white px-4">
                                     <h5 class="card-title">{{ item.name }}</h5>
@@ -173,7 +173,7 @@ const sigleEnter = (el, done) => {
     <FooterItem />
 </div>
 </template>
-<style>
+<style scoped>
 
 /* -----Section------ */
 
@@ -184,7 +184,7 @@ main{
 
 @media only screen and (min-width: 1200px) {
     .title-section{
-        min-height: 25vh;
+        min-height: 20vh;
     }
 }
 
@@ -205,10 +205,15 @@ main{
 }
 
 /* img */
-
+@media only screen and (max-width: 1500px) {
+    .imgContainer{
+        width: 80vw;
+        height: 30vh;
+    }
+}
 .imgContainer{
     position: relative;
-    width: 40vh;
+    width: 20vw;
     height: 50vh;
     overflow: hidden;
 }
@@ -218,7 +223,6 @@ main{
     height: 1080px;
     top: -50%;
     left: -130%;
-    /* transform: scale(1.2); */
     max-width: none;
     max-height: none;
     object-fit: cover;
