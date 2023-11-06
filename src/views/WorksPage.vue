@@ -1,5 +1,5 @@
 <script setup>
-import {onMounted} from 'vue'
+import {ref, onMounted} from 'vue'
 import Masonry from 'masonry-layout'
 
 import FooterItem from '@/components/FooterItem.vue'
@@ -7,6 +7,8 @@ import WorksData from '@/data/WorksData.json'
 
 // Return Real route
 const imgLocation = (item) => {return '../src/img/'+ item};
+
+const preloadimgs = ref(document.querySelectorAll('.lazy'));
 
 onMounted(() => {
 	// initialize masonry
@@ -16,27 +18,30 @@ onMounted(() => {
 	});
 
 	// Preloading status
-	const preloadimgs = document.querySelectorAll('.lazy');
+	preloadimgs.value = document.querySelectorAll('.lazy')
 	function loaded(img) {
 		img.target.classList.add("loaded")
 	}
 
-	preloadimgs.forEach(function(img) {
+	preloadimgs.value.forEach(function(img) {
 		if(img.complete) {
 			loaded(img)
 		} else {
 			img.addEventListener("load", loaded)
 		}
 	});
+
 });
 
-function randomHeight() {
+function randomHeight(index) {
 	if (window.screen.width > 960) {
-		const rndmax = 50;
-		const rndmin = 25;
-		const rnd = Math.floor( Math.random()*( rndmax - rndmin + 1 )) + rndmin;
+		const rndarray = [50, 35, 45, 45, 30];
+		// const rndmax = 50;
+		// const rndmin = 25;
+		// const rnd = Math.floor( Math.random()*( rndmax - rndmin + 1 )) + rndmin;
 
-		return `height: ${ rnd }vh`;
+		// return `height: ${ rnd }vh`;
+		return `height: ${ rndarray[index%5] }vh`;
 	} else {
 		return `height: 30vh`;
 	}
@@ -51,8 +56,8 @@ function scrolltop() {
 <div class="WorksPage">
 	<main class="container flex-xl-nowrap">
 		<div class="row pt-5" data-masonry='{"percentPosition": true }'>
-			<div v-for="item in WorksData.project" class="col-lg-4 col">
-				<div class="card text-white" :style="randomHeight()">
+			<div v-for="(item, index) in WorksData.project" class="col-lg-4 col">
+				<div class="card text-white" :style="randomHeight(index)">
 					<router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
 						<!-- replaceimg -->
 						<img :src=imgLocation(item.img_md) class="card-img lazy" :alt="item.name">

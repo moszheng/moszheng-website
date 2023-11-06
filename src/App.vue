@@ -17,7 +17,9 @@ import Navbar from './components/NavbarItem.vue'
                 <LoadingPage></LoadingPage>
             </template>
         </Suspense> -->
-        <component :is="Component" :key="route.path"></component>
+        <KeepAlive>
+            <component :is="Component" :key="route.path"></component>
+        </KeepAlive>
     </Transition>
 </router-view>
 

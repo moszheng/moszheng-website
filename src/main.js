@@ -23,6 +23,9 @@ const routes = [
         name: 'WorksPage',
         // component: () => import('@/views/WorksPage.vue'),
         component: WorkPage,
+        meta: {
+            keepAlive: true
+        },
     },
     {
         path: '/works/:projecturl',
@@ -39,6 +42,9 @@ const routes = [
         path: '/about',
         name: 'About',
         component: () => import('@/views/AboutPage.vue'),
+        meta: {
+            keepAlive: false
+        },
     },
     {
         path: '/contact',
