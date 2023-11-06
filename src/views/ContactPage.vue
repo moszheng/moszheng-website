@@ -10,9 +10,13 @@ import { ref } from 'vue'
             <div class="col-xl-6">
             </div>
             <div class="col-xl-6">
-                <form name="submit-to-google-sheet">
+                <form action="https://formspree.io/f/meqbdlnk" method="POST">
                     <h1 class="my-5">Contact</h1>
-                    <input class="form-control" name="Name" type="text" placeholder="Name">
+                    <!-- email -->
+                    <div class="form-group my-3">
+                        <label for="InputName">Name</label>
+                        <input class="form-control" name="Name" type="text" placeholder="">
+                    </div>
                     <!-- email -->
                     <div class="form-group my-3">
                         <label for="InputEmail1">Email</label>
