@@ -62,7 +62,7 @@ const loadingLeave = (el, done) => {
     <div class="index-info">
       <div class="container d-flex justify-content-end align-items-center h-100">
         <!----- Main Content----->
-        <div class="mx-lg-5 px-lg-5 text-white">
+        <div class="mx-lg-5 px-lg-5 px-3 text-white">
           <h5 class="mb-2">Freelance 3D Generalist</h5>
           <h1 class="mb-5">Sheng Wen (Mos) Cheng</h1>
           <div class="mb-5">
@@ -70,9 +70,11 @@ const loadingLeave = (el, done) => {
             <p>Offering professional design services for digital arts and product motion design,
               <br>catering to companies and brands.</p>
           </div>
-          <router-link :to="{ name : 'WorksPage' }">
-            <button type="button" class="btn btn-primary index-btn">Explore</button>
-          </router-link>
+          <div class="index-btnarea">
+            <router-link :to="{ name : 'WorksPage' }">
+              <button type="button" class="btn btn-primary index-btn">Explore</button>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -82,6 +84,11 @@ const loadingLeave = (el, done) => {
 <style scoped>
 /* Mobile */
 @media only screen and (max-width: 1024px) {
+  .index-btnarea{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   .index-btn{
     width: 80vw;
   }

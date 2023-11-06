@@ -23,4 +23,11 @@ import { ref } from 'vue'
     padding-left: 0 !important;
     min-height: 80vh;
 }
+@media only screen and (max-width: 1024px) {
+  .showreel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
 </style>
