@@ -6,9 +6,7 @@ import gsap from 'gsap'
 const finishloading = ref(false);
 
 function onMyFrameLoad() {
-  console.log("loading finished")
   finishloading.value = true;
-  console.log(finishloading.value)
 };
 
 /* Transition GSAP */
@@ -21,17 +19,6 @@ const enter = (el, done) => {
         opacity: 1,
         duration: 1,
         ease: 'power3.Out',
-        onComplete: done,
-    });
-};
-const beforeleave = (el) => {
-    el.style.opacity = 1;
-};
-const leave = (el, done) => {
-    // console.log("cc")
-    gsap.to(el, {
-        opacity: 0,
-        duration: 1.2,
         onComplete: done,
     });
 };
@@ -71,7 +58,6 @@ const loadingLeave = (el, done) => {
         @load="onMyFrameLoad"
         ></iframe>
     </div>
-
     <!--  Intro ---->
     <div class="index-info">
       <div class="container d-flex justify-content-end align-items-center h-100">
@@ -146,7 +132,6 @@ iframe {
   height: 100%;
   z-index: 10;
 }
-
 /* Button */
 .index-btn{
   -webkit-backdrop-filter: blur(8px);

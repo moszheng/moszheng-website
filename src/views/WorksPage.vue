@@ -9,20 +9,19 @@ import WorksData from '@/data/WorksData.json'
 const imgLocation = (item) => {return '../src/img/'+ item};
 
 onMounted(() => {
-    // initialize masonry
-    const row = document.querySelector("[data-masonry]");
-    new Masonry(row, {
+	// initialize masonry
+	const row = document.querySelector("[data-masonry]");
+	new Masonry(row, {
 		percentPosition: true,
-    });
+	});
 
 	// Preloading status
-	const preloadimg = document.querySelectorAll('.lazy');
-	// console.log(preloadimg)
+	const preloadimgs = document.querySelectorAll('.lazy');
 	function loaded(img) {
 		img.target.classList.add("loaded")
 	}
 
-	preloadimg.forEach(function (img) {
+	preloadimgs.forEach(function(img) {
 		if(img.complete) {
 			loaded(img)
 		} else {
@@ -32,14 +31,13 @@ onMounted(() => {
 });
 
 function randomHeight() {
-	if (window.screen.width > 960){
-	const rndmax = 50;
-	const rndmin = 25;
-	const rnd = Math.floor( Math.random()*( rndmax - rndmin + 1 )) + rndmin;
+	if (window.screen.width > 960) {
+		const rndmax = 50;
+		const rndmin = 25;
+		const rnd = Math.floor( Math.random()*( rndmax - rndmin + 1 )) + rndmin;
 
-	return `height: ${ rnd }vh`;
-	}
-	else {
+		return `height: ${ rnd }vh`;
+	} else {
 		return `height: 30vh`;
 	}
 };
@@ -77,8 +75,8 @@ function scrolltop() {
                 <p>BACK TO TOP</p>
             </a>
         </div>
-	</main>
-	<FooterItem />
+</main>
+<FooterItem />
 </div>
 </template>
 

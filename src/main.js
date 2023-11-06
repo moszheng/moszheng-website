@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
 import { createPinia } from 'pinia'
 import {useNavStore} from '@/stores/navstore'
 
@@ -67,7 +67,7 @@ const routes = [
 
 // Router method
 const router = createRouter({
-    history: createWebHistory(),
+    history: createWebHashHistory(), // Hash Mode, to avoid 404
     routes,
     scrollBehavior(to, from, savedPosition) {
         // always scroll to top
