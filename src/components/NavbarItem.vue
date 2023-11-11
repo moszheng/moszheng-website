@@ -36,7 +36,7 @@ const showIcon = ref(false);
 const rotateButton = () => {
     showIcon.value = !showIcon.value;
     // motion
-    gsap.to('#icon_plus', {
+    gsap.to('#icon-plus-area', {
         rotation: '+=135',
         duration: 0.8,
         ease: 'power3.inOut',
@@ -150,7 +150,7 @@ function onLeave(el, done) {
                                 </TransitionGroup>
                             </div>
                             <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
-                                <svg id="icon_plus" :style="colormode">
+                                <svg id="icon-plus-area" :style="colormode">
                                     <use xlink:href="#icon-plus"></use>
                                 </svg>
                             </button>
@@ -174,7 +174,7 @@ header  {
     height: 100px;
     transition: .8s ease;
 }
-.nav-link, .icon_plus{
+.nav-link, .icon-plus-area{
     transition: .8s ease;
 }
 /*-------- nav bar toggler icon------*/

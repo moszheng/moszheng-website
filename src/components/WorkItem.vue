@@ -20,10 +20,10 @@ shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.va
 // Other Project Random method
 const vimeoPage = (item) => {return `https://vimeo.com/${ item }`}
 const vimeoEmbed = (item) => {
-    if (item[0]=="vimeo"){
+    if (item[0]=="vimeo") {
         return `https://player.vimeo.com/video/${ item[1] }?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`
     }
-    else if(item[0]=="youtube"){
+    else if (item[0]=="youtube") {
         return `https://www.youtube.com/embed/${ item[1] }?si=S_7EpUA151r9khLz`
     }
 }
@@ -70,7 +70,6 @@ const handleScroll = () => {
 };
 
 /* --------Animation--------- */
-
 const beforeEnter = (el) => {
     el.style.opacity = 0;
     el.style.transform = 'translateY(50px)';
@@ -92,7 +91,7 @@ const sigleEnter = (el, done) => {
         <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
-        <div class="title-section mb-5 mx-md-3 mx-2 px-md-5">
+        <div class="workitem-info mb-5 mx-md-3 mx-2 px-md-5">
             <Transition name="move" mode="out-in" appear
                 @before-enter="beforeEnter"
                 @enter="sigleEnter">
@@ -116,7 +115,7 @@ const sigleEnter = (el, done) => {
                 </a>
             </div>
         </div>
-        <section class="work-section row mx-md-3 mx-1 mb-xl-0 mb-5 px-md-5">
+        <section class="workitem-content row mx-md-3 mx-1 mb-xl-0 mb-5 px-md-5">
             <!-- img -->
             <div class="col-xxl-5 mb-md-0 mb-5">
                 <div class="imgContainer">
@@ -133,13 +132,13 @@ const sigleEnter = (el, done) => {
             </div>
         </section>
         <!-- credit -->
-        <div class="credit row mx-md-3 mx-1 px-md-5 mb-5">
+        <div class="workitem-credit row mx-md-3 mx-1 px-md-5 mb-5">
             <div class="col-xl-5">
             </div>
             <!-- Right Content -->
             <div class="col-xl-7">
                 <h4 class="mb-5">Credit</h4>
-                <div v-for = "value, key in prjdata.credit" class="row">
+                <div v-for = "value, key in prjdata.credit" class="row" :key="value">
                     <p class="col-lg-4 col">{{key}}</p>
                     <p class="col-lg-8 col">{{value}}</p>
                 </div>
@@ -147,12 +146,12 @@ const sigleEnter = (el, done) => {
         </div>
     </main>
     <!-- Other Prj -->
-    <section class="container-fluid OtherPrj px-md-5 px-1 " data-scroll-section>
+    <section class="container-fluid workitem-otherprj px-md-5 px-1 " data-scroll-section>
         <div class="container ">
             <h2 class="text-white my-4">Other Project</h2>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                 <div class="row">
-                    <div  v-for="item in shuffleprj" class="col-xl-4">
+                    <div v-for="item in shuffleprj" class="col-xl-4" :key="item.url_name">
                         <div class="card mb-4 text-white">
                             <!-- routerlink -->
                             <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
@@ -174,24 +173,22 @@ const sigleEnter = (el, done) => {
 </div>
 </template>
 <style scoped>
-
 /* -----Section------ */
-
 main{
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
 
 @media only screen and (min-width: 1200px) {
-    .title-section{
+    .workitem-info{
         min-height: 20vh;
     }
 }
 
-.work-section, .credit{
+.workitem-content, .workitem-credit{
     min-height: 60vh;
 }
-.OtherPrj{
+.workitem-otherprj{
     min-height: 40vh;
     display: flex;
     align-items: center;

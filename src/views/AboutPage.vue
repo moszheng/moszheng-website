@@ -5,7 +5,6 @@ import gsap from 'gsap'
 
 import FooterItem from '@/components/FooterItem.vue'
 import LinkData from '@/data/LinkData.json'
-// import WorksData from '../data/WorksData.json';
 import LogoData from '@/data/LogoData.json'
 import ExpData from '@/data/Experience.json'
 
@@ -73,7 +72,7 @@ onMounted(() => {
         img.target.classList.add("loaded")
     }
 
-    preloadimg.forEach(function (img) {
+    preloadimg.forEach(function(img) {
         if (img.complete) {
             loaded(img)
         } else {
@@ -108,12 +107,10 @@ const handleScroll = () => {
 
 /* GSAP */
 const beforeEnter = (el) => {
-    // console.log("bb")
     el.style.opacity = 0;
     el.style.transform = 'translateY(50px)';
 };
 const enter = (el, done) => {
-    // console.log("cc")
     gsap.to(el, {
         opacity: 1,
         y: 0,
@@ -124,7 +121,6 @@ const enter = (el, done) => {
     });
 };
 const sigleEnter = (el, done) => {
-    // console.log("cc")
     gsap.to(el, {
         opacity: 1,
         y: 0,
@@ -134,7 +130,6 @@ const sigleEnter = (el, done) => {
 };
 
 const leave = (el, done) => {
-    // console.log("cc")
     gsap.to(el, {
         opacity: 0,
         y: 80,
@@ -159,7 +154,7 @@ function ScrollNext() {
         <section class="about-intro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5">
             <!-- profile image -->
             <div class="col-xl-6 d-flex align-items-center justify-content-center">
-                <div class="userContainer mb-md-0 mb-4" >
+                <div class="user-container mb-md-0 mb-4" >
                     <img class="avatar-user_1 img-fluid lazy" alt="profile_image" :src=profileImage1>
                     <img class="avatar-user_2 img-fluid lazy" alt="profile_image" :src=profileImage2>
                 </div>
@@ -357,11 +352,11 @@ function ScrollNext() {
 
 /* lazy load*/
 .lazy.loaded{
-	opacity: 1;
-	transition: all 0.5s;
+    opacity: 1;
+    transition: all 0.5s;
 }
 .lazy{
-	opacity: 0;
+    opacity: 0;
 }
 
 
@@ -391,7 +386,7 @@ main{
     min-height: 20vh;
 }
 /*------ Img --------*/
-.userContainer{
+.user-container{
     position: relative;
     width: 50vh;
     height: 50vh;
