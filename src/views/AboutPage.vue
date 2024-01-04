@@ -91,15 +91,15 @@ const handleScroll = () => {
     scrollPosition.value = window.scrollY;
     // portrait
     gsap.to('.avatar-user_1', {
-        y: scrollPosition.value * .05,
-        duration: .1,
+        y: scrollPosition.value * .025,
+        duration: .01,
         ease: 'power1',
         // onComplete: done
     });
     // BG
     gsap.to('.avatar-user_2', {
-        y: scrollPosition.value * .15,
-        duration: .15,
+        y: scrollPosition.value * .075,
+        duration: .01,
         ease: 'power2',
         // onComplete: done
     });
@@ -207,13 +207,6 @@ function ScrollNext() {
                     </div>
                 </TransitionGroup>
             </div>
-            <!-- <div class="container-fluid text-center">
-                <a @click="ScrollNext()" class="nav-link p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-down" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
-                    </svg>
-                </a>
-            </div> -->
         </section>
         <!-- Experience -->
         <section class="about-exp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white isVisible">
@@ -223,7 +216,7 @@ function ScrollNext() {
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-                            <h3 class="mb-xl-4 mb-5" v-if="isVisible">Experience</h3>
+                            <h2 class="mb-xl-4 mb-5" v-if="isVisible">Experience</h2>
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-xl-3">
@@ -259,7 +252,7 @@ function ScrollNext() {
                             <div class="col-xl-7 col-10">
                                 <ul class="">
                                     <li v-for="content in item.detail">
-                                        <p>{{ content }}</p>
+                                        <p class="exp_p">{{ content }}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -273,14 +266,16 @@ function ScrollNext() {
         <!-- Skill -->
         <section class="about-skill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5">
             <div class="skill row mt-xl-0 mt-4 mb-4 isVisible">
-                <div class="col-lg-3">
+                <!-- Title -->
+                <div class="col-lg-4 pe-md-5 mb-lg-0 mb-5">
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
                     <h2 class="mb-md-4 mb-5" v-if="isVisible1">Service & Skill</h2>
                     </Transition>
                 </div>
-                <div class="col-lg-9 px-md-5 ">
+                <!-- Content -->
+                <div class="col-lg-8 px-md-5 ">
                     <!-- Text -->
                     <div class="about-skill-text row mb-5">
                         <div class="col-md-6 mb-md-0 mb-4">
@@ -311,9 +306,9 @@ function ScrollNext() {
                             </TransitionGroup>
                         </div>
                     </div>
-                    <!-- LOGO -->
+                    <!-- Skill LOGO -->
                     <div class="row d-flex align-items-center pe-md-5">
-                        <div v-for="item in LogoData.logo" :key="item.name" class="col-lg-2 col-3 px-xl-4 py-xl-3 px-2 py-2">
+                        <div v-for="item in LogoData.logo" :key="item.name" class="col-lg-2 col-3 px-xl-2 py-xl-3 px-1 py-2">
                             <img :src=item.img :alt=item.name class="img-fluid skill-logo">
                         </div>
                     </div>
@@ -342,6 +337,13 @@ function ScrollNext() {
         width: 25px;
         height: 25px;
     }
+    .user-container{
+        position: relative;
+        width: 40vh;
+        height: 40vh;
+        overflow: hidden;
+        background-color: rgb(235, 235, 235);
+    }
     .avatar-user_1, .avatar-user_2{
         transform: scale(1.5);
     }
@@ -365,13 +367,30 @@ main{
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
+/* font color */
+.exp_p{
+    color: rgb(179, 179, 179);
+}
 
+/* icon hover */
+#icon_twitter{
+    transition: all 0.2s;
+}
+#icon_twitter:hover{
+    transform: scale(1.1);
+    fill: rgb(253, 141, 3);
+}
+
+/* Block Size */
 .img-banner{
     overflow : hidden;
     height: 30vh;
 }
 .about-intro, .about-exp, .about-skill{
     min-height: 100vh;
+}
+.skill{
+    min-width: 75vw;
 }
 
 /* BG color */
@@ -385,6 +404,8 @@ main{
 .about-skill-text{
     min-height: 20vh;
 }
+
+
 /*------ Img --------*/
 .user-container{
     position: relative;
@@ -412,6 +433,6 @@ main{
 }
 .skill-logo{
     /* scale: 50%; */
-    width: 7.5vh;
+    width: 5vh;
 }
 </style>

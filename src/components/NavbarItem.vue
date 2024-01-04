@@ -10,7 +10,6 @@ const store = useNavStore();
 
 // update Darkmode
 const colormode = computed(() => {
-    // console.log(store.navbardarkmode)
     return store.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
 });
 
@@ -18,13 +17,13 @@ const colormode = computed(() => {
 const ChangBGtoggle = ref(false);
 const ChangBG = () => {
     ChangBGtoggle.value = !ChangBGtoggle.value;
-    const h = document.getElementsByTagName('header')[0]
+    const h = document.getElementsByTagName('header')[0];
 
-    if (ChangBGtoggle.value) { 
+    if (ChangBGtoggle.value) {
         h.style.backgroundColor = "#FFF";
         store.navbardarkmode = false;
     }
-    else { 
+    else {
         h.style.backgroundColor = "hsla(0, 0%, 100%, 0)";
         // store.navbardarkmode = true;
     }
