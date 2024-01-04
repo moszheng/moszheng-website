@@ -91,28 +91,38 @@ const sigleEnter = (el, done) => {
         <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
-        <div class="workitem-info mb-5 mx-md-3 mx-2 px-md-5">
-            <Transition name="move" mode="out-in" appear
-                @before-enter="beforeEnter"
-                @enter="sigleEnter">
+        <div class="workitem-info row mb-5 mx-md-3 mx-2 px-md-5">
+            <!-- Left -->
+            <div class="col-9">
+                <Transition name="move" mode="out-in" appear
+                    @before-enter="beforeEnter"
+                    @enter="sigleEnter">
 
-                <h3 class="mb-3">{{ prjdata.en_name}}</h3>
+                    <h3 class="mb-4">{{ prjdata.en_name}}</h3>
 
-            </Transition>
-            <h6 class="mb-3">@{{prjdata.company}}</h6>
-            <p class="mb-4">{{prjdata.date}}</p>
-            <div>
-                <a class="me-3" :href=prjdata.behance target="_blank" rel="noopener">
-                    <svg id="icon_twitter">
-                        <use xlink:href="#icon-behance"></use>
-                    </svg>
-                </a>
-                <!-- vimeo Link -->
-                <a class="" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
-                    <svg id="icon_twitter">
-                        <use xlink:href="#icon-vimeo"></use>
-                    </svg>
-                </a>
+                </Transition>
+                <h6 class="mb-3">@{{prjdata.company}}</h6>
+                <p class="mb-4">{{prjdata.date}}</p>
+                <div>
+                    <a class="me-3" :href=prjdata.behance target="_blank" rel="noopener">
+                        <svg id="icon_twitter">
+                            <use xlink:href="#icon-behance"></use>
+                        </svg>
+                    </a>
+                    <!-- vimeo Link -->
+                    <a class="" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
+                        <svg id="icon_twitter">
+                            <use xlink:href="#icon-vimeo"></use>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            <!-- Right -->
+            <div class="col-3 justify-content-end">
+                <h3 class="mb-4">Roles</h3>
+                <p v-for="item in prjdata.roles" :key="item">
+                    {{item}}
+                </p>
             </div>
         </div>
         <section class="workitem-content row mx-md-3 mx-1 mb-xl-0 mb-5 px-md-5">
