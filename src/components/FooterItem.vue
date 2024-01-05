@@ -23,8 +23,18 @@ import LinkData from '../data/LinkData.json'
 </footer>
 </template>
 
-<style>
+<style scoped>
 /*------ Footer-----------*/
+
+/* icon hover */
+#icon_twitter{
+    transition: all 0.2s;
+}
+#icon_twitter:hover{
+    transform: scale(1.1);
+    fill: rgb(253, 141, 3);
+}
+
 footer{
     background: #0e0e0e;
     min-height: 15vh;
