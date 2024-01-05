@@ -2,7 +2,7 @@
 import LinkData from '../data/LinkData.json'
 </script>
 <template>
-<footer class="d-flex justify-content-center align-items-center">
+<footer class="d-flex-center">
     <div class="container row text-white px-lg-5 py-2" >
         <div class="col-lg-3">
             <p>Copyright © 2023 moszheng.</p>

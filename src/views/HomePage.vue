@@ -43,7 +43,7 @@ const loadingLeave = (el, done) => {
       @leave="loadingLeave"
     >
       <div class="index-loading" v-show="!finishloading">
-        <div class="container d-flex justify-content-center align-items-center h-100">
+        <div class="container d-flex-center h-100">
           <svg id="mos-logo">
             <use xlink:href="#icon-mosLogo"></use>
           </svg>

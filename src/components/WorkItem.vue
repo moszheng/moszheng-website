@@ -105,13 +105,13 @@ const sigleEnter = (el, done) => {
                 <p class="mb-4">{{prjdata.date}}</p>
                 <div>
                     <a class="me-3" :href=prjdata.behance target="_blank" rel="noopener">
-                        <svg id="icon_twitter">
+                        <svg id="icon_social">
                             <use xlink:href="#icon-behance"></use>
                         </svg>
                     </a>
                     <!-- vimeo Link -->
                     <a class="" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
-                        <svg id="icon_twitter">
+                        <svg id="icon_social">
                             <use xlink:href="#icon-vimeo"></use>
                         </svg>
                     </a>

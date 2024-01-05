@@ -59,6 +59,7 @@ const observer1 = new IntersectionObserver( callback1, options );
 
 // Attach the observer to the target element
 onMounted(() => {
+    // Transition Trigger
     const targets = document.querySelectorAll('.isVisible');
     observer.observe(targets[0]);
     observer1.observe(targets[1]);
@@ -119,7 +120,13 @@ const enter = (el, done) => {
         ease: 'power3.Out',
         onComplete: done,
     });
+    const timelineobj = el.querySelector('.timeline');
+    setTimeout(() => {
+        timelineobj.classList.add('timelinestart');
+    }
+    , el.dataset.index*0.99 + 500 );
 };
+
 const sigleEnter = (el, done) => {
     gsap.to(el, {
         opacity: 1,
@@ -247,7 +254,8 @@ function ScrollNext() {
                                     <p>{{item.duration}}</p>
                                 </div>
                                 <!-- Mid -->
-                                <div class="timeline d-flex justify-content-center col-1">
+                                <div class="d-flex justify-content-center col-3">
+                                    <div class="timeline"></div>
                                     <div class="d-flex justify-content-center">
                                         O
                                     </div>
@@ -255,17 +263,17 @@ function ScrollNext() {
                             </div>
                             <!-- Exp Job Content -->
                             <div class="col-xl-9 col-11">
-                                <div class="row">
-                                    <h4 class="col">{{ item.title }}</h4>
-                                    <div class="d-flex align-items-center">
-                                        <h5 class="me-4">{{ item.company }}</h5>
-                                        <p class="exp_p duration-toggled">{{item.duration}}</p>
+                                <div class="row mb-4">
+                                    <h4 class="col mb-2">{{ item.title }}</h4>
+                                    <div class="d-flex">
+                                        <h6 class="me-4 mb-0">{{ item.company }}</h6>
+                                        <span class="exp-p duration-toggled">{{item.duration}}</span>
                                     </div>
                                 </div>
                                 <!-- Job detail -->
-                                <ul class="">
-                                    <li v-for="content in item.detail">
-                                        <p class="exp_p">{{ content }}</p>
+                                <ul class="exp-p">
+                                    <li v-for="content in item.detail" :key="content">
+                                        <p>{{ content }}</p>
                                     </li>
                                 </ul>
                             </div>
@@ -291,6 +299,7 @@ function ScrollNext() {
                 <div class="col-lg-8 ps-lg-0 pe-md-5 px-3">
                     <!-- Text -->
                     <div class="about-skill-text row mb-5">
+                        <!-- Skill-MotionDesign -->
                         <div class="col-md-6 mb-md-0 mb-4">
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
@@ -309,6 +318,7 @@ function ScrollNext() {
                                 </h5>
                             </TransitionGroup>
                         </div>
+                        <!-- Skill-Development -->
                         <div class="col-md-6">
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
@@ -362,7 +372,6 @@ function ScrollNext() {
 </template>
 
 <style scoped>
-
 /* Mobile */
 @media only screen and (max-width: 1280px) {
     .duration-toggle{
@@ -397,14 +406,13 @@ function ScrollNext() {
 .lazy{
     opacity: 0;
 }
-
 /*-----------------------*/
 main{
     padding-right: 0 !important;
     padding-left: 0 !important;
 }
 /* font color */
-.exp_p{
+.exp-p{
     color: rgb(179, 179, 179);
 }
 
@@ -427,17 +435,23 @@ main{
 }
 
 /* Job timeline*/
-.about-job:last-child .timeline::before {
+.about-job:last-child .timeline {
     height: 0;
 }
-.timeline::before {
+.timeline {
     background-color: rgb(117, 117, 117);
     content: '';
     position: absolute;
     top: 40px;
-    /* left: 24px; */
     width: 1px;
     height: calc(100% - 1px);
+    transform: scale(0);
+    transition: all 0.75s ease-in-out;
+    transform-origin: top;
+    transform-style: preserve-3D;
+}
+.timelinestart{
+    transform: scale(1);
 }
 
 /* BG color */
