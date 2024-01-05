@@ -237,31 +237,32 @@ function ScrollNext() {
                         @enter="enter"
                         @leave="leave"
                     >
-                    <div class="mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                    <div class="about-job mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Job -->
                         <div class="row mb-xl-3 mb-2">
-                            <!-- Exp Job Duration -->
-                            <div class="col-xl-2 col-1">
-                                <div class="col text-center">
+                            <!-- Exp Job Duration & timeline -->
+                            <div class="row col d-flex justify-content-center">
+                                <!-- Toggle Duration -->
+                                <div class="col text-center duration-toggle">
                                     <p>{{item.duration}}</p>
                                 </div>
-                            </div>
-                            <!-- Mid -->
-                            <div class="col-xl-1 col-1">-</div>
-                            <!-- Exp Job Content -->
-                            <div class="col-xl-7 col-9">
-                                <div class="row">
-                                    <h4 class="col">{{ item.title }}</h4>
-                                    <h5>{{ item.company }}</h5>
+                                <!-- Mid -->
+                                <div class="timeline d-flex justify-content-center col-1">
+                                    <div class="d-flex justify-content-center">
+                                        O
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <!-- Job content -->
-                        <div class="row" >
-                            <div class="col-xl-2 col-0"></div>
-                            <div class="col-xl-1 col-2"></div>
-                            <!-- Content -->
-                            <div class="col-xl-7 col-10">
+                            <!-- Exp Job Content -->
+                            <div class="col-xl-9 col-11">
+                                <div class="row">
+                                    <h4 class="col">{{ item.title }}</h4>
+                                    <div class="d-flex align-items-center">
+                                        <h5 class="me-4">{{ item.company }}</h5>
+                                        <p class="exp_p duration-toggled">{{item.duration}}</p>
+                                    </div>
+                                </div>
+                                <!-- Job detail -->
                                 <ul class="">
                                     <li v-for="content in item.detail">
                                         <p class="exp_p">{{ content }}</p>
@@ -325,9 +326,11 @@ function ScrollNext() {
                             @enter="sigleEnter">
                             <h3 class="mb-md-5 mb-4" v-if="isVisible1">Tools</h3>
                         </Transition>
+                        <!-- <div class="d-flex"> -->
                         <div v-for="item in LogoData.logo" :key="item.name" class="col-md-2 col-3 px-xl-2 px-1 py-xl-3 py-2">
                             <img :src=item.img :alt=item.name class="img-fluid skill-logo">
                         </div>
+                        <!-- </div> -->
                     </div>
                 </div>
             </div>
@@ -350,6 +353,12 @@ function ScrollNext() {
 
 /* Mobile */
 @media only screen and (max-width: 1280px) {
+    .duration-toggle{
+        display: none;
+    }
+    .duration-toggled{
+        display: block !important;
+    }
     .name{
         display: flex;
         justify-content: center !important;
@@ -365,7 +374,9 @@ function ScrollNext() {
         width: 4vh !important;
     }
 }
-
+.duration-toggled{
+    display: none;
+}
 /* lazy load */
 .lazy.loaded{
     opacity: 1;
@@ -401,6 +412,20 @@ main{
 }
 .skill{
     min-width: 75vw;
+}
+
+/* Job timeline*/
+.about-job:last-child .timeline::before {
+    height: 0;
+}
+.timeline::before {
+    background-color: rgb(117, 117, 117);
+    content: '';
+    position: absolute;
+    top: 40px;
+    /* left: 24px; */
+    width: 1px;
+    height: calc(100% - 1px);
 }
 
 /* BG color */

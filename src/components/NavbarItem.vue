@@ -97,7 +97,10 @@ function onLeave(el, done) {
                 </router-link>
             </div>
             <!-- navbar responsive button -->
-            <button @click="ChangBG" class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button @click="ChangBG" class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around"
+                type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+            >
                 <span class="toggler-icon top-bar">
                     <svg id="icon_social" :style="colormode">
                         <use xlink:href="#icon-line"></use>
