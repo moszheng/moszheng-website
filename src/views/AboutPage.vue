@@ -151,41 +151,49 @@ function ScrollNext() {
 <div class="About">
     <main class="container-fluid">
         <!-- Intro -->
-        <section class="about-intro d-flex justify-content-center align-items-center row mx-md-3 mx-1 px-md-2 px-1 py-5">
+        <section class="about-intro d-flex-center row mx-md-3 mx-1 px-md-4 px-3 py-5">
             <!-- profile image -->
-            <div class="col-xl-6 d-flex align-items-center justify-content-center">
-                <div class="user-container mb-md-0 mb-4" >
+            <div class="col-xl-6 d-flex-center">
+                <div class="user-container mb-md-0 mb-3" >
                     <img class="avatar-user_1 img-fluid lazy" alt="profile_image" :src=profileImage1>
                     <img class="avatar-user_2 img-fluid lazy" alt="profile_image" :src=profileImage2>
                 </div>
             </div>
-            <div class="col-xl-6 mt-xl-0 mt-4 px-md-5 ">
-                <div class="mb-4">
+            <!-- text -->
+            <div class="about-intro-info col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
+                <div class="mb-md-5 mb-4">
+                    <!-- Name -->
                     <Transition name="move" mode="out-in" appear
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
 
-                        <h1 class="mb-5" >Sheng Wen Cheng</h1>
+                        <h1 class="name mb-md-5 mb-4" >Sheng Wen Cheng</h1>
 
                     </Transition>
-                    <Transition name="move" mode="out-in" appear
-                        @before-enter="beforeEnter"
-                        @enter="sigleEnter">
+                    <!-- Subtitle -->
+                    <div class="name">
+                        <Transition name="move" mode="out-in" appear
+                            @before-enter="beforeEnter"
+                            @enter="sigleEnter">
 
-                        <h3 class="mb-5">
-                            A <strong>3D Generalist</strong> and <strong>Motion Designer</strong>  <br> based in Taiwan.
-                        </h3>
+                            <h3 class="mb-md-5 mb-4">
+                                A <strong>3D Generalist</strong> and <strong>Motion Designer</strong>  <br> based in Taiwan.
+                            </h3>
 
-                    </Transition>
-                    <p>Focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</p>
+                        </Transition>
+                    </div>
+                    <!-- Intro -->
+                    <div>
+                        <p>Focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</p>
 
-                    <p>Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
-                        designed to enhance workflows and simplify processes.</p>
+                        <p>Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
+                            designed to enhance workflows and simplify processes.</p>
 
-                    <p>For any inquiries,<strong> please contact me</strong></p>
+                        <p>For any inquiries,<strong> please contact me</strong></p>
+                    </div>
                 </div>
                 <!-- Social media -->
-                <ul class="navbar-nav flex-row mb-4">
+                <ul class="navbar-nav flex-row name mb-md-5 mb-4">
                     <li v-for="item in LinkData.socialmedia" class="nav-item col-2 col-md-auto">
                         <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                             <svg id="icon_social">
@@ -195,23 +203,27 @@ function ScrollNext() {
                     </li>
                 </ul>
                 <!-- Contact info -->
-                <TransitionGroup appear :css="false"
-                    @before-enter="beforeEnter"
-                    @enter="enter"
-                >
-                   <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
-                        <svg id="icon_social">
-                            <use :xlink:href="item.icon"></use>
-                        </svg>
-                        <span class="ms-3">{{ item.text }}</span>
+                <div class="name">
+                    <div class="mb-md-5 mb-4">
+                        <TransitionGroup appear :css="false"
+                            @before-enter="beforeEnter"
+                            @enter="enter"
+                        >
+                        <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
+                                <svg id="icon_social">
+                                    <use :xlink:href="item.icon"></use>
+                                </svg>
+                                <span class="ms-3">{{ item.text }}</span>
+                            </div>
+                        </TransitionGroup>
                     </div>
-                </TransitionGroup>
+                </div>
             </div>
         </section>
         <!-- Experience -->
-        <section class="about-exp d-flex justify-content-center align-items-center px-lg-5 px-3 text-white isVisible">
+        <section class="about-exp d-flex-center px-lg-5 px-3 text-white isVisible">
             <div class="row mt-xl-0 mt-4 mb-4">
-                <!-- title -->
+                <!-- Exp Title -->
                 <div class="col-lg-3" >
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
@@ -228,7 +240,7 @@ function ScrollNext() {
                     <div class="mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Job -->
                         <div class="row mb-xl-3 mb-2">
-                            <!-- duration -->
+                            <!-- Exp Job Duration -->
                             <div class="col-xl-2 col-1">
                                 <div class="col text-center">
                                     <p>{{item.duration}}</p>
@@ -236,11 +248,11 @@ function ScrollNext() {
                             </div>
                             <!-- Mid -->
                             <div class="col-xl-1 col-1">-</div>
-                            <!-- Content -->
+                            <!-- Exp Job Content -->
                             <div class="col-xl-7 col-9">
                                 <div class="row">
                                     <h4 class="col">{{ item.title }}</h4>
-                                    <div>{{ item.company }}</div>
+                                    <h5>{{ item.company }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -264,18 +276,18 @@ function ScrollNext() {
         </section>
 
         <!-- Skill -->
-        <section class="about-skill d-flex justify-content-center align-items-center px-lg-5 px-3 py-5">
+        <section class="about-skill d-flex-center align-items-center px-lg-5 px-4 py-5">
             <div class="skill row mt-xl-0 mt-4 mb-4 isVisible">
-                <!-- Title -->
-                <div class="col-lg-4 pe-md-5 mb-lg-0 mb-5">
+                <!-- Skill Title -->
+                <div class="col-lg-4 ps-lg-0 pe-md-5 px-3 mb-lg-0 mb-md-5 mb-2">
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
                     <h2 class="mb-md-4 mb-5" v-if="isVisible1">Service & Skill</h2>
                     </Transition>
                 </div>
-                <!-- Content -->
-                <div class="col-lg-8 px-md-5 ">
+                <!-- Skill Info -->
+                <div class="col-lg-8 ps-lg-0 pe-md-5 px-3">
                     <!-- Text -->
                     <div class="about-skill-text row mb-5">
                         <div class="col-md-6 mb-md-0 mb-4">
@@ -306,9 +318,14 @@ function ScrollNext() {
                             </TransitionGroup>
                         </div>
                     </div>
-                    <!-- Skill LOGO -->
-                    <div class="row d-flex align-items-center pe-md-5">
-                        <div v-for="item in LogoData.logo" :key="item.name" class="col-lg-2 col-3 px-xl-2 py-xl-3 px-1 py-2">
+                    <!-- Skill Icon -->
+                    <div class="about-skill-icon row d-flex align-items-center pe-md-5">
+                        <Transition name="move" mode="out-in"
+                            @before-enter="beforeEnter"
+                            @enter="sigleEnter">
+                            <h3 class="mb-md-5 mb-4" v-if="isVisible1">Tools</h3>
+                        </Transition>
+                        <div v-for="item in LogoData.logo" :key="item.name" class="col-md-2 col-3 px-xl-2 px-1 py-xl-3 py-2">
                             <img :src=item.img :alt=item.name class="img-fluid skill-logo">
                         </div>
                     </div>
@@ -332,27 +349,24 @@ function ScrollNext() {
 <style scoped>
 
 /* Mobile */
-@media only screen and (max-width: 960px) {
-    #icon_social{
-        width: 25px;
-        height: 25px;
+@media only screen and (max-width: 1280px) {
+    .name{
+        display: flex;
+        justify-content: center !important;
     }
     .user-container{
-        position: relative;
-        width: 40vh;
-        height: 40vh;
-        overflow: hidden;
-        background-color: rgb(235, 235, 235);
+        width: 35vh !important;
+        height: 35vh !important;
     }
     .avatar-user_1, .avatar-user_2{
-        transform: scale(1.5);
+        /* transform: scale(1.2)!important; */
     }
-    p {
-        font-size: 0.75rem; /*0.9*/
+    .skill-logo{
+        width: 4vh !important;
     }
 }
 
-/* lazy load*/
+/* lazy load */
 .lazy.loaded{
     opacity: 1;
     transition: all 0.5s;
@@ -360,7 +374,6 @@ function ScrollNext() {
 .lazy{
     opacity: 0;
 }
-
 
 /*-----------------------*/
 main{
@@ -378,7 +391,13 @@ main{
     height: 30vh;
 }
 .about-intro, .about-exp, .about-skill{
-    min-height: 100vh;
+    min-height: 95vh;
+}
+.about-intro-info{
+    max-width: 920px;
+}
+.about-skill-icon{
+    max-width: 760px;
 }
 .skill{
     min-width: 75vw;
@@ -396,7 +415,6 @@ main{
     min-height: 20vh;
 }
 
-
 /*------ Img --------*/
 .user-container{
     position: relative;
@@ -405,7 +423,6 @@ main{
     overflow: hidden;
     background-color: rgb(235, 235, 235);
 }
-
 .avatar-user_1{
     position: absolute;
     top: 0;
@@ -425,5 +442,9 @@ main{
 .skill-logo{
     /* scale: 50%; */
     width: 5vh;
+    transition: .2s ease;
+}
+.skill-logo:hover{
+    transform: scale(1.1);
 }
 </style>

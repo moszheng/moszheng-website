@@ -7,9 +7,52 @@ body{
   -webkit-font-smoothing: antialiased;
 }
 
+/* Mobile Iphone 12 (sm) */
+@media only screen and (max-width: 540px) {
+  h3 {
+    font-size: 1rem !important;
+    letter-spacing: 0px !important;
+  }
+  h4 {
+    font-size: 0.9rem !important;
+  }
+  h5 {
+    font-size: 0.8rem !important;
+  }
+  p {
+    font-size: 0.75rem !important; /*0.9*/
+  }
+  #icon_social{
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+
+/* Mobile ipad (sm-md) */
+@media only screen and (min-width: 541px) and (max-width: 720px) {
+  h3 {
+    font-size: 1.2rem !important;
+    letter-spacing: 0px !important;
+  }
+  h4 {
+    font-size: 1rem !important;
+  }
+  h5 {
+    font-size: 0.75rem !important;
+  }
+  p {
+    font-size: 0.75rem !important; /*0.9*/
+  }
+  #icon_social{
+    width: 25px !important;
+    height: 25px !important;
+  }
+}
+
+
 /* Font Setting */
 h1, h2, h3, h4 {
-  letter-spacing: 1px;
+  letter-spacing: 0.5px;
   font-weight: bold !important;
 }
 p{
@@ -22,6 +65,13 @@ p{
 
 input {
   width: 45%;
+}
+
+/* */
+.d-flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*----------Works Block----------  */
@@ -59,7 +109,6 @@ input {
   transition: .8s ease;
 }
 /* Hover*/
-
 .card:hover .works-text {
   /* height: 30%; */
   bottom: 0; 
@@ -70,7 +119,7 @@ input {
   opacity: 1;
 }
 .card:hover .card-img {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 /*------------ svg icon --------*/
 
