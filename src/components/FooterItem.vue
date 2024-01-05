@@ -12,7 +12,7 @@ import LinkData from '../data/LinkData.json'
             <ul class="navbar-nav flex-row flex-wrap mb-4">
                 <li v-for="item in LinkData.socialmedia" class="nav-item col-2 col-md-auto">
                     <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
-                        <svg id="icon_twitter" fill="#FFF">
+                        <svg id="icon_social" fill="#FFF">
                             <use :xlink:href="item.icon"></use>
                         </svg>
                     </a>
@@ -25,16 +25,6 @@ import LinkData from '../data/LinkData.json'
 
 <style scoped>
 /*------ Footer-----------*/
-
-/* icon hover */
-#icon_twitter{
-    transition: all 0.2s;
-}
-#icon_twitter:hover{
-    transform: scale(1.1);
-    fill: rgb(253, 141, 3);
-}
-
 footer{
     background: #0e0e0e;
     min-height: 15vh;

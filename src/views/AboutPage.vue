@@ -188,7 +188,7 @@ function ScrollNext() {
                 <ul class="navbar-nav flex-row mb-4">
                     <li v-for="item in LinkData.socialmedia" class="nav-item col-2 col-md-auto">
                         <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
-                            <svg id="icon_twitter">
+                            <svg id="icon_social">
                                 <use :xlink:href="item.icon"></use>
                             </svg>
                         </a>
@@ -200,7 +200,7 @@ function ScrollNext() {
                     @enter="enter"
                 >
                    <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
-                        <svg id="icon_twitter">
+                        <svg id="icon_social">
                             <use :xlink:href="item.icon"></use>
                         </svg>
                         <span class="ms-3">{{ item.text }}</span>
@@ -333,7 +333,7 @@ function ScrollNext() {
 
 /* Mobile */
 @media only screen and (max-width: 960px) {
-    #icon_twitter{
+    #icon_social{
         width: 25px;
         height: 25px;
     }
@@ -370,15 +370,6 @@ main{
 /* font color */
 .exp_p{
     color: rgb(179, 179, 179);
-}
-
-/* icon hover */
-#icon_twitter{
-    transition: all 0.2s;
-}
-#icon_twitter:hover{
-    transform: scale(1.1);
-    fill: rgb(253, 141, 3);
 }
 
 /* Block Size */

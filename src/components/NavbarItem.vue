@@ -99,17 +99,17 @@ function onLeave(el, done) {
             <!-- navbar responsive button -->
             <button @click="ChangBG" class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="toggler-icon top-bar">
-                    <svg id="icon_twitter" :style="colormode">
+                    <svg id="icon_social" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
                 <span class="toggler-icon mid-bar">
-                    <svg id="icon_twitter" :style="colormode">
+                    <svg id="icon_social" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
                 <span class="toggler-icon bot-bar">
-                    <svg id="icon_twitter" :style="colormode">
+                    <svg id="icon_social" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
@@ -141,7 +141,7 @@ function onLeave(el, done) {
                                 >
                                     <div v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
                                         <a class="nav-link nav-link link-dark px-lg-2 mx-1" :href="item.url" target="_blank" rel="noopener">
-                                            <svg id="icon_twitter" :style="colormode">
+                                            <svg id="icon_social" :style="colormode">
                                                 <use :xlink:href="item.icon"></use>
                                             </svg>
                                         </a>

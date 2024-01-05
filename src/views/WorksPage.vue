@@ -56,7 +56,7 @@ function scrolltop() {
 <div class="WorksPage">
 	<main class="container flex-xl-nowrap">
 		<div class="row pt-5" data-masonry='{"percentPosition": true }'>
-			<div v-for="(item, index) in WorksData.project" class="col-lg-4 col">
+			<div v-for="(item, index) in WorksData.project" :key="index" class="col-lg-4 col">
 				<div class="card text-white" :style="randomHeight(index)">
 					<router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
 						<!-- replaceimg -->

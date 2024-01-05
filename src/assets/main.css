@@ -90,9 +90,16 @@ input {
   margin-right: 4px;
 }
 
-#icon_github, #icon_twitter{
+#icon_github, #icon_social{
   width: 30px;
   height: 30px;
+}
+#icon_social{
+  transition: all 0.2s;
+}
+#icon_social:hover{
+  transform: scale(1.1);
+  fill: rgb(253, 141, 3);
 }
 
 #icon-plus-area {
