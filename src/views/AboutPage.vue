@@ -244,39 +244,36 @@ function ScrollNext() {
                         @enter="enter"
                         @leave="leave"
                     >
-                    <div class="about-job mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
-                        <!-- Job -->
-                        <div class="row mb-xl-3 mb-2">
-                            <!-- Exp Job Duration & timeline -->
-                            <div class="row col d-flex justify-content-center">
-                                <!-- Toggle Duration -->
-                                <div class="col text-center duration-toggle">
-                                    <p>{{item.duration}}</p>
-                                </div>
-                                <!-- Mid -->
-                                <div class="d-flex justify-content-center col-3">
-                                    <div class="timeline"></div>
-                                    <div class="d-flex justify-content-center">
-                                        O
-                                    </div>
+                    <div class="about-job row mb-xl-3 mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                        <!-- Exp Job Duration & timeline -->
+                        <div class="row col d-flex justify-content-center">
+                            <!-- Toggle Duration -->
+                            <div class="col text-center duration-toggle">
+                                <p>{{item.duration}}</p>
+                            </div>
+                            <!-- Mid -->
+                            <div class="d-flex justify-content-center col-3">
+                                <div class="timeline"></div>
+                                <div class="d-flex justify-content-center">
+                                    O
                                 </div>
                             </div>
-                            <!-- Exp Job Content -->
-                            <div class="col-xl-9 col-11">
-                                <div class="row mb-4">
-                                    <h4 class="col mb-2">{{ item.title }}</h4>
-                                    <div class="d-flex">
-                                        <h6 class="me-4 mb-0">{{ item.company }}</h6>
-                                        <span class="exp-p duration-toggled">{{item.duration}}</span>
-                                    </div>
+                        </div>
+                        <!-- Exp Job Content -->
+                        <div class="col-xl-9 col-10">
+                            <div class="row mb-4">
+                                <h4 class="col mb-2">{{ item.title }}</h4>
+                                <div class="d-flex">
+                                    <h6 class="me-4 mb-0">{{ item.company }}</h6>
+                                    <span class="exp-p duration-toggled">{{item.duration}}</span>
                                 </div>
-                                <!-- Job detail -->
-                                <ul class="exp-p">
-                                    <li v-for="content in item.detail" :key="content">
-                                        <p>{{ content }}</p>
-                                    </li>
-                                </ul>
                             </div>
+                            <!-- Job detail -->
+                            <ul class="exp-p">
+                                <li v-for="content in item.detail" :key="content">
+                                    <p>{{ content }}</p>
+                                </li>
+                            </ul>
                         </div>
                     </div>
                     </TransitionGroup>
@@ -444,7 +441,7 @@ main{
     position: absolute;
     top: 40px;
     width: 1px;
-    height: calc(100% - 1px);
+    height: calc(100% - 20px);
     transform: scale(0);
     transition: all 0.75s ease-in-out;
     transform-origin: top;
