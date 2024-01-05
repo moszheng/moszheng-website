@@ -302,7 +302,11 @@ function ScrollNext() {
                                 @enter="enter"
                                 @leave="leave"
                             >
-                                <h5 class="mb-3 " v-if="isVisible1" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"> {{item.name}} </h5>
+                                <h5 class="mb-3 "
+                                    v-if="isVisible1" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"
+                                >
+                                    {{item.name}}
+                                </h5>
                             </TransitionGroup>
                         </div>
                         <div class="col-md-6">
@@ -320,17 +324,25 @@ function ScrollNext() {
                         </div>
                     </div>
                     <!-- Skill Icon -->
-                    <div class="about-skill-icon row d-flex align-items-center pe-md-5">
+                    <div class="about-skill-icon row d-flex align-items-center pe-md-3">
                         <Transition name="move" mode="out-in"
                             @before-enter="beforeEnter"
                             @enter="sigleEnter">
                             <h3 class="mb-md-5 mb-4" v-if="isVisible1">Tools</h3>
                         </Transition>
-                        <!-- <div class="d-flex"> -->
-                        <div v-for="item in LogoData.logo" :key="item.name" class="col-md-2 col-3 px-xl-2 px-1 py-xl-3 py-2">
-                            <img :src=item.img :alt=item.name class="img-fluid skill-logo">
+                        <div class="d-flex flex-wrap">
+                            <TransitionGroup :css="false"
+                                @before-enter="beforeEnter"
+                                @enter="enter"
+                                @leave="leave"
+                            >
+                                <div class="col-md-2 col-3 px-xl-2 px-1 py-xl-3 py-2"
+                                    v-if="isVisible1" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
+                                >
+                                    <img :src=item.img :alt=item.name class="img-fluid skill-logo">
+                                </div>
+                            </TransitionGroup>
                         </div>
-                        <!-- </div> -->
                     </div>
                 </div>
             </div>
