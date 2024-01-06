@@ -32,7 +32,6 @@ const prevRatio = 0;
 const callback = (entries) => {
     entries.forEach((entry)=> {
         const {intersectionRatio, target} = entry;
-        // console.log('intersectionRatio', intersectionRatio)
         if (intersectionRatio > 0.3) {
             isVisible.value = true;
         }
@@ -99,7 +98,7 @@ const handleScroll = () => {
     });
     // BG
     gsap.to('.avatar-user_2', {
-        y: scrollPosition.value * .075,
+        y: scrollPosition.value * .05,
         duration: .01,
         ease: 'power2',
         // onComplete: done
@@ -124,7 +123,7 @@ const enter = (el, done) => {
     setTimeout(() => {
         timelineobj.classList.add('timelinestart');
     }
-    , el.dataset.index*0.99 + 500 );
+    , el.dataset.index * 500 + 800 );
 };
 
 const sigleEnter = (el, done) => {
@@ -147,10 +146,6 @@ const leave = (el, done) => {
 
 function ScrollTop() {
     window.scrollTo(0, 0);
-}
-
-function ScrollNext() {
-    window.scrollTo(0, window.screen.height);
 }
 
 </script>
@@ -244,7 +239,7 @@ function ScrollNext() {
                         @enter="enter"
                         @leave="leave"
                     >
-                    <div class="about-job row mb-xl-3 mb-5 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                    <div class="about-job row mb-3 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Exp Job Duration & timeline -->
                         <div class="row col d-flex justify-content-center">
                             <!-- Toggle Duration -->
@@ -356,7 +351,6 @@ function ScrollNext() {
         </section>
         <div class="about-end container-fluid text-center">
             <a @click="ScrollTop()" class="nav-link p-2">
-            <!-- <a href="#anchor" onclick="lenis.scrollTo('#anchor')" class="nav-link p-2"> -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                 </svg>
@@ -441,7 +435,7 @@ main{
     position: absolute;
     top: 40px;
     width: 1px;
-    height: calc(100% - 20px);
+    height: calc(100% - 30px);
     transform: scale(0);
     transition: all 0.75s ease-in-out;
     transform-origin: top;
