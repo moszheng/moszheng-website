@@ -1,5 +1,4 @@
 <script setup>
-import LoadingPage from '@/views/LoadingPage.vue';
 import Navbar from './components/NavbarItem.vue'
 
 </script>
@@ -9,17 +8,9 @@ import Navbar from './components/NavbarItem.vue'
 
 <router-view v-slot="{ Component, route }" >
     <Transition name="fade" mode="out-in">
-        <!-- <Suspense>
-            <template #default>
-                <component :is="Component" :key="route.path"></component>
-            </template>
-            <template #fallback>
-                <LoadingPage></LoadingPage>
-            </template>
-        </Suspense> -->
-        <KeepAlive>
+        <!-- <KeepAlive> -->
             <component :is="Component" :key="route.path"></component>
-        </KeepAlive>
+        <!-- </KeepAlive> -->
     </Transition>
 </router-view>
 

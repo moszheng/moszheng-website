@@ -69,14 +69,14 @@ onMounted(() => {
     const preloadimg = document.querySelectorAll('.lazy');
 
     function loaded(img) {
-        img.target.classList.add("loaded")
+        img.target.classList.add("loaded");
     }
 
     preloadimg.forEach(function(img) {
         if (img.complete) {
             loaded(img)
         } else {
-            img.addEventListener("load", loaded)
+            img.addEventListener("load", loaded);
         }
     });
 });

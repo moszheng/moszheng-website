@@ -18,9 +18,9 @@ onMounted(() => {
 	});
 
 	// Preloading status
-	preloadimgs.value = document.querySelectorAll('.lazy')
+	preloadimgs.value = document.querySelectorAll('.lazy');
 	function loaded(img) {
-		img.target.classList.add("loaded")
+		img.target.classList.add("loaded");
 	}
 
 	preloadimgs.value.forEach(function(img) {
