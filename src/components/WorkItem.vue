@@ -91,7 +91,8 @@ const sigleEnter = (el, done) => {
         <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
     <main class="container">
-        <div class="workitem-info row mb-5 mx-md-3 mx-2 px-md-5">
+        <!-- Workitem-info -->
+        <div class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
             <!-- Left -->
             <div class="col-9">
                 <Transition name="move" mode="out-in" appear
@@ -120,29 +121,31 @@ const sigleEnter = (el, done) => {
             <!-- Right -->
             <div class="col-3 justify-content-end">
                 <h3 class="mb-4">Roles</h3>
-                <p v-for="item in prjdata.roles" :key="item">
+                <p class="mb-2" v-for="item in prjdata.roles" :key="item">
                     {{item}}
                 </p>
             </div>
+            <hr class="mt-5">
         </div>
-        <section class="workitem-content row mx-md-3 mx-1 mb-xl-0 mb-5 px-md-5">
+        <!-- Workitem-Content -->
+        <section class="workitem-content row mx-md-3 mx-1 mb-xl-0 mb-5 px-xl-5 px-3">
             <!-- img -->
-            <div class="col-xxl-5 mb-md-0 mb-5">
-                <div class="imgContainer">
-                    <img :src="imgLocation(prjdata.img_md)" class="imgContainer-img img-fluid " alt="...">
+            <div class="col-xxl-5 mb-md-4 mb-5">
+                <div class="imgContainer d-flex-center">
+                    <img :src="imgLocation(prjdata.img_md)" class="imgContainer-img d-flex-center img-fluid " alt="firstImg">
                 </div>
             </div>
             <!-- Right Content -->
             <div class="col-xxl-5">
                 <div class="">
-                    <p v-for="item in prjdata.msg">
+                    <p v-for="item in prjdata.msg" :key="item">
                         {{item}}
                     </p>
                 </div>
             </div>
         </section>
         <!-- credit -->
-        <div class="workitem-credit row mx-md-3 mx-1 px-md-5 mb-5">
+        <div class="workitem-credit row mx-md-3 mx-1 px-xl-5 px-3 mb-5">
             <div class="col-xl-5">
             </div>
             <!-- Right Content -->
@@ -210,26 +213,27 @@ main{
     margin-bottom: 35px;
     height: 25vh;
 }
-
-/* img */
+/* Mobile */
 @media only screen and (max-width: 1500px) {
+    /* img */
     .imgContainer{
         width: 80vw;
         height: 30vh;
     }
 }
+/* First Img */
 .imgContainer{
-    position: relative;
-    width: 20vw;
+    /* position: relative; */
+    width: 95%;
     height: 50vh;
     overflow: hidden;
 }
 .imgContainer-img{
-    position: absolute;
+    /* position: absolute; */
     width: 1920px;
     height: 1080px;
-    top: -50%;
-    left: -130%;
+    /* top: -50%; */
+    /* left: -50%; */
     max-width: none;
     max-height: none;
     object-fit: cover;

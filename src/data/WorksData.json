@@ -19,6 +19,25 @@
             ],
             "credit" : 
             {
+                "Client": "文化部 Ministry of Culture",
+                "Event Production": "源活 YOUNG HOPE",
+                "Executive Creative Director": "羅申駿 JL",
+                "Creative Agency": "JL DESIGN",
+                "Executive Producer": "巫安琪 Angela Moo、蔡卓翰 Johan Tsai",
+                "Head of Project Management": "蔡佳穎 Chia Ying Tsai",
+                "Creative Director": "蔡旻驊 David Tsai",
+                "Art Director": "魏良恩 Lance Wei、洪湘茹 Hsiang Ju Hung",
+                "Project Manager": "林志翰 Ryan Lin",
+                "Music": "MUSDM.com",
+                "音效協力": "Dear Post Audio Production Ltd.",
+                "Voice-over": "盧廣仲 Crowd Lu",
+                "Illustration": "王妤璇 Yu-Hsuan Wang",
+                "Motion Design": "JL DESIGN （鄭盛文 Mos Zheng 、劉瓅涵 Hank Liu ）",
+                "Song": "在這土地上 On This Land",
+                "Vocalist": "巴賴 Balai"
+            },
+            "creditZH" : 
+            {
                 "客戶 Client": "文化部 Ministry of Culture",
                 "典禮總統籌 Event Production": "源活 YOUNG HOPE",
                 "視覺總監 Executive Creative Director": "羅申駿 JL",
@@ -57,6 +76,23 @@
             ],
             "credit" : 
             {
+                "Executive Creative Director": "羅申駿 JL",
+                "Client": "台北金馬影展執行委員會",
+                "Creative Agency": "JL DESIGN",
+                "Executive Producer": "巫安琪 蔡卓翰",
+                "Head of Project Management": "蔡佳穎",
+                "Creative Director": "蔡旻驊",
+                "Associate Creative Director": "魏良恩",
+                "Art Director": "洪湘茹",
+                "Project Manager": "林志翰",
+                "Production Staff": "黃婷鈺、陳品聿 、蔡潔凡、張玉典、許雅婷、柯季芸",
+                "Publicity Assistant": "王日暄",
+                "Key Visual Design": "洪湘茹、簡宥箴、陳施澄",
+                "Designer＆Animator": "齊慕夷、鄭盛文、林俊德、何展鴻、許峻良、詹游丞、何佳珍、Lucas Gaston Casagrande、張伊暉、蔡瑋廷、方智弘、李威、Hai Le",
+                "Stage Visual Design": "JL DESIGN（洪湘茹、齊慕夷、鄭盛文 Mos Zheng、林俊德）、野人創意設計有限公司（陳志育、吳昱緯、黃敏琇、林玟誼）"
+            },
+            "creditZH" : 
+            {
                 "金馬56主視覺及典禮視覺總監": "羅申駿 JL",
                 "客戶": "台北金馬影展執行委員會",
                 "典禮視覺影像設計": "JL DESIGN",
@@ -69,7 +105,7 @@
                 "製作群": "黃婷鈺、陳品聿 、蔡潔凡、張玉典、許雅婷、柯季芸",
                 "宣傳協力": "王日暄",
                 "主視覺設計": "洪湘茹、簡宥箴、陳施澄",
-                "設計師＆動畫師": "齊慕夷、鄭盛文、林俊德、何展鴻、許峻良、詹游丞、何佳珍、Lucas Gaston Casagrande、張伊暉、蔡瑋廷、方智弘、李威、Hai Le",
+                "設計師＆動畫師": "齊慕夷、鄭盛文 Mos Zheng、林俊德、何展鴻、許峻良、詹游丞、何佳珍、Lucas Gaston Casagrande、張伊暉、蔡瑋廷、方智弘、李威、Hai Le",
                 "舞台視覺設計": "JL DESIGN（洪湘茹、齊慕夷、鄭盛文、林俊德）、野人創意設計有限公司（陳志育、吳昱緯、黃敏琇、林玟誼）",
                 "典禮視覺／影像音樂設計及統籌": "MUSDM",
                 "製作人": "余佳倫、徐文",
@@ -102,6 +138,36 @@
                 "Motion Design", "Compositing"
             ],
             "credit" : 
+            {   
+                "Client": "台北金馬影展執行委員會TGHFF",
+                "Executive Creative Director": "羅申駿 JL",
+                "Creative Agency": "JL DESIGN",
+                "Executive Producer": "巫安琪",
+                "Creative Director": "蔡卓翰",
+                "Head of Project Management": "蔡佳穎",
+                "Associate Creative Director": "魏良恩",
+                "Art Director": "洪湘茹",
+                "Project Manager": "林志翰",
+                "Planner": "陳品聿",
+                "Production Staff": "黃婷鈺, 陳品聿, 鄭怡瑄, 沈莉臻",
+                "Key Visual Design": "洪湘茹, 陳施澄",
+                "Logo bumper": "",
+                "Storyboard": "魏良恩, 蔡卓翰, 陳品聿",
+                "Editor": "蔡卓翰, 齊慕夷, 陳定南",
+                "Motion Design": "齊慕夷, 林俊德, 何佳珍, 林聖峯",
+                "Voice-over": "雷光夏",
+                "Photographer": "蕭逸凡",
+                "Package Motion Design": "許峻良, 黃婷鈺, 沈莉臻",
+                "年度廣告 Promo": "", 
+                "Logo Motion Design": "齊慕夷",
+                "Stage Visual Design": "", 
+                "JL DESIGN": "洪湘茹, 陳施澄, 廖伯豪, 鄭盛文 Mos Zheng" ,
+                "MixCode Studio": "柯鈞譯、李孟栩、林芷君、曾子庭、邱憶文、江道欣、黃俊瑋、陳安",
+                "Nominees Concepts": "洪湘茹, 陳施澄, 楊雅涵",
+                "Nominees Voice-over": "陳竹昇"
+                
+            },
+            "creditZH" : 
             {   
                 "客戶": "台北金馬影展執行委員會TGHFF",
                 "金馬57典禮視覺總監": "羅申駿 JL",
@@ -148,7 +214,7 @@
             "roles" : [
                 "3D production", "Cel animation", "Modeling"
             ],
-            "credit" : 
+            "credit" :
             {
                 "Client": "Ministry of Culture of Taiwan 文化部 、Taiwan Creative Content Agency (TAICCA ) 文化內容策進院",
                 "Curator": "JL",
@@ -171,7 +237,7 @@
                 "Motion Design": "Morris Chi 齊慕夷、Mos Zheng 鄭盛文、Junde Lin 林俊德",
                 "Music and Sound Design": "Ying-Hung Lee aka DJ Didilong 李英宏",
                 "Exhibition Booth Design and Production": "MINIWIZ 小智研發"
-              }
+            }
               
         },
         {
@@ -193,6 +259,21 @@
             ],
             "credit" : 
             {
+                "Client": "KKCompany",
+                "Director": "柯鈞譯 Chiunyi Ko、李孟栩 TuBo Lee",
+                "Animation Leader": "江道欣 Daniel Jiang",
+                "Producer": "陳宣如 Hannah Chen",
+                "Producer Assistant": "張瑜庭 Shiro Chang",
+                "Storyboard": "林昕 Hsin Lin",
+                "Motionboard": "江道欣 Daniel Jiang",
+                "Art": "許煒莉 Weily Hsu、林昕 Hsin Lin、徐右薰 YuHsun Hsu",
+                "Cel Animation": "林昕 Hsin Lin、盤思妤 Szyu Pan、徐右薰 YuHsun Hsu、許煒莉 Weily Hsu",
+                "Motion": "江道欣 Daniel Jiang、王泓元 Yuan Wang、施亦晴 Bleeki Shih",
+                "3D Production": "張之萓 Chewie Hosono、鄭盛文 Mos Zheng、林揚軒 Neil Lin",
+                "Music Editing & Sound Design": "海波浪 HyperLung Audio Production Studio"
+            },
+            "creditZH" : 
+            {
                 "客戶 Client": "KKCompany",
                 "導演 Director": "柯鈞譯 Chiunyi Ko、李孟栩 TuBo Lee",
                 "執行指導 Animation Leader": "江道欣 Daniel Jiang",
@@ -205,7 +286,7 @@
                 "2D動態 Motion": "江道欣 Daniel Jiang、王泓元 Yuan Wang、施亦晴 Bleeki Shih",
                 "3D製作 3D Production": "張之萓 Chewie Hosono、鄭盛文 Mos Zheng、林揚軒 Neil Lin",
                 "配樂 Music Editing & Sound Design": "海波浪 HyperLung Audio Production Studio"
-              }
+            }
               
         },
         {
@@ -225,19 +306,19 @@
             ],
             "credit" : 
             {
-                "CLIENT": "GOGORO INC.",
-                "CREATIVE DIRECTOR": "柯鈞譯、李孟栩",
-                "ART DIRECTOR": "陳安",
-                "PROJECT MANAGER": "陳宣如、沈柏賢",
-                "CONCEPT": "柯鈞譯、李孟栩，陳安、曾子庭、陳宣如、江道欣、林思妤、陳彥勛",
-                "STORYBOARD": "曾子庭、陳安",
-                "MOTIONBOARD": "陳安",
-                "CHARACTER DESIGN": "曾子庭、林揚軒",
-                "3D CHARACTER MODEL": "林揚軒、張泰軒",
-                "3D PRODUCT MODEL": "林揚軒、連英德",
-                "3D ANIMATOR": "陳安、簡一盛、林揚軒、張泰軒、鄭盛文、巫思霈、詹游丞",
-                "2D MOTION": "江道欣",
-                "COMPOSITOR": "江道欣"
+                "Client": "GOGORO INC.",
+                "Creative Director": "柯鈞譯、李孟栩",
+                "Art Director": "陳安",
+                "Project Manager": "陳宣如、沈柏賢",
+                "Concept": "柯鈞譯、李孟栩，陳安、曾子庭、陳宣如、江道欣、林思妤、陳彥勛",
+                "Storyboard": "曾子庭、陳安",
+                "Motionboard": "陳安",
+                "Character Design": "曾子庭、林揚軒",
+                "3D CHARACTER Model": "林揚軒、張泰軒",
+                "3D Product Model": "林揚軒、連英德",
+                "3D Animator": "陳安、簡一盛、林揚軒、張泰軒、鄭盛文 Mos Zheng、巫思霈、詹游丞",
+                "2D Motion": "江道欣",
+                "Compositor": "江道欣"
               }
               
         },
@@ -257,6 +338,25 @@
                 "3D production", "Motion Design", "Lighting", "Rendering"
             ],
             "credit" : 
+            {   
+                "指導單位": "文化部",
+                "主辦單位": "文化部影視及流行音樂產業局",
+                "承辦單位": "台視",
+                "協辦單位": "RIT",
+                "Event Production": "Young Hope 源活娛樂",
+                "Executive Creative Director": "柯鈞譯、李孟栩",
+                "Project Manager": "沈柏賢、陳宣如、林思妤",
+                "Concept": "曾子庭、邱憶文",
+                "Key Visual Design": "曾子庭、陳安、邱憶文",
+                "Key Visual Animation": "陳安",
+                "Opening Video": "林揚軒、陳安",
+                "Stage Visual Design": "陳安、曾子庭",
+                "Stage Visual Animation": "陳安、鄭盛文 Mos Zheng、簡一盛、黃省元、江道欣",
+                "2D Motion＆合成": "江道欣、林俞萍",
+                "Nominees Videos Visual Design：Mixcode" : "曾子庭、邱憶文",
+                "Nominees Videos Motion Design：Mixcode" : "林俞萍、鄭盛文 Mos Zheng、江道欣、王泓元"
+            },
+            "creditZH" : 
             {   
                 "指導單位": "文化部",
                 "主辦單位": "文化部影視及流行音樂產業局",
@@ -293,6 +393,23 @@
                 "Cel animation"
             ],
             "credit" : 
+            {
+                "Client": "大慶證券",
+                "Creative Agency": "JL DESIGN",
+                "Head of Project Management": "蔡佳穎",
+                "Project Manager": "朱永卉",
+                "Creative Director": "蔡卓翰",
+                "Associate Creative Director": "魏良恩",
+                "Visual Design": "簡宥箴、李威",
+                "Style Frame & illustration": "坂內拓 Taku Bannai",
+                "Storyboard": "齊慕夷",
+                "Motion Design": "齊慕夷、鄭盛文 Mos Zheng、張超傑、林俊德、謝皓宇",
+                "Fonts Provider": "Justfont 就是字股份有限公司",
+                "Copywriter": "花柏容",
+                "Music and Sound Design": "MUSDM",
+                "Voice-over": "葉玿伶"
+            },
+            "creditZH" : 
             {
                 "客戶": "大慶證券",
                 "視覺統籌": "JL DESIGN",
@@ -363,6 +480,30 @@
             ],
             "credit" : 
             {
+                "Client": "文化部 Ministry of Culture",
+                "Event Production": "源活 YOUNG HOPE",
+                "Executive Creative Director": "羅申駿 JL",
+                "Creative Agency": "JL DESIGN",
+                "Executive Producer": "巫安琪 Angela Moo、蔡卓翰 Johan Tsai",
+                "Head of Project Management": "蔡佳穎 Chia Ying Tsai",
+                "Creative Director": "蔡旻驊 David Tsai",
+                "Art Director": "魏良恩 Lance Wei、洪湘茹 Hsiang Ju Hung",
+                "Project Manager": "林志翰 Ryan Lin",
+                "Production Staff": "Sandy Wang、Wingyee Kwan、Carol Chen、Dan Zhang、XingMei Wu、Ivan Fang、Ted Zhang、Neil Lu、Patty Tsai、Tingyu Huang",
+                "Lead Designer": "洪湘茹 Hsiang Ju Hung",
+                "Designer＆Animator": "邱柏鈞 Children Chiu、陳安 Julian Chen、劉瓅涵 Hank Liu、黃威凱 WeiKai Huang、鄭盛文 Mos Zheng、陳柏尹 Bruce Chen、蔡瑋廷 Abby Tsai、沙明憲 Asa Sha、李希拉 Shilala Li",
+                "Intro Visual Design": "顏伯駿 Yen Po Chun（三頁文）",
+                "Music": "MUSDM.com",
+                "音樂協力": "Dear Post Audio Production Ltd.",
+                "Voice-over": "盧廣仲 Crowd Lu",
+                "Illustration": "洪添賢 CROTER",
+                "Motion Design": "JL DESIGN（劉瓅涵Hank Liu 、鄭盛文Mos Zheng 、閻青攸 Yoyo Yan）",
+                "Song": "兇宅 Nerd With Attitude",
+                "Vocalist": "熊仔 Kumachan",
+                "Brand": "人人有功練 Kung Fu Entertainment"
+              },
+            "creditZH" : 
+            {
                 "客戶 Client": "文化部 Ministry of Culture",
                 "典禮總統籌 Event Production": "源活 YOUNG HOPE",
                 "視覺總監 Executive Creative Director": "羅申駿 JL",
@@ -404,6 +545,21 @@
                 "3D production", "Styleframe", "Rendering", "Compositing"
             ],
             "credit" : 
+            {
+                "Agency": "北京優艾聯合創意 Beijing UIDWORKS",
+                "Executive Producer": "柯鈞譯 Chiunyi Ko、李孟栩 TuBo Lee",
+                "Art Director": "陳安 Julian Chen",
+                "Producer": "謝淑香 Aka Tse、沈柏賢 Sam Shen",
+                "Storyboard": "曾子庭 Tim Tseng",
+                "Motionboard": "鄭盛文 Mos Zheng",
+                "Style Frame": "陳安 Julian Chen、鄭盛文 Mos Zheng",
+                "3D Animator": "陳安 Julian Chen、鄭盛文 Mos Zheng、短波組影像 shortwave film",
+                "3D Character Animation": "張之萓 Chewie Chang",
+                "3D Character Rigging": "夢想動畫MoonShine Animation",
+                "3D Trophy Modeling": "黑綿羊映畫 Black Sheep Studio",
+                "Compositing": "陳安 Julian Chen、鄭盛文 Mos Zheng、短波組影像 shortwave film"
+            },
+            "creditZH" : 
             {
                 "代理商 Agency": "北京優艾聯合創意 Beijing UIDWORKS",
                 "監製 Executive Producer": "柯鈞譯 Chiunyi Ko、李孟栩 TuBo Lee",
