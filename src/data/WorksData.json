@@ -8,8 +8,9 @@
             "behance" : "https://www.behance.net/gallery/69952611/29-Best-Aboriginal-Album",
             "video" : ["vimeo","276425004"],
             "img" : "01_gma29.jpg",
-            "img_md" : "01_gma29_md.jpg",
+            "img_md" : ["01_gma29_md.jpg", "01_gma29_md_02.webp", "01_gma29_md_03.webp","01_gma29_md_04.webp", "01_gma29_md_05.webp"],
             "company" : "JL Design",
+            "context" : "gma29_baa.vue",
             "msg" : [
                 "The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.",
                 "During the three-month period leading up to the ceremony, we worked diligently to create the main visual, which included several elements aimed at producing a captivating TV package. It was a challenging yet rewarding experience, and each year, the project allowed me to grow both personally and professionally."
@@ -64,7 +65,7 @@
             "behance" : "https://www.behance.net/gallery/89590877/56-Golden-Horse-Awards-56th-Logo-Bumper-Breakdown",
             "video" : ["vimeo","376095266"],
             "img" : "02_gha56_01.png",
-            "img_md" : "02_gha56_01_md.png",
+            "img_md" : ["02_gha56_01_md.png", "02_gha56_md_02.webp", "02_gha56_md_03.webp", "02_gha56_md_04.webp", "02_gha56_md_05.webp"],
             "company" : "JL Design",
             "msg" : [
                 "Golden Horse Award (GHA) is the Taiwan biggest movie ceremony, The main concept behind the event want to reveals a wild horse, symbolizing power and determination, hiding in the darkness and ready to take action, my mission is to make the main visual looks perfect.",
@@ -130,7 +131,7 @@
             "behance" : "https://www.behance.net/gallery/126685047/Golden-Horse-Award-Ceremony-57th57-",
             "video" : ["vimeo","558850163"],
             "img" : "10_gha57_01.png",
-            "img_md" : "10_gha57_01_md.png",
+            "img_md" : ["10_gha57_01_md.png"],
             "company" : "JL Design",
             "msg" : [
             ],
@@ -206,13 +207,13 @@
             "behance" : "https://www.behance.net/gallery/127287095/Taiwan-HYPE-EXHIBITION-Logo-Animation",
             "video" : ["vimeo","474537396"],
             "img" : "03_SWSX_01.jpg",
-            "img_md" : "03_SWSX_01.jpg",
+            "img_md" : ["03_SWSX_01.jpg", "03_SWSX_02.png", "03_SWSX_03.jpg", "03_SWSX_md_04.webp", "03_SWSX_md_05.webp"],
             "company" : "JL Design",
             "msg" : [
                 "JL DESIGN interprets the sincerity, respect, and human touch of Taiwan by representing temple culture and language through modern design. They create a new life form by crossbreeding the five sacrificial animals known as the 'Five Livestock' - chicken, pig, fish, duck, and squid - as a vehicle for cross-cultural technology.The design elements visually reveal hidden animal features within the outlines, reminiscent of the distinctive attributes of each creature, while incorporating Taiwan's unique phonetic system, the 'Zhuyin Fuhao' (Bopomofo) as an assistance system."
             ],
             "roles" : [
-                "3D production", "Cel animation", "Modeling"
+                "3D production", "Cel animation", "Character Modeling & Texturing", "Logo R&D"
             ],
             "credit" :
             {
@@ -248,7 +249,7 @@
             "behance" : "https://www.behance.net/gallery/131950969/KK-Company",
             "video" : ["vimeo","681776633"],
             "img" : "04_KK_01.png",
-            "img_md" : "04_KK_01_md.png",
+            "img_md" : ["04_KK_md_01.png","04_KK_md_02.webp", "04_KK_md_03.webp", "04_KK_md_04.webp", "04_KK_md_05.webp"],
             "company" : "MixCode",
             "msg" : [
                 "KKcompany is my favorite project during my time at MixCode studio. I use Houdini to create 3D references for motion designers, and Photoshop to draw rough animations for the Cel animator. In my own 3D animation part, I utilize Arnold to render Cel animation in Cinema 4D.",
@@ -297,7 +298,7 @@
             "behance" : "https://www.behance.net/gallery/119028733/Gogoro-VIVA-MIX",
             "video" : ["vimeo","545803846"],
             "img" : "07_VIVA_01.jpg",
-            "img_md" : "07_VIVA_01_md.jpg",
+            "img_md" : ["07_VIVA_01_md.jpg"],
             "company" : "MixCode",
             "msg" : [
             ],
@@ -330,12 +331,12 @@
             "behance" : "https://www.behance.net/gallery/126656689/32-GMA32-Stage-Background-Design",
             "video" : ["vimeo","619733081"],
             "img" : "05_GMA32_01.png",
-            "img_md" : "05_GMA32_01_md.jpg",
+            "img_md" : ["05_GMA32_md_01.jpg", "05_GMA32_md_02.webp", "05_GMA32_md_03.webp", "05_GMA32_md_01.jpg"],
             "company" : "MixCode",
             "msg" : [
             ],
             "roles" : [
-                "3D production", "Motion Design", "Lighting", "Rendering"
+                "3D production", "Motion Design", "Procedural Texturing", "Lighting", "Rendering"
             ],
             "credit" : 
             {   
@@ -384,7 +385,7 @@
             "behance" : "https://www.behance.net/gallery/126718383/AVCG-PGN-Image-Video",
             "video" : ["vimeo","522731725"],
             "img" : "06_PGN_01.jpg",
-            "img_md" : "06_PGN_01.jpg",
+            "img_md" : ["06_PGN_01.jpg"],
             "company" : "JL Design",
             "msg" : [
                 "Collaborating with the talented illustrator Taku Bannai, we develop a series animation of financial product, We've chosen to the Cel animation to bring these concepts to life, infusing them with a charm and visual. Our goal is to not only educate but also entertain our audience, making complex financial information more accessible and enjoyable."
@@ -436,7 +437,7 @@
             "behance" : "https://www.behance.net/gallery/74073727/Jungle-Voice",
             "video" : ["vimeo", "294759428"],
             "img" : "08_JV_01.jpg",
-            "img_md" : "08_JV_01_md.jpg",
+            "img_md" : ["08_JV_01_md.jpg"],
             "company" : "JL Design",
             "msg" : [
                 
@@ -469,7 +470,7 @@
             "behance" : "https://www.behance.net/gallery/67350257/29-Best-Male-Mandarin-Singer",
             "video" : ["vimeo","276567094"],
             "img" : "01_gma29_bmm.png",
-            "img_md" : "01_gma29_bmm_md.png",
+            "img_md" : ["01_gma29_bmm_md.png", "01_gma29_bmm_md_02.webp", "01_gma29_bmm_md_03.webp", "01_gma29_bmm_md_04.webp", "01_gma29_bmm_md_05.webp"],
             "company" : "JL Design",
             "msg" : [
                 "The Golden Melody Award (GMA) is Taiwan's most prominent music ceremony, and it holds a special place in my heart as it has been my usual project for five times since 2018 when I was a student and took an Internship at JL Design.",
@@ -536,7 +537,7 @@
             "behance" : "https://www.behance.net/gallery/158101281/2022",
             "video" : ["youtube", "1-oFPzdmQIA"],
             "img" : "09_HoK_01.png",
-            "img_md" : "09_HoK_01_md.png",
+            "img_md" : ["09_HoK_md_01.png", "09_HoK_md_02.webp", "09_HoK_md_03.webp", "09_HoK_md_01.png"],
             "company" : "MixCode",
             "msg" : [
                 

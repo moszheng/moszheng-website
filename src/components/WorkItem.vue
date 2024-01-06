@@ -49,8 +49,23 @@ onBeforeRouteUpdate(async (to, from) => {
     }
 })
 
+const preloadimgs = ref(document.querySelectorAll('.lazy'));
+
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
+
+    // Preloading status
+    preloadimgs.value = document.querySelectorAll('.lazy')
+    function loaded(img) {
+        img.target.classList.add("loaded")
+    }
+    preloadimgs.value.forEach(function(img) {
+        if(img.complete) {
+            loaded(img)
+        } else {
+            img.addEventListener("load", loaded)
+        }
+    });
 });
 onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
@@ -62,8 +77,8 @@ const scrollPosition = ref(0);
 
 const handleScroll = () => {
     scrollPosition.value = window.scrollY;
-    gsap.to('.imgContainer-img', {
-        y: scrollPosition.value * .15,
+    gsap.to('.head-img-container-img', {
+        y: scrollPosition.value * .05,
         duration: .1,
         ease: 'power1',
     });
@@ -128,24 +143,43 @@ const sigleEnter = (el, done) => {
             <hr class="mt-5">
         </div>
         <!-- Workitem-Content -->
-        <section class="workitem-content row mx-md-3 mx-1 mb-xl-0 mb-5 px-xl-5 px-3">
-            <!-- img -->
-            <div class="col-xxl-5 mb-md-4 mb-5">
-                <div class="imgContainer d-flex-center">
-                    <img :src="imgLocation(prjdata.img_md)" class="imgContainer-img d-flex-center img-fluid " alt="firstImg">
+        <section class="workitem-content mx-md-3 mx-1 mb-5 px-xl-5 px-3">
+            <div class="row">
+                <!-- img -->
+                <div class="col-xxl-7 mb-md-4 mb-5">
+                    <div class="head-img-container img-container d-flex-center">
+                        <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img d-flex-center img-fluid lazy" alt="firstImg">
+                    </div>
+                </div>
+                <!-- Right Content -->
+                <div class="col-xxl-5">
+                    <div class="">
+                        <p v-for="item in prjdata.msg" :key="item">
+                            {{item}}
+                        </p>
+                    </div>
                 </div>
             </div>
-            <!-- Right Content -->
-            <div class="col-xxl-5">
-                <div class="">
-                    <p v-for="item in prjdata.msg" :key="item">
-                        {{item}}
-                    </p>
+            <div>
+                <div class="img-container d-flex-center mb-3">
+                    <img :src="imgLocation(prjdata.img_md[1])" class="d-flex-center img-fluid lazy" alt="firstImg">
+                </div>
+                <div class="row mb-3">
+                    <div class="img-container d-flex-center">
+                        <img :src="imgLocation(prjdata.img_md[2])" class="d-flex-center col img-fluid lazy" alt="firstImg">
+                    </div>
+                    <div class="img-container d-flex-center">
+                        <img :src="imgLocation(prjdata.img_md[3])" class="d-flex-center col img-fluid lazy" alt="firstImg">
+                    </div>
+                </div>
+                <div class="img-container d-flex-center mb-3">
+                    <img :src="imgLocation(prjdata.img_md[4])" class="d-flex-center img-fluid lazy" alt="firstImg">
                 </div>
             </div>
+            <hr class="mt-5">
         </section>
         <!-- credit -->
-        <div class="workitem-credit row mx-md-3 mx-1 px-xl-5 px-3 mb-5">
+        <div class="workitem-credit row mx-md-3 mx-1 mb-5 px-xl-5 px-3 ">
             <div class="col-xl-5">
             </div>
             <!-- Right Content -->
@@ -168,7 +202,7 @@ const sigleEnter = (el, done) => {
                         <div class="card mb-4 text-white">
                             <!-- routerlink -->
                             <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
-                                <img :src=imgLocation(item.img_md) class="card-img" alt="...">
+                                <img :src=imgLocation(item.img_md[0]) class="card-img lazy" alt="...">
                                 <div class="works-black"></div>
                                 <div class="works-text text-white px-4">
                                     <h5 class="card-title">{{ item.name }}</h5>
@@ -190,6 +224,22 @@ const sigleEnter = (el, done) => {
 main{
     padding-right: 0 !important;
     padding-left: 0 !important;
+}
+/* img lazy loading */
+.img-container{
+    background-color: rgb(235, 235, 235);
+    margin-bottom: 35px;
+}
+.card{
+    background-color: rgb(49, 49, 49);
+    margin-bottom: 35px;
+}
+.lazy.loaded{
+    opacity: 1;
+    transition: all 0.5s;
+}
+.lazy{
+    opacity: 0;
 }
 
 @media only screen and (min-width: 1200px) {
@@ -216,19 +266,19 @@ main{
 /* Mobile */
 @media only screen and (max-width: 1500px) {
     /* img */
-    .imgContainer{
+    .head-img-container{
         width: 80vw;
-        height: 30vh;
+        height: 25vh;
     }
 }
 /* First Img */
-.imgContainer{
+.head-img-container{
     /* position: relative; */
     width: 95%;
     height: 50vh;
     overflow: hidden;
 }
-.imgContainer-img{
+.head-img-container-img{
     /* position: absolute; */
     width: 1920px;
     height: 1080px;
