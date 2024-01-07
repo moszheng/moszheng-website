@@ -55,18 +55,18 @@ onMounted(() => {
     window.addEventListener('scroll', handleScroll);
 
     // Preloading status
-    console.log("WorksItem:" + preloadimgs.value);
-    preloadimgs.value = document.querySelectorAll('.lazy');
-    function loaded(img) {
-        img.target.classList.add("loaded")
-    }
-    preloadimgs.value.forEach(function(img) {
-        if(img.complete) {
-            loaded(img)
-        } else {
-            img.addEventListener("load", loaded)
-        }
-    });
+    // console.log("WorksItem:" + preloadimgs.value);
+    // preloadimgs.value = document.querySelectorAll('.lazy');
+    // function loaded(img) {
+    //     img.target.classList.add("loaded")
+    // }
+    // preloadimgs.value.forEach(function(img) {
+    //     if (img.complete) {
+    //         loaded(img)
+    //     } else {
+    //         img.addEventListener("load", loaded)
+    //     }
+    // });
 });
 onBeforeUnmount(() => {
     window.removeEventListener('scroll', handleScroll);
@@ -162,19 +162,10 @@ const sigleEnter = (el, done) => {
                 </div>
             </div>
             <div>
-                <div class="img-container d-flex-center mb-3">
-                    <img :src="imgLocation(prjdata.img_md[1])" class="d-flex-center img-fluid lazy" alt="firstImg">
-                </div>
                 <div class="row mb-3">
-                    <div class="img-container d-flex-center">
-                        <img :src="imgLocation(prjdata.img_md[2])" class="d-flex-center col img-fluid lazy" alt="firstImg">
+                    <div class="img-container d-flex-center mb-3" v-for="(item, index) in prjdata.img_md" :key="item">
+                        <img :src="imgLocation(prjdata.img_md[index])" v-if="index > 0" class="d-flex-center col img-fluid lazy" alt="firstImg">
                     </div>
-                    <div class="img-container d-flex-center">
-                        <img :src="imgLocation(prjdata.img_md[3])" class="d-flex-center col img-fluid lazy" alt="firstImg">
-                    </div>
-                </div>
-                <div class="img-container d-flex-center mb-3">
-                    <img :src="imgLocation(prjdata.img_md[4])" class="d-flex-center img-fluid lazy" alt="firstImg">
                 </div>
             </div>
             <hr class="mt-5">
@@ -235,13 +226,13 @@ main{
     background-color: rgb(49, 49, 49);
     margin-bottom: 35px;
 }
-.lazy.loaded{
+/* .lazy.loaded{
     opacity: 1;
     transition: all 0.5s;
 }
 .lazy{
     opacity: 0;
-}
+} */
 
 @media only screen and (min-width: 1200px) {
     .workitem-info{
