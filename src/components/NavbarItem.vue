@@ -1,5 +1,5 @@
 <script setup>
-import {ref, computed} from 'vue';
+import {ref, computed, onMounted} from 'vue';
 import {useNavStore} from '@/stores/navstore';
 import gsap from 'gsap';
 
@@ -43,6 +43,37 @@ const rotateButton = () => {
             // button.style.transform = 'none';
         },
     });
+};
+
+// Scroll movement
+onMounted(() => {
+    window.addEventListener('scroll', handleScroll);
+});
+const navfolder = ref(false);
+let lastPos = 0;
+let deltaPos = 0;
+const handleScroll = () => {
+    const currentPos = window.scrollY;
+    deltaPos = currentPos - lastPos;
+
+    if (deltaPos > 10 && navfolder.value==false) {
+        navfolder.value=true;
+        gsap.to('.navbar', {
+            top: -90,
+            duration: .5,
+            // ease: 'power3.inOut',
+            ease: 'back.inOut(1.7)',
+        });
+    }
+    else if (deltaPos < 0 && navfolder.value==true) {
+        navfolder.value=false;
+        gsap.to('.navbar', {
+            top: 0,
+            duration: .75,
+            ease: 'back.inOut(1.7)',
+        });
+    }
+    lastPos = currentPos;
 };
 
 /* Enter animation */
