@@ -1,9 +1,9 @@
 <script setup>
-import {ref, computed} from 'vue'
-import {useNavStore} from '@/stores/navstore'
-import gsap from 'gsap'
+import {ref, computed} from 'vue';
+import {useNavStore} from '@/stores/navstore';
+import gsap from 'gsap';
 
-import LinkData from '@/data/LinkData.json'
+import LinkData from '@/data/LinkData.json';
 
 /* ---------- Color mode --------*/
 const store = useNavStore();

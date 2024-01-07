@@ -1,12 +1,12 @@
 <script setup>
-import {ref, onMounted, onBeforeUnmount} from 'vue'
-import { useNavStore } from '@/stores/navstore'
-import gsap from 'gsap'
+import {ref, onMounted, onBeforeUnmount} from 'vue';
+import {useNavStore} from '@/stores/navstore';
+import gsap from 'gsap';
 
-import FooterItem from '@/components/FooterItem.vue'
-import LinkData from '@/data/LinkData.json'
-import LogoData from '@/data/LogoData.json'
-import ExpData from '@/data/Experience.json'
+import FooterItem from '@/components/FooterItem.vue';
+import LinkData from '@/data/LinkData.json';
+import LogoData from '@/data/LogoData.json';
+import ExpData from '@/data/Experience.json';
 
 // Return Real route
 const profileImage1 = '../src/img/profile_1.png';
@@ -196,7 +196,7 @@ function ScrollTop() {
                 </div>
                 <!-- Social media -->
                 <ul class="navbar-nav flex-row name mb-md-5 mb-4">
-                    <li v-for="item in LinkData.socialmedia" class="nav-item col-2 col-md-auto">
+                    <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item col-2 col-md-auto">
                         <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                             <svg id="icon_social">
                                 <use :xlink:href="item.icon"></use>

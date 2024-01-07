@@ -1,6 +1,6 @@
 <script setup>
-import {ref} from 'vue'
-import gsap from 'gsap'
+import {ref} from 'vue';
+import gsap from 'gsap';
 
 // Loading Page
 const finishloading = ref(false);

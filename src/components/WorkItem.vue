@@ -1,10 +1,10 @@
 <script setup>
-import {ref, onMounted, onBeforeUnmount} from 'vue'
-import {onBeforeRouteUpdate} from 'vue-router'
-import gsap from 'gsap'
+import {ref, onMounted, onBeforeUnmount} from 'vue';
+import {onBeforeRouteUpdate} from 'vue-router';
+import gsap from 'gsap';
 
-import FooterItem from './FooterItem.vue'
-import WorksData from '@/data/WorksData.json'
+import FooterItem from './FooterItem.vue';
+import WorksData from '@/data/WorksData.json';
 
 const props = defineProps({
     projecturl: String,

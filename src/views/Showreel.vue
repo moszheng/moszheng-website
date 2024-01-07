@@ -1,6 +1,5 @@
 <script setup>
-import FooterItem from '@/components/FooterItem.vue'
-import { ref } from 'vue'
+import FooterItem from '@/components/FooterItem.vue';
 
 </script>
 <template>
@@ -8,7 +7,7 @@ import { ref } from 'vue'
     <div class="showreel container">
         <!-- video -->
         <div class="ratio ratio-16x9 mb-5" data-scroll-section>
-            <iframe 
+            <iframe
                 src="https://player.vimeo.com/video/880783588?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0" 
                 allow="autoplay">
             </iframe>

@@ -1,5 +1,5 @@
 <script setup>
-import LinkData from '../data/LinkData.json'
+import LinkData from '../data/LinkData.json';
 </script>
 <template>
 <footer class="d-flex-center">
@@ -10,7 +10,7 @@ import LinkData from '../data/LinkData.json'
         <div class="col-lg-4">
             <p> Follow </p>
             <ul class="navbar-nav flex-row flex-wrap mb-4">
-                <li v-for="item in LinkData.socialmedia" class="nav-item col-2 col-md-auto">
+                <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item col-2 col-md-auto">
                     <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                         <svg id="icon_social" fill="#FFF">
                             <use :xlink:href="item.icon"></use>
