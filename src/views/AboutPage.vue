@@ -1,7 +1,9 @@
 <script setup>
-import {ref, onMounted, onBeforeUnmount} from 'vue';
+import {ref, onMounted, onUnmounted} from 'vue';
 import {useNavStore} from '@/stores/navstore';
 import gsap from 'gsap';
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 import FooterItem from '@/components/FooterItem.vue';
 import LinkData from '@/data/LinkData.json';
@@ -15,7 +17,6 @@ const motiondesign = ExpData.service.motiondesign;
 const development = ExpData.service.development;
 
 /* ------------ Transition GSAP --------------------*/
-
 const isVisible = ref(false);
 const isVisible1 = ref(false);
 
@@ -57,13 +58,13 @@ const observer = new IntersectionObserver( callback, options );
 const observer1 = new IntersectionObserver( callback1, options );
 
 // Attach the observer to the target element
+const imgContainer = ref();
+let ctx;
 onMounted(() => {
     // Transition Trigger
     const targets = document.querySelectorAll('.isVisible');
     observer.observe(targets[0]);
     observer1.observe(targets[1]);
-
-    window.addEventListener('scroll', handleScroll);
 
     // Preloading status
     const preloadimg = document.querySelectorAll('.lazy');
@@ -79,31 +80,33 @@ onMounted(() => {
             img.addEventListener("load", loaded);
         }
     });
-});
-onBeforeUnmount(() => {
-    window.removeEventListener('scroll', handleScroll);
-});
 
-/* Scroll picture*/
-const scrollPosition = ref(0);
-
-const handleScroll = () => {
-    scrollPosition.value = window.scrollY;
-    // portrait
-    gsap.to('.avatar-user_1', {
-        y: scrollPosition.value * .025,
-        duration: .01,
-        ease: 'power1',
-        // onComplete: done
-    });
-    // BG
-    gsap.to('.avatar-user_2', {
-        y: scrollPosition.value * .05,
-        duration: .01,
-        ease: 'power2',
-        // onComplete: done
-    });
-};
+    /* Scroll profile picture*/
+    ctx = gsap.context((self) => {
+        gsap.to('.avatar-user_1', {
+            scrollTrigger: {
+                trigger: ".avatar-user_1",
+                start: "200px center",
+                end: "bottom 50px",
+                scrub: true,
+                // markers: true
+            },
+            y: -25,
+        });
+        gsap.to('.avatar-user_2', {
+            scrollTrigger: {
+                trigger: ".avatar-user_2",
+                start: "200px center",
+                end: "bottom 50px",
+                scrub: true,
+            },
+            y: -40,
+        });
+    }, imgContainer.value);
+});
+onUnmounted(() => {
+    ctx.revert();
+});
 
 /* GSAP */
 const beforeEnter = (el) => {
@@ -151,12 +154,12 @@ function ScrollTop() {
 </script>
 <template>
 <div class="About">
-    <main class="container-fluid">
+    <main class="container-fluid" ref="imgContainer">
         <!-- Intro -->
         <section class="about-intro d-flex-center row mx-md-3 mx-1 px-md-4 px-3 py-5">
             <!-- profile image -->
             <div class="col-xl-6 d-flex-center">
-                <div class="user-container mb-md-0 mb-3" >
+                <div class="user-container mb-md-0 mb-3">
                     <img class="avatar-user_1 img-fluid lazy" alt="profile_image" :src=profileImage1>
                     <img class="avatar-user_2 img-fluid lazy" alt="profile_image" :src=profileImage2>
                 </div>

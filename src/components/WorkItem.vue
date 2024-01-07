@@ -1,7 +1,9 @@
 <script setup>
-import {ref, onMounted, onBeforeUnmount} from 'vue';
+import {ref, onMounted, onUnmounted} from 'vue';
 import {onBeforeRouteUpdate} from 'vue-router';
 import gsap from 'gsap';
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 import FooterItem from './FooterItem.vue';
 import WorksData from '@/data/WorksData.json';
@@ -30,7 +32,6 @@ const vimeoEmbed = (item) => {
 const imgLocation = (item) => {return '../src/img/'+ item}
 
 /* ---------Router Fix-----------*/
-
 const getWorksData = (id) => {
     return new Promise((resolve, reject) => {
         setTimeout(() => {
@@ -45,15 +46,14 @@ onBeforeRouteUpdate(async (to, from) => {
     // console.log("beforeRouteUpdate")
     if (to.params.projecturl !== from.params.projecturl) {
         prjdata.value = await getWorksData(to.params.projecturl);
-        shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0,3);
+        shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0, 3);
     }
 })
 
 const preloadimgs = ref(document.querySelectorAll('.lazy'));
-
+const imgContainer = ref();
+let ctx;
 onMounted(() => {
-    window.addEventListener('scroll', handleScroll);
-
     // Preloading status
     // console.log("WorksItem:" + preloadimgs.value);
     // preloadimgs.value = document.querySelectorAll('.lazy');
@@ -67,23 +67,24 @@ onMounted(() => {
     //         img.addEventListener("load", loaded)
     //     }
     // });
+    /* Scroll picture*/
+    ctx = gsap.context((self) => {
+        gsap.to('.head-img-container-img', {
+            scrollTrigger: {
+                trigger: ".head-img-container",
+                start: "top bottom",
+                end: "bottom 50px",
+                scrub: true,
+                // markers: true
+            },
+            y: -150,
+        });
+    }, imgContainer.value);
 });
-onBeforeUnmount(() => {
-    window.removeEventListener('scroll', handleScroll);
+onUnmounted(() => {
+    // Clear gsap
+    ctx.revert();
 });
-
-
-/* Scroll picture*/
-const scrollPosition = ref(0);
-
-const handleScroll = () => {
-    scrollPosition.value = window.scrollY;
-    gsap.to('.head-img-container-img', {
-        y: scrollPosition.value * .05,
-        duration: .1,
-        ease: 'power1',
-    });
-};
 
 /* --------Animation--------- */
 const beforeEnter = (el) => {
@@ -106,7 +107,7 @@ const sigleEnter = (el, done) => {
     <div class="ratio ratio-16x9 mb-5" data-scroll-section>
         <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <main class="container">
+    <main class="container" ref="imgContainer">
         <!-- Workitem-info -->
         <div class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
             <!-- Left -->

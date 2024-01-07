@@ -1,12 +1,11 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
-import { createPinia } from 'pinia'
+import {createApp} from 'vue'
+import {createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
+import {createPinia} from 'pinia'
 import {useNavStore} from '@/stores/navstore'
 
 import WorkPage from '@/views/WorksPage.vue'
 
 import './assets/main.css'
-// import Lenis from '@studio-freight/lenis'
 // Import our custom CSS
 import './scss/styles.scss'
 
@@ -56,20 +55,6 @@ const routes = [
         component: () => import('@/views/NotFoundPage.vue'),
     },
 ];
-
-// Lenis
-// const lenis = new Lenis()
-
-// lenis.on('scroll', (e) => {
-// //   console.log(e)
-// })
-
-// function raf(time) {
-//   lenis.raf(time)
-//   requestAnimationFrame(raf)
-// }
-
-// requestAnimationFrame(raf)
 
 // Router method
 const router = createRouter({
