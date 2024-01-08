@@ -52,15 +52,13 @@ onBeforeRouteUpdate(async (to, from) => {
 })
 
 /* onMounted, preloading img & gsap scrollTrigger */
-const lazyloadimgArray = ref([]);
-const lazyloadimgSingle = ref(null);
+const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 const imgContainer = ref();
 let ctx;
 onMounted(() => {
     /* Preloading status */
-    const lazyloadimgs = lazyloadimgArray.value.concat(lazyloadimgSingle.value);
+    lazyloadimgs.value = document.querySelectorAll('.lazy');
     function loaded(img) {
-        console.log("loaded: " + img + ", " + img.target)
         if (img instanceof HTMLImageElement) {
             // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
             img.classList.add("loaded");
@@ -69,11 +67,10 @@ onMounted(() => {
             img.target.classList.add("loaded");
         }
     }
-    lazyloadimgs.forEach(function(img) {
-        if (img.complete) {
+    lazyloadimgs.value.forEach(function(img) {
+        if(img.complete) {
             loaded(img)
         } else {
-            console.log("addEventLis ")
             img.addEventListener("load", loaded)
         }
     });
@@ -163,7 +160,7 @@ function ScrollTop() {
                 <!-- img -->
                 <div class="col-xxl-7 mb-md-4 mb-5">
                     <div class="head-img-container img-container d-flex-center">
-                        <img :src="imgLocation(prjdata.img_md[0])" ref="lazyloadimgSingle" class="head-img-container-img d-flex-center img-fluid lazy" alt="firstImg">
+                        <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img d-flex-center img-fluid lazy" alt="firstImg">
                     </div>
                 </div>
                 <!-- Right Content -->
@@ -178,7 +175,7 @@ function ScrollTop() {
             <div>
                 <div class="row mb-3">
                     <div class="img-container d-flex-center mb-3" v-for="(item, index) in contextImg" :key="item">
-                        <img :src="imgLocation(contextImg[index])" ref="lazyloadimgArray" class="d-flex-center col img-fluid lazy" alt="contextImg">
+                        <img :src="imgLocation(contextImg[index])" class="d-flex-center col img-fluid lazy" alt="contextImg">
                     </div>
                 </div>
             </div>
@@ -216,7 +213,7 @@ function ScrollTop() {
                         <div class="card mb-4 text-white">
                             <!-- routerlink -->
                             <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
-                                <img :src=imgLocation(item.img_md[0]) ref="lazyloadimgArray" class="card-img lazy" alt="otherprjImg">
+                                <img :src=imgLocation(item.img_md[0]) class="card-img lazy" alt="otherprjImg">
                                 <div class="works-black"></div>
                                 <div class="works-text text-white px-4">
                                     <h5 class="card-title">{{ item.name }}</h5>

@@ -58,6 +58,7 @@ const observer = new IntersectionObserver( callback, options );
 const observer1 = new IntersectionObserver( callback1, options );
 
 // Attach the observer to the target element
+const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 const imgContainer = ref();
 let ctx;
 onMounted(() => {
@@ -67,13 +68,17 @@ onMounted(() => {
     observer1.observe(targets[1]);
 
     // Preloading status
-    const preloadimg = document.querySelectorAll('.lazy');
-
+    lazyloadimgs.value = document.querySelectorAll('.lazy');
     function loaded(img) {
-        img.target.classList.add("loaded");
+        if (img instanceof HTMLImageElement) {
+            // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
+            img.classList.add("loaded");
+        } else {
+            // is Object Event
+            img.target.classList.add("loaded");
+        }
     }
-
-    preloadimg.forEach(function(img) {
+    lazyloadimgs.value.forEach(function(img) {
         if (img.complete) {
             loaded(img)
         } else {

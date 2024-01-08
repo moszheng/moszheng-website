@@ -7,8 +7,7 @@ import WorksData from '@/data/WorksData.json';
 
 // Return Real route
 const imgLocation = (item) => {return '../src/img/'+ item};
-
-const preloadimgs = ref(document.querySelectorAll('.lazy'));
+const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 
 onMounted(() => {
 	// initialize masonry
@@ -16,14 +15,19 @@ onMounted(() => {
 	new Masonry(row, {
 		percentPosition: true,
 	});
-
 	// Preloading status
-	preloadimgs.value = document.querySelectorAll('.lazy');
+	lazyloadimgs.value = document.querySelectorAll('.lazy');
 	function loaded(img) {
-		img.target.classList.add("loaded");
+		if (img instanceof HTMLImageElement) {
+            // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
+            img.classList.add("loaded");
+        } else {
+            // is Object Event
+            img.target.classList.add("loaded");
+        }
 	}
 
-	preloadimgs.value.forEach(function(img) {
+	lazyloadimgs.value.forEach(function(img) {
 		if(img.complete) {
 			loaded(img)
 		} else {
