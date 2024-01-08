@@ -67,7 +67,7 @@ function scrolltop() {
 						<img :src=imgLocation(item.img_md[0]) class="card-img lazy" :alt="item.name">
 						<div class="works-black"></div>
 						<div class="works-text text-white px-4">
-							<h5 class="card-title">{{ item.name }}</h5>
+							<h4 class="card-title">{{ item.name }}</h4>
 							<h6 class="card-title">@{{ item.company }}</h6>
 							<p class="card-text">{{ item.date }}</p>
 						</div>

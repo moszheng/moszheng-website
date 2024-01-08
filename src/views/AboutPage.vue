@@ -13,6 +13,7 @@ import ExpData from '@/data/Experience.json';
 // Return Real route
 const profileImage1 = '../src/img/profile_1.png';
 const profileImage2 = '../src/img/profile_2.png';
+const cgdesign = ExpData.service.cgdesign;
 const motiondesign = ExpData.service.motiondesign;
 const development = ExpData.service.development;
 
@@ -165,8 +166,8 @@ function ScrollTop() {
             <!-- profile image -->
             <div class="col-xl-6 d-flex-center">
                 <div class="user-container mb-md-0 mb-3">
-                    <img class="avatar-user_1 img-fluid lazy" alt="profile_image" :src=profileImage1>
-                    <img class="avatar-user_2 img-fluid lazy" alt="profile_image" :src=profileImage2>
+                    <img class="avatar-user_1 lazy" alt="profile_image" :src=profileImage1>
+                    <img class="avatar-user_2 lazy" alt="profile_image" :src=profileImage2>
                 </div>
             </div>
             <!-- text -->
@@ -187,7 +188,7 @@ function ScrollTop() {
                             @enter="sigleEnter">
 
                             <h3 class="mb-md-5 mb-4">
-                                A <strong>3D Generalist</strong> and <strong>Motion Designer</strong>  <br> based in Taiwan.
+                                A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>  <br> based in Taiwan.
                             </h3>
 
                         </Transition>
@@ -300,7 +301,26 @@ function ScrollTop() {
                     <!-- Text -->
                     <div class="about-skill-text row mb-5">
                         <!-- Skill-MotionDesign -->
-                        <div class="col-md-6 mb-md-0 mb-4">
+                        <div class="col-md-4 mb-md-0 mb-4">
+                            <Transition name="move" mode="out-in"
+                                @before-enter="beforeEnter"
+                                @enter="sigleEnter">
+                                <h3 class="mb-md-5 mb-4" v-if="isVisible1">3D</h3>
+                            </Transition>
+                            <TransitionGroup :css="false"
+                                @before-enter="beforeEnter"
+                                @enter="enter"
+                                @leave="leave"
+                            >
+                                <h5 class="mb-3 "
+                                    v-if="isVisible1" v-for="(item, index) in cgdesign" :key="item.name" :data-index="index"
+                                >
+                                    {{item.name}}
+                                </h5>
+                            </TransitionGroup>
+                        </div>
+                        <!-- Skill-MotionDesign -->
+                        <div class="col-md-4 mb-md-0 mb-4">
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
@@ -319,7 +339,7 @@ function ScrollTop() {
                             </TransitionGroup>
                         </div>
                         <!-- Skill-Development -->
-                        <div class="col-md-6">
+                        <div class="col-md-4">
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
@@ -332,7 +352,9 @@ function ScrollTop() {
                             <h5 class="mb-3" v-if="isVisible1" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
                             </TransitionGroup>
                         </div>
+                        <hr class="my-3">
                     </div>
+                    
                     <!-- Skill Icon -->
                     <div class="about-skill-icon row d-flex align-items-center pe-md-3">
                         <Transition name="move" mode="out-in"
@@ -471,22 +493,22 @@ main{
     width: 50vh;
     height: 50vh;
     overflow: hidden;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(39, 39, 39);
 }
-.avatar-user_1{
+.avatar-user_1, .avatar-user_2{
     position: absolute;
     top: 0;
     left: 0;
-    transform: scale(1.25);
+    width: 100%;
+    height: auto;
     object-fit: cover;
+}
+.avatar-user_1{
+    transform: scale(1.25);
     z-index: 20;
 }
 .avatar-user_2 {
-    position: absolute;
-    top: 0;
-    left: 0;
     transform: scale(1.3);
-    object-fit: cover;
     z-index: 10;
 }
 .skill-logo{

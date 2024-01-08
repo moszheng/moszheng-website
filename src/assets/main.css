@@ -1,24 +1,13 @@
 @import './base.css';
 
 body{
-  /* background: #e6e6e6; */
   font-family: 'DM Sans', "PingFang TC", "Noto Sans TC",
   "Segoe UI", Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important; 
   -webkit-font-smoothing: antialiased;
 }
 
-/* Mobile Iphone 12 (sm) */
-@media only screen and (max-width: 540px) {
-  h3 {
-    font-size: 1rem !important;
-    letter-spacing: 0px !important;
-  }
-  h4 {
-    font-size: 0.9rem !important;
-  }
-  h5 {
-    font-size: 0.8rem !important;
-  }
+/* Mobile (md) */
+@media only screen and (max-width: 720px) {
   p {
     font-size: 0.75rem !important; /*0.9*/
   }
@@ -27,47 +16,16 @@ body{
     height: 25px !important;
   }
 }
-
-/* Mobile ipad (sm-md) */
-@media only screen and (min-width: 541px) and (max-width: 720px) {
-  h3 {
-    font-size: 1.2rem !important;
-    letter-spacing: 0px !important;
-  }
-  h4 {
-    font-size: 1rem !important;
-  }
-  h5 {
-    font-size: 0.75rem !important;
-  }
-  p {
-    font-size: 0.75rem !important; /*0.9*/
-  }
-  #icon_social{
-    width: 25px !important;
-    height: 25px !important;
-  }
-}
-
 
 /* Font Setting */
-h1, h2, h3, h4 {
-  letter-spacing: 0.5px;
-  font-weight: bold !important;
+h1, h2, h3, h4{
+  font-weight: bolder !important;
 }
 p{
   font-size: 18px;
 }
 
-.t-bold {
-  font-weight: bold !important;
-}
-
-input {
-  width: 45%;
-}
-
-/* */
+/* Custom Class */
 .d-flex-center{
   display: flex;
   justify-content: center;
@@ -77,11 +35,6 @@ input {
 /*----------Works Block----------  */
 .card{
   overflow : hidden;
-  display: block;
-  outline: none;
-  box-shadow: none;
-  border: 0; 
-  transition: 0.5s ease; /* scale */
 }
 .works-black, .works-text{
   position: absolute;
@@ -122,58 +75,16 @@ input {
   transform: scale(1.2);
 }
 /*------------ svg icon --------*/
-
-#icon_filter{
-  margin-right: 4px;
-  width: 15px;
-  height: 15px;
-}
-.icon_cross, .icon_add, .icon_added {
-  width: 15px;
-  height: 15px;
-}
-  
-#icon_star{
-  width: 20px;
-  height: 20px;
-  margin-right: 4px;
-}
-
-#icon_github, #icon_social{
+#icon_social{
   width: 30px;
   height: 30px;
-}
-#icon_social{
   transition: all 0.2s;
 }
 #icon_social:hover{
   transform: scale(1.1);
   fill: rgb(253, 141, 3);
 }
-
 #icon-plus-area {
   width: 30px;
   height: 30px;
-}
-
-/* Lenis CSS */
-
-html.lenis {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
 }

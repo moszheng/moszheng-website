@@ -32,13 +32,19 @@
         }
     ],
     "service" :{
-        "motiondesign" : [
+        "cgdesign" : [
             {"name": "Modeling / Sculpting"},
             {"name": "Texturing / Procedural Material"},
             {"name": "Lighting"},
             {"name": "Rendering"},
             {"name": "Compositing"},
             {"name": "VFX Simulating"}
+        ],
+        "motiondesign" : [
+            {"name": "Storyboard"},
+            {"name": "Scripting"},
+            {"name": "Animating"},
+            {"name": "Cel animation"}
         ],
         "development" : [
             {"name": "C4D Python Plug-in"},

@@ -9,13 +9,42 @@ $container-max-widths: (
   xxl: 2000px //1320
 );
 
-$card-border-radius: 0;
-$card-bg: 0;
-$card-border-width: 0;
+// WorkPage card
+$card-border-radius:          0;
+$card-box-shadow:             null;
+$card-bg:                     0;
+$card-border-width:           0;
 
-$thumbnail-bg:  none;
+$thumbnail-bg:                none;
+
 //Color
-$orange:  #fd7e14;
-$primary: $orange;
+$orange:                    #ff6a21;
+$primary:                     $orange;
+
+// Font
+$font-size-base:              1rem;
+
+$h1-font-size:                $font-size-base * 3; //2.5
+$h2-font-size:                $font-size-base * 2.5; //2
+$h3-font-size:                $font-size-base * 2; //1.75
+$h4-font-size:                $font-size-base * 1.5;
+$h5-font-size:                $font-size-base * 1.25;
+$h6-font-size:                $font-size-base;
+
+/* Mobile Iphone 12 (sm) */
+@media only screen and (max-width: 540px) {
+  $h3-font-size:              $font-size-base * 1;
+  $h4-font-size:              $font-size-base * 0.9;
+  $h5-font-size:              $font-size-base * 0.8;
+  $h6-font-size:              $font-size-base * 0.7;
+}
+
+/* Mobile ipad (sm-md) */
+@media only screen and (min-width: 541px) and (max-width: 720px) {
+  $h3-font-size:              $font-size-base * 1.5;
+  $h4-font-size:              $font-size-base * 1.25;
+  $h5-font-size:              $font-size-base * 1;
+  $h6-font-size:              $font-size-base * 0.75;
+}
 
 @import "../node_modules/bootstrap/scss/bootstrap";
