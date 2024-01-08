@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, onUnmounted} from 'vue';
+import {ref, computed, onMounted, onUnmounted} from 'vue';
 import {onBeforeRouteUpdate} from 'vue-router';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -30,6 +30,7 @@ const vimeoEmbed = (item) => {
     }
 }
 const imgLocation = (item) => {return '../src/img/'+ item}
+const contextImg = computed(() => {return prjdata.value.img_md.slice(1);});
 
 /* ---------Router Fix-----------*/
 const getWorksData = (id) => {
@@ -50,23 +51,32 @@ onBeforeRouteUpdate(async (to, from) => {
     }
 })
 
-const preloadimgs = ref(document.querySelectorAll('.lazy'));
+/* onMounted, preloading img & gsap scrollTrigger */
+const lazyloadimgArray = ref([]);
+const lazyloadimgSingle = ref(null);
 const imgContainer = ref();
 let ctx;
 onMounted(() => {
-    // Preloading status
-    // console.log("WorksItem:" + preloadimgs.value);
-    // preloadimgs.value = document.querySelectorAll('.lazy');
-    // function loaded(img) {
-    //     img.target.classList.add("loaded")
-    // }
-    // preloadimgs.value.forEach(function(img) {
-    //     if (img.complete) {
-    //         loaded(img)
-    //     } else {
-    //         img.addEventListener("load", loaded)
-    //     }
-    // });
+    /* Preloading status */
+    const lazyloadimgs = lazyloadimgArray.value.concat(lazyloadimgSingle.value);
+    function loaded(img) {
+        console.log("loaded: " + img + ", " + img.target)
+        if (img instanceof HTMLImageElement) {
+            // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
+            img.classList.add("loaded");
+        } else {
+            // is Object Event
+            img.target.classList.add("loaded");
+        }
+    }
+    lazyloadimgs.forEach(function(img) {
+        if (img.complete) {
+            loaded(img)
+        } else {
+            console.log("addEventLis ")
+            img.addEventListener("load", loaded)
+        }
+    });
     /* Scroll picture*/
     ctx = gsap.context((self) => {
         gsap.to('.head-img-container-img', {
@@ -98,6 +108,9 @@ const sigleEnter = (el, done) => {
         duration: 1,
         onComplete: done,
     })
+}
+function ScrollTop() {
+    window.scrollTo(0, 0);
 }
 </script>
 
@@ -150,7 +163,7 @@ const sigleEnter = (el, done) => {
                 <!-- img -->
                 <div class="col-xxl-7 mb-md-4 mb-5">
                     <div class="head-img-container img-container d-flex-center">
-                        <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img d-flex-center img-fluid lazy" alt="firstImg">
+                        <img :src="imgLocation(prjdata.img_md[0])" ref="lazyloadimgSingle" class="head-img-container-img d-flex-center img-fluid lazy" alt="firstImg">
                     </div>
                 </div>
                 <!-- Right Content -->
@@ -164,8 +177,8 @@ const sigleEnter = (el, done) => {
             </div>
             <div>
                 <div class="row mb-3">
-                    <div class="img-container d-flex-center mb-3" v-for="(item, index) in prjdata.img_md" :key="item">
-                        <img :src="imgLocation(prjdata.img_md[index])" v-if="index > 0" class="d-flex-center col img-fluid lazy" alt="firstImg">
+                    <div class="img-container d-flex-center mb-3" v-for="(item, index) in contextImg" :key="item">
+                        <img :src="imgLocation(contextImg[index])" ref="lazyloadimgArray" class="d-flex-center col img-fluid lazy" alt="contextImg">
                     </div>
                 </div>
             </div>
@@ -184,6 +197,14 @@ const sigleEnter = (el, done) => {
                 </div>
             </div>
         </div>
+        <div class="workitem-end container-fluid text-center">
+            <a @click="ScrollTop()" class="nav-link p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                </svg>
+                <p>BACK TO TOP</p>
+            </a>
+        </div>
     </main>
     <!-- Other Prj -->
     <section class="container-fluid workitem-otherprj px-md-5 px-1 " data-scroll-section>
@@ -195,7 +216,7 @@ const sigleEnter = (el, done) => {
                         <div class="card mb-4 text-white">
                             <!-- routerlink -->
                             <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
-                                <img :src=imgLocation(item.img_md[0]) class="card-img lazy" alt="...">
+                                <img :src=imgLocation(item.img_md[0]) ref="lazyloadimgArray" class="card-img lazy" alt="otherprjImg">
                                 <div class="works-black"></div>
                                 <div class="works-text text-white px-4">
                                     <h5 class="card-title">{{ item.name }}</h5>
@@ -227,13 +248,13 @@ main{
     background-color: rgb(49, 49, 49);
     margin-bottom: 35px;
 }
-/* .lazy.loaded{
+.lazy.loaded{
     opacity: 1;
     transition: all 0.5s;
 }
 .lazy{
     opacity: 0;
-} */
+}
 
 @media only screen and (min-width: 1200px) {
     .workitem-info{
