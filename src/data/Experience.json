@@ -53,7 +53,7 @@
             ]
         },
         "development"  : {
-            "title" : "Motion Design",
+            "title" : "Developement",
             "content" : [
                 {"name": "C4D Python Plug-in"},
                 {"name": "After Effects Scripts"},

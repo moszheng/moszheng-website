@@ -20,7 +20,6 @@ const store = useNavStore();
 const changeNavbarState = (state) => {
     store.navbardarkmode = state;
 };
-
 // Attach the observer to the target element
 const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 const imgContainer = ref();
@@ -39,7 +38,7 @@ onMounted(() => {
     }
     lazyloadimgs.value.forEach(function(img) {
         if (img.complete) {
-            loaded(img)
+            loaded(img);
         } else {
             img.addEventListener("load", loaded);
         }
@@ -47,22 +46,6 @@ onMounted(() => {
 
     /* Scroll profile picture*/
     ctx = gsap.context((self) => {
-        /* Hero Section */
-        const herotl = gsap.timeline({});
-        herotl.from("#name1", {opacity: 0, y: 150, ease: "back.inOut(1.7)", duration: 0.6}, 0.3);
-        herotl.from("#name2", {opacity: 0, y: 150, ease: "back.inOut(1.7)", duration: 0.6}, 0.8);
-        herotl.from("#name3", {opacity: 0, y: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 1.2);
-        /* Intro Section*/
-        const introtl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".about-intro",
-                start: "top center",
-                end: "bottom 30%",
-                // markers: true,
-            }
-        });
-        introtl.from(".about-intro-info",{ opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1});
-        introtl.from(".about-intro-social",{ opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1.5}, 0.8);
         /* ----------- Depth --------------- */
         const depthtl = gsap.timeline({
             scrollTrigger: {
@@ -70,13 +53,53 @@ onMounted(() => {
                 start: "top top",
                 end: "bottom 30%",
                 // markers: true,
-                scrub: true
-            }
+                scrub: true,
+            },
         });
         gsap.utils.toArray(".parallax").forEach((layer) => {
             const depth = layer.dataset.depth;
             const movement = depth * -10;
-            depthtl.to(layer, {y: movement, ease: "none"}, 0)
+            depthtl.to(layer, {y: movement, ease: "none"}, 0);
+        });
+        /* Hero Section */
+        const herotl = gsap.timeline({});
+        herotl.from("#name1", {opacity: 0, y: 150, ease: "back.inOut(1.7)", duration: 0.6}, 0.3);
+        herotl.from("#name2", {opacity: 0, y: 150, ease: "back.inOut(1.7)", duration: 0.6}, 0.5);
+        herotl.from("#name3", {opacity: 0, y: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 0.8);
+        /* Intro Section*/
+        const introtl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about-intro",
+                start: "top center",
+                end: "bottom 30%",
+                // markers: true,
+            },
+        });
+        introtl.from(".about-intro-info", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1});
+        introtl.from(".about-intro-social", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1.5}, 0.3);
+        /* Skill Section */
+        const skilltl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about-skill",
+                start: "top center",
+                end: "bottom 30%",
+                markers: true,
+            },
+        });
+        skilltl.from("#skill-title", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1});
+        skilltl.from("#skill-each-title", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1}, 0.5);
+        gsap.utils.toArray(".about-skill-each").forEach((text, i) => {
+            const delay = i / 2.5 + 0.5;
+            skilltl.from(text, {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 1}, delay);
+        });
+        gsap.utils.toArray("#skill-each-text").forEach((text, i) => {
+            const delay = i / 10 + 1;
+            skilltl.from(text, {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 0.5}, delay);
+        });
+        skilltl.from("#skill-tooltitle", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1}, 2);
+        gsap.utils.toArray(".skill-logo").forEach((text, i) => {
+            const delay = i / 10 + 2;
+            skilltl.from(text, {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 0.5}, delay);
         });
         /* ------ Visible Trigger --------------*/
         gsap.utils.toArray(".isVisible").forEach((section, i) => {
@@ -88,7 +111,7 @@ onMounted(() => {
                 onToggle: (self) => {
                     isVisible.value[i] = true;
                     changeNavbarState(true);
-                }
+                },
             });
         });
     }, imgContainer.value);
@@ -116,7 +139,7 @@ const enter = (el, done) => {
     setTimeout(() => {
         timelineobj.classList.add('timelinestart');
     }
-    , el.dataset.index * 500 + 800 ); //el.dataset.index * 500 
+    , el.dataset.index * 500 + 800 );
 };
 
 const sigleEnter = (el, done) => {
@@ -179,10 +202,8 @@ function ScrollTop() {
                     <!-- Intro -->
                     <div>
                         <h5 class="mb-xl-4">I focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</h5>
-
                         <h5 class="mb-xl-4">Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
                             designed to enhance workflows and simplify processes.</h5>
-
                         <h5>For any inquiries,<strong> please contact me</strong></h5>
                     </div>
                 </div>
@@ -201,17 +222,12 @@ function ScrollTop() {
                         <!-- Contact info -->
                         <div class="name">
                             <div class="mb-md-5 mb-4">
-                                <TransitionGroup appear :css="false"
-                                    @before-enter="beforeEnter"
-                                    @enter="enter"
-                                >
                                 <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
-                                        <svg id="icon_social">
-                                            <use :xlink:href="item.icon"></use>
-                                        </svg>
-                                        <span class="ms-3">{{ item.text }}</span>
-                                    </div>
-                                </TransitionGroup>
+                                    <svg id="icon_social">
+                                        <use :xlink:href="item.icon"></use>
+                                    </svg>
+                                    <span class="ms-3">{{ item.text }}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -273,57 +289,45 @@ function ScrollTop() {
         </section>
         <!-- Skill -->
         <section class="about-skill d-flex-center px-lg-5 px-4 py-5 isVisible">
-            <div class="skill mt-xl-0 mt-4 mb-4">
+            <div class="about-skill-block mt-xl-0 mt-4 mb-4">
                 <!-- Skill Title -->
                 <div class="ps-lg-0 pe-md-5 px-3 mb-md-5 mb-2">
-                    <Transition name="move" mode="out-in"
-                        @before-enter="beforeEnter"
-                        @enter="sigleEnter">
-                    <h2 class="mb-md-4 mb-5" v-if="isVisible[1]">Service & Skill</h2>
-                    </Transition>
+                    <h2 class="mb-md-4 mb-5 text-center" id="skill-title">Service & Skill</h2>
                 </div>
                 <!-- Skill Info -->
-                <div class="d-flex-center ps-lg-0 pe-md-5 px-3">
+                <div class="d-flex-center px-3">
                     <!-- Text -->
-                    <div class="about-skill-text row mb-5">
+                    <div class="about-skill-text row">
                         <!-- Skill -->
-                        <div class="about-skill-skill col-md-4 mb-md-0 mb-4" v-for="skill in ExpData.service" :key="skill">
-                            <Transition name="move" mode="out-in" @before-enter="beforeEnter" @enter="sigleEnter">
-                                <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">{{skill.title}}</h3>
-                            </Transition>
-                            <TransitionGroup :css="false" @before-enter="beforeEnter" @enter="enter" @leave="leave">
-                                <h5 class="mb-3 " v-if="isVisible[1]" 
-                                    v-for="(item, index) in skill.content" :key="item.name" :data-index="index"
-                                >
-                                    {{item.name}}
-                                </h5>
-                            </TransitionGroup>
+                        <div class="about-skill-each col mx-2 my-xl-0 my-2 py-4 px-4" v-for="skill in ExpData.service" :key="skill">
+                            <h3 class="mb-md-5 mb-4" id="skill-each-title">{{skill.title}}</h3>
+                            <h5 class="mb-3 " id="skill-each-text"
+                                v-for="(item, index) in skill.content" :key="item.name" :data-index="index"
+                            >
+                                {{item.name}}
+                            </h5>
                         </div>
-                        <hr class="my-3">
                     </div>
                 </div>
+                <hr class="my-5">
                 <!-- Skill Icon -->
-                <div class="about-skill-icon d-flex-center pe-md-3">
-                    <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">Tools</h3>
-                    <div class="d-flex flex-wrap">
-                        <TransitionGroup :css="false"
-                            @before-enter="beforeEnter"
-                            @enter="enter"
-                            @leave="leave"
-                        >
-                            <div class="col-md-2 col-3 px-xl-2 px-1 py-xl-3 py-2"
-                                v-if="isVisible[1]" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
+                <div class="d-flex-center pe-md-3">
+                    <div class="w-50">
+                        <h3 class="text-center mb-md-5 mb-4" id="skill-tooltitle">Tools</h3>
+                        <div class="d-flex flex-wrap">
+                            <div class="col-md-2 col-3 px-xl-1 px-1 py-xl-3 py-2"
+                                v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
                             >
                                 <img :src=item.img :alt=item.name class="img-fluid skill-logo">
                             </div>
-                        </TransitionGroup>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Contact button-->
-        <section class="about-contact d-flex-center px-lg-5 px-4 py-5 isVisible">
-        </section>
+        <!-- <section class="about-contact d-flex-center px-lg-5 px-4 py-5 isVisible">
+        </section> -->
         <div class="about-end container-fluid text-center">
             <a @click="ScrollTop()" class="nav-link p-2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
@@ -354,9 +358,6 @@ function ScrollTop() {
         width: 35vh !important;
         height: 35vh !important;
         max-height: 600px;
-    }
-    .avatar-user_1, .avatar-user_2{
-        /* transform: scale(1.2)!important; */
     }
     .skill-logo{
         width: 4vh !important;
@@ -399,8 +400,19 @@ main{
 .about-hero-info, .about-intro-info{
     max-width: 920px;
 }
+/* ---Skill--- */
+.about-skill-block{
+    min-width: 75vw;
+}
 .about-skill-text{
+    /* min-width: 75vw; */
     min-height: 20vh;
+}
+.about-skill-each{
+    min-width: 400px;
+    max-width: 600px;
+    background-color: rgb(218, 219, 219);
+    border-radius: 25px;
 }
 /* BG color */
 .about-exp{
@@ -409,13 +421,6 @@ main{
 
 .about-skill, .about-contact, .about-end{
     background-color: rgb(228, 228, 228);
-}
-/* skill */
-.about-skill-icon{
-    max-width: 760px;
-}
-.skill{
-    min-width: 75vw;
 }
 
 /*------- Job timeline-------*/

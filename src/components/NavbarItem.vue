@@ -55,13 +55,11 @@ let deltaPos = 0;
 const handleScroll = () => {
     const currentPos = window.scrollY;
     deltaPos = currentPos - lastPos;
-
     if (deltaPos > 10 && navfolder.value==false) {
         navfolder.value=true;
         gsap.to('.navbar', {
             top: -90,
             duration: .5,
-            // ease: 'power3.inOut',
             ease: 'back.inOut(1.7)',
         });
     }

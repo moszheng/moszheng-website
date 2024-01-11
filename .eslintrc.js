@@ -32,5 +32,6 @@ module.exports = {
     'indent': ['off', 2],
     'max-len': ['error', {code: 180}],
     'require-jsdoc': 0,
+    'quotes': [0, 'single', { 'avoidEscape': true }],
   },
 };
