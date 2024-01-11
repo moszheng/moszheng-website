@@ -5,10 +5,10 @@ import LinkData from '../data/LinkData.json';
 <footer class="d-flex-center">
     <div class="container row text-white px-lg-5 py-2" >
         <div class="col-lg-3">
-            <p>Copyright © 2023 moszheng.</p>
+            <h5>Copyright © 2024 moszheng.</h5>
         </div>
         <div class="col-lg-4">
-            <p> Follow </p>
+            <h5> Follow </h5>
             <ul class="navbar-nav flex-row flex-wrap mb-4">
                 <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item col-2 col-md-auto">
                     <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">

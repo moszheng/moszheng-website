@@ -33,7 +33,7 @@
     ],
     "service" :{
         "cgdesign" : {
-            "title" : "3D",
+            "title" : "3D Prodution",
             "content" : [
                 {"name": "Modeling / Sculpting"},
                 {"name": "Texturing / Procedural Material"},
@@ -55,8 +55,9 @@
         "development"  : {
             "title" : "Developement",
             "content" : [
-                {"name": "C4D Python Plug-in"},
-                {"name": "After Effects Scripts"},
+                {"name": "Cinema 4D Python Plug-in"},
+                {"name": "Houdini workflow R&D"},
+                {"name": "AfterEffects Scripts"},
                 {"name": "Project Workflow R&D"},
                 {"name": "Frontend Developing"}
             ]
