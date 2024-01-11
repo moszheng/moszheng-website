@@ -18,56 +18,17 @@ const motiondesign = ExpData.service.motiondesign;
 const development = ExpData.service.development;
 
 /* ------------ Transition GSAP --------------------*/
-const isVisible = ref(false);
-const isVisible1 = ref(false);
-
+const isVisible = ref([false, false]);
 const store = useNavStore();
 const changeNavbarState = (state) => {
     store.navbardarkmode = state;
 };
-
-const options = {
-  root: document.querySelector('.About'),
-  threshold: [0, 0.2, 0.4, 0.6, 0.8, 1],
-};
-const prevRatio = 0;
-const callback = (entries) => {
-    entries.forEach((entry)=> {
-        const {intersectionRatio, target} = entry;
-        if (intersectionRatio > 0.3) {
-            isVisible.value = true;
-        }
-        // Change Darkmode
-        if (intersectionRatio > 0.8) {
-            changeNavbarState(true);
-        }
-        else {
-            changeNavbarState(false);
-        }
-    });
-};
-const callback1 = (entries) => {
-    entries.forEach((entry)=> {
-        const {intersectionRatio, target} = entry;
-        if (intersectionRatio > prevRatio) {
-            isVisible1.value = true;
-        }
-    });
-};
-// Create an Intersection Observer
-const observer = new IntersectionObserver( callback, options );
-const observer1 = new IntersectionObserver( callback1, options );
 
 // Attach the observer to the target element
 const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 const imgContainer = ref();
 let ctx;
 onMounted(() => {
-    // Transition Trigger
-    const targets = document.querySelectorAll('.isVisible');
-    observer.observe(targets[0]);
-    observer1.observe(targets[1]);
-
     // Preloading status
     lazyloadimgs.value = document.querySelectorAll('.lazy');
     function loaded(img) {
@@ -89,34 +50,38 @@ onMounted(() => {
 
     /* Scroll profile picture*/
     ctx = gsap.context((self) => {
-        gsap.to('.avatar-user_1', {
+        /* Hero*/
+        const herotl = gsap.timeline({});
+        herotl.from("#name1", {opacity: 0, y: 200, ease: "back.inOut(1.7)", duration: 0.8}, 0.5);
+        herotl.from("#name2", {opacity: 0, y: 200, ease: "back.inOut(1.7)", duration: 0.5}, 1.2);
+        herotl.from("#name3", {opacity: 0, y: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 2);
+        /* ----------- Depth --------------- */
+        const depthtl = gsap.timeline({
             scrollTrigger: {
-                trigger: ".user-container",
-                // start: "200px center",
-                end: "bottom 50px",
-                scrub: true,
-                // markers: true
-            },
-            y: -25,
+                trigger: ".about-hero",
+                start: "top top",
+                end: "bottom 30%",
+                // markers: true,
+                scrub: true
+            }
         });
-        gsap.to('.avatar-user_2', {
-            scrollTrigger: {
-                trigger: ".user-container",
-                // start: "200px center",
-                end: "bottom 50px",
-                scrub: true,
-            },
-            y: -40,
+        gsap.utils.toArray(".parallax").forEach((layer) => {
+            const depth = layer.dataset.depth;
+            const movement = depth * -10;
+            depthtl.to(layer, {y: movement, ease: "none"}, 0)
         });
-        gsap.to('.about-hero-info', {
-            scrollTrigger: {
-                trigger: ".user-container",
-                start: "200px center",
-                end: "bottom 50px",
-                scrub: true,
-                // markers: true
-            },
-            yPercent: -50,
+        /* ------ Visible Trigger --------------*/
+        gsap.utils.toArray(".isVisible").forEach((section, i) => {
+            ScrollTrigger.create({
+                trigger: section,
+                start: "20% center",
+                end: "bottom 50%+=100px",
+                markers: true,
+                onToggle: (self) => {
+                    isVisible.value[i] = true;
+                    changeNavbarState(true);
+                }
+            });
         });
     }, imgContainer.value);
 });
@@ -143,7 +108,7 @@ const enter = (el, done) => {
     setTimeout(() => {
         timelineobj.classList.add('timelinestart');
     }
-    , el.dataset.index * 500 + 800 );
+    , el.dataset.index * 500 + 800 ); //el.dataset.index * 500 
 };
 
 const sigleEnter = (el, done) => {
@@ -177,37 +142,23 @@ function ScrollTop() {
             <!-- profile image -->
             <div class="col-xl-6 d-flex-center">
                 <div class="user-container mb-md-0 mb-3">
-                    <img class="avatar-user_1 lazy" alt="profile_image" :src=profileImage1>
-                    <img class="avatar-user_2 lazy" alt="profile_image" :src=profileImage2>
+                    <img class="avatar-user_1 parallax lazy" data-depth='2.5' alt="profile_image" :src=profileImage1>
+                    <img class="avatar-user_2 parallax lazy" data-depth='5' alt="profile_image" :src=profileImage2>
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
+            <div class="about-hero-info parallax col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0" data-depth='40'>
                 <div class="mb-md-5 mb-4">
                     <!-- Name -->
-                    <Transition name="move" mode="out-in" appear
-                        @before-enter="beforeEnter"
-                        @enter="sigleEnter">
-
-                        <h1 class="name mb-md-2 mb-2" >Hello, I'm</h1>
-
-                    </Transition>
+                    <h1 class="name mb-md-2 mb-2" id="name1">Hello, I'm</h1>
                     <!-- Name -->
-                    <Transition name="move" mode="out-in" appear
-                        @before-enter="beforeEnter"
-                        @enter="sigleEnter">
-                        <h1 class="name mb-md-5 mb-4" >Sheng Wen Cheng</h1>
-                    </Transition>
+                    <h1 class="name mb-md-5 mb-4" id="name2">Sheng Wen Cheng</h1>
                     <!-- Subtitle -->
                     <div class="name">
-                        <Transition name="move" mode="out-in" appear
-                            @before-enter="beforeEnter"
-                            @enter="sigleEnter">
-                            <h4 class="mb-md-5 mb-4">
-                                A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>
-                                <br> based in Taiwan.
-                            </h4>
-                        </Transition>
+                        <h4 class="mb-md-5 mb-4" id="name3">
+                            A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>
+                            <br> based in Taiwan.
+                        </h4>
                     </div>
                 </div>
             </div>
@@ -267,7 +218,7 @@ function ScrollTop() {
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-                            <h2 class="mb-xl-4 mb-5" v-if="isVisible">Experience</h2>
+                            <h2 class="mb-xl-4 mb-5 " v-if="isVisible[0]">Experience</h2>
                     </Transition>
                 </div>
                 <div class="col-lg-9 px-xl-3">
@@ -276,7 +227,7 @@ function ScrollTop() {
                         @enter="enter"
                         @leave="leave"
                     >
-                    <div class="about-job row mb-3 mt-3" v-if="isVisible" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                    <div class="about-job row mb-3 mt-3" v-if="isVisible[0]" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Exp Job Duration & timeline -->
                         <div class="row col d-flex justify-content-center">
                             <!-- Toggle Duration -->
@@ -314,14 +265,14 @@ function ScrollTop() {
         </section>
 
         <!-- Skill -->
-        <section class="about-skill d-flex-center px-lg-5 px-4 py-5">
-            <div class="skill row mt-xl-0 mt-4 mb-4 isVisible">
+        <section class="about-skill d-flex-center px-lg-5 px-4 py-5 isVisible">
+            <div class="skill row mt-xl-0 mt-4 mb-4">
                 <!-- Skill Title -->
                 <div class="col-lg-4 ps-lg-0 pe-md-5 px-3 mb-lg-0 mb-md-5 mb-2">
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
-                    <h2 class="mb-md-4 mb-5" v-if="isVisible1">Service & Skill</h2>
+                    <h2 class="mb-md-4 mb-5" v-if="isVisible[1]">Service & Skill</h2>
                     </Transition>
                 </div>
                 <!-- Skill Info -->
@@ -333,7 +284,7 @@ function ScrollTop() {
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
-                                <h3 class="mb-md-5 mb-4" v-if="isVisible1">3D</h3>
+                                <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">3D</h3>
                             </Transition>
                             <TransitionGroup :css="false"
                                 @before-enter="beforeEnter"
@@ -341,7 +292,7 @@ function ScrollTop() {
                                 @leave="leave"
                             >
                                 <h5 class="mb-3 "
-                                    v-if="isVisible1" v-for="(item, index) in cgdesign" :key="item.name" :data-index="index"
+                                    v-if="isVisible[1]" v-for="(item, index) in cgdesign" :key="item.name" :data-index="index"
                                 >
                                     {{item.name}}
                                 </h5>
@@ -352,7 +303,7 @@ function ScrollTop() {
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
-                                <h3 class="mb-md-5 mb-4" v-if="isVisible1">Motion Design</h3>
+                                <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">Motion Design</h3>
                             </Transition>
                             <TransitionGroup :css="false"
                                 @before-enter="beforeEnter"
@@ -360,7 +311,7 @@ function ScrollTop() {
                                 @leave="leave"
                             >
                                 <h5 class="mb-3 "
-                                    v-if="isVisible1" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"
+                                    v-if="isVisible[1]" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"
                                 >
                                     {{item.name}}
                                 </h5>
@@ -371,13 +322,13 @@ function ScrollTop() {
                             <Transition name="move" mode="out-in"
                                 @before-enter="beforeEnter"
                                 @enter="sigleEnter">
-                                <h3 class="mb-md-5 mb-4" v-if="isVisible1">Development</h3>
+                                <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">Development</h3>
                             </Transition>
                             <TransitionGroup :css="false"
                                 @before-enter="beforeEnter"
                                 @enter="enter"
                             >
-                            <h5 class="mb-3" v-if="isVisible1" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
+                            <h5 class="mb-3" v-if="isVisible[1]" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
                             </TransitionGroup>
                         </div>
                         <hr class="my-3">
@@ -387,7 +338,7 @@ function ScrollTop() {
                         <Transition name="move" mode="out-in"
                             @before-enter="beforeEnter"
                             @enter="sigleEnter">
-                            <h3 class="mb-md-5 mb-4" v-if="isVisible1">Tools</h3>
+                            <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">Tools</h3>
                         </Transition>
                         <div class="d-flex flex-wrap">
                             <TransitionGroup :css="false"
@@ -396,7 +347,7 @@ function ScrollTop() {
                                 @leave="leave"
                             >
                                 <div class="col-md-2 col-3 px-xl-2 px-1 py-xl-3 py-2"
-                                    v-if="isVisible1" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
+                                    v-if="isVisible[1]" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
                                 >
                                     <img :src=item.img :alt=item.name class="img-fluid skill-logo">
                                 </div>
