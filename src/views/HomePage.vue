@@ -64,7 +64,7 @@ const loadingLeave = (el, done) => {
         <!----- Main Content----->
         <div class="mx-lg-5 px-lg-5 px-3 text-white">
           <h5 class="mb-2">Freelance 3D Generalist</h5>
-          <h1 class="mb-5">Sheng Wen (Mos) Cheng</h1>
+          <h2 class="mb-5">Sheng Wen (Mos) Cheng</h2>
           <div class="mb-5">
             <p>A 3D Generalist and Motion Designer based in Taiwan.</p>
             <p>Offering professional design services for digital arts and product motion design,

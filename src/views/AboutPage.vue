@@ -91,8 +91,8 @@ onMounted(() => {
     ctx = gsap.context((self) => {
         gsap.to('.avatar-user_1', {
             scrollTrigger: {
-                trigger: ".avatar-user_1",
-                start: "200px center",
+                trigger: ".user-container",
+                // start: "200px center",
                 end: "bottom 50px",
                 scrub: true,
                 // markers: true
@@ -101,17 +101,28 @@ onMounted(() => {
         });
         gsap.to('.avatar-user_2', {
             scrollTrigger: {
-                trigger: ".avatar-user_2",
-                start: "200px center",
+                trigger: ".user-container",
+                // start: "200px center",
                 end: "bottom 50px",
                 scrub: true,
             },
             y: -40,
         });
+        gsap.to('.about-hero-info', {
+            scrollTrigger: {
+                trigger: ".user-container",
+                start: "200px center",
+                end: "bottom 50px",
+                scrub: true,
+                // markers: true
+            },
+            yPercent: -50,
+        });
     }, imgContainer.value);
 });
 onUnmounted(() => {
     ctx.revert();
+    intentObserver.revert();
 });
 
 /* GSAP */
@@ -161,8 +172,8 @@ function ScrollTop() {
 <template>
 <div class="About">
     <main class="container-fluid" ref="imgContainer">
-        <!-- Intro -->
-        <section class="about-intro d-flex-center row mx-md-3 mx-1 px-md-4 px-3 py-5">
+        <!-- Hero -->
+        <section class="about-hero d-flex-center row px-md-4 px-3 py-5">
             <!-- profile image -->
             <div class="col-xl-6 d-flex-center">
                 <div class="user-container mb-md-0 mb-3">
@@ -171,69 +182,86 @@ function ScrollTop() {
                 </div>
             </div>
             <!-- text -->
-            <div class="about-intro-info col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
+            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
                 <div class="mb-md-5 mb-4">
                     <!-- Name -->
                     <Transition name="move" mode="out-in" appear
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
 
-                        <h1 class="name mb-md-5 mb-4" >Sheng Wen Cheng</h1>
+                        <h1 class="name mb-md-2 mb-2" >Hello, I'm</h1>
 
+                    </Transition>
+                    <!-- Name -->
+                    <Transition name="move" mode="out-in" appear
+                        @before-enter="beforeEnter"
+                        @enter="sigleEnter">
+                        <h1 class="name mb-md-5 mb-4" >Sheng Wen Cheng</h1>
                     </Transition>
                     <!-- Subtitle -->
                     <div class="name">
                         <Transition name="move" mode="out-in" appear
                             @before-enter="beforeEnter"
                             @enter="sigleEnter">
-
-                            <h3 class="mb-md-5 mb-4">
-                                A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>  <br> based in Taiwan.
-                            </h3>
-
+                            <h4 class="mb-md-5 mb-4">
+                                A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>
+                                <br> based in Taiwan.
+                            </h4>
                         </Transition>
                     </div>
+                </div>
+            </div>
+        </section>
+        <!-- Intro 2-->
+        <section class="about-intro d-flex-center px-md-5 px-3 py-5">
+            <div class="about-intro-block w-100">
+                <!-- text -->
+                <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">
                     <!-- Intro -->
                     <div>
-                        <p>Focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</p>
+                        <h5 class="mb-xl-4">I focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</h5>
 
-                        <p>Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
-                            designed to enhance workflows and simplify processes.</p>
+                        <h5 class="mb-xl-4">Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
+                            designed to enhance workflows and simplify processes.</h5>
 
-                        <p>For any inquiries,<strong> please contact me</strong></p>
+                        <h5>For any inquiries,<strong> please contact me</strong></h5>
                     </div>
                 </div>
-                <!-- Social media -->
-                <ul class="navbar-nav flex-row name mb-md-5 mb-4">
-                    <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item col-2 col-md-auto">
-                        <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
-                            <svg id="icon_social">
-                                <use :xlink:href="item.icon"></use>
-                            </svg>
-                        </a>
-                    </li>
-                </ul>
-                <!-- Contact info -->
-                <div class="name">
-                    <div class="mb-md-5 mb-4">
-                        <TransitionGroup appear :css="false"
-                            @before-enter="beforeEnter"
-                            @enter="enter"
-                        >
-                        <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
-                                <svg id="icon_social">
-                                    <use :xlink:href="item.icon"></use>
-                                </svg>
-                                <span class="ms-3">{{ item.text }}</span>
+                <div class="d-xl-flex justify-content-end mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
+                    <div class="about-intro-social">
+                        <!-- Social media -->
+                        <ul class="navbar-nav flex-row name mb-4">
+                            <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item col-2 col-md-auto">
+                                <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
+                                    <svg id="icon_social">
+                                        <use :xlink:href="item.icon"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- Contact info -->
+                        <div class="name">
+                            <div class="mb-md-5 mb-4">
+                                <TransitionGroup appear :css="false"
+                                    @before-enter="beforeEnter"
+                                    @enter="enter"
+                                >
+                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="mb-3 p-2">
+                                        <svg id="icon_social">
+                                            <use :xlink:href="item.icon"></use>
+                                        </svg>
+                                        <span class="ms-3">{{ item.text }}</span>
+                                    </div>
+                                </TransitionGroup>
                             </div>
-                        </TransitionGroup>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Experience -->
         <section class="about-exp d-flex-center px-lg-5 px-3 text-white isVisible">
-            <div class="row mt-xl-0 mt-4 mb-4">
+            <div class="about-exp-block row mt-xl-0 mt-4 mb-4">
                 <!-- Exp Title -->
                 <div class="col-lg-3" >
                     <Transition name="move" mode="out-in"
@@ -286,7 +314,7 @@ function ScrollTop() {
         </section>
 
         <!-- Skill -->
-        <section class="about-skill d-flex-center align-items-center px-lg-5 px-4 py-5">
+        <section class="about-skill d-flex-center px-lg-5 px-4 py-5">
             <div class="skill row mt-xl-0 mt-4 mb-4 isVisible">
                 <!-- Skill Title -->
                 <div class="col-lg-4 ps-lg-0 pe-md-5 px-3 mb-lg-0 mb-md-5 mb-2">
@@ -354,7 +382,6 @@ function ScrollTop() {
                         </div>
                         <hr class="my-3">
                     </div>
-                    
                     <!-- Skill Icon -->
                     <div class="about-skill-icon row d-flex align-items-center pe-md-3">
                         <Transition name="move" mode="out-in"
@@ -408,6 +435,7 @@ function ScrollTop() {
     .user-container{
         width: 35vh !important;
         height: 35vh !important;
+        max-height: 600px;
     }
     .avatar-user_1, .avatar-user_2{
         /* transform: scale(1.2)!important; */
@@ -437,17 +465,34 @@ main{
     color: rgb(179, 179, 179);
 }
 
-/* Block Size */
-.img-banner{
-    overflow : hidden;
-    height: 30vh;
+/*----------- Block -------------*/
+.about-hero{
+    height: 85vh;
 }
-.about-intro, .about-exp, .about-skill{
+.about-exp, .about-skill{
     min-height: 95vh;
 }
-.about-intro-info{
+.about-intro {
+    height: 60vh;
+}
+.about-intro-block, .about-exp-block {
+    max-width: 1800px;
+}
+.about-hero-info, .about-intro-info{
     max-width: 920px;
 }
+.about-skill-text{
+    min-height: 20vh;
+}
+/* BG color */
+.about-exp{
+    background-color: rgb(22, 22, 22) ;
+}
+
+.about-skill, .about-end{
+    background-color: rgb(228, 228, 228);
+}
+/* skill */
 .about-skill-icon{
     max-width: 760px;
 }
@@ -455,7 +500,7 @@ main{
     min-width: 75vw;
 }
 
-/* Job timeline*/
+/*------- Job timeline-------*/
 .about-job:last-child .timeline {
     height: 0;
 }
@@ -475,29 +520,22 @@ main{
     transform: scale(1);
 }
 
-/* BG color */
-.about-exp{
-    background-color: rgb(22, 22, 22) ;
-}
-
-.about-skill, .about-end{
-    background-color: rgb(228, 228, 228);
-}
-.about-skill-text{
-    min-height: 20vh;
-}
 
 /*------ Img --------*/
 .user-container{
     position: relative;
-    width: 50vh;
+    width: 40vh;
     height: 50vh;
+    max-height: 600px;
     overflow: hidden;
     background-color: rgb(39, 39, 39);
+    border-radius: 20px;
+    filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.3));
+
 }
 .avatar-user_1, .avatar-user_2{
     position: absolute;
-    top: 0;
+    top: 8%;
     left: 0;
     width: 100%;
     height: auto;

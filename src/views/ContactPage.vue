@@ -3,13 +3,13 @@ import FooterItem from '@/components/FooterItem.vue';
 </script>
 <template>
 <div>
-    <main class="Contact container">
+    <main class="contact container">
         <div class="row py-5">
             <div class="col-xl-6">
             </div>
-            <div class="col-xl-6">
+            <div class="contact-form col-xl-6">
                 <form action="https://formspree.io/f/meqbdlnk" method="POST">
-                    <h1 class="my-5">Contact</h1>
+                    <h2 class="my-5">Contact</h2>
                     <!-- email -->
                     <div class="form-group my-3">
                         <label for="InputName">Name</label>
@@ -25,7 +25,7 @@ import FooterItem from '@/components/FooterItem.vue';
                         <label for="FormControlTextarea1">Messenge</label>
                         <textarea class="form-control" name="Messenge" id="FormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary mb-2">Send</button>
+                    <button type="submit" class="btn btn-primary text-white mb-2">Send</button>
                 </form>
             </div>
         </div>
@@ -33,8 +33,14 @@ import FooterItem from '@/components/FooterItem.vue';
     <FooterItem />
 </div>
 </template>
-<style>
-.Contact{
+<style scoped>
+.contact{
     min-height: 80vh;
+}
+.contact-form{
+    max-width: 600px;
+}
+.btn{
+    min-width: 30%;
 }
 </style>
