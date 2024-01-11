@@ -13,9 +13,6 @@ import ExpData from '@/data/Experience.json';
 // Return Real route
 const profileImage1 = '../src/img/profile_1.png';
 const profileImage2 = '../src/img/profile_2.png';
-const cgdesign = ExpData.service.cgdesign;
-const motiondesign = ExpData.service.motiondesign;
-const development = ExpData.service.development;
 
 /* ------------ Transition GSAP --------------------*/
 const isVisible = ref([false, false]);
@@ -50,11 +47,22 @@ onMounted(() => {
 
     /* Scroll profile picture*/
     ctx = gsap.context((self) => {
-        /* Hero*/
+        /* Hero Section */
         const herotl = gsap.timeline({});
-        herotl.from("#name1", {opacity: 0, y: 200, ease: "back.inOut(1.7)", duration: 0.8}, 0.5);
-        herotl.from("#name2", {opacity: 0, y: 200, ease: "back.inOut(1.7)", duration: 0.5}, 1.2);
-        herotl.from("#name3", {opacity: 0, y: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 2);
+        herotl.from("#name1", {opacity: 0, y: 150, ease: "back.inOut(1.7)", duration: 0.6}, 0.3);
+        herotl.from("#name2", {opacity: 0, y: 150, ease: "back.inOut(1.7)", duration: 0.6}, 0.8);
+        herotl.from("#name3", {opacity: 0, y: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 1.2);
+        /* Intro Section*/
+        const introtl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about-intro",
+                start: "top center",
+                end: "bottom 30%",
+                // markers: true,
+            }
+        });
+        introtl.from(".about-intro-info",{ opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1});
+        introtl.from(".about-intro-social",{ opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1.5}, 0.8);
         /* ----------- Depth --------------- */
         const depthtl = gsap.timeline({
             scrollTrigger: {
@@ -76,7 +84,7 @@ onMounted(() => {
                 trigger: section,
                 start: "20% center",
                 end: "bottom 50%+=100px",
-                markers: true,
+                // markers: true,
                 onToggle: (self) => {
                     isVisible.value[i] = true;
                     changeNavbarState(true);
@@ -147,7 +155,7 @@ function ScrollTop() {
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info parallax col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0" data-depth='40'>
+            <div class="about-hero-info parallax col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0" data-depth='20'>
                 <div class="mb-md-5 mb-4">
                     <!-- Name -->
                     <h1 class="name mb-md-2 mb-2" id="name1">Hello, I'm</h1>
@@ -263,12 +271,11 @@ function ScrollTop() {
                 </div>
             </div>
         </section>
-
         <!-- Skill -->
         <section class="about-skill d-flex-center px-lg-5 px-4 py-5 isVisible">
-            <div class="skill row mt-xl-0 mt-4 mb-4">
+            <div class="skill mt-xl-0 mt-4 mb-4">
                 <!-- Skill Title -->
-                <div class="col-lg-4 ps-lg-0 pe-md-5 px-3 mb-lg-0 mb-md-5 mb-2">
+                <div class="ps-lg-0 pe-md-5 px-3 mb-md-5 mb-2">
                     <Transition name="move" mode="out-in"
                         @before-enter="beforeEnter"
                         @enter="sigleEnter">
@@ -276,86 +283,46 @@ function ScrollTop() {
                     </Transition>
                 </div>
                 <!-- Skill Info -->
-                <div class="col-lg-8 ps-lg-0 pe-md-5 px-3">
+                <div class="d-flex-center ps-lg-0 pe-md-5 px-3">
                     <!-- Text -->
                     <div class="about-skill-text row mb-5">
-                        <!-- Skill-MotionDesign -->
-                        <div class="col-md-4 mb-md-0 mb-4">
-                            <Transition name="move" mode="out-in"
-                                @before-enter="beforeEnter"
-                                @enter="sigleEnter">
-                                <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">3D</h3>
+                        <!-- Skill -->
+                        <div class="about-skill-skill col-md-4 mb-md-0 mb-4" v-for="skill in ExpData.service" :key="skill">
+                            <Transition name="move" mode="out-in" @before-enter="beforeEnter" @enter="sigleEnter">
+                                <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">{{skill.title}}</h3>
                             </Transition>
-                            <TransitionGroup :css="false"
-                                @before-enter="beforeEnter"
-                                @enter="enter"
-                                @leave="leave"
-                            >
-                                <h5 class="mb-3 "
-                                    v-if="isVisible[1]" v-for="(item, index) in cgdesign" :key="item.name" :data-index="index"
+                            <TransitionGroup :css="false" @before-enter="beforeEnter" @enter="enter" @leave="leave">
+                                <h5 class="mb-3 " v-if="isVisible[1]" 
+                                    v-for="(item, index) in skill.content" :key="item.name" :data-index="index"
                                 >
                                     {{item.name}}
                                 </h5>
-                            </TransitionGroup>
-                        </div>
-                        <!-- Skill-MotionDesign -->
-                        <div class="col-md-4 mb-md-0 mb-4">
-                            <Transition name="move" mode="out-in"
-                                @before-enter="beforeEnter"
-                                @enter="sigleEnter">
-                                <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">Motion Design</h3>
-                            </Transition>
-                            <TransitionGroup :css="false"
-                                @before-enter="beforeEnter"
-                                @enter="enter"
-                                @leave="leave"
-                            >
-                                <h5 class="mb-3 "
-                                    v-if="isVisible[1]" v-for="(item, index) in motiondesign" :key="item.name" :data-index="index"
-                                >
-                                    {{item.name}}
-                                </h5>
-                            </TransitionGroup>
-                        </div>
-                        <!-- Skill-Development -->
-                        <div class="col-md-4">
-                            <Transition name="move" mode="out-in"
-                                @before-enter="beforeEnter"
-                                @enter="sigleEnter">
-                                <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">Development</h3>
-                            </Transition>
-                            <TransitionGroup :css="false"
-                                @before-enter="beforeEnter"
-                                @enter="enter"
-                            >
-                            <h5 class="mb-3" v-if="isVisible[1]" v-for="(item, index) in  development" :key="item.name" :data-index="index">{{item.name}}</h5>
                             </TransitionGroup>
                         </div>
                         <hr class="my-3">
                     </div>
-                    <!-- Skill Icon -->
-                    <div class="about-skill-icon row d-flex align-items-center pe-md-3">
-                        <Transition name="move" mode="out-in"
+                </div>
+                <!-- Skill Icon -->
+                <div class="about-skill-icon d-flex-center pe-md-3">
+                    <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">Tools</h3>
+                    <div class="d-flex flex-wrap">
+                        <TransitionGroup :css="false"
                             @before-enter="beforeEnter"
-                            @enter="sigleEnter">
-                            <h3 class="mb-md-5 mb-4" v-if="isVisible[1]">Tools</h3>
-                        </Transition>
-                        <div class="d-flex flex-wrap">
-                            <TransitionGroup :css="false"
-                                @before-enter="beforeEnter"
-                                @enter="enter"
-                                @leave="leave"
+                            @enter="enter"
+                            @leave="leave"
+                        >
+                            <div class="col-md-2 col-3 px-xl-2 px-1 py-xl-3 py-2"
+                                v-if="isVisible[1]" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
                             >
-                                <div class="col-md-2 col-3 px-xl-2 px-1 py-xl-3 py-2"
-                                    v-if="isVisible[1]" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
-                                >
-                                    <img :src=item.img :alt=item.name class="img-fluid skill-logo">
-                                </div>
-                            </TransitionGroup>
-                        </div>
+                                <img :src=item.img :alt=item.name class="img-fluid skill-logo">
+                            </div>
+                        </TransitionGroup>
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- Contact button-->
+        <section class="about-contact d-flex-center px-lg-5 px-4 py-5 isVisible">
         </section>
         <div class="about-end container-fluid text-center">
             <a @click="ScrollTop()" class="nav-link p-2">
@@ -440,7 +407,7 @@ main{
     background-color: rgb(22, 22, 22) ;
 }
 
-.about-skill, .about-end{
+.about-skill, .about-contact, .about-end{
     background-color: rgb(228, 228, 228);
 }
 /* skill */

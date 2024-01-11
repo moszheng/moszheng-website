@@ -32,25 +32,34 @@
         }
     ],
     "service" :{
-        "cgdesign" : [
-            {"name": "Modeling / Sculpting"},
-            {"name": "Texturing / Procedural Material"},
-            {"name": "Lighting"},
-            {"name": "Rendering"},
-            {"name": "Compositing"},
-            {"name": "VFX Simulating"}
-        ],
-        "motiondesign" : [
-            {"name": "Storyboard"},
-            {"name": "Scripting"},
-            {"name": "Animating"},
-            {"name": "Cel animation"}
-        ],
-        "development" : [
-            {"name": "C4D Python Plug-in"},
-            {"name": "After Effects Scripts"},
-            {"name": "Project Workflow R&D"},
-            {"name": "Frontend Developing"}
-        ]
+        "cgdesign" : {
+            "title" : "3D",
+            "content" : [
+                {"name": "Modeling / Sculpting"},
+                {"name": "Texturing / Procedural Material"},
+                {"name": "Lighting"},
+                {"name": "Rendering"},
+                {"name": "Compositing"},
+                {"name": "VFX Simulating"}
+            ]
+        },
+        "motiondesign"  : {
+            "title" : "Motion Design",
+            "content" : [
+                {"name": "Storyboard"},
+                {"name": "Scripting"},
+                {"name": "Animating"},
+                {"name": "Cel animation"}
+            ]
+        },
+        "development"  : {
+            "title" : "Motion Design",
+            "content" : [
+                {"name": "C4D Python Plug-in"},
+                {"name": "After Effects Scripts"},
+                {"name": "Project Workflow R&D"},
+                {"name": "Frontend Developing"}
+            ]
+        }
     }
 }
