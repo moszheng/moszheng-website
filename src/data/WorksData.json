@@ -89,7 +89,7 @@
                 "Production Staff": "黃婷鈺、陳品聿 、蔡潔凡、張玉典、許雅婷、柯季芸",
                 "Publicity Assistant": "王日暄",
                 "Key Visual Design": "洪湘茹、簡宥箴、陳施澄",
-                "Designer＆Animator": "齊慕夷、鄭盛文、林俊德、何展鴻、許峻良、詹游丞、何佳珍、Lucas Gaston Casagrande、張伊暉、蔡瑋廷、方智弘、李威、Hai Le",
+                "Designer＆Animator": "齊慕夷、鄭盛文 Mos Zheng、林俊德、何展鴻、許峻良、詹游丞、何佳珍、Lucas Gaston Casagrande、張伊暉、蔡瑋廷、方智弘、李威、Hai Le",
                 "Stage Visual Design": "JL DESIGN（洪湘茹、齊慕夷、鄭盛文 Mos Zheng、林俊德）、野人創意設計有限公司（陳志育、吳昱緯、黃敏琇、林玟誼）"
             },
             "creditZH" : 
@@ -125,18 +125,18 @@
         },
         {
             "name" : "金馬57",
-            "en_name" : "Golden Horse Awards 57th - ",
+            "en_name" : "Golden Horse Awards 57th",
             "url_name" : "gha57",
             "date" : "2020 Nov",
             "behance" : "https://www.behance.net/gallery/126685047/Golden-Horse-Award-Ceremony-57th57-",
             "video" : ["vimeo","558850163"],
             "img" : "10_gha57_01.png",
-            "img_md" : ["10_gha57_01_md.png"],
+            "img_md" : ["10_gha57_01_md.png", "10_gha57_break.gif", "10_gha57_stage.gif", "10_gha57_stage02_md.webp"],
             "company" : "JL Design",
             "msg" : [
             ],
             "roles" : [
-                "Motion Design", "Compositing"
+                "Stage Motion Design", "Co-production Video Op/Ed Design", "Compositing"
             ],
             "credit" : 
             {   
@@ -385,7 +385,7 @@
             "behance" : "https://www.behance.net/gallery/126718383/AVCG-PGN-Image-Video",
             "video" : ["vimeo","522731725"],
             "img" : "06_PGN_01.jpg",
-            "img_md" : ["06_PGN_01.jpg"],
+            "img_md" : ["06_PGN_01.jpg", "06_PGN_02_md.webp", "06_PGN_03_md.webp", "06_PGN_04_md.webp", "06_PGN_05_md.webp"],
             "company" : "JL Design",
             "msg" : [
                 "Collaborating with the talented illustrator Taku Bannai, we develop a series animation of financial product, We've chosen to the Cel animation to bring these concepts to life, infusing them with a charm and visual. Our goal is to not only educate but also entertain our audience, making complex financial information more accessible and enjoyable."

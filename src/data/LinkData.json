@@ -5,16 +5,16 @@
             "icon" : "#icon-behance"
         },
         { 
+            "url" : "https://vimeo.com/880783588 ",
+            "icon" : "#icon-vimeo"
+        },
+        { 
             "url" : "https://www.linkedin.com/in/moszheng/",
             "icon" : "#icon-linkedin"
         },
         { 
             "url" : "https://github.com/moszheng",
             "icon" : "#icon-github"
-        },
-        { 
-            "url" : "https://www.instagram.com/slothfellas/",
-            "icon" : "#icon-instagram"
         },
         { 
             "url" : "https://www.facebook.com/profile.php?id=100090856254723",

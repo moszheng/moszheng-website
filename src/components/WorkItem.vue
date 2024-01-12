@@ -20,7 +20,7 @@ shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.va
 
 // Transfer Data
 // Other Project Random method
-const vimeoPage = (item) => {return `https://vimeo.com/${ item }`}
+const vimeoPage = (item) => {return `https://vimeo.com/${ item[1] }`}
 const vimeoEmbed = (item) => {
     if (item[0]=="vimeo") {
         return `https://player.vimeo.com/video/${ item[1] }?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`
@@ -68,7 +68,7 @@ onMounted(() => {
         }
     }
     lazyloadimgs.value.forEach(function(img) {
-        if(img.complete) {
+        if (img.complete) {
             loaded(img)
         } else {
             img.addEventListener("load", loaded)
@@ -85,7 +85,7 @@ onMounted(() => {
                 trigger: ".workitem-info",
                 start: "top 80%",
                 end: "bottom 30%",
-                markers: true,
+                // markers: true,
             },
         });
         herotl.from(".hero-1", {opacity: 0, y: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8});
@@ -93,7 +93,7 @@ onMounted(() => {
         herotl.from(".hero-social", {opacity: 0, y: 30, scale: 0.1, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.25}, 0.65);
         herotl.from(".hero-3", {opacity: 0, y: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.6);
         herotl.from(".hero-4", {opacity: 0, y: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.65);
-        herotl.from(".hero-sep", {scaleX:0 , ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.25}, 0.8);
+        herotl.from(".hero-sep", {scaleX: 0, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.25}, 0.8);
         herotl.from(".head-img-container", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8}, 1);
         herotl.from(".content-context", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 1.1);
         /* heropic */
@@ -202,7 +202,7 @@ function ScrollTop() {
                 </div>
             </div>
             <div>
-                <div class="row mb-3">
+                <div class="mb-3">
                     <div class="img-container d-flex-center mb-3" v-for="(item, index) in contextImg" :key="item">
                         <img :src="imgLocation(contextImg[index])" class="d-flex-center col img-fluid lazy" alt="contextImg">
                     </div>

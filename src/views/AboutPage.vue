@@ -80,6 +80,7 @@ onMounted(() => {
         herotl.from("#hero-1", {opacity: 0, y: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.3);
         herotl.from("#hero-2", {opacity: 0, y: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.5);
         herotl.from("#hero-3", {opacity: 0, y: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 0.8);
+        herotl.from("#hero-4", {opacity: 0, y: -15, ease: "back.inOut(1.7)", duration: 0.75}, 2);
         /* Intro Section*/
         const introtl = gsap.timeline({
             scrollTrigger: {
@@ -89,7 +90,8 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        introtl.from(".intro-info", {opacity: 0, y: 25, rotationX: 45, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25});
+        introtl.to("#hero-4", {opacity: 0, y: 0, ease: "power4.inOut(1.7)", duration: 2});
+        introtl.from(".intro-info", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0);
         introtl.from(".intro-infosocial", {opacity: 0, x: -30, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 0.35);
         introtl.from(".intro-infocontact", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1, stagger: 0.2}, 0.5);
         /* --------------- Exp Section--------------*/
@@ -141,7 +143,7 @@ onMounted(() => {
             const cardtext = item.querySelectorAll("#skill-card-text");
             // Animation
             skilltl.from(item, {opacity: 0, y: 25, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.3}, delay);
-            skilltl.from(cardtitle, {opacity: 0, y: 20, rotateX: 90, ease: "power3.Out(1.7)", duration: 1}, delay + 0.1);
+            skilltl.from(cardtitle, {opacity: 0, y: 20, rotateX: 45, ease: "power3.Out(1.7)", duration: 1}, delay + 0.1);
             skilltl.from(cardtext, {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, delay + 0.25);
         });
         skilltl.from("#skill-sep", {scaleX: 0, ease: "back.Out(1.7)", duration: 1}, 1);
@@ -185,6 +187,11 @@ function ScrollTop() {
                             A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>
                             <br> based in Taiwan.
                         </h4>
+                        <div class="container-fluid text-center" id="hero-4" style="rotate: 180deg;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -196,9 +203,8 @@ function ScrollTop() {
                 <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">
                     <!-- Intro -->
                     <div>
-                        <h5 class="intro-info mb-4">I focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</h5>
-                        <h5 class="intro-info mb-4">Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
-                            designed to enhance workflows and simplify processes.</h5>
+                        <h5 class="intro-info mb-4">As a diverse motion designer, I am eager to explore the possibilities of animation, focusing on creating stunning vision throught keen insights and pushing team's ideas to practice. Take on challenges in any project and develop workflows or pipelines to solve problems.</h5>
+                        <h5 class="intro-info mb-4">Worked at JL Design and Mixcode as Motion Designer from 2018 to 2023 and we made several brilliant achievement including awarded TV packages.</h5>
                         <h5 class="intro-info">For any inquiries,<strong> please contact me</strong></h5>
                     </div>
                 </div>
