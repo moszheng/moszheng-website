@@ -43,24 +43,24 @@ onMounted(() => {
     });
     /* Main GSAP Animation*/
     ctx = gsap.context((self) => {
-        window.addEventListener('mousemove', (e)=>{
-            heroRot(e);
-        });
+        // window.addEventListener('mousemove', (e)=>{
+        //     heroRot(e);
+        // });
         /* ----------- Depth --------------- */
-        const depthtl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".about-hero",
-                start: "top top",
-                end: "bottom 30%",
-                // markers: true,
-                scrub: true,
-            },
-        });
-        gsap.utils.toArray(".parallax").forEach((layer) => {
-            const depth = layer.dataset.depth;
-            const movement = depth * -25;
-            depthtl.to(layer, {y: movement, ease: "none"}, 0);
-        });
+        // const depthtl = gsap.timeline({
+        //     scrollTrigger: {
+        //         trigger: ".about-hero",
+        //         start: "top top",
+        //         end: "bottom 30%",
+        //         // markers: true,
+        //         scrub: true,
+        //     },
+        // });
+        // gsap.utils.toArray(".parallax").forEach((layer) => {
+        //     const depth = layer.dataset.depth;
+        //     const movement = depth * -25;
+        //     depthtl.to(layer, {y: movement, ease: "none"}, 0);
+        // });
         const heroRot = (e)=>{
             gsap.utils.toArray(".heroRot").forEach((el) => {
                 let xPos = e.clientX / window.innerWidth - 0.5;
@@ -98,7 +98,7 @@ onMounted(() => {
                 trigger: ".about-exp-block",
                 start: "top 80%",
                 end: "bottom+=300 top",
-                markers: true,
+                // markers: true,
                 onEnter: (self) => {
                     changeNavbarState(true);
                 },
@@ -440,7 +440,7 @@ main{
     overflow: hidden;
     /* background-color: rgb(39, 39, 39); */
     border-radius: 20px;
-    filter: drop-shadow(-10px -10px 20px rgba(0, 0, 0, 0.3));
+    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
 }
 .avatar-user_1, .avatar-user_2{
     position: absolute;
