@@ -34,15 +34,10 @@ const showIcon = ref(false);
 
 const rotateButton = () => {
     showIcon.value = !showIcon.value;
+    const tl = gsap.timeline();
     // motion
-    gsap.to('#icon-plus-area', {
-        rotation: '+=135',
-        duration: 0.8,
-        ease: 'power3.inOut',
-        onComplete: () => {
-            // button.style.transform = 'none';
-        },
-    });
+    tl.to('#icon-plus-area', { rotation: '+=135', duration: 0.8, ease: 'power3.inOut'});
+    tl.from('#icon-plus-area', { scale: 0.8, duration: 0.5, ease: 'elastic.out(1,0.3)'}, 0.5);
 };
 
 // Scroll movement
@@ -76,38 +71,15 @@ const handleScroll = () => {
 
 /* Enter animation */
 function onBeforeEnter(el) {
-    gsap.set(el, {
-        // x: 40 - el.dataset.index * 5,
-        width: 0,
-        opacity: 0,
-    });
+    gsap.set(el, {width: 0, scale: 1, opacity: 0});
 };
 function onEnter(el, done) {
-    gsap.to(el, {
-        width: '4.5vh',
-        duration: 1,
-    });
-    gsap.to(el, {
-        delay: 0.5 - 0.1 * el.dataset.index,
-        opacity: 1,
-        duration: 1,
-        onComplete: done,
-    });
+    const delay = 0.2 - 0.05 * el.dataset.index;
+    gsap.to(el, {opacity: 1, width: '4.5vh', scale: 1, duration: 0.8, delay: delay, ease: "back.Out(2.5)"});
 };
 function onLeave(el, done) {
-    gsap.to(el, {
-        delay: 0.2 - 0.05 * el.dataset.index,
-        opacity: 0,
-        duration: 1,
-    });
-    gsap.to(el, {
-        // delay: 0.1 * el.dataset.index,
-        width: 0,
-        opacity: 0,
-        duration: 1,
-        onComplete: done,
-        // ease: 'elastic.inOut(1.5, 1)' // amp, duration
-    });
+    const delay = 0.2 - 0.05 * el.dataset.index;
+    gsap.to(el, {width: 0, opacity: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(1.7)"});
 };
 </script>
 
