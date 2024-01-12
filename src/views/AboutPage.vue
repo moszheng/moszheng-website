@@ -89,16 +89,16 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        introtl.from(".intro-infosocial", {opacity: 0, y: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25});
-        introtl.from(".intro-infosocial", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1.2, stagger: 0.1}, 0.3);
-        introtl.from(".intro-infocontact", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1.2, stagger: 0.2}, 0.5);
-        /* ------ Exp Section--------------*/
+        introtl.from(".intro-info", {opacity: 0, y: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25});
+        introtl.from(".intro-infosocial", {opacity: 0, y: 20, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 0.35);
+        introtl.from(".intro-infocontact", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1, stagger: 0.2}, 0.5);
+        /* --------------- Exp Section--------------*/
         const exptl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".about-exp-block",
-                start: "20% 65%",
+                start: "top 65%",
                 end: "bottom 50%+=100px",
-                // markers: true,
+                markers: true,
                 onToggle: (self) => {
                     changeNavbarState(true);
                 },
@@ -110,9 +110,12 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        exptl.from("#about-exp-title", {opacity: 0, y: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25});
-        exptl.from(".about-job", {opacity: 0, y: 40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.5);
-        exptl.from(".timeline", {scaleY: 0, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.5}, 1);
+        exptl.from(".timeline", {autoAlpha: 0, ease: "linear"}, 0); // init timeline or will flash to top(FOUC)
+        exptl.from("#about-exp-title", {opacity: 0, y: 40, rotationX: 80, ease: "back.inOut(1.7)", duration: 0.6, stagger: 0.25});
+        exptl.from(".about-job", {opacity: 0, y: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.5);
+        exptl.from(".exp-job-title", {opacity: 0, x: 20, y: -30, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.15}, 0.6);
+        exptl.from(".exp-job-detail", {opacity: 0, y: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15}, 0.8);
+        exptl.from(".timeline", {scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5}, 1);
         /* -----------Skill Section--------
             1. Title
             2. skill-card
@@ -133,16 +136,14 @@ onMounted(() => {
             const cardtitle = item.querySelector("#skill-card-title");
             const cardtext = item.querySelectorAll("#skill-card-text");
             // Animation
-            skilltl.from(item, {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 1}, delay);
-            skilltl.from(cardtitle, {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1}, delay);
+            skilltl.from(item, {opacity: 0, y: 25, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5}, delay);
+            skilltl.from(cardtitle, {opacity: 0, y: 20, rotateX: 90, ease: "power3.Out(1.7)", duration: 1}, delay);
             skilltl.from(cardtext, {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, delay + 0.25);
         });
+        skilltl.from("#skill-sep", {scaleX: 0, ease: "back.Out(1.7)", duration: 1}, 1);
         // Skill Icon Group
-        skilltl.from("#skill-tooltitle", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1}, 1.5);
-        gsap.utils.toArray(".skill-logo-container").forEach((text, i) => {
-            const delay = i / 10 + 1.5;
-            skilltl.from(text, {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 0.5}, delay);
-        });
+        skilltl.from("#skill-tooltitle", {opacity: 0, y: 20, rotateX: 40, ease: "power3.Out(1.7)", duration: 0.5}, 1.5);
+        skilltl.from(".skill-logo-container", {opacity: 0, y: 20, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 1.5);
     }, imgContainer.value);
 });
 onUnmounted(() => {
@@ -191,10 +192,10 @@ function ScrollTop() {
                 <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">
                     <!-- Intro -->
                     <div>
-                        <h5 class="intro-infosocial mb-xl-4">I focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</h5>
-                        <h5 class="intro-infosocial mb-xl-4">Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
+                        <h5 class="intro-info mb-xl-4">I focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</h5>
+                        <h5 class="intro-info mb-xl-4">Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
                             designed to enhance workflows and simplify processes.</h5>
-                        <h5 class="intro-infosocial">For any inquiries,<strong> please contact me</strong></h5>
+                        <h5 class="intro-info">For any inquiries,<strong> please contact me</strong></h5>
                     </div>
                 </div>
                 <div class="d-xl-flex justify-content-end mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
@@ -250,15 +251,15 @@ function ScrollTop() {
                         <!-- Exp Job Content -->
                         <div class="col-xl-9 col-10">
                             <div class="row mb-4">
-                                <h4 class="col mb-2">{{ item.title }}</h4>
+                                <h4 class="exp-job-title col mb-2">{{ item.title }}</h4>
                                 <div class="d-flex">
-                                    <h6 class="me-4 mb-0">{{ item.company }}</h6>
+                                    <h6 class="exp-job-title me-4 mb-0">{{ item.company }}</h6>
                                     <span class="exp-p duration-toggled">{{item.duration}}</span>
                                 </div>
                             </div>
                             <!-- Job detail -->
                             <ul class="exp-p">
-                                <li v-for="content in item.detail" :key="content">
+                                <li v-for="content in item.detail" :key="content" class="exp-job-detail">
                                     <p>{{ content }}</p>
                                 </li>
                             </ul>
@@ -289,7 +290,7 @@ function ScrollTop() {
                         </div>
                     </div>
                 </div>
-                <hr class="my-5">
+                <hr class="my-5" id="skill-sep">
                 <!-- Skill Icon -->
                 <div class="d-flex-center pe-md-3">
                     <div class="w-50">
@@ -368,9 +369,6 @@ main{
 .about-hero{
     height: 85vh;
 }
-.about-exp, .about-skill{
-    min-height: 95vh;
-}
 .about-intro {
     height: 60vh;
 }
@@ -379,6 +377,9 @@ main{
 }
 .about-hero-info, .about-intro-info{
     max-width: 920px;
+}
+.about-exp, .about-skill{
+    min-height: 95vh;
 }
 /* ---Skill--- */
 .about-skill-block{
@@ -408,6 +409,7 @@ main{
     height: 0;
 }
 .timeline {
+    visibility: hidden;
     background-color: rgb(117, 117, 117);
     content: '';
     position: absolute;
@@ -425,10 +427,9 @@ main{
     height: 50vh;
     max-height: 600px;
     overflow: hidden;
-    background-color: rgb(39, 39, 39);
+    /* background-color: rgb(39, 39, 39); */
     border-radius: 20px;
-    filter: drop-shadow(0px 0px 20px rgba(0, 0, 0, 0.3));
-
+    filter: drop-shadow(-10px -10px 20px rgba(0, 0, 0, 0.3));
 }
 .avatar-user_1, .avatar-user_2{
     position: absolute;
