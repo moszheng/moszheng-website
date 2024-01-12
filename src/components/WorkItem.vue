@@ -76,6 +76,41 @@ onMounted(() => {
     });
     /* Scroll picture*/
     ctx = gsap.context((self) => {
+        window.addEventListener('mousemove', (e)=>{
+            heroRot(e);
+        });
+        //
+        const herotl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".workitem-info",
+                start: "top 80%",
+                end: "bottom 30%",
+                markers: true,
+            },
+        });
+        herotl.from(".hero-1", {opacity: 0, y: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8});
+        herotl.from(".hero-2", {opacity: 0, y: 40, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.25}, 0.1);
+        herotl.from(".hero-social", {opacity: 0, y: 30, scale: 0.1, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.25}, 0.65);
+        herotl.from(".hero-3", {opacity: 0, y: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.6);
+        herotl.from(".hero-4", {opacity: 0, y: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.65);
+        herotl.from(".hero-sep", {scaleX:0 , ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.25}, 0.9);
+        herotl.from(".head-img-container", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8}, 1.5);
+        herotl.from(".content-context", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 1.6);
+        /* heropic */
+        const heroRot = (e)=>{
+            gsap.utils.toArray(".head-img-container-img").forEach((el) => {
+                let xPos = e.clientX / window.innerWidth - 0.5;
+                let yPos = e.clientY / window.innerHeight - 0.5;
+                let depth = el.dataset.depth;
+                gsap.to(el, {
+                    x: xPos * 40,
+                    y: yPos * 10,
+                    rotationY: xPos * 10,
+                    rotationX: yPos * 10,
+                    stagger: 0.055,
+                });
+            });
+        };
         gsap.to('.head-img-container-img', {
             scrollTrigger: {
                 trigger: ".head-img-container",
@@ -122,23 +157,17 @@ function ScrollTop() {
         <div class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
             <!-- Left -->
             <div class="col-9">
-                <Transition name="move" mode="out-in" appear
-                    @before-enter="beforeEnter"
-                    @enter="sigleEnter">
-
-                    <h3 class="mb-4">{{ prjdata.en_name}}</h3>
-
-                </Transition>
-                <h6 class="mb-3">@{{prjdata.company}}</h6>
-                <p class="mb-4">{{prjdata.date}}</p>
+                <h3 class="hero-1 mb-4">{{ prjdata.en_name}}</h3>
+                <h6 class="hero-2 mb-3">@{{prjdata.company}}</h6>
+                <p class="hero-2 mb-4">{{prjdata.date}}</p>
                 <div>
-                    <a class="me-3" :href=prjdata.behance target="_blank" rel="noopener">
+                    <a class="hero-social me-3" :href=prjdata.behance target="_blank" rel="noopener">
                         <svg id="icon_social">
                             <use xlink:href="#icon-behance"></use>
                         </svg>
                     </a>
                     <!-- vimeo Link -->
-                    <a class="" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
+                    <a class="hero-social" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
                         <svg id="icon_social">
                             <use xlink:href="#icon-vimeo"></use>
                         </svg>
@@ -147,12 +176,12 @@ function ScrollTop() {
             </div>
             <!-- Right -->
             <div class="col-3 justify-content-end">
-                <h3 class="mb-4">Roles</h3>
-                <p class="mb-2" v-for="item in prjdata.roles" :key="item">
+                <h3 class="hero-3 mb-4">Roles</h3>
+                <p class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item">
                     {{item}}
                 </p>
             </div>
-            <hr class="mt-5">
+            <hr class="mt-5 hero-sep">
         </div>
         <!-- Workitem-Content -->
         <section class="workitem-content mx-md-3 mx-1 mb-5 px-xl-5 px-3">
@@ -165,7 +194,7 @@ function ScrollTop() {
                 </div>
                 <!-- Right Content -->
                 <div class="col-xxl-5">
-                    <div class="">
+                    <div class="content-context">
                         <p v-for="item in prjdata.msg" :key="item">
                             {{item}}
                         </p>
@@ -206,7 +235,7 @@ function ScrollTop() {
     <!-- Other Prj -->
     <section class="container-fluid workitem-otherprj px-md-5 px-1 " data-scroll-section>
         <div class="container ">
-            <h2 class="text-white my-4">Other Project</h2>
+            <h3 class="text-white my-4">Other Project</h3>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                 <div class="row">
                     <div v-for="item in shuffleprj" class="col-xl-4" :key="item.url_name">

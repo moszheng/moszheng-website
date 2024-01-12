@@ -97,15 +97,19 @@ onMounted(() => {
             scrollTrigger: {
                 trigger: ".about-exp-block",
                 start: "top 65%",
-                end: "bottom 50%+=100px",
+                end: "bottom+=300 top",
                 markers: true,
-                onToggle: (self) => {
+                onEnter: (self) => {
                     changeNavbarState(true);
                 },
                 onLeave: (self) => {
-                    console.log(store.navbardarkmode);
                     changeNavbarState(false);
-                    console.log(store.navbardarkmode);
+                },
+                onEnterBack: (self) => {
+                    changeNavbarState(true);
+                },
+                onLeaveBack: (self) => {
+                    changeNavbarState(false);
                 },
                 // markers: true,
             },
