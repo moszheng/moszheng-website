@@ -89,14 +89,14 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        introtl.from(".intro-info", {opacity: 0, y: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25});
-        introtl.from(".intro-infosocial", {opacity: 0, y: 20, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 0.35);
+        introtl.from(".intro-info", {opacity: 0, y: 25, rotationX: 45, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25});
+        introtl.from(".intro-infosocial", {opacity: 0, x: -30, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 0.35);
         introtl.from(".intro-infocontact", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1, stagger: 0.2}, 0.5);
         /* --------------- Exp Section--------------*/
         const exptl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".about-exp-block",
-                start: "top 65%",
+                start: "top 80%",
                 end: "bottom+=300 top",
                 markers: true,
                 onEnter: (self) => {
@@ -115,10 +115,10 @@ onMounted(() => {
             },
         });
         exptl.from(".timeline", {autoAlpha: 0, ease: "linear"}, 0); // init timeline or will flash to top(FOUC)
-        exptl.from("#about-exp-title", {opacity: 0, y: 40, rotationX: 80, ease: "back.inOut(1.7)", duration: 0.6, stagger: 0.25});
+        exptl.from("#about-exp-title", {opacity: 0, x: -100, ease: "back.inOut(1.7)", duration: 0.8});
         exptl.from(".about-job", {opacity: 0, y: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.5);
-        exptl.from(".exp-job-title", {opacity: 0, x: 20, y: -30, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.15}, 0.6);
-        exptl.from(".exp-job-detail", {opacity: 0, y: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15}, 0.8);
+        exptl.from(".exp-job-title", {opacity: 0, y: -30, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.15}, 0.7);
+        exptl.from(".exp-job-detail", {opacity: 0, y: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15}, 0.9);
         exptl.from(".timeline", {scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5}, 1);
         /* -----------Skill Section--------
             1. Title
@@ -136,12 +136,12 @@ onMounted(() => {
         skilltl.from("#skill-title", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1});
         // Skill Card Group
         gsap.utils.toArray(".about-skill-card").forEach((item, i) => {
-            const delay = i / 4 + 0.5;
+            const delay = i / 8 + 0.5;
             const cardtitle = item.querySelector("#skill-card-title");
             const cardtext = item.querySelectorAll("#skill-card-text");
             // Animation
-            skilltl.from(item, {opacity: 0, y: 25, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5}, delay);
-            skilltl.from(cardtitle, {opacity: 0, y: 20, rotateX: 90, ease: "power3.Out(1.7)", duration: 1}, delay);
+            skilltl.from(item, {opacity: 0, y: 25, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.3}, delay);
+            skilltl.from(cardtitle, {opacity: 0, y: 20, rotateX: 90, ease: "power3.Out(1.7)", duration: 1}, delay + 0.1);
             skilltl.from(cardtext, {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, delay + 0.25);
         });
         skilltl.from("#skill-sep", {scaleX: 0, ease: "back.Out(1.7)", duration: 1}, 1);
@@ -173,7 +173,7 @@ function ScrollTop() {
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info parallax col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0" data-depth='10'>
+            <div class="about-hero-info parallax col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0" data-depth='5'>
                 <div class="mb-md-5 mb-4">
                     <!-- Name -->
                     <h1 class="name mb-md-2 mb-2" id="hero-1">Hello, I'm</h1>
@@ -181,7 +181,7 @@ function ScrollTop() {
                     <h1 class="name mb-md-5 mb-4" id="hero-2">Sheng Wen Cheng</h1>
                     <!-- Subtitle -->
                     <div class="name">
-                        <h4 class="mb-md-5 mb-4" id="hero-3">
+                        <h4 class="mb-md-5 mb-4 px-xl-0 px-3" id="hero-3">
                             A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>
                             <br> based in Taiwan.
                         </h4>
@@ -190,14 +190,14 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center px-md-5 px-3 py-5">
+        <section class="about-intro d-flex-center mb-xl-0 mb-5 px-md-5 px-3 py-5">
             <div class="about-intro-block w-100">
                 <!-- text -->
                 <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">
                     <!-- Intro -->
                     <div>
-                        <h5 class="intro-info mb-xl-4">I focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</h5>
-                        <h5 class="intro-info mb-xl-4">Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
+                        <h5 class="intro-info mb-4">I focus on <strong>Motion Design</strong> and <strong>3D art</strong>, love to improve knowledge and create stunning vision.</h5>
+                        <h5 class="intro-info mb-4">Also established <strong>Slothfellas</strong>, a platform that provides C4D plugins and After Effects scripts,
                             designed to enhance workflows and simplify processes.</h5>
                         <h5 class="intro-info">For any inquiries,<strong> please contact me</strong></h5>
                     </div>
@@ -216,8 +216,8 @@ function ScrollTop() {
                         </ul>
                         <!-- Contact info -->
                         <div class="name">
-                            <div class="mb-md-5 mb-4">
-                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact mb-3 p-2">
+                            <div class="mb-4">
+                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact mb-2 p-2">
                                     <svg id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
@@ -279,7 +279,7 @@ function ScrollTop() {
                 <div class="ps-lg-0 pe-md-5 px-3 mb-md-5 mb-2">
                     <h2 class="mb-md-4 mb-5 text-center" id="skill-title">Service & Skill</h2>
                 </div>
-                <!-- Skill Info -->
+                <!-- Skill card -->
                 <div class="d-flex-center px-3">
                     <!-- Text -->
                     <div class="about-skill-text row">
@@ -297,9 +297,10 @@ function ScrollTop() {
                 <hr class="my-5" id="skill-sep">
                 <!-- Skill Icon -->
                 <div class="d-flex-center pe-md-3">
-                    <div class="w-50">
+                    <div class="skill-icon-block">
                         <h3 class="mb-md-5 mb-4 text-center" id="skill-tooltitle">Tools</h3>
-                        <div class="about-skill-logo-block d-flex flex-wrap">
+                        <!-- tools block -->
+                        <div class="skill-logo-block d-flex-center flex-wrap">
                             <div class="skill-logo-container d-flex-center col-md-2 col-3 mx-1 my-1 px-1 py-xl-3 py-2"
                                 v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
                             >
@@ -327,8 +328,8 @@ function ScrollTop() {
 </template>
 
 <style scoped>
-/* Mobile */
-@media only screen and (max-width: 1280px) {
+/* Mobile (below XL) */
+@media only screen and (max-width: 1500px) {
     .duration-toggle{
         display: none;
     }
@@ -339,9 +340,12 @@ function ScrollTop() {
         display: flex;
         justify-content: center !important;
     }
+    .skill-icon-block{
+        width: 80vw !important;
+    }
     .user-container{
         width: 35vh !important;
-        height: 35vh !important;
+        height: 40vh !important;
         max-height: 600px;
     }
     .skill-logo{
@@ -387,7 +391,10 @@ main{
 }
 /* ---Skill--- */
 .about-skill-block{
-    min-width: 75vw;
+    min-width: 70vw;
+}
+.skill-icon-block{
+    width: 50vw;
 }
 .about-skill-text{
     /* min-width: 75vw; */

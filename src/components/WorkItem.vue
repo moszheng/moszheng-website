@@ -93,9 +93,9 @@ onMounted(() => {
         herotl.from(".hero-social", {opacity: 0, y: 30, scale: 0.1, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.25}, 0.65);
         herotl.from(".hero-3", {opacity: 0, y: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.6);
         herotl.from(".hero-4", {opacity: 0, y: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.65);
-        herotl.from(".hero-sep", {scaleX:0 , ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.25}, 0.9);
-        herotl.from(".head-img-container", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8}, 1.5);
-        herotl.from(".content-context", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 1.6);
+        herotl.from(".hero-sep", {scaleX:0 , ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.25}, 0.8);
+        herotl.from(".head-img-container", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8}, 1);
+        herotl.from(".content-context", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 1.1);
         /* heropic */
         const heroRot = (e)=>{
             gsap.utils.toArray(".head-img-container-img").forEach((el) => {

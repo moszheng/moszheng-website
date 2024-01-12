@@ -1,6 +1,9 @@
 <script setup>
-import {ref, onMounted} from 'vue';
+import {ref, onMounted, onUnmounted} from 'vue';
 import Masonry from 'masonry-layout';
+import gsap from 'gsap';
+import ScrollTrigger from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
 
 import FooterItem from '@/components/FooterItem.vue';
 import WorksData from '@/data/WorksData.json';
@@ -8,7 +11,7 @@ import WorksData from '@/data/WorksData.json';
 // Return Real route
 const imgLocation = (item) => {return '../src/img/'+ item;};
 const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
-
+let ctx;
 onMounted(() => {
     // initialize masonry
     const row = document.querySelector("[data-masonry]");
@@ -33,6 +36,14 @@ onMounted(() => {
             img.addEventListener("load", loaded);
         }
     });
+    /* Main GSAP Animation*/
+    ctx = gsap.context((self) => {
+        const herotl = gsap.timeline({});
+        herotl.from(".card", {opacity: 0, y: 40, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.075});
+    })
+});
+onUnmounted(() => {
+    ctx.revert();
 });
 
 function randomHeight(index) {

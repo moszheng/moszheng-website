@@ -11,10 +11,6 @@ body{
   p {
     font-size: 0.75rem !important; /*0.9*/
   }
-  #icon_social{
-    width: 25px !important;
-    height: 25px !important;
-  }
 }
 
 /* Font Setting */
@@ -82,7 +78,7 @@ p{
 }
 #icon_social:hover{
   transform: scale(1.1);
-  fill: rgb(253, 141, 3);
+  fill: var(--main-color);
 }
 #icon-plus-area {
   width: 30px;
