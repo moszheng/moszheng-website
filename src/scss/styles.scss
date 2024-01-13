@@ -3,6 +3,7 @@
 // Include any default variable overrides here (though functions won't be available)
 // iphone 12 : 390
 // ipad pro : 1024
+// laptop :  1440
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -15,7 +16,7 @@ $grid-breakpoints: (
   sm: 576px,
   md: 768px,
   lg: 1025px, //992
-  xl: 1200px, //1200
+  xl: 1440px, //1200
   xxl: 1800px //1400
 );
 

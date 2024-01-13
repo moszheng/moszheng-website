@@ -166,7 +166,7 @@ function ScrollTop() {
 <div class="About">
     <main class="container-fluid" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center row px-md-4 px-3 py-5">
+        <section class="about-hero d-flex-center row px-md-4 px-3 py-xl-5 py-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
                 <div class="user-container heroRot mb-md-0 mb-3" data-depth='0.25'>
@@ -176,18 +176,20 @@ function ScrollTop() {
             </div>
             <!-- text -->
             <div class="about-hero-info parallax col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0" data-depth='5'>
-                <div class="mb-md-5 mb-4">
+                <div class="mb-md-1 mb-3">
                     <!-- Name -->
-                    <h1 class="name mb-md-2 mb-2" id="hero-1">Hello, I'm</h1>
+                    <h1 class="mobile-center mb-md-2 mb-2" id="hero-1">Hello, I'm</h1>
                     <!-- Name -->
-                    <h1 class="name mb-md-5 mb-4" id="hero-2">Sheng Wen Cheng</h1>
+                    <h1 class="mobile-center mb-md-5 mb-4" id="hero-2">Sheng Wen Cheng</h1>
                     <!-- Subtitle -->
-                    <div class="name">
-                        <h4 class="mb-md-5 mb-4 px-xl-0 px-3" id="hero-3">
-                            A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>
-                            <br> based in Taiwan.
-                        </h4>
-                        <div class="container-fluid text-center" id="hero-4" style="rotate: 180deg;">
+                    <div class="">
+                        <div class="mobile-center">
+                            <h4 class="mb-md-5 mb-4 px-xl-0 px-3" id="hero-3">
+                                A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>
+                                <br> based in Taiwan.
+                            </h4>
+                        </div>
+                        <div class=" text-center" id="hero-4" style="rotate: 180deg;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                             </svg>
@@ -197,7 +199,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center mb-xl-0 mb-5 px-md-5 px-3 py-5">
+        <section class="about-intro d-flex-center mb-xl-0 mb-5 px-md-5 px-3 py-xl-5 py-3">
             <div class="about-intro-block w-100">
                 <!-- text -->
                 <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">
@@ -211,7 +213,7 @@ function ScrollTop() {
                 <div class="d-xl-flex justify-content-end mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
                     <div class="about-intro-social">
                         <!-- Social media -->
-                        <ul class="navbar-nav flex-row name mb-4">
+                        <ul class="navbar-nav flex-row mobile-center mb-4">
                             <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item intro-infosocial col-2 col-md-auto">
                                 <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                                     <svg id="icon_social">
@@ -221,7 +223,7 @@ function ScrollTop() {
                             </li>
                         </ul>
                         <!-- Contact info -->
-                        <div class="name">
+                        <div class="mobile-center">
                             <div class="mb-4">
                                 <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact mb-2 p-2">
                                     <svg id="icon_social">
@@ -335,14 +337,14 @@ function ScrollTop() {
 
 <style scoped>
 /* Mobile (below XL) */
-@media only screen and (max-width: 1500px) {
+@media only screen and (max-width: 1439px) {
     .duration-toggle{
         display: none;
     }
     .duration-toggled{
         display: block !important;
     }
-    .name{
+    .mobile-center{
         display: flex;
         justify-content: center !important;
     }
@@ -351,7 +353,7 @@ function ScrollTop() {
     }
     .user-container{
         width: 35vh !important;
-        height: 40vh !important;
+        min-height: 40vh !important;
         max-height: 600px;
     }
     .skill-logo{
@@ -381,10 +383,10 @@ main{
 
 /*----------- Block -------------*/
 .about-hero{
-    height: 85vh;
+    min-height: 85vh;
 }
 .about-intro {
-    height: 60vh;
+    min-height: 60vh;
 }
 .about-intro-block, .about-exp-block {
     max-width: 1800px;
@@ -441,7 +443,7 @@ main{
 .user-container{
     position: relative;
     width: 40vh;
-    height: 50vh;
+    min-height: 50vh;
     max-height: 600px;
     overflow: hidden;
     /* background-color: rgb(39, 39, 39); */
