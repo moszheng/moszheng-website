@@ -67,8 +67,8 @@ onMounted(() => {
                 let yPos = e.clientY / window.innerHeight - 0.5;
                 let depth = el.dataset.depth;
                 gsap.to(el, {
-                    x: xPos * depth * 40,
-                    y: yPos * depth * 10,
+                    xPercent: xPos * depth * 40,
+                    yPercent: yPos * depth * 10,
                     rotationY: xPos * depth * 10,
                     rotationX: yPos * depth * 10,
                     stagger: 0.055,
@@ -77,10 +77,10 @@ onMounted(() => {
         };
         /* Hero Section */
         const herotl = gsap.timeline({});
-        herotl.from("#hero-1", {opacity: 0, y: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.3);
-        herotl.from("#hero-2", {opacity: 0, y: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.5);
-        herotl.from("#hero-3", {opacity: 0, y: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 0.8);
-        herotl.from("#hero-4", {opacity: 0, y: -15, ease: "back.inOut(1.7)", duration: 0.75}, 2);
+        herotl.from("#hero-1", {opacity: 0, yPercent: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.3);
+        herotl.from("#hero-2", {opacity: 0, yPercent: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.5);
+        herotl.from("#hero-3", {opacity: 0, yPercent: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 0.8);
+        herotl.from("#hero-4", {opacity: 0, yPercent: -15, ease: "back.inOut(1.7)", duration: 0.75}, 2);
         /* Intro Section*/
         const introtl = gsap.timeline({
             scrollTrigger: {
@@ -90,10 +90,10 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        introtl.to("#hero-4", {opacity: 0, y: 0, ease: "power4.inOut(1.7)", duration: 2});
-        introtl.from(".intro-info", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0);
-        introtl.from(".intro-infosocial", {opacity: 0, x: -30, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 0.35);
-        introtl.from(".intro-infocontact", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1, stagger: 0.2}, 0.5);
+        introtl.to("#hero-4", {opacity: 0, yPercent: 0, ease: "power4.inOut(1.7)", duration: 2});
+        introtl.from(".intro-info", {opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0);
+        introtl.from(".intro-infosocial", {opacity: 0, xPercent: -30, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 0.35);
+        introtl.from(".intro-infocontact", {opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 1, stagger: 0.2}, 0.5);
         /* --------------- Exp Section--------------*/
         const exptl = gsap.timeline({
             scrollTrigger: {
@@ -117,10 +117,10 @@ onMounted(() => {
             },
         });
         exptl.from(".timeline", {autoAlpha: 0, ease: "linear"}, 0); // init timeline or will flash to top(FOUC)
-        exptl.from("#about-exp-title", {opacity: 0, x: -100, ease: "back.inOut(1.7)", duration: 0.8});
-        exptl.from(".about-job", {opacity: 0, y: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.5);
-        exptl.from(".exp-job-title", {opacity: 0, y: -30, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.15}, 0.7);
-        exptl.from(".exp-job-detail", {opacity: 0, y: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15}, 0.9);
+        exptl.from("#about-exp-title", {opacity: 0, xPercent: -100, ease: "back.inOut(1.7)", duration: 0.8});
+        exptl.from(".about-job", {opacity: 0, yPercent: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.5);
+        exptl.from(".exp-job-title", {opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.15}, 0.7);
+        exptl.from(".exp-job-detail", {opacity: 0, yPercent: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15}, 0.9);
         exptl.from(".timeline", {scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5}, 1);
         /* -----------Skill Section--------
             1. Title
@@ -135,21 +135,21 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        skilltl.from("#skill-title", {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 1});
+        skilltl.from("#skill-title", {opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 1});
         // Skill Card Group
         gsap.utils.toArray(".about-skill-card").forEach((item, i) => {
             const delay = i / 8 + 0.5;
             const cardtitle = item.querySelector("#skill-card-title");
             const cardtext = item.querySelectorAll("#skill-card-text");
             // Animation
-            skilltl.from(item, {opacity: 0, y: 25, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.3}, delay);
-            skilltl.from(cardtitle, {opacity: 0, y: 20, rotateX: 45, ease: "power3.Out(1.7)", duration: 1}, delay + 0.1);
-            skilltl.from(cardtext, {opacity: 0, y: 20, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, delay + 0.25);
+            skilltl.from(item, {opacity: 0, yPercent: 25, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.3}, delay);
+            skilltl.from(cardtitle, {opacity: 0, yPercent: 20, rotateX: 45, ease: "power3.Out(1.7)", duration: 1}, delay + 0.1);
+            skilltl.from(cardtext, {opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, delay + 0.25);
         });
         skilltl.from("#skill-sep", {scaleX: 0, ease: "back.Out(1.7)", duration: 1}, 1);
         // Skill Icon Group
-        skilltl.from("#skill-tooltitle", {opacity: 0, y: 20, rotateX: 40, ease: "power3.Out(1.7)", duration: 0.5}, 1.5);
-        skilltl.from(".skill-logo-container", {opacity: 0, y: 20, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 1.5);
+        skilltl.from("#skill-tooltitle", {opacity: 0, yPercent: 20, rotateX: 40, ease: "power3.Out(1.7)", duration: 0.5}, 1.5);
+        skilltl.from(".skill-logo-container", {opacity: 0, yPercent: 20, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 1.5);
     }, imgContainer.value);
 });
 onUnmounted(() => {
@@ -352,12 +352,12 @@ function ScrollTop() {
         width: 80vw !important;
     }
     .user-container{
-        width: 35vh !important;
-        min-height: 40vh !important;
+        width: 35vmax !important;
+        min-height: 40vmax !important;
         max-height: 600px;
     }
     .skill-logo{
-        width: 4vh !important;
+        width: 50px !important;
     }
 }
 .duration-toggled{
@@ -442,8 +442,8 @@ main{
 /*------ Img --------*/
 .user-container{
     position: relative;
-    width: 40vh;
-    min-height: 50vh;
+    width: 40vmin;
+    min-height: 48vmin;
     max-height: 600px;
     overflow: hidden;
     /* background-color: rgb(39, 39, 39); */
@@ -468,7 +468,7 @@ main{
 }
 .skill-logo{
     /* scale: 50%; */
-    width: 5vh;
+    width: 65px;
     transition: .2s ease;
 }
 .skill-logo:hover{

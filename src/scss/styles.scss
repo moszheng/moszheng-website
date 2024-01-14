@@ -1,9 +1,11 @@
 // Custom.scss
 
-// Include any default variable overrides here (though functions won't be available)
-// iphone 12 : 390
-// ipad pro : 1024
-// laptop :  1440
+// Smartphone
+//    iphone 12 : 390
+// Tablets: 
+//    ipad pro : 1024
+// laptop :  1025 - 1440
+//    mbpro : 1440
 $container-max-widths: (
   sm: 540px,
   md: 720px,
@@ -19,7 +21,6 @@ $grid-breakpoints: (
   xl: 1440px, //1200
   xxl: 1800px //1400
 );
-
 
 // WorkPage card
 $card-border-radius:          0;

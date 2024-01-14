@@ -74,7 +74,7 @@ const rotateButton = () => {
 
 /* icon_social Enter animation */
 function onBeforeEnter(el) {
-    gsap.set(el, {width: 0, scale: 1, opacity: 0});
+    gsap.set(el, {width: '0', opacity: 0, scale: 1});
 };
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
