@@ -61,7 +61,7 @@ function scrolltop() {
 
 </script>
 <template>
-<div class="WorksPage">
+<div class="works">
     <main class="container flex-xl-nowrap">
         <div class="row pt-5" data-masonry='{"percentPosition": true }'>
             <div v-for="(item, index) in WorksData.project" :key="index" class="col-lg-4 col">

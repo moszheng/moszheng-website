@@ -19,7 +19,7 @@ const routes = [
     },
     {
         path: '/works',
-        name: 'WorksPage',
+        name: 'Works',
         // component: () => import('@/views/WorksPage.vue'),
         component: WorkPage,
         meta: {

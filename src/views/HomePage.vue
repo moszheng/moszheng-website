@@ -71,7 +71,7 @@ const loadingLeave = (el, done) => {
               <br>catering to companies and brands.</p>
           </div>
           <div class="index-btnarea">
-            <router-link :to="{ name : 'WorksPage' }">
+            <router-link :to="{ name : 'Works' }">
               <button type="button" class="btn btn-primary index-btn">Explore</button>
             </router-link>
           </div>

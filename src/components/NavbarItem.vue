@@ -3,6 +3,7 @@ import {ref, computed, onMounted} from 'vue';
 import {useNavStore} from '@/stores/navstore';
 import gsap from 'gsap';
 
+import NavLink from './NavbarLink.vue';
 import LinkData from '@/data/LinkData.json';
 
 /* ---------- Color mode --------*/
@@ -27,18 +28,9 @@ const ChangBG = () => {
         h.style.backgroundColor = "hsla(0, 0%, 100%, 0)";
         // store.navbardarkmode = true;
     }
-}
-
-/* Nav Bar social */
-const showIcon = ref(false);
-
-const rotateButton = () => {
-    showIcon.value = !showIcon.value;
-    const tl = gsap.timeline();
-    // motion
-    tl.to('#icon-plus-area', { rotation: '+=135', duration: 0.8, ease: 'power3.inOut'});
-    tl.from('#icon-plus-area', { scale: 0.8, duration: 0.5, ease: 'elastic.out(1,0.3)'}, 0.5);
 };
+
+// Change Route, and collapse mobile nav
 
 // Scroll movement
 onMounted(() => {
@@ -69,13 +61,24 @@ const handleScroll = () => {
     lastPos = currentPos;
 };
 
-/* Enter animation */
+/* Nav Bar social */
+const showIcon = ref(false);
+
+const rotateButton = () => {
+    showIcon.value = !showIcon.value;
+    const tl = gsap.timeline();
+    // motion
+    tl.to('#icon-plus-area', {rotation: '+=135', duration: 0.8, ease: 'power3.inOut'});
+    tl.from('#icon-plus-area', {scale: 0.8, duration: 0.5, ease: 'elastic.out(1,0.3)'}, 0.5);
+};
+
+/* icon_social Enter animation */
 function onBeforeEnter(el) {
     gsap.set(el, {width: 0, scale: 1, opacity: 0});
 };
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, {opacity: 1, width: '4.5vh', scale: 1, duration: 0.8, delay: delay, ease: "back.Out(2.5)"});
+    gsap.to(el, {width: '45px', opacity: 1, scale: 1, duration: 0.8, delay: delay, ease: "back.Out(2.5)"});
 };
 function onLeave(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
@@ -98,22 +101,22 @@ function onLeave(el, done) {
                 </router-link>
             </div>
             <!-- navbar responsive button -->
-            <button @click="ChangBG" class="navbar-toggler collapsed d-flex d-lg-none flex-column justify-content-around"
+            <button @click="ChangBG" class="navbar-toggler collapsed"
                 type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
                 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
             >
                 <span class="toggler-icon top-bar">
-                    <svg id="icon_social" :style="colormode">
+                    <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
                 <span class="toggler-icon mid-bar">
-                    <svg id="icon_social" :style="colormode">
+                    <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
                 <span class="toggler-icon bot-bar">
-                    <svg id="icon_social" :style="colormode">
+                    <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
@@ -122,34 +125,26 @@ function onLeave(el, done) {
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!--   flex-wrap  -->
                 <div class="d-flex ms-md-auto">
-                    <ul class="navbar-nav mx-lg-4">
-                        <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'WorksPage' }" class="nav-link px-2 me-md-4" :style="colormode">Works</router-link>
-                        </li>
-                        <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'Showreel' }" class="nav-link px-2 me-md-4" :style="colormode">Showreel</router-link>
-                        </li>
-                        <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'About' }" class="nav-link px-2 me-md-4" :style="colormode">About</router-link>
-                        </li>
-                        <li class="nav-item d-flex align-items-center">
-                            <router-link :to="{ name : 'Contact' }" class="nav-link px-2 me-md-4" :style="colormode">Contact</router-link>
-                        </li>
+                    <ul class="navbar-nav mx-lg-4" :style="colormode">
+                        <NavLink :to="'Works'"/>
+                        <NavLink :to="'Showreel'"/>
+                        <NavLink :to="'About'" />
+                        <NavLink :to="'Contact'"/>
                         <li class="nav-item d-flex align-items-center">
                             <!--   icons  -->
-                            <div class="navbar-nav flex-row flex-wrap ms-md-auto">
+                            <div class="navbar-nav flex-row flex-wrap ms-xl-auto">
                                 <TransitionGroup
                                     @before-enter="onBeforeEnter"
                                     @enter="onEnter"
                                     @leave="onLeave"
                                 >
-                                    <div v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" class="nav-item col col-md-auto">
-                                        <a class="nav-link nav-link link-dark px-lg-2 mx-1" :href="item.url" target="_blank" rel="noopener">
+                                    <li class="nav-item col-2 col-md-auto" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" >
+                                        <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                                             <svg id="icon_social" :style="colormode">
                                                 <use :xlink:href="item.icon"></use>
                                             </svg>
                                         </a>
-                                    </div>
+                                    </li>
                                 </TransitionGroup>
                             </div>
                             <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
@@ -187,11 +182,10 @@ header  {
   position: relative;
   transition: .5s ease-in-out;
 }
-
 .toggler-icon-xl{
     background: none;
 }
-/*Cancel default outline*/
+/*--- Cancel default outline ----*/
 .toggler-icon-xl,
 .navbar-toggler,
 .navbar-toggler:focus,
@@ -233,8 +227,8 @@ header  {
   transform: rotate(-135deg);
 }
 /*-----*/
-.navbar-toggler.collapsed .top-bar{
-  margin-top: -15px;
+ .navbar-toggler.collapsed .top-bar{
+  margin-top: -8px;
   transform: rotate(0deg);
 }
 .navbar-toggler.collapsed .mid-bar{
@@ -242,7 +236,7 @@ header  {
   filter: alpha(opacity=100);
 }
 .navbar-toggler.collapsed .bot-bar{
-  margin-top: 15px;
+  margin-top: 8px;
   transform: rotate(0deg);
 }
 </style>
