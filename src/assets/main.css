@@ -35,6 +35,11 @@ p{
   justify-content: center;
   align-items: center;
 }
+.d-inline-flex-center{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /*----------Works Block----------  */
 .card{

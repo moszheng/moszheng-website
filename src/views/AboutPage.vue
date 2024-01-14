@@ -117,10 +117,10 @@ onMounted(() => {
             },
         });
         exptl.from(".timeline", {autoAlpha: 0, ease: "linear"}, 0); // init timeline or will flash to top(FOUC)
-        exptl.from("#about-exp-title", {opacity: 0, xPercent: -100, ease: "back.inOut(1.7)", duration: 0.8});
-        exptl.from(".about-job", {opacity: 0, yPercent: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.5);
+        exptl.from("#about-exp-title", {opacity: 0, xPercent: -15, ease: "back.inOut(1.7)", duration: 0.8});
+        exptl.from(".about-job", {opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.5);
         exptl.from(".exp-job-title", {opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.15}, 0.7);
-        exptl.from(".exp-job-detail", {opacity: 0, yPercent: -40, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15}, 0.9);
+        exptl.from(".exp-job-detail", {opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15}, 0.9);
         exptl.from(".timeline", {scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5}, 1);
         /* -----------Skill Section--------
             1. Title
@@ -391,7 +391,7 @@ main{
 .about-intro-block, .about-exp-block {
     max-width: 1800px;
 }
-.about-hero-info, .about-intro-info{
+.about-intro-info{
     max-width: 920px;
 }
 .about-exp, .about-skill{
