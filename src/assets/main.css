@@ -52,7 +52,7 @@ p{
   opacity: 0;
 }
 .works-text{
-  height: 10vh;
+  height: 10dvh;
   transition: .4s ease;
 }
 .works-black{

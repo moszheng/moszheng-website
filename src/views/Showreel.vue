@@ -19,6 +19,6 @@ import FooterItem from '@/components/FooterItem.vue';
 .showreel{
     padding-right: 0 !important;
     padding-left: 0 !important;
-    min-height: 85vh;
+    min-height: 85dvh;
 }
 </style>

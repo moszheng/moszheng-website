@@ -383,10 +383,10 @@ main{
 
 /*----------- Block -------------*/
 .about-hero{
-    min-height: 85vh;
+    min-height: 85dvh;
 }
 .about-intro {
-    min-height: 60vh;
+    min-height: 60dvh;
 }
 .about-intro-block, .about-exp-block {
     max-width: 1800px;
@@ -395,7 +395,7 @@ main{
     max-width: 920px;
 }
 .about-exp, .about-skill{
-    min-height: 95vh;
+    min-height: 95dvh;
 }
 /* ---Skill--- */
 .about-skill-block{
@@ -406,7 +406,7 @@ main{
 }
 .about-skill-text{
     /* min-width: 75vw; */
-    min-height: 20vh;
+    min-height: 20dvh;
 }
 .about-skill-card{
     min-width: 400px;
