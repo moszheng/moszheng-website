@@ -55,9 +55,12 @@ function onLeave(el, done) {
 .navactive{
     position: relative;
 }
-.nav-link::after{
-    transform: scaleX(1);
+.nav-link{
+    transition: .2s ease-in-out;
 }
+/* .nav-link:hover{
+    transform: scale(1.05);
+} */
 .navactive::after{
     content: '';
     position: absolute;

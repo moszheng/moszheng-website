@@ -47,34 +47,35 @@ onMounted(() => {
         //     heroRot(e);
         // });
         /* ----------- Depth --------------- */
-        // const depthtl = gsap.timeline({
-        //     scrollTrigger: {
-        //         trigger: ".about-hero",
-        //         start: "top top",
-        //         end: "bottom 30%",
-        //         // markers: true,
-        //         scrub: true,
-        //     },
-        // });
-        // gsap.utils.toArray(".parallax").forEach((layer) => {
-        //     const depth = layer.dataset.depth;
-        //     const movement = depth * -25;
-        //     depthtl.to(layer, {y: movement, ease: "none"}, 0);
-        // });
-        const heroRot = (e)=>{
-            gsap.utils.toArray(".heroRot").forEach((el) => {
-                let xPos = e.clientX / window.innerWidth - 0.5;
-                let yPos = e.clientY / window.innerHeight - 0.5;
-                let depth = el.dataset.depth;
-                gsap.to(el, {
-                    xPercent: xPos * depth * 40,
-                    yPercent: yPos * depth * 10,
-                    rotationY: xPos * depth * 10,
-                    rotationX: yPos * depth * 10,
-                    stagger: 0.055,
-                });
-            });
-        };
+        const depthtl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about-hero",
+                start: "top top",
+                end: "bottom 30%",
+                markers: true,
+                scrub: true,
+            },
+        });
+        gsap.utils.toArray(".parallax").forEach((layer) => {
+            const depth = layer.dataset.depth;
+            const movement = depth * 3;
+            const scale = 1.35 / depth; // From 1.35 -> 1.2
+            depthtl.to(layer, {yPercent: movement, scale: scale, ease: "none"}, 0); // scale from 1.3
+        });
+        // const heroRot = (e)=>{
+        //     gsap.utils.toArray(".heroRot").forEach((el) => {
+        //         let xPos = e.clientX / window.innerWidth - 0.5;
+        //         let yPos = e.clientY / window.innerHeight - 0.5;
+        //         let depth = el.dataset.depth;
+        //         gsap.to(el, {
+        //             xPercent: xPos * depth * 40,
+        //             yPercent: yPos * depth * 10,
+        //             rotationY: xPos * depth * 10,
+        //             rotationX: yPos * depth * 10,
+        //             stagger: 0.055,
+        //         });
+        //     });
+        // };
         /* Hero Section */
         const herotl = gsap.timeline({});
         herotl.from("#hero-1", {opacity: 0, yPercent: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.3);
@@ -169,13 +170,13 @@ function ScrollTop() {
         <section class="about-hero d-flex-center row px-md-4 px-3 py-xl-5 py-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
-                <div class="user-container heroRot mb-md-0 mb-3" data-depth='0.25'>
-                    <img class="avatar-user_1 heroRot parallax lazy" data-depth='1' alt="profile_image" :src=profileImage1>
-                    <img class="avatar-user_2 heroRot parallax lazy" data-depth='3' alt="profile_image" :src=profileImage2>
+                <div class="user-container heroRot mb-md-0 mb-3">
+                    <img class="avatar-user_1 heroRot parallax lazy" data-depth='1.05' alt="profile_image" :src=profileImage1>
+                    <img class="avatar-user_2 heroRot parallax lazy" data-depth='1.15' alt="profile_image" :src=profileImage2>
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info parallax col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0" data-depth='5'>
+            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
                 <div class="mb-md-1 mb-3">
                     <!-- Name -->
                     <h1 class="mobile-center mb-md-2 mb-2" id="hero-1">Hello, I'm</h1>
@@ -448,14 +449,13 @@ main{
     left: 0;
     width: 100%;
     height: auto;
+    transform: scale(1.35);
     object-fit: cover;
 }
 .avatar-user_1{
-    transform: scale(1.25);
     z-index: 20;
 }
 .avatar-user_2 {
-    transform: scale(1.3);
     z-index: 10;
 }
 .skill-logo{

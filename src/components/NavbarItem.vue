@@ -30,11 +30,14 @@ const ChangBG = () => {
     }
 };
 
-// Change Route, and collapse mobile nav
-
-// Scroll movement
+let navctx;
 onMounted(() => {
+    // Scroll movement
     window.addEventListener('scroll', handleScroll);
+    navctx = gsap.context((self) => {
+        const herotl = gsap.timeline({});
+        herotl.from(".navbar-brand", {yPercent: -75, ease: "back.inOut(1.7)", duration: 1.2}, 0);
+    });
 });
 const navfolder = ref(false);
 let lastPos = 0;
