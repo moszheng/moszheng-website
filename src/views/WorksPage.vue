@@ -55,12 +55,12 @@ onMounted(() => {
         });
         /* ---------- In ---------- */
         const herotl = gsap.timeline({});
-        herotl.from(".card", {opacity: 0, yPercent: 40, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.075});
+        herotl.from(".card", {opacity: 0, yPercent: 40, scaleY: 0.8, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.075});
     });
 });
 onBeforeUnmount(() => {
     const herotl = gsap.timeline({});
-    herotl.to(".card", {xPercent: -250, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05});
+    herotl.to(".card", {xPercent: -250, scaleY: 0.4, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05});
 });
 onUnmounted(() => {
     ctx.revert();

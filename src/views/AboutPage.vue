@@ -50,8 +50,8 @@ onMounted(() => {
         const depthtl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".about-hero",
-                start: "top top",
-                end: "bottom 30%",
+                start: "clamp(top top)",
+                end: "clamp(bottom 50%)",
                 markers: true,
                 scrub: true,
             },
