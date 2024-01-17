@@ -4,7 +4,7 @@ import FooterItem from '@/components/FooterItem.vue';
 <template>
 <div>
     <main class="contact container d-flex-center">
-        <div class="row flex-fill py-5">
+        <div class="row flex-fill py-5 mb-xl-4">
             <div class="col-xl-6">
             </div>
             <div class="contact-form col-xl-6 ">

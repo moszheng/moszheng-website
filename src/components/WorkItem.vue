@@ -44,6 +44,7 @@ const getWorksData = (id) => {
 };
 
 onBeforeRouteUpdate(async (to, from) => {
+    ctx.revert();
     /* Route Fix */
     if (to.params.projecturl !== from.params.projecturl) {
         prjdata.value = await getWorksData(to.params.projecturl);
@@ -96,12 +97,12 @@ onMounted(() => {
         gsap.to('.head-img-container-img', {
             scrollTrigger: {
                 trigger: ".head-img-container",
-                start: "top bottom",
+                start: "clamp(top bottom)",
                 end: "bottom 50px",
                 scrub: true,
                 // markers: true
             },
-            yPercent: -10,
+            yPercent: -7.5,
         });
     }, imgContainer.value);
 });

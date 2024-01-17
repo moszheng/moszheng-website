@@ -36,26 +36,29 @@ onMounted(() => {
             img.addEventListener("load", loaded);
         }
     });
-    /* Main GSAP Animation*/
+    /* ------------Main GSAP Animation----------*/
     ctx = gsap.context((self) => {
         /* ----------- Depth --------------- */
         const depthtl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".works",
-                start: "top top",
+                start: "clamp(top top)",
                 end: "bottom 30%",
                 // markers: true,
                 scrub: true,
             },
         });
         gsap.utils.toArray(".parallax").forEach((layer, index) => {
-            const rand = [1, 0.75, 0.5];
+            const rand = [1, 0.75, 0.6];
             const movement = -4 * rand[index % 3];
             depthtl.to(layer, {yPercent: movement, ease: "none"}, 0);
         });
-        /* ---------- In ---------- */
+        /* ---------- Enter ---------- */
         const herotl = gsap.timeline({});
-        herotl.from(".card", {opacity: 0, yPercent: 40, scaleY: 0.8, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.075});
+        herotl.from(".card", {
+            opacity: 0, yPercent: 65, scaleY: 1.1, scaleX: 0.95,
+            ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05,
+        });
     });
 });
 onBeforeUnmount(() => {
