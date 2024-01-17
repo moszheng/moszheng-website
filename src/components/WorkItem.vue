@@ -10,7 +10,7 @@ import WorksData from '@/data/WorksData.json';
 
 const props = defineProps({
     projecturl: String,
-})
+});
 
 // data initial
 const prjdata = ref('null');
@@ -28,7 +28,7 @@ const vimeoEmbed = (item) => {
     else if (item[0]=="youtube") {
         return `https://www.youtube.com/embed/${ item[1] }?si=S_7EpUA151r9khLz`
     }
-}
+};
 const imgLocation = (item) => {return '../src/img/'+ item}
 const contextImg = computed(() => {return prjdata.value.img_md.slice(1);});
 
@@ -38,13 +38,13 @@ const getWorksData = (id) => {
         setTimeout(() => {
             resolve(
                 WorksData.project.find(item => item.url_name == id),
-            )
-        }, 0)
-    })
-}
+            );
+        }, 0);
+    });
+};
 
 onBeforeRouteUpdate(async (to, from) => {
-    // console.log("beforeRouteUpdate")
+    /* Route Fix */
     if (to.params.projecturl !== from.params.projecturl) {
         prjdata.value = await getWorksData(to.params.projecturl);
         shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0, 3);
@@ -76,10 +76,6 @@ onMounted(() => {
     });
     /* Scroll picture*/
     ctx = gsap.context((self) => {
-        // window.addEventListener('mousemove', (e)=>{
-        //     heroRot(e);
-        // });
-        //
         const herotl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".workitem-info",
@@ -97,20 +93,6 @@ onMounted(() => {
         herotl.from(".head-img-container", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8}, 1);
         herotl.from(".content-context", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 1.1);
         /* heropic */
-        // const heroRot = (e)=>{
-        //     gsap.utils.toArray(".head-img-container-img").forEach((el) => {
-        //         let xPos = e.clientX / window.innerWidth - 0.5;
-        //         let yPos = e.clientY / window.innerHeight - 0.5;
-        //         let depth = el.dataset.depth;
-        //         gsap.to(el, {
-        //             x: xPos * 40,
-        //             y: yPos * 10,
-        //             rotationY: xPos * 10,
-        //             rotationX: yPos * 10,
-        //             stagger: 0.055,
-        //         });
-        //     });
-        // };
         gsap.to('.head-img-container-img', {
             scrollTrigger: {
                 trigger: ".head-img-container",
@@ -129,18 +111,6 @@ onUnmounted(() => {
 });
 
 /* --------Animation--------- */
-const beforeEnter = (el) => {
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(50px)';
-}
-const sigleEnter = (el, done) => {
-    gsap.to(el, {
-        opacity: 1,
-        y: 0,
-        duration: 1,
-        onComplete: done,
-    })
-}
 function ScrollTop() {
     window.scrollTo(0, 0);
 }
@@ -233,7 +203,7 @@ function ScrollTop() {
         </div>
     </main>
     <!-- Other Prj -->
-    <section class="container-fluid workitem-otherprj px-md-5 px-1 " data-scroll-section>
+    <section class="container-fluid workitem-otherprj d-flex-center px-md-5 px-1 " data-scroll-section>
         <div class="container ">
             <h3 class="text-white my-4">Other Project</h3>
             <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
@@ -261,60 +231,45 @@ function ScrollTop() {
 </template>
 <style scoped>
 /* -----Section------ */
-
-.img-container{
-    background-color: rgb(235, 235, 235);
-    margin-bottom: 35px;
-}
-.card{
-    background-color: rgb(49, 49, 49);
-    margin-bottom: 35px;
-}
-
 @media only screen and (min-width: 1200px) {
     .workitem-info{
-        min-height: 20vh;
+        min-height: 20dvh;
     }
-}
-
-.workitem-content, .workitem-credit{
-    min-height: 60vh;
-}
-.workitem-otherprj{
-    min-height: 40vh;
-    display: flex;
-    align-items: center;
-    background-color: #0e0e0e;
-}
-
-/* Card */
-.card{
-    margin-bottom: 35px;
-    height: 25vh;
 }
 /* Mobile */
 @media only screen and (max-width: 1500px) {
     /* img */
     .head-img-container{
-        width: 80vw;
-        height: 25vh;
+        width: 80dvw;
+        height: 25dvh;
     }
 }
+.workitem-content, .workitem-credit{
+    min-height: 60dvh;
+}
+.workitem-otherprj{
+    min-height: 40dvh;
+    background-color: #0e0e0e;
+}
+
 /* First Img */
 .head-img-container{
     /* position: relative; */
     width: 95%;
-    height: 50vh;
+    height: 50dvh;
     overflow: hidden;
 }
 .head-img-container-img{
     /* position: absolute; */
     width: 1920px;
     height: 1080px;
-    /* top: -50%; */
-    /* left: -50%; */
     max-width: none;
     max-height: none;
     object-fit: cover;
+}
+/* Card */
+.card{
+    background-color: rgb(49, 49, 49);
+    height: 25vh;
 }
 </style>
