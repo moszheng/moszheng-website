@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, onUnmounted} from 'vue';
+import {ref, onMounted, onBeforeUnmount, onUnmounted} from 'vue';
 import Masonry from 'masonry-layout';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -39,8 +39,12 @@ onMounted(() => {
     /* Main GSAP Animation*/
     ctx = gsap.context((self) => {
         const herotl = gsap.timeline({});
-        herotl.from(".card", {opacity: 0, y: 40, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.075});
+        herotl.from(".card", {opacity: 0, yPercent: 40, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.075});
     })
+});
+onBeforeUnmount(() => {
+    const herotl = gsap.timeline({});
+    herotl.to(".card", {xPercent: -250, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05});
 });
 onUnmounted(() => {
     ctx.revert();

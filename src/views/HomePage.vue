@@ -131,6 +131,7 @@ iframe {
   transform: translate(-50%,-50%);
   box-sizing: border-box;
   pointer-events: none;
+  background-color: black;
 }
 .index-info{
   position: absolute;

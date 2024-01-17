@@ -6,7 +6,6 @@ import {useNavStore} from '@/stores/navstore'
 import WorkPage from '@/views/WorksPage.vue'
 
 import './assets/main.css'
-// Import our custom CSS
 import './scss/styles.scss'
 
 import App from './App.vue'

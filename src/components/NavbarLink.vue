@@ -8,11 +8,12 @@ const props = defineProps({
     to: String,
 });
 
+/* Active Route */
 const route = useRoute();
 const currentRouteName = ref('');
 watch(route, (to, from) => {
-  currentRouteName.value = to.path;
-})
+    currentRouteName.value = to.path;
+});
 const isActive = computed(() => {
     return route.name === props.to;
 });
@@ -27,36 +28,43 @@ const colormode = computed(() => {
 
 /* Animation */
 function onBeforeEnter(el) {
-    gsap.set(el, {xPercent: -50, width: 0, scaleX: 0.5, opacity: 0});
+    gsap.set(".navactive::after", {xPercent: -50, width: 0, scaleX: 0.5, opacity: 0});
 };
 function onEnter(el, done) {
-    gsap.to(el, {xPercent: 0, width: '70%', opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out"});
+    gsap.to(".navactive::after", {xPercent: 0, width: '70%', opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out"});
 };
 function onLeave(el, done) {
-    gsap.to(el, {xPercent: 30, width: 0, opacity: 0, scaleX: 0.5, duration: 0.5, ease: "back.inOut(1.7)"});
+    gsap.to(".navactive::after", {xPercent: 30, width: 0, opacity: 0, scaleX: 0.5, duration: 0.5, ease: "back.inOut(1.7)"});
 };
 </script>
 <template>
 <li class="nav-item my-2">
     <div class="d-flex align-items-center">
-        <router-link :to="{ name : to }" class="nav-link px-2 py-1 me-md-4" :style="colormode">{{ props.to }}</router-link>
+        <router-link :to="{ name : to }"
+            class="nav-link px-1 py-1 me-md-4"
+            :class="{ navactive: isActive }"
+            :style="colormode"
+        >
+            {{ props.to }}
+        </router-link>
     </div>
-    <!-- <Transition :css="false"
-        @before-enter="onBeforeEnter"
-        @enter="onEnter"
-        @leave="onLeave"
-    >
-    <span v-if="isActive" class="" :class="{ navactive: isActive}" :style="colormode"></span>
-    </Transition> -->
 </li>
 </template>
 
 <style>
-.navactive {
-    display: inline-block;
-    text-align: center;
-    height: 5px;
-    width: 70%;
-    background-color: rgb(0, 0, 0);
+.navactive{
+    position: relative;
+}
+.nav-link::after{
+    transform: scaleX(1);
+}
+.navactive::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -0.35em;
+    width: 100%;
+    height: 10px;
+    border-top: 0.2em solid #000;
 }
 </style>

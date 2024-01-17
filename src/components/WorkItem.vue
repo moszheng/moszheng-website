@@ -261,11 +261,7 @@ function ScrollTop() {
 </template>
 <style scoped>
 /* -----Section------ */
-main{
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-}
-/* img lazy loading */
+
 .img-container{
     background-color: rgb(235, 235, 235);
     margin-bottom: 35px;
