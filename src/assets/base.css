@@ -67,6 +67,8 @@ body {
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-size: 15px;
+  font-family: 'DM Sans', "PingFang TC", "Noto Sans TC", "Segoe UI", 
+  Helvetica, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol" !important;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

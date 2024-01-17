@@ -76,9 +76,9 @@ onMounted(() => {
     });
     /* Scroll picture*/
     ctx = gsap.context((self) => {
-        window.addEventListener('mousemove', (e)=>{
-            heroRot(e);
-        });
+        // window.addEventListener('mousemove', (e)=>{
+        //     heroRot(e);
+        // });
         //
         const herotl = gsap.timeline({
             scrollTrigger: {
@@ -97,20 +97,20 @@ onMounted(() => {
         herotl.from(".head-img-container", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8}, 1);
         herotl.from(".content-context", {opacity: 0, y: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 1.1);
         /* heropic */
-        const heroRot = (e)=>{
-            gsap.utils.toArray(".head-img-container-img").forEach((el) => {
-                let xPos = e.clientX / window.innerWidth - 0.5;
-                let yPos = e.clientY / window.innerHeight - 0.5;
-                let depth = el.dataset.depth;
-                gsap.to(el, {
-                    x: xPos * 40,
-                    y: yPos * 10,
-                    rotationY: xPos * 10,
-                    rotationX: yPos * 10,
-                    stagger: 0.055,
-                });
-            });
-        };
+        // const heroRot = (e)=>{
+        //     gsap.utils.toArray(".head-img-container-img").forEach((el) => {
+        //         let xPos = e.clientX / window.innerWidth - 0.5;
+        //         let yPos = e.clientY / window.innerHeight - 0.5;
+        //         let depth = el.dataset.depth;
+        //         gsap.to(el, {
+        //             x: xPos * 40,
+        //             y: yPos * 10,
+        //             rotationY: xPos * 10,
+        //             rotationX: yPos * 10,
+        //             stagger: 0.055,
+        //         });
+        //     });
+        // };
         gsap.to('.head-img-container-img', {
             scrollTrigger: {
                 trigger: ".head-img-container",
@@ -119,7 +119,7 @@ onMounted(() => {
                 scrub: true,
                 // markers: true
             },
-            y: -150,
+            yPercent: -10,
         });
     }, imgContainer.value);
 });
@@ -273,13 +273,6 @@ main{
 .card{
     background-color: rgb(49, 49, 49);
     margin-bottom: 35px;
-}
-.lazy.loaded{
-    opacity: 1;
-    transition: all 0.5s;
-}
-.lazy{
-    opacity: 0;
 }
 
 @media only screen and (min-width: 1200px) {

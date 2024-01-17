@@ -96,14 +96,5 @@ function scrolltop() {
     background-color: rgb(235, 235, 235);
     margin-bottom: 35px;
 }
-
-.lazy.loaded{
-    opacity: 1;
-    transition: all 0.5s;
-}
-.lazy{
-    opacity: 0;
-}
-
 </style>
 

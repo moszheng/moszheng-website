@@ -363,14 +363,6 @@ function ScrollTop() {
 .duration-toggled{
     display: none;
 }
-/* lazy load */
-.lazy.loaded{
-    opacity: 1;
-    transition: all 0.5s;
-}
-.lazy{
-    opacity: 0;
-}
 /*-----------------------*/
 main{
     padding-right: 0 !important;

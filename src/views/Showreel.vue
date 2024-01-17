@@ -3,7 +3,7 @@ import FooterItem from '@/components/FooterItem.vue';
 </script>
 <template>
 <div>
-    <div class="showreel d-flex-center container">
+    <section class="showreel d-flex-center container">
         <!-- video -->
         <div class="ratio ratio-16x9 mb-5" data-scroll-section>
             <iframe
@@ -11,7 +11,7 @@ import FooterItem from '@/components/FooterItem.vue';
                 allow="autoplay">
             </iframe>
         </div>
-    </div>
+    </section>
 <FooterItem />
 </div>
 </template>
