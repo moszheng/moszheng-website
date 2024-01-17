@@ -52,7 +52,7 @@ onMounted(() => {
                 trigger: ".about-hero",
                 start: "clamp(top top)",
                 end: "clamp(bottom 50%)",
-                markers: true,
+                // markers: true,
                 scrub: true,
             },
         });
@@ -167,7 +167,7 @@ function ScrollTop() {
 <div class="About">
     <main class="container-fluid" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center row px-md-4 px-3 py-xl-5 py-3">
+        <section class="about-hero d-flex-center row px-xl-5 px-3 py-xl-5 py-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
                 <div class="user-container heroRot mb-md-0 mb-3">
@@ -176,7 +176,7 @@ function ScrollTop() {
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
+            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 ps-xl-3 ps-md-5 px-0">
                 <div class="mb-md-1 mb-3">
                     <!-- Name -->
                     <h1 class="mobile-center mb-md-2 mb-2" id="hero-1">Hello, I'm</h1>
@@ -190,7 +190,7 @@ function ScrollTop() {
                                 <br> based in Taiwan.
                             </h4>
                         </div>
-                        <div class=" text-center" id="hero-4" style="rotate: 180deg;">
+                        <div class="text-center" id="hero-4" style="rotate: 180deg;">
                             <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                             </svg>
@@ -200,8 +200,8 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center mb-xl-0 mb-5 px-md-5 px-3 py-xl-5 py-3">
-            <div class="about-intro-block w-100">
+        <section class="about-intro d-flex-center p-xl-5 p-3">
+            <div class="about-intro-block mb-xl-3 mb-5 w-100">
                 <!-- text -->
                 <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">
                     <!-- Intro -->
@@ -239,8 +239,8 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Experience -->
-        <section class="about-exp d-flex-center px-lg-5 px-3 text-white">
-            <div class="about-exp-block row mt-xl-0 mt-4 mb-4">
+        <section class="about-exp d-flex-center px-xl-5 px-3 text-white">
+            <div class="about-exp-block row mt-xl-0 mt-4 mb-4 mx-md-3">
                 <!-- Exp Title -->
                 <div class="col-lg-3" >
                     <h2 class="mb-xl-4 mb-5" id="about-exp-title">Experience</h2>
@@ -282,7 +282,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Skill -->
-        <section class="about-skill d-flex-center px-lg-5 px-4 py-5">
+        <section class="about-skill d-flex-center px-xl-5 px-4 py-5">
             <div class="about-skill-block mt-xl-0 mt-4 mb-4">
                 <!-- Skill Title -->
                 <div class="ps-lg-0 pe-md-5 px-3 mb-md-5 mb-2">

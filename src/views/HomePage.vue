@@ -144,9 +144,12 @@ iframe {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   background-color: hsla(0, 0%, 95.3%, 0.25);
-  min-width: 10dvh;
+  min-width: 15dvh;
   box-shadow: none;
   border: 1px;
+}
+.index-btn:hover{
+  background-color: hsla(0, 0%, 95.3%, 0.6);
 }
 </style>
 
