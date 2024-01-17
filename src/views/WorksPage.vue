@@ -38,9 +38,25 @@ onMounted(() => {
     });
     /* Main GSAP Animation*/
     ctx = gsap.context((self) => {
+        /* ----------- Depth --------------- */
+        const depthtl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".works",
+                start: "top top",
+                end: "bottom 30%",
+                // markers: true,
+                scrub: true,
+            },
+        });
+        gsap.utils.toArray(".parallax").forEach((layer, index) => {
+            const rand = [1, 0.75, 0.5];
+            const movement = -4 * rand[index % 3];
+            depthtl.to(layer, {yPercent: movement, ease: "none"}, 0);
+        });
+        /* ---------- In ---------- */
         const herotl = gsap.timeline({});
         herotl.from(".card", {opacity: 0, yPercent: 40, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.075});
-    })
+    });
 });
 onBeforeUnmount(() => {
     const herotl = gsap.timeline({});
@@ -72,7 +88,9 @@ function scrolltop() {
                 <div class="card text-white" :style="randomHeight(index)">
                     <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
                         <!-- replaceimg -->
-                        <img :src=imgLocation(item.img_md[0]) class="card-img lazy" :alt="item.name">
+                        <div class="img-fluid">
+                            <img :src=imgLocation(item.img_md[0]) class="card-img parallax lazy" :alt="item.name">
+                        </div>
                         <div class="works-black"></div>
                         <div class="works-text text-white px-4">
                             <h4 class="card-title">{{ item.en_name }}</h4>

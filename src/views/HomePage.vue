@@ -11,27 +11,26 @@ function onMyFrameLoad() {
 
 /* Transition GSAP */
 const beforeEnter = (el) => {
-    el.style.opacity = 0;
+  el.style.opacity = 0;
 };
 const enter = (el, done) => {
-    // console.log("cc")
-    gsap.to(el, {
-        opacity: 1,
-        duration: 1,
-        ease: 'power3.Out',
-        onComplete: done,
-    });
+  gsap.to(el, {
+      opacity: 1,
+      duration: 1,
+      ease: 'power3.Out',
+      onComplete: done,
+  });
 };
 /* Loading */
 const loadingLeave = (el, done) => {
-    // console.log("cc")
-    gsap.to(el, {
-        opacity: 0,
-        delay: 1.5,
-        duration: 0.75,
-        ease: 'power3.Out',
-        onComplete: done,
-    });
+  const tl = gsap.timeline();
+  tl.to(el, {
+      opacity: 0,
+      delay: 1.5,
+      duration: 0.75,
+      ease: 'power3.Out',
+      onComplete: done,
+  });
 };
 </script>
 

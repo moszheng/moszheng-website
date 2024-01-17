@@ -68,17 +68,17 @@ const rotateButton = () => {
     showIcon.value = !showIcon.value;
     const tl = gsap.timeline();
     // motion
-    tl.to('#icon-plus-area', {rotation: '+=135', duration: 0.8, ease: 'power3.inOut'});
-    tl.from('#icon-plus-area', {scale: 0.8, duration: 0.5, ease: 'elastic.out(1,0.3)'}, 0.5);
+    tl.to('#icon-plus-area', {rotation: '+=135', duration: 1, ease: 'elastic.Out'});
+    tl.from('#icon-plus-area', {scale: 0.8, duration: 1.4, ease: 'elastic.out(1,0.3)'}, 0.1);
 };
 
 /* icon_social Enter animation */
 function onBeforeEnter(el) {
-    gsap.set(el, {width: '0', opacity: 0, scale: 1});
+    gsap.set(el, {width: 0, opacity: 0, scale: 0.1});
 };
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, {width: '45px', opacity: 1, scale: 1, duration: 0.8, delay: delay, ease: "back.Out(2.5)"});
+    gsap.to(el, {width: '45px', opacity: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)"});
 };
 function onLeave(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
