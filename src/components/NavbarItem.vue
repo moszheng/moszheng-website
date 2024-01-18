@@ -1,5 +1,6 @@
 <script setup>
-import {ref, computed, onMounted} from 'vue';
+import {ref, computed, watch, onMounted} from 'vue';
+import {useRoute} from 'vue-router';
 import {useNavStore} from '@/stores/navstore';
 import gsap from 'gsap';
 
@@ -8,38 +9,27 @@ import LinkData from '@/data/LinkData.json';
 
 /* ---------- Color mode --------*/
 const store = useNavStore();
+const route = useRoute();
 
 // update Darkmode
 const colormode = computed(() => {
     return store.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
 });
 
-/* Click toggle than Change BG */
-const ChangBGtoggle = ref(false);
-const ChangBG = () => {
-    ChangBGtoggle.value = !ChangBGtoggle.value;
-    const h = document.getElementsByTagName('header')[0];
-
-    if (ChangBGtoggle.value) {
-        h.style.backgroundColor = "#FFF";
-        store.navbardarkmode = false;
-    }
-    else {
-        h.style.backgroundColor = "hsla(0, 0%, 100%, 0)";
-        // store.navbardarkmode = true;
-    }
-};
 
 let navctx;
 onMounted(() => {
     // Scroll movement
     window.addEventListener('scroll', handleScroll);
-    /* Enter Motion */
+
+    /* ---------- Enter Motion ----------- */
     navctx = gsap.context((self) => {
         const herotl = gsap.timeline({});
         herotl.from(".navbar-brand", {yPercent: -75, ease: "back.inOut(1.7)", duration: .8}, 0);
     });
 });
+
+/* --- Scroll Folder ---- */
 const navfolder = ref(false);
 let lastPos = 0;
 let deltaPos = 0;
@@ -48,23 +38,46 @@ const handleScroll = () => {
     deltaPos = currentPos - lastPos;
     if (deltaPos > 10 && navfolder.value==false) {
         navfolder.value=true;
-        gsap.to('.navbar', {
-            top: -90,
-            duration: .5,
-            ease: 'back.inOut(1.7)',
-        });
+        gsap.to('.navbar', {top: -90, duration: .5, ease: 'back.inOut(1.7)'});
     }
     else if (deltaPos < 0 && navfolder.value==true) {
         navfolder.value=false;
-        gsap.to('.navbar', {
-            top: 0,
-            duration: .75,
-            ease: 'back.inOut(1.7)',
-        });
+        gsap.to('.navbar', {top: 0, duration: .75, ease: 'back.inOut(1.7)'});
     }
     lastPos = currentPos;
 };
 
+/* Toggle Nav BG */
+const navbarExpand = () => {
+    const tl = gsap.timeline();
+    store.isNavbarExpanded = !store.isNavbarExpanded;
+    if (store.isNavbarExpanded) {
+        store.navbardarkmode = false; // insure homepage
+        /* collapse */
+        tl.to(".navbar-collapse", {display: "block"}, 0);
+        tl.to(".navbar-collapse", {height: 300, ease: "back.inOut(1.7)", duration: 1}, 0.001);
+        /* -- bg -- */
+        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 1)', ease: "back.inOut(1.7)", duration: 0.5}, 0.1);
+        /* - black- */
+        tl.to(".dark-overlay", {autoAlpha: 0.7, ease: "back.inOut(1.7)", duration: 1}, 0);
+        tl.fromTo(".nav-item",
+            {xPercent: 60, autoAlpha: 0},
+            {xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04},
+             0);
+    } else {
+        if (route.name == "Home") {
+            store.navbardarkmode = true; // insure homepage
+        } else {
+            store.navbardarkmode = false;
+        }
+        tl.to(".dark-overlay", {autoAlpha: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0);
+        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 0)', ease: "back.inOut(1.7)", duration: .8}, 0.2);
+        tl.to(".nav-item", {xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04}, 0);
+        /* collase */
+        tl.to(".navbar-collapse", {height: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0.5);
+        tl.to(".navbar-collapse", {display: "none"}, 1.1);
+    }
+};
 /* Nav Bar social */
 const showIcon = ref(false);
 
@@ -72,7 +85,7 @@ const rotateButton = () => {
     showIcon.value = !showIcon.value;
     const tl = gsap.timeline();
     // motion
-    tl.to('#icon-plus-area', {rotation: '+=135', duration: 1, ease: 'elastic.Out'});
+    tl.to('#icon-plus-area', {rotation: '+=135', duration: 0.8, ease: 'elastic.Out'});
     tl.from('#icon-plus-area', {scale: 0.8, duration: 1.4, ease: 'elastic.out(1,0.3)'}, 0.1);
 };
 
@@ -91,9 +104,9 @@ function onLeave(el, done) {
 </script>
 
 <template>
-<header class="sticky-top">
-    <nav class="container navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
-        <div class="container-fluid">
+<header class="position-absolute w-100 top-0">
+    <nav class="navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
+        <div class="navcontainer container-fluid px-6 py-2">
             <!-- LOGO -->
             <div class="navbar-brand flex-column flex-md-row align-items-center">
                 <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
@@ -105,10 +118,7 @@ function onLeave(el, done) {
                 </router-link>
             </div>
             <!-- navbar responsive button -->
-            <button @click="ChangBG" class="navbar-toggler collapsed"
-                type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
-            >
+            <button @click="navbarExpand" class="navbar-toggler collapsed" type="button">
                 <span class="toggler-icon top-bar">
                     <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
@@ -126,10 +136,10 @@ function onLeave(el, done) {
                 </span>
             </button>
             <!-- Canvas -->
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="navbar-collapse" id="navbarSupportedContent">
                 <!--   flex-wrap  -->
                 <div class="d-flex ms-md-auto">
-                    <ul class="navbar-nav mx-lg-4" :style="colormode">
+                    <ul class="navbar-nav" :style="colormode">
                         <NavLink :to="'Works'"/>
                         <NavLink :to="'Showreel'"/>
                         <NavLink :to="'About'" />
@@ -161,14 +171,26 @@ function onLeave(el, done) {
                 </div>
              </div>
         </div>
+        <div class="dark-overlay top-0 start-0 w-100 h-100"></div>
     </nav>
 <!-- <div class="border-bottom"></div> -->
 </header>
 </template>
 <style scoped>
-header  {
-  background-color: hsla(0, 0%, 100%, 0);
-  transition: .5s ease;
+/* Mobile (below XL) */
+.navcontainer  {
+    z-index: 50;
+    background-color: rgba(255, 255, 255, 0);
+}
+.navbar-collapse {
+    height: 0;
+    display: none;
+}
+.dark-overlay {
+    background-color: #000;
+    position: fixed;
+    visibility: hidden;
+    z-index: 2;
 }
 
 #mos-logo {

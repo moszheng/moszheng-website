@@ -78,8 +78,7 @@ router.beforeEach((to, from, next) => {
     else {
         // Collapse navbar, When router change.
         const navbarToggler = document.querySelector('.navbar-toggler');
-        const isNavbarExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
-        if (isNavbarExpanded) {
+        if (store.isNavbarExpanded) {
             navbarToggler.click();
         }
         // dark mode

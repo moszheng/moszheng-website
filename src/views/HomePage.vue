@@ -82,14 +82,14 @@ const loadingLeave = (el, done) => {
 
 <style scoped>
 /* Mobile */
-@media only screen and (max-width: 1024px) {
+@media only screen and (max-width: 1025px) {
   .index-btnarea{
     display: flex;
     justify-content: center;
     align-items: center;
   }
   .index-btn{
-    width: 80vw;
+    width: 70dvw;
   }
 }
 #mos-logo {
@@ -134,9 +134,11 @@ iframe {
   min-width: 15dvh;
   box-shadow: none;
   border: 1px;
+  color: #FFF;
 }
 .index-btn:hover{
   background-color: hsla(0, 0%, 95.3%, 0.6);
+  color: #000;
 }
 </style>
 

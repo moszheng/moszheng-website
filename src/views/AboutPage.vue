@@ -176,7 +176,7 @@ function ScrollTop() {
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 ps-xl-4 ps-md-5 px-0">
+            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 ps-xl-4 px-md-5 px-0">
                 <div class="mb-md-1 mb-3">
                     <!-- Name -->
                     <h1 class="mobile-center mb-md-2 mb-2" id="hero-1">Hello, I'm</h1>
