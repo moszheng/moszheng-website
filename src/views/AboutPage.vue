@@ -167,7 +167,7 @@ function ScrollTop() {
 <div class="About">
     <main class="container-fluid" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center row px-xl-5 px-3 py-xl-5 py-3">
+        <section class="about-hero d-flex-center row mt-4 px-xl-4 px-3 py-xl-5 pt-5 pe-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
                 <div class="user-container heroRot mb-md-0 mb-3 position-relative">
@@ -372,7 +372,7 @@ function ScrollTop() {
 
 /*----------- Block -------------*/
 .about-hero{
-    min-height: 85dvh;
+    min-height: 95dvh;
 }
 .about-intro {
     min-height: 60dvh;

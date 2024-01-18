@@ -85,7 +85,7 @@ function scrolltop() {
 </script>
 <template>
 <div class="works">
-    <main class="container flex-xl-nowrap">
+    <main class="container flex-xl-nowrap mt-4 pt-5">
         <div class="row pt-5" data-masonry='{"percentPosition": true }'>
             <div v-for="(item, index) in WorksData.project" :key="index" class="col-lg-4 col">
                 <div class="card mb-xl-4 mb-3 text-white" :style="randomHeight(index)">

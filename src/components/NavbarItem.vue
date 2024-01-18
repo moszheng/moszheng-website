@@ -47,35 +47,48 @@ const handleScroll = () => {
     lastPos = currentPos;
 };
 
+function test(msg) {
+    console.log(msg)
+}
 /* Toggle Nav BG */
 const navbarExpand = () => {
     const tl = gsap.timeline();
     store.isNavbarExpanded = !store.isNavbarExpanded;
+    // console.log(isNavbarExpanded.value)
     if (store.isNavbarExpanded) {
         store.navbardarkmode = false; // insure homepage
+        /* Button */
+        tl.to(".top-bar", {rotation: '+=135', y: "8px", ease: "power3.Out", duration: .25}, 0);
+        tl.to(".mid-bar", {opacity: 0, scaleX: 0.4, ease: "power3.Out", duration: .25}, 0);
+        tl.to(".bot-bar", {rotation: '-=135', y: "-8px", ease: "power3.Out", duration: .25}, 0);
         /* collapse */
         tl.to(".navbar-collapse", {display: "block"}, 0);
-        tl.to(".navbar-collapse", {height: 300, ease: "back.inOut(1.7)", duration: 1}, 0.001);
+        tl.to(".navbar-collapse", {height: 300, ease: "back.Out(1.7)", duration: .5}, 0.01);
         /* -- bg -- */
-        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 1)', ease: "back.inOut(1.7)", duration: 0.5}, 0.1);
+        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 1)', ease: "back.inOut(1.7)", duration: 0.3}, 0.05);
         /* - black- */
         tl.to(".dark-overlay", {autoAlpha: 0.7, ease: "back.inOut(1.7)", duration: 1}, 0);
         tl.fromTo(".nav-item",
             {xPercent: 60, autoAlpha: 0},
-            {xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04},
-             0);
+            {xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04}, 0);
     } else {
+        /* Button */
+        tl.to(".top-bar", {rotation: '+=225', y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        tl.to(".mid-bar", {opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25}, 0.001);
+        tl.to(".bot-bar", {rotation: '-=225', y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        tl.to(".nav-item", {xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04}, 0);
+        /* -- bg -- */
+        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 0)', ease: "back.inOut(1.7)", duration: 0.4}, 0.5);
+        tl.to(".dark-overlay", {autoAlpha: 0, ease: "back.inOut(1.7)", duration: 0.7}, 0.3);
+        /* collase */
+        tl.to(".navbar-collapse", {height: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0.4);
+        tl.to(".navbar-collapse", {display: "none"}, 1);
         if (route.name == "Home") {
             store.navbardarkmode = true; // insure homepage
         } else {
             store.navbardarkmode = false;
         }
-        tl.to(".dark-overlay", {autoAlpha: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0);
-        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 0)', ease: "back.inOut(1.7)", duration: .8}, 0.2);
-        tl.to(".nav-item", {xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04}, 0);
-        /* collase */
-        tl.to(".navbar-collapse", {height: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0.5);
-        tl.to(".navbar-collapse", {display: "none"}, 1.1);
+        //onComplete: test("outblock")
     }
 };
 /* Nav Bar social */
@@ -91,22 +104,22 @@ const rotateButton = () => {
 
 /* icon_social Enter animation */
 function onBeforeEnter(el) {
-    gsap.set(el, {width: 0, opacity: 0, scale: 0.1});
+    gsap.set(el, {width: 0, autoAlpha: 0, scale: 0.1});
 };
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, {width: '45px', opacity: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)"});
+    gsap.to(el, {width: '45px', autoAlpha: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)"});
 };
 function onLeave(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, {width: 0, opacity: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(1.7)"});
+    gsap.to(el, {width: 0, autoAlpha: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(1.7)"});
 };
 </script>
 
 <template>
 <header class="position-absolute w-100 top-0">
     <nav class="navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
-        <div class="navcontainer container-fluid px-6 py-2">
+        <div class="navcontainer container-fluid px-6 pt-2 pb-xl-2 pb-4">
             <!-- LOGO -->
             <div class="navbar-brand flex-column flex-md-row align-items-center">
                 <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
@@ -144,7 +157,7 @@ function onLeave(el, done) {
                         <NavLink :to="'Showreel'"/>
                         <NavLink :to="'About'" />
                         <NavLink :to="'Contact'"/>
-                        <li class="nav-item d-flex align-items-center">
+                        <li class="nav-item navtext d-flex align-items-center">
                             <!--   icons  -->
                             <div class="navbar-nav flex-row flex-wrap ms-xl-auto">
                                 <TransitionGroup
@@ -232,30 +245,14 @@ function onLeave(el, done) {
   width: 100%;
   opacity: 1;
   left: 0;
-  transform: rotate(0deg);
-  transition: .25s ease-in-out;
+  /* transition: .25s ease-in-out; */
 }
 .middle-bar {
   margin-top: 0px;
 }
-
 /*-----*/
-.navbar-toggler .top-bar{
-  margin-top: 0px;
-  transform: rotate(135deg);
-}
-.navbar-toggler .mid-bar{
-  opacity: 0;
-  filter: alpha(opacity=0);
-}
-.navbar-toggler .bot-bar{
-  margin-top: 0px;
-  transform: rotate(-135deg);
-}
-/*-----*/
- .navbar-toggler.collapsed .top-bar{
+.navbar-toggler.collapsed .top-bar{
   margin-top: -8px;
-  transform: rotate(0deg);
 }
 .navbar-toggler.collapsed .mid-bar{
   opacity: 1;
@@ -263,6 +260,5 @@ function onLeave(el, done) {
 }
 .navbar-toggler.collapsed .bot-bar{
   margin-top: 8px;
-  transform: rotate(0deg);
-}
+} 
 </style>

@@ -71,16 +71,16 @@ const pinia = createPinia()
 // if enter to home page, update navbar state
 router.beforeEach((to, from, next) => {
     const store = useNavStore();
-
+    
+    // Collapse navbar, When router change.
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    if (store.isNavbarExpanded) {
+        navbarToggler.click();
+    }
     if (to.name == 'Home') {
         store.navbardarkmode = true;
     }
     else {
-        // Collapse navbar, When router change.
-        const navbarToggler = document.querySelector('.navbar-toggler');
-        if (store.isNavbarExpanded) {
-            navbarToggler.click();
-        }
         // dark mode
         store.navbardarkmode = false;
     }

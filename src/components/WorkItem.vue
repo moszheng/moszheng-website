@@ -118,7 +118,7 @@ function ScrollTop() {
 </script>
 
 <template>
-<div class="WorksItem">
+<div class="WorksItem mt-5 pt-5">
     <!-- video -->
     <div class="ratio ratio-16x9 mb-5" data-scroll-section>
         <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
