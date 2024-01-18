@@ -53,11 +53,8 @@ function onLeave(el, done) {
 </template>
 
 <style>
-.navactive{
-    position: relative;
-}
 .nav-link{
-    transition: .2s ease-in-out;
+    position: relative;
 }
 
 .navactive::after{
@@ -68,5 +65,6 @@ function onLeave(el, done) {
     width: 100%;
     height: 10px;
     border-top: 0.2em solid #000;
+    transition: all .2s ease-in-out;
 }
 </style>

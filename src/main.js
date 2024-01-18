@@ -76,6 +76,13 @@ router.beforeEach((to, from, next) => {
         store.navbardarkmode = true;
     }
     else {
+        // Collapse navbar, When router change.
+        const navbarToggler = document.querySelector('.navbar-toggler');
+        const isNavbarExpanded = navbarToggler.getAttribute('aria-expanded') === 'true';
+        if (isNavbarExpanded) {
+            navbarToggler.click();
+        }
+        // dark mode
         store.navbardarkmode = false;
     }
     next();
