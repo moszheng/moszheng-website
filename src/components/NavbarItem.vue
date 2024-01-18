@@ -48,17 +48,17 @@ const handleScroll = () => {
 };
 /* Toggle Nav BG */
 const navbarExpand = () => {
-    const tl = gsap.timeline({overwrite: true});
+    // const tl = gsap.timeline({overwrite: true});
+    const tl = gsap.timeline({ defaults: { overwrite: true } });
+    const outtl = gsap.timeline({ defaults: { overwrite: true } });
     store.isNavbarExpanded = !store.isNavbarExpanded;
     if (store.isNavbarExpanded) {
         store.navbardarkmode = false; // insure homepage
-        // onInterrupt: console.log("zz")
         /* Button */
         tl.to(".top-bar", {rotation: 135, y: "8px", ease: "power3.Out", duration: .25}, 0);
         tl.to(".mid-bar", {opacity: 0, scaleX: 0.4, ease: "power3.Out", duration: .25}, 0);
         tl.to(".bot-bar", {rotation: -135, y: "-8px", ease: "power3.Out", duration: .25}, 0);
         /* collapse */
-        tl.to(".navbar-collapse", {display: "block", overwrite: true}, 0);
         tl.to(".navbar-collapse", {height: 300, ease: "back.Out(1.7)", duration: .5}, 0.01);
         /* -- bg -- */
         tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 1)', ease: "power3.inOut", duration: 0.3}, 0.05);
@@ -69,17 +69,16 @@ const navbarExpand = () => {
             {xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04}, 0);
     } else {
         /* Button */
-        tl.to(".top-bar", {rotation: 360, y: 0, ease: "power3.Out", duration: .3}, 0.001);
-        tl.to(".mid-bar", {opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25}, 0.001);
-        tl.to(".bot-bar", {rotation: 360, y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        outtl.to(".top-bar", {rotation: 360, y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        outtl.to(".mid-bar", {opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25}, 0.001);
+        outtl.to(".bot-bar", {rotation: 360, y: 0, ease: "power3.Out", duration: .3}, 0.001);
         /* -Links-- */
-        tl.to(".nav-item", {xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04}, 0);
+        outtl.to(".nav-item", {xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04}, 0);
         /* -- bg -- */
-        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 0)', ease: "power3.inOut", duration: 0.4}, 0.5);
-        tl.to(".dark-overlay", {autoAlpha: 0, ease: "power3.inOut", duration: 0.7}, 0.3);
+        outtl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 0)', ease: "power3.inOut", duration: 0.4}, 0.5);
+        outtl.to(".dark-overlay", {autoAlpha: 0, ease: "power3.inOut", duration: 0.7}, 0.3);
         /* collase */
-        tl.to(".navbar-collapse", {height: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0.4);
-        tl.to(".navbar-collapse", {display: "none"}, 1);
+        outtl.to(".navbar-collapse", {height: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0.4);
         if (route.name == "Home") {
             store.navbardarkmode = true; // insure homepage
         } else {
@@ -186,13 +185,18 @@ function onLeave(el, done) {
 </header>
 </template>
 <style scoped>
+@media only screen and (max-width: 1025px) {
+    .nav-item{
+        visibility: hidden;
+    }
+}
 .navcontainer  {
     z-index: 50;
     background-color: rgba(255, 255, 255, 0);
 }
 .navbar-collapse {
     height: 0;
-    display: none;
+    /* display: none; */
 }
 .dark-overlay {
     position: fixed;
