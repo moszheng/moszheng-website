@@ -1,6 +1,6 @@
 <script setup>
-import {ref, onMounted, onUnmounted} from 'vue';
-import {useNavStore} from '@/stores/navstore';
+import { ref, onMounted, onUnmounted } from 'vue';
+import { useNavStore } from '@/stores/navstore';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -60,7 +60,7 @@ onMounted(() => {
             const depth = layer.dataset.depth;
             const movement = depth * 3;
             const scale = 1.35 / depth; // From 1.35 -> 1.2
-            depthtl.to(layer, {yPercent: movement, scale: scale, ease: "none"}, 0); // scale from 1.3
+            depthtl.to(layer, { yPercent: movement, scale: scale, ease: "none" }, 0); // scale from 1.3
         });
         // const heroRot = (e)=>{
         //     gsap.utils.toArray(".heroRot").forEach((el) => {
@@ -78,10 +78,10 @@ onMounted(() => {
         // };
         /* Hero Section */
         const herotl = gsap.timeline({});
-        herotl.from("#hero-1", {opacity: 0, yPercent: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.3);
-        herotl.from("#hero-2", {opacity: 0, yPercent: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.5);
-        herotl.from("#hero-3", {opacity: 0, yPercent: 20, ease: "power4.inOut(1.7)", duration: 1.5}, 0.8);
-        herotl.from("#hero-4", {opacity: 0, yPercent: -15, ease: "back.inOut(1.7)", duration: 0.75}, 2);
+        herotl.from("#hero-1", { opacity: 0, yPercent: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8 }, 0.3);
+        herotl.from("#hero-2", { opacity: 0, yPercent: 150, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8 }, 0.5);
+        herotl.from("#hero-3", { opacity: 0, yPercent: 20, ease: "power4.inOut(1.7)", duration: 1.5 }, 0.8);
+        herotl.from("#hero-4", { opacity: 0, yPercent: -15, ease: "back.inOut(1.7)", duration: 0.75 }, 2);
         /* Intro Section*/
         const introtl = gsap.timeline({
             scrollTrigger: {
@@ -91,10 +91,10 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        introtl.to("#hero-4", {opacity: 0, yPercent: 0, ease: "power4.inOut(1.7)", duration: 2});
-        introtl.from(".intro-info", {opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0);
-        introtl.from(".intro-infosocial", {opacity: 0, xPercent: -30, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 0.35);
-        introtl.from(".intro-infocontact", {opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 1, stagger: 0.2}, 0.5);
+        introtl.to("#hero-4", { opacity: 0, yPercent: 0, ease: "power4.inOut(1.7)", duration: 2 });
+        introtl.from(".intro-info", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25 }, 0);
+        introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 0.35);
+        introtl.from(".intro-infocontact", { opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 1, stagger: 0.2 }, 0.5);
         /* --------------- Exp Section--------------*/
         const exptl = gsap.timeline({
             scrollTrigger: {
@@ -117,12 +117,12 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        exptl.from(".timeline", {autoAlpha: 0, ease: "linear"}, 0); // init timeline or will flash to top(FOUC)
-        exptl.from("#about-exp-title", {opacity: 0, xPercent: -15, ease: "back.inOut(1.7)", duration: 0.8});
-        exptl.from(".about-job", {opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.5);
-        exptl.from(".exp-job-title", {opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.15}, 0.7);
-        exptl.from(".exp-job-detail", {opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15}, 0.9);
-        exptl.from(".timeline", {scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5}, 1);
+        exptl.from(".timeline", { autoAlpha: 0, ease: "linear" }, 0); // init timeline or will flash to top(FOUC)
+        exptl.from("#about-exp-title", { opacity: 0, xPercent: -15, ease: "back.inOut(1.7)", duration: 0.8 });
+        exptl.from(".about-job", { opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25 }, 0.5);
+        exptl.from(".exp-job-title", { opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.15 }, 0.7);
+        exptl.from(".exp-job-detail", { opacity: 0, yPercent: -30, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.15 }, 0.9);
+        exptl.from(".timeline", { scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5 }, 1);
         /* -----------Skill Section--------
             1. Title
             2. skill-card
@@ -136,21 +136,21 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        skilltl.from("#skill-title", {opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 1});
+        skilltl.from("#skill-title", { opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 1 });
         // Skill Card Group
         gsap.utils.toArray(".about-skill-card").forEach((item, i) => {
             const delay = i / 8 + 0.5;
             const cardtitle = item.querySelector("#skill-card-title");
             const cardtext = item.querySelectorAll("#skill-card-text");
             // Animation
-            skilltl.from(item, {opacity: 0, yPercent: 25, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.3}, delay);
-            skilltl.from(cardtitle, {opacity: 0, yPercent: 20, rotateX: 45, ease: "power3.Out(1.7)", duration: 1}, delay + 0.1);
-            skilltl.from(cardtext, {opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, delay + 0.25);
+            skilltl.from(item, { opacity: 0, yPercent: 25, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.3 }, delay);
+            skilltl.from(cardtitle, { opacity: 0, yPercent: 20, rotateX: 45, ease: "power3.Out(1.7)", duration: 1 }, delay + 0.1);
+            skilltl.from(cardtext, { opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, delay + 0.25);
         });
-        skilltl.from("#skill-sep", {scaleX: 0, ease: "back.Out(1.7)", duration: 1}, 1);
+        skilltl.from("#skill-sep", { scaleX: 0, ease: "back.Out(1.7)", duration: 1 }, 1);
         // Skill Icon Group
-        skilltl.from("#skill-tooltitle", {opacity: 0, yPercent: 20, rotateX: 40, ease: "power3.Out(1.7)", duration: 0.5}, 1.5);
-        skilltl.from(".skill-logo-container", {opacity: 0, yPercent: 20, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 1.5);
+        skilltl.from("#skill-tooltitle", { opacity: 0, yPercent: 20, rotateX: 40, ease: "power3.Out(1.7)", duration: 0.5 }, 1.5);
+        skilltl.from(".skill-logo-container", { opacity: 0, yPercent: 20, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 1.5);
     }, imgContainer.value);
 });
 onUnmounted(() => {

@@ -1,7 +1,7 @@
-import {createApp} from 'vue'
-import {createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
-import {createPinia} from 'pinia'
-import {useNavStore} from '@/stores/navstore'
+import { createApp } from 'vue'
+import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
+import { createPinia } from 'pinia'
+import { useNavStore } from '@/stores/navstore'
 
 import WorkPage from '@/views/WorksPage.vue'
 
@@ -61,7 +61,7 @@ const router = createRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
         // always scroll to top
-        return {top: 0, behavior: 'smooth'};
+        return { top: 0, behavior: 'smooth' };
     },
 });
 

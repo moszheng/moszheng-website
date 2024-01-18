@@ -1,6 +1,6 @@
 <script setup>
-import {ref, computed, onMounted, onUnmounted} from 'vue';
-import {onBeforeRouteUpdate} from 'vue-router';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
+import { onBeforeRouteUpdate } from 'vue-router';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -20,16 +20,16 @@ shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.va
 
 // Transfer Data
 // Other Project Random method
-const vimeoPage = (item) => {return `https://vimeo.com/${ item[1] }`}
+const vimeoPage = (item) => {return `https://vimeo.com/${ item[1] }`};
 const vimeoEmbed = (item) => {
     if (item[0]=="vimeo") {
-        return `https://player.vimeo.com/video/${ item[1] }?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`
+        return `https://player.vimeo.com/video/${ item[1] }?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`;
     }
     else if (item[0]=="youtube") {
-        return `https://www.youtube.com/embed/${ item[1] }?si=S_7EpUA151r9khLz`
+        return `https://www.youtube.com/embed/${ item[1] }?si=S_7EpUA151r9khLz`;
     }
 };
-const imgLocation = (item) => {return '../src/img/'+ item}
+const imgLocation = (item) => {return '../src/img/'+ item};
 const contextImg = computed(() => {return prjdata.value.img_md.slice(1);});
 
 /* ---------Router Fix-----------*/
@@ -50,7 +50,7 @@ onBeforeRouteUpdate(async (to, from) => {
         prjdata.value = await getWorksData(to.params.projecturl);
         shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0, 3);
     }
-})
+});
 
 /* onMounted, preloading img & gsap scrollTrigger */
 const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
@@ -70,9 +70,9 @@ onMounted(() => {
     }
     lazyloadimgs.value.forEach(function(img) {
         if (img.complete) {
-            loaded(img)
+            loaded(img);
         } else {
-            img.addEventListener("load", loaded)
+            img.addEventListener("load", loaded);
         }
     });
     /* Scroll picture*/
@@ -85,14 +85,14 @@ onMounted(() => {
                 // markers: true,
             },
         });
-        herotl.from(".hero-1", {opacity: 0, yPercent: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8});
-        herotl.from(".hero-2", {opacity: 0, yPercent: 40, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.25}, 0.1);
-        herotl.from(".hero-social", {opacity: 0, yPercent: 30, scale: 0.1, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.25}, 0.65);
-        herotl.from(".hero-3", {opacity: 0, yPercent: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8}, 0.6);
-        herotl.from(".hero-4", {opacity: 0, yPercent: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25}, 0.65);
-        herotl.from(".hero-sep", {scaleX: 0, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.25}, 0.8);
-        herotl.from(".head-img-container", {opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.8}, 1);
-        herotl.from("#content-context", {opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1}, 1.1);
+        herotl.from(".hero-1", { opacity: 0, yPercent: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8 });
+        herotl.from(".hero-2", { opacity: 0, yPercent: 40, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.25 }, 0.1);
+        herotl.from(".hero-social", { opacity: 0, yPercent: 30, scale: 0.1, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.25 }, 0.65);
+        herotl.from(".hero-3", { opacity: 0, yPercent: 50, rotationX: 90, ease: "back.inOut(1.7)", duration: 0.8 }, 0.6);
+        herotl.from(".hero-4", { opacity: 0, yPercent: 25, rotationX: 90, ease: "power3.Out(1.7)", duration: 0.8, stagger: 0.25 }, 0.65);
+        herotl.from(".hero-sep", { scaleX: 0, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.25 }, 0.8);
+        herotl.from(".head-img-container", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.8 }, 1);
+        herotl.from("#content-context", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 1.1);
         /* heropic */
         gsap.to('.head-img-container-img', {
             scrollTrigger: {

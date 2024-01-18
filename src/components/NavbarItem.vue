@@ -1,7 +1,7 @@
 <script setup>
-import {ref, computed, watch, onMounted} from 'vue';
-import {useRoute} from 'vue-router';
-import {useNavStore} from '@/stores/navstore';
+import { ref, computed, watch, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
+import { useNavStore } from '@/stores/navstore';
 import gsap from 'gsap';
 
 import NavLink from './NavbarLink.vue';
@@ -25,7 +25,7 @@ onMounted(() => {
     /* ---------- Enter Motion ----------- */
     navctx = gsap.context((self) => {
         const herotl = gsap.timeline({});
-        herotl.from(".navbar-brand", {yPercent: -75, ease: "back.inOut(1.7)", duration: .8}, 0);
+        herotl.from(".navbar-brand", { yPercent: -75, ease: "back.inOut(1.7)", duration: .8 }, 0);
     });
 });
 
@@ -38,11 +38,11 @@ const handleScroll = () => {
     deltaPos = currentPos - lastPos;
     if (deltaPos > 10 && navfolder.value==false) {
         navfolder.value=true;
-        gsap.to('.navbar', {top: -90, duration: .5, ease: 'back.inOut(1.7)'});
+        gsap.to('.navbar', { top: -90, duration: .5, ease: 'back.inOut(1.7)' });
     }
     else if (deltaPos < 0 && navfolder.value==true) {
         navfolder.value=false;
-        gsap.to('.navbar', {top: 0, duration: .75, ease: 'back.inOut(1.7)'});
+        gsap.to('.navbar', { top: 0, duration: .75, ease: 'back.inOut(1.7)' });
     }
     lastPos = currentPos;
 };
@@ -54,18 +54,18 @@ const navbarExpand = () => {
     if (store.isNavbarExpanded) {
         store.navbardarkmode = false; // insure homepage
         /* Button */
-        tl.to(".top-bar", {rotation: 135, y: "8px", ease: "power3.Out", duration: .25}, 0);
-        tl.to(".mid-bar", {opacity: 0, scaleX: 0.4, ease: "power3.Out", duration: .25}, 0);
-        tl.to(".bot-bar", {rotation: -135, y: "-8px", ease: "power3.Out", duration: .25}, 0);
+        tl.to(".top-bar", { rotation: 135, y: "8px", ease: "power3.Out", duration: .25 }, 0);
+        tl.to(".mid-bar", { opacity: 0, scaleX: 0.4, ease: "power3.Out", duration: .25 }, 0);
+        tl.to(".bot-bar", { rotation: -135, y: "-8px", ease: "power3.Out", duration: .25 }, 0);
         /* collapse */
-        tl.to(".navbar-collapse", {height: 300, ease: "back.Out(1.7)", duration: .5}, 0.01);
+        tl.to(".navbar-collapse", { height: 300, ease: "back.Out(1.7)", duration: .5 }, 0.01);
         /* -- bg -- */
-        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 1)', ease: "power3.inOut", duration: 0.3}, 0.05);
-        tl.to(".dark-overlay", {autoAlpha: 0.7, ease: "power3.inOut", duration: 1}, 0);
+        tl.to(".navcontainer", { backgroundColor: 'rgba(255, 255, 255, 1)', ease: "power3.inOut", duration: 0.3 }, 0.05);
+        tl.to(".dark-overlay", { autoAlpha: 0.7, ease: "power3.inOut", duration: 1 }, 0);
         /* -Links-- */
         tl.fromTo(".nav-item",
-            {xPercent: 60, autoAlpha: 0},
-            {xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04}, 0);
+            { xPercent: 60, autoAlpha: 0 },
+            { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 }, 0);
     } else {
         /* Button */
         outtl.to(".top-bar", {
@@ -75,8 +75,8 @@ const navbarExpand = () => {
                 "100%": { rotation: 360, y: 0 },
                 ease: "none",
             },
-            ease: "power3.Out", duration: .3}, 0.001);
-        outtl.to(".mid-bar", {opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25}, 0.001);
+            ease: "power3.Out", duration: .3 }, 0.001);
+        outtl.to(".mid-bar", { opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25 }, 0.001);
         outtl.to(".bot-bar", {
             keyframes: {
                 "0%": { rotation: -135, y: "-8px" },
@@ -84,14 +84,14 @@ const navbarExpand = () => {
                 "100%": { rotation: 360, y: 0 },
                 ease: "none",
             },
-            ease: "power3.Out", duration: .3}, 0.001);
+            ease: "power3.Out", duration: .3 }, 0.001);
         /* -Links-- */
-        outtl.to(".nav-item", {xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04}, 0);
+        outtl.to(".nav-item", { xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04 }, 0);
         /* -- bg -- */
-        outtl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 0)', ease: "power3.inOut", duration: 0.4}, 0.5);
-        outtl.to(".dark-overlay", {autoAlpha: 0, ease: "power3.inOut", duration: 0.7}, 0.3);
+        outtl.to(".navcontainer", { backgroundColor: 'rgba(255, 255, 255, 0)', ease: "power3.inOut", duration: 0.4 }, 0.5);
+        outtl.to(".dark-overlay", { autoAlpha: 0, ease: "power3.inOut", duration: 0.7 }, 0.3);
         /* collase */
-        outtl.to(".navbar-collapse", {height: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0.4);
+        outtl.to(".navbar-collapse", { height: 0, ease: "back.inOut(1.7)", duration: 0.5 }, 0.4);
         if (route.name == "Home") {
             store.navbardarkmode = true; // insure homepage
         } else {
@@ -106,21 +106,21 @@ const rotateButton = () => {
     showIcon.value = !showIcon.value;
     const tl = gsap.timeline();
     // motion
-    tl.to('#icon-plus-area', {rotation: '+=135', duration: 0.8, ease: 'elastic.Out'});
-    tl.from('#icon-plus-area', {scale: 0.8, duration: 1.4, ease: 'elastic.out(1,0.3)'}, 0.1);
+    tl.to('#icon-plus-area', { rotation: '+=135', duration: 0.8, ease: 'elastic.Out' });
+    tl.from('#icon-plus-area', { scale: 0.8, duration: 1.4, ease: 'elastic.out(1,0.3)' }, 0.1);
 };
 
 /* icon_social Enter animation */
 function onBeforeEnter(el) {
-    gsap.set(el, {width: 0, autoAlpha: 0, scale: 0.1});
+    gsap.set(el, { width: 0, autoAlpha: 0, scale: 0.1 });
 };
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, {width: '45px', autoAlpha: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)"});
+    gsap.to(el, { width: '45px', autoAlpha: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)" });
 };
 function onLeave(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, {width: 0, autoAlpha: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(1.7)"});
+    gsap.to(el, { width: 0, autoAlpha: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(1.7)" });
 };
 </script>
 
@@ -260,5 +260,5 @@ function onLeave(el, done) {
 }
 .navbar-toggler.collapsed .bot-bar{
   margin-top: 8px;
-} 
+}
 </style>

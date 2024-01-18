@@ -1,5 +1,5 @@
 <script setup>
-import {ref, onMounted, onBeforeUnmount, onUnmounted} from 'vue';
+import { ref, onMounted, onBeforeUnmount, onUnmounted } from 'vue';
 import Masonry from 'masonry-layout';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -51,7 +51,7 @@ onMounted(() => {
         gsap.utils.toArray(".parallax").forEach((layer, index) => {
             const rand = [1, 0.75, 0.6];
             const movement = -4 * rand[index % 3];
-            depthtl.to(layer, {yPercent: movement, ease: "none"}, 0);
+            depthtl.to(layer, { yPercent: movement, ease: "none" }, 0);
         });
         /* ---------- Enter ---------- */
         const herotl = gsap.timeline({});
@@ -63,7 +63,7 @@ onMounted(() => {
 });
 onBeforeUnmount(() => {
     const herotl = gsap.timeline({});
-    herotl.to(".card", {xPercent: -250, scaleY: 0.4, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05});
+    herotl.to(".card", { xPercent: -250, scaleY: 0.4, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05 });
 });
 onUnmounted(() => {
     ctx.revert();
