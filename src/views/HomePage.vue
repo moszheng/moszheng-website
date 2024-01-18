@@ -41,7 +41,7 @@ const loadingLeave = (el, done) => {
       @before-enter="beforeEnter" @enter="enter"
       @leave="loadingLeave"
     >
-      <div class="index-loading" v-show="!finishloading">
+      <div class="index-loading position-absolute top-0 w-100 h-100" v-show="!finishloading">
         <div class="container d-flex-center h-100">
           <svg id="mos-logo">
             <use xlink:href="#icon-mosLogo"></use>
@@ -50,7 +50,7 @@ const loadingLeave = (el, done) => {
       </div>
     </Transition>
     <!----- BG ----->
-    <div class="index-bgcover">
+    <div class="index-bgcover position-absolute top-0 start-0 vw-100 vh-100">
       <iframe
         src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3" 
         allow="autoplay"
@@ -58,7 +58,7 @@ const loadingLeave = (el, done) => {
         ></iframe>
     </div>
     <!--  Intro ---->
-    <div class="index-info">
+    <div class="index-info position-absolute top-0 w-100 h-100">
       <div class="container d-flex justify-content-end align-items-center h-100">
         <!----- Main Content----->
         <div class="mx-lg-5 px-lg-5 px-3 text-white">
@@ -98,19 +98,10 @@ const loadingLeave = (el, done) => {
     transition: .8s ease;
 }
 .index-loading{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
   background-color: #FFF;
   z-index: 20;
 }
 .index-bgcover{
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100dvh;
-  width: 100vw;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -133,10 +124,6 @@ iframe {
   background-color: black;
 }
 .index-info{
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
   z-index: 10;
 }
 /* Button */

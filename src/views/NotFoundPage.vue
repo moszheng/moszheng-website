@@ -1,6 +1,6 @@
 <template>
-<main class="text-center notfound">
-    <div class = "">
+<main class="notfound d-flex-center vw-100 vh-100">
+    <div class="text-center">
         <h1>404</h1>
         <h4>Page Not Found</h4>
     </div>
@@ -8,13 +8,6 @@
 </template>
 <style>
 .notfound{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-height: 85dvh;
 }
 </style>

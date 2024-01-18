@@ -170,13 +170,13 @@ function ScrollTop() {
         <section class="about-hero d-flex-center row px-xl-5 px-3 py-xl-5 py-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
-                <div class="user-container heroRot mb-md-0 mb-3">
-                    <img class="avatar-user_1 heroRot parallax lazy" data-depth='1.05' alt="profile_image" :src=profileImage1>
-                    <img class="avatar-user_2 heroRot parallax lazy" data-depth='1.15' alt="profile_image" :src=profileImage2>
+                <div class="user-container heroRot mb-md-0 mb-3 position-relative">
+                    <img class="avatar-user_1 heroRot parallax lazy position-absolute start-0 w-100 h-auto" data-depth='1.05' alt="profile_image" :src=profileImage1>
+                    <img class="avatar-user_2 heroRot parallax lazy position-absolute start-0 w-100 h-auto" data-depth='1.15' alt="profile_image" :src=profileImage2>
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 ps-xl-3 ps-md-5 px-0">
+            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 ps-xl-4 ps-md-5 px-0">
                 <div class="mb-md-1 mb-3">
                     <!-- Name -->
                     <h1 class="mobile-center mb-md-2 mb-2" id="hero-1">Hello, I'm</h1>
@@ -306,7 +306,7 @@ function ScrollTop() {
                 <hr class="my-5" id="skill-sep">
                 <!-- Skill Icon -->
                 <div class="d-flex-center pe-md-3">
-                    <div class="skill-icon-block">
+                    <div class="skill-icon-block vw-50">
                         <h3 class="mb-md-5 mb-4 text-center" id="skill-tooltitle">Tools</h3>
                         <!-- tools block -->
                         <div class="skill-logo-block d-flex-center flex-wrap">
@@ -365,10 +365,6 @@ function ScrollTop() {
     display: none;
 }
 /*-----------------------*/
-main{
-    padding-right: 0 !important;
-    padding-left: 0 !important;
-}
 /* font color */
 .exp-p{
     color: rgb(179, 179, 179);
@@ -394,11 +390,7 @@ main{
 .about-skill-block{
     min-width: 70vw;
 }
-.skill-icon-block{
-    width: 50vw;
-}
 .about-skill-text{
-    /* min-width: 75vw; */
     min-height: 20dvh;
 }
 .about-skill-card{
@@ -434,21 +426,15 @@ main{
 
 /*------ Img --------*/
 .user-container{
-    position: relative;
     width: 40vmin;
     min-height: 48vmin;
     max-height: 600px;
     overflow: hidden;
-    /* background-color: rgb(39, 39, 39); */
     border-radius: 20px;
     filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
 }
 .avatar-user_1, .avatar-user_2{
-    position: absolute;
     top: 8%;
-    left: 0;
-    width: 100%;
-    height: auto;
     transform: scale(1.35);
     object-fit: cover;
 }

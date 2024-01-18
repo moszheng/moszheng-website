@@ -88,7 +88,7 @@ function scrolltop() {
     <main class="container flex-xl-nowrap">
         <div class="row pt-5" data-masonry='{"percentPosition": true }'>
             <div v-for="(item, index) in WorksData.project" :key="index" class="col-lg-4 col">
-                <div class="card text-white" :style="randomHeight(index)">
+                <div class="card mb-xl-4 mb-3 text-white" :style="randomHeight(index)">
                     <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
                         <!-- replaceimg -->
                         <div class="img-fluid">
@@ -119,7 +119,6 @@ function scrolltop() {
 <style scoped>
 .card{
     background-color: rgb(235, 235, 235);
-    margin-bottom: 35px;
 }
 </style>
 

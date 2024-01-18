@@ -41,7 +41,7 @@ function onLeave(el, done) {
 <li class="nav-item my-2">
     <div class="d-flex align-items-center">
         <router-link :to="{ name : to }"
-            class="nav-link px-1 py-1 me-md-4"
+            class="nav-link px-1 py-1 me-md-5"
             :class="{ navactive: isActive }"
             :style="colormode"
         >
