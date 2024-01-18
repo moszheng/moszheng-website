@@ -48,7 +48,6 @@ const handleScroll = () => {
 };
 /* Toggle Nav BG */
 const navbarExpand = () => {
-    // const tl = gsap.timeline({overwrite: true});
     const tl = gsap.timeline({ defaults: { overwrite: true } });
     const outtl = gsap.timeline({ defaults: { overwrite: true } });
     store.isNavbarExpanded = !store.isNavbarExpanded;
@@ -69,9 +68,23 @@ const navbarExpand = () => {
             {xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04}, 0);
     } else {
         /* Button */
-        outtl.to(".top-bar", {rotation: 360, y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        outtl.to(".top-bar", {
+            keyframes: {
+                "0%": { rotation: 135, y: "8px" },
+                "50%": { y: 0 },
+                "100%": { rotation: 360, y: 0 },
+                ease: "none",
+            },
+            ease: "power3.Out", duration: .3}, 0.001);
         outtl.to(".mid-bar", {opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25}, 0.001);
-        outtl.to(".bot-bar", {rotation: 360, y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        outtl.to(".bot-bar", {
+            keyframes: {
+                "0%": { rotation: -135, y: "-8px" },
+                "50%": { y: 0 },
+                "100%": { rotation: 360, y: 0 },
+                ease: "none",
+            },
+            ease: "power3.Out", duration: .3}, 0.001);
         /* -Links-- */
         outtl.to(".nav-item", {xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04}, 0);
         /* -- bg -- */
