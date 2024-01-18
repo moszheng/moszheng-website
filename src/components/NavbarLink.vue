@@ -11,6 +11,7 @@ const props = defineProps({
 /* Active Route */
 const route = useRoute();
 const currentRouteName = ref('');
+
 watch(route, (to, from) => {
     currentRouteName.value = to.path;
 });
@@ -58,9 +59,7 @@ function onLeave(el, done) {
 .nav-link{
     transition: .2s ease-in-out;
 }
-/* .nav-link:hover{
-    transform: scale(1.05);
-} */
+
 .navactive::after{
     content: '';
     position: absolute;

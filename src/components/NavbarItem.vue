@@ -34,9 +34,10 @@ let navctx;
 onMounted(() => {
     // Scroll movement
     window.addEventListener('scroll', handleScroll);
+    /* Enter Motion */
     navctx = gsap.context((self) => {
         const herotl = gsap.timeline({});
-        herotl.from(".navbar-brand", {yPercent: -75, ease: "back.inOut(1.7)", duration: 1.2}, 0);
+        herotl.from(".navbar-brand", {yPercent: -75, ease: "back.inOut(1.7)", duration: .8}, 0);
     });
 });
 const navfolder = ref(false);
