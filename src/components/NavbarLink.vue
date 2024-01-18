@@ -1,7 +1,7 @@
 <script setup>
-import {ref, watch, computed} from 'vue';
-import {useRoute} from 'vue-router';
-import {useNavStore} from '@/stores/navstore';
+import { ref, watch, computed } from 'vue';
+import { useRoute } from 'vue-router';
+import { useNavStore } from '@/stores/navstore';
 import gsap from 'gsap';
 
 const props = defineProps({
@@ -29,13 +29,13 @@ const colormode = computed(() => {
 
 /* Animation */
 function onBeforeEnter(el) {
-    gsap.set(".navactive::after", {xPercent: -50, width: 0, scaleX: 0.5, opacity: 0});
+    gsap.set(".navactive::after", { xPercent: -50, width: 0, scaleX: 0.5, opacity: 0 });
 };
 function onEnter(el, done) {
-    gsap.to(".navactive::after", {xPercent: 0, width: '70%', opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out"});
+    gsap.to(".navactive::after", { xPercent: 0, width: '70%', opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out" });
 };
 function onLeave(el, done) {
-    gsap.to(".navactive::after", {xPercent: 30, width: 0, opacity: 0, scaleX: 0.5, duration: 0.5, ease: "back.inOut(1.7)"});
+    gsap.to(".navactive::after", { xPercent: 30, width: 0, opacity: 0, scaleX: 0.5, duration: 0.5, ease: "back.inOut(1.7)" });
 };
 </script>
 <template>

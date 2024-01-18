@@ -1,7 +1,7 @@
 @import './base.css';
 
 /* Mobile (md) */
-@media only screen and (min-width: 1025px) and (max-width: 1500px) {
+@media only screen and (min-width: 1025px) and (max-width: 1441px) {
   h1{
     font-size: 3.5rem !important;
   }
@@ -9,6 +9,7 @@
     font-size: 0.75rem !important; /*0.9*/
   }
 }
+/* Mobile (md) */
 @media only screen and (max-width: 1024px) {
   h1{
     font-size: 2.5rem !important;

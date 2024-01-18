@@ -55,7 +55,7 @@ const navbarExpand = () => {
         store.navbardarkmode = false; // insure homepage
         /* Button */
         tl.to(".top-bar", { rotation: 135, y: "8px", ease: "power3.Out", duration: .25 }, 0);
-        tl.to(".mid-bar", { opacity: 0, scaleX: 0.4, ease: "power3.Out", duration: .25 }, 0);
+        tl.to(".mid-bar", { opacity: .5, scaleX: 0, ease: "power3.Out", duration: .2 }, 0);
         tl.to(".bot-bar", { rotation: -135, y: "-8px", ease: "power3.Out", duration: .25 }, 0);
         /* collapse */
         tl.to(".navbar-collapse", { height: 300, ease: "back.Out(1.7)", duration: .5 }, 0.01);
@@ -71,20 +71,20 @@ const navbarExpand = () => {
         outtl.to(".top-bar", {
             keyframes: {
                 "0%": { rotation: 135, y: "8px" },
-                "50%": { y: 0 },
+                "45%": { y: "8px" },
                 "100%": { rotation: 360, y: 0 },
                 ease: "none",
             },
-            ease: "power3.Out", duration: .3 }, 0.001);
-        outtl.to(".mid-bar", { opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25 }, 0.001);
+            ease: "power3.Out", duration: .3 }, 0);
+        outtl.to(".mid-bar", { opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25 }, 0.01);
         outtl.to(".bot-bar", {
             keyframes: {
                 "0%": { rotation: -135, y: "-8px" },
-                "50%": { y: 0 },
-                "100%": { rotation: 360, y: 0 },
+                "45%": { y: "-8px" },
+                "100%": { rotation: -360, y: 0 },
                 ease: "none",
             },
-            ease: "power3.Out", duration: .3 }, 0.001);
+            ease: "power3.Out", duration: .3 }, 0);
         /* -Links-- */
         outtl.to(".nav-item", { xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04 }, 0);
         /* -- bg -- */
@@ -127,7 +127,7 @@ function onLeave(el, done) {
 <template>
 <header class="position-absolute w-100 top-0">
     <nav class="navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
-        <div class="navcontainer container-fluid px-6 pt-2 pb-xl-2 pb-4">
+        <div class="navcontainer container-fluid px-lg-6 px-sm-5 px-3 pt-2 pb-xl-2 pb-4">
             <!-- LOGO -->
             <div class="navbar-brand flex-column flex-md-row align-items-center">
                 <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">

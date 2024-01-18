@@ -200,7 +200,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center p-xl-5 p-3">
+        <section class="about-intro d-flex-center p-md-5 p-3">
             <div class="about-intro-block mb-xl-3 mb-5 w-100">
                 <!-- text -->
                 <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">
