@@ -71,7 +71,7 @@ const pinia = createPinia()
 // if enter to home page, update navbar state
 router.beforeEach((to, from, next) => {
     const store = useNavStore();
-    
+
     // Collapse navbar, When router change.
     const navbarToggler = document.querySelector('.navbar-toggler');
     if (store.isNavbarExpanded) {

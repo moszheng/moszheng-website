@@ -46,40 +46,37 @@ const handleScroll = () => {
     }
     lastPos = currentPos;
 };
-
-function test(msg) {
-    console.log(msg)
-}
 /* Toggle Nav BG */
 const navbarExpand = () => {
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({overwrite: true});
     store.isNavbarExpanded = !store.isNavbarExpanded;
-    // console.log(isNavbarExpanded.value)
     if (store.isNavbarExpanded) {
         store.navbardarkmode = false; // insure homepage
+        // onInterrupt: console.log("zz")
         /* Button */
-        tl.to(".top-bar", {rotation: '+=135', y: "8px", ease: "power3.Out", duration: .25}, 0);
+        tl.to(".top-bar", {rotation: 135, y: "8px", ease: "power3.Out", duration: .25}, 0);
         tl.to(".mid-bar", {opacity: 0, scaleX: 0.4, ease: "power3.Out", duration: .25}, 0);
-        tl.to(".bot-bar", {rotation: '-=135', y: "-8px", ease: "power3.Out", duration: .25}, 0);
+        tl.to(".bot-bar", {rotation: -135, y: "-8px", ease: "power3.Out", duration: .25}, 0);
         /* collapse */
-        tl.to(".navbar-collapse", {display: "block"}, 0);
+        tl.to(".navbar-collapse", {display: "block", overwrite: true}, 0);
         tl.to(".navbar-collapse", {height: 300, ease: "back.Out(1.7)", duration: .5}, 0.01);
         /* -- bg -- */
-        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 1)', ease: "back.inOut(1.7)", duration: 0.3}, 0.05);
-        /* - black- */
-        tl.to(".dark-overlay", {autoAlpha: 0.7, ease: "back.inOut(1.7)", duration: 1}, 0);
+        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 1)', ease: "power3.inOut", duration: 0.3}, 0.05);
+        tl.to(".dark-overlay", {autoAlpha: 0.7, ease: "power3.inOut", duration: 1}, 0);
+        /* -Links-- */
         tl.fromTo(".nav-item",
             {xPercent: 60, autoAlpha: 0},
             {xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04}, 0);
     } else {
         /* Button */
-        tl.to(".top-bar", {rotation: '+=225', y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        tl.to(".top-bar", {rotation: 360, y: 0, ease: "power3.Out", duration: .3}, 0.001);
         tl.to(".mid-bar", {opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25}, 0.001);
-        tl.to(".bot-bar", {rotation: '-=225', y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        tl.to(".bot-bar", {rotation: 360, y: 0, ease: "power3.Out", duration: .3}, 0.001);
+        /* -Links-- */
         tl.to(".nav-item", {xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04}, 0);
         /* -- bg -- */
-        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 0)', ease: "back.inOut(1.7)", duration: 0.4}, 0.5);
-        tl.to(".dark-overlay", {autoAlpha: 0, ease: "back.inOut(1.7)", duration: 0.7}, 0.3);
+        tl.to(".navcontainer", {backgroundColor: 'rgba(255, 255, 255, 0)', ease: "power3.inOut", duration: 0.4}, 0.5);
+        tl.to(".dark-overlay", {autoAlpha: 0, ease: "power3.inOut", duration: 0.7}, 0.3);
         /* collase */
         tl.to(".navbar-collapse", {height: 0, ease: "back.inOut(1.7)", duration: 0.5}, 0.4);
         tl.to(".navbar-collapse", {display: "none"}, 1);
@@ -88,7 +85,6 @@ const navbarExpand = () => {
         } else {
             store.navbardarkmode = false;
         }
-        //onComplete: test("outblock")
     }
 };
 /* Nav Bar social */
@@ -190,7 +186,6 @@ function onLeave(el, done) {
 </header>
 </template>
 <style scoped>
-/* Mobile (below XL) */
 .navcontainer  {
     z-index: 50;
     background-color: rgba(255, 255, 255, 0);
@@ -200,18 +195,14 @@ function onLeave(el, done) {
     display: none;
 }
 .dark-overlay {
-    background-color: #000;
     position: fixed;
-    visibility: hidden;
     z-index: 2;
+    background-color: #000;
+    visibility: hidden;
 }
-
 #mos-logo {
     width: 150px;
     height: 100px;
-    transition: .8s ease;
-}
-.nav-link, .icon-plus-area{
     transition: .8s ease;
 }
 /*-------- nav bar toggler icon------*/
@@ -219,7 +210,7 @@ function onLeave(el, done) {
   width: 20px;
   height: 20px;
   position: relative;
-  transition: .5s ease-in-out;
+  /* transition: .5s ease-in-out; */
 }
 .toggler-icon-xl{
     background: none;
@@ -245,18 +236,10 @@ function onLeave(el, done) {
   width: 100%;
   opacity: 1;
   left: 0;
-  /* transition: .25s ease-in-out; */
-}
-.middle-bar {
-  margin-top: 0px;
 }
 /*-----*/
 .navbar-toggler.collapsed .top-bar{
   margin-top: -8px;
-}
-.navbar-toggler.collapsed .mid-bar{
-  opacity: 1;
-  filter: alpha(opacity=100);
 }
 .navbar-toggler.collapsed .bot-bar{
   margin-top: 8px;
