@@ -2,14 +2,14 @@
 import LinkData from '../data/LinkData.json';
 </script>
 <template>
-<footer class="d-flex-center">
-    <div class="container row text-white px-lg-5 py-2" >
-        <div class="col-lg-3">
+<footer class="d-flex-center text-white">
+    <div class="container d-flex flex-wrap px-lg-5 px-4 py-lg-2 py-5" >
+        <div class="mb-md-3 mb-4">
             <h5>Copyright © 2024 moszheng.</h5>
         </div>
-        <div class="col-lg-4">
-            <h5> Follow </h5>
-            <ul class="navbar-nav flex-row flex-wrap mb-4">
+        <div class="ms-md-6">
+            <h5>Follow</h5>
+            <ul class="foot-social d-flex flex-row ps-0">
                 <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item col-2 col-md-auto">
                     <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                         <svg id="icon_social" fill="#FFF">
@@ -27,10 +27,9 @@ import LinkData from '../data/LinkData.json';
 /*------ Footer-----------*/
 footer{
     background: #0e0e0e;
-    min-height: 18dvh;
+    min-height: 20dvh;
 }
-
-.float-right {
-  float: right;
+.foot-social{
+    list-style: none;
 }
 </style>
