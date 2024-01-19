@@ -121,114 +121,117 @@ function ScrollTop() {
 </script>
 
 <template>
-    <div class="WorksItem mt-5 pt-5">
+<div class="WorksItem">
+    <main class="mt-5 pt-5">
         <!-- video -->
         <div class="ratio ratio-16x9 mb-5" data-scroll-section>
             <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </div>
-        <main class="container" ref="imgContainer">
+        <div class="container" ref="imgContainer">
             <!-- Workitem-info -->
-        <div class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
-            <!-- Left -->
-            <div class="col-9">
-                <h3 class="hero-1 mb-4">{{ prjdata.en_name}}</h3>
-                <h6 class="hero-2 mb-3">@{{prjdata.company}}</h6>
-                <p class="hero-2 mb-4">{{prjdata.date}}</p>
-                <div>
-                    <a class="hero-social me-3" :href=prjdata.behance target="_blank" rel="noopener">
-                        <svg id="icon_social">
-                            <use xlink:href="#icon-behance"></use>
-                        </svg>
-                    </a>
-                    <!-- vimeo Link -->
-                    <a class="hero-social" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
-                        <svg id="icon_social">
-                            <use xlink:href="#icon-vimeo"></use>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-            <!-- Right -->
-            <div class="col-3 justify-content-end">
-                <h3 class="hero-3 mb-4">Roles</h3>
-                <p class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item">
-                    {{item}}
-                </p>
-            </div>
-            <hr class="mt-5 hero-sep">
-        </div>
-        <!-- Workitem-Content -->
-        <section class="workitem-content mx-md-3 mx-1 mb-5 px-xl-5 px-3">
-            <div class="row">
-                <!-- img -->
-                <div class="col-xxl-7 mb-md-4 mb-5">
-                    <div class="head-img-container img-container d-flex-center">
-                        <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img d-flex-center img-fluid lazy" alt="firstImg">
+            <div class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
+                <!-- Left -->
+                <div class="col-md-9 mb-md-0 mb-5">
+                    <h3 class="hero-1 mb-4">{{ prjdata.en_name}}</h3>
+                    <h6 class="hero-2 mb-3">@{{prjdata.company}}</h6>
+                    <p class="hero-2 mb-4">{{prjdata.date}}</p>
+                    <div>
+                        <a class="hero-social me-3" :href=prjdata.behance target="_blank" rel="noopener">
+                            <svg id="icon_social">
+                                <use xlink:href="#icon-behance"></use>
+                            </svg>
+                        </a>
+                        <!-- vimeo Link -->
+                        <a class="hero-social" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
+                            <svg id="icon_social">
+                                <use xlink:href="#icon-vimeo"></use>
+                            </svg>
+                        </a>
                     </div>
+                </div>
+                <!-- Right -->
+                <div class="col-md-3 justify-content-end">
+                    <h3 class="hero-3 mb-4">Roles</h3>
+                    <p class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item">
+                        {{item}}
+                    </p>
+                </div>
+                <hr class="mt-5 hero-sep">
+            </div>
+            <!-- Workitem-Content -->
+            <section class="workitem-content mx-md-3 mx-1 mb-5 px-xl-5 px-3">
+                <div class="row mb-md-0 mb-5">
+                    <!-- img -->
+                    <div class="col-xxl-7 mb-md-4 mb-5">
+                        <div class="head-img-container img-container d-flex-center">
+                            <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img d-flex-center img-fluid lazy" alt="firstImg">
+                        </div>
+                    </div>
+                    <!-- Right Content -->
+                    <div class="col-xxl-5">
+                        <div class="content-context-container">
+                            <p v-for="item in prjdata.msg" :key="item" id="content-context">
+                                {{item}}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- img -->
+                <div>
+                    <div class="mb-3">
+                        <div class="img-container d-flex-center mb-3" v-for="(item, index) in contextImg" :key="item">
+                            <img :src="imgLocation(contextImg[index])" class="d-flex-center col img-fluid lazy" alt="contextImg">
+                        </div>
+                    </div>
+                </div>
+                <hr class="mt-5">
+            </section>
+            <!-- credit -->
+            <div class="workitem-credit row mx-md-3 mx-1 mb-5 px-xl-5 px-3 ">
+                <div class="col-xl-5">
                 </div>
                 <!-- Right Content -->
-                <div class="col-xxl-5">
-                    <div class="content-context-container">
-                        <p v-for="item in prjdata.msg" :key="item" id="content-context">
-                            {{item}}
-                        </p>
+                <div class="col-xl-7">
+                    <h4 class="mb-5">Credit</h4>
+                    <div v-for = "value, key in prjdata.credit" class="row" :key="value">
+                        <p class="col-lg-4 col">{{key}}</p>
+                        <p class="col-lg-8 col">{{value}}</p>
                     </div>
                 </div>
             </div>
-            <div>
-                <div class="mb-3">
-                    <div class="img-container d-flex-center mb-3" v-for="(item, index) in contextImg" :key="item">
-                        <img :src="imgLocation(contextImg[index])" class="d-flex-center col img-fluid lazy" alt="contextImg">
-                    </div>
-                </div>
-            </div>
-            <hr class="mt-5">
-        </section>
-        <!-- credit -->
-        <div class="workitem-credit row mx-md-3 mx-1 mb-5 px-xl-5 px-3 ">
-            <div class="col-xl-5">
-            </div>
-            <!-- Right Content -->
-            <div class="col-xl-7">
-                <h4 class="mb-5">Credit</h4>
-                <div v-for = "value, key in prjdata.credit" class="row" :key="value">
-                    <p class="col-lg-4 col">{{key}}</p>
-                    <p class="col-lg-8 col">{{value}}</p>
-                </div>
+            <div class="workitem-end container-fluid text-center">
+                <a @click="ScrollTop()" class="nav-link p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                    </svg>
+                    <p>BACK TO TOP</p>
+                </a>
             </div>
         </div>
-        <div class="workitem-end container-fluid text-center">
-            <a @click="ScrollTop()" class="nav-link p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
-                </svg>
-                <p>BACK TO TOP</p>
-            </a>
-        </div>
-    </main>
-    <!-- Other Prj -->
-    <section class="container-fluid workitem-otherprj d-flex-center px-md-5 px-1 " data-scroll-section>
-        <div class="container ">
-            <h3 class="text-white my-4">Other Project</h3>
-            <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
-                <div class="row">
-                    <div v-for="item in shuffleprj" class="col-xl-4" :key="item.url_name">
-                        <div class="card mb-4 text-white">
-                            <!-- routerlink -->
-                            <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
-                                <img :src=imgLocation(item.img_md[0]) class="card-img lazy" alt="otherprjImg">
-                                <div class="works-black"></div>
-                                <div class="works-text text-white px-4">
-                                    <h4 class="card-title">{{ item.en_name }}</h4>
-                                    <p class="card-text">{{ item.date }}</p>
-                                </div>
-                            </router-link>
+        <!-- Other Prj -->
+        <section class="container-fluid workitem-otherprj d-flex-center px-md-5 px-1 " data-scroll-section>
+            <div class="container ">
+                <h3 class="text-white my-4">Other Project</h3>
+                <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
+                    <div class="row">
+                        <div v-for="item in shuffleprj" class="col-xl-4" :key="item.url_name">
+                            <div class="card mb-4 text-white">
+                                <!-- routerlink -->
+                                <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
+                                    <img :src=imgLocation(item.img_md[0]) class="card-img lazy" alt="otherprjImg">
+                                    <div class="works-black"></div>
+                                    <div class="works-text text-white px-4">
+                                        <h4 class="card-title">{{ item.en_name }}</h4>
+                                        <p class="card-text">{{ item.date }}</p>
+                                    </div>
+                                </router-link>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
     <FooterItem />
 </div>
 </template>
