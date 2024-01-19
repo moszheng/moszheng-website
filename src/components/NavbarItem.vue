@@ -16,7 +16,6 @@ const colormode = computed(() => {
     return store.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
 });
 
-
 let navctx;
 onMounted(() => {
     // Scroll movement
@@ -38,11 +37,11 @@ const handleScroll = () => {
     deltaPos = currentPos - lastPos;
     if (deltaPos > 10 && navfolder.value==false) {
         navfolder.value=true;
-        gsap.to('.navbar', { top: -90, duration: .5, ease: 'back.inOut(1.7)' });
+        // gsap.to('.navcontainer', { yPercent: -90, duration: .5, ease: 'back.inOut(1.7)' });
     }
     else if (deltaPos < 0 && navfolder.value==true) {
         navfolder.value=false;
-        gsap.to('.navbar', { top: 0, duration: .75, ease: 'back.inOut(1.7)' });
+        // gsap.to('.navcontainer', { yPercent: 0, duration: .75, ease: 'back.inOut(1.7)' });
     }
     lastPos = currentPos;
 };
@@ -135,8 +134,7 @@ function onLeave(el, done) {
 </script>
 
 <template>
-<header class="position-absolute w-100 top-0">
-    <nav class="navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
+    <nav class="container navbar sticky-top navbar-expand-lg flex-wrap flex-lg-nowrap">
         <div class="navcontainer container-fluid px-lg-6 px-sm-5 px-4 pt-2 pb-xl-2 pb-4">
             <!-- LOGO -->
             <div class="navbar-brand flex-column flex-md-row align-items-center">
@@ -200,12 +198,10 @@ function onLeave(el, done) {
                         </li>
                     </ul>
                 </div>
-             </div>
+            </div>
         </div>
         <div class="dark-overlay top-0 start-0 w-100 h-100"></div>
     </nav>
-<!-- <div class="border-bottom"></div> -->
-</header>
 </template>
 <style scoped>
 @media only screen and (max-width: 1025px) {
@@ -214,7 +210,7 @@ function onLeave(el, done) {
     }
 }
 .navcontainer  {
-    z-index: 50;
+    z-index: 70;
     background-color: rgba(255, 255, 255, 0);
 }
 .navbar-collapse {
@@ -223,7 +219,7 @@ function onLeave(el, done) {
 }
 .dark-overlay {
     position: fixed;
-    z-index: 2;
+    z-index: 60;
     background-color: #000;
     visibility: hidden;
 }

@@ -170,9 +170,9 @@ function ScrollTop() {
 </script>
 <template>
 <div class="About">
-    <main class="container-fluid" ref="imgContainer">
+    <main class="" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center row mt-4 px-xl-4 px-4 py-xl-5 pt-5 pe-3">
+        <section class="about-hero d-flex-center row mt-xl-0 mt-5 pt-5 px-xl-4 px-4 py-xl-5 pe-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
                 <div class="user-container heroRot mb-md-0 mb-3 position-relative">
@@ -376,8 +376,8 @@ function ScrollTop() {
 }
 
 /*----------- Block -------------*/
-.about-hero{
-    min-height: 95dvh;
+.about-hero, .about-exp, .about-skill{
+    min-height: 100dvh;
 }
 .about-intro {
     min-height: 60dvh;
@@ -387,9 +387,6 @@ function ScrollTop() {
 }
 .about-intro-info{
     max-width: 920px;
-}
-.about-exp, .about-skill{
-    min-height: 95dvh;
 }
 /* ---Skill--- */
 .about-skill-block{
