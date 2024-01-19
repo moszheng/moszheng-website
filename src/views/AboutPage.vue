@@ -167,7 +167,7 @@ function ScrollTop() {
 <div class="About">
     <main class="container-fluid" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center row mt-4 px-xl-4 px-3 py-xl-5 pt-5 pe-3">
+        <section class="about-hero d-flex-center row mt-4 px-xl-4 px-4 py-xl-5 pt-5 pe-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
                 <div class="user-container heroRot mb-md-0 mb-3 position-relative">
@@ -200,7 +200,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center p-md-5 p-3">
+        <section class="about-intro d-flex-center p-md-5 p-4">
             <div class="about-intro-block mb-xl-3 mb-5 w-100">
                 <!-- text -->
                 <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">

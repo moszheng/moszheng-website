@@ -4,12 +4,12 @@ import FooterItem from '@/components/FooterItem.vue';
 <template>
 <div>
     <main class="contact container d-flex-center">
-        <div class="row flex-fill py-5 mb-xl-4">
+        <div class="row flex-fill px-lg-0 px-4 py-5 mb-xl-4">
             <div class="col-xl-6">
             </div>
             <div class="contact-form col-xl-6 ">
                 <form action="https://formspree.io/f/meqbdlnk" method="POST">
-                    <h2 class="mb-5">Contact</h2>
+                    <h2 class="mb-lg-5 mb-4">Contact</h2>
                     <!-- email -->
                     <div class="form-group my-3 ">
                         <label for="InputName">Name</label>

@@ -47,10 +47,18 @@ const handleScroll = () => {
     lastPos = currentPos;
 };
 /* Toggle Nav BG */
+
 const navbarExpand = () => {
     const tl = gsap.timeline({ defaults: { overwrite: true } });
     const outtl = gsap.timeline({ defaults: { overwrite: true } });
+
+    const navContainer = document.querySelector(".navcontainer");
+    const navbarCollapse = document.querySelector(".navbar-collapse");
+    const darkOverlay = document.querySelector(".dark-overlay");
+    const navItems = document.querySelectorAll(".nav-item");
+
     store.isNavbarExpanded = !store.isNavbarExpanded;
+
     if (store.isNavbarExpanded) {
         store.navbardarkmode = false; // insure homepage
         /* Button */
@@ -58,19 +66,19 @@ const navbarExpand = () => {
         tl.to(".mid-bar", { opacity: .5, scaleX: 0, ease: "power3.Out", duration: .2 }, 0);
         tl.to(".bot-bar", { rotation: -135, y: "-8px", ease: "power3.Out", duration: .25 }, 0);
         /* collapse */
-        tl.to(".navbar-collapse", { height: 300, ease: "back.Out(1.7)", duration: .5 }, 0.01);
+        tl.to(navbarCollapse, { height: 300, ease: "back.Out(1.7)", duration: .5 }, 0.01);
         /* -- bg -- */
-        tl.to(".navcontainer", { backgroundColor: 'rgba(255, 255, 255, 1)', ease: "power3.inOut", duration: 0.3 }, 0.05);
-        tl.to(".dark-overlay", { autoAlpha: 0.7, ease: "power3.inOut", duration: 1 }, 0);
+        tl.to(navContainer, { backgroundColor: 'rgba(255, 255, 255, 1)', ease: "power3.inOut", duration: 0.3 }, 0.05);
+        tl.to(darkOverlay, { autoAlpha: 0.7, ease: "power3.inOut", duration: 1 }, 0);
         /* -Links-- */
-        tl.fromTo(".nav-item",
+        tl.fromTo(navItems,
             { xPercent: 60, autoAlpha: 0 },
             { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 }, 0);
     } else {
         /* Button */
         outtl.to(".top-bar", {
             keyframes: {
-                "0%": { rotation: 135, y: "8px" },
+                "0%": { rotation: 135 },
                 "45%": { y: "8px" },
                 "100%": { rotation: 360, y: 0 },
                 ease: "none",
@@ -79,24 +87,26 @@ const navbarExpand = () => {
         outtl.to(".mid-bar", { opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25 }, 0.01);
         outtl.to(".bot-bar", {
             keyframes: {
-                "0%": { rotation: -135, y: "-8px" },
+                "0%": { rotation: -135 },
                 "45%": { y: "-8px" },
                 "100%": { rotation: -360, y: 0 },
                 ease: "none",
             },
             ease: "power3.Out", duration: .3 }, 0);
         /* -Links-- */
-        outtl.to(".nav-item", { xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04 }, 0);
+        outtl.to(navItems, { xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04, onComplete: navComplete }, 0);
         /* -- bg -- */
-        outtl.to(".navcontainer", { backgroundColor: 'rgba(255, 255, 255, 0)', ease: "power3.inOut", duration: 0.4 }, 0.5);
-        outtl.to(".dark-overlay", { autoAlpha: 0, ease: "power3.inOut", duration: 0.7 }, 0.3);
+        outtl.to(navContainer, { backgroundColor: 'rgba(255, 255, 255, 0)', ease: "power3.inOut", duration: 0.4 }, 0.5);
+        outtl.to(darkOverlay, { autoAlpha: 0, ease: "power3.inOut", duration: 0.7 }, 0.3);
         /* collase */
-        outtl.to(".navbar-collapse", { height: 0, ease: "back.inOut(1.7)", duration: 0.5 }, 0.4);
-        if (route.name == "Home") {
-            store.navbardarkmode = true; // insure homepage
-        } else {
-            store.navbardarkmode = false;
-        }
+        outtl.to(navbarCollapse, { height: 0, ease: "back.inOut(1.7)", duration: 0.5 }, 0.4);
+    }
+};
+const navComplete = () => {
+    if (route.name == "Home") {
+        store.navbardarkmode = true; // insure homepage
+    } else {
+        store.navbardarkmode = false;
     }
 };
 /* Nav Bar social */
@@ -127,7 +137,7 @@ function onLeave(el, done) {
 <template>
 <header class="position-absolute w-100 top-0">
     <nav class="navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
-        <div class="navcontainer container-fluid px-lg-6 px-sm-5 px-3 pt-2 pb-xl-2 pb-4">
+        <div class="navcontainer container-fluid px-lg-6 px-sm-5 px-4 pt-2 pb-xl-2 pb-4">
             <!-- LOGO -->
             <div class="navbar-brand flex-column flex-md-row align-items-center">
                 <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
@@ -219,7 +229,7 @@ function onLeave(el, done) {
 }
 #mos-logo {
     width: 150px;
-    height: 100px;
+    height: 1.5em;
     transition: .8s ease;
 }
 /*-------- nav bar toggler icon------*/
