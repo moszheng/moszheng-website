@@ -32,30 +32,11 @@ const vimeoEmbed = (item) => {
 const imgLocation = (item) => {return '../src/img/'+ item};
 const contextImg = computed(() => {return prjdata.value.img_md.slice(1);});
 
-/* ---------Router Fix-----------*/
-const getWorksData = (id) => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(
-                WorksData.project.find(item => item.url_name == id),
-            );
-        }, 0);
-    });
-};
-
-onBeforeRouteUpdate(async (to, from) => {
-    ctx.revert();
-    /* Route Fix */
-    if (to.params.projecturl !== from.params.projecturl) {
-        prjdata.value = await getWorksData(to.params.projecturl);
-        shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0, 3);
-    }
-});
-
 /* onMounted, preloading img & gsap scrollTrigger */
 const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 const imgContainer = ref();
 let ctx;
+let matchmedia = gsap.matchMedia();
 onMounted(() => {
     /* Preloading status */
     lazyloadimgs.value = document.querySelectorAll('.lazy');
@@ -76,6 +57,19 @@ onMounted(() => {
         }
     });
     /* Scroll picture*/
+    matchmedia.add("(min-width: 768px)", (context) => {
+        /* heropic */
+        gsap.to('.head-img-container-img', {
+            scrollTrigger: {
+                trigger: ".head-img-container",
+                start: "clamp(top bottom)",
+                end: "bottom 50px",
+                scrub: true,
+                // markers: true
+            },
+            yPercent: -7.5,
+        });
+    });
     ctx = gsap.context((self) => {
         const herotl = gsap.timeline({
             scrollTrigger: {
@@ -93,22 +87,31 @@ onMounted(() => {
         herotl.from(".hero-sep", { scaleX: 0, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.25 }, 0.8);
         herotl.from(".head-img-container", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.8 }, 1);
         herotl.from("#content-context", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 1.1);
-        /* heropic */
-        gsap.to('.head-img-container-img', {
-            scrollTrigger: {
-                trigger: ".head-img-container",
-                start: "clamp(top bottom)",
-                end: "bottom 50px",
-                scrub: true,
-                // markers: true
-            },
-            yPercent: -7.5,
-        });
     }, imgContainer.value);
+});
+/* ---------Router Fix-----------*/
+const getWorksData = (id) => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(
+                WorksData.project.find(item => item.url_name == id),
+            );
+        }, 0);
+    });
+};
+onBeforeRouteUpdate(async (to, from) => {
+    ctx.revert();
+    matchmedia.revert();
+    /* Route Fix */
+    if (to.params.projecturl !== from.params.projecturl) {
+        prjdata.value = await getWorksData(to.params.projecturl);
+        shuffleprj.value = WorksData.project.filter(item => item.url_name !== prjdata.value.url_name).sort(() => Math.random() - 0.5).slice(0, 3);
+    }
 });
 onUnmounted(() => {
     // Clear gsap
     ctx.revert();
+    matchmedia.revert();
 });
 
 /* --------Animation--------- */
@@ -118,13 +121,13 @@ function ScrollTop() {
 </script>
 
 <template>
-<div class="WorksItem mt-5 pt-5">
-    <!-- video -->
-    <div class="ratio ratio-16x9 mb-5" data-scroll-section>
-        <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-    </div>
-    <main class="container" ref="imgContainer">
-        <!-- Workitem-info -->
+    <div class="WorksItem mt-5 pt-5">
+        <!-- video -->
+        <div class="ratio ratio-16x9 mb-5" data-scroll-section>
+            <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <main class="container" ref="imgContainer">
+            <!-- Workitem-info -->
         <div class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
             <!-- Left -->
             <div class="col-9">

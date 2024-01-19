@@ -12,6 +12,7 @@ import WorksData from '@/data/WorksData.json';
 const imgLocation = (item) => {return '../src/img/'+ item;};
 const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 let ctx;
+let matchmedia = gsap.matchMedia();
 onMounted(() => {
     // initialize masonry
     const row = document.querySelector("[data-masonry]");
@@ -36,8 +37,7 @@ onMounted(() => {
             img.addEventListener("load", loaded);
         }
     });
-    /* ------------Main GSAP Animation----------*/
-    ctx = gsap.context((self) => {
+    matchmedia.add("(min-width: 768px)", (context) => {
         /* ----------- Depth --------------- */
         const depthtl = gsap.timeline({
             scrollTrigger: {
@@ -53,6 +53,9 @@ onMounted(() => {
             const movement = -4 * rand[index % 3];
             depthtl.to(layer, { yPercent: movement, ease: "none" }, 0);
         });
+    });
+    /* ------------Main GSAP Animation----------*/
+    ctx = gsap.context((self) => {
         /* ---------- Enter ---------- */
         const herotl = gsap.timeline({});
         herotl.from(".card", {
@@ -67,6 +70,7 @@ onBeforeUnmount(() => {
 });
 onUnmounted(() => {
     ctx.revert();
+    matchmedia.revert();
 });
 
 function randomHeight(index) {

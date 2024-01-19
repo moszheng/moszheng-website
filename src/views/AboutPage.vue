@@ -22,6 +22,7 @@ const changeNavbarState = (state) => {
 const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 const imgContainer = ref();
 let ctx;
+let matchmedia = gsap.matchMedia();
 onMounted(() => {
     // Preloading status
     lazyloadimgs.value = document.querySelectorAll('.lazy');
@@ -41,11 +42,8 @@ onMounted(() => {
             img.addEventListener("load", loaded);
         }
     });
-    /* Main GSAP Animation*/
-    ctx = gsap.context((self) => {
-        // window.addEventListener('mousemove', (e)=>{
-        //     heroRot(e);
-        // });
+    /* Desktop only Motion */
+    matchmedia.add("(min-width: 768px)", (context) => {
         /* ----------- Depth --------------- */
         const depthtl = gsap.timeline({
             scrollTrigger: {
@@ -62,6 +60,12 @@ onMounted(() => {
             const scale = 1.35 / depth; // From 1.35 -> 1.2
             depthtl.to(layer, { yPercent: movement, scale: scale, ease: "none" }, 0); // scale from 1.3
         });
+    });
+    /* Main GSAP Animation*/
+    ctx = gsap.context((self) => {
+        // window.addEventListener('mousemove', (e)=>{
+        //     heroRot(e);
+        // });
         // const heroRot = (e)=>{
         //     gsap.utils.toArray(".heroRot").forEach((el) => {
         //         let xPos = e.clientX / window.innerWidth - 0.5;
@@ -155,6 +159,7 @@ onMounted(() => {
 });
 onUnmounted(() => {
     ctx.revert();
+    matchmedia.revert();
 });
 
 /* GSAP */
