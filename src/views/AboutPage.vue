@@ -100,11 +100,11 @@ onMounted(() => {
         introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.5, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 0.35);
         introtl.from(".intro-infocontact", { opacity: 0, yPercent: 20, ease: "power3.Out(1.7)", duration: 1, stagger: 0.2 }, 0.5);
         /* --------------- Exp Section--------------*/
-        const exptl = gsap.timeline({
+        const navtl = gsap.timeline({
             scrollTrigger: {
-                trigger: ".about-exp-block",
-                start: "top 80%",
-                end: "bottom+=300 top",
+                trigger: ".about-exp",
+                start: "top top",
+                end: "bottom top",
                 // markers: true,
                 onEnter: (self) => {
                     changeNavbarState(true);
@@ -118,6 +118,13 @@ onMounted(() => {
                 onLeaveBack: (self) => {
                     changeNavbarState(false);
                 },
+            },
+        });
+        const exptl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about-exp-block",
+                start: "top 80%",
+                end: "bottom+=300 top",
                 // markers: true,
             },
         });
