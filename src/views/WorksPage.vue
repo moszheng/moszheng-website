@@ -14,11 +14,13 @@ const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
 let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
-    // initialize masonry
-    const row = document.querySelector("[data-masonry]");
-    new Masonry(row, {
-        percentPosition: true,
-    });
+    // initialize masonry (breakpoint not work?)
+    if (window.innerWidth < 1025) {
+        const row = document.querySelector("[data-masonry]");
+        new Masonry(row, {
+            percentPosition: true,
+        });
+    }
     // Preloading status
     lazyloadimgs.value = document.querySelectorAll('.lazy');
     function loaded(img) {
@@ -37,7 +39,7 @@ onMounted(() => {
             img.addEventListener("load", loaded);
         }
     });
-    matchmedia.add("(min-width: 768px)", (context) => {
+    matchmedia.add("(min-width: 1024px)", (context) => {
         /* ----------- Depth --------------- */
         const depthtl = gsap.timeline({
             scrollTrigger: {
@@ -90,7 +92,7 @@ function scrolltop() {
 <template>
 <div class="works">
     <main class="container mt-4 pt-5">
-        <div class="row pt-5" data-masonry='{"percentPosition": true }'>
+        <div class="row pt-5 mx-md-0 mx-1" data-masonry='{"percentPosition": true }'>
             <div v-for="(item, index) in WorksData.project" :key="index" class="col-lg-4 col">
                 <div class="card mb-xl-4 mb-3 text-white" :style="randomHeight(index)">
                     <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
@@ -98,12 +100,18 @@ function scrolltop() {
                         <div class="img-fluid">
                             <img :src=imgLocation(item.img_md[0]) class="card-img parallax lazy" :alt="item.name">
                         </div>
+                        <!-- desktop title -->
                         <div class="works-black"></div>
-                        <div class="works-text text-white px-4">
+                        <div class="works-destop-title text-white px-4">
                             <h4 class="card-title">{{ item.en_name }}</h4>
                             <p class="card-text">{{ item.date }}</p>
                         </div>
                     </router-link>
+                </div>
+                <!-- mobile title -->
+                <div class="work-mobile-title px-1 mb-3">
+                    <h4 class="card-title">{{ item.en_name }}</h4>
+                    <p class="card-text">{{ item.date }}</p>
                 </div>
             </div>
         </div>

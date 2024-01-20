@@ -63,17 +63,27 @@ main{
   opacity: 0;
 }
 
-/*----------Works Block----------  */
+/*--------------- Works Block----------  */
+@media only screen and (max-width: 1024px) {
+  .works-destop-title{
+    display: none;
+  }
+}
+@media only screen and (min-width: 1025px) {
+  .work-mobile-title{
+    display: none;
+  }
+}
 .card{
   overflow : hidden;
 }
-.works-black, .works-text{
+.works-black, .works-destop-title{
   position: absolute;
   bottom: 0;
   width: 100%;
   opacity: 0;
 }
-.works-text{
+.works-destop-title{
   height: 10dvh;
   transition: .4s ease;
 }
@@ -93,7 +103,7 @@ main{
   transition: .8s ease;
 }
 /* Hover*/
-.card:hover .works-text {
+.card:hover .works-destop-title {
   /* height: 30%; */
   bottom: 5px;
   opacity: 1;

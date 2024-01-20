@@ -160,8 +160,16 @@ onMounted(() => {
         });
         skilltl.from("#skill-sep", { scaleX: 0, ease: "back.Out(1.7)", duration: 1 }, 1);
         // Skill Icon Group
-        skilltl.from("#skill-tooltitle", { opacity: 0, yPercent: 20, rotateX: 40, ease: "power3.Out(1.7)", duration: 0.5 }, 1.5);
-        skilltl.from(".skill-logo-container", { opacity: 0, yPercent: 20, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 1.5);
+        const icontl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about-skill",
+                start: "35% center",
+                end: "bottom 30%",
+                // markers: true,
+            },
+        });
+        icontl.from("#skill-tooltitle", { opacity: 0, yPercent: 20, rotateX: 40, ease: "power3.Out(1.7)", duration: 0.5 }, 0.5);
+        icontl.from(".skill-logo-container", { opacity: 0, yPercent: 20, scale: 0.8, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 0.5);
     }, imgContainer.value);
 });
 onUnmounted(() => {
@@ -179,7 +187,7 @@ function ScrollTop() {
 <div class="About">
     <main class="" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center row mt-xl-0 mt-5 pt-5 px-xl-4 px-4 py-xl-5 pe-3">
+        <section class="about-hero d-flex-center row mt-xl-0 mt-5 pt-5 px-xl-5 px-4 py-xl-5 pe-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
                 <div class="user-container heroRot mb-md-0 mb-3 position-relative">
@@ -384,7 +392,7 @@ function ScrollTop() {
 
 /*----------- Block -------------*/
 .about-hero, .about-exp, .about-skill{
-    min-height: 100dvh;
+    min-height: 95vh;
 }
 .about-intro {
     min-height: 60dvh;

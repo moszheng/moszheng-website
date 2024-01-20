@@ -220,7 +220,7 @@ function ScrollTop() {
                                 <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
                                     <img :src=imgLocation(item.img_md[0]) class="card-img lazy" alt="otherprjImg">
                                     <div class="works-black"></div>
-                                    <div class="works-text text-white px-4">
+                                    <div class="works-destop-title text-white px-4">
                                         <h4 class="card-title">{{ item.en_name }}</h4>
                                         <p class="card-text">{{ item.date }}</p>
                                     </div>

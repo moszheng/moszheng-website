@@ -10,7 +10,7 @@ import LinkData from '../data/LinkData.json';
         <div class="ms-md-6">
             <h5>Follow</h5>
             <ul class="foot-social d-flex flex-row ps-0">
-                <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item col-2 col-md-auto">
+                <li v-for="item in LinkData.socialmedia" :key="item" class="col-2 col-md-auto">
                     <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                         <svg id="icon_social" fill="#FFF">
                             <use :xlink:href="item.icon"></use>
