@@ -134,8 +134,8 @@ function onLeave(el, done) {
 </script>
 
 <template>
-    <nav class="container navbar sticky-top navbar-expand-lg flex-wrap flex-lg-nowrap">
-        <div class="navcontainer container-fluid px-lg-6 px-sm-5 px-4 pt-2 pb-xl-2 pb-4">
+    <header class="navbar navbar-expand-lg flex-wrap flex-lg-nowrap">
+        <div class="navcontainer position-fixed w-100 top-0 left-0 container-fluid px-lg-6 px-sm-5 px-4 pt-2 pb-xl-2 pb-4">
             <!-- LOGO -->
             <div class="navbar-brand flex-column flex-md-row align-items-center">
                 <router-link :to="{ name : 'Home' }" class="nav-link link-dark active" aria-current="page">
@@ -181,7 +181,7 @@ function onLeave(el, done) {
                                     @enter="onEnter"
                                     @leave="onLeave"
                                 >
-                                    <li class="nav-item col-2 col-md-auto" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" >
+                                    <li class="col-2 col-md-auto" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" >
                                         <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
                                             <svg id="icon_social" :style="colormode">
                                                 <use :xlink:href="item.icon"></use>
@@ -201,7 +201,7 @@ function onLeave(el, done) {
             </div>
         </div>
         <div class="dark-overlay top-0 start-0 w-100 h-100"></div>
-    </nav>
+    </header>
 </template>
 <style scoped>
 @media only screen and (max-width: 1025px) {
@@ -210,7 +210,7 @@ function onLeave(el, done) {
     }
 }
 .navcontainer  {
-    z-index: 70;
+    z-index: 99;
     background-color: rgba(255, 255, 255, 0);
 }
 .navbar-collapse {
