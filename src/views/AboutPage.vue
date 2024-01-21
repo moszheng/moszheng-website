@@ -191,6 +191,7 @@ function ScrollTop() {
 <div class="About">
     <main class="" ref="imgContainer">
         <!-- Hero -->
+          <!--  -->
         <section class="about-hero d-flex-center row mt-xl-0 mt-5 pt-5 px-xl-5 px-4 py-xl-5 pe-3">
             <!-- profile image -->
             <div class="heroRot col-xl-6 d-flex-center">
