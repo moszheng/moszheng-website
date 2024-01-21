@@ -102,8 +102,8 @@ const loadingLeave = (el, done) => {
   }
 }
 #mos-logo {
-    width: 21dvh;
-    height: 14dvh;
+    width: 21vh;
+    height: 14vh;
     transition: .8s ease;
 }
 .index-loading{
@@ -121,7 +121,7 @@ const loadingLeave = (el, done) => {
 iframe {
   position: absolute;
   height: 60vw;
-  width: 170dvh;
+  width: 170vh;
   min-height: 100%;
   min-width: 100%;
   max-width: none;
@@ -140,7 +140,7 @@ iframe {
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
   background-color: hsla(0, 0%, 95.3%, 0.25);
-  min-width: 15dvh;
+  min-width: 15vh;
   box-shadow: none;
   border: 1px;
   color: #FFF;

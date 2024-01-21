@@ -8,6 +8,6 @@
 </template>
 <style>
 .notfound{
-    min-height: 85dvh;
+    min-height: 85vh;
 }
 </style>

@@ -27,7 +27,7 @@ import LinkData from '../data/LinkData.json';
 /*------ Footer-----------*/
 footer{
     background: #0e0e0e;
-    min-height: 20dvh;
+    min-height: 20vh;
 }
 .foot-social{
     list-style: none;

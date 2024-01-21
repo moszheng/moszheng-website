@@ -35,7 +35,7 @@ import FooterItem from '@/components/FooterItem.vue';
 </template>
 <style scoped>
 .contact{
-    height: 100dvh;
+    height: 95vh;
 }
 .contact-form{
     max-width: 600px;

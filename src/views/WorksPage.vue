@@ -76,9 +76,9 @@ onUnmounted(() => {
 function randomHeight(index) {
     if (window.screen.width > 960) {
         const rndarray = [50, 35, 45, 45, 30];
-        return `height: ${ rndarray[index%5] }dvh`;
+        return `height: ${ rndarray[index%5] }vh`;
     } else {
-        return `height: 30dvh`;
+        return `height: 30vh`;
     }
 };
 

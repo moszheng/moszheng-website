@@ -18,6 +18,6 @@ import FooterItem from '@/components/FooterItem.vue';
 </template>
 <style>
 .showreel{
-    min-height: 85dvh;
+    min-height: 85vh;
 }
 </style>

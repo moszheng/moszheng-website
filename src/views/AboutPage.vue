@@ -403,7 +403,7 @@ function ScrollTop() {
     min-height: 95vh;
 }
 .about-intro, .about-contact {
-    min-height: 60dvh;
+    min-height: 60vh;
 }
 .about-intro-block, .about-exp-block {
     max-width: 1800px;
@@ -416,7 +416,7 @@ function ScrollTop() {
     min-width: 70vw;
 }
 .about-skill-text{
-    min-height: 20dvh;
+    min-height: 20vh;
 }
 .about-skill-card{
     min-width: 400px;

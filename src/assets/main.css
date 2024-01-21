@@ -101,7 +101,7 @@ main{
   opacity: 0;
 }
 .works-destop-title{
-  height: 10dvh;
+  height: 10vh;
   transition: .4s ease;
 }
 .works-black{

@@ -240,7 +240,7 @@ function ScrollTop() {
 /* -----Section------ */
 @media only screen and (min-width: 1200px) {
     .workitem-info{
-        min-height: 20dvh;
+        min-height: 20vh;
     }
 }
 /* Mobile */
@@ -248,14 +248,14 @@ function ScrollTop() {
     /* img */
     .head-img-container{
         width: 80dvw;
-        height: 25dvh;
+        height: 25vh;
     }
 }
 .workitem-content, .workitem-credit{
-    min-height: 60dvh;
+    min-height: 60vh;
 }
 .workitem-otherprj{
-    min-height: 40dvh;
+    min-height: 40vh;
     background-color: var(--main-black);
 }
 
@@ -263,7 +263,7 @@ function ScrollTop() {
 .head-img-container{
     /* position: relative; */
     width: 95%;
-    height: 50dvh;
+    height: 50vh;
     overflow: hidden;
 }
 .head-img-container-img{
