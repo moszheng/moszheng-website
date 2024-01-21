@@ -15,7 +15,7 @@ let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
     // initialize masonry (breakpoint not work?)
-    if (window.innerWidth < 1025) {
+    if (window.innerWidth > 1025) {
         const row = document.querySelector("[data-masonry]");
         new Masonry(row, {
             percentPosition: true,

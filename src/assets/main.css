@@ -64,14 +64,30 @@ main{
 }
 
 /*--------------- Works Block----------  */
+
+/* mobile setting */
 @media only screen and (max-width: 1024px) {
   .works-destop-title{
     display: none;
   }
 }
+/* desktop setting */
 @media only screen and (min-width: 1025px) {
   .work-mobile-title{
     display: none;
+  }
+  /* Hover*/
+  .card:hover .works-destop-title {
+    /* height: 30%; */
+    bottom: 5px;
+    opacity: 1;
+  }
+  .card:hover .works-black {
+    height: 70%;
+    opacity: 1;
+  }
+  .card:hover .card-img {
+    transform: scale(1.2);
   }
 }
 .card{
@@ -102,19 +118,7 @@ main{
 	object-fit: cover;
   transition: .8s ease;
 }
-/* Hover*/
-.card:hover .works-destop-title {
-  /* height: 30%; */
-  bottom: 5px;
-  opacity: 1;
-}
-.card:hover .works-black {
-  height: 70%;
-  opacity: 1;
-}
-.card:hover .card-img {
-  transform: scale(1.2);
-}
+
 /*------------ svg icon --------*/
 #icon_social{
   width: 30px;
