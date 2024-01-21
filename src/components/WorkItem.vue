@@ -88,6 +88,18 @@ onMounted(() => {
         herotl.from(".hero-sep", { scaleX: 0, ease: "power3.Out(1.7)", stagger: 0.25 }, 0.8);
         herotl.from(".head-img-container", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)" }, 1);
         herotl.from("#content-context", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 1.1);
+        /* Credit */
+        const credittl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".workitem-credit",
+                start: "top 80%",
+                end: "bottom 30%",
+                markers: true,
+            },
+            defaults: { ease: "back.inOut(1.7)", duration: 0.8 },
+        });
+        credittl.from(".credit-title", { opacity: 0, yPercent: 50 });
+        credittl.from(".credit-text", { opacity: 0, yPercent: 50, stagger: 0.08 }, 0.25);
     }, imgContainer.value);
 });
 /* ---------Router Fix-----------*/
@@ -125,12 +137,12 @@ function ScrollTop() {
 <div class="WorksItem">
     <main class="mt-5 pt-5">
         <!-- video -->
-        <div class="ratio ratio-16x9 mb-5" data-scroll-section>
+        <section class="ratio ratio-16x9 mb-5" data-scroll-section>
             <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
-        </div>
+        </section>
         <div class="container" ref="imgContainer">
             <!-- Workitem-info -->
-            <div class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
+            <section class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
                 <!-- Left -->
                 <div class="col-md-9 mb-md-0 mb-5">
                     <h3 class="hero-1 mb-4">{{ prjdata.en_name}}</h3>
@@ -158,7 +170,7 @@ function ScrollTop() {
                     </p>
                 </div>
                 <hr class="mt-5 hero-sep">
-            </div>
+            </section>
             <!-- Workitem-Content -->
             <section class="workitem-content mx-md-3 mx-1 mb-5 px-xl-5 px-3">
                 <div class="row mb-md-0 mb-5">
@@ -188,26 +200,26 @@ function ScrollTop() {
                 <hr class="mt-5">
             </section>
             <!-- credit -->
-            <div class="workitem-credit row mx-md-3 mx-1 mb-5 px-xl-5 px-3 ">
+            <section class="workitem-credit row mx-md-3 mx-1 mb-5 px-xl-5 px-3 ">
                 <div class="col-xl-5">
                 </div>
                 <!-- Right Content -->
                 <div class="col-xl-7">
-                    <h4 class="mb-5">Credit</h4>
-                    <div v-for = "value, key in prjdata.credit" class="row" :key="value">
+                    <h4 class="credit-title mb-5">Credit</h4>
+                    <div v-for = "value, key in prjdata.credit" class="credit-text row" :key="value">
                         <p class="col-lg-4 col">{{key}}</p>
                         <p class="col-lg-8 col">{{value}}</p>
                     </div>
                 </div>
-            </div>
-            <div class="workitem-end container-fluid text-center">
+            </section>
+            <section class="workitem-end container-fluid text-center">
                 <a @click="ScrollTop()" class="nav-link p-2">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                     </svg>
                     <p>BACK TO TOP</p>
                 </a>
-            </div>
+            </section>
         </div>
         <!-- Other Prj -->
         <section class="container-fluid workitem-otherprj d-flex-center px-md-5 px-1 " data-scroll-section>
