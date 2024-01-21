@@ -37,11 +37,11 @@ const handleScroll = () => {
     deltaPos = currentPos - lastPos;
     if (deltaPos > 10 && navfolder.value==false) {
         navfolder.value=true;
-        // gsap.to('.navcontainer', { yPercent: -90, duration: .5, ease: 'back.inOut(1.7)' });
+        gsap.to('.navcontainer', { yPercent: -90, duration: .5, ease: 'back.inOut(1.7)' });
     }
     else if (deltaPos < 0 && navfolder.value==true) {
         navfolder.value=false;
-        // gsap.to('.navcontainer', { yPercent: 0, duration: .75, ease: 'back.inOut(1.7)' });
+        gsap.to('.navcontainer', { yPercent: 0, duration: .75, ease: 'back.inOut(1.7)' });
     }
     lastPos = currentPos;
 };

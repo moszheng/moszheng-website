@@ -222,13 +222,13 @@ function ScrollTop() {
             </section>
         </div>
         <!-- Other Prj -->
-        <section class="container-fluid workitem-otherprj d-flex-center px-md-5 px-1 " data-scroll-section>
-            <div class="container ">
+        <section class="workitem-otherprj d-flex-center px-md-5 px-1 " data-scroll-section>
+            <div class="container">
                 <h3 class="text-white my-4">Other Projects</h3>
-                <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
+                <div class="py-md-3 px-xl-0 px-3 bd-content">
                     <div class="row">
                         <div v-for="item in shuffleprj" class="col-xl-4" :key="item.url_name">
-                            <div class="card mb-4 text-white">
+                            <div class="card mb-4 text-white mx-2">
                                 <!-- routerlink -->
                                 <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
                                     <img :src=imgLocation(item.img_md[0]) class="card-img lazy" alt="otherprjImg">
@@ -245,7 +245,7 @@ function ScrollTop() {
             </div>
         </section>
     </main>
-    <!-- <FooterItem /> -->
+    <FooterItem />
 </div>
 </template>
 <style scoped>

@@ -26,7 +26,7 @@ import LinkData from '../data/LinkData.json';
 <style scoped>
 /*------ Footer-----------*/
 footer{
-    background: #0e0e0e;
+    background: var(--main-black);
     min-height: 20vh;
 }
 .foot-social{
