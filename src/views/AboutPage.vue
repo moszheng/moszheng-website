@@ -346,6 +346,10 @@ function ScrollTop() {
         </section>
         <!-- Contact button-->
         <!-- <section class="about-contact d-flex-center px-lg-5 px-4 py-5">
+            <h2>Let's Get in Touch</h2>
+            <div class="d-flex align-items-center">
+                <router-link :to="{ name : 'Contact' }" class="nav-link px-1 py-1 me-md-5">Contact</router-link>
+            </div>
         </section> -->
         <div class="about-end container-fluid text-center">
             <a @click="ScrollTop()" class="nav-link p-2">
@@ -395,10 +399,10 @@ function ScrollTop() {
 }
 
 /*----------- Block -------------*/
-.about-hero, .about-exp, .about-skill{
+.about-hero, .about-exp, .about-skill {
     min-height: 95vh;
 }
-.about-intro {
+.about-intro, .about-contact {
     min-height: 60dvh;
 }
 .about-intro-block, .about-exp-block {
@@ -422,11 +426,14 @@ function ScrollTop() {
 }
 /* BG color */
 .about-exp{
-    background-color: rgb(22, 22, 22) ;
+    background-color: var(--main-black);
 }
+/* .about-contact{
+    background-color: var(--main-color);
+} */
 
 .about-skill, .about-contact, .about-end{
-    background-color: rgb(228, 228, 228);
+    background-color: var(--main-grey);
 }
 
 /*------- Job timeline-------*/

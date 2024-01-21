@@ -212,7 +212,7 @@ function ScrollTop() {
         <!-- Other Prj -->
         <section class="container-fluid workitem-otherprj d-flex-center px-md-5 px-1 " data-scroll-section>
             <div class="container ">
-                <h3 class="text-white my-4">Other Project</h3>
+                <h3 class="text-white my-4">Other Projects</h3>
                 <div class="py-md-3 pl-md-5 px-xl-3 bd-content">
                     <div class="row">
                         <div v-for="item in shuffleprj" class="col-xl-4" :key="item.url_name">
@@ -256,7 +256,7 @@ function ScrollTop() {
 }
 .workitem-otherprj{
     min-height: 40dvh;
-    background-color: #0e0e0e;
+    background-color: var(--main-black);
 }
 
 /* First Img */
