@@ -43,7 +43,7 @@ const loadingLeave = (el, done) => {
 </script>
 
 <template>
-  <main class="Home">
+  <main class="homepage">
     <!-- Loading Page -->
     <Transition name="move" mode="out-in"
       @before-enter="beforeEnter"

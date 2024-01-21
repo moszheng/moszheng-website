@@ -1,9 +1,7 @@
 <script setup>
 import Navbar from './components/NavbarItem.vue';
-
 </script>
 <template>
-<!-- <Navbar :key="$route.path"/> -->
 <Navbar />
 
 <router-view v-slot="{ Component, route }" >

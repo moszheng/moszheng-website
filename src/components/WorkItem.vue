@@ -94,7 +94,7 @@ onMounted(() => {
                 trigger: ".workitem-credit",
                 start: "top 80%",
                 end: "bottom 30%",
-                markers: true,
+                // markers: true,
             },
             defaults: { ease: "back.inOut(1.7)", duration: 0.8 },
         });
@@ -245,7 +245,7 @@ function ScrollTop() {
             </div>
         </section>
     </main>
-    <FooterItem />
+    <!-- <FooterItem /> -->
 </div>
 </template>
 <style scoped>

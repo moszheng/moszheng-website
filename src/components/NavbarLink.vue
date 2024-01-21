@@ -27,16 +27,6 @@ const colormode = computed(() => {
     return store.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
 });
 
-/* Animation */
-function onBeforeEnter(el) {
-    gsap.set(".navactive::after", { xPercent: -50, width: 0, scaleX: 0.5, opacity: 0 });
-};
-function onEnter(el, done) {
-    gsap.to(".navactive::after", { xPercent: 0, width: '70%', opacity: 1, scaleX: 1, duration: 0.5, ease: "expo.out" });
-};
-function onLeave(el, done) {
-    gsap.to(".navactive::after", { xPercent: 30, width: 0, opacity: 0, scaleX: 0.5, duration: 0.5, ease: "back.inOut(1.7)" });
-};
 </script>
 <template>
 <li class="nav-item my-2">
@@ -53,19 +43,24 @@ function onLeave(el, done) {
 </template>
 
 <style>
-
 .nav-link{
     position: relative;
+    transition: .15s ease-in-out;
 }
-
-.navactive::after{
+.nav-link:hover {
+    color: rgb(148, 148, 148) !important;
+}
+.nav-link.navactive::after{
+    width: 100%;
+}
+.nav-link::after{
     content: '';
     position: absolute;
     left: 0;
     bottom: -0.35em;
-    width: 100%;
+    width: 0%;
     height: 10px;
     border-top: 0.2em solid #000;
-    transition: all .2s ease-in-out;
+    transition: all .5s cubic-bezier(.83,0,.14,1.02);
 }
 </style>
