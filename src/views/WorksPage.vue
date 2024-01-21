@@ -64,6 +64,10 @@ onMounted(() => {
             opacity: 0, yPercent: 65, scaleY: 1.1, scaleX: 0.95,
             ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05,
         });
+        herotl.from(".work-mobile-title", {
+            opacity: 0, yPercent: 65,
+            ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05,
+        }, 0.1);
     });
 });
 onBeforeUnmount(() => {
@@ -93,7 +97,7 @@ function scrolltop() {
 <div class="works">
     <main class="container mt-4 pt-5">
         <div class="row pt-5 mx-md-0 mx-1" data-masonry='{"percentPosition": true }'>
-            <div v-for="(item, index) in WorksData.project" :key="index" class="col-lg-4 col">
+            <div v-for="(item, index) in WorksData.project" :key="index" class="col-lg-4">
                 <div class="card mb-xl-4 mb-3 text-white" :style="randomHeight(index)">
                     <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
                         <!-- replaceimg -->

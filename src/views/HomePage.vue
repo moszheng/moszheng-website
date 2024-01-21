@@ -1,5 +1,6 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed} from 'vue';
+import homeContent from '../data/Experience.json';
 import gsap from 'gsap';
 
 // Loading Page
@@ -9,36 +10,44 @@ function onMyFrameLoad() {
   finishloading.value = true;
 };
 
+const homecontent = computed(() => {
+  return homeContent.homepage.split(" ");
+});
+
 /* Transition GSAP */
 const beforeEnter = (el) => {
   el.style.opacity = 0;
 };
 const enter = (el, done) => {
-  gsap.to(el, {
-      opacity: 1,
-      duration: 1,
-      ease: 'power3.Out',
-      onComplete: done,
-  });
+  gsap.to(el, { opacity: 1, duration: 1, ease: 'power3.Out', onComplete: done });
 };
 /* Loading */
 const loadingLeave = (el, done) => {
   const tl = gsap.timeline();
   tl.to(el, {
-      opacity: 0,
-      delay: 1.5,
-      duration: 0.75,
-      ease: 'power3.Out',
-      onComplete: done,
+    opacity: 0,
+    delay: 1.5,
+    duration: 0.75,
+    ease: 'power3.Out',
+    onComplete: done,
+    // onComplete: homemotion,
   });
 };
+/* ---------- Enter ---------- */
+// function homemotion() {
+//   const tl = gsap.timeline({});
+//   tl.from("#home-name", { opacity: 0, yPercent: 65, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.15 }, 0);
+//   tl.from("#home-text", { opacity: 0, yPercent: 20, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05 }, 0.6);
+//   tl.from(".index-btnarea", { opacity: 0, yPercent: 65, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.2 }, 0.9);
+// }
 </script>
 
 <template>
   <main class="Home">
     <!-- Loading Page -->
     <Transition name="move" mode="out-in"
-      @before-enter="beforeEnter" @enter="enter"
+      @before-enter="beforeEnter"
+      @enter="enter"
       @leave="loadingLeave"
     >
       <div class="index-loading position-absolute top-0 w-100 h-100" v-show="!finishloading">
@@ -62,11 +71,11 @@ const loadingLeave = (el, done) => {
       <div class="container d-flex justify-content-end align-items-center h-100">
         <!----- Main Content----->
         <div class="mx-lg-5 px-lg-5 px-3 text-white">
-          <h5 class="mb-2">Freelance 3D Generalist</h5>
-          <h2 class="mb-5">Sheng Wen (Mos) Cheng</h2>
+          <h5 class="mb-2" id="home-name">Freelance 3D Generalist</h5>
+          <h2 class="mb-5" id="home-name">Sheng Wen (Mos) Cheng</h2>
           <div class="mb-5">
-            <p>A 3D Generalist and Motion Designer based in Taiwan.</p>
-            <p>Offering professional design services for digital arts and product motion design,
+            <p id="home-text">A 3D Generalist and Motion Designer based in Taiwan.</p>
+            <p id="home-text">Offering professional design services for digital arts and product motion design,
               <br>catering to companies and brands.</p>
           </div>
           <div class="index-btnarea">
