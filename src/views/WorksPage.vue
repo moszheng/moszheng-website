@@ -59,15 +59,9 @@ onMounted(() => {
     /* ------------Main GSAP Animation----------*/
     ctx = gsap.context((self) => {
         /* ---------- Enter ---------- */
-        const herotl = gsap.timeline({});
-        herotl.from(".card", {
-            opacity: 0, yPercent: 65, scaleY: 1.1, scaleX: 0.95,
-            ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05,
-        });
-        herotl.from(".work-mobile-title", {
-            opacity: 0, yPercent: 65,
-            ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05,
-        }, 0.1);
+        const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
+        herotl.from(".card", { opacity: 0, yPercent: 65, scaleY: 1.1, scaleX: 0.95, stagger: 0.05 });
+        herotl.from(".work-mobile-title", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
     });
 });
 onBeforeUnmount(() => {
