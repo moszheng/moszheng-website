@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, computed, onMounted, onUnmounted } from 'vue';
 import { useNavStore } from '@/stores/navstore';
 import gsap from 'gsap';
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -13,6 +13,15 @@ import ExpData from '@/data/Experience.json';
 // Return Real route
 const profileImage1 = '../src/img/profile_1.png';
 const profileImage2 = '../src/img/profile_2.png';
+
+// Split content
+const introcontent = computed(() => {
+    const arr = [];
+    ExpData.about.forEach((el) => {
+        arr.push(el.split(" "));
+    });
+  return arr;
+});
 
 /* ------------ Transition GSAP --------------------*/
 const store = useNavStore();
@@ -97,7 +106,8 @@ onMounted(() => {
             defaults: { ease: "power3.Out(1.7)" },
         });
         introtl.to("#hero-4", { opacity: 0, yPercent: 0, ease: "power4.inOut(1.7)", duration: 2 });
-        introtl.from(".intro-info", { opacity: 0, yPercent: 25, duration: 0.8, stagger: 0.25 }, 0);
+        // introtl.from(".intro-info", { yPercent: 15, duration: 0.7, stagger: 0.3 }, 0);
+        introtl.from(".split-text", { opacity: 0, yPercent: 40, duration: 0.6, stagger: 0.01 }, 0);
         introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.5, duration: 0.5, stagger: 0.1 }, 0.35);
         introtl.from(".intro-infocontact", { opacity: 0, yPercent: 20, duration: 1, stagger: 0.2 }, 0.5);
         /* --------------- Exp Section--------------*/
@@ -204,9 +214,9 @@ function ScrollTop() {
             <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 ps-xl-4 px-md-5 px-0">
                 <div class="mb-md-1 mb-3">
                     <!-- Name -->
-                    <h1 class="mobile-center mb-md-2 mb-2" id="hero-1">Hello, I'm</h1>
+                    <h1 class="mobile-center mb-md-0 mb-2" id="hero-1">Hello, I'm</h1>
                     <!-- Name -->
-                    <h1 class="mobile-center mb-md-5 mb-4" id="hero-2">Sheng Wen Cheng</h1>
+                    <h1 class="mobile-center mb-4" id="hero-2">Sheng Wen Cheng</h1>
                     <!-- Subtitle -->
                     <div class="">
                         <div class="mobile-center">
@@ -228,12 +238,16 @@ function ScrollTop() {
         <section class="about-intro d-flex-center p-md-5 p-4">
             <div class="about-intro-block mb-xl-3 mb-5 w-100">
                 <!-- text -->
-                <div class="about-intro-info d-flex align-items-start mb-md-5 mb-4">
+                <div class="about-intro-info d-flex align-items-start mb-md-5">
                     <!-- Intro -->
                     <div>
-                        <h5 class="intro-info mb-4">As a diverse motion designer, I am eager to explore the possibilities of animation, focusing on creating stunning vision throught keen insights and pushing team's ideas to practice. Take on challenges in any project and develop workflows or pipelines to solve problems.</h5>
-                        <h5 class="intro-info mb-4">Worked at JL Design and Mixcode as Motion Designer from 2018 to 2023 and we made several brilliant achievement including awarded TV packages.</h5>
-                        <h5 class="intro-info">For any inquiries,<strong> please contact me</strong></h5>
+                        <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info mb-5">
+                            <span v-for="(text, index) in textarray" :key="index" class="d-inline-flex pe-2">
+                                <span class="d-block split-text"> {{ text }} </span>
+                                <!-- {{ text }} -->
+                                <!-- &nbsp; -->
+                            </span>
+                        </h4>
                     </div>
                 </div>
                 <div class="d-xl-flex justify-content-end mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
@@ -389,6 +403,9 @@ function ScrollTop() {
     .skill-logo{
         width: 50px !important;
     }
+}
+ul {
+    padding-left: 1rem !important;
 }
 .duration-toggled{
     display: none;
