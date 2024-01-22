@@ -48,8 +48,8 @@ const handleScroll = () => {
 /* Toggle Nav BG */
 
 const navbarExpand = () => {
-    const tl = gsap.timeline({ defaults: { overwrite: true } });
-    const outtl = gsap.timeline({ defaults: { overwrite: true } });
+    const tl = gsap.timeline({ defaults: { overwrite: true, ease: "power3.Out" } });
+    const outtl = gsap.timeline({ defaults: { overwrite: true, ease: "power3.Out" } });
 
     const navContainer = document.querySelector(".navcontainer");
     const navbarCollapse = document.querySelector(".navbar-collapse");
@@ -61,14 +61,14 @@ const navbarExpand = () => {
     if (store.isNavbarExpanded) {
         store.navbardarkmode = false; // insure homepage
         /* Button */
-        tl.to(".top-bar", { rotation: 135, y: "8px", ease: "power3.Out", duration: .25 }, 0);
-        tl.to(".mid-bar", { opacity: .5, scaleX: 0, ease: "power3.Out", duration: .2 }, 0);
-        tl.to(".bot-bar", { rotation: -135, y: "-8px", ease: "power3.Out", duration: .25 }, 0);
+        tl.to(".top-bar", { rotation: 135, y: "6px", duration: .25 }, 0);
+        tl.to(".mid-bar", { opacity: .5, scaleX: 0, duration: .2 }, 0);
+        tl.to(".bot-bar", { rotation: -135, y: "-6px", duration: .25 }, 0);
         /* collapse */
         tl.to(navbarCollapse, { height: 350, ease: "back.Out(1.7)", duration: .5 }, 0.01);
         /* -- bg -- */
-        tl.to(navContainer, { backgroundColor: 'rgba(255, 255, 255, 1)', ease: "power3.inOut", duration: 0.3 }, 0.05);
-        tl.to(darkOverlay, { autoAlpha: 0.7, ease: "power3.inOut", duration: 1 }, 0);
+        tl.to(navContainer, { backgroundColor: 'rgba(255, 255, 255, 1)', duration: 0.3 }, 0.05);
+        tl.to(darkOverlay, { autoAlpha: 0.7, duration: 1 }, 0);
         /* -Links-- */
         tl.fromTo(navItems,
             { xPercent: 60, autoAlpha: 0 },
@@ -78,20 +78,20 @@ const navbarExpand = () => {
         outtl.to(".top-bar", {
             keyframes: {
                 "0%": { rotation: 135 },
-                "45%": { y: "8px" },
+                "45%": { y: "6px" },
                 "100%": { rotation: 360, y: 0 },
                 ease: "none",
             },
-            ease: "power3.Out", duration: .3 }, 0);
-        outtl.to(".mid-bar", { opacity: 1, scaleX: 1, ease: "power3.Out", duration: .25 }, 0.01);
+            duration: .3 }, 0);
+        outtl.to(".mid-bar", { opacity: 1, scaleX: 1, duration: .25 }, 0.01);
         outtl.to(".bot-bar", {
             keyframes: {
                 "0%": { rotation: -135 },
-                "45%": { y: "-8px" },
+                "45%": { y: "-6px" },
                 "100%": { rotation: -360, y: 0 },
                 ease: "none",
             },
-            ease: "power3.Out", duration: .3 }, 0);
+            duration: .3 }, 0);
         /* -Links-- */
         outtl.to(navItems, { xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04, onComplete: navComplete }, 0);
         /* -- bg -- */
@@ -147,8 +147,8 @@ function onLeave(el, done) {
                 </router-link>
             </div>
             <!-- navbar responsive button -->
-            <button @click="navbarExpand" class="navbar-toggler lg:hidden py-1 px-2 text-md leading-normal bg-transparent border border-transparent rounded collapsed" type="button">
-                <span class="toggler-icon top-bar">
+            <button @click="navbarExpand" class="navbar-toggler relative w-6 h-6 lg:hidden leading-normal bg-transparent collapsed" type="button">
+                <span class="toggler-icon -mt-1.5 top-bar">
                     <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
@@ -158,31 +158,31 @@ function onLeave(el, done) {
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
-                <span class="toggler-icon bot-bar">
+                <span class="toggler-icon mt-1.5 bot-bar">
                     <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
             </button>
             <!-- Canvas -->
-            <div class="navbar-collapse lg:flex flex-grow items-center" id="navbarSupportedContent">
+            <div class="navbar-collapse h-0 lg:flex flex-grow items-center" id="navbarSupportedContent">
                 <!--   flex-wrap  -->
                 <div class="flex md:ml-auto">
-                    <ul class="navbar-nav flex flex-wrap list-reset pl-0 mb-0" :style="colormode">
+                    <ul class="navbar-nav flex flex-wrap lg:flex-row flex-col pl-0 mb-0" :style="colormode">
                         <NavLink :to="'Works'"/>
                         <NavLink :to="'Showreel'"/>
                         <NavLink :to="'About'" />
                         <NavLink :to="'Contact'"/>
                         <li class="nav-item navtext flex items-center">
                             <!--   icons  -->
-                            <div class="navbar-nav flex flex-wrap flex-row list-reset pl-0 mb-0 xl:ms-auto">
+                            <div class="navbar-nav flex flex-wrap flex-row xl:ms-auto">
                                 <TransitionGroup
                                     @before-enter="onBeforeEnter"
                                     @enter="onEnter"
                                     @leave="onLeave"
                                 >
                                     <li class="w-1/5 col-md-auto" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" >
-                                        <a class="inline-block py-2 px-4 no-underline p-2" :href="item.url" target="_blank" rel="noopener">
+                                        <a class="inline-block py-2 no-underline" :href="item.url" target="_blank" rel="noopener">
                                             <svg id="icon_social" :style="colormode">
                                                 <use :xlink:href="item.icon"></use>
                                             </svg>
@@ -190,7 +190,7 @@ function onLeave(el, done) {
                                     </li>
                                 </TransitionGroup>
                             </div>
-                            <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
+                            <button class="toggler-icon-xl px-5 py-2" type="button" @click="rotateButton">
                                 <svg id="icon-plus-area" :style="colormode">
                                     <use xlink:href="#icon-plus"></use>
                                 </svg>
@@ -209,19 +209,12 @@ function onLeave(el, done) {
     .navbar-collapse {
         flex-basis: 100%;
     }
-    .navbar-nav{
-        flex-direction: column;
-    }
     .nav-item{
         visibility: hidden;
     }
 }
 .navcontainer  {
     background-color: rgba(255, 255, 255, 0);
-}
-.navbar-collapse {
-    height: 0;
-    /* display: none; */
 }
 .dark-overlay {
     position: fixed;
@@ -234,12 +227,6 @@ function onLeave(el, done) {
     transition: .8s ease;
 }
 /*-------- nav bar toggler icon------*/
-.navbar-toggler{
-  width: 20px;
-  height: 20px;
-  position: relative;
-  /* transition: .5s ease-in-out; */
-}
 .toggler-icon-xl{
     background: none;
 }
@@ -253,10 +240,6 @@ function onLeave(el, done) {
   box-shadow: none;
   border: 0;
 }
-.navbar-toggler span {
-  margin: 0;
-  padding: 0;
-}
 .toggler-icon{
   display: block;
   position: absolute;
@@ -264,12 +247,5 @@ function onLeave(el, done) {
   width: 100%;
   opacity: 1;
   left: 0;
-}
-/*-----*/
-.navbar-toggler.collapsed .top-bar{
-  margin-top: -8px;
-}
-.navbar-toggler.collapsed .bot-bar{
-  margin-top: 8px;
 }
 </style>

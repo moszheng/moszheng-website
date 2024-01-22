@@ -206,7 +206,7 @@ function ScrollTop() {
     <main class="" ref="imgContainer">
         <!-- Hero -->
           <!--  -->
-          <section class="about-hero d-flex-center flex flex-wrap  xl:mt-0 mt-5 pt-5 xl:px-12 px-4 xl:py-12 pe-3">
+          <section class="about-hero d-flex-center flex flex-wrap h-screen xl:mt-0 mt-5 pt-5 xl:px-12 px-4 xl:py-12 pe-3">
             <!-- profile image -->
             <div class="heroRot d-flex-center xl:w-1/2 pr-4 pl-4">
                 <div class="user-container heroRot relative md:mb-0 mb-3">
@@ -282,7 +282,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
-        <section class="about-exp d-flex-center xl:px-12 px-3 text-white bg-main-black">
+        <section class="about-exp d-flex-center h-screen xl:px-12 px-3 text-white bg-main-black">
             <div class="about-exp-block flex flex-wrap xl:mt-0 mt-4 lg:mb-4 mb-8 md:mx-4">
                 <!-- Exp Title -->
                 <div class="lg:w-1/4 lg:mb-6 mb-5 px-4" >
@@ -314,7 +314,7 @@ function ScrollTop() {
                                 </div>
                             </div>
                             <!-- Job detail -->
-                            <ul class="exp-p">
+                            <ul class="exp-p list-disc pl-3">
                                 <li v-for="content in item.detail" :key="content" class="exp-job-detail mb-2">
                                     <p>{{ content }}</p>
                                 </li>
@@ -325,7 +325,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Skill -->
-        <section class="about-skill d-flex-center xl:px-12 px-4 py-5 bg-main-grey">
+        <section class="about-skill d-flex-center h-screen xl:px-12 px-4 py-5 bg-main-grey">
             <div class="about-skill-block xl:mt-0 mt-4 mb-4">
                 <!-- Skill Title -->
                 <div class="lg:ps-0 md:pe-12 px-3 md:mb-12 my-2">
@@ -417,9 +417,6 @@ function ScrollTop() {
 }
 
 /*----------- Block -------------*/
-.about-hero, .about-exp, .about-skill {
-    min-height: 95vh;
-}
 .about-intro, .about-contact {
     min-height: 60vh;
 }

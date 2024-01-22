@@ -25,7 +25,6 @@
   }
 }
 
-
 /* Main Padding */
 main{
   padding-right: 0 !important;
@@ -111,8 +110,8 @@ main{
 
 /*------------ svg icon --------*/
 #icon_social{
-  width: 40px;
-  height: 40px;
+  width: 35px;
+  height: 35px;
   transition: all 0.2s;
 }
 #icon_social:hover{
