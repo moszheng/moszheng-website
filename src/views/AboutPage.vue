@@ -470,5 +470,4 @@ function ScrollTop() {
     transform: scale(1.35);
     object-fit: cover;
 }
-
 </style>

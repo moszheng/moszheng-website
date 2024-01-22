@@ -25,6 +25,16 @@
   }
 }
 
+@layer components {
+  .card {
+    overflow : hidden;
+    /* background-color: theme('colors.white');
+    border-radius: theme('borderRadius.lg');
+    padding: theme('spacing.6');
+    box-shadow: theme('boxShadow.xl'); */
+  }
+  
+}
 /* Main Padding */
 main{
   padding-right: 0 !important;
@@ -78,9 +88,6 @@ main{
   .card:hover .card-img {
     transform: scale(1.2);
   }
-}
-.card{
-  overflow : hidden;
 }
 .works-black, .works-destop-title{
   position: absolute;

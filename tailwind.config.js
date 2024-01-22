@@ -3,10 +3,10 @@ module.exports = {
   purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   content: [],
   theme: {
+    fontFamily: {
+      'sans': ['DM Sans', "PingFang TC", "Noto Sans TC", "Segoe UI", "Helvetica", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"],
+    },
     extend: {
-      fontFamily: {
-        'sans': ['DM Sans', "PingFang TC", "Noto Sans TC", "Segoe UI", "Helvetica", "sans-serif", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"],
-      },
       colors: {
         'main-orange': '#ff6a21',
         'main-black': '#161616',
