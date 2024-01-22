@@ -30,9 +30,9 @@ const colormode = computed(() => {
 </script>
 <template>
 <li class="nav-item my-2">
-    <div class="d-flex align-items-center">
+    <div class="flex items-center">
         <router-link :to="{ name : to }"
-            class="nav-link px-1 py-1 me-md-5"
+            class="nav-link relative py-2 px-4 md:me-12 text-lg"
             :class="{ navactive: isActive }"
             :style="colormode"
         >
@@ -44,7 +44,6 @@ const colormode = computed(() => {
 
 <style>
 .nav-link{
-    position: relative;
     transition: .15s ease-in-out;
 }
 .nav-link:hover {

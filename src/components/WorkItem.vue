@@ -129,7 +129,11 @@ onUnmounted(() => {
 
 /* --------Animation--------- */
 function ScrollTop() {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+    });
 }
 </script>
 
@@ -137,14 +141,14 @@ function ScrollTop() {
 <div class="WorksItem">
     <main class="mt-5 pt-5">
         <!-- video -->
-        <section class="ratio ratio-16x9 mb-5" data-scroll-section>
-            <iframe :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        <section class="relative mb-5">
+            <iframe class="aspect-video w-full" :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </section>
-        <div class="container" ref="imgContainer">
+        <div class="container mx-auto sm:px-4" ref="imgContainer">
             <!-- Workitem-info -->
-            <section class="workitem-info row mb-5 mx-md-3 mx-2 px-xl-5 px-3">
+            <section class="workitem-info flex flex-wrap mb-5 md:mx-4 mx-2 xl:px-12 px-3">
                 <!-- Left -->
-                <div class="col-md-9 mb-md-0 mb-5">
+                <div class="md:w-3/4 pr-4 pl-4 md:mb-0 mb-5">
                     <h3 class="hero-1 mb-4">{{ prjdata.en_name}}</h3>
                     <h6 class="hero-2 mb-3">@{{prjdata.company}}</h6>
                     <p class="hero-2 mb-4">{{prjdata.date}}</p>
@@ -163,25 +167,26 @@ function ScrollTop() {
                     </div>
                 </div>
                 <!-- Right -->
-                <div class="col-md-3 justify-content-end">
+                <div class="md:w-1/4 pr-4 pl-4 justify-end">
                     <h3 class="hero-3 mb-4">Roles</h3>
                     <p class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item">
                         {{item}}
                     </p>
                 </div>
-                <hr class="mt-5 hero-sep">
+                <hr class="mt-5">
+                <!-- <hr class="hero-sep border-gray-800"> -->
             </section>
             <!-- Workitem-Content -->
-            <section class="workitem-content mx-md-3 mx-1 mb-5 px-xl-5 px-3">
-                <div class="row mb-md-0 mb-5">
+            <section class="workitem-content md:mx-4 mx-1 mb-5 xl:px-12 px-3">
+                <div class="flex flex-wrap  md:mb-0 mb-5">
                     <!-- img -->
-                    <div class="col-xxl-7 mb-md-4 mb-5">
+                    <div class="2xl:w-1/2 md:mb-6 mb-5">
                         <div class="head-img-container img-container d-flex-center">
-                            <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img d-flex-center img-fluid lazy" alt="firstImg">
+                            <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img d-flex-center max-w-full h-auto lazy" alt="firstImg">
                         </div>
                     </div>
                     <!-- Right Content -->
-                    <div class="col-xxl-5">
+                    <div class="2xl:w-1/2">
                         <div class="content-context-container">
                             <p v-for="item in prjdata.msg" :key="item" id="content-context">
                                 {{item}}
@@ -193,49 +198,49 @@ function ScrollTop() {
                 <div>
                     <div class="mb-3">
                         <div class="img-container d-flex-center mb-3" v-for="(item, index) in contextImg" :key="item">
-                            <img :src="imgLocation(contextImg[index])" class="d-flex-center col img-fluid lazy" alt="contextImg">
+                            <img :src="imgLocation(contextImg[index])" class="d-flex-center relative flex-grow max-w-full flex-1 px-4 max-w-full h-auto lazy" alt="contextImg">
                         </div>
                     </div>
                 </div>
                 <hr class="mt-5">
             </section>
             <!-- credit -->
-            <section class="workitem-credit row mx-md-3 mx-1 mb-5 px-xl-5 px-3 ">
-                <div class="col-xl-5">
+            <section class="workitem-credit flex flex-wrap  md:mx-4 mx-1 mb-5 xl:px-12 px-3 ">
+                <div class="xl:w-2/5 pr-4 pl-4">
+                    <h4 class="credit-title mb-5">Credit</h4>
                 </div>
                 <!-- Right Content -->
-                <div class="col-xl-7">
-                    <h4 class="credit-title mb-5">Credit</h4>
-                    <div v-for = "value, key in prjdata.credit" class="credit-text row" :key="value">
-                        <p class="col-lg-4 col">{{key}}</p>
-                        <p class="col-lg-8 col">{{value}}</p>
+                <div class="xl:w-3/5 pr-4 pl-4">
+                    <div v-for = "value, key in prjdata.credit" class="credit-text flex flex-wrap mb-5" :key="value">
+                        <p class="lg:w-1/3 pr-4 pl-4 relative flex-grow max-w-full flex-1 px-4">{{key}}</p>
+                        <p class="lg:w-2/3 pr-4 pl-4 relative flex-grow max-w-full flex-1 px-4">{{value}}</p>
                     </div>
                 </div>
             </section>
-            <section class="workitem-end container-fluid text-center">
-                <a @click="ScrollTop()" class="nav-link p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+            <div class="about-end w-full mx-auto sm:px-4 max-w-full">
+                <a @click="ScrollTop" class="d-flex-center flex-col py-2 px-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                     </svg>
-                    <p>BACK TO TOP</p>
+                    <p class="text-sm">BACK TO TOP</p>
                 </a>
-            </section>
+            </div>
         </div>
         <!-- Other Prj -->
-        <section class="workitem-otherprj d-flex-center px-md-5 px-1 " data-scroll-section>
-            <div class="container">
+        <section class="workitem-otherprj d-flex-center md:px-12 px-1 " data-scroll-section>
+            <div class="container mx-auto sm:px-4">
                 <h3 class="text-white my-4">Other Projects</h3>
-                <div class="py-md-3 px-xl-0 px-3 bd-content">
-                    <div class="row">
-                        <div v-for="item in shuffleprj" class="col-xl-4" :key="item.url_name">
-                            <div class="card mb-4 text-white mx-2">
+                <div class="md:py-4 xl:px-0 px-3 bd-content">
+                    <div class="flex flex-wrap ">
+                        <div v-for="item in shuffleprj" class="xl:w-1/3 pr-4 pl-4" :key="item.url_name">
+                            <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 mb-4 text-white mx-2">
                                 <!-- routerlink -->
                                 <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
-                                    <img :src=imgLocation(item.img_md[0]) class="card-img lazy" alt="otherprjImg">
+                                    <img :src=imgLocation(item.img_md[0]) class="w-full rounded lazy" alt="otherprjImg">
                                     <div class="works-black"></div>
                                     <div class="works-destop-title text-white px-4">
-                                        <h4 class="card-title">{{ item.en_name }}</h4>
-                                        <p class="card-text">{{ item.date }}</p>
+                                        <h4 class="mb-3">{{ item.en_name }}</h4>
+                                        <p class="mb-0">{{ item.date }}</p>
                                     </div>
                                 </router-link>
                             </div>

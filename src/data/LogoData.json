@@ -33,6 +33,10 @@
             "img" : "./src/assets/icon/Vue_icon.svg"
         },
         {
+            "name" : "Tailwind",
+            "img" : "./src/assets/icon/Tailwind_icon.svg"
+        },
+        {
             "name" : "Bootstrap",
             "img" : "./src/assets/icon/Bootstrap_icon.svg"
         }

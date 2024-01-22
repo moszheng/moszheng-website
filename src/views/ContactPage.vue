@@ -3,29 +3,29 @@ import FooterItem from '@/components/FooterItem.vue';
 </script>
 <template>
 <div>
-    <main class="contact container d-flex-center">
-        <div class="row flex-fill px-lg-0 px-4 py-5 mb-xl-4">
-            <div class="col-xl-6">
+    <main class="contact h-screen container mx-auto sm:px-4 d-flex-center">
+        <div class="flex flex-wrap flex-fill w-full lg:px-0 px-4 py-5 xl:mb-6">
+            <div class="xl:w-1/2">
             </div>
-            <div class="contact-form col-xl-6 ">
+            <div class="contact-form max-w-screen-sm xl:w-1/2">
                 <form action="https://formspree.io/f/meqbdlnk" method="POST">
-                    <h2 class="mb-lg-5 mb-4">Contact</h2>
+                    <h2 class="lg:mb-12 mb-4">Contact</h2>
                     <!-- email -->
-                    <div class="form-group my-3 ">
+                    <div class="mb-4 text-base">
                         <label for="InputName">Name</label>
-                        <input class="form-control" name="Name" type="text" placeholder="">
+                        <input name="Name" type="text" placeholder="">
                     </div>
                     <!-- email -->
-                    <div class="form-group my-3">
+                    <div class="mb-4 text-base">
                         <label for="InputEmail1">Email</label>
-                        <input type="email" class="form-control" name="Email" id="InputEmail1" placeholder="">
+                        <input type="email" class="" name="Email" id="InputEmail1" placeholder="">
                     </div>
                     <!-- msg -->
-                    <div class="form-group my-3">
+                    <div class="mb-4 text-base">
                         <label for="FormControlTextarea1">Messenge</label>
-                        <textarea class="form-control" name="Messenge" id="FormControlTextarea1" rows="3"></textarea>
+                        <textarea class="" name="Messenge" id="FormControlTextarea1" rows="3"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary text-white mb-2">Send</button>
+                    <button type="submit" class="inline-block align-middle text-center text-base select-none border whitespace-no-wrap w-1/3 h-10 rounded-lg py-1 px-3 leading-normal no-underline bg-main-orange text-white hover:bg-orange-400 duration-300">Send</button>
                 </form>
             </div>
         </div>
@@ -34,13 +34,7 @@ import FooterItem from '@/components/FooterItem.vue';
 </div>
 </template>
 <style scoped>
-.contact{
-    height: 95vh;
-}
-.contact-form{
-    max-width: 600px;
-}
-.btn{
-    min-width: 30%;
+input, textarea {
+    @apply block appearance-none w-full py-1 px-2 mt-2 mb-5 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded-lg
 }
 </style>

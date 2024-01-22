@@ -105,7 +105,7 @@ onMounted(() => {
             },
             defaults: { ease: "power3.Out(1.7)" },
         });
-        introtl.to("#hero-4", { opacity: 0, yPercent: 0, ease: "power4.inOut(1.7)", duration: 2 });
+        // introtl.to("#hero-4", { opacity: 0, yPercent: 0, ease: "power4.inOut(1.7)", duration: 2 });
         // introtl.from(".intro-info", { yPercent: 15, duration: 0.7, stagger: 0.3 }, 0);
         introtl.from(".split-text", { opacity: 0, yPercent: 40, duration: 0.6, stagger: 0.01 }, 0);
         introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.5, duration: 0.5, stagger: 0.1 }, 0.35);
@@ -193,7 +193,11 @@ onUnmounted(() => {
 
 /* GSAP */
 function ScrollTop() {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+    });
 }
 
 </script>
@@ -202,60 +206,60 @@ function ScrollTop() {
     <main class="" ref="imgContainer">
         <!-- Hero -->
           <!--  -->
-        <section class="about-hero d-flex-center row mt-xl-0 mt-5 pt-5 px-xl-5 px-4 py-xl-5 pe-3">
+          <section class="about-hero d-flex-center flex flex-wrap  xl:mt-0 mt-5 pt-5 xl:px-12 px-4 xl:py-12 pe-3">
             <!-- profile image -->
-            <div class="heroRot col-xl-6 d-flex-center">
-                <div class="user-container heroRot mb-md-0 mb-3 position-relative">
-                    <img class="avatar-user_1 heroRot parallax lazy position-absolute start-0 w-100 h-auto" data-depth='1.05' alt="profile_image" :src=profileImage1>
-                    <img class="avatar-user_2 heroRot parallax lazy position-absolute start-0 w-100 h-auto" data-depth='1.15' alt="profile_image" :src=profileImage2>
+            <div class="heroRot d-flex-center xl:w-1/2 pr-4 pl-4">
+                <div class="user-container heroRot relative md:mb-0 mb-3">
+                    <img class="avatar-user_1 z-20 heroRot parallax lazy absolute left-0 w-full h-auto" data-depth='1.05' alt="profile_image" :src=profileImage1>
+                    <img class="avatar-user_2 z-10 parallax lazy absolute left-0 w-full h-auto" data-depth='1.15' alt="profile_image" :src=profileImage2>
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info col-xl-6 mt-xl-0 mt-4 ps-xl-4 px-md-5 px-0">
-                <div class="mb-md-1 mb-3">
+            <div class="about-hero-info xl:w-1/2 pr-4 pl-4 xl:mt-0 mt-4 xl:ps-6 md:px-12 px-0">
+                <div class="md:mb-1 mb-3">
                     <!-- Name -->
-                    <h1 class="mobile-center mb-md-0 mb-2" id="hero-1">Hello, I'm</h1>
+                    <h1 class="mobile-center md:mb-0 mb-2" id="hero-1">Hello, I'm</h1>
                     <!-- Name -->
-                    <h1 class="mobile-center mb-4" id="hero-2">Sheng Wen Cheng</h1>
+                    <h1 class="mobile-center mb-10" id="hero-2">Sheng Wen Cheng</h1>
                     <!-- Subtitle -->
-                    <div class="">
-                        <div class="mobile-center">
-                            <h4 class="mb-md-5 mb-4 px-xl-0 px-3" id="hero-3">
-                                A <strong class="text-primary">3D Generalist</strong> and <strong class="text-primary">Motion Designer</strong>
+                    <div class="flex">
+                        <div class="mobile-center flex flex-col items-center">
+                            <h4 class="md:text-left text-center md:mb-12 mb-10 xl:px-0 px-3" id="hero-3">
+                                A <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong>
                                 <br> based in Taiwan.
                             </h4>
-                        </div>
-                        <div class="text-center" id="hero-4" style="rotate: 180deg;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
-                            </svg>
+                            <div class="text-center" id="hero-4" style="rotate: 180deg;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center p-md-5 p-4">
-            <div class="about-intro-block mb-xl-3 mb-5 w-100">
+        <section class="about-intro d-flex-center md:p-12 p-6">
+            <div class="about-intro-block xl:mb-4 mb-5 w-full">
                 <!-- text -->
-                <div class="about-intro-info d-flex align-items-start mb-md-5">
+                <div class="about-intro-info flex items-start md:mb-12">
                     <!-- Intro -->
                     <div>
                         <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info mb-5">
-                            <span v-for="(text, index) in textarray" :key="index" class="d-inline-flex pe-2">
-                                <span class="d-block split-text"> {{ text }} </span>
+                            <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
+                                <span class="block split-text"> {{ text }} </span>
                                 <!-- {{ text }} -->
                                 <!-- &nbsp; -->
                             </span>
                         </h4>
                     </div>
                 </div>
-                <div class="d-xl-flex justify-content-end mt-xl-0 mt-4 px-xl-0 px-md-5 px-0">
+                <div class="xl:flex justify-end xl:mt-0 mt-4 xl:px-0 md:px-12 px-0">
                     <div class="about-intro-social">
                         <!-- Social media -->
-                        <ul class="navbar-nav flex-row mobile-center mb-4">
-                            <li v-for="item in LinkData.socialmedia" :key="item" class="nav-item intro-infosocial col-2 col-md-auto">
-                                <a class="nav-link p-2" :href="item.url" target="_blank" rel="noopener">
+                        <ul class="flex flex-wrap list-reset mb-4 flex-row mobile-center">
+                            <li v-for="item in LinkData.socialmedia" :key="item" class=" intro-infosocial w-1/5 col-md-auto">
+                                <a class="inline-block py-2 px-4 no-underline p-2" :href="item.url" target="_blank" rel="noopener">
                                     <svg id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
@@ -265,11 +269,11 @@ function ScrollTop() {
                         <!-- Contact info -->
                         <div class="mobile-center">
                             <div class="mb-4">
-                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact mb-2 p-2">
+                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact flex mb-2 p-2">
                                     <svg id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
-                                    <span class="ms-3">{{ item.text }}</span>
+                                    <h5 class="ml-3">{{ item.text }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -277,41 +281,41 @@ function ScrollTop() {
                 </div>
             </div>
         </section>
-        <!-- Experience -->
-        <section class="about-exp d-flex-center px-xl-5 px-3 text-white">
-            <div class="about-exp-block row mt-xl-0 mt-4 mb-4 mx-md-3">
+        <!-- Experience Breakpoint: xl, lg(1024) -->
+        <section class="about-exp d-flex-center xl:px-12 px-3 text-white bg-main-black">
+            <div class="about-exp-block flex flex-wrap xl:mt-0 mt-4 lg:mb-4 mb-8 md:mx-4">
                 <!-- Exp Title -->
-                <div class="col-lg-3" >
-                    <h2 class="mb-xl-4 mb-5" id="about-exp-title">Experience</h2>
+                <div class="lg:w-1/4 lg:mb-6 mb-5 px-4" >
+                    <h2 id="about-exp-title">Experience</h2>
                 </div>
-                <div class="col-lg-9 px-xl-3">
-                    <div class="about-job row mb-3 mt-3" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                <div class="lg:w-3/4 xl:px-4">
+                    <div class="about-job flex flex-wrap mb-10 last:mb-0 mt-3" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Exp Job Duration & timeline -->
-                        <div class="row col d-flex justify-content-center">
+                        <div class="flex flex-wrap relative flex-grow justify-center max-w-full flex-1 xl:px-4">
                             <!-- Toggle Duration -->
-                            <div class="col text-center duration-toggle">
+                            <div class="relative flex-grow max-w-full flex-1 px-4 text-center duration-toggle">
                                 <p>{{item.duration}}</p>
                             </div>
                             <!-- Mid -->
-                            <div class="d-flex justify-content-center col-3">
+                            <div class="flex justify-center w-1/4">
                                 <div class="timeline"></div>
-                                <div class="d-flex justify-content-center">
+                                <div class="flex justify-center">
                                     O
                                 </div>
                             </div>
                         </div>
                         <!-- Exp Job Content -->
-                        <div class="col-xl-9 col-10">
-                            <div class="row mb-4">
-                                <h4 class="exp-job-title col mb-2">{{ item.title }}</h4>
-                                <div class="d-flex">
+                        <div class="xl:w-3/4 xl:pl-2 pl-2 pr-4 w-4/5">
+                            <div class="mb-4">
+                                <h4 class="exp-job-title relative flex-grow max-w-full flex-1 mb-2">{{ item.title }}</h4>
+                                <div class="flex">
                                     <h6 class="exp-job-title me-4 mb-0">{{ item.company }}</h6>
                                     <span class="exp-p duration-toggled">{{item.duration}}</span>
                                 </div>
                             </div>
                             <!-- Job detail -->
                             <ul class="exp-p">
-                                <li v-for="content in item.detail" :key="content" class="exp-job-detail">
+                                <li v-for="content in item.detail" :key="content" class="exp-job-detail mb-2">
                                     <p>{{ content }}</p>
                                 </li>
                             </ul>
@@ -321,19 +325,19 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Skill -->
-        <section class="about-skill d-flex-center px-xl-5 px-4 py-5">
-            <div class="about-skill-block mt-xl-0 mt-4 mb-4">
+        <section class="about-skill d-flex-center xl:px-12 px-4 py-5 bg-main-grey">
+            <div class="about-skill-block xl:mt-0 mt-4 mb-4">
                 <!-- Skill Title -->
-                <div class="ps-lg-0 pe-md-5 px-3 mb-md-5 mb-2">
-                    <h2 class="mb-md-4 mb-5 text-center" id="skill-title">Service & Skill</h2>
+                <div class="lg:ps-0 md:pe-12 px-3 md:mb-12 my-2">
+                    <h2 class="md:mb-6 mb-5 text-center" id="skill-title">Service & Skill</h2>
                 </div>
                 <!-- Skill card -->
                 <div class="d-flex-center px-3">
                     <!-- Text -->
-                    <div class="about-skill-text row">
+                    <div class="about-skill-text flex flex-wrap ">
                         <!-- Skill -->
-                        <div class="about-skill-card col mx-2 my-xl-0 my-2 py-4 px-4" v-for="skill in ExpData.service" :key="skill">
-                            <h3 class="mb-md-5 mb-4" id="skill-card-title">{{skill.title}}</h3>
+                        <div class="about-skill-card flex-grow max-w-full flex-1 mx-2 xl:my-0 my-2 py-8 px-8" v-for="skill in ExpData.service" :key="skill">
+                            <h3 class="md:mb-12 mb-4" id="skill-card-title">{{skill.title}}</h3>
                             <h5 class="mb-3 " id="skill-card-text"
                                 v-for="(item, index) in skill.content" :key="item.name" :data-index="index"
                             >
@@ -342,17 +346,16 @@ function ScrollTop() {
                         </div>
                     </div>
                 </div>
-                <hr class="my-5" id="skill-sep">
                 <!-- Skill Icon -->
-                <div class="d-flex-center pe-md-3">
+                <div class="d-flex-center md:pe-4">
                     <div class="skill-icon-block vw-50">
-                        <h3 class="mb-md-5 mb-4 text-center" id="skill-tooltitle">Tools</h3>
+                        <h3 class="md:my-12 mb-4 text-center" id="skill-tooltitle">Tools</h3>
                         <!-- tools block -->
                         <div class="skill-logo-block d-flex-center flex-wrap">
-                            <div class="skill-logo-container d-flex-center col-md-2 col-3 mx-1 my-1 px-1 py-xl-3 py-2"
+                            <div class="skill-logo-container d-flex-center md:w-1/5 pr-4 pl-4 w-1/4 mx-1 my-1 px-1 xl:py-4 py-2"
                                 v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
                             >
-                                <img :src=item.img :alt=item.name class="img-fluid skill-logo">
+                                <img :src=item.img :alt=item.name class="max-w-full h-auto skill-logo">
                             </div>
                         </div>
                     </div>
@@ -360,18 +363,18 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Contact button-->
-        <!-- <section class="about-contact d-flex-center px-lg-5 px-4 py-5">
+        <!-- <section class="about-contact d-flex-center lg:px-5 px-4 py-5 bg-main-grey">
             <h2>Let's Get in Touch</h2>
-            <div class="d-flex align-items-center">
+            <div class="d-flex items-center">
                 <router-link :to="{ name : 'Contact' }" class="nav-link px-1 py-1 me-md-5">Contact</router-link>
             </div>
         </section> -->
-        <div class="about-end container-fluid text-center">
-            <a @click="ScrollTop()" class="nav-link p-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+        <div class="about-end w-full mx-auto sm:px-4 max-w-full bg-main-grey">
+            <a @click="ScrollTop" class="d-flex-center flex-col py-2 px-4">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                 </svg>
-                <p>BACK TO TOP</p>
+                <p class="text-sm">BACK TO TOP</p>
             </a>
         </div>
     </main>
@@ -403,9 +406,6 @@ function ScrollTop() {
     .skill-logo{
         width: 50px !important;
     }
-}
-ul {
-    padding-left: 1rem !important;
 }
 .duration-toggled{
     display: none;
@@ -442,17 +442,6 @@ ul {
     background-color: rgb(218, 219, 219);
     border-radius: 25px;
 }
-/* BG color */
-.about-exp{
-    background-color: var(--main-black);
-}
-/* .about-contact{
-    background-color: var(--main-color);
-} */
-
-.about-skill, .about-contact, .about-end{
-    background-color: var(--main-grey);
-}
 
 /*------- Job timeline-------*/
 .about-job:last-child .timeline {
@@ -477,18 +466,12 @@ ul {
     max-height: 600px;
     overflow: hidden;
     border-radius: 20px;
-    filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3));
+    /* filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3)); */
 }
 .avatar-user_1, .avatar-user_2{
     top: 8%;
     transform: scale(1.35);
     object-fit: cover;
-}
-.avatar-user_1{
-    z-index: 20;
-}
-.avatar-user_2 {
-    z-index: 10;
 }
 .skill-logo{
     /* scale: 50%; */

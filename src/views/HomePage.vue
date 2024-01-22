@@ -50,8 +50,8 @@ const loadingLeave = (el, done) => {
       @enter="enter"
       @leave="loadingLeave"
     >
-      <div class="index-loading position-absolute top-0 w-100 h-100" v-show="!finishloading">
-        <div class="container d-flex-center h-100">
+      <div class="index-loading z-20 bg-white absolute top-0 w-full h-full" v-show="!finishloading">
+        <div class="container mx-auto sm:px-4 d-flex-center h-full">
           <svg id="mos-logo">
             <use xlink:href="#icon-mosLogo"></use>
           </svg>
@@ -59,18 +59,19 @@ const loadingLeave = (el, done) => {
       </div>
     </Transition>
     <!----- BG ----->
-    <div class="index-bgcover position-absolute top-0 start-0 vw-100 vh-100">
+    <div class="index-bgcover absolute top-0 left-0 w-screen h-screen">
       <iframe
+        class="aspect-video"
         src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3" 
         allow="autoplay"
         @load="onMyFrameLoad"
         ></iframe>
     </div>
     <!--  Intro ---->
-    <div class="index-info position-absolute top-0 w-100 h-100">
-      <div class="container d-flex justify-content-end align-items-center h-100">
+    <div class="index-info z-10 absolute top-0 w-full h-full">
+      <div class="container mx-auto sm:px-4 flex justify-end items-center h-full">
         <!----- Main Content----->
-        <div class="mx-lg-5 px-lg-5 px-3 text-white">
+        <div class="lg:mx-12 lg:px-12 px-3 text-white">
           <h5 class="mb-2" id="home-name">Freelance 3D Generalist</h5>
           <h2 class="mb-5" id="home-name">Sheng Wen (Mos) Cheng</h2>
           <div class="mb-5">
@@ -80,7 +81,7 @@ const loadingLeave = (el, done) => {
           </div>
           <div class="index-btnarea">
             <router-link :to="{ name : 'Works' }">
-              <button type="button" class="btn btn-primary index-btn">Explore</button>
+              <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 index-btn">Explore</button>
             </router-link>
           </div>
         </div>
@@ -90,6 +91,7 @@ const loadingLeave = (el, done) => {
 </template>
 
 <style scoped>
+
 /* Mobile */
 @media only screen and (max-width: 1025px) {
   .index-btnarea{
@@ -105,10 +107,6 @@ const loadingLeave = (el, done) => {
     width: 21vh;
     height: 14vh;
     transition: .8s ease;
-}
-.index-loading{
-  background-color: #FFF;
-  z-index: 20;
 }
 .index-bgcover{
   background-repeat: no-repeat;
@@ -131,9 +129,6 @@ iframe {
   box-sizing: border-box;
   pointer-events: none;
   background-color: black;
-}
-.index-info{
-  z-index: 10;
 }
 /* Button */
 .index-btn{

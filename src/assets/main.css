@@ -3,6 +3,29 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Type */
+@layer base {
+  h1 {
+    @apply xl:text-7xl text-4xl font-bold;
+  }
+  h2 {
+    @apply xl:text-6xl text-3xl font-bold;
+  }
+  h3 {
+    @apply xl:text-4xl text-2xl font-bold;
+  }
+  h4 {
+    @apply xl:text-2xl text-xl font-bold;
+  }
+  h5 {
+    @apply xl:text-xl text-lg;
+  }
+  h6 {
+    @apply text-base;
+  }
+}
+
+
 /* Main Padding */
 main{
   padding-right: 0 !important;
@@ -88,8 +111,8 @@ main{
 
 /*------------ svg icon --------*/
 #icon_social{
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
   transition: all 0.2s;
 }
 #icon_social:hover{
