@@ -1,11 +1,11 @@
 {
     "logo" : [
         {
-            "name" : "AE",
+            "name" : "AfterEffects",
             "img" : "./src/assets/icon/AE_icon.svg"
         },
         {
-            "name" : "C4D",
+            "name" : "Cinema4D",
             "img" : "./src/assets/icon/C4D_icon.png"
         },
         {
@@ -29,7 +29,7 @@
             "img" : "./src/assets/icon/Python_icon.png"
         },
         {
-            "name" : "Vue",
+            "name" : "Vue3",
             "img" : "./src/assets/icon/Vue_icon.svg"
         },
         {

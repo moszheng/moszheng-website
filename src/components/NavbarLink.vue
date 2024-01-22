@@ -23,7 +23,7 @@ const isActive = computed(() => {
     <div class="flex items-center">
         <!-- :style="colormode" -->
         <router-link :to="{ name : to }"
-            class="nav-link relative py-2 px-4 md:me-12 text-lg"
+            class="nav-link relative p-1 md:me-12 text-lg"
             :class="{ navactive: isActive}"
         >
             {{ props.to }}

@@ -352,10 +352,13 @@ function ScrollTop() {
                         <h3 class="md:my-12 mb-4 text-center" id="skill-tooltitle">Tools</h3>
                         <!-- tools block -->
                         <div class="skill-logo-block d-flex-center flex-wrap">
-                            <div class="skill-logo-container d-flex-center md:w-1/5 pr-4 pl-4 w-1/4 mx-1 my-1 px-1 xl:py-4 py-2"
+                            <div class="skill-logo-container group d-flex-center md:w-1/5"
                                 v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
                             >
-                                <img :src=item.img :alt=item.name class="max-w-full h-auto skill-logo">
+                                <div class="rounded-md group-hover:bg-gray-300 mx-1 my-1 px-4 xl:py-4 py-2 duration-300">
+                                    <img :src=item.img :alt=item.name class="skill-logo max-w-full group-hover:scale-105 h-auto xl:w-12 w-10 duration-200">
+                                </div>
+                                <span class="absolute -bottom-2 group-hover:-bottom-5 opacity-0 group-hover:opacity-100 bg-gray-600 rounded-lg text-white px-3 py-1 duration-300">{{ item.name }}</span>
                             </div>
                         </div>
                     </div>
@@ -402,9 +405,6 @@ function ScrollTop() {
         width: 35vmax !important;
         min-height: 40vmax !important;
         max-height: 600px;
-    }
-    .skill-logo{
-        width: 50px !important;
     }
 }
 .duration-toggled{
@@ -470,12 +470,5 @@ function ScrollTop() {
     transform: scale(1.35);
     object-fit: cover;
 }
-.skill-logo{
-    /* scale: 50%; */
-    width: 65px;
-    transition: .2s ease;
-}
-.skill-logo:hover{
-    transform: scale(1.1);
-}
+
 </style>

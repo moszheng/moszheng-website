@@ -135,7 +135,7 @@ function onLeave(el, done) {
 
 <template>
     <header class="relative flex flex-wrap items-center content-between py-3 px-4 lg:flex-no-wrap">
-        <div class="navcontainer z-[100] flex flex-wrap fixed items-center justify-between w-full top-0 left-0 mx-auto sm:px-4 max-w-full px-lg-6 px-4 pt-2 xl:pb-2 pb-4">
+        <div class="navcontainer z-[100] flex flex-wrap fixed items-center justify-between w-full max-w-full top-0 left-0 mx-auto lg:px-10 sm:px-4 pt-2 xl:pb-2 pb-6">
             <!-- LOGO -->
             <div class="navbar-brand inline-block pt-1 pb-1 mr-4 whitespace-no-wrap text-xl flex-col md:flex-row items-center">
                 <router-link :to="{ name : 'Home' }" class="inline-block py-2 px-4 no-underline link-dark active" aria-current="page">
