@@ -69,9 +69,9 @@ const loadingLeave = (el, done) => {
     </div>
     <!--  Intro ---->
     <div class="index-info z-10 absolute top-0 w-full h-full">
-      <div class="container mx-auto sm:px-4 flex justify-end items-center h-full">
+      <div class="container mx-auto sm:px-4 flex xl:justify-end justify-center items-center h-full">
         <!----- Main Content----->
-        <div class="lg:mx-12 lg:px-12 px-3 text-white">
+        <div class="lg:px-0 px-3 text-white">
           <h5 class="mb-2" id="home-name">Freelance 3D Generalist</h5>
           <h2 class="mb-5" id="home-name">Sheng Wen (Mos) Cheng</h2>
           <div class="mb-5">
@@ -81,7 +81,7 @@ const loadingLeave = (el, done) => {
           </div>
           <div class="index-btnarea">
             <router-link :to="{ name : 'Works' }">
-              <button type="button" class="inline-block align-middle text-center select-none border font-normal whitespace-no-wrap rounded py-1 px-3 leading-normal no-underline bg-blue-600 text-white hover:bg-blue-600 index-btn">Explore</button>
+              <button type="button" class="inline-block select-none rounded py-1 px-3 leading-normal index-btn">Explore</button>
             </router-link>
           </div>
         </div>

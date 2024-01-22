@@ -12,6 +12,10 @@ module.exports = {
         'main-black': '#161616',
         'main-grey': '#e4e4e4',
       },
+      screens: {
+        '3xl': '1792px',
+        '4xl': '2148px',
+      },
       // fontSize: {
       //   sm: '0.8rem',
       //   base: '1rem',

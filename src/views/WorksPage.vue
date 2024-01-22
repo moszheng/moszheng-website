@@ -94,13 +94,13 @@ function ScrollTop() {
 <template>
 <div class="works">
     <main class="container mx-auto sm:px-4 mt-4 pt-5 overflow-hidden">
-        <div class="flex flex-wrap  pt-5 md:mx-0 mx-1" data-masonry='{"percentPosition": true }'>
-            <div v-for="(item, index) in WorksData.project" :key="index" class="lg:w-1/3 pr-4 pl-4 lg:mb-4 lg:px-2">
-                <div class="relative flex flex-col min-w-0 rounded break-words border bg-white border-1 border-gray-300 lg:mb-0 mb-3 text-white" :style="randomHeight(index)">
+        <section class="flex flex-wrap pt-5 md:mx-0 mx-1" data-masonry='{"percentPosition": true }'>
+            <div v-for="(item, index) in WorksData.project" :key="index" class="lg:w-1/3 lg:mb-4 lg:px-2 w-full px-4">
+                <div class="card relative flex flex-col min-w-0 break-words lg:mb-0 mb-3 bg-gray-600 text-white" :style="randomHeight(index)">
                     <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
                         <!-- replaceimg -->
                         <div class="max-w-full h-auto">
-                            <img :src=imgLocation(item.img_md[0]) class="w-full rounded parallax lazy" :alt="item.name">
+                            <img :src=imgLocation(item.img_md[0]) class="card-img lazy w-full parallax" :alt="item.name">
                         </div>
                         <!-- desktop title -->
                         <div class="works-black"></div>
@@ -116,8 +116,8 @@ function ScrollTop() {
                     <p class="mb-0">{{ item.date }}</p>
                 </div>
             </div>
-        </div>
-        <div class="about-end w-full mx-auto sm:px-4 max-w-full">
+        </section>
+        <div class="work-end w-full mx-auto sm:px-4 max-w-full">
             <a @click="ScrollTop" class="d-flex-center flex-col py-2 px-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
@@ -131,8 +131,5 @@ function ScrollTop() {
 </template>
 
 <style scoped>
-.card{
-    background-color: rgb(235, 235, 235);
-}
 </style>
 
