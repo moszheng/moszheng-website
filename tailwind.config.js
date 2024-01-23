@@ -10,7 +10,7 @@ module.exports = {
       colors: {
         'main-orange': '#ff6a21',
         'main-black': '#161616',
-        'main-grey': '#e4e4e4',
+        'main-gray': '#e4e4e4',
       },
       screens: {
         '3xl': '1792px',

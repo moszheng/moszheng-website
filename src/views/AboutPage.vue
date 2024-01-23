@@ -15,6 +15,9 @@ const profileImage1 = '../src/img/profile_1.png';
 const profileImage2 = '../src/img/profile_2.png';
 
 // Split content
+const heroHello = "Hello, I'm";
+const heroName = "Sheng Wen Cheng";
+
 const introcontent = computed(() => {
     const arr = [];
     ExpData.about.forEach((el) => {
@@ -23,6 +26,10 @@ const introcontent = computed(() => {
   return arr;
 });
 
+const splitText = (string) => {
+    const arr = string.split(" ");
+    return arr;
+};
 /* ------------ Transition GSAP --------------------*/
 const store = useNavStore();
 const changeNavbarState = (state) => {
@@ -90,10 +97,11 @@ onMounted(() => {
         //     });
         // };
         /* Hero Section */
-        const herotl = gsap.timeline({defaults: { ease: "back.inOut(1.7)", duration: 0.8 }});
-        herotl.from("#hero-1", { opacity: 0, yPercent: 150, rotationX: 90 }, 0.3);
-        herotl.from("#hero-2", { opacity: 0, yPercent: 150, rotationX: 90 }, 0.5);
-        herotl.from("#hero-3", { opacity: 0, yPercent: 20, ease: "power4.inOut(1.7)", duration: 1.5 }, 0.8);
+        const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
+        // herotl.from(".user-container", { width: "60vmin", stagger: 0.25 }, 0);
+        herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.3);
+        herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.1 }, 0.8);
+        herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut(1.7)", duration: 1.5 }, 0.9);
         herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2);
         /* Intro Section*/
         const introtl = gsap.timeline({
@@ -205,26 +213,34 @@ function ScrollTop() {
 <div class="About">
     <main class="" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center flex flex-wrap xl:h-screen h-svh xl:mt-0 mt-12 pt-5 xl:px-16 px-4 xl:py-12  pe-3">
+        <section class="about-hero d-flex-center flex flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12">
             <!-- profile image -->
             <div class="heroRot d-flex-center xl:w-1/2 pr-4 pl-4">
-                <div class="user-container heroRot relative md:mb-0 mb-3">
+                <div class="user-container heroRot relative">
                     <img class="avatar-user_1 z-20 heroRot parallax lazy absolute left-0 w-full h-auto" data-depth='1.05' alt="profile_image" :src=profileImage1>
                     <img class="avatar-user_2 z-10 parallax lazy absolute left-0 w-full h-auto" data-depth='1.15' alt="profile_image" :src=profileImage2>
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info xl:w-1/2 pr-4 pl-4 xl:mt-0 mt-4 xl:ps-6 md:px-12 px-0">
+            <div class="about-hero-info xl:w-1/2 xl:ps-6 md:px-12 px-0">
                 <div class="md:mb-1 mb-3">
                     <!-- Name -->
-                    <h1 class="mobile-center md:mb-0 mb-2" id="hero-1">Hello, I'm</h1>
+                    <h1 class="mobile-center md:mb-0 mb-2">
+                        <span v-for="(text, index) in splitText(heroHello)" :key="index" class="inline-flex xl:pe-4 pe-2">
+                            <span class="block font-bold" id="hero-hello"> {{ text }} </span>
+                        </span>
+                    </h1>
                     <!-- Name -->
-                    <h1 class="mobile-center mb-10" id="hero-2">Sheng Wen Cheng</h1>
+                    <h1 class="mobile-center md:mb-10 mb-8">
+                        <span v-for="(text, index) in splitText(heroName)" :key="index" class="inline-flex xl:pe-4 pe-2">
+                            <span class="block font-bold" id="hero-name"> {{ text }} </span>
+                        </span>
+                    </h1>
                     <!-- Subtitle -->
                     <div class="flex">
                         <div class="mobile-center flex flex-col items-center">
-                            <h4 class="md:text-left text-center md:mb-12 mb-10 xl:px-0 px-3" id="hero-3">
-                                A <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong>
+                            <h4 class="md:text-left text-center md:mb-12 mb-10" id="hero-detail">
+                                <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong>
                                 <br> based in Taiwan.
                             </h4>
                             <div class="text-center" id="hero-4" style="rotate: 180deg;">
@@ -238,7 +254,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6">
+        <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6 rounded-b-lg">
             <div class="about-intro-block xl:mb-4 mb-5 w-full">
                 <!-- text -->
                 <div class="about-intro-info flex items-start md:mb-12 mb-10">
@@ -247,8 +263,6 @@ function ScrollTop() {
                         <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info">
                             <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
                                 <span class="block split-text"> {{ text }} </span>
-                                <!-- {{ text }} -->
-                                <!-- &nbsp; -->
                             </span>
                         </h4>
                     </div>
@@ -281,31 +295,33 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
-        <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 text-white bg-main-black">
+        <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 py-5 text-white bg-main-black rounded-b-2xl">
             <div class="about-exp-block flex flex-wrap xl:mt-0 lg:mb-4 mt-10 mb-8">
                 <!-- Exp Title -->
                 <div class="lg:w-1/4 lg:mb-6 mb-10 lg:pl-0 lg:pr-4 px-4">
                     <h2 id="about-exp-title">Experience</h2>
                 </div>
                 <!-- Timeline -->
-                <div class="lg:w-3/4 xl:px-4 space-y-12">
-                    <div class="about-job flex flex-wrap" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                <div class="lg:w-3/4 xl:px-4 md:space-y-7 space-y-5">
+                    <div class="about-job group flex flex-wrap" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Exp Job Duration & timeline -->
                         <div class="flex flex-wrap relative flex-grow justify-center max-w-full flex-1 xl:px-4">
                             <!-- Toggle Duration -->
-                            <div class="relative flex-grow max-w-full flex-1 px-2 py-4 text-center duration-toggle">
+                            <div class="relative flex-grow max-w-full flex-1 px-2 py-8 text-center duration-toggle">
                                 <p>{{item.duration}}</p>
                             </div>
                             <!-- Mid -->
                             <div class="w-1/4 flex justify-center">
-                                <div class="timeline"></div>
-                                <div class="flex justify-center py-4">
-                                    O
+                                <!-- from-transparent via-[#818181] to-transparent -->
+                                <!-- from-[#818181] to-transparent -->
+                                <div class="timeline top-[70px] bg-gradient-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
+                                <div class="flex justify-center py-9">
+                                    <div class="rounded-full group-hover:bg-main-orange bg-main-gray w-2.5 h-2.5 duration-200"></div>
                                 </div>
                             </div>
                         </div>
                         <!-- Exp Job Content -->
-                        <div class="xl:w-3/4 w-4/5 xl:pl-4 pl-2 pr-4 py-3 rounded-lg">
+                        <div class="xl:w-3/4 w-4/5 xl:pl-4 pl-2 pr-4 py-6 rounded-lg bg-gradient-to-r group-hover:from-transparent group-hover:to-[#242222]">
                             <div class="mb-6">
                                 <h4 class="exp-job-title relative flex-grow max-w-full flex-1 mb-2">{{ item.title }}</h4>
                                 <div class="flex">
@@ -325,7 +341,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Skill -->
-        <section class="about-skill d-flex-center min-h-screen xl:px-20 xl:py-12 px-4 py-5 bg-main-grey ">
+        <section class="about-skill d-flex-center min-h-screen xl:px-20 xl:py-12 px-4 py-5 bg-main-gray ">
             <div class="about-skill-block xl:mt-0 mt-4 mb-4">
                 <!-- Skill Title -->
                 <div class="lg:ps-0 md:pe-12 px-3 md:mb-12 my-2">
@@ -334,9 +350,11 @@ function ScrollTop() {
                 <!-- Skill card -->
                 <div class="d-flex-center px-3 divide-y divide-gray-300/50">
                     <!-- Text -->
-                    <div class="about-skill-text flex flex-wrap">
+                    <div class="about-skill-text  flex flex-wrap">
                         <!-- Skill -->
-                        <div class="about-skill-card flex-grow max-w-full flex-1 mx-4 xl:my-0 my-2 p-10 shadow-xl" v-for="skill in ExpData.service" :key="skill">
+                        <div class="about-skill-card flex-grow max-w-full flex-1 mx-4 xl:my-0 my-2 p-10 shadow-xl "
+                            v-for="skill in ExpData.service" :key="skill"
+                        >
                             <h3 class="md:mb-12 mb-4" id="skill-card-title">{{skill.title}}</h3>
                             <h5 class="mb-3" id="skill-card-text"
                                 v-for="(item, index) in skill.content" :key="item.name" :data-index="index"
@@ -366,13 +384,13 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Contact button-->
-        <!-- <section class="about-contact d-flex-center lg:px-5 px-4 py-5 bg-main-grey">
+        <!-- <section class="about-contact d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
             <h2>Let's Get in Touch</h2>
             <div class="d-flex items-center">
                 <router-link :to="{ name : 'Contact' }" class="nav-link px-1 py-1 me-md-5">Contact</router-link>
             </div>
         </section> -->
-        <div class="about-end w-full mx-auto sm:px-4 max-w-full bg-main-grey">
+        <div class="about-end w-full mx-auto sm:px-4 max-w-full bg-main-gray">
             <a @click="ScrollTop" class="d-flex-center flex-col py-2 px-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
@@ -446,10 +464,10 @@ function ScrollTop() {
 }
 .timeline {
     visibility: hidden;
-    background-color: rgb(117, 117, 117);
+    /* background-color: rgb(117, 117, 117); */
     content: '';
     position: absolute;
-    top: 60px;
+    /* top: 85px; */
     width: 1px;
     height: calc(100% - 10px);
     transform-origin: top;
