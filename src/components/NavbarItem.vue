@@ -135,10 +135,10 @@ function onLeave(el, done) {
 
 <template>
     <header class="relative flex flex-wrap items-center content-between py-3 px-4 lg:flex-no-wrap">
-        <div class="navcontainer z-[100] flex flex-wrap fixed items-center justify-between w-full max-w-full top-0 left-0 mx-auto lg:px-10 sm:px-4 pt-2 xl:pb-2 pb-6">
+        <div class="navcontainer z-[100] flex flex-wrap fixed items-center justify-between w-full max-w-full top-0 left-0 mx-auto lg:px-10 px-4 pt-2 xl:pb-2 pb-6">
             <!-- LOGO -->
             <div class="navbar-brand inline-block pt-1 pb-1 mr-4 whitespace-no-wrap text-xl flex-col md:flex-row items-center">
-                <router-link :to="{ name : 'Home' }" class="inline-block py-2 px-4 no-underline link-dark active" aria-current="page">
+                <router-link :to="{ name : 'Home' }" class="inline-block py-2 pr-4 no-underline link-dark active" aria-current="page">
                     <Transition name="fade" mode="out-in">
                         <svg id="mos-logo" :style="colormode">
                             <use xlink:href="#icon-mosLogo"></use>
@@ -190,7 +190,7 @@ function onLeave(el, done) {
                                     </li>
                                 </TransitionGroup>
                             </div>
-                            <button class="toggler-icon-xl px-5 py-2" type="button" @click="rotateButton">
+                            <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
                                 <svg id="icon-plus-area" :style="colormode">
                                     <use xlink:href="#icon-plus"></use>
                                 </svg>

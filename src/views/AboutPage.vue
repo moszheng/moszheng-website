@@ -205,8 +205,7 @@ function ScrollTop() {
 <div class="About">
     <main class="" ref="imgContainer">
         <!-- Hero -->
-          <!--  -->
-          <section class="about-hero d-flex-center flex flex-wrap h-screen xl:mt-0 mt-5 pt-5 xl:px-12 px-4 xl:py-12 pe-3">
+        <section class="about-hero d-flex-center flex flex-wrap xl:h-screen h-svh xl:mt-0 mt-12 pt-5 xl:px-16 px-4 xl:py-12  pe-3">
             <!-- profile image -->
             <div class="heroRot d-flex-center xl:w-1/2 pr-4 pl-4">
                 <div class="user-container heroRot relative md:mb-0 mb-3">
@@ -239,13 +238,13 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center md:p-12 p-6">
+        <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6">
             <div class="about-intro-block xl:mb-4 mb-5 w-full">
                 <!-- text -->
-                <div class="about-intro-info flex items-start md:mb-12">
+                <div class="about-intro-info flex items-start md:mb-12 mb-10">
                     <!-- Intro -->
-                    <div>
-                        <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info mb-5">
+                    <div class="space-y-5">
+                        <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info">
                             <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
                                 <span class="block split-text"> {{ text }} </span>
                                 <!-- {{ text }} -->
@@ -254,12 +253,12 @@ function ScrollTop() {
                         </h4>
                     </div>
                 </div>
-                <div class="xl:flex justify-end xl:mt-0 mt-4 xl:px-0 md:px-12 px-0">
+                <div class="xl:flex justify-end xl:px-0 md:px-12 px-0">
                     <div class="about-intro-social">
                         <!-- Social media -->
-                        <ul class="flex flex-wrap list-reset mb-4 flex-row mobile-center">
+                        <ul class="flex flex-wrap list-reset mb-10 flex-row mobile-center">
                             <li v-for="item in LinkData.socialmedia" :key="item" class=" intro-infosocial w-1/5 col-md-auto">
-                                <a class="inline-block py-2 px-4 no-underline p-2" :href="item.url" target="_blank" rel="noopener">
+                                <a class="inline-block py-2 md:pl-2 md:pr-4 px-4" :href="item.url" target="_blank" rel="noopener">
                                     <svg id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
@@ -282,41 +281,42 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
-        <section class="about-exp d-flex-center h-screen xl:px-12 px-3 text-white bg-main-black">
-            <div class="about-exp-block flex flex-wrap xl:mt-0 mt-4 lg:mb-4 mb-8 md:mx-4">
+        <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 text-white bg-main-black">
+            <div class="about-exp-block flex flex-wrap xl:mt-0 lg:mb-4 mt-10 mb-8">
                 <!-- Exp Title -->
-                <div class="lg:w-1/4 lg:mb-6 mb-5 px-4" >
+                <div class="lg:w-1/4 lg:mb-6 mb-10 lg:pl-0 lg:pr-4 px-4">
                     <h2 id="about-exp-title">Experience</h2>
                 </div>
-                <div class="lg:w-3/4 xl:px-4">
-                    <div class="about-job flex flex-wrap mb-10 last:mb-0 mt-3" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                <!-- Timeline -->
+                <div class="lg:w-3/4 xl:px-4 space-y-12">
+                    <div class="about-job flex flex-wrap" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Exp Job Duration & timeline -->
                         <div class="flex flex-wrap relative flex-grow justify-center max-w-full flex-1 xl:px-4">
                             <!-- Toggle Duration -->
-                            <div class="relative flex-grow max-w-full flex-1 px-4 text-center duration-toggle">
+                            <div class="relative flex-grow max-w-full flex-1 px-2 py-4 text-center duration-toggle">
                                 <p>{{item.duration}}</p>
                             </div>
                             <!-- Mid -->
-                            <div class="flex justify-center w-1/4">
+                            <div class="w-1/4 flex justify-center">
                                 <div class="timeline"></div>
-                                <div class="flex justify-center">
+                                <div class="flex justify-center py-4">
                                     O
                                 </div>
                             </div>
                         </div>
                         <!-- Exp Job Content -->
-                        <div class="xl:w-3/4 xl:pl-2 pl-2 pr-4 w-4/5">
-                            <div class="mb-4">
+                        <div class="xl:w-3/4 w-4/5 xl:pl-4 pl-2 pr-4 py-3 rounded-lg">
+                            <div class="mb-6">
                                 <h4 class="exp-job-title relative flex-grow max-w-full flex-1 mb-2">{{ item.title }}</h4>
                                 <div class="flex">
-                                    <h6 class="exp-job-title me-4 mb-0">{{ item.company }}</h6>
+                                    <h6 class="exp-job-title mr-4 mb-0">{{ item.company }}</h6>
                                     <span class="exp-p duration-toggled">{{item.duration}}</span>
                                 </div>
                             </div>
                             <!-- Job detail -->
-                            <ul class="exp-p list-disc pl-3">
-                                <li v-for="content in item.detail" :key="content" class="exp-job-detail mb-2">
-                                    <p>{{ content }}</p>
+                            <ul class="exp-p list-disc space-y-2 pl-3 max-w-2xl">
+                                <li v-for="content in item.detail" :key="content" class="exp-job-detail">
+                                    <h6>{{ content }}</h6>
                                 </li>
                             </ul>
                         </div>
@@ -325,20 +325,20 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Skill -->
-        <section class="about-skill d-flex-center h-screen xl:px-12 px-4 py-5 bg-main-grey">
+        <section class="about-skill d-flex-center min-h-screen xl:px-20 xl:py-12 px-4 py-5 bg-main-grey ">
             <div class="about-skill-block xl:mt-0 mt-4 mb-4">
                 <!-- Skill Title -->
                 <div class="lg:ps-0 md:pe-12 px-3 md:mb-12 my-2">
                     <h2 class="md:mb-6 mb-5 text-center" id="skill-title">Service & Skill</h2>
                 </div>
                 <!-- Skill card -->
-                <div class="d-flex-center px-3">
+                <div class="d-flex-center px-3 divide-y divide-gray-300/50">
                     <!-- Text -->
-                    <div class="about-skill-text flex flex-wrap ">
+                    <div class="about-skill-text flex flex-wrap">
                         <!-- Skill -->
-                        <div class="about-skill-card flex-grow max-w-full flex-1 mx-2 xl:my-0 my-2 py-8 px-8" v-for="skill in ExpData.service" :key="skill">
+                        <div class="about-skill-card flex-grow max-w-full flex-1 mx-4 xl:my-0 my-2 p-10 shadow-xl" v-for="skill in ExpData.service" :key="skill">
                             <h3 class="md:mb-12 mb-4" id="skill-card-title">{{skill.title}}</h3>
-                            <h5 class="mb-3 " id="skill-card-text"
+                            <h5 class="mb-3" id="skill-card-text"
                                 v-for="(item, index) in skill.content" :key="item.name" :data-index="index"
                             >
                                 {{item.name}}
@@ -449,9 +449,9 @@ function ScrollTop() {
     background-color: rgb(117, 117, 117);
     content: '';
     position: absolute;
-    top: 40px;
+    top: 60px;
     width: 1px;
-    height: calc(100% - 30px);
+    height: calc(100% - 10px);
     transform-origin: top;
     transform-style: preserve-3D;
 }
