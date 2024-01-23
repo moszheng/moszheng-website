@@ -71,6 +71,18 @@ onMounted(() => {
         });
     });
     ctx = gsap.context((self) => {
+        // img
+        gsap.utils.toArray(".prj-img").forEach((layer) => {
+            gsap.to(layer, {
+                scrollTrigger: {
+                    trigger: layer,
+                    // markers: true,
+                    start: "clamp(top 80%)",
+                },
+                autoAlpha: 1,
+            });
+        });
+        // Hero GSAP
         const herotl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".workitem-info",
@@ -174,8 +186,7 @@ function ScrollTop() {
                     </p>
                 </div>
             </section>
-            <!-- <hr class="hero-sep border-gray-800"> -->
-            <hr class="my-8">
+            <hr class="hero-sep my-8">
             <!-- Workitem-Content -->
             <section class="workitem-content md:mx-4 mx-1 mb-5 xl:px-12 px-3">
                 <div class="flex flex-wrap md:mb-0 mb-5">
@@ -187,7 +198,7 @@ function ScrollTop() {
                     </div>
                     <!-- Right Content -->
                     <div class="xl:w-1/2 xl:mb-0 mb-5">
-                        <div class="content-container">
+                        <div class="content-container space-y-5 max-w-2xl">
                             <p v-for="item in prjdata.msg" :key="item" id="content-context">
                                 {{item}}
                             </p>
@@ -195,11 +206,9 @@ function ScrollTop() {
                     </div>
                 </div>
                 <!-- imgs -->
-                <div>
-                    <div class="">
-                        <div class="img-container d-flex-center mb-3" v-for="(item, index) in contextImg" :key="item">
-                            <img :src="imgLocation(contextImg[index])" class="d-flex-center flex-grow max-w-full flex-1 h-auto lazy" alt="contextImg">
-                        </div>
+                <div class="prj-imgs">
+                    <div class="prj-img img-container d-flex-center mb-3 bg-gray-300" v-for="(item, index) in contextImg" :key="item">
+                        <img :src="imgLocation(contextImg[index])" class="d-flex-center flex-grow max-w-full flex-1 h-full lazy" alt="contextImg">
                     </div>
                 </div>
                 <hr class="mt-5">
@@ -217,7 +226,7 @@ function ScrollTop() {
                 </div>
             </section>
             <div class="work-end w-full mx-auto sm:px-4 max-w-full">
-                <a @click="ScrollTop" class="d-flex-center flex-col py-2 px-4">
+                <a @click="ScrollTop" class="d-flex-center flex-col p-4">
                     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                     </svg>
@@ -233,7 +242,7 @@ function ScrollTop() {
                 <div class="md:py-4 xl:px-0 px-3 bd-content">
                     <div class="flex flex-wrap ">
                         <div v-for="item in shuffleprj" class="lg:w-1/3 w-full max-w-full shrink-0 px-2" :key="item.url_name">
-                            <div class="card relative flex min-w-0 break-words bg-gray-800 mb-4 text-white">
+                            <div class="card relative flex mb-4 bg-gray-800  text-white">
                                 <!-- routerlink -->
                                 <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
                                     <img :src=imgLocation(item.img_md[0]) class="card-img lazy w-full" alt="otherprjImg">
@@ -254,6 +263,9 @@ function ScrollTop() {
 </div>
 </template>
 <style scoped>
+.prj-img{
+    opacity: 0;
+}
 /* -----Section------ */
 @media only screen and (min-width: 1200px) {
     .workitem-info{

@@ -179,7 +179,7 @@ onMounted(() => {
             skilltl.from(cardtitle, { opacity: 0, yPercent: 20, rotateX: 45, duration: 1 }, delay + 0.1);
             skilltl.from(cardtext, { opacity: 0, yPercent: 20, duration: 0.5, stagger: 0.1 }, delay + 0.25);
         });
-        skilltl.from("#skill-sep", { scaleX: 0, ease: "back.Out(1.7)", duration: 1 }, 1);
+        // skilltl.from("#skill-sep", { scaleX: 0, ease: "back.Out(1.7)", duration: 1 }, 1);
         // Skill Icon Group
         const icontl = gsap.timeline({
             scrollTrigger: {
@@ -216,7 +216,7 @@ function ScrollTop() {
         <section class="about-hero d-flex-center flex flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12">
             <!-- profile image -->
             <div class="heroRot d-flex-center xl:w-1/2 pr-4 pl-4">
-                <div class="user-container heroRot relative">
+                <div class="user-container heroRot relative rounded-2xl max-h-[600px]">
                     <img class="avatar-user_1 z-20 heroRot parallax lazy absolute left-0 w-full h-auto" data-depth='1.05' alt="profile_image" :src=profileImage1>
                     <img class="avatar-user_2 z-10 parallax lazy absolute left-0 w-full h-auto" data-depth='1.15' alt="profile_image" :src=profileImage2>
                 </div>
@@ -255,9 +255,9 @@ function ScrollTop() {
         </section>
         <!-- Intro 2-->
         <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6 rounded-b-lg">
-            <div class="about-intro-block xl:mb-4 mb-5 w-full">
+            <div class="about-intro-block container xl:mb-4 mb-5 w-full">
                 <!-- text -->
-                <div class="about-intro-info flex items-start md:mb-12 mb-10">
+                <div class="about-intro-info max-w-4xl flex items-start md:mb-12 mb-10">
                     <!-- Intro -->
                     <div class="space-y-5">
                         <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info">
@@ -296,13 +296,13 @@ function ScrollTop() {
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
         <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 py-5 text-white bg-main-black rounded-b-2xl">
-            <div class="about-exp-block flex flex-wrap xl:mt-0 lg:mb-4 mt-10 mb-8">
+            <div class="about-exp-block container flex flex-wrap xl:mt-0 lg:mb-4 mt-10 mb-8">
                 <!-- Exp Title -->
-                <div class="lg:w-1/4 lg:mb-6 mb-10 lg:pl-0 lg:pr-4 px-4">
+                <div class="lg:w-1/3 lg:mb-6 mb-10 pt-2 lg:pl-0 lg:pr-10 px-4">
                     <h2 id="about-exp-title">Experience</h2>
                 </div>
                 <!-- Timeline -->
-                <div class="lg:w-3/4 xl:px-4 md:space-y-7 space-y-5">
+                <div class="lg:w-2/3 xl:px-4 md:space-y-7 space-y-5">
                     <div class="about-job group flex flex-wrap" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Exp Job Duration & timeline -->
                         <div class="flex flex-wrap relative flex-grow justify-center max-w-full flex-1 xl:px-4">
@@ -312,8 +312,6 @@ function ScrollTop() {
                             </div>
                             <!-- Mid -->
                             <div class="w-1/4 flex justify-center">
-                                <!-- from-transparent via-[#818181] to-transparent -->
-                                <!-- from-[#818181] to-transparent -->
                                 <div class="timeline top-[70px] bg-gradient-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
                                 <div class="flex justify-center py-9">
                                     <div class="rounded-full group-hover:bg-main-orange bg-main-gray w-2.5 h-2.5 duration-200"></div>
@@ -342,7 +340,7 @@ function ScrollTop() {
         </section>
         <!-- Skill -->
         <section class="about-skill d-flex-center min-h-screen xl:px-20 xl:py-12 px-4 py-5 bg-main-gray ">
-            <div class="about-skill-block xl:mt-0 mt-4 mb-4">
+            <div class="about-skill-block container xl:mt-0 mt-4 mb-4">
                 <!-- Skill Title -->
                 <div class="lg:ps-0 md:pe-12 px-3 md:mb-12 my-2">
                     <h2 class="md:mb-6 mb-5 text-center" id="skill-title">Service & Skill</h2>
@@ -352,10 +350,10 @@ function ScrollTop() {
                     <!-- Text -->
                     <div class="about-skill-text  flex flex-wrap">
                         <!-- Skill -->
-                        <div class="about-skill-card flex-grow max-w-full flex-1 mx-4 xl:my-0 my-2 p-10 shadow-xl "
+                        <div class="about-skill-card flex-grow flex-1 min-w-96 max-w-full mx-4 xl:my-0 my-2 p-10 bg-[#d6d6d6] shadow-xl rounded-2xl"
                             v-for="skill in ExpData.service" :key="skill"
                         >
-                            <h3 class="md:mb-12 mb-4" id="skill-card-title">{{skill.title}}</h3>
+                            <h3 class="md:mb-8 mb-4" id="skill-card-title">{{skill.title}}</h3>
                             <h5 class="mb-3" id="skill-card-text"
                                 v-for="(item, index) in skill.content" :key="item.name" :data-index="index"
                             >
@@ -391,7 +389,7 @@ function ScrollTop() {
             </div>
         </section> -->
         <div class="about-end w-full mx-auto sm:px-4 max-w-full bg-main-gray">
-            <a @click="ScrollTop" class="d-flex-center flex-col py-2 px-4">
+            <a @click="ScrollTop" class="d-flex-center flex-col p-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                 </svg>
@@ -422,7 +420,6 @@ function ScrollTop() {
     .user-container{
         width: 35vmax !important;
         min-height: 40vmax !important;
-        max-height: 600px;
     }
 }
 .duration-toggled{
@@ -438,26 +435,10 @@ function ScrollTop() {
 .about-intro, .about-contact {
     min-height: 60vh;
 }
-.about-intro-block, .about-exp-block {
-    max-width: 1800px;
-}
-.about-intro-info{
-    max-width: 920px;
-}
 /* ---Skill--- */
-.about-skill-block{
-    min-width: 70vw;
-}
 .about-skill-text{
     min-height: 20vh;
 }
-.about-skill-card{
-    min-width: 400px;
-    max-width: 600px;
-    background-color: rgb(218, 219, 219);
-    border-radius: 25px;
-}
-
 /*------- Job timeline-------*/
 .about-job:last-child .timeline {
     height: 0;
@@ -478,9 +459,7 @@ function ScrollTop() {
 .user-container{
     width: 40vmin;
     min-height: 48vmin;
-    max-height: 600px;
     overflow: hidden;
-    border-radius: 20px;
     /* filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3)); */
 }
 .avatar-user_1, .avatar-user_2{
