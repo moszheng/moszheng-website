@@ -59,15 +59,15 @@ onMounted(() => {
     /* Scroll picture*/
     matchmedia.add("(min-width: 768px)", (context) => {
         /* heropic */
-        gsap.to('.head-img-container-img', {
+        gsap.to('.parallax', {
             scrollTrigger: {
                 trigger: ".head-img-container",
                 start: "clamp(top bottom)",
                 end: "bottom 50px",
-                scrub: true,
+                scrub: .5,
                 // markers: true
             },
-            yPercent: -7.5,
+            yPercent: -16,
         });
     });
     ctx = gsap.context((self) => {
@@ -192,13 +192,15 @@ function ScrollTop() {
                 <div class="flex flex-wrap md:mb-0 mb-5">
                     <!-- first-img -->
                     <div class="xl:w-1/2 xl:mb-6 mb-5 max-w-full">
-                        <div class="head-img-container img-container d-flex-center">
-                            <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img d-flex-center lazy" alt="firstImg">
+                        <div class="head-img-container w-full d-flex-center overflow-hidden">
+                            <div class="parallax">
+                                <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img lazy w-[1920px] h-[1080px] object-cover" alt="firstImg">
+                            </div>
                         </div>
                     </div>
                     <!-- Right Content -->
                     <div class="xl:w-1/2 xl:mb-0 mb-5">
-                        <div class="content-container space-y-5 max-w-2xl">
+                        <div class="content-container space-y-5 max-w-2xl px-5">
                             <p v-for="item in prjdata.msg" :key="item" id="content-context">
                                 {{item}}
                             </p>
@@ -207,7 +209,7 @@ function ScrollTop() {
                 </div>
                 <!-- imgs -->
                 <div class="prj-imgs">
-                    <div class="prj-img img-container d-flex-center mb-3 bg-gray-300" v-for="(item, index) in contextImg" :key="item">
+                    <div class="prj-img d-flex-center mb-3 bg-gray-300" v-for="(item, index) in contextImg" :key="item">
                         <img :src="imgLocation(contextImg[index])" class="d-flex-center flex-grow max-w-full flex-1 h-full lazy" alt="contextImg">
                     </div>
                 </div>
@@ -245,7 +247,7 @@ function ScrollTop() {
                             <div class="card relative flex mb-4 bg-gray-800  text-white">
                                 <!-- routerlink -->
                                 <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
-                                    <img :src=imgLocation(item.img_md[0]) class="card-img lazy w-full" alt="otherprjImg">
+                                    <img :src=imgLocation(item.img_md[0]) class="card-img lazy absolute top-0 left-0 w-full object-cover" alt="otherprjImg">
                                     <div class="works-black"></div>
                                     <div class="works-destop-title text-white px-4">
                                         <h4 class="mb-3">{{ item.en_name }}</h4>
@@ -276,7 +278,6 @@ function ScrollTop() {
 @media only screen and (max-width: 1500px) {
     /* img */
     .head-img-container{
-        width: 80dvw;
         height: 25vh;
     }
 }
@@ -290,18 +291,12 @@ function ScrollTop() {
 
 /* First Img */
 .head-img-container{
-    /* position: relative; */
-    width: 95%;
+    /* width: 35vmax; */
     height: 50vh;
-    overflow: hidden;
 }
 .head-img-container-img{
-    /* position: absolute; */
-    width: 1920px;
-    height: 1080px;
     max-width: none;
     max-height: none;
-    object-fit: cover;
 }
 /* Card */
 .card{

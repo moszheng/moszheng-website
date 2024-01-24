@@ -11,8 +11,8 @@ import LogoData from '@/data/LogoData.json';
 import ExpData from '@/data/Experience.json';
 
 // Return Real route
-const profileImage1 = '../src/img/profile_1.png';
-const profileImage2 = '../src/img/profile_2.png';
+const profileImage1 = '../src/img/profile_1_md.webp';
+const profileImage2 = '../src/img/profile_2_md.webp';
 
 // Split content
 const heroHello = "Hello, I'm";
@@ -61,20 +61,21 @@ onMounted(() => {
     /* Desktop only Motion */
     matchmedia.add("(min-width: 768px)", (context) => {
         /* ----------- Depth --------------- */
-        const depthtl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".about-hero",
-                start: "clamp(top top)",
-                end: "clamp(bottom 50%)",
-                // markers: true,
-                scrub: true,
-            },
-        });
         gsap.utils.toArray(".parallax").forEach((layer) => {
             const depth = layer.dataset.depth;
-            const movement = depth * 3;
-            const scale = 1.35 / depth; // From 1.35 -> 1.2
-            depthtl.to(layer, { yPercent: movement, scale: scale, ease: "none" }, 0); // scale from 1.3
+            const movement = depth * 4;
+            const scale = 1.2 / depth; // From 1.35 -> 1.2
+            gsap.to(layer, {
+                yPercent: movement,
+                scale: scale,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".about-hero",
+                    start: "clamp(top top)",
+                    end: "clamp(bottom 50%)",
+                    scrub: .5,
+                },
+            }); // scale from 1.3
         });
     });
     /* Main GSAP Animation*/
@@ -84,21 +85,25 @@ onMounted(() => {
         // });
         // const heroRot = (e)=>{
         //     gsap.utils.toArray(".heroRot").forEach((el) => {
-        //         let xPos = e.clientX / window.innerWidth - 0.5;
-        //         let yPos = e.clientY / window.innerHeight - 0.5;
+        //         let xPos = e.clientX / window.innerWidth;
+        //         let yPos = e.clientY / window.innerHeight;
         //         let depth = el.dataset.depth;
         //         gsap.to(el, {
-        //             xPercent: xPos * depth * 40,
-        //             yPercent: yPos * depth * 10,
+        //             xPercent: xPos * depth * 2,
+        //             yPercent: yPos * depth * 1,
         //             rotationY: xPos * depth * 10,
         //             rotationX: yPos * depth * 10,
-        //             stagger: 0.055,
         //         });
         //     });
         // };
         /* Hero Section */
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-        // herotl.from(".user-container", { width: "60vmin", stagger: 0.25 }, 0);
+        herotl.fromTo(".user-container",
+            { clipPath: "xywh(0 150px 100% 20% round 15% 0)" },
+            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 2, ease: "power4.Out(1.7)" }
+        , 0);
+        herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 2, ease: "power3.out" }, 0);
+        herotl.from(".avatar-user_2 ", { scale: 1.6, duration: 2, ease: "power3.out" }, 0);
         herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.3);
         herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.1 }, 0.8);
         herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut(1.7)", duration: 1.5 }, 0.9);
@@ -215,10 +220,18 @@ function ScrollTop() {
         <!-- Hero -->
         <section class="about-hero d-flex-center flex flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12">
             <!-- profile image -->
-            <div class="heroRot d-flex-center xl:w-1/2 pr-4 pl-4">
-                <div class="user-container heroRot relative rounded-2xl max-h-[600px]">
-                    <img class="avatar-user_1 z-20 heroRot parallax lazy absolute left-0 w-full h-auto" data-depth='1.05' alt="profile_image" :src=profileImage1>
-                    <img class="avatar-user_2 z-10 parallax lazy absolute left-0 w-full h-auto" data-depth='1.15' alt="profile_image" :src=profileImage2>
+            <div class="d-flex-center xl:w-1/2 pr-4 pl-4">
+                <div class="user-container relative max-h-[600px] overflow-hidden">
+                    <div class="avatar-user_1 z-20 absolute scale-[1.35] top-[8%]" >
+                        <div class="parallax heroRot" data-depth='1.05'>
+                            <img class="lazy left-0 w-full h-auto object-cover" data-depth='1.05' alt="profile_image" :src=profileImage1>
+                        </div>
+                    </div>
+                    <div class="avatar-user_2 z-10 absolute scale-[1.35] top-[8%]">
+                        <div class="parallax heroRot" data-depth='1.15'>
+                            <img class="lazy left-0 w-full h-auto object-cover" data-depth='1.15' alt="profile_image" :src=profileImage2>
+                        </div>
+                    </div>
                 </div>
             </div>
             <!-- text -->
@@ -312,7 +325,7 @@ function ScrollTop() {
                             </div>
                             <!-- Mid -->
                             <div class="w-1/4 flex justify-center">
-                                <div class="timeline top-[70px] bg-gradient-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
+                                <div class="timeline top-[70px] w-px bg-gradient-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
                                 <div class="flex justify-center py-9">
                                     <div class="rounded-full group-hover:bg-main-orange bg-main-gray w-2.5 h-2.5 duration-200"></div>
                                 </div>
@@ -449,22 +462,14 @@ function ScrollTop() {
     content: '';
     position: absolute;
     /* top: 85px; */
-    width: 1px;
     height: calc(100% - 10px);
     transform-origin: top;
     transform-style: preserve-3D;
 }
-
 /*------ Img --------*/
 .user-container{
     width: 40vmin;
     min-height: 48vmin;
-    overflow: hidden;
     /* filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3)); */
-}
-.avatar-user_1, .avatar-user_2{
-    top: 8%;
-    transform: scale(1.35);
-    object-fit: cover;
 }
 </style>

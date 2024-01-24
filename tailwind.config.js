@@ -16,6 +16,9 @@ module.exports = {
         '3xl': '1792px',
         '4xl': '2148px',
       },
+      spacing: {
+        '128': '32rem',
+      }
       // fontSize: {
       //   sm: '0.8rem',
       //   base: '1rem',

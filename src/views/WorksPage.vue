@@ -41,19 +41,20 @@ onMounted(() => {
     });
     matchmedia.add("(min-width: 1024px)", (context) => {
         /* ----------- Depth --------------- */
-        const depthtl = gsap.timeline({
-            scrollTrigger: {
-                trigger: ".works",
-                start: "clamp(top top)",
-                end: "bottom 30%",
-                // markers: true,
-                scrub: true,
-            },
-        });
         gsap.utils.toArray(".parallax").forEach((layer, index) => {
-            const rand = [1, 0.75, 0.6];
-            const movement = -4 * rand[index % 3];
-            depthtl.to(layer, { yPercent: movement, ease: "none" }, 0);
+            const rand = [1, 0.8, 0.7];
+            const movement = -15 * rand[index % 3];
+            gsap.to(layer, {
+                scrollTrigger: {
+                    trigger: ".works",
+                    start: "clamp(top top)",
+                    end: "bottom 30%",
+                    // markers: true,
+                    scrub: .75,
+                },
+                yPercent: movement,
+                ease: "none",
+            });
         });
     });
     /* ------------Main GSAP Animation----------*/
@@ -96,15 +97,15 @@ function ScrollTop() {
     <main class="container mx-auto sm:px-4 mt-4 pt-5 overflow-hidden">
         <section class="flex flex-wrap pt-5 md:mx-0 mx-1" data-masonry='{"percentPosition": true }'>
             <div v-for="(item, index) in WorksData.project" :key="index" class="lg:w-1/3 lg:mb-4 lg:px-2 w-full px-4">
-                <div class="card relative flex flex-col min-w-0 break-words lg:mb-0 mb-3 bg-gray-600 text-white" :style="randomHeight(index)">
-                    <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name">
+                <div class="card relative flex flex-col min-w-0 lg:mb-0 mb-3 bg-gray-600 text-white" :style="randomHeight(index)">
+                    <router-link :to="{ name : 'WorksItem' , params : { projecturl: item.url_name } }" :title="item.name" class="d-flex-center h-full">
                         <!-- replace-image -->
-                        <div class="max-w-full h-auto">
-                            <img :src=imgLocation(item.img_md[0]) class="card-img lazy w-full parallax" :alt="item.name">
+                        <div class="absolute parallax h-full">
+                            <img :src=imgLocation(item.img_md[0]) class="lazy left-0 w-auto min-h-[110%] object-cover" :alt="item.name">
                         </div>
                         <!-- desktop title -->
                         <div class="works-black"></div>
-                        <div class="works-destop-title text-white px-4">
+                        <div class="works-destop-title text-white px-5">
                             <h4 class="mb-3">{{ item.en_name }}</h4>
                             <p class="mb-0">{{ item.date }}</p>
                         </div>
@@ -112,8 +113,8 @@ function ScrollTop() {
                 </div>
                 <!-- mobile title -->
                 <div class="work-mobile-title px-1 mb-3">
-                    <h4 class="mb-3">{{ item.en_name }}</h4>
-                    <p class="mb-0">{{ item.date }}</p>
+                    <h4 class="mb-1 break-keep">{{ item.en_name }}</h4>
+                    <p>{{ item.date }}</p>
                 </div>
             </div>
         </section>

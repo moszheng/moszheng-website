@@ -28,10 +28,6 @@
 @layer components {
   .card {
     overflow : hidden;
-    /* background-color: theme('colors.white');
-    border-radius: theme('borderRadius.lg');
-    padding: theme('spacing.6');
-    box-shadow: theme('boxShadow.xl'); */
   }
   
 }
@@ -77,7 +73,7 @@ main{
   }
   /* Hover*/
   .card:hover .works-destop-title {
-    bottom: 5px;
+    bottom: 1.25rem;
     opacity: 1;
   }
   .card:hover .works-black {
@@ -95,7 +91,6 @@ main{
   opacity: 0;
 }
 .works-destop-title{
-  height: 10vh;
   transition: .4s ease;
 }
 .works-black{
@@ -105,12 +100,8 @@ main{
   transition: .6s ease;
 }
 .card-img{
-  position: absolute;
-	top: 0;
-	left: 0;
 	width: 102.5%;
 	height: 102.5%;
-	object-fit: cover;
 }
 
 /*------------ svg icon --------*/
