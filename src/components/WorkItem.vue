@@ -159,26 +159,30 @@ function ScrollTop() {
         <section class="container mx-auto sm:px-4" ref="imgContainer">
             <!-- Workitem-info -->
             <section class="workitem-info flex flex-wrap lg:flex-row flex-col justify-between md:mx-4 mx-2 xl:px-12 px-3">
-                <!-- Left -->
-                <div class="pr-4 pl-4 xl:mb-0 mb-10">
-                    <h3 class="hero-1 mb-4">{{ prjdata.en_name}}</h3>
-                    <h5 class="hero-2 mb-3">@{{prjdata.company}}</h5>
-                    <h6 class="hero-2 mb-4">{{prjdata.date}}</h6>
-                    <div class="flex">
-                        <a class="hero-social me-3" :href=prjdata.behance target="_blank" rel="noopener">
-                            <svg id="icon_social">
-                                <use xlink:href="#icon-behance"></use>
-                            </svg>
-                        </a>
-                        <!-- vimeo Link -->
-                        <a class="hero-social" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
-                            <svg id="icon_social">
-                                <use xlink:href="#icon-vimeo"></use>
-                            </svg>
-                        </a>
+                <!-- Left-info -->
+                <div class="pr-4 pl-4 xl:mb-0 md:mb-12 mb-8">
+                    <h3 class="hero-1 mb-8">{{ prjdata.en_name}}</h3>
+                    <div class="flex md:flex-col flex-row justify-between">
+                        <div>
+                            <h5 class="hero-2 mb-3">@{{prjdata.company}}</h5>
+                            <h6 class="hero-2 mb-6">{{prjdata.date}}</h6>
+                        </div>
+                        <div class="flex">
+                            <a class="hero-social me-6" :href=prjdata.behance target="_blank" rel="noopener">
+                                <svg id="icon_social">
+                                    <use xlink:href="#icon-behance"></use>
+                                </svg>
+                            </a>
+                            <!-- vimeo Link -->
+                            <a class="hero-social" :href=vimeoPage(prjdata.video) target="_blank" rel="noopener">
+                                <svg id="icon_social">
+                                    <use xlink:href="#icon-vimeo"></use>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <!-- Right -->
+                <!-- Right - Roles -->
                 <div class="xl:ml-auto pr-4 pl-4">
                     <h3 class="hero-3 mb-4">Roles</h3>
                     <h5 class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item"> {{item}} </h5>

@@ -307,7 +307,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
-        <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 py-5 text-white bg-main-black rounded-b-[5em]">
+        <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 py-5 text-white bg-main-black xl:rounded-b-[5em] rounded-b-3xl">
             <div class="about-exp-block container flex flex-wrap xl:mt-0 lg:mb-4 mt-10 mb-8">
                 <!-- Exp Title -->
                 <div class="lg:w-1/3 lg:mb-6 mb-10 pt-2 lg:pl-0 lg:pr-10 px-4">

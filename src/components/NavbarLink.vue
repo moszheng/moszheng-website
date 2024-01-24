@@ -19,7 +19,7 @@ const isActive = computed(() => {
 
 </script>
 <template>
-<li class="nav-item my-2">
+<li class="nav-item">
     <div class="flex items-center">
         <!-- :style="colormode" -->
         <router-link :to="{ name : to }"

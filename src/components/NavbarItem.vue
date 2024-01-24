@@ -65,7 +65,7 @@ const navbarExpand = () => {
         tl.to(".mid-bar", { opacity: .5, scaleX: 0, duration: .2 }, 0);
         tl.to(".bot-bar", { rotation: -135, y: "-6px", duration: .25 }, 0);
         /* collapse */
-        tl.to(navbarCollapse, { height: 350, ease: "back.Out(1.7)", duration: .5 }, 0.01);
+        tl.to(navbarCollapse, { height: 400, ease: "back.Out(1.7)", duration: .5 }, 0.01);
         /* -- bg -- */
         tl.to(navContainer, { backgroundColor: 'rgba(255, 255, 255, 1)', duration: 0.3 }, 0.05);
         tl.to(darkOverlay, { autoAlpha: 0.7, duration: 1 }, 0);
@@ -135,17 +135,15 @@ function onLeave(el, done) {
 
 <template>
     <header class="relative flex flex-wrap items-center content-between py-3 px-4 lg:flex-no-wrap">
-        <div class="navcontainer z-[100] flex flex-wrap fixed items-center justify-between w-full max-w-full top-0 left-0 mx-auto lg:px-10 px-4 pt-2 xl:pb-2 pb-6">
+        <div class="navcontainer z-[100] flex flex-wrap fixed items-center justify-between w-full max-w-full top-0 left-0 mx-auto lg:px-16 px-6 pt-2 xl:pb-2 pb-6">
             <!-- LOGO -->
-            <div class="navbar-brand inline-block pt-1 pb-1 mr-4 whitespace-no-wrap text-xl flex-col md:flex-row items-center">
-                <router-link :to="{ name : 'Home' }" class="inline-block py-2 pr-4 no-underline link-dark active" aria-current="page">
-                    <Transition name="fade" mode="out-in">
-                        <svg id="mos-logo" :style="colormode">
-                            <use xlink:href="#icon-mosLogo"></use>
-                        </svg>
-                    </Transition>
-                </router-link>
-            </div>
+            <router-link :to="{ name : 'Home' }" class="navbar-brand flex justify-center py-2 pr-4 mr-4 text-2xl" aria-current="page">
+                <Transition name="fade" mode="out-in">
+                    <svg id="mos-logo" :style="colormode">
+                        <use xlink:href="#icon-mosLogo"></use>
+                    </svg>
+                </Transition>
+            </router-link>
             <!-- navbar responsive button -->
             <button @click="navbarExpand" class="navbar-toggler relative w-6 h-6 lg:hidden leading-normal bg-transparent collapsed" type="button">
                 <span class="toggler-icon -mt-1.5 top-bar">
@@ -165,42 +163,38 @@ function onLeave(el, done) {
                 </span>
             </button>
             <!-- Canvas -->
-            <div class="navbar-collapse h-0 lg:flex flex-grow items-center" id="navbarSupportedContent">
-                <!--   flex-wrap  -->
-                <div class="flex md:ml-auto">
-                    <ul class="navbar-nav flex flex-wrap lg:flex-row flex-col pl-0 mb-0" :style="colormode">
-                        <NavLink :to="'Works'"/>
-                        <NavLink :to="'Showreel'"/>
-                        <NavLink :to="'About'" />
-                        <NavLink :to="'Contact'"/>
-                        <li class="nav-item navtext flex items-center">
-                            <!--   icons  -->
-                            <div class="navbar-nav flex flex-wrap flex-row xl:ms-auto">
-                                <TransitionGroup
-                                    @before-enter="onBeforeEnter"
-                                    @enter="onEnter"
-                                    @leave="onLeave"
-                                >
-                                    <li class="w-1/5 col-md-auto" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" >
-                                        <a class="inline-block py-2 no-underline" :href="item.url" target="_blank" rel="noopener">
-                                            <svg id="icon_social" :style="colormode">
-                                                <use :xlink:href="item.icon"></use>
-                                            </svg>
-                                        </a>
-                                    </li>
-                                </TransitionGroup>
-                            </div>
-                            <button class="toggler-icon-xl px-2 py-2" type="button" @click="rotateButton">
-                                <svg id="icon-plus-area" :style="colormode">
-                                    <use xlink:href="#icon-plus"></use>
-                                </svg>
-                            </button>
-                        </li>
-                    </ul>
-                </div>
+            <div class="navbar-collapse">
+                <ul class="lg:h-10 h-0 lg:flex flex-wrap flex-grow lg:flex-row flex-col items-center pl-0 mb-0 lg:mt-0 mt-8 md:ml-auto lg:space-y-0 space-y-5" :style="colormode">
+                    <NavLink :to="'Works'"/>
+                    <NavLink :to="'Showreel'"/>
+                    <NavLink :to="'About'" />
+                    <NavLink :to="'Contact'"/>
+                    <li class="nav-item navtext flex items-center">
+                        <div class="flex flex-wrap flex-row xl:ms-auto">
+                            <TransitionGroup
+                                @before-enter="onBeforeEnter"
+                                @enter="onEnter"
+                                @leave="onLeave"
+                            >
+                                <li class="w-1/5 col-md-auto" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" >
+                                    <a class="inline-block no-underline" :href="item.url" target="_blank" rel="noopener">
+                                        <svg id="icon_social" :style="colormode">
+                                            <use :xlink:href="item.icon"></use>
+                                        </svg>
+                                    </a>
+                                </li>
+                            </TransitionGroup>
+                        </div>
+                        <button class="toggler-icon-xl p-2" type="button" @click="rotateButton">
+                            <svg id="icon-plus-area" :style="colormode">
+                                <use xlink:href="#icon-plus"></use>
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
-        <div class="dark-overlay z-[60] top-0 left-0 w-full h-full"></div>
+        <div class="dark-overlay fixed invisible z-[60] top-0 left-0 w-full h-full bg-black"></div>
     </header>
 </template>
 <style scoped>
@@ -215,11 +209,6 @@ function onLeave(el, done) {
 }
 .navcontainer  {
     background-color: rgba(255, 255, 255, 0);
-}
-.dark-overlay {
-    position: fixed;
-    background-color: #000;
-    visibility: hidden;
 }
 #mos-logo {
     width: 150px;

@@ -71,17 +71,17 @@ const loadingLeave = (el, done) => {
     <div class="index-info z-10 absolute top-0 w-full h-full">
       <div class="container mx-auto sm:px-4 flex xl:justify-end justify-center items-center h-full">
         <!----- Main Content----->
-        <div class="lg:px-0 px-3 text-white">
+        <div class="lg:px-0 px-4 text-white">
           <h5 class="mb-2" id="home-name">Freelance 3D Generalist</h5>
-          <h2 class="mb-5" id="home-name">Sheng Wen (Mos) Cheng</h2>
-          <div class="mb-5">
+          <h2 class="mb-10" id="home-name">Sheng Wen (Mos) Cheng</h2>
+          <div class="lg:mb-10 mb-10 space-y-4 test">
             <p id="home-text">A 3D Generalist and Motion Designer based in Taiwan.</p>
             <p id="home-text">Offering professional design services for digital arts and product motion design,
               <br>catering to companies and brands.</p>
           </div>
           <div class="index-btnarea">
             <router-link :to="{ name : 'Works' }">
-              <button type="button" class="inline-block select-none rounded py-1 px-3 leading-normal index-btn">Explore</button>
+              <button type="button" class="index-btn inline-block select-none rounded py-1 px-3 leading-normal">Explore</button>
             </router-link>
           </div>
         </div>
@@ -91,7 +91,6 @@ const loadingLeave = (el, done) => {
 </template>
 
 <style scoped>
-
 /* Mobile */
 @media only screen and (max-width: 1025px) {
   .index-btnarea{
@@ -100,7 +99,7 @@ const loadingLeave = (el, done) => {
     align-items: center;
   }
   .index-btn{
-    width: 70dvw;
+    width: 75vw;
   }
 }
 #mos-logo {
@@ -129,20 +128,6 @@ iframe {
   box-sizing: border-box;
   pointer-events: none;
   background-color: black;
-}
-/* Button */
-.index-btn{
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
-  background-color: hsla(0, 0%, 95.3%, 0.25);
-  min-width: 15vh;
-  box-shadow: none;
-  border: 1px;
-  color: #FFF;
-}
-.index-btn:hover{
-  background-color: hsla(0, 0%, 95.3%, 0.6);
-  color: #000;
 }
 </style>
 
