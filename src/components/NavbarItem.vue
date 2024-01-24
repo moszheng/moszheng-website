@@ -65,7 +65,7 @@ const navbarExpand = () => {
         tl.to(".mid-bar", { opacity: .5, scaleX: 0, duration: .2 }, 0);
         tl.to(".bot-bar", { rotation: -135, y: "-6px", duration: .25 }, 0);
         /* collapse */
-        tl.to(navbarCollapse, { height: 400, ease: "back.Out(1.7)", duration: .5 }, 0.01);
+        tl.to(navbarCollapse, { height: "50vh", ease: "back.Out(1.7)", duration: .5 }, 0.01);
         /* -- bg -- */
         tl.to(navContainer, { backgroundColor: 'rgba(255, 255, 255, 1)', duration: 0.3 }, 0.05);
         tl.to(darkOverlay, { autoAlpha: 0.7, duration: 1 }, 0);
