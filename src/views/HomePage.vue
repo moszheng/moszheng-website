@@ -73,8 +73,8 @@ const loadingLeave = (el, done) => {
         <!----- Main Content----->
         <div class="lg:px-0 px-4 text-white">
           <h5 class="mb-2" id="home-name">Freelance 3D Generalist</h5>
-          <h2 class="mb-10" id="home-name">Sheng Wen (Mos) Cheng</h2>
-          <div class="lg:mb-10 mb-10 space-y-4 test">
+          <h2 class="lg:mb-10 mb-12" id="home-name">Sheng Wen (Mos) Cheng</h2>
+          <div class="lg:mb-10 mb-12 space-y-4 test">
             <p id="home-text">A 3D Generalist and Motion Designer based in Taiwan.</p>
             <p id="home-text">Offering professional design services for digital arts and product motion design,
               <br>catering to companies and brands.</p>
@@ -99,7 +99,7 @@ const loadingLeave = (el, done) => {
     align-items: center;
   }
   .index-btn{
-    width: 75vw;
+    width: 90vw;
   }
 }
 #mos-logo {

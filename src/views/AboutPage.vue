@@ -98,10 +98,10 @@ onMounted(() => {
         // };
         /* Hero Section */
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-        // herotl.fromTo(".user-container",
-        //     { clipPath: "xywh(0 150px 100% 10% round 15% 0)" },
-        //     { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
-        // , 0);
+        herotl.fromTo(".user-container",
+            { clipPath: "xywh(0 150px 100% 10% round 15% 0)" },
+            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
+        , 0);
         herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from(".avatar-user_2 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
