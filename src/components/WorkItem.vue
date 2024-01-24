@@ -153,17 +153,17 @@ function ScrollTop() {
 <div class="WorksItem">
     <main class="mt-5 pt-5">
         <!-- video -->
-        <section class="relative mb-5">
+        <section class="relative mb-12">
             <iframe class="aspect-video w-full" :src=vimeoEmbed(prjdata.video) allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </section>
-        <div class="container mx-auto sm:px-4" ref="imgContainer">
+        <section class="container mx-auto sm:px-4" ref="imgContainer">
             <!-- Workitem-info -->
             <section class="workitem-info flex flex-wrap lg:flex-row flex-col justify-between md:mx-4 mx-2 xl:px-12 px-3">
                 <!-- Left -->
                 <div class="pr-4 pl-4 xl:mb-0 mb-10">
                     <h3 class="hero-1 mb-4">{{ prjdata.en_name}}</h3>
-                    <h6 class="hero-2 mb-3">@{{prjdata.company}}</h6>
-                    <p class="hero-2 mb-4">{{prjdata.date}}</p>
+                    <h5 class="hero-2 mb-3">@{{prjdata.company}}</h5>
+                    <h6 class="hero-2 mb-4">{{prjdata.date}}</h6>
                     <div class="flex">
                         <a class="hero-social me-3" :href=prjdata.behance target="_blank" rel="noopener">
                             <svg id="icon_social">
@@ -181,12 +181,10 @@ function ScrollTop() {
                 <!-- Right -->
                 <div class="xl:ml-auto pr-4 pl-4">
                     <h3 class="hero-3 mb-4">Roles</h3>
-                    <p class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item">
-                        {{item}}
-                    </p>
+                    <h5 class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item"> {{item}} </h5>
                 </div>
             </section>
-            <hr class="hero-sep my-8">
+            <hr class="hero-sep my-10">
             <!-- Workitem-Content -->
             <section class="workitem-content md:mx-4 mx-1 mb-5 xl:px-12 px-3">
                 <div class="flex flex-wrap md:mb-0 mb-5">
@@ -199,9 +197,9 @@ function ScrollTop() {
                         </div>
                     </div>
                     <!-- Right Content -->
-                    <div class="xl:w-1/2 xl:mb-0 mb-5">
-                        <div class="content-container space-y-5 max-w-2xl px-5">
-                            <p v-for="item in prjdata.msg" :key="item" id="content-context">
+                    <div class="xl:w-1/2 flex justify-center xl:mb-0 mb-5">
+                        <div class="content-container  space-y-5 max-w-2xl px-5">
+                            <p v-for="item in prjdata.msg" :key="item" class="text-lg" id="content-context">
                                 {{item}}
                             </p>
                         </div>
@@ -217,8 +215,8 @@ function ScrollTop() {
             </section>
             <!-- credit -->
             <section class="workitem-credit flex flex-wrap md:mx-4 mx-1 mb-5 xl:px-12 px-3 ">
-                <div class="xl:w-2/5 px-4">
-                    <h4 class="credit-title xl:mb-0 mb-10">Credit</h4>
+                <div class="xl:w-2/5 px-4 flex lg:justify-center">
+                    <h3 class="credit-title xl:mb-0 mb-10"> Credit </h3>
                 </div>
                 <div class="xl:w-3/5 px-4">
                     <div v-for = "value, key in prjdata.credit" class="credit-text flex flex-wrap mb-5" :key="value">
@@ -235,7 +233,7 @@ function ScrollTop() {
                     <p class="text-sm">BACK TO TOP</p>
                 </a>
             </div>
-        </div>
+        </section>
         <!-- Other Prj -->
         <section class="workitem-otherprj d-flex-center md:px-12 px-1 " data-scroll-section>
             <div class="container mx-auto sm:px-4">

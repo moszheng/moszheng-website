@@ -64,7 +64,7 @@ onMounted(() => {
         gsap.utils.toArray(".parallax").forEach((layer) => {
             const depth = layer.dataset.depth;
             const movement = depth * 4;
-            const scale = 1.2 / depth; // From 1.35 -> 1.2
+            const scale = 1.2 / layer.dataset.scale; // From 1.35 -> 1.2
             gsap.to(layer, {
                 yPercent: movement,
                 scale: scale,
@@ -100,14 +100,14 @@ onMounted(() => {
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
         herotl.fromTo(".user-container",
             { clipPath: "xywh(0 150px 100% 20% round 15% 0)" },
-            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 2, ease: "power4.Out(1.7)" }
+            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
         , 0);
-        herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 2, ease: "power3.out" }, 0);
-        herotl.from(".avatar-user_2 ", { scale: 1.6, duration: 2, ease: "power3.out" }, 0);
-        herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.3);
-        herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.1 }, 0.8);
-        herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut(1.7)", duration: 1.5 }, 0.9);
-        herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2);
+        herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 3.5, ease: "power4.out" }, 0);
+        herotl.from(".avatar-user_2 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
+        herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
+        herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 0.9);
+        herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.5 }, 1.2);
+        herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.2);
         /* Intro Section*/
         const introtl = gsap.timeline({
             scrollTrigger: {
@@ -118,7 +118,6 @@ onMounted(() => {
             },
             defaults: { ease: "power3.Out(1.7)" },
         });
-        // introtl.to("#hero-4", { opacity: 0, yPercent: 0, ease: "power4.inOut(1.7)", duration: 2 });
         // introtl.from(".intro-info", { yPercent: 15, duration: 0.7, stagger: 0.3 }, 0);
         introtl.from(".split-text", { opacity: 0, yPercent: 40, duration: 0.6, stagger: 0.01 }, 0);
         introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.5, duration: 0.5, stagger: 0.1 }, 0.35);
@@ -221,15 +220,15 @@ function ScrollTop() {
         <section class="about-hero d-flex-center flex flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12">
             <!-- profile image -->
             <div class="d-flex-center xl:w-1/2 pr-4 pl-4">
-                <div class="user-container relative max-h-[600px] overflow-hidden">
+                <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth='5' data-scale='1.2'>
                     <div class="avatar-user_1 z-20 absolute scale-[1.35] top-[8%]" >
-                        <div class="parallax heroRot" data-depth='1.05'>
-                            <img class="lazy left-0 w-full h-auto object-cover" data-depth='1.05' alt="profile_image" :src=profileImage1>
+                        <div class="parallax heroRot" data-depth='1.05' data-scale='1.05'>
+                            <img class="lazy left-0 w-full h-auto object-cover" alt="profile_image" :src=profileImage1>
                         </div>
                     </div>
                     <div class="avatar-user_2 z-10 absolute scale-[1.35] top-[8%]">
-                        <div class="parallax heroRot" data-depth='1.15'>
-                            <img class="lazy left-0 w-full h-auto object-cover" data-depth='1.15' alt="profile_image" :src=profileImage2>
+                        <div class="parallax heroRot" data-depth='3.2' data-scale='1.15'>
+                            <img class="lazy left-0 w-full h-auto object-cover" alt="profile_image" :src=profileImage2>
                         </div>
                     </div>
                 </div>

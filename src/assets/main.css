@@ -23,40 +23,32 @@
   h6 {
     @apply text-base;
   }
+  main{
+    @apply px-0;
+  }
 }
 
 @layer components {
   .card {
     overflow : hidden;
   }
+
+  .d-flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
   
-}
-/* Main Padding */
-main{
-  padding-right: 0 !important;
-  padding-left: 0 !important;
-}
-
-/* Custom Class */
-.d-flex-center{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.d-inline-flex-center{
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
+  /* lazy load */
+  .lazy.loaded{
+    opacity: 1;
+    transition: all 0.5s;
+  }
+  .lazy{
+    opacity: 0;
+  }
 }
 
-/* lazy load */
-.lazy.loaded{
-  opacity: 1;
-  transition: all 0.5s;
-}
-.lazy{
-  opacity: 0;
-}
 
 /*--------------- Works Block ----------------  */
 
