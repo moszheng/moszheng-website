@@ -99,7 +99,7 @@ onMounted(() => {
         /* Hero Section */
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
         herotl.fromTo(".user-container",
-            { clipPath: "xywh(0 150px 100% 20% round 15% 0)" },
+            { clipPath: "xywh(0 150px 100% 10% round 15% 0)" },
             { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
         , 0);
         herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 3.5, ease: "power4.out" }, 0);
@@ -215,9 +215,9 @@ function ScrollTop() {
 </script>
 <template>
 <div class="About">
-    <main class="" ref="imgContainer">
+    <main class="bg-main-gray" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center flex flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12">
+        <section class="about-hero d-flex-center flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12 bg-white">
             <!-- profile image -->
             <div class="d-flex-center xl:w-1/2 pr-4 pl-4">
                 <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth='5' data-scale='1.2'>
@@ -266,7 +266,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6 rounded-b-lg">
+        <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6 rounded-b-lg bg-white">
             <div class="about-intro-block container xl:mb-4 mb-5 w-full">
                 <!-- text -->
                 <div class="about-intro-info max-w-4xl flex items-start md:mb-12 mb-10">
@@ -307,7 +307,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
-        <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 py-5 text-white bg-main-black rounded-b-2xl">
+        <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 py-5 text-white bg-main-black rounded-b-[5em]">
             <div class="about-exp-block container flex flex-wrap xl:mt-0 lg:mb-4 mt-10 mb-8">
                 <!-- Exp Title -->
                 <div class="lg:w-1/3 lg:mb-6 mb-10 pt-2 lg:pl-0 lg:pr-10 px-4">
@@ -470,5 +470,6 @@ function ScrollTop() {
     width: 40vmin;
     min-height: 48vmin;
     /* filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3)); */
+    clip-path: xywh(0 0px 100% 100% round 15% 0);
 }
 </style>
