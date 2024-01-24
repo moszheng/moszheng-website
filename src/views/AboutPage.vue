@@ -359,11 +359,11 @@ function ScrollTop() {
                     <h2 class="md:mb-6 mb-5 text-center" id="skill-title">Service & Skill</h2>
                 </div>
                 <!-- Skill card -->
-                <div class="d-flex-center px-3 divide-y divide-gray-300/50">
+                <div class="d-flex-center md:px-3 md:mb-0 mb-6">
                     <!-- Text -->
                     <div class="about-skill-text  flex flex-wrap">
                         <!-- Skill -->
-                        <div class="about-skill-card flex-grow flex-1 min-w-96 max-w-full mx-4 xl:my-0 my-2 p-10 bg-[#d6d6d6] shadow-xl rounded-2xl"
+                        <div class="about-skill-card flex-grow flex-1 max-w-full md:mx-4 xl:my-0 my-2 p-10 bg-[#d6d6d6] shadow-xl rounded-2xl"
                             v-for="skill in ExpData.service" :key="skill"
                         >
                             <h3 class="md:mb-8 mb-4" id="skill-card-title">{{skill.title}}</h3>
