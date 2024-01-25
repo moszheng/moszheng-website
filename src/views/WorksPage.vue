@@ -130,7 +130,3 @@ function ScrollTop() {
 <FooterItem />
 </div>
 </template>
-
-<style scoped>
-</style>
-

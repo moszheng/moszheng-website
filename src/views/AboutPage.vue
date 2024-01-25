@@ -232,6 +232,13 @@ function ScrollTop() {
                         </div>
                     </div>
                 </div>
+                <svg width="0" height="0" aria-hidden="true">
+                    <defs>
+                        <clipPath id="hero-clip">
+                            <rect class="mask" x="0" y="0" width="100%" height="100%" rx="15%" ry="0" />
+                        </clipPath>
+                    </defs>
+                </svg>
             </div>
             <!-- text -->
             <div class="about-hero-info xl:w-1/2 xl:ps-6 md:px-12 px-0">
@@ -470,6 +477,8 @@ function ScrollTop() {
     width: 40vmin;
     min-height: 48vmin;
     /* filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3)); */
-    clip-path: xywh(0 0px 100% 100% round 15% 0);
+    /* clip-path: xywh(0 0px 100% 100% round 15% 0); */
+    clip-path: url(#hero-clip);
+    -webkit-clip-path: url(#hero-clip);
 }
 </style>
