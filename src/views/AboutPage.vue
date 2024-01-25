@@ -98,9 +98,14 @@ onMounted(() => {
         // };
         /* Hero Section */
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
+        
+        // herotl.fromTo(".user-container",
+        //     { clipPath: "xywh(0 150px 100% 10% round 15% 0)" },
+        //     { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
+        // , 0);
         herotl.fromTo(".user-container",
-            { clipPath: "xywh(0 150px 100% 10% round 15% 0)" },
-            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
+            { clipPath: "circle(10px at 50% 50%)" },
+            { clipPath: "circle(120px at 50% 50%)", duration: 3, ease: "power4.out" }
         , 0);
         herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from(".avatar-user_2 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
@@ -232,13 +237,6 @@ function ScrollTop() {
                         </div>
                     </div>
                 </div>
-                <svg width="0" height="0" aria-hidden="true">
-                    <defs>
-                        <clipPath id="hero-clip">
-                            <rect class="mask" x="0" y="0" width="100%" height="100%" rx="15%" ry="0" />
-                        </clipPath>
-                    </defs>
-                </svg>
             </div>
             <!-- text -->
             <div class="about-hero-info xl:w-1/2 xl:ps-6 md:px-12 px-0">
@@ -476,9 +474,9 @@ function ScrollTop() {
 .user-container{
     width: 40vmin;
     min-height: 48vmin;
-    /* filter: drop-shadow(0 0 20px rgba(0, 0, 0, 0.3)); */
+    /* clip-path: circle(200px at 50% 50%) */
+    clip-path: circle(120px at 50% 50%)
     /* clip-path: xywh(0 0px 100% 100% round 15% 0); */
-    clip-path: url(#hero-clip);
-    -webkit-clip-path: url(#hero-clip);
+    /* -webkit-clip-path: xywh(0 0px 100% 100% round 15% 0); */
 }
 </style>

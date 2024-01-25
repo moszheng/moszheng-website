@@ -29,6 +29,12 @@
   input, textarea {
     @apply block appearance-none w-full py-1 px-2 mt-2 mb-5 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded-lg
   }
+  canvas {
+    @apply aspect-auto overflow-clip;
+  }
+  img {
+    @apply overflow-clip;
+  }
 }
 
 @layer components {
