@@ -6,15 +6,15 @@
         },
         {
             "name": "Cinema4D",
-            "img": "./src/assets/icon/C4D_icon.png"
+            "img": "./src/assets/icon/C4D_icon_md.webp"
         },
         {
             "name": "Houdini",
-            "img": "./src/assets/icon/Houdini_icon.png"
+            "img": "./src/assets/icon/Houdini_icon.webp"
         },
         {
             "name": "Redshift",
-            "img": "./src/assets/icon/Redshift_icon.png"
+            "img": "./src/assets/icon/Redshift_icon.webp"
         },
         {
             "name": "Zbrush",
@@ -22,11 +22,11 @@
         },
         {
             "name": "SubstanceDesigner",
-            "img": "./src/assets/icon/SubstanceDesigner_icon.png"
+            "img": "./src/assets/icon/SubstanceDesigner_icon.webp"
         },
         {
             "name": "Python",
-            "img": "./src/assets/icon/Python_icon.png"
+            "img": "./src/assets/icon/Python_icon.webp"
         },
         {
             "name": "Vue3",
