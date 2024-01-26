@@ -6,6 +6,7 @@ module.exports = {
   'extends': [
     'google',
     'plugin:vue/vue3-essential',
+    "prettier",
   ],
   'overrides': [
     {
