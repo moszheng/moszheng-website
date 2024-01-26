@@ -70,6 +70,16 @@
   .lazy{
     opacity: 0;
   }
+  /* icon */
+  #icon_social{
+    width: 1.5rem;
+    height: 1.5rem;
+    transition: all 0.2s;
+  }
+  #icon_social:hover{
+    transform: scale(1.1);
+    fill: var(--main-color);
+  }
 }
 
 
@@ -120,21 +130,8 @@
 }
 
 /*------------ svg icon --------*/
-#icon_social{
-  width: 1.5rem;
-  height: 1.5rem;
-  transition: all 0.2s;
-}
-#icon_social:hover{
-  transform: scale(1.1);
-  fill: var(--main-color);
-}
 #icon_collapse {
   width: 30px;
   height: 30px;
   transition: all 0.2s;
-}
-#icon-plus-area {
-  width: 30px;
-  height: 30px;
 }

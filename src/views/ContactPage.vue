@@ -23,11 +23,11 @@ import FooterItem from '@/components/FooterItem.vue';
                         </div>
                         <!-- msg -->
                         <div class="text-base">
-                            <label for="FormControlTextarea1">Messenge</label>
+                            <label for="FormControlTextarea1">Message</label>
                             <textarea class="" name="Messenge" id="FormControlTextarea1" rows="3"></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="btn inline-block align-middle text-center text-base select-none border whitespace-no-wrap lg:w-1/3 w-full h-10 rounded-lg py-1 px-3 leading-normal no-underline bg-main-orange text-white hover:bg-orange-400 duration-300">Send</button>
+                    <button type="submit" class="btn inline-block align-middle text-center text-base select-none border lg:w-1/3 w-full h-10 rounded-lg py-1 px-3 leading-normal no-underline bg-main-orange text-white hover:bg-orange-400 duration-300">Send</button>
                 </form>
             </div>
         </div>

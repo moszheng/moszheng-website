@@ -98,14 +98,9 @@ onMounted(() => {
         // };
         /* Hero Section */
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-        
-        // herotl.fromTo(".user-container",
-        //     { clipPath: "xywh(0 150px 100% 10% round 15% 0)" },
-        //     { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
-        // , 0);
         herotl.fromTo(".user-container",
-            { clipPath: "circle(10px at 50% 50%)" },
-            { clipPath: "circle(120px at 50% 50%)", duration: 3, ease: "power4.out" }
+            { clipPath: "xywh(0 150px 100% 10% round 15% 0)" },
+            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
         , 0);
         herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from(".avatar-user_2 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
@@ -222,7 +217,7 @@ function ScrollTop() {
 <div class="About">
     <main class="bg-main-gray" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12 bg-white">
+        <section class="about-hero d-flex-center flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12 bg-white text-stone-950">
             <!-- profile image -->
             <div class="d-flex-center xl:w-1/2 pr-4 pl-4">
                 <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth='5' data-scale='1.2'>
@@ -271,7 +266,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6 rounded-b-lg bg-white">
+        <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6 rounded-b-lg bg-white text-stone-950">
             <div class="about-intro-block container xl:mb-4 mb-5 w-full">
                 <!-- text -->
                 <div class="about-intro-info max-w-4xl flex items-start md:mb-12 mb-10">
@@ -474,9 +469,7 @@ function ScrollTop() {
 .user-container{
     width: 40vmin;
     min-height: 48vmin;
-    /* clip-path: circle(200px at 50% 50%) */
-    clip-path: circle(120px at 50% 50%)
-    /* clip-path: xywh(0 0px 100% 100% round 15% 0); */
-    /* -webkit-clip-path: xywh(0 0px 100% 100% round 15% 0); */
+    clip-path: xywh(0 0px 100% 100% round 15% 0);
+    -webkit-clip-path: xywh(0 0px 100% 100% round 15% 0);
 }
 </style>

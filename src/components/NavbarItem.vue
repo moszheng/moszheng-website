@@ -113,9 +113,9 @@ const showIcon = ref(false);
 
 const rotateButton = () => {
     showIcon.value = !showIcon.value;
-    const tl = gsap.timeline();
+    const tl = gsap.timeline({ defaults: { overwrite: "auto" } });
     // motion
-    tl.to('#icon-plus-area', { rotation: '+=135', duration: 0.8, ease: 'elastic.Out' });
+    tl.to('#icon-plus-area', { rotation: '+=135', duration: 0.5, ease: 'elastic.Out' });
     tl.from('#icon-plus-area', { scale: 0.8, duration: 1.4, ease: 'elastic.out(1,0.3)' }, 0.1);
 };
 
@@ -186,7 +186,7 @@ function onLeave(el, done) {
                             </TransitionGroup>
                         </div>
                         <button class="toggler-icon-xl p-2" type="button" @click="rotateButton">
-                            <svg id="icon-plus-area" :style="colormode">
+                            <svg class="size-7" id="icon-plus-area" :style="colormode">
                                 <use xlink:href="#icon-plus"></use>
                             </svg>
                         </button>
@@ -216,19 +216,6 @@ function onLeave(el, done) {
     transition: .8s ease;
 }
 /*-------- nav bar toggler icon------*/
-.toggler-icon-xl{
-    background: none;
-}
-/*--- Cancel default outline ----*/
-.toggler-icon-xl,
-.navbar-toggler,
-.navbar-toggler:focus,
-.navbar-toggler:active,
-.navbar-toggler-icon:focus{
-  outline: none;
-  box-shadow: none;
-  border: 0;
-}
 .toggler-icon{
   display: block;
   position: absolute;
