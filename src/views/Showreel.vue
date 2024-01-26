@@ -1,11 +1,11 @@
 <script setup>
-import FooterItem from '@/components/FooterItem.vue';
+import FooterItem from "@/components/FooterItem.vue";
 </script>
 <template>
 <div class="">
     <main class="showreel d-flex-center">
         <!-- video -->
-        <div class="w-full mt-5 pt-5 mb-5">
+        <div class="mb-5 mt-5 w-full pt-5">
             <iframe
                 class="aspect-video w-full bg-blue-200"
                 src="https://player.vimeo.com/video/880783588?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0"
@@ -14,11 +14,11 @@ import FooterItem from '@/components/FooterItem.vue';
             </iframe>
         </div>
     </main>
-<FooterItem />
+    <FooterItem />
 </div>
 </template>
 <style>
-.showreel{
+.showreel {
     min-height: 85vh;
 }
 </style>

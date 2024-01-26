@@ -1,44 +1,44 @@
 {
-    "logo" : [
+    "logo": [
         {
-            "name" : "AfterEffects",
-            "img" : "./src/assets/icon/AE_icon.svg"
+            "name": "AfterEffects",
+            "img": "./src/assets/icon/AE_icon.svg"
         },
         {
-            "name" : "Cinema4D",
-            "img" : "./src/assets/icon/C4D_icon.png"
+            "name": "Cinema4D",
+            "img": "./src/assets/icon/C4D_icon.png"
         },
         {
-            "name" : "Houdini",
-            "img" : "./src/assets/icon/Houdini_icon.png"
+            "name": "Houdini",
+            "img": "./src/assets/icon/Houdini_icon.png"
         },
         {
-            "name" : "Redshift",
-            "img" : "./src/assets/icon/Redshift_icon.png"
+            "name": "Redshift",
+            "img": "./src/assets/icon/Redshift_icon.png"
         },
         {
-            "name" : "Zbrush",
-            "img" : "./src/assets/icon/Zbrush.svg"
+            "name": "Zbrush",
+            "img": "./src/assets/icon/Zbrush.svg"
         },
         {
-            "name" : "SubstanceDesigner",
-            "img" : "./src/assets/icon/SubstanceDesigner_icon.png"
+            "name": "SubstanceDesigner",
+            "img": "./src/assets/icon/SubstanceDesigner_icon.png"
         },
         {
-            "name" : "Python",
-            "img" : "./src/assets/icon/Python_icon.png"
+            "name": "Python",
+            "img": "./src/assets/icon/Python_icon.png"
         },
         {
-            "name" : "Vue3",
-            "img" : "./src/assets/icon/Vue_icon.svg"
+            "name": "Vue3",
+            "img": "./src/assets/icon/Vue_icon.svg"
         },
         {
-            "name" : "Tailwind",
-            "img" : "./src/assets/icon/Tailwind_icon.svg"
+            "name": "Tailwind",
+            "img": "./src/assets/icon/Tailwind_icon.svg"
         },
         {
-            "name" : "Bootstrap",
-            "img" : "./src/assets/icon/Bootstrap_icon.svg"
+            "name": "Bootstrap",
+            "img": "./src/assets/icon/Bootstrap_icon.svg"
         }
     ]
 }

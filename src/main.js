@@ -1,56 +1,56 @@
-import { createApp } from 'vue'
-import { createRouter, createWebHistory, createWebHashHistory } from 'vue-router'
-import { createPinia } from 'pinia'
-import { useNavStore } from '@/stores/navstore'
+import { createApp } from "vue";
+import { createRouter, createWebHistory, createWebHashHistory } from "vue-router";
+import { createPinia } from "pinia";
+import { useNavStore } from "@/stores/navstore";
 
-import WorkPage from '@/views/WorksPage.vue'
+import WorkPage from "@/views/WorksPage.vue";
 
-import './assets/main.css'
+import "./assets/main.css";
 
-import App from './App.vue'
+import App from "./App.vue";
 
 const routes = [
     {
-        path: '/',
-        name: 'Home',
-        component: () => import('@/views/HomePage.vue'),
+        path: "/",
+        name: "Home",
+        component: () => import("@/views/HomePage.vue"),
     },
     {
-        path: '/works',
-        name: 'Works',
+        path: "/works",
+        name: "Works",
         // component: () => import('@/views/WorksPage.vue'),
         component: WorkPage,
         meta: {
-            keepAlive: true
+            keepAlive: true,
         },
     },
     {
-        path: '/works/:projecturl',
-        name: 'WorksItem',
-        component: () => import('@/components/WorkItem.vue'),
+        path: "/works/:projecturl",
+        name: "WorksItem",
+        component: () => import("@/components/WorkItem.vue"),
         props: true,
     },
     {
-        path: '/showreel',
-        name: 'Showreel',
-        component: () => import('@/views/Showreel.vue'),
+        path: "/showreel",
+        name: "Showreel",
+        component: () => import("@/views/Showreel.vue"),
     },
     {
-        path: '/about',
-        name: 'About',
-        component: () => import('@/views/AboutPage.vue'),
+        path: "/about",
+        name: "About",
+        component: () => import("@/views/AboutPage.vue"),
         meta: {
-            keepAlive: false
+            keepAlive: false,
         },
     },
     {
-        path: '/contact',
-        name: 'Contact',
-        component: () => import('@/views/ContactPage.vue'),
+        path: "/contact",
+        name: "Contact",
+        component: () => import("@/views/ContactPage.vue"),
     },
     {
-        path: '/:catchAll(.*)',
-        component: () => import('@/views/NotFoundPage.vue'),
+        path: "/:catchAll(.*)",
+        component: () => import("@/views/NotFoundPage.vue"),
     },
 ];
 
@@ -60,30 +60,29 @@ const router = createRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
         // always scroll to top
-        return { top: 0, behavior: 'smooth' };
+        return { top: 0, behavior: "smooth" };
     },
 });
 
 // Pinia store
-const pinia = createPinia()
+const pinia = createPinia();
 
 // if enter to home page, update navbar state
 router.beforeEach((to, from, next) => {
     const store = useNavStore();
 
     // Collapse navbar, When router change.
-    const navbarToggler = document.querySelector('.navbar-toggler');
+    const navbarToggler = document.querySelector(".navbar-toggler");
     if (store.isNavbarExpanded) {
         navbarToggler.click();
     }
-    if (to.name == 'Home') {
+    if (to.name == "Home") {
         store.navbardarkmode = true;
-    }
-    else {
+    } else {
         // dark mode
         store.navbardarkmode = false;
     }
     next();
-})
+});
 
-createApp(App).use(pinia).use(router).mount('#app')
+createApp(App).use(pinia).use(router).mount("#app");

@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed, watch, onMounted } from 'vue';
-import { useRoute } from 'vue-router';
-import { useNavStore } from '@/stores/navstore';
-import gsap from 'gsap';
+import { ref, computed, onMounted } from "vue";
+import { useRoute } from "vue-router";
+import { useNavStore } from "@/stores/navstore";
+import gsap from "gsap";
 
-import NavLink from './NavbarLink.vue';
-import LinkData from '@/data/LinkData.json';
+import NavLink from "./NavbarLink.vue";
+import LinkData from "@/data/LinkData.json";
 
 /* ---------- Color mode --------*/
 const store = useNavStore();
@@ -13,18 +13,18 @@ const route = useRoute();
 
 // update Darkmode
 const colormode = computed(() => {
-    return store.navbardarkmode ? 'fill:#FFF; color:#FFF;' : 'fill:#000; color:#000;';
+    return store.navbardarkmode ? "fill:#FFF; color:#FFF;" : "fill:#000; color:#000;";
 });
 
 let navctx;
 onMounted(() => {
     // Scroll movement
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
 
     /* ---------- Enter Motion ----------- */
     navctx = gsap.context((self) => {
         const herotl = gsap.timeline({});
-        herotl.from(".navbar-brand", { yPercent: -75, ease: "back.inOut(1.7)", duration: .8 }, 0);
+        herotl.from(".navbar-brand", { yPercent: -75, ease: "back.inOut(1.7)", duration: 0.8 }, 0);
     });
 });
 
@@ -35,13 +35,12 @@ let deltaPos = 0;
 const handleScroll = () => {
     const currentPos = window.scrollY;
     deltaPos = currentPos - lastPos;
-    if (deltaPos > 10 && navfolder.value==false) {
-        navfolder.value=true;
-        gsap.to('.navcontainer', { yPercent: -90, duration: .5, ease: 'back.inOut(1.7)' });
-    }
-    else if (deltaPos < 0 && navfolder.value==true) {
-        navfolder.value=false;
-        gsap.to('.navcontainer', { yPercent: 0, duration: .75, ease: 'back.inOut(1.7)' });
+    if (deltaPos > 10 && navfolder.value == false) {
+        navfolder.value = true;
+        gsap.to(".navcontainer", { yPercent: -90, duration: 0.5, ease: "back.inOut(1.7)" });
+    } else if (deltaPos < 0 && navfolder.value == true) {
+        navfolder.value = false;
+        gsap.to(".navcontainer", { yPercent: 0, duration: 0.75, ease: "back.inOut(1.7)" });
     }
     lastPos = currentPos;
 };
@@ -61,41 +60,49 @@ const navbarExpand = () => {
     if (store.isNavbarExpanded) {
         store.navbardarkmode = false; // insure homepage
         /* Button */
-        tl.to(".top-bar", { rotation: 135, y: "6px", duration: .25 }, 0);
-        tl.to(".mid-bar", { opacity: .5, scaleX: 0, duration: .2 }, 0);
-        tl.to(".bot-bar", { rotation: -135, y: "-6px", duration: .25 }, 0);
+        tl.to(".top-bar", { rotation: 135, y: "6px", duration: 0.25 }, 0);
+        tl.to(".mid-bar", { opacity: 0.5, scaleX: 0, duration: 0.2 }, 0);
+        tl.to(".bot-bar", { rotation: -135, y: "-6px", duration: 0.25 }, 0);
         /* collapse */
-        tl.to(navbarCollapse, { height: "50vh", ease: "back.Out(1.7)", duration: .5 }, 0.01);
+        tl.to(navbarCollapse, { height: "50vh", ease: "back.Out(1.7)", duration: 0.5 }, 0.01);
         /* -- bg -- */
-        tl.to(navContainer, { backgroundColor: 'rgba(255, 255, 255, 1)', duration: 0.3 }, 0.05);
+        tl.to(navContainer, { backgroundColor: "rgba(255, 255, 255, 1)", duration: 0.3 }, 0.05);
         tl.to(darkOverlay, { autoAlpha: 0.7, duration: 1 }, 0);
         /* -Links-- */
-        tl.fromTo(navItems,
-            { xPercent: 60, autoAlpha: 0 },
-            { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 }, 0);
+        tl.fromTo(navItems, { xPercent: 60, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 }, 0);
     } else {
         /* Button */
-        outtl.to(".top-bar", {
-            keyframes: {
-                "0%": { rotation: 135 },
-                "45%": { y: "6px" },
-                "100%": { rotation: 360, y: 0 },
-                ease: "none",
+        outtl.to(
+            ".top-bar",
+            {
+                keyframes: {
+                    "0%": { rotation: 135 },
+                    "45%": { y: "6px" },
+                    "100%": { rotation: 360, y: 0 },
+                    ease: "none",
+                },
+                duration: 0.3,
             },
-            duration: .3 }, 0);
-        outtl.to(".mid-bar", { opacity: 1, scaleX: 1, duration: .25 }, 0.01);
-        outtl.to(".bot-bar", {
-            keyframes: {
-                "0%": { rotation: -135 },
-                "45%": { y: "-6px" },
-                "100%": { rotation: -360, y: 0 },
-                ease: "none",
+            0,
+        );
+        outtl.to(".mid-bar", { opacity: 1, scaleX: 1, duration: 0.25 }, 0.01);
+        outtl.to(
+            ".bot-bar",
+            {
+                keyframes: {
+                    "0%": { rotation: -135 },
+                    "45%": { y: "-6px" },
+                    "100%": { rotation: -360, y: 0 },
+                    ease: "none",
+                },
+                duration: 0.3,
             },
-            duration: .3 }, 0);
+            0,
+        );
         /* -Links-- */
-        outtl.to(navItems, { xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: .5, stagger: 0.04, onComplete: navComplete }, 0);
+        outtl.to(navItems, { xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.04, onComplete: navComplete }, 0);
         /* -- bg -- */
-        outtl.to(navContainer, { backgroundColor: 'rgba(255, 255, 255, 0)', ease: "power3.inOut", duration: 0.4 }, 0.5);
+        outtl.to(navContainer, { backgroundColor: "rgba(255, 255, 255, 0)", ease: "power3.inOut", duration: 0.4 }, 0.5);
         outtl.to(darkOverlay, { autoAlpha: 0, ease: "power3.inOut", duration: 0.7 }, 0.3);
         /* collase */
         outtl.to(navbarCollapse, { height: 0, ease: "back.inOut(1.7)", duration: 0.5 }, 0.4);
@@ -115,29 +122,29 @@ const rotateButton = () => {
     showIcon.value = !showIcon.value;
     const tl = gsap.timeline({ defaults: { overwrite: "auto" } });
     // motion
-    tl.to('#icon-plus-area', { rotation: '+=135', duration: 0.5, ease: 'elastic.Out' });
-    tl.from('#icon-plus-area', { scale: 0.8, duration: 1.4, ease: 'elastic.out(1,0.3)' }, 0.1);
+    tl.to("#icon-plus-area", { rotation: "+=135", duration: 0.5, ease: "elastic.Out" });
+    tl.from("#icon-plus-area", { scale: 0.8, duration: 1.4, ease: "elastic.out(1,0.3)" }, 0.1);
 };
 
 /* icon_social Enter animation */
 function onBeforeEnter(el) {
     gsap.set(el, { width: 0, autoAlpha: 0, scale: 0.1 });
-};
+}
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, { width: '45px', autoAlpha: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)" });
-};
+    gsap.to(el, { width: "45px", autoAlpha: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)" });
+}
 function onLeave(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
     gsap.to(el, { width: 0, autoAlpha: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(1.7)" });
-};
+}
 </script>
 
 <template>
-    <header class="relative flex flex-wrap items-center content-between py-3 px-4 lg:flex-no-wrap">
-        <div class="navcontainer z-[100] flex flex-wrap fixed items-center justify-between w-full max-w-full top-0 left-0 mx-auto lg:px-16 px-6 pt-2 xl:pb-2 pb-6">
+    <header class="lg:flex-no-wrap relative flex flex-wrap content-between items-center px-4 py-3">
+        <div class="navcontainer fixed left-0 top-0 z-[100] mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pb-6 pt-2 lg:px-16 xl:pb-2">
             <!-- LOGO -->
-            <router-link :to="{ name : 'Home' }" class="navbar-brand flex justify-center py-2 pr-4 mr-4 text-2xl" aria-current="page">
+            <router-link :to="{ name: 'Home' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4 text-2xl" aria-current="page">
                 <Transition name="fade" mode="out-in">
                     <svg id="mos-logo" :style="colormode">
                         <use xlink:href="#icon-mosLogo"></use>
@@ -145,8 +152,8 @@ function onLeave(el, done) {
                 </Transition>
             </router-link>
             <!-- navbar responsive button -->
-            <button @click="navbarExpand" class="navbar-toggler relative w-6 h-6 lg:hidden leading-normal bg-transparent collapsed" type="button">
-                <span class="toggler-icon -mt-1.5 top-bar">
+            <button @click="navbarExpand" class="navbar-toggler collapsed relative h-6 w-6 bg-transparent leading-normal lg:hidden" type="button">
+                <span class="toggler-icon top-bar -mt-1.5">
                     <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
@@ -156,7 +163,7 @@ function onLeave(el, done) {
                         <use xlink:href="#icon-line"></use>
                     </svg>
                 </span>
-                <span class="toggler-icon mt-1.5 bot-bar">
+                <span class="toggler-icon bot-bar mt-1.5">
                     <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
                     </svg>
@@ -164,19 +171,15 @@ function onLeave(el, done) {
             </button>
             <!-- Canvas -->
             <div class="navbar-collapse">
-                <ul class="lg:h-10 h-0 lg:flex flex-wrap flex-grow lg:flex-row flex-col items-center pl-0 mb-0 lg:mt-0 mt-8 md:ml-auto lg:space-y-0 space-y-5" :style="colormode">
-                    <NavLink :to="'Works'"/>
-                    <NavLink :to="'Showreel'"/>
+                <ul class="mb-0 mt-8 h-0 flex-grow flex-col flex-wrap items-center space-y-5 pl-0 md:ml-auto lg:mt-0 lg:flex lg:h-10 lg:flex-row lg:space-y-0" :style="colormode">
+                    <NavLink :to="'Works'" />
+                    <NavLink :to="'Showreel'" />
                     <NavLink :to="'About'" />
-                    <NavLink :to="'Contact'"/>
+                    <NavLink :to="'Contact'" />
                     <li class="nav-item navtext flex items-center">
-                        <div class="flex flex-wrap flex-row xl:ms-auto">
-                            <TransitionGroup
-                                @before-enter="onBeforeEnter"
-                                @enter="onEnter"
-                                @leave="onLeave"
-                            >
-                                <li class="w-1/5 col-md-auto" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index" >
+                        <div class="flex flex-row flex-wrap xl:ms-auto">
+                            <TransitionGroup @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
+                                <li class="col-md-auto w-1/5" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index">
                                     <a class="inline-block no-underline" :href="item.url" target="_blank" rel="noopener">
                                         <svg id="icon_social" :style="colormode">
                                             <use :xlink:href="item.icon"></use>
@@ -194,7 +197,7 @@ function onLeave(el, done) {
                 </ul>
             </div>
         </div>
-        <div class="dark-overlay fixed invisible z-[60] top-0 left-0 w-full h-full bg-black"></div>
+        <div class="dark-overlay invisible fixed left-0 top-0 z-[60] h-full w-full bg-black"></div>
     </header>
 </template>
 <style scoped>
@@ -203,25 +206,25 @@ function onLeave(el, done) {
     .navbar-collapse {
         flex-basis: 100%;
     }
-    .nav-item{
+    .nav-item {
         visibility: hidden;
     }
 }
-.navcontainer  {
+.navcontainer {
     background-color: rgba(255, 255, 255, 0);
 }
 #mos-logo {
     width: 150px;
     height: 1.5em;
-    transition: .8s ease;
+    transition: 0.8s ease;
 }
 /*-------- nav bar toggler icon------*/
-.toggler-icon{
-  display: block;
-  position: absolute;
-  height: 3px;
-  width: 100%;
-  opacity: 1;
-  left: 0;
+.toggler-icon {
+    display: block;
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    opacity: 1;
+    left: 0;
 }
 </style>

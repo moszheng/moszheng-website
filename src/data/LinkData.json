@@ -1,34 +1,34 @@
 {
-    "socialmedia" : [
-        { 
-            "url" : "https://www.behance.net/moszheng",
-            "icon" : "#icon-behance"
+    "socialmedia": [
+        {
+            "url": "https://www.behance.net/moszheng",
+            "icon": "#icon-behance"
         },
-        { 
-            "url" : "https://vimeo.com/880783588 ",
-            "icon" : "#icon-vimeo"
+        {
+            "url": "https://vimeo.com/880783588 ",
+            "icon": "#icon-vimeo"
         },
-        { 
-            "url" : "https://www.linkedin.com/in/moszheng/",
-            "icon" : "#icon-linkedin"
+        {
+            "url": "https://www.linkedin.com/in/moszheng/",
+            "icon": "#icon-linkedin"
         },
-        { 
-            "url" : "https://github.com/moszheng",
-            "icon" : "#icon-github"
+        {
+            "url": "https://github.com/moszheng",
+            "icon": "#icon-github"
         },
-        { 
-            "url" : "https://www.facebook.com/profile.php?id=100090856254723",
-            "icon" : "#icon-facebook"
+        {
+            "url": "https://www.facebook.com/profile.php?id=100090856254723",
+            "icon": "#icon-facebook"
         }
     ],
-    "profile_link" : [
-        { 
-            "text" : "moszheng.design@gmail.com", 
-            "icon" : "#bi-envelope-fill" 
+    "profile_link": [
+        {
+            "text": "moszheng.design@gmail.com",
+            "icon": "#bi-envelope-fill"
         },
-        {   
-            "text" : "Taipei, Taiwan", 
-            "icon" : "#bi-geo-alt-fill" 
+        {
+            "text": "Taipei, Taiwan",
+            "icon": "#bi-geo-alt-fill"
         }
     ]
 }

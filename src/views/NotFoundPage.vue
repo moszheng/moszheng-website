@@ -7,7 +7,7 @@
 </main>
 </template>
 <style>
-.notfound{
+.notfound {
     min-height: 85vh;
 }
 </style>

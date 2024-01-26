@@ -1,18 +1,18 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from 'vue';
-import { useNavStore } from '@/stores/navstore';
-import gsap from 'gsap';
+import { ref, computed, onMounted, onUnmounted } from "vue";
+import { useNavStore } from "@/stores/navstore";
+import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-import FooterItem from '@/components/FooterItem.vue';
-import LinkData from '@/data/LinkData.json';
-import LogoData from '@/data/LogoData.json';
-import ExpData from '@/data/Experience.json';
+import FooterItem from "@/components/FooterItem.vue";
+import LinkData from "@/data/LinkData.json";
+import LogoData from "@/data/LogoData.json";
+import ExpData from "@/data/Experience.json";
 
 // Return Real route
-const profileImage1 = '../src/img/profile_1_md.webp';
-const profileImage2 = '../src/img/profile_2_md.webp';
+const profileImage1 = "../src/img/profile_1_md.webp";
+const profileImage2 = "../src/img/profile_2_md.webp";
 
 // Split content
 const heroHello = "Hello, I'm";
@@ -23,7 +23,7 @@ const introcontent = computed(() => {
     ExpData.about.forEach((el) => {
         arr.push(el.split(" "));
     });
-  return arr;
+    return arr;
 });
 
 const splitText = (string) => {
@@ -35,13 +35,13 @@ const store = useNavStore();
 const changeNavbarState = (state) => {
     store.navbardarkmode = state;
 };
-const lazyloadimgs = ref(document.querySelectorAll('.lazy'));
+const lazyloadimgs = ref(document.querySelectorAll(".lazy"));
 const imgContainer = ref();
 let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
     // Preloading status
-    lazyloadimgs.value = document.querySelectorAll('.lazy');
+    lazyloadimgs.value = document.querySelectorAll(".lazy");
     function loaded(img) {
         if (img instanceof HTMLImageElement) {
             // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
@@ -51,7 +51,7 @@ onMounted(() => {
             img.target.classList.add("loaded");
         }
     }
-    lazyloadimgs.value.forEach(function(img) {
+    lazyloadimgs.value.forEach(function (img) {
         if (img.complete) {
             loaded(img);
         } else {
@@ -73,7 +73,7 @@ onMounted(() => {
                     trigger: ".about-hero",
                     start: "clamp(top top)",
                     end: "clamp(bottom 50%)",
-                    scrub: .5,
+                    scrub: 0.5,
                 },
             }); // scale from 1.3
         });
@@ -98,10 +98,9 @@ onMounted(() => {
         // };
         /* Hero Section */
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-        herotl.fromTo(".user-container",
-            { clipPath: "xywh(0 150px 100% 10% round 15% 0)" },
-            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }
-        , 0);
+        herotl.fromTo(".user-container", 
+            { clipPath: "xywh(0 150px 100% 10% round 15% 0)" }, 
+            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }, 0);
         herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from(".avatar-user_2 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
@@ -211,53 +210,52 @@ function ScrollTop() {
         behavior: "smooth",
     });
 }
-
 </script>
 <template>
 <div class="About">
     <main class="bg-main-gray" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center flex-wrap xl:h-screen h-svh xl:mt-0 mt-8 pt-5 xl:px-16 px-3 xl:py-12 bg-white text-stone-950">
+        <section class="about-hero d-flex-center mt-8 h-svh flex-wrap bg-white px-3 pt-5 text-stone-950 xl:mt-0 xl:h-screen xl:px-16 xl:py-12">
             <!-- profile image -->
-            <div class="d-flex-center xl:w-1/2 pr-4 pl-4">
-                <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth='5' data-scale='1.2'>
-                    <div class="avatar-user_1 z-20 absolute scale-[1.35] top-[8%]" >
-                        <div class="parallax heroRot" data-depth='1.05' data-scale='1.05'>
-                            <img class="lazy left-0 w-full h-auto object-cover" alt="profile_image" :src=profileImage1>
+            <div class="d-flex-center pl-4 pr-4 xl:w-1/2">
+                <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="5" data-scale="1.2">
+                    <div class="avatar-user_1 absolute top-[8%] z-20 scale-[1.35]">
+                        <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
+                            <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage1" />
                         </div>
                     </div>
-                    <div class="avatar-user_2 z-10 absolute scale-[1.35] top-[8%]">
-                        <div class="parallax heroRot" data-depth='3.2' data-scale='1.15'>
-                            <img class="lazy left-0 w-full h-auto object-cover" alt="profile_image" :src=profileImage2>
+                    <div class="avatar-user_2 absolute top-[8%] z-10 scale-[1.35]">
+                        <div class="parallax heroRot" data-depth="3.2" data-scale="1.15">
+                            <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage2" />
                         </div>
                     </div>
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info xl:w-1/2 xl:ps-6 md:px-12 px-0">
-                <div class="md:mb-1 mb-3">
+            <div class="about-hero-info px-0 md:px-12 xl:w-1/2 xl:ps-6">
+                <div class="mb-3 md:mb-1">
                     <!-- Name -->
-                    <h1 class="mobile-center md:mb-0 mb-2">
-                        <span v-for="(text, index) in splitText(heroHello)" :key="index" class="inline-flex xl:pe-4 pe-2">
+                    <h1 class="mobile-center mb-2 md:mb-0">
+                        <span v-for="(text, index) in splitText(heroHello)" :key="index" class="inline-flex pe-2 xl:pe-4">
                             <span class="block font-bold" id="hero-hello"> {{ text }} </span>
                         </span>
                     </h1>
                     <!-- Name -->
-                    <h1 class="mobile-center md:mb-10 mb-8">
-                        <span v-for="(text, index) in splitText(heroName)" :key="index" class="inline-flex xl:pe-4 pe-2">
+                    <h1 class="mobile-center mb-8 md:mb-10">
+                        <span v-for="(text, index) in splitText(heroName)" :key="index" class="inline-flex pe-2 xl:pe-4">
                             <span class="block font-bold" id="hero-name"> {{ text }} </span>
                         </span>
                     </h1>
                     <!-- Subtitle -->
                     <div class="flex">
                         <div class="mobile-center flex flex-col items-center">
-                            <h4 class="md:text-left text-center md:mb-12 mb-10" id="hero-detail">
-                                <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong>
-                                <br> based in Taiwan.
+                            <h4 class="mb-10 text-center md:mb-12 md:text-left" id="hero-detail">
+                                <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong> <br />
+                                based in Taiwan.
                             </h4>
-                            <div class="text-center" id="hero-4" style="rotate: 180deg;">
+                            <div class="text-center" id="hero-4" style="rotate: 180deg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z" />
                                 </svg>
                             </div>
                         </div>
@@ -266,25 +264,25 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center xl:px-20 xl:py-12 p-6 rounded-b-lg bg-white text-stone-950">
-            <div class="about-intro-block container xl:mb-4 mb-5 w-full">
+        <section class="about-intro d-flex-center rounded-b-lg bg-white p-6 text-stone-950 xl:px-20 xl:py-12">
+            <div class="about-intro-block container mb-5 w-full xl:mb-4">
                 <!-- text -->
-                <div class="about-intro-info max-w-4xl flex items-start md:mb-12 mb-10">
+                <div class="about-intro-info mb-10 flex max-w-4xl items-start md:mb-12">
                     <!-- Intro -->
                     <div class="space-y-5">
                         <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info">
                             <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
-                                <span class="block split-text"> {{ text }} </span>
+                                <span class="split-text block"> {{ text }} </span>
                             </span>
                         </h4>
                     </div>
                 </div>
-                <div class="xl:flex justify-end xl:px-0 md:px-12 px-0">
+                <div class="justify-end px-0 md:px-12 xl:flex xl:px-0">
                     <div class="about-intro-social">
                         <!-- Social media -->
-                        <ul class="flex flex-wrap list-reset mb-10 flex-row mobile-center">
-                            <li v-for="item in LinkData.socialmedia" :key="item" class=" intro-infosocial w-1/5 col-md-auto">
-                                <a class="inline-block py-2 md:pl-2 md:pr-4 px-4" :href="item.url" target="_blank" rel="noopener">
+                        <ul class="list-reset mobile-center mb-10 flex flex-row flex-wrap">
+                            <li v-for="item in LinkData.socialmedia" :key="item" class="intro-infosocial col-md-auto w-1/5">
+                                <a class="inline-block px-4 py-2 md:pl-2 md:pr-4" :href="item.url" target="_blank" rel="noopener">
                                     <svg id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
@@ -294,7 +292,7 @@ function ScrollTop() {
                         <!-- Contact info -->
                         <div class="mobile-center">
                             <div class="mb-4">
-                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact flex mb-2 p-2">
+                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact mb-2 flex p-2">
                                     <svg id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
@@ -307,40 +305,40 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
-        <section class="about-exp d-flex-center min-h-screen xl:px-12 px-4 py-5 text-white bg-main-black xl:rounded-b-[5em] rounded-b-3xl">
-            <div class="about-exp-block container flex flex-wrap xl:mt-0 lg:mb-4 mt-10 mb-8">
+        <section class="about-exp d-flex-center min-h-screen rounded-b-3xl bg-main-black px-4 py-5 text-white xl:rounded-b-[5em] xl:px-12">
+            <div class="about-exp-block container mb-8 mt-10 flex flex-wrap lg:mb-4 xl:mt-0">
                 <!-- Exp Title -->
-                <div class="lg:w-1/3 lg:mb-6 mb-10 pt-2 lg:pl-0 lg:pr-10 px-4">
+                <div class="mb-10 px-4 pt-2 lg:mb-6 lg:w-1/3 lg:pl-0 lg:pr-10">
                     <h2 id="about-exp-title">Experience</h2>
                 </div>
                 <!-- Timeline -->
-                <div class="lg:w-2/3 xl:px-4 md:space-y-7 space-y-5">
+                <div class="space-y-5 md:space-y-7 lg:w-2/3 xl:px-4">
                     <div class="about-job group flex flex-wrap" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Exp Job Duration & timeline -->
-                        <div class="flex flex-wrap relative flex-grow justify-center max-w-full flex-1 xl:px-4">
+                        <div class="relative flex max-w-full flex-1 flex-grow flex-wrap justify-center xl:px-4">
                             <!-- Toggle Duration -->
-                            <div class="relative flex-grow max-w-full flex-1 px-2 py-8 text-center duration-toggle">
-                                <p>{{item.duration}}</p>
+                            <div class="duration-toggle relative max-w-full flex-1 flex-grow px-2 py-8 text-center">
+                                <p>{{ item.duration }}</p>
                             </div>
                             <!-- Mid -->
-                            <div class="w-1/4 flex justify-center">
+                            <div class="flex w-1/4 justify-center">
                                 <div class="timeline top-[70px] w-px bg-gradient-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
                                 <div class="flex justify-center py-9">
-                                    <div class="rounded-full group-hover:bg-main-orange bg-main-gray w-2.5 h-2.5 duration-200"></div>
+                                    <div class="h-2.5 w-2.5 rounded-full bg-main-gray duration-200 group-hover:bg-main-orange"></div>
                                 </div>
                             </div>
                         </div>
                         <!-- Exp Job Content -->
-                        <div class="xl:w-3/4 w-4/5 xl:pl-4 pl-2 pr-4 py-6 rounded-lg bg-gradient-to-r group-hover:from-transparent group-hover:to-[#242222]">
+                        <div class="w-4/5 rounded-lg bg-gradient-to-r py-6 pl-2 pr-4 group-hover:from-transparent group-hover:to-[#242222] xl:w-3/4 xl:pl-4">
                             <div class="mb-6">
-                                <h4 class="exp-job-title relative flex-grow max-w-full flex-1 mb-2">{{ item.title }}</h4>
+                                <h4 class="exp-job-title relative mb-2 max-w-full flex-1 flex-grow">{{ item.title }}</h4>
                                 <div class="flex">
-                                    <h6 class="exp-job-title mr-4 mb-0">{{ item.company }}</h6>
-                                    <span class="exp-p duration-toggled">{{item.duration}}</span>
+                                    <h6 class="exp-job-title mb-0 mr-4">{{ item.company }}</h6>
+                                    <span class="exp-p duration-toggled">{{ item.duration }}</span>
                                 </div>
                             </div>
                             <!-- Job detail -->
-                            <ul class="exp-p list-disc space-y-2 pl-3 max-w-2xl">
+                            <ul class="exp-p max-w-2xl list-disc space-y-2 pl-3">
                                 <li v-for="content in item.detail" :key="content" class="exp-job-detail">
                                     <h6>{{ content }}</h6>
                                 </li>
@@ -351,25 +349,25 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Skill -->
-        <section class="about-skill d-flex-center min-h-screen xl:px-20 xl:py-12 px-4 py-5 bg-main-gray ">
-            <div class="about-skill-block container xl:mt-0 mt-4 mb-4">
+        <section class="about-skill d-flex-center min-h-screen bg-main-gray px-4 py-5 xl:px-20 xl:py-12">
+            <div class="about-skill-block container mb-4 mt-4 xl:mt-0">
                 <!-- Skill Title -->
-                <div class="lg:ps-0 md:pe-12 px-3 md:mb-12 my-2">
-                    <h2 class="md:mb-6 mb-5 text-center" id="skill-title">Service & Skill</h2>
+                <div class="my-2 px-3 md:mb-12 md:pe-12 lg:ps-0">
+                    <h2 class="mb-5 text-center md:mb-6" id="skill-title">Service & Skill</h2>
                 </div>
                 <!-- Skill card -->
-                <div class="d-flex-center md:px-3 md:mb-0 mb-6">
+                <div class="d-flex-center mb-6 md:mb-0 md:px-3">
                     <!-- Text -->
-                    <div class="about-skill-text  flex flex-wrap">
+                    <div class="about-skill-text flex flex-wrap">
                         <!-- Skill -->
-                        <div class="about-skill-card flex-grow flex-1 max-w-full md:mx-4 xl:my-0 my-2 p-10 bg-[#d6d6d6] shadow-xl rounded-2xl"
-                            v-for="skill in ExpData.service" :key="skill"
+                        <div
+                            class="about-skill-card my-2 max-w-full flex-1 flex-grow rounded-2xl bg-[#d6d6d6] p-10 shadow-xl md:mx-4 xl:my-0"
+                            v-for="skill in ExpData.service"
+                            :key="skill"
                         >
-                            <h3 class="md:mb-8 mb-4" id="skill-card-title">{{skill.title}}</h3>
-                            <h5 class="mb-3" id="skill-card-text"
-                                v-for="(item, index) in skill.content" :key="item.name" :data-index="index"
-                            >
-                                {{item.name}}
+                            <h3 class="mb-4 md:mb-8" id="skill-card-title">{{ skill.title }}</h3>
+                            <h5 class="mb-3" id="skill-card-text" v-for="(item, index) in skill.content" :key="item.name" :data-index="index">
+                                {{ item.name }}
                             </h5>
                         </div>
                     </div>
@@ -377,16 +375,17 @@ function ScrollTop() {
                 <!-- Skill Icon -->
                 <div class="d-flex-center md:pe-4">
                     <div class="skill-icon-block vw-50">
-                        <h3 class="md:my-12 mb-4 text-center" id="skill-tooltitle">Tools</h3>
+                        <h3 class="mb-4 text-center md:my-12" id="skill-tooltitle">Tools</h3>
                         <!-- tools block -->
                         <div class="skill-logo-block d-flex-center flex-wrap">
-                            <div class="skill-logo-container group d-flex-center md:w-1/5"
-                                v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index"
-                            >
-                                <div class="rounded-md group-hover:bg-gray-300 mx-1 my-1 px-4 xl:py-4 py-2 duration-300">
-                                    <img :src=item.img :alt=item.name class="skill-logo max-w-full group-hover:scale-105 h-auto xl:w-12 w-10 duration-200">
+                            <div class="skill-logo-container d-flex-center group md:w-1/5" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index">
+                                <div class="mx-1 my-1 rounded-md px-4 py-2 duration-300 group-hover:bg-gray-300 xl:py-4">
+                                    <img :src="item.img" :alt="item.name" class="skill-logo h-auto w-10 max-w-full duration-200 group-hover:scale-105 xl:w-12" />
                                 </div>
-                                <span class="absolute -bottom-2 group-hover:-bottom-5 opacity-0 group-hover:opacity-100 bg-gray-600 rounded-lg text-white px-3 py-1 duration-300">{{ item.name }}</span>
+                                <span
+                                    class="absolute -bottom-2 rounded-lg bg-gray-600 px-3 py-1 text-white opacity-0 duration-300 group-hover:-bottom-5 group-hover:opacity-100"
+                                    >{{ item.name }}</span
+                                >
                             </div>
                         </div>
                     </div>
@@ -395,15 +394,15 @@ function ScrollTop() {
         </section>
         <!-- Contact button-->
         <!-- <section class="about-contact d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
-            <h2>Let's Get in Touch</h2>
-            <div class="d-flex items-center">
-                <router-link :to="{ name : 'Contact' }" class="nav-link px-1 py-1 me-md-5">Contact</router-link>
-            </div>
-        </section> -->
-        <div class="about-end w-full mx-auto sm:px-4 max-w-full bg-main-gray">
+        <h2>Let's Get in Touch</h2>
+        <div class="d-flex items-center">
+            <router-link :to="{ name : 'Contact' }" class="nav-link px-1 py-1 me-md-5">Contact</router-link>
+        </div>
+    </section> -->
+        <div class="about-end mx-auto w-full max-w-full bg-main-gray sm:px-4">
             <a @click="ScrollTop" class="d-flex-center flex-col p-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z" />
                 </svg>
                 <p class="text-sm">BACK TO TOP</p>
             </a>
@@ -416,39 +415,40 @@ function ScrollTop() {
 <style scoped>
 /* Mobile (below XL) */
 @media only screen and (max-width: 1439px) {
-    .duration-toggle{
+    .duration-toggle {
         display: none;
     }
-    .duration-toggled{
+    .duration-toggled {
         display: block !important;
     }
-    .mobile-center{
+    .mobile-center {
         display: flex;
         justify-content: center !important;
     }
-    .skill-icon-block{
+    .skill-icon-block {
         width: 80vw !important;
     }
-    .user-container{
+    .user-container {
         width: 35vmax !important;
         min-height: 40vmax !important;
     }
 }
-.duration-toggled{
+.duration-toggled {
     display: none;
 }
 /*-----------------------*/
 /* font color */
-.exp-p{
+.exp-p {
     color: rgb(179, 179, 179);
 }
 
 /*----------- Block -------------*/
-.about-intro, .about-contact {
+.about-intro,
+.about-contact {
     min-height: 60vh;
 }
 /* ---Skill--- */
-.about-skill-text{
+.about-skill-text {
     min-height: 20vh;
 }
 /*------- Job timeline-------*/
@@ -458,7 +458,7 @@ function ScrollTop() {
 .timeline {
     visibility: hidden;
     /* background-color: rgb(117, 117, 117); */
-    content: '';
+    content: "";
     position: absolute;
     /* top: 85px; */
     height: calc(100% - 10px);
@@ -466,7 +466,7 @@ function ScrollTop() {
     transform-style: preserve-3D;
 }
 /*------ Img --------*/
-.user-container{
+.user-container {
     width: 40vmin;
     min-height: 48vmin;
     clip-path: xywh(0 0px 100% 100% round 15% 0);
