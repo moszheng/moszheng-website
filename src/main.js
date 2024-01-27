@@ -60,7 +60,10 @@ const router = createRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
         // always scroll to top
-        return { top: 0, behavior: "smooth" };
+        // return { top: 0, behavior: "smooth" };
+        return new Promise((resolve) => {
+            resolve({ top: 0, behavior: "smooth" })
+        })
     },
 });
 
