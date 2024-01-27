@@ -170,11 +170,11 @@ function ScrollTop() {
             <section class="workitem-info mx-2 flex flex-col flex-wrap justify-between px-3 md:mx-4 lg:flex-row xl:px-12">
                 <!-- Left-info -->
                 <div class="mb-8 pl-4 pr-4 md:mb-12 xl:mb-0">
-                    <h3 class="hero-1 mb-8">{{ prjdata.en_name }}</h3>
+                    <h3 class="hero-1 mb-8 text-stone-950">{{ prjdata.en_name }}</h3>
                     <div class="flex flex-row justify-between md:flex-col">
                         <div>
-                            <h5 class="hero-2 mb-3">@{{ prjdata.company }}</h5>
-                            <h6 class="hero-2 mb-6">{{ prjdata.date }}</h6>
+                            <h5 class="hero-2 mb-3 text-stone-950">@{{ prjdata.company }}</h5>
+                            <h6 class="hero-2 mb-6 text-stone-950">{{ prjdata.date }}</h6>
                         </div>
                         <div class="flex">
                             <a class="hero-social me-6" :href="prjdata.behance" target="_blank" rel="noopener">
@@ -193,7 +193,7 @@ function ScrollTop() {
                 </div>
                 <!-- Right - Roles -->
                 <div class="pl-4 pr-4 xl:ml-auto">
-                    <h3 class="hero-3 mb-4">Roles</h3>
+                    <h3 class="hero-3 mb-4 text-stone-950">Roles</h3>
                     <h5 class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item">{{ item }}</h5>
                 </div>
             </section>
@@ -229,7 +229,7 @@ function ScrollTop() {
             <!-- credit -->
             <section class="workitem-credit mx-1 mb-5 flex flex-wrap px-3 md:mx-4 xl:px-12">
                 <div class="flex px-4 lg:justify-center xl:w-2/5">
-                    <h3 class="credit-title mb-10 xl:mb-0">Credit</h3>
+                    <h3 class="credit-title mb-10 xl:mb-0 text-stone-950">Credit</h3>
                 </div>
                 <div class="px-4 xl:w-3/5">
                     <div v-for="(value, key) in prjdata.credit" class="credit-text mb-5 flex flex-wrap" :key="value">
@@ -250,7 +250,7 @@ function ScrollTop() {
         <!-- Other Prj -->
         <section class="workitem-otherprj d-flex-center px-1 md:px-12" data-scroll-section>
             <div class="container mx-auto sm:px-4">
-                <h3 class="my-4 text-white">Other Projects</h3>
+                <h3 class="my-4 md:mx-0 mx-4 text-white">Other Projects</h3>
                 <!-- projects -->
                 <div class="bd-content px-3 md:py-4 xl:px-0">
                     <div class="flex flex-wrap">
@@ -261,7 +261,7 @@ function ScrollTop() {
                                     <img :src="imgLocation(item.img_md[0])" class="card-img lazy absolute left-0 top-0 w-full object-cover" alt="otherprjImg" />
                                     <div class="works-black"></div>
                                     <div class="works-destop-title px-4 text-white">
-                                        <h4 class="mb-3">{{ item.en_name }}</h4>
+                                        <h4 class="mb-3 text-stone-950">{{ item.en_name }}</h4>
                                         <p class="mb-0">{{ item.date }}</p>
                                     </div>
                                 </router-link>

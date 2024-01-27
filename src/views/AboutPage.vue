@@ -392,7 +392,7 @@ function ScrollTop() {
         </section>
         <!-- Contact button-->
         <!-- <section class="about-contact d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
-        <h2>Let's Get in Touch</h2>
+        <h2 class="text-stone-950">Let's Get in Touch</h2>
         <div class="d-flex items-center">
             <router-link :to="{ name : 'Contact' }" class="nav-link px-1 py-1 me-md-5">Contact</router-link>
         </div>

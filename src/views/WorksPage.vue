@@ -61,7 +61,8 @@ onMounted(() => {
 });
 onBeforeUnmount(() => {
     const herotl = gsap.timeline({});
-    herotl.to(".card", { xPercent: -250, scaleY: 0.4, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05 });
+    herotl.to(".card", { xPercent: -250, scaleY: 0.4, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.02 });
+    herotl.to(".work-mobile-title", { xPercent: -150, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.2 }, 0.2);
 });
 onUnmounted(() => {
     ctx.revert();
@@ -99,14 +100,14 @@ function ScrollTop() {
                         <!-- desktop title -->
                         <div class="works-black"></div>
                         <div class="works-destop-title px-5 text-white">
-                            <h4 class="mb-3">{{ item.en_name }}</h4>
+                            <h4 class="mb-3 text-stone-950">{{ item.en_name }}</h4>
                             <p class="mb-0">{{ item.date }}</p>
                         </div>
                     </router-link>
                 </div>
                 <!-- mobile title -->
                 <div class="work-mobile-title mb-3 px-1">
-                    <h4 class="mb-1 break-keep">{{ item.en_name }}</h4>
+                    <h4 class="mb-1 break-keep text-stone-950">{{ item.en_name }}</h4>
                     <p>{{ item.date }}</p>
                 </div>
             </div>
