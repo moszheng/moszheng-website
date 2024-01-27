@@ -99,8 +99,8 @@ onMounted(() => {
         /* Hero Section */
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
         herotl.fromTo(".user-container", 
-            { clipPath: "xywh(0 150px 100% 10% round 15% 0)" }, 
-            { clipPath: "xywh(0 0px 100% 100% round 15% 0)", duration: 3, ease: "power4.out" }, 0);
+            { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, 
+            { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0);
         herotl.from(".avatar-user_1 ", { scale: 2.2, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from(".avatar-user_2 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
@@ -117,7 +117,6 @@ onMounted(() => {
             },
             defaults: { ease: "power3.Out(1.7)" },
         });
-        // introtl.from(".intro-info", { yPercent: 15, duration: 0.7, stagger: 0.3 }, 0);
         introtl.from(".split-text", { opacity: 0, yPercent: 40, duration: 0.6, stagger: 0.01 }, 0);
         introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.5, duration: 0.5, stagger: 0.1 }, 0.35);
         introtl.from(".intro-infocontact", { opacity: 0, yPercent: 20, duration: 1, stagger: 0.2 }, 0.5);
@@ -182,7 +181,6 @@ onMounted(() => {
             skilltl.from(cardtitle, { opacity: 0, yPercent: 20, rotateX: 45, duration: 1 }, delay + 0.1);
             skilltl.from(cardtext, { opacity: 0, yPercent: 20, duration: 0.5, stagger: 0.1 }, delay + 0.25);
         });
-        // skilltl.from("#skill-sep", { scaleX: 0, ease: "back.Out(1.7)", duration: 1 }, 1);
         // Skill Icon Group
         const icontl = gsap.timeline({
             scrollTrigger: {
@@ -215,7 +213,7 @@ function ScrollTop() {
 <div class="About">
     <main class="bg-main-gray" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center mt-8 h-svh flex-wrap bg-white px-3 pt-5 text-stone-950 xl:mt-0 xl:h-screen xl:px-16 xl:py-12">
+        <section class="about-hero d-flex-center mt-8 h-svh flex-wrap bg-white px-3 pt-5xl:mt-0 xl:h-screen xl:px-16 xl:py-12">
             <!-- profile image -->
             <div class="d-flex-center pl-4 pr-4 xl:w-1/2">
                 <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="5" data-scale="1.2">
@@ -235,13 +233,13 @@ function ScrollTop() {
             <div class="about-hero-info px-0 md:px-12 xl:w-1/2 xl:ps-6">
                 <div class="mb-3 md:mb-1">
                     <!-- Name -->
-                    <h1 class="mobile-center mb-2 md:mb-0">
+                    <h1 class="mobile-center text-stone-950 mb-2 md:mb-0">
                         <span v-for="(text, index) in splitText(heroHello)" :key="index" class="inline-flex pe-2 xl:pe-4">
                             <span class="block font-bold" id="hero-hello"> {{ text }} </span>
                         </span>
                     </h1>
                     <!-- Name -->
-                    <h1 class="mobile-center mb-8 md:mb-10">
+                    <h1 class="mobile-center text-stone-950 mb-8 md:mb-10">
                         <span v-for="(text, index) in splitText(heroName)" :key="index" class="inline-flex pe-2 xl:pe-4">
                             <span class="block font-bold" id="hero-name"> {{ text }} </span>
                         </span>
@@ -249,7 +247,7 @@ function ScrollTop() {
                     <!-- Subtitle -->
                     <div class="flex">
                         <div class="mobile-center flex flex-col items-center">
-                            <h4 class="mb-10 text-center md:mb-12 md:text-left" id="hero-detail">
+                            <h4 class="mb-10 text-center text-stone-950 md:mb-12 md:text-left" id="hero-detail">
                                 <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong> <br />
                                 based in Taiwan.
                             </h4>
@@ -264,13 +262,13 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center rounded-b-lg bg-white p-6 text-stone-950 xl:px-20 xl:py-12">
+        <section class="about-intro d-flex-center rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
             <div class="about-intro-block container mb-5 w-full xl:mb-4">
                 <!-- text -->
                 <div class="about-intro-info mb-10 flex max-w-4xl items-start md:mb-12">
                     <!-- Intro -->
                     <div class="space-y-5">
-                        <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info">
+                        <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info text-stone-950">
                             <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
                                 <span class="split-text block"> {{ text }} </span>
                             </span>
@@ -296,7 +294,7 @@ function ScrollTop() {
                                     <svg id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
-                                    <h5 class="ml-3">{{ item.text }}</h5>
+                                    <h5 class="ml-3 text-stone-950">{{ item.text }}</h5>
                                 </div>
                             </div>
                         </div>
@@ -309,7 +307,7 @@ function ScrollTop() {
             <div class="about-exp-block container mb-8 mt-10 flex flex-wrap lg:mb-4 xl:mt-0">
                 <!-- Exp Title -->
                 <div class="mb-10 px-4 pt-2 lg:mb-6 lg:w-1/3 lg:pl-0 lg:pr-10">
-                    <h2 id="about-exp-title">Experience</h2>
+                    <h2 class="text-white" id="about-exp-title">Experience</h2>
                 </div>
                 <!-- Timeline -->
                 <div class="space-y-5 md:space-y-7 lg:w-2/3 xl:px-4">
@@ -353,7 +351,7 @@ function ScrollTop() {
             <div class="about-skill-block container mb-4 mt-4 xl:mt-0">
                 <!-- Skill Title -->
                 <div class="my-2 px-3 md:mb-12 md:pe-12 lg:ps-0">
-                    <h2 class="mb-5 text-center md:mb-6" id="skill-title">Service & Skill</h2>
+                    <h2 class="mb-5 text-stone-950 text-center md:mb-6" id="skill-title">Service & Skill</h2>
                 </div>
                 <!-- Skill card -->
                 <div class="d-flex-center mb-6 md:mb-0 md:px-3">
@@ -365,7 +363,7 @@ function ScrollTop() {
                             v-for="skill in ExpData.service"
                             :key="skill"
                         >
-                            <h3 class="mb-4 md:mb-8" id="skill-card-title">{{ skill.title }}</h3>
+                            <h3 class="mb-4 text-stone-950 md:mb-8" id="skill-card-title">{{ skill.title }}</h3>
                             <h5 class="mb-3" id="skill-card-text" v-for="(item, index) in skill.content" :key="item.name" :data-index="index">
                                 {{ item.name }}
                             </h5>
@@ -375,7 +373,7 @@ function ScrollTop() {
                 <!-- Skill Icon -->
                 <div class="d-flex-center md:pe-4">
                     <div class="skill-icon-block vw-50">
-                        <h3 class="mb-4 text-center md:my-12" id="skill-tooltitle">Tools</h3>
+                        <h3 class="mb-4 text-center text-stone-950 md:my-12" id="skill-tooltitle">Tools</h3>
                         <!-- tools block -->
                         <div class="skill-logo-block d-flex-center flex-wrap">
                             <div class="skill-logo-container d-flex-center group md:w-1/5" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index">
@@ -469,7 +467,9 @@ function ScrollTop() {
 .user-container {
     width: 40vmin;
     min-height: 48vmin;
-    clip-path: xywh(0 0px 100% 100% round 15% 0);
-    -webkit-clip-path: xywh(0 0px 100% 100% round 15% 0);
+    clip-path: inset(0% 0% 0% 0% round 12% 0%);
+    -webkit-clip-path: inset(0 0% 0 0 round 12% 0%);
+    /* clip-path: xywh(0 0px 100% 100% round 15% 0); */
+    /* -webkit-clip-path: xywh(0 0px 100% 100% round 15% 0); */
 }
 </style>
