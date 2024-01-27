@@ -115,11 +115,11 @@ onMounted(() => {
                 end: "bottom 30%",
                 // markers: true,
             },
-            defaults: { ease: "power3.Out(1.7)" },
+            defaults: { ease: "power3.out" },
         });
-        introtl.from(".split-text", { opacity: 0, yPercent: 40, duration: 0.6, stagger: 0.01 }, 0);
-        introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.5, duration: 0.5, stagger: 0.1 }, 0.35);
-        introtl.from(".intro-infocontact", { opacity: 0, yPercent: 20, duration: 1, stagger: 0.2 }, 0.5);
+        introtl.from(".split-text", { opacity: 0, yPercent: 130, duration: 0.8, stagger: 0.02 }, 0);
+        introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.8, duration: 0.5, stagger: 0.1 }, 0.45);
+        introtl.from(".intro-infocontact", { opacity: 0, yPercent: 25, duration: 1.5, stagger: 0.2 }, 0.8);
         /* --------------- Exp Section--------------*/
         const navtl = gsap.timeline({
             scrollTrigger: {
@@ -262,7 +262,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
+        <section class="about-intro min-h-[60vh] d-flex-center rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
             <div class="about-intro-block container mb-5 w-full xl:mb-4">
                 <!-- text -->
                 <div class="about-intro-info mb-10 flex max-w-4xl items-start md:mb-12">
@@ -279,9 +279,9 @@ function ScrollTop() {
                     <div class="about-intro-social">
                         <!-- Social media -->
                         <ul class="list-reset mobile-center mb-10 flex flex-row flex-wrap">
-                            <li v-for="item in LinkData.socialmedia" :key="item" class="intro-infosocial col-md-auto w-1/5">
-                                <a class="inline-block px-4 py-2 md:pl-2 md:pr-4" :href="item.url" target="_blank" rel="noopener">
-                                    <svg id="icon_social">
+                            <li v-for="item in LinkData.socialmedia" :key="item" class="intro-infosocial w-1/5">
+                                <a class="inline-block p-6 md:p-2 hover:bg-gray-200 rounded-full" :href="item.url" target="_blank" rel="noopener">
+                                    <svg class="lg:size-8 size-7 " id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
                                 </a>
@@ -291,7 +291,7 @@ function ScrollTop() {
                         <div class="mobile-center">
                             <div class="mb-4">
                                 <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact mb-2 flex p-2">
-                                    <svg id="icon_social">
+                                    <svg class="lg:size-7 size-6 " id="icon_social">
                                         <use :xlink:href="item.icon"></use>
                                     </svg>
                                     <h5 class="ml-3 text-stone-950">{{ item.text }}</h5>
@@ -310,8 +310,8 @@ function ScrollTop() {
                     <h2 class="text-white" id="about-exp-title">Experience</h2>
                 </div>
                 <!-- Timeline -->
-                <div class="space-y-5 md:space-y-7 lg:w-2/3 xl:px-4">
-                    <div class="about-job group flex flex-wrap" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
+                <ul class="space-y-5 md:space-y-7 lg:w-2/3 xl:px-4">
+                    <li class="about-job group flex flex-wrap" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
                         <!-- Exp Job Duration & timeline -->
                         <div class="relative flex max-w-full flex-1 flex-grow flex-wrap justify-center xl:px-4">
                             <!-- Toggle Duration -->
@@ -320,7 +320,7 @@ function ScrollTop() {
                             </div>
                             <!-- Mid -->
                             <div class="flex w-1/4 justify-center">
-                                <div class="timeline top-[70px] w-px bg-gradient-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
+                                <div class="timeline origin-top invisible top-[70px] w-px bg-gradient-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
                                 <div class="flex justify-center py-9">
                                     <div class="h-2.5 w-2.5 rounded-full bg-main-gray duration-200 group-hover:bg-main-orange"></div>
                                 </div>
@@ -332,18 +332,18 @@ function ScrollTop() {
                                 <h4 class="exp-job-title relative mb-2 max-w-full flex-1 flex-grow">{{ item.title }}</h4>
                                 <div class="flex">
                                     <h6 class="exp-job-title mb-0 mr-4">{{ item.company }}</h6>
-                                    <span class="exp-p duration-toggled">{{ item.duration }}</span>
+                                    <span class="text-neutral-400 duration-toggled hidden">{{ item.duration }}</span>
                                 </div>
                             </div>
                             <!-- Job detail -->
-                            <ul class="exp-p max-w-2xl list-disc space-y-2 pl-3">
+                            <ul class="text-neutral-400 max-w-2xl list-disc space-y-2 pl-3">
                                 <li v-for="content in item.detail" :key="content" class="exp-job-detail">
                                     <h6>{{ content }}</h6>
                                 </li>
                             </ul>
                         </div>
-                    </div>
-                </div>
+                    </li>
+                </ul>
             </div>
         </section>
         <!-- Skill -->
@@ -356,7 +356,7 @@ function ScrollTop() {
                 <!-- Skill card -->
                 <div class="d-flex-center mb-6 md:mb-0 md:px-3">
                     <!-- Text -->
-                    <div class="about-skill-text flex flex-wrap">
+                    <div class="about-skill-text min-h-[20vh] flex flex-wrap">
                         <!-- Skill -->
                         <div
                             class="about-skill-card my-2 max-w-full flex-1 flex-grow rounded-2xl bg-[#d6d6d6] p-10 shadow-xl md:mx-4 xl:my-0"
@@ -431,37 +431,13 @@ function ScrollTop() {
         min-height: 40vmax !important;
     }
 }
-.duration-toggled {
-    display: none;
-}
-/*-----------------------*/
-/* font color */
-.exp-p {
-    color: rgb(179, 179, 179);
-}
-
-/*----------- Block -------------*/
-.about-intro,
-.about-contact {
-    min-height: 60vh;
-}
-/* ---Skill--- */
-.about-skill-text {
-    min-height: 20vh;
-}
 /*------- Job timeline-------*/
 .about-job:last-child .timeline {
     height: 0;
 }
 .timeline {
-    visibility: hidden;
-    /* background-color: rgb(117, 117, 117); */
-    content: "";
     position: absolute;
-    /* top: 85px; */
     height: calc(100% - 10px);
-    transform-origin: top;
-    transform-style: preserve-3D;
 }
 /*------ Img --------*/
 .user-container {
@@ -469,7 +445,5 @@ function ScrollTop() {
     min-height: 48vmin;
     clip-path: inset(0% 0% 0% 0% round 12% 0%);
     -webkit-clip-path: inset(0 0% 0 0 round 12% 0%);
-    /* clip-path: xywh(0 0px 100% 100% round 15% 0); */
-    /* -webkit-clip-path: xywh(0 0px 100% 100% round 15% 0); */
 }
 </style>

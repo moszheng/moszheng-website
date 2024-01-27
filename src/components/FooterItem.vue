@@ -12,7 +12,7 @@ import LinkData from "../data/LinkData.json";
             <ul class="foot-social flex flex-row ps-0">
                 <li v-for="item in LinkData.socialmedia" :key="item" class="col-md-auto w-1/5">
                     <a class="inline-block py-2 pr-8 no-underline" :href="item.url" target="_blank" rel="noopener">
-                        <svg id="icon_social" fill="#FFF">
+                        <svg class="lg:size-8 size-6" id="icon_social" fill="#FFF">
                             <use :xlink:href="item.icon"></use>
                         </svg>
                     </a>

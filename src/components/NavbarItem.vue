@@ -132,7 +132,7 @@ function onBeforeEnter(el) {
 }
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, { width: "45px", autoAlpha: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)" });
+    gsap.to(el, { width: "50px", autoAlpha: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)" });
 }
 function onLeave(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
@@ -170,7 +170,7 @@ function onLeave(el, done) {
                 </span>
             </button>
             <!-- Canvas -->
-            <div class="navbar-collapse">
+            <nav class="navbar-collapse">
                 <ul class="mb-0 mt-8 h-0 flex-grow flex-col flex-wrap items-center space-y-5 pl-0 md:ml-auto lg:mt-0 lg:flex lg:h-10 lg:flex-row lg:space-y-0" :style="colormode">
                     <NavLink :to="'Works'" />
                     <NavLink :to="'Showreel'" />
@@ -179,9 +179,9 @@ function onLeave(el, done) {
                     <li class="nav-item navtext flex items-center">
                         <div class="flex flex-row flex-wrap xl:ms-auto">
                             <TransitionGroup @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
-                                <li class="col-md-auto w-1/5" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index">
-                                    <a class="inline-block no-underline" :href="item.url" target="_blank" rel="noopener">
-                                        <svg id="icon_social" :style="colormode">
+                                <li class="w-1/5" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index">
+                                    <a class="inline-block" :href="item.url" target="_blank" rel="noopener">
+                                        <svg class="size-7" id="icon_social" :style="colormode">
                                             <use :xlink:href="item.icon"></use>
                                         </svg>
                                     </a>
@@ -195,7 +195,7 @@ function onLeave(el, done) {
                         </button>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </div>
         <div class="dark-overlay invisible fixed left-0 top-0 z-[60] h-full w-full bg-black"></div>
     </header>

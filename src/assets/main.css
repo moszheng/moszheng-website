@@ -72,8 +72,6 @@
   }
   /* icon */
   #icon_social{
-    width: 1.5rem;
-    height: 1.5rem;
     transition: all 0.2s;
   }
   #icon_social:hover{

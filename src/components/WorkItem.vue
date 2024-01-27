@@ -178,13 +178,13 @@ function ScrollTop() {
                         </div>
                         <div class="flex">
                             <a class="hero-social me-6" :href="prjdata.behance" target="_blank" rel="noopener">
-                                <svg id="icon_social">
+                                <svg class="lg:size-8 size-6 " id="icon_social">
                                     <use xlink:href="#icon-behance"></use>
                                 </svg>
                             </a>
                             <!-- vimeo Link -->
                             <a class="hero-social" :href="vimeoPage(prjdata.video)" target="_blank" rel="noopener">
-                                <svg id="icon_social">
+                                <svg class="lg:size-8 size-6 " id="icon_social">
                                     <use xlink:href="#icon-vimeo"></use>
                                 </svg>
                             </a>
