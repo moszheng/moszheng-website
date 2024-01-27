@@ -106,7 +106,7 @@ onMounted(() => {
         herotl.from(".hero-3", { opacity: 0, yPercent: 50, rotationX: 90 }, 0.6);
         herotl.from(".hero-4", { opacity: 0, yPercent: 25, rotationX: 90, ease: "power3.Out(1.7)", stagger: 0.25 }, 0.65);
         herotl.from(".hero-sep", { scaleX: 0, ease: "power3.Out(1.7)", stagger: 0.25 }, 0.8);
-        herotl.from(".head-img-container", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)" }, 1);
+        // herotl.from(".head-img-container", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)" }, 1);
         herotl.from("#content-context", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", duration: 0.5, stagger: 0.1 }, 1.1);
         /* Credit */
         const credittl = gsap.timeline({

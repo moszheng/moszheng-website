@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount, onUnmounted } from "vue";
-import Masonry from "masonry-layout";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -16,13 +15,6 @@ const lazyloadimgs = ref(document.querySelectorAll(".lazy"));
 let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
-    // initialize masonry (breakpoint not work?)
-    if (window.innerWidth > 1025) {
-        const row = document.querySelector("[data-masonry]");
-        new Masonry(row, {
-            percentPosition: true,
-        });
-    }
     // Preloading status
     lazyloadimgs.value = document.querySelectorAll(".lazy");
     function loaded(img) {
@@ -95,9 +87,9 @@ function ScrollTop() {
 </script>
 <template>
 <div class="works">
-    <main class="container mx-auto mt-4 overflow-hidden pt-5 sm:px-4">
-        <section class="mx-1 flex flex-wrap pt-5 md:mx-0" data-masonry='{"percentPosition": true }'>
-            <div v-for="(item, index) in WorksData.project" :key="index" class="w-full px-4 lg:mb-4 lg:w-1/3 lg:px-2">
+    <main class="container mx-auto mt-4 overflow-hidden pt-10 sm:px-4">
+        <section class="mx-1 columns-1 lg:columns-3 gap-4 md:mx-0">
+            <div v-for="(item, index) in WorksData.project" :key="index" class="w-full px-4 lg:mb-4 lg:px-0">
                 <div class="card relative mb-3 flex min-w-0 flex-col bg-gray-600 text-white lg:mb-0" :style="randomHeight(index)">
                     <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name" class="d-flex-center h-full">
                         <!-- replace-image -->
