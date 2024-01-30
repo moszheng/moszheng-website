@@ -11,6 +11,7 @@ import LogoData from "@/data/LogoData.json";
 import ExpData from "@/data/Experience.json";
 
 // Return Real route
+const slothLogo = "../src/assets/icon/slothfellas.png";
 const profileImage1 = "../src/img/profile_1_md.webp";
 const profileImage2 = "../src/img/profile_2_md.webp";
 
@@ -117,6 +118,9 @@ onMounted(() => {
             },
             defaults: { ease: "power3.out" },
         });
+        introtl.fromTo(".intro-container", 
+            { clipPath: "inset(0% 100% 0% 0%)" }, 
+            { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
         introtl.from(".split-text", { opacity: 0, yPercent: 130, duration: 0.8, stagger: 0.02 }, 0);
         introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.8, duration: 0.5, stagger: 0.1 }, 0.45);
         introtl.from(".intro-infocontact", { opacity: 0, yPercent: 25, duration: 1.5, stagger: 0.2 }, 0.8);
@@ -168,18 +172,18 @@ onMounted(() => {
                 end: "bottom 30%",
                 // markers: true,
             },
-            defaults: { ease: "power3.Out(1.7)" },
+            defaults: { ease: "power3.out" },
         });
         skilltl.from("#skill-title", { opacity: 0, yPercent: 20, duration: 1 });
         // Skill Card Group
         gsap.utils.toArray(".about-skill-card").forEach((item, i) => {
-            const delay = i / 8 + 0.5;
+            const delay = i / 8 + 0.3;
             const cardtitle = item.querySelector("#skill-card-title");
             const cardtext = item.querySelectorAll("#skill-card-text");
             // Animation
-            skilltl.from(item, { opacity: 0, yPercent: 25, scale: 0.8, duration: 0.3 }, delay);
-            skilltl.from(cardtitle, { opacity: 0, yPercent: 20, rotateX: 45, duration: 1 }, delay + 0.1);
-            skilltl.from(cardtext, { opacity: 0, yPercent: 20, duration: 0.5, stagger: 0.1 }, delay + 0.25);
+            skilltl.from(item, { opacity: 0, yPercent: 25, scale: 0.7, ease: "back.inOut(1.7)", duration: 0.8 }, delay);
+            skilltl.from(cardtitle, { opacity: 0, yPercent: 100, duration: 1 }, delay + 0.6);
+            skilltl.from(cardtext, { opacity: 0, yPercent: 100, duration: 1, stagger: 0.15 }, delay + 0.8);
         });
         // Skill Icon Group
         const icontl = gsap.timeline({
@@ -262,52 +266,37 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro min-h-[60vh] d-flex-center rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
+        <section class="about-intro min-h-[70vh] d-flex-center rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
             <div class="about-intro-block container mb-5 w-full xl:mb-4">
                 <!-- text -->
-                <div class="about-intro-info mb-10 flex max-w-4xl items-start md:mb-12">
+                <div class="about-intro-info mb-10 flex  items-start justify-between md:mb-12">
                     <!-- Intro -->
-                    <div class="space-y-5">
+                    <div class="max-w-3xl space-y-10">
                         <h4 v-for="(textarray, indexz) in introcontent" :key="indexz" class="intro-info text-stone-950">
                             <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
                                 <span class="split-text block"> {{ text }} </span>
                             </span>
                         </h4>
                     </div>
-                </div>
-                <div class="justify-end px-0 md:px-12 xl:flex xl:px-0">
-                    <div class="about-intro-social">
-                        <!-- Social media -->
-                        <ul class="list-reset mobile-center mb-10 flex flex-row flex-wrap">
-                            <li v-for="item in LinkData.socialmedia" :key="item" class="intro-infosocial w-1/5">
-                                <a class="inline-block p-6 md:p-2 hover:bg-gray-200 rounded-full" :href="item.url" target="_blank" rel="noopener">
-                                    <svg class="lg:size-8 size-7 " id="icon_social">
-                                        <use :xlink:href="item.icon"></use>
-                                    </svg>
-                                </a>
-                            </li>
-                        </ul>
-                        <!-- Contact info -->
-                        <div class="mobile-center">
-                            <div class="mb-4">
-                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact mb-2 flex p-2">
-                                    <svg class="lg:size-7 size-6 " id="icon_social">
-                                        <use :xlink:href="item.icon"></use>
-                                    </svg>
-                                    <h5 class="ml-3 text-stone-950">{{ item.text }}</h5>
+                    <div class="">
+                        <div class="intro-container parallax relative max-h-[600px] overflow-hidden" data-depth="-1" data-scale="1.2">
+                            <div class="avatar-user_2 absolute top-[8%] z-10 scale-[1.35]">
+                                <div class="parallax heroRot" data-depth="3" data-scale="1.05">
+                                    <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage2" />
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
             </div>
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
-        <section class="about-exp d-flex-center min-h-screen rounded-b-3xl bg-main-black px-4 py-5 text-white xl:rounded-b-[5em] xl:px-12">
+        <section class="about-exp d-flex-center min-h-screen rounded-b-3xl bg-main-black px-4 py-5 text-main-neutral xl:rounded-b-[5em] xl:px-12">
             <div class="about-exp-block container mb-8 mt-10 flex flex-wrap lg:mb-4 xl:mt-0">
                 <!-- Exp Title -->
                 <div class="mb-10 px-4 pt-2 lg:mb-6 lg:w-1/3 lg:pl-0 lg:pr-10">
-                    <h2 class="text-white" id="about-exp-title">Experience</h2>
+                    <h2 class="text-main-neutral" id="about-exp-title">Experience</h2>
                 </div>
                 <!-- Timeline -->
                 <ul class="space-y-5 md:space-y-7 lg:w-2/3 xl:px-4">
@@ -346,6 +335,29 @@ function ScrollTop() {
                 </ul>
             </div>
         </section>
+        <!-- Thinking -->
+        <!-- <section class="about-contact min-h-screen d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
+            <div class="flex">
+                <div>
+                    <h1 class="text-stone-950">Procedural Thinking</h1>
+                    <h4> teoiutsotusotuiu1d23fsf1sd6f54s6df4 </h4>
+                </div>
+                <div class="space-y-5">
+                    <div class="flex justify-center">
+                        <div>
+                            <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
+                        </div>
+                        <h4>Idea</h4>
+                    </div>
+                    <div class="flex justify-center">
+                        <div>
+                            <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
+                        </div>
+                        <h4>Idea</h4>
+                    </div>
+                </div>
+            </div>
+        </section> -->
         <!-- Skill -->
         <section class="about-skill d-flex-center min-h-screen bg-main-gray px-4 py-5 xl:px-20 xl:py-12">
             <div class="about-skill-block container mb-4 mt-4 xl:mt-0">
@@ -356,13 +368,15 @@ function ScrollTop() {
                 <!-- Skill card -->
                 <div class="d-flex-center mb-6 md:mb-0 md:px-3">
                     <!-- Text -->
-                    <div class="about-skill-text min-h-[20vh] flex flex-wrap">
+                    <div class="about-skill-text min-h-[20vh] lg:w-4/5 flex flex-wrap">
                         <!-- Skill -->
-                        <div
-                            class="about-skill-card my-2 max-w-full flex-1 flex-grow rounded-2xl bg-[#d6d6d6] p-10 shadow-xl md:mx-4 xl:my-0"
-                            v-for="skill in ExpData.service"
-                            :key="skill"
+                        <div class="about-skill-card my-2 max-w-full flex-1 flex-grow rounded-2xl bg-[#d6d6d6] p-10 shadow-xl md:mx-4 xl:my-0"
+                        v-for="skill in ExpData.service"
+                        :key="skill"
                         >
+                            <div class="w-full h-40 d-flex-center mb-12">
+                                <img class="lazy h-auto w-40 object-cover" alt="cardimg" :src="skill.logo" />
+                            </div>
                             <h3 class="mb-4 text-stone-950 md:mb-8" id="skill-card-title">{{ skill.title }}</h3>
                             <h5 class="mb-3" id="skill-card-text" v-for="(item, index) in skill.content" :key="item.name" :data-index="index">
                                 {{ item.name }}
@@ -373,7 +387,10 @@ function ScrollTop() {
                 <!-- Skill Icon -->
                 <div class="d-flex-center md:pe-4">
                     <div class="skill-icon-block vw-50">
-                        <h3 class="mb-4 text-center text-stone-950 md:my-12" id="skill-tooltitle">Tools</h3>
+                        <div class="md:my-12">
+                            <h3 class="mb-4 text-center text-stone-950 " id="skill-tooltitle">Tools</h3>
+                            <h5 class="text-center"> My Teammate and homies</h5>
+                        </div>
                         <!-- tools block -->
                         <div class="skill-logo-block d-flex-center flex-wrap">
                             <div class="skill-logo-container d-flex-center group md:w-1/5" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index">
@@ -390,21 +407,53 @@ function ScrollTop() {
                 </div>
             </div>
         </section>
-        <!-- Contact button-->
-        <!-- <section class="about-contact d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
-        <h2 class="text-stone-950">Let's Get in Touch</h2>
-        <div class="d-flex items-center">
-            <router-link :to="{ name : 'Contact' }" class="nav-link px-1 py-1 me-md-5">Contact</router-link>
-        </div>
-    </section> -->
-        <div class="about-end mx-auto w-full max-w-full bg-main-gray sm:px-4">
+        <!-- Contact -->
+        <section class="about-contact  min-h-[65vh] d-flex-center w-full lg:px-5 px-4 py-5 bg-main-black">
+            <div class="container flex justify-around">
+                <div class="px-0 md:px-12 xl:flex xl:px-0">
+                    <div class="about-intro-social">
+                        <!-- Social media -->
+                        <ul class="list-reset mobile-center mb-10 flex flex-row flex-wrap">
+                            <li v-for="item in LinkData.socialmedia" :key="item" class="intro-infosocial w-1/5">
+                                <a class="inline-block p-6 md:p-2 rounded-full" :href="item.url" target="_blank" rel="noopener">
+                                    <svg class="lg:size-9 size-7 fill-main-neutral" id="icon_social">
+                                        <use :xlink:href="item.icon"></use>
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
+                        <!-- Contact info -->
+                        <div class="mobile-center">
+                            <div class="mb-4">
+                                <div v-for="(item, index) in LinkData.profile_link" :key="item.text" :data-index="index" class="intro-infocontact mb-2 flex p-2">
+                                    <svg class="lg:size-7 size-6 fill-main-neutral" id="icon_social">
+                                        <use :xlink:href="item.icon"></use>
+                                    </svg>
+                                    <h5 class="ml-3 text-main-neutral">{{ item.text }}</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="">
+                    <h1 class="text-main-neutral uppercase mb-12">Let's Get in Touch</h1>
+                    <router-link :to="{ name : 'Contact' }" class="d-flex-center max-w-xl border-4 border-main-neutral rounded-full px-2 py-5 me-md-5 bg-transparent">
+                        <h3 class="text-main-neutral">Contact</h3>
+                        <svg class="fill-main-neutral w-48">
+                            <use xlink:href="#icon-arrowxl"></use>
+                        </svg>
+                    </router-link>
+                </div>
+            </div>
+        </section>
+        <!-- <div class="about-end mx-auto w-full max-w-full bg-main-gray sm:px-4">
             <a @click="ScrollTop" class="d-flex-center flex-col p-4">
                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z" />
                 </svg>
                 <p class="text-sm">BACK TO TOP</p>
             </a>
-        </div>
+        </div> -->
     </main>
     <FooterItem />
 </div>
@@ -445,5 +494,11 @@ function ScrollTop() {
     min-height: 48vmin;
     clip-path: inset(0% 0% 0% 0% round 12% 0%);
     -webkit-clip-path: inset(0 0% 0 0 round 12% 0%);
+}
+.intro-container {
+    width: 70vmin;
+    min-height: 40vmin;
+    clip-path: inset(0% 0% 0% 0% );
+    -webkit-clip-path: inset(0 0% 0 0);
 }
 </style>

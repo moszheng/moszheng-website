@@ -133,3 +133,21 @@
   height: 30px;
   transition: all 0.2s;
 }
+
+/* ::-webkit-scrollbar{
+  display:none
+} */
+::-webkit-scrollbar{
+  background:0 0;
+  width: 0.25rem;
+}
+::-webkit-scrollbar-track{
+  background:hsla(0,0%,100%,.1)
+}
+::-webkit-scrollbar-thumb{
+  background: var(--main-color);
+  border-radius:8px;
+}
+::-webkit-scrollbar-thumb:hover{
+  background:#ffad76
+}

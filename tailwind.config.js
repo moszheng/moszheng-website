@@ -11,6 +11,7 @@ module.exports = {
         'main-orange': '#ff6a21',
         'main-black': '#161616',
         'main-gray': '#e4e4e4',
+        'main-neutral': '#fffcf7',
       },
       screens: {
         '3xl': '1792px',

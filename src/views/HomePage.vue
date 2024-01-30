@@ -70,8 +70,8 @@ const loadingLeave = (el, done) => {
                     <h5 class="mb-2" id="home-name">Freelance 3D Generalist</h5>
                     <h2 class="mb-12 lg:mb-10" id="home-name">Sheng Wen (Mos) Cheng</h2>
                     <div class="test mb-12 space-y-4 lg:mb-10">
-                        <p id="home-text">A 3D Generalist and Motion Designer based in Taiwan.</p>
-                        <p id="home-text">Offering professional design services for digital arts and product motion design, <br />catering to companies and brands.</p>
+                        <h5 id="home-text">A 3D Generalist and Motion Designer based in Taiwan.</h5>
+                        <h5 id="home-text">Offering professional design services for digital arts and product motion design, <br />catering to companies and brands.</h5>
                     </div>
                     <div class="index-btnarea">
                         <router-link :to="{ name: 'Works' }">
