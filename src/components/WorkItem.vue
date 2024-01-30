@@ -261,7 +261,7 @@ function ScrollTop() {
                                     <img :src="imgLocation(item.img_md[0])" class="card-img lazy absolute left-0 top-0 w-full object-cover" alt="otherprjImg" />
                                     <div class="works-black"></div>
                                     <div class="works-destop-title px-4 text-white">
-                                        <h4 class="mb-3 text-stone-950">{{ item.en_name }}</h4>
+                                        <h4 class="mb-3">{{ item.en_name }}</h4>
                                         <p class="mb-0">{{ item.date }}</p>
                                     </div>
                                 </router-link>

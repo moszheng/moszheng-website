@@ -21,7 +21,7 @@ const isActive = computed(() => {
 <li class="nav-item">
     <div class="flex items-center">
         <!-- :style="colormode" -->
-        <router-link :to="{ name: to }" class="nav-link relative p-1 text-lg md:me-12" :class="{ navactive: isActive }">
+        <router-link :to="{ name: to }" class="nav-link relative p-1 text-xl font-bold md:me-12" :class="{ navactive: isActive }">
             {{ props.to }}
         </router-link>
     </div>
@@ -33,7 +33,7 @@ const isActive = computed(() => {
     transition: 0.4s cubic-bezier(0.83, 0, 0.14, 1.02);
 }
 .nav-link:hover {
-    color: rgb(148, 148, 148) !important;
+    color: var(--main-color) !important;
 }
 .nav-link.navactive::after {
     width: 100%;

@@ -144,9 +144,9 @@ function onLeave(el, done) {
     <header class="lg:flex-no-wrap relative flex flex-wrap content-between items-center px-4 py-3">
         <div class="navcontainer fixed left-0 top-0 z-[100] mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pb-6 pt-2 lg:px-16 xl:pb-2">
             <!-- LOGO -->
-            <router-link :to="{ name: 'Home' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4 text-2xl" aria-current="page">
+            <router-link :to="{ name: 'Home' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4" aria-current="page">
                 <Transition name="fade" mode="out-in">
-                    <svg id="mos-logo" :style="colormode">
+                    <svg class="w-36 h-12" id="mos-logo" :style="colormode">
                         <use xlink:href="#icon-mosLogo"></use>
                     </svg>
                 </Transition>
@@ -214,8 +214,6 @@ function onLeave(el, done) {
     background-color: rgba(255, 255, 255, 0);
 }
 #mos-logo {
-    width: 150px;
-    height: 1.5em;
     transition: 0.8s ease;
 }
 /*-------- nav bar toggler icon------*/

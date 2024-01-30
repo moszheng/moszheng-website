@@ -1,22 +1,27 @@
 {
     "socialmedia": [
         {
+            "name": "Behance",
             "url": "https://www.behance.net/moszheng",
             "icon": "#icon-behance"
         },
         {
+            "name": "Vimeo",
             "url": "https://vimeo.com/880783588 ",
             "icon": "#icon-vimeo"
         },
         {
+            "name": "Linkedin",
             "url": "https://www.linkedin.com/in/moszheng/",
             "icon": "#icon-linkedin"
         },
         {
+            "name": "Github",
             "url": "https://github.com/moszheng",
             "icon": "#icon-github"
         },
         {
+            "name": "Facebook",
             "url": "https://www.facebook.com/profile.php?id=100090856254723",
             "icon": "#icon-facebook"
         }
