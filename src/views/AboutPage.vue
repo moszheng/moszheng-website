@@ -113,7 +113,7 @@ onMounted(() => {
                     start: "clamp(top center)",
                     end: "clamp(bottom center)",
                     scrub: 0.5,
-                    markers: true,
+                    // markers: true,
                 },
             }); // scale from 1.3
         });
@@ -256,9 +256,9 @@ onMounted(() => {
         const contacttl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".about-contact",
-                start: "35% center",
+                start: "top 80%",
                 end: "bottom 30%",
-                // markers: true,
+                markers: true,
             },
             defaults: { ease: "power3.Out(1.7)", duration: 0.5 },
         });
