@@ -9,6 +9,8 @@ import LinkData from "@/data/LinkData.json";
 import LogoData from "@/data/LogoData.json";
 import ExpData from "@/data/Experience.json";
 
+import AboutExp from "@/views/AboutPageExp.vue";
+
 // Return Real route
 const profileImage1 = "../src/img/profile_1_md.webp";
 const profileImage2 = "../src/img/profile_2_md.webp";
@@ -258,7 +260,7 @@ onMounted(() => {
                 trigger: ".about-contact",
                 start: "top 80%",
                 end: "bottom 30%",
-                markers: true,
+                // markers: true,
             },
             defaults: { ease: "power3.Out(1.7)", duration: 0.5 },
         });
@@ -417,72 +419,30 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Experience Breakpoint: xl, lg(1024) -->
-        <section class="about-exp d-flex-center min-h-screen bg-main-black px-4 py-5 text-main-neutral xl:px-12">
-            <div class="about-exp-block container mb-8 mt-10 flex flex-wrap lg:mb-4 xl:mt-0">
-                <!-- Exp Title -->
-                <div class="mb-10 px-4 pt-2 lg:mb-6 lg:w-1/3 lg:pl-0 lg:pr-10">
-                    <h2 class="text-main-neutral" id="about-exp-title">Experience</h2>
-                </div>
-                <!-- Timeline -->
-                <ul class="space-y-5 md:space-y-7 lg:w-2/3 xl:px-4">
-                    <li class="about-job group flex flex-wrap" v-for="(item, index) in ExpData.experience" :key="item.company" :data-index="index">
-                        <!-- Exp Job Duration & timeline -->
-                        <div class="relative flex max-w-full flex-1 flex-grow flex-wrap justify-center xl:px-4">
-                            <!-- Toggle Duration -->
-                            <div class="duration-toggle relative max-w-full flex-1 flex-grow px-2 py-8 text-center">
-                                <p>{{ item.duration }}</p>
-                            </div>
-                            <!-- Mid -->
-                            <div class="flex w-1/4 justify-center">
-                                <div class="timeline invisible top-[70px] w-px origin-top bg-gradient-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
-                                <div class="flex justify-center py-9">
-                                    <div class="h-2.5 w-2.5 rounded-full bg-main-gray duration-200 group-hover:bg-main-orange"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Exp Job Content -->
-                        <div class="w-4/5 rounded-lg bg-gradient-to-r py-6 pl-2 pr-4 group-hover:from-transparent group-hover:to-[#242222] xl:w-3/4 xl:pl-4">
-                            <div class="mb-6">
-                                <h4 class="exp-job-title relative mb-2 max-w-full flex-1 flex-grow">{{ item.title }}</h4>
-                                <div class="flex">
-                                    <h6 class="exp-job-title mb-0 mr-4">{{ item.company }}</h6>
-                                    <span class="duration-toggled hidden text-neutral-400">{{ item.duration }}</span>
-                                </div>
-                            </div>
-                            <!-- Job detail -->
-                            <ul class="max-w-2xl list-disc space-y-2 pl-3 text-neutral-400">
-                                <li v-for="content in item.detail" :key="content" class="exp-job-detail">
-                                    <h6>{{ content }}</h6>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <AboutExp />
         <!-- Thinking -->
         <!-- <section class="about-contact min-h-screen d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
-        <div class="flex">
-            <div>
-                <h1 class="text-stone-950">Procedural Thinking</h1>
-                <h4> teoiutsotusotuiu1d23fsf1sd6f54s6df4 </h4>
-            </div>
-            <div class="space-y-5">
-                <div class="flex justify-center">
-                    <div>
-                        <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
-                    </div>
-                    <h4>Idea</h4>
+            <div class="flex">
+                <div>
+                    <h1 class="text-stone-950">Procedural Thinking</h1>
+                    <h4> teoiutsotusotuiu1d23fsf1sd6f54s6df4 </h4>
                 </div>
-                <div class="flex justify-center">
-                    <div>
-                        <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
+                <div class="space-y-5">
+                    <div class="flex justify-center">
+                        <div>
+                            <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
+                        </div>
+                        <h4>Idea</h4>
                     </div>
-                    <h4>Idea</h4>
+                    <div class="flex justify-center">
+                        <div>
+                            <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
+                        </div>
+                        <h4>Idea</h4>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section> -->
+        </section> -->
         <!-- Skill -->
         <!-- bg-gradient-to-r from-[#fc7a00] to-[#ffc354] -->
         <section class="about-skill d-flex-center min-h-screen rounded-b-3xl bg-main-gray px-4 py-5 xl:rounded-b-[12em] xl:px-20 xl:py-16">
@@ -603,14 +563,6 @@ function ScrollTop() {
         width: 35vmax !important;
         min-height: 40vmax !important;
     }
-}
-/*------- Job timeline-------*/
-.about-job:last-child .timeline {
-    height: 0;
-}
-.timeline {
-    position: absolute;
-    height: calc(100% - 10px);
 }
 /*------ Img --------*/
 .user-container {
