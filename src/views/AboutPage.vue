@@ -42,6 +42,7 @@ const store = useNavStore();
 const changeNavbarState = (state) => {
     store.navbardarkmode = state;
 };
+const finishloading = ref(false);
 const lazyloadimgs = ref(document.querySelectorAll(".lazy"));
 const imgContainer = ref();
 let ctx;
@@ -65,6 +66,23 @@ onMounted(() => {
             img.addEventListener("load", loaded);
         }
     });
+    finishloading.value = true;
+    // const loadImagePromises = Array.from(lazyloadimgs.value).map((img) => {
+    //     return new Promise((resolve) => {
+    //         if (img.complete) {
+    //             console.log("finished")
+    //             loaded(img);
+    //             resolve("loading finished");
+    //         } else {
+    //             img.addEventListener("load", loaded);
+    //             resolve("loading finished");
+    //         }
+    //     });
+    // });
+    // Promise.all(loadImagePromises).then(() => {
+    //     console.log("all finished")
+    //     herotl.play();
+    // });
     /* Desktop only Motion */
     matchmedia.add("(min-width: 768px)", (context) => {
         /* ----------- Depth --------------- */
@@ -81,6 +99,21 @@ onMounted(() => {
                     start: "clamp(top top)",
                     end: "clamp(bottom 50%)",
                     scrub: 0.5,
+                },
+            }); // scale from 1.3
+        });
+        gsap.utils.toArray(".introparallax").forEach((layer) => {
+            const depth = layer.dataset.depth;
+            const movement = depth * -4;
+            gsap.to(layer, {
+                yPercent: movement,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".about-intro",
+                    start: "clamp(top center)",
+                    end: "clamp(bottom center)",
+                    scrub: 0.5,
+                    markers: true,
                 },
             }); // scale from 1.3
         });
@@ -129,9 +162,22 @@ onMounted(() => {
         introtl.fromTo(".intro-container", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
         introtl.from(".intro-title", { opacity: 0, yPercent: 150, duration: 1, stagger: 0.1 }, 0);
         introtl.from(".split-text", { opacity: 0, yPercent: 100, duration: 0.8, stagger: 0.015 }, 0.4);
-        introtl.from(".profile-img-3 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
-        introtl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.8, duration: 0.5, stagger: 0.1 }, 0.45);
-        introtl.from(".intro-infocontact", { opacity: 0, yPercent: 25, duration: 1.5, stagger: 0.2 }, 0.8);
+        introtl.from(".profile-img-3", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
+
+        const introtl2 = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about-intro-info2",
+                start: "top 65%",
+                end: "bottom 30%",
+                // markers: true,
+            },
+            defaults: { ease: "power3.out" },
+        });
+        introtl2.fromTo(".intro-container2", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
+        introtl2.from(".intro-title2", { opacity: 0, yPercent: 150, duration: 1, stagger: 0.1 }, 0);
+        introtl2.from(".split-text2", { opacity: 0, yPercent: 100, duration: 0.8, stagger: 0.015 }, 0.4);
+        introtl2.from(".profile-img-4", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
+        
         /* --------------- Exp Section--------------*/
         const navtl = gsap.timeline({
             scrollTrigger: {
@@ -206,6 +252,18 @@ onMounted(() => {
         });
         icontl.from("#skill-tooltitle", { opacity: 0, yPercent: 20, rotateX: 40 }, 0.5);
         icontl.from(".skill-logo-container", { opacity: 0, yPercent: 20, scale: 0.8, stagger: 0.1 }, 0.5);
+        // Contact G
+        const contacttl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".about-contact",
+                start: "35% center",
+                end: "bottom 30%",
+                // markers: true,
+            },
+            defaults: { ease: "power3.Out(1.7)", duration: 0.5 },
+        });
+        contacttl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.8, duration: 0.5, stagger: 0.1 }, 0.45);
+        contacttl.from(".intro-infocontact", { opacity: 0, yPercent: 25, duration: 1.5, stagger: 0.2 }, 0.8);
     }, imgContainer.value);
 });
 onUnmounted(() => {
@@ -214,6 +272,25 @@ onUnmounted(() => {
 });
 
 /* GSAP */
+/* Transition GSAP */
+const beforeEnter = (el) => {
+    el.style.opacity = 0;
+};
+const enter = (el, done) => {
+    gsap.to(el, { opacity: 1, duration: 1, ease: "power3.Out", onComplete: done });
+};
+/* Loading */
+const loadingLeave = (el, done) => {
+    const tl = gsap.timeline();
+    tl.to(el, {
+        yPercent: -100,
+        delay: 1.5,
+        duration: 0.75,
+        ease: "power4.out",
+        onComplete: done,
+        // onComplete: homemotion,
+    });
+};
 function ScrollTop() {
     window.scrollTo({
         top: 0,
@@ -225,10 +302,23 @@ function ScrollTop() {
 <template>
 <div class="About">
     <main class="bg-main-black" ref="imgContainer">
+        <!-- <Transition name="move" mode="out-in" 
+            @before-enter="beforeEnter" 
+            @enter="enter" 
+            @leave="loadingLeave"
+        >
+            <div class="index-loading absolute top-0 z-20 h-full w-full bg-black" v-show="!finishloading">
+                <div class="d-flex-center container mx-auto h-full sm:px-4">
+                    <svg id="mos-logo" class="fill-white">
+                        <use xlink:href="#icon-mosLogo"></use>
+                    </svg>
+                </div>
+            </div>
+        </Transition> -->
         <!-- Hero -->
         <section class="about-hero d-flex-center pt-5 xl:mt-0 mt-8 h-svh flex-wrap bg-white px-3 xl:h-screen xl:px-16 xl:py-12">
             <!-- profile image -->
-            <div class="d-flex-center pl-4 pr-4 xl:w-1/2">
+            <div class="d-flex-center pl-4 pr-4 2xl:w-1/2">
                 <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
                     <div class="profile-img-1 absolute top-[8%] z-20 scale-[1.35]">
                         <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
@@ -243,7 +333,7 @@ function ScrollTop() {
                 </div>
             </div>
             <!-- text -->
-            <div class="about-hero-info d-flex-center xl:w-1/2 xl:ps-6">
+            <div class="about-hero-info d-flex-center 2xl:w-1/2 2xl:ps-6">
                 <div class="mb-3 md:mb-1">
                     <!-- Name -->
                     <h1 class="mobile-center mb-2 text-stone-950 md:mb-0">
@@ -277,40 +367,47 @@ function ScrollTop() {
         <!-- Intro 2-->
         <section class="about-intro d-flex-center min-h-[80vh] rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
             <div class="about-intro-block container w-full">
-                <div class="about-intro-info lg:flex items-start lg:justify-around mb-48">
+                <div class="about-intro-info lg:flex items-start lg:justify-around xl:mb-48 mb-24 min-h-[30vh]">
                     <!-- Intro -->
-                    <div class="max-w-2xl space-y-10 lg:mb-0 mb-12 pr-0 xl:pr-10 4xl:pr-5">
-                        <h2 class="intro-title text-stone-950 lg:mb-16">Craft the Detail</h2>
-                        <h4 v-for="(textarray, indexz) in introcontent1" :key="indexz" class="intro-info text-stone-950">
-                            <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
-                                <span class="split-text block"> {{ text }} </span>
-                            </span>
-                        </h4>
+                    <div class="max-w-2xl flex items-center lg:mb-0 mb-12 pr-0 xl:pr-10 4xl:pr-5 h-full">
+                        <div class="">
+                            <h2 class="intro-title text-stone-950 xl:mb-16 mb-8">Craft the Detail</h2>
+                            <div class="space-y-10 ">
+                                <h4 v-for="(textarray, indexz) in introcontent1" :key="indexz" class="intro-info leading-normal text-stone-950">
+                                    <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
+                                        <span class="split-text block"> {{ text }} </span>
+                                    </span>
+                                </h4>
+                            </div>
+                        </div>
                     </div>
                     <!-- Img -->                    
-                    <div class="intro-container my-5 parallax relative overflow-hidden" data-scale="1.2">
+                    <div class="intro-container relative overflow-hidden">
+                        <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
                         <div class="profile-img-3 d-flex-center scale-[1.35]">
-                            <div class="parallax" data-depth="3" data-scale="1.05">
+                            <div class="introparallax" data-depth="3">
                                 <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3" />
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="about-intro-info lg:flex items-start lg:justify-around mb-36">
-                    <div class="intro-container my-5 parallax relative overflow-hidden" data-scale="1.2">
-                        <div class="profile-img-3 d-flex-center scale-[1.35]">
-                            <div class="parallax" data-depth="3" data-scale="1.05">
+                <!-- Group2 -->
+                <div class="about-intro-info2 lg:flex items-start lg:justify-around mb-36">
+                    <div class="intro-container2 my-5 relative overflow-hidden">
+                        <div class="profile-img-4 d-flex-center scale-[1.35]">
+                            <div class="introparallax" data-depth="3">
                                 <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
                             </div>
                         </div>
                     </div>
-                    <div class="max-w-2xl flex items-center lg:mb-0 mb-12 pr-0 xl:pr-10 4xl:pr-5 h-full">
+                    <!-- Intro -->
+                    <div class="max-w-2xl flex items-center lg:mb-0 mb-12 pl-0 xl:pl-12 4xl:pr-5 h-full mt-8">
                         <div class="">
-                            <h2 class="intro-title text-stone-950 lg:mb-16">Every Second Counts</h2>
+                            <h2 class="intro-title2 text-stone-950 xl:mb-16 mb-8">Every Second Counts</h2>
                             <div class="space-y-10">
-                                <h4 v-for="(textarray, indexz) in introcontent2" :key="indexz" class="intro-info text-stone-950">
+                                <h4 v-for="(textarray, indexz) in introcontent2" :key="indexz" class="intro-info leading-normal text-stone-950">
                                     <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
-                                        <span class="split-text block"> {{ text }} </span>
+                                        <span class="split-text2 block"> {{ text }} </span>
                                     </span>
                                 </h4>
                             </div>
@@ -416,7 +513,7 @@ function ScrollTop() {
                     </div>
                 </div>
                 <!-- Skill Icon -->
-                <div class="d-flex-center md:pe-4">
+                <div class="d-flex-center py-12">
                     <div class="skill-icon-block vw-50">
                         <div class="md:my-12 my-6">
                             <h3 class="mb-4 text-center text-stone-950" id="skill-tooltitle">Tools</h3>
@@ -525,8 +622,12 @@ function ScrollTop() {
     -webkit-clip-path: inset(0 0% 0 0 round 12% 0%);
 }
 .intro-container {
-    width: 70vmin;
-    min-height: 45vmin;
+    min-height: 20vmin;
+    clip-path: inset(0% 0% 0% 0%);
+    -webkit-clip-path: inset(0 0% 0 0);
+}
+.intro-container2 {
+    min-height: 20vmin;
     clip-path: inset(0% 0% 0% 0%);
     -webkit-clip-path: inset(0 0% 0 0);
 }
