@@ -22,6 +22,7 @@ module.exports = {
       },
       transitionTimingFunction: {
         'power4': 'cubic-bezier(.05,.52,0,1)',
+        'back': 'cubic-bezier(.81,.56,.54,1.36)',
       }
       // fontSize: {
       //   sm: '0.8rem',

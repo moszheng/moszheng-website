@@ -13,7 +13,7 @@ import ExpData from "@/data/Experience.json";
         <!-- Skill card block -->
         <div class="mb-6 flex min-h-[20vh] flex-wrap md:mb-6 lg:w-full lg:gap-x-6">
             <article
-                class="about-skill-card group my-2 max-w-full flex-1 transition-[flex] duration-300 hover:flex-[1.2] xl:my-0"
+                class="about-skill-card group my-2 max-w-full flex-1 transition-[flex] ease-back duration-300 hover:flex-[1.2] xl:my-0"
                 v-for="skill in ExpData.service"
                 :key="skill"
             >
