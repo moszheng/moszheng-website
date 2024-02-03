@@ -134,7 +134,7 @@ onMounted(() => {
         herotl.fromTo(".user-container", 
             { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, 
             { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0);
-        herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, ease: "power4.out" }, 0);
+        herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(24px)", ease: "power4.out" }, 0);
         herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
         herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
         herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 0.9);
@@ -199,6 +199,7 @@ onMounted(() => {
             },
             defaults: { ease: "power4.out" },
         });
+        // exptl.from(".about-exp", { opacity: 0, duration: 0.1 });
         exptl.from(".timeline", { autoAlpha: 0, ease: "linear" }, 0); // init timeline or will flash to top(FOUC)
         exptl.from("#about-exp-title", { opacity: 0, xPercent: -15, ease: "back.inOut(1.7)", duration: 0.8 });
         exptl.from(".about-job", { opacity: 0, yPercent: -30, duration: 0.8, stagger: 0.6 }, 0.5);
@@ -308,11 +309,11 @@ function ScrollTop() {
             </div>
         </Transition> -->
         <!-- Hero -->
-        <section class="about-hero d-flex-center pt-5 xl:mt-0 mt-8 h-svh flex-wrap bg-white px-3 xl:h-screen xl:px-16 xl:py-12">
+        <section class="about-hero d-flex-center pt-5 xl:mt-0 mt-8 h-svh flex-wrap bg-stone-100 px-3 xl:h-screen xl:px-16 xl:py-12">
             <!-- profile image -->
             <div class="d-flex-center pl-4 pr-4 2xl:w-1/2">
                 <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
-                    <div class="profile-img-1 absolute top-[8%] z-20 scale-[1.35]">
+                    <div class="profile-img-1 absolute top-[8%] z-20 scale-[1.35] blur-none">
                         <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
                             <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage1" />
                         </div>
@@ -357,7 +358,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center min-h-[85vh] rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
+        <section class="about-intro d-flex-center min-h-[85vh] rounded-b-lg bg-stone-100 p-6 xl:px-20 xl:py-12">
             <div class="about-intro-block container w-full">
                 <!-- Group1 -->
                 <div class="about-intro-info lg:flex items-center lg:justify-around min-h-[40vh] xl:mb-36 mb-24 ">
@@ -365,12 +366,12 @@ function ScrollTop() {
                     <div class="max-w-2xl xl:w-2/5 flex lg:mb-0 mb-12 pr-0 xl:pr-10 4xl:pr-5 h-full">
                         <div class="">
                             <h2 class="text-stone-950 xl:mb-16 mb-8">
-                                <span v-for="(text, index) in splitText('Craft the Detail')" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                <span v-for="(text, index) in splitText(ExpData.about.para1.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
                                     <span class="block font-bold" id="intro-title"> {{ text }} </span>
                                 </span>
                             </h2>
                             <div class="space-y-10 ">
-                                <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para1)" :key="indexz" class="intro-info leading-normal text-stone-950">
+                                <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para1.content)" :key="indexz" class="intro-info leading-normal text-stone-950">
                                     <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
                                         <span class="split-text block"> {{ text }} </span>
                                     </span>
@@ -402,12 +403,12 @@ function ScrollTop() {
                     <div class="max-w-2xl flex lg:mb-0 mb-12 pl-0 xl:pl-12 4xl:pr-5 h-full">
                         <div class="">
                             <h2 class="intro-title2 text-stone-950 xl:mb-16 mb-8">
-                                <span v-for="(text, index) in splitText('Every Second Counts')" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                <span v-for="(text, index) in splitText(ExpData.about.para2.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
                                     <span class="block font-bold" id="intro-title2"> {{ text }} </span>
                                 </span>
                             </h2>
                             <div class="space-y-10">
-                                <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para2)" :key="indexz" class="intro-info leading-normal text-stone-950">
+                                <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para2.content)" :key="indexz" class="intro-info leading-normal text-stone-950">
                                     <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
                                         <span class="split-text2 block"> {{ text }} </span>
                                     </span>
@@ -444,7 +445,7 @@ function ScrollTop() {
         </section> -->
         <!-- Skill -->
         <!-- bg-gradient-to-r from-[#fc7a00] to-[#ffc354] -->
-        <section class="about-skill d-flex-center min-h-screen rounded-b-3xl bg-main-gray px-4 py-5 xl:rounded-b-[12em] xl:px-20 xl:py-16">
+        <section class="about-skill d-flex-center min-h-screen rounded-b-3xl bg-stone-200 px-4 py-5 xl:rounded-b-[12em] xl:px-20 xl:py-16">
             <div class="about-skill-block container mb-4 mt-4 xl:mt-0">
                 <!-- Skill Title -->
                 <div class="my-2 px-3 md:mb-12 md:pe-12 lg:ps-0">
