@@ -15,7 +15,7 @@ import ExpData from "@/data/Experience.json";
                     <!-- Exp Job Duration & timeline -->
                     <div class="relative flex max-w-full flex-1 flex-grow flex-wrap justify-center xl:px-4">
                         <!-- Toggle Duration -->
-                        <div class="duration-toggle relative max-w-full flex-1 flex-grow px-2 py-8 text-center">
+                        <div class="hidden 2xl:block relative max-w-full flex-1 flex-grow px-2 py-8 text-center">
                             <p>{{ item.duration }}</p>
                         </div>
                         <!-- Mid -->
@@ -32,7 +32,7 @@ import ExpData from "@/data/Experience.json";
                             <h4 class="exp-job-title relative mb-2 max-w-full flex-1 flex-grow">{{ item.title }}</h4>
                             <div class="flex">
                                 <h6 class="exp-job-title mb-0 mr-4">{{ item.company }}</h6>
-                                <span class="duration-toggled hidden text-neutral-400">{{ item.duration }}</span>
+                                <span class="block 2xl:hidden text-neutral-400">{{ item.duration }}</span>
                             </div>
                         </div>
                         <!-- Job detail -->
@@ -48,15 +48,6 @@ import ExpData from "@/data/Experience.json";
     </section>
 </template>
 <style>
-@media only screen and (max-width: 1439px) {
-    .duration-toggle {
-        display: none;
-    }
-    .duration-toggled {
-        display: block !important;
-    }
-}
-
 /*------- Job timeline-------*/
 .about-job:last-child .timeline {
     height: 0;

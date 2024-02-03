@@ -17,10 +17,6 @@ const profileImage2 = "../src/img/profile_2_md.webp";
 const profileImage3 = "../src/img/02_gha56_md_02.webp";
 const profileImage4 = "../src/img/profile_4_md.webp";
 
-// Split content
-const heroHello = "Hello, I'm";
-const heroName = "Sheng Wen Cheng";
-
 const splitPara = (para) => {
     const arr = [];
     para.forEach((el) => {
@@ -333,13 +329,13 @@ function ScrollTop() {
                 <div class="mb-3 md:mb-1">
                     <!-- Name -->
                     <h1 class="mobile-center mb-2 text-stone-950 md:mb-0">
-                        <span v-for="(text, index) in splitText(heroHello)" :key="index" class="inline-flex pe-2 xl:pe-4">
+                        <span v-for="(text, index) in splitText('Hello, I\'m')" :key="index" class="inline-flex pe-2 xl:pe-4">
                             <span class="block font-bold" id="hero-hello"> {{ text }} </span>
                         </span>
                     </h1>
                     <!-- Name -->
                     <h1 class="mobile-center mb-8 text-stone-950 md:mb-10">
-                        <span v-for="(text, index) in splitText(heroName)" :key="index" class="inline-flex pe-2 xl:pe-4">
+                        <span v-for="(text, index) in splitText('Sheng Wen Cheng')" :key="index" class="inline-flex pe-2 xl:pe-4">
                             <span class="block font-bold" id="hero-name"> {{ text }} </span>
                         </span>
                     </h1>
