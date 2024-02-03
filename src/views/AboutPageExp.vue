@@ -48,6 +48,15 @@ import ExpData from "@/data/Experience.json";
     </section>
 </template>
 <style>
+@media only screen and (max-width: 1439px) {
+    .duration-toggle {
+        display: none;
+    }
+    .duration-toggled {
+        display: block !important;
+    }
+}
+
 /*------- Job timeline-------*/
 .about-job:last-child .timeline {
     height: 0;
