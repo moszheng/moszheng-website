@@ -50,30 +50,20 @@ onMounted(() => {
             img.target.classList.add("loaded");
         }
     }
-    lazyloadimgs.value.forEach(function (img) {
-        if (img.complete) {
-            loaded(img);
-        } else {
-            img.addEventListener("load", loaded);
-        }
+    /* Async Method */
+    const loadImagePromises = Array.from(lazyloadimgs.value).map((img) => {
+        return new Promise((resolve) => {
+            img.onload = () => { 
+                // console.log(img, "finished")
+                loaded(img);
+                resolve(img);
+            }
+        });
     });
-    finishloading.value = true;
-    // const loadImagePromises = Array.from(lazyloadimgs.value).map((img) => {
-    //     return new Promise((resolve) => {
-    //         if (img.complete) {
-    //             console.log("finished")
-    //             loaded(img);
-    //             resolve("loading finished");
-    //         } else {
-    //             img.addEventListener("load", loaded);
-    //             resolve("loading finished");
-    //         }
-    //     });
-    // });
-    // Promise.all(loadImagePromises).then(() => {
-    //     console.log("all finished")
-    //     herotl.play();
-    // });
+    Promise.all(loadImagePromises).then(() => {
+        console.log("all finished")
+        finishloading.value = true;
+    });
     /* Desktop only Motion */
     matchmedia.add("(min-width: 768px)", (context) => {
         /* ----------- Depth --------------- */
@@ -129,17 +119,6 @@ onMounted(() => {
     });
     /* Main GSAP Animation*/
     ctx = gsap.context((self) => {
-        /* Hero Section */
-        const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-        herotl.fromTo(".user-container", 
-            { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, 
-            { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0);
-        herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0);
-        herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0);
-        herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
-        herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 0.9);
-        herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.5 }, 1.2);
-        herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.2);
         /* ----------- Intro Section ----------------*/
         const introtl = gsap.timeline({
             scrollTrigger: {
@@ -264,47 +243,54 @@ onUnmounted(() => {
     matchmedia.revert();
 });
 
-/* GSAP */
 /* Transition GSAP */
 const beforeEnter = (el) => {
     el.style.opacity = 0;
 };
 const enter = (el, done) => {
-    gsap.to(el, { opacity: 1, duration: 1, ease: "power3.Out", onComplete: done });
+    gsap.to(el, { opacity: 1, duration: 0.5, ease: "power4.out", onComplete: done });
 };
 /* Loading */
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
-    tl.to(el, {
-        yPercent: -100,
-        delay: 1.5,
-        duration: 0.75,
-        ease: "power4.out",
-        onComplete: done,
-        // onComplete: homemotion,
-    });
+    // tl.to(el, { yPercent: -100, delay: 1, duration: 1, ease: "power4.out", onStart: heroMotion });
+    tl.to(".about-loadinglogo", { yPercent: -100, duration: 1.2, ease: "power4.inOut" }, 1);
+    tl.to(".about-loadingbg", { yPercent: -100, duration: 1.3, ease: "power4.inOut", onStart: heroMotion }, 1.1);
 };
+const heroMotion = () => {
+    const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8} });
+    herotl.fromTo(".user-container", 
+        { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, 
+        { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0);
+    herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0);
+    herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0);
+    herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
+    herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 0.9);
+    herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.5 }, 1.2);
+    herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.2);
+}
 </script>
 <template>
 <div class="About">
-    <main class="bg-main-black" ref="imgContainer">
-        <!-- <Transition name="move" mode="out-in" 
+    <Transition name="move" mode="out-in"
         @before-enter="beforeEnter" 
         @enter="enter" 
         @leave="loadingLeave"
     >
-        <div class="index-loading absolute top-0 z-20 h-full w-full bg-black" v-show="!finishloading">
-            <div class="d-flex-center container mx-auto h-full sm:px-4">
+        <div class="about-loading fixed d-flex-center top-0 z-[90] h-full w-full" v-show="!finishloading">
+            <div class="about-loadinglogo d-flex-center container mx-auto h-full sm:px-4 z-[91]">
                 <svg id="mos-logo" class="fill-white">
                     <use xlink:href="#icon-mosLogo"></use>
                 </svg>
             </div>
+            <div class="about-loadingbg absolute h-[300vh] w-[150vw] bg-black rounded-full"></div>
         </div>
-    </Transition> -->
+    </Transition>
+    <main class="bg-main-black" ref="imgContainer">
         <!-- Hero -->
-        <section class="about-hero d-flex-center mt-8 h-svh flex-wrap bg-stone-100 px-3 pt-5 xl:mt-0 xl:h-screen xl:px-16 xl:py-12">
+        <section class="about-hero d-flex-center h-svh flex-wrap bg-stone-100 px-3 pt-5 xl:h-screen xl:px-16 xl:py-12">
             <!-- profile image -->
-            <div class="d-flex-center pl-4 pr-4 2xl:w-1/2">
+            <div class="d-flex-center xl:mt-0 mt-16 pl-4 pr-4 2xl:w-1/2">
                 <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
                     <figure class="profile-img-1 absolute top-[8%] z-20 scale-[1.35] blur-none">
                         <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
