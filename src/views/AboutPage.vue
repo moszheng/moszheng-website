@@ -357,12 +357,12 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Intro 2-->
-        <section class="about-intro d-flex-center min-h-[80vh] rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
+        <section class="about-intro d-flex-center min-h-[85vh] rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
             <div class="about-intro-block container w-full">
                 <!-- Group1 -->
-                <div class="about-intro-info lg:flex items-center lg:justify-around min-h-[40vh] xl:mb-48 mb-24 ">
+                <div class="about-intro-info lg:flex items-center lg:justify-around min-h-[40vh] xl:mb-36 mb-24 ">
                     <!-- Intro -->
-                    <div class="max-w-2xl flex lg:mb-0 mb-12 pr-0 xl:pr-10 4xl:pr-5 h-full">
+                    <div class="max-w-2xl xl:w-2/5 flex lg:mb-0 mb-12 pr-0 xl:pr-10 4xl:pr-5 h-full">
                         <div class="">
                             <h2 class="text-stone-950 xl:mb-16 mb-8">
                                 <span v-for="(text, index) in splitText('Craft the Detail')" :key="index" class="inline-flex pe-2 xl:pe-4">
@@ -381,7 +381,7 @@ function ScrollTop() {
                     <!-- Img -->                    
                     <div class="intro-container xl:w-1/2 relative overflow-hidden">
                         <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
-                        <div class="profile-img-3 d-flex-center scale-[1.35]">
+                        <div class="profile-img-3 d-flex-center scale-[1.2]">
                             <div class="introparallax" data-depth="3">
                                 <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3" />
                             </div>
@@ -391,7 +391,7 @@ function ScrollTop() {
                 <!-- Group2 -->
                 <div class="about-intro-info2 lg:flex items-center lg:justify-around min-h-[40vh] mb-36">
                     <!-- Img -->
-                    <div class="intro-container2 xl:w-1/2 my-5 relative overflow-hidden">
+                    <div class="intro-container2 xl:w-1/2 relative overflow-hidden">
                         <div class="profile-img-4 d-flex-center scale-[1.35]">
                             <div class="introparallax" data-depth="3">
                                 <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
