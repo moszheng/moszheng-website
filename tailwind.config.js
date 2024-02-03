@@ -19,6 +19,9 @@ module.exports = {
       },
       spacing: {
         '128': '32rem',
+      },
+      transitionTimingFunction: {
+        'power4': 'cubic-bezier(.05,.52,0,1)',
       }
       // fontSize: {
       //   sm: '0.8rem',
