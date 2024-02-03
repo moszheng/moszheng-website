@@ -21,20 +21,13 @@ const profileImage4 = "../src/img/profile_4_md.webp";
 const heroHello = "Hello, I'm";
 const heroName = "Sheng Wen Cheng";
 
-const introcontent1 = computed(() => {
+const splitPara = (para) => {
     const arr = [];
-    ExpData.about.para1.forEach((el) => {
+    para.forEach((el) => {
         arr.push(el.split(" "));
     });
     return arr;
-});
-const introcontent2 = computed(() => {
-    const arr = [];
-    ExpData.about.para2.forEach((el) => {
-        arr.push(el.split(" "));
-    });
-    return arr;
-});
+};
 const splitText = (string) => {
     const arr = string.split(" ");
     return arr;
@@ -162,8 +155,8 @@ onMounted(() => {
             defaults: { ease: "power3.out" },
         });
         introtl.fromTo(".intro-container", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
-        introtl.from(".intro-title", { opacity: 0, yPercent: 150, duration: 1, stagger: 0.1 }, 0);
-        introtl.from(".split-text", { opacity: 0, yPercent: 100, duration: 0.8, stagger: 0.015 }, 0.4);
+        introtl.from("#intro-title", { opacity: 0, yPercent: 150, duration: 0.8, stagger: 0.1 }, 0);
+        introtl.from(".split-text", { opacity: 0, yPercent: 90, duration: 1, stagger: 0.03 }, 0.4);
         introtl.from(".profile-img-3", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
 
         const introtl2 = gsap.timeline({
@@ -176,8 +169,8 @@ onMounted(() => {
             defaults: { ease: "power3.out" },
         });
         introtl2.fromTo(".intro-container2", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
-        introtl2.from(".intro-title2", { opacity: 0, yPercent: 150, duration: 1, stagger: 0.1 }, 0);
-        introtl2.from(".split-text2", { opacity: 0, yPercent: 100, duration: 0.8, stagger: 0.015 }, 0.4);
+        introtl2.from("#intro-title2", { opacity: 0, yPercent: 150, duration: 1.5, stagger: 0.15 }, 0);
+        introtl2.from(".split-text2", { opacity: 0, yPercent: 90, duration: 1, stagger: 0.03 }, 0.5);
         introtl2.from(".profile-img-4", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
         
         /* --------------- Exp Section--------------*/
@@ -208,14 +201,14 @@ onMounted(() => {
                 end: "bottom+=300 top",
                 // markers: true,
             },
-            defaults: { ease: "power3.Out(1.7)" },
+            defaults: { ease: "power4.out" },
         });
         exptl.from(".timeline", { autoAlpha: 0, ease: "linear" }, 0); // init timeline or will flash to top(FOUC)
         exptl.from("#about-exp-title", { opacity: 0, xPercent: -15, ease: "back.inOut(1.7)", duration: 0.8 });
-        exptl.from(".about-job", { opacity: 0, yPercent: -30, duration: 0.8, stagger: 0.25 }, 0.5);
-        exptl.from(".exp-job-title", { opacity: 0, yPercent: -30, duration: 0.5, stagger: 0.15 }, 0.7);
-        exptl.from(".exp-job-detail", { opacity: 0, yPercent: -30, duration: 0.8, stagger: 0.15 }, 0.9);
-        exptl.from(".timeline", { scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5 }, 1);
+        exptl.from(".about-job", { opacity: 0, yPercent: -30, duration: 0.8, stagger: 0.6 }, 0.5);
+        exptl.from(".exp-job-title", { opacity: 0, yPercent: -30, duration: 0.8, stagger: 0.25 }, 0.7);
+        exptl.from(".exp-job-detail", { opacity: 0, yPercent: -30, duration: 0.8, stagger: 0.25 }, 0.9);
+        exptl.from(".timeline", { scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5 }, 1.1);
         /* -----------Skill Section--------
             1. Title
             2. skill-card
@@ -264,6 +257,7 @@ onMounted(() => {
             },
             defaults: { ease: "power3.Out(1.7)", duration: 0.5 },
         });
+        contacttl.from("#contact-title", { opacity: 0, yPercent: 100, duration: 0.8, stagger: 0.1 }, 0);
         contacttl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.8, duration: 0.5, stagger: 0.1 }, 0.45);
         contacttl.from(".intro-infocontact", { opacity: 0, yPercent: 25, duration: 1.5, stagger: 0.2 }, 0.8);
     }, imgContainer.value);
@@ -369,13 +363,18 @@ function ScrollTop() {
         <!-- Intro 2-->
         <section class="about-intro d-flex-center min-h-[80vh] rounded-b-lg bg-white p-6 xl:px-20 xl:py-12">
             <div class="about-intro-block container w-full">
-                <div class="about-intro-info lg:flex items-start lg:justify-around xl:mb-48 mb-24 min-h-[30vh]">
+                <!-- Group1 -->
+                <div class="about-intro-info lg:flex items-center lg:justify-around min-h-[40vh] xl:mb-48 mb-24 ">
                     <!-- Intro -->
-                    <div class="max-w-2xl flex items-center lg:mb-0 mb-12 pr-0 xl:pr-10 4xl:pr-5 h-full">
+                    <div class="max-w-2xl flex lg:mb-0 mb-12 pr-0 xl:pr-10 4xl:pr-5 h-full">
                         <div class="">
-                            <h2 class="intro-title text-stone-950 xl:mb-16 mb-8">Craft the Detail</h2>
+                            <h2 class="text-stone-950 xl:mb-16 mb-8">
+                                <span v-for="(text, index) in splitText('Craft the Detail')" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                    <span class="block font-bold" id="intro-title"> {{ text }} </span>
+                                </span>
+                            </h2>
                             <div class="space-y-10 ">
-                                <h4 v-for="(textarray, indexz) in introcontent1" :key="indexz" class="intro-info leading-normal text-stone-950">
+                                <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para1)" :key="indexz" class="intro-info leading-normal text-stone-950">
                                     <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
                                         <span class="split-text block"> {{ text }} </span>
                                     </span>
@@ -384,7 +383,7 @@ function ScrollTop() {
                         </div>
                     </div>
                     <!-- Img -->                    
-                    <div class="intro-container relative overflow-hidden">
+                    <div class="intro-container xl:w-1/2 relative overflow-hidden">
                         <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
                         <div class="profile-img-3 d-flex-center scale-[1.35]">
                             <div class="introparallax" data-depth="3">
@@ -394,8 +393,9 @@ function ScrollTop() {
                     </div>
                 </div>
                 <!-- Group2 -->
-                <div class="about-intro-info2 lg:flex items-start lg:justify-around mb-36">
-                    <div class="intro-container2 my-5 relative overflow-hidden">
+                <div class="about-intro-info2 lg:flex items-center lg:justify-around min-h-[40vh] mb-36">
+                    <!-- Img -->
+                    <div class="intro-container2 xl:w-1/2 my-5 relative overflow-hidden">
                         <div class="profile-img-4 d-flex-center scale-[1.35]">
                             <div class="introparallax" data-depth="3">
                                 <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
@@ -403,11 +403,15 @@ function ScrollTop() {
                         </div>
                     </div>
                     <!-- Intro -->
-                    <div class="max-w-2xl flex items-center lg:mb-0 mb-12 pl-0 xl:pl-12 4xl:pr-5 h-full mt-8">
+                    <div class="max-w-2xl flex lg:mb-0 mb-12 pl-0 xl:pl-12 4xl:pr-5 h-full">
                         <div class="">
-                            <h2 class="intro-title2 text-stone-950 xl:mb-16 mb-8">Every Second Counts</h2>
+                            <h2 class="intro-title2 text-stone-950 xl:mb-16 mb-8">
+                                <span v-for="(text, index) in splitText('Every Second Counts')" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                    <span class="block font-bold" id="intro-title2"> {{ text }} </span>
+                                </span>
+                            </h2>
                             <div class="space-y-10">
-                                <h4 v-for="(textarray, indexz) in introcontent2" :key="indexz" class="intro-info leading-normal text-stone-950">
+                                <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para2)" :key="indexz" class="intro-info leading-normal text-stone-950">
                                     <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
                                         <span class="split-text2 block"> {{ text }} </span>
                                     </span>
@@ -418,7 +422,6 @@ function ScrollTop() {
                 </div>
             </div>
         </section>
-        <!-- Experience Breakpoint: xl, lg(1024) -->
         <AboutExp />
         <!-- Thinking -->
         <!-- <section class="about-contact min-h-screen d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
@@ -529,7 +532,11 @@ function ScrollTop() {
                 </div>
                 <!-- Button -->
                 <div class="">
-                    <h1 class="mb-12 uppercase text-main-neutral">Let's Get in Touch</h1>
+                    <h1 class="mb-12 uppercase text-main-neutral">
+                        <span v-for="(text, index) in splitText('Let\'s Get in Touch')" :key="index" class="inline-flex pe-2 xl:pe-4">
+                            <span class="block font-bold" id="contact-title"> {{ text }} </span>
+                        </span>
+                    </h1>
                     <router-link :to="{ name: 'Contact' }" class="d-flex-center me-md-5 max-w-xl rounded-full border-4 border-main-neutral bg-transparent px-2 py-5">
                         <h3 class="text-main-neutral">Contact</h3>
                         <svg class="w-48 fill-main-neutral">
