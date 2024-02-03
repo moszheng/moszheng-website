@@ -254,15 +254,17 @@ function ScrollTop() {
                 <!-- projects -->
                 <div class="bd-content px-3 md:py-4 xl:px-0">
                     <div class="flex flex-wrap">
-                        <div v-for="item in shuffleprj" class="w-full max-w-full shrink-0 px-2 lg:w-1/3" :key="item.url_name">
-                            <div class="card relative mb-4 flex bg-gray-800 text-white">
+                        <div v-for="item in shuffleprj" class="w-full max-w-full shrink-0 px-2 lg:w-1/3 group" :key="item.url_name">
+                            <div class="card overflow-hidden relative mb-4 flex bg-gray-800 text-white">
                                 <!-- routerlink -->
                                 <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name">
-                                    <img :src="imgLocation(item.img_md[0])" class="card-img lazy absolute left-0 top-0 w-full object-cover" alt="otherprjImg" />
-                                    <div class="works-black"></div>
-                                    <div class="works-destop-title px-4 text-white">
-                                        <h4 class="mb-3">{{ item.en_name }}</h4>
-                                        <p class="mb-0">{{ item.date }}</p>
+                                    <img :src="imgLocation(item.img_md[0])" class="lazy absolute left-0 top-0 h-full w-full object-cover" alt="otherprjImg" />
+                                    <div class="opacity-0 group-hover:opacity-100 duration-500">
+                                        <div class="works-black absolute bottom-0 group-hover:h-3/5 w-full overflow-hidden h-1/5 duration-500"></div>
+                                        <div class="works-destop-title absolute bottom-0 group-hover:bottom-4 w-full px-5 text-white duration-500">
+                                            <h4 class="mb-3">{{ item.en_name }}</h4>
+                                            <p class="mb-0">{{ item.date }}</p>
+                                        </div>
                                     </div>
                                 </router-link>
                             </div>

@@ -51,10 +51,6 @@
     background-color: hsla(0, 0%, 95.3%, 0.6);
     color: #000;
   }
-  /**/
-  .card {
-    overflow : hidden;
-  }
 
   .d-flex-center{
     display: flex;
@@ -81,49 +77,8 @@
 }
 
 /*--------------- Works Block ----------------  */
-
-/* mobile setting */
-@media only screen and (max-width: 1024px) {
-  .works-destop-title{
-    display: none;
-  }
-}
-/* desktop setting */
-@media only screen and (min-width: 1025px) {
-  .work-mobile-title{
-    display: none;
-  }
-  /* Hover*/
-  .card:hover .works-destop-title {
-    bottom: 1.25rem;
-    opacity: 1;
-  }
-  .card:hover .works-black {
-    height: 70%;
-    opacity: 1;
-  }
-  /* .card:hover .card-img {
-    transform: scale(1.1);
-  }  */
-}
-.works-black, .works-destop-title{
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  opacity: 0;
-}
-.works-destop-title{
-  transition: .4s ease;
-}
 .works-black{
   background: linear-gradient( transparent, rgba(0, 0, 0, 0.75));
-  overflow: hidden;
-  height: 20%; 
-  transition: .6s ease;
-}
-.card-img{
-	width: 102.5%;
-	height: 102.5%;
 }
 
 /*------------ svg icon --------*/

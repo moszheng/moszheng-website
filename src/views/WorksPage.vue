@@ -53,7 +53,6 @@ onMounted(() => {
     });
     /* ------------Main GSAP Animation----------*/
     ctx = gsap.context((self) => {
-        /* ---------- Enter ---------- */
         const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
         herotl.from(".card", { opacity: 0, yPercent: 65, scaleY: 1.1, scaleX: 0.95, stagger: 0.05 });
         herotl.from(".work-mobile-title", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
@@ -89,25 +88,27 @@ function ScrollTop() {
 <template>
 <div class="works">
     <main class="container mx-auto mt-12 overflow-hidden pt-10 sm:px-4">
-        <section class="mx-1 columns-1 lg:columns-3 gap-4 md:mx-0">
-            <div v-for="(item, index) in WorksData.project" :key="index" class="w-full px-4 lg:mb-4 lg:px-0">
-                <div class="card relative mb-3 flex min-w-0 flex-col bg-gray-600 text-white lg:mb-0" :style="randomHeight(index)">
-                    <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name" class="d-flex-center h-full">
-                        <!-- replace-image -->
-                        <div class="parallax absolute h-full">
-                            <img :src="imgLocation(item.img_md[0])" class="lazy left-0 min-h-[110%] w-auto object-cover" :alt="item.name" />
-                        </div>
-                        <!-- desktop title -->
-                        <div class="works-black"></div>
-                        <div class="works-destop-title px-5 text-white">
+        <section class="mx-1 columns-1 gap-4 md:mx-0 lg:columns-3">
+            <div v-for="(item, index) in WorksData.project" :key="index" class="group w-full px-4 lg:mb-4 lg:px-0">
+                <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name"
+                    class="card overflow-hidden relative mb-3 flex min-w-0 flex-col bg-gray-400 text-white lg:mb-0"
+                    :style="randomHeight(index)"
+                >
+                    <figure class="parallax absolute h-full">
+                        <img :src="imgLocation(item.img_md[0])" class="lazy left-0 min-h-[110%] w-auto object-cover group-hover:scale-105" :alt="item.name" />
+                    </figure>
+                    <!-- desktop title -->
+                    <div class="opacity-0 group-hover:opacity-100 duration-500">
+                        <div class="works-black absolute bottom-0 group-hover:h-3/5 w-full overflow-hidden h-1/5 duration-500"></div>
+                        <div class="works-destop-title absolute bottom-0 group-hover:bottom-4 w-full px-5 text-white duration-500 hidden lg:block">
                             <h4 class="mb-3">{{ item.en_name }}</h4>
                             <p class="mb-0">{{ item.date }}</p>
                         </div>
-                    </router-link>
-                </div>
+                    </div>
+                </router-link>
                 <!-- mobile title -->
-                <div class="work-mobile-title mb-3 px-1">
-                    <h4 class="mb-1 break-keep text-stone-950">{{ item.en_name }}</h4>
+                <div class="work-mobile-title lg:hidden mb-3 px-1">
+                    <h4 class="mb-1 text-stone-950">{{ item.en_name }}</h4>
                     <p>{{ item.date }}</p>
                 </div>
             </div>
