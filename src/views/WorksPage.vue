@@ -88,7 +88,7 @@ function ScrollTop() {
 </script>
 <template>
 <div class="works">
-    <main class="container mx-auto mt-4 overflow-hidden pt-10 sm:px-4">
+    <main class="container mx-auto mt-12 overflow-hidden pt-10 sm:px-4">
         <section class="mx-1 columns-1 lg:columns-3 gap-4 md:mx-0">
             <div v-for="(item, index) in WorksData.project" :key="index" class="w-full px-4 lg:mb-4 lg:px-0">
                 <div class="card relative mb-3 flex min-w-0 flex-col bg-gray-600 text-white lg:mb-0" :style="randomHeight(index)">

@@ -135,7 +135,7 @@ onMounted(() => {
             { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, 
             { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0);
         herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(24px)", ease: "power4.out" }, 0);
-        herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
+        herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0);
         herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
         herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 0.9);
         herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.5 }, 1.2);
@@ -313,16 +313,16 @@ function ScrollTop() {
             <!-- profile image -->
             <div class="d-flex-center pl-4 pr-4 2xl:w-1/2">
                 <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
-                    <div class="profile-img-1 absolute top-[8%] z-20 scale-[1.35] blur-none">
+                    <figure class="profile-img-1 absolute top-[8%] z-20 scale-[1.35] blur-none">
                         <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
                             <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage1" />
                         </div>
-                    </div>
-                    <div class="profile-img-2 absolute top-[8%] z-10 scale-[1.35]">
+                    </figure>
+                    <figure class="profile-img-2 absolute top-[8%] z-10 scale-[1.35] blur-none">
                         <div class="parallax heroRot" data-depth="3.2" data-scale="1.15">
                             <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage2" />
                         </div>
-                    </div>
+                    </figure>
                 </div>
             </div>
             <!-- text -->
@@ -382,22 +382,22 @@ function ScrollTop() {
                     <!-- Img -->                    
                     <div class="intro-container xl:w-1/2 relative overflow-hidden">
                         <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
-                        <div class="profile-img-3 d-flex-center scale-[1.2]">
+                        <figure class="profile-img-3 d-flex-center scale-[1.2]">
                             <div class="introparallax" data-depth="3">
                                 <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3" />
                             </div>
-                        </div>
+                        </figure>
                     </div>
                 </div>
                 <!-- Group2 -->
                 <div class="about-intro-info2 lg:flex items-center lg:justify-around min-h-[40vh] mb-36">
                     <!-- Img -->
                     <div class="intro-container2 xl:w-1/2 relative overflow-hidden">
-                        <div class="profile-img-4 d-flex-center scale-[1.35]">
+                        <figure class="profile-img-4 d-flex-center scale-[1.35]">
                             <div class="introparallax" data-depth="3">
                                 <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
                             </div>
-                        </div>
+                        </figure>
                     </div>
                     <!-- Intro -->
                     <div class="max-w-2xl flex lg:mb-0 mb-12 pl-0 xl:pl-12 4xl:pr-5 h-full">
@@ -445,32 +445,28 @@ function ScrollTop() {
         </section> -->
         <!-- Skill -->
         <!-- bg-gradient-to-r from-[#fc7a00] to-[#ffc354] -->
-        <section class="about-skill d-flex-center min-h-screen rounded-b-3xl bg-stone-200 px-4 py-5 xl:rounded-b-[12em] xl:px-20 xl:py-16">
+        <section class="about-skill d-flex-center min-h-screen rounded-b-3xl bg-stone-200 px-4 py-5 xl:rounded-b-[12em] xl:px-24 xl:py-16">
             <div class="about-skill-block container mb-4 mt-4 xl:mt-0">
                 <!-- Skill Title -->
                 <div class="my-2 px-3 md:mb-12 md:pe-12 lg:ps-0">
                     <h2 class="mb-5 text-center text-stone-950 md:mb-6" id="skill-title">Service & Skill</h2>
                 </div>
                 <!-- Skill card block -->
-                <div class="d-flex-center mb-6 md:mb-6 md:px-3">
-                    <!-- container -->
-                    <div class="flex min-h-[20vh] flex-wrap lg:w-4/5">
-                        <!-- Each Skill -->
-                        <div class="about-skill-card group my-2 max-w-full flex-1 md:mx-4 xl:my-0"
-                            v-for="skill in ExpData.service"
-                            :key="skill"
-                        >
-                            <div class="h-full rounded-2xl bg-[#f0efee] p-10 shadow-xl hover:bg-main-orange hover:scale-105 duration-300">
-                                <div class="skill-card-icon d-flex-center mb-20 mt-6 h-40 w-full group-hover:-translate-y-6 group-hover:scale-105">
-                                    <img class="lazy h-auto w-2/3 object-cover" alt="cardimg" :src="skill.logo" />
-                                </div>
-                                <h3 class="mb-4 text-[#ff8a47] group-hover:text-white md:mb-8" id="skill-card-title">{{ skill.title }}</h3>
-                                <h5 class="mb-3 group-hover:text-white" id="skill-card-text" v-for="(item, index) in skill.content" :key="item.name" :data-index="index">
-                                    {{ item.name }}
-                                </h5>
-                            </div>
+                <div class="flex min-h-[20vh] flex-wrap lg:w-full mb-6 md:mb-6 ">
+                    <article class="about-skill-card group my-2 max-w-full flex-1 md:mx-3 xl:my-0"
+                        v-for="skill in ExpData.service"
+                        :key="skill"
+                    >
+                        <div class="h-full rounded-3xl bg-[#f0efee] p-10 shadow-xl hover:bg-main-orange hover:scale-105 duration-300">
+                            <figure class="skill-card-icon d-flex-center mb-28 mt-8 h-40 w-full group-hover:-translate-y-6 group-hover:scale-105">
+                                <img class="lazy h-auto w-2/3 object-cover" alt="cardimg" :src="skill.logo" />
+                            </figure>
+                            <h3 class="mb-4 text-[#ff8a47] group-hover:text-white md:mb-8" id="skill-card-title">{{ skill.title }}</h3>
+                            <h5 class="mb-3 group-hover:text-white" id="skill-card-text" v-for="(item, index) in skill.content" :key="item.name" :data-index="index">
+                                {{ item.name }}
+                            </h5>
                         </div>
-                    </div>
+                    </article>
                 </div>
                 <!-- Skill Icon -->
                 <div class="d-flex-center py-12">
@@ -482,9 +478,9 @@ function ScrollTop() {
                         <!-- tools block -->
                         <div class="skill-logo-block d-flex-center flex-wrap">
                             <div class="skill-logo-container d-flex-center group md:w-1/5" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index">
-                                <div class="mx-1 my-1 rounded-md px-4 py-2 duration-300 group-hover:bg-neutral-300 xl:py-4">
+                                <figure class="mx-1 my-1 rounded-md px-4 py-2 duration-300 group-hover:bg-neutral-300 xl:py-4">
                                     <img :src="item.img" :alt="item.name" class="skill-logo h-auto w-10 max-w-full duration-200 group-hover:scale-105 xl:w-12" />
-                                </div>
+                                </figure>
                                 <span
                                     class="absolute -bottom-2 rounded-lg bg-gray-900 px-3 py-1 text-white opacity-0 duration-300 group-hover:-bottom-5 group-hover:opacity-100"
                                     >{{ item.name }}</span

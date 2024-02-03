@@ -4,7 +4,7 @@ import ExpData from "@/data/Experience.json";
 <template>
     <!-- Experience Breakpoint: xl, lg(1024) -->
     <section class="about-exp d-flex-center min-h-screen bg-main-black px-4 py-5 text-main-neutral xl:px-12">
-        <div class="about-exp-block container mb-8 mt-10 flex flex-wrap lg:mb-4 xl:mt-0">
+        <div class="about-exp-block container mb-8 mt-11 flex flex-wrap lg:mb-4 xl:mt-0">
             <!-- Exp Title -->
             <div class="mb-10 px-4 pt-2 lg:mb-6 lg:w-1/3 lg:pl-0 lg:pr-10">
                 <h2 class="text-main-neutral" id="about-exp-title">Experience</h2>

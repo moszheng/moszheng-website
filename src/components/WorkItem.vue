@@ -160,7 +160,7 @@ function ScrollTop() {
 
 <template>
 <div class="WorksItem">
-    <main class="mt-5 pt-5">
+    <main class="mt-12 pt-5">
         <!-- video -->
         <section class="relative mb-12">
             <iframe class="aspect-video w-full" :src="vimeoEmbed(prjdata.video)" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
