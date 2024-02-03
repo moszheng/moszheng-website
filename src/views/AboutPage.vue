@@ -61,7 +61,7 @@ onMounted(() => {
         });
     });
     Promise.all(loadImagePromises).then(() => {
-        console.log("all finished")
+        // console.log("all finished")
         finishloading.value = true;
     });
     /* Desktop only Motion */
@@ -244,18 +244,14 @@ onUnmounted(() => {
 });
 
 /* Transition GSAP */
-const beforeEnter = (el) => {
-    el.style.opacity = 0;
-};
-const enter = (el, done) => {
-    gsap.to(el, { opacity: 1, duration: 0.5, ease: "power4.out", onComplete: done });
+const loadingenter = (el, done) => {
+    // gsap.set(".about-loadinglogo", { scale: 60, rotationZ: -30, });
 };
 /* Loading */
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
-    // tl.to(el, { yPercent: -100, delay: 1, duration: 1, ease: "power4.out", onStart: heroMotion });
-    tl.to(".about-loadinglogo", { yPercent: -100, duration: 1.2, ease: "power4.inOut" }, 1);
-    tl.to(".about-loadingbg", { yPercent: -100, duration: 1.3, ease: "power4.inOut", onStart: heroMotion }, 1.1);
+    // tl.to(".about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
+    tl.to(el, { yPercent: -200, delay: 0.75, duration: 1.2, ease: "power4.inOut", onStart: heroMotion });
 };
 const heroMotion = () => {
     const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8} });
@@ -272,9 +268,8 @@ const heroMotion = () => {
 </script>
 <template>
 <div class="About">
-    <Transition name="move" mode="out-in"
-        @before-enter="beforeEnter" 
-        @enter="enter" 
+    <Transition name="move" mode="out-in" appear
+        @enter="loadingenter" 
         @leave="loadingLeave"
     >
         <div class="about-loading fixed d-flex-center top-0 z-[90] h-full w-full" v-show="!finishloading">
