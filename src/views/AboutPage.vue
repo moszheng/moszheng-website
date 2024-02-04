@@ -255,12 +255,12 @@ const loadingLeave = (el, done) => {
 };
 const heroMotion = () => {
     const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-    herotl.fromTo(".user-container", { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0);
-    herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0);
-    herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0);
-    herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
-    herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 0.9);
-    herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.5 }, 1.2);
+    herotl.fromTo(".user-container", { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0.3);
+    herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0.3);
+    herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0.3);
+    herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.75);
+    herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 1.2);
+    herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.35, stagger: 0.4 }, 1.5);
     herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.2);
 };
 </script>
@@ -315,9 +315,13 @@ const heroMotion = () => {
                     <!-- Subtitle -->
                     <div class="flex">
                         <div class="mobile-center flex flex-col items-center">
-                            <h4 class="mb-10 text-center text-stone-950 md:mb-12 md:text-left" id="hero-detail">
-                                <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong> <br />
-                                based in Taiwan.
+                            <h4 class="mb-10 text-center text-stone-950 md:mb-12 md:text-left">
+                                <span class="block font-bold" id="hero-detail">
+                                    <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong> <br />
+                                </span>
+                                <span class="block font-bold" id="hero-detail">
+                                    based in Taiwan.
+                                </span>
                             </h4>
                             <div class="text-center" id="hero-4" style="rotate: 180deg">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
