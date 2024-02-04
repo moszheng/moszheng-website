@@ -53,11 +53,11 @@ onMounted(() => {
     /* Async Method */
     const loadImagePromises = Array.from(lazyloadimgs.value).map((img) => {
         return new Promise((resolve) => {
-            img.onload = () => { 
+            img.onload = () => {
                 // console.log(img, "finished")
                 loaded(img);
                 resolve(img);
-            }
+            };
         });
     });
     Promise.all(loadImagePromises).then(() => {
@@ -244,48 +244,46 @@ onUnmounted(() => {
 });
 
 /* Transition GSAP */
-const loadingenter = (el, done) => {
-    // gsap.set(".about-loadinglogo", { scale: 60, rotationZ: -30, });
+const loadingEnter = (el, done) => {
+    // gsap.set("#about-loadinglogo", { scale: 60, rotationZ: -30, });
 };
 /* Loading */
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
-    // tl.to(".about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
+    // tl.to("#about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
     tl.to(el, { yPercent: -200, delay: 0.75, duration: 1.2, ease: "power4.inOut", onStart: heroMotion });
 };
 const heroMotion = () => {
-    const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8} });
-    herotl.fromTo(".user-container", 
-        { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, 
-        { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0);
+    const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
+    herotl.fromTo(".user-container", { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0);
     herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0);
     herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0);
     herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.45);
     herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 0.9);
     herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.5 }, 1.2);
     herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.2);
-}
+};
 </script>
 <template>
 <div class="About">
-    <Transition name="move" mode="out-in" appear
-        @enter="loadingenter" 
+    <Transition name="move" mode="out-in" appear 
+        @enter="loadingEnter" 
         @leave="loadingLeave"
     >
-        <div class="about-loading fixed d-flex-center top-0 z-[90] h-full w-full" v-show="!finishloading">
-            <div class="about-loadinglogo d-flex-center container mx-auto h-full sm:px-4 z-[91]">
+        <div class="d-flex-center fixed top-0 z-[90] h-full w-full" v-show="!finishloading" id="about-loading">
+            <div class="d-flex-center container z-[91] mx-auto h-full sm:px-4" id="about-loadinglogo">
                 <svg id="mos-logo" class="fill-white">
                     <use xlink:href="#icon-mosLogo"></use>
                 </svg>
             </div>
-            <div class="about-loadingbg absolute h-[300vh] w-[150vw] bg-black rounded-full"></div>
+            <div class="about-loadingbg absolute h-[300vh] w-[150vw] rounded-full bg-black"></div>
         </div>
     </Transition>
     <main class="bg-main-black" ref="imgContainer">
         <!-- Hero -->
         <section class="about-hero d-flex-center h-svh flex-wrap bg-stone-100 px-3 pt-5 xl:h-screen xl:px-16 xl:py-12">
             <!-- profile image -->
-            <div class="d-flex-center xl:mt-0 mt-16 pl-4 pr-4 2xl:w-1/2">
+            <div class="d-flex-center mt-16 pl-4 pr-4 xl:mt-0 2xl:w-1/2">
                 <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
                     <figure class="profile-img-1 absolute top-[8%] z-20 scale-[1.35] blur-none">
                         <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
@@ -339,15 +337,15 @@ const heroMotion = () => {
                     <!-- Intro -->
                     <div class="mb-12 flex h-full max-w-2xl pr-0 lg:mb-0 xl:w-2/5 xl:pr-10 4xl:pr-5">
                         <div class="">
-                            <h2 class="mb-8 text-stone-950 xl:mb-16">
+                            <h2 class="mb-8 inline-block overflow-hidden text-stone-950 xl:mb-16">
                                 <span v-for="(text, index) in splitText(ExpData.about.para1.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
                                     <span class="block font-bold" id="intro-title"> {{ text }} </span>
                                 </span>
                             </h2>
                             <div class="space-y-10">
                                 <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para1.content)" :key="indexz" class="intro-info leading-normal text-stone-950">
-                                    <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
-                                        <span class="split-text block"> {{ text }} </span>
+                                    <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
+                                        <span class="split-text inline-block"> {{ text }} </span>
                                     </span>
                                 </h4>
                             </div>
@@ -376,15 +374,15 @@ const heroMotion = () => {
                     <!-- Intro -->
                     <div class="mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12 4xl:pr-5">
                         <div class="">
-                            <h2 class="intro-title2 mb-8 text-stone-950 xl:mb-16">
+                            <h2 class="intro-title2 mb-8 inline-block overflow-hidden text-stone-950 xl:mb-16">
                                 <span v-for="(text, index) in splitText(ExpData.about.para2.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
-                                    <span class="block font-bold" id="intro-title2"> {{ text }} </span>
+                                    <span class="inline-block font-bold" id="intro-title2"> {{ text }} </span>
                                 </span>
                             </h2>
                             <div class="space-y-10">
                                 <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para2.content)" :key="indexz" class="intro-info leading-normal text-stone-950">
-                                    <span v-for="(text, index) in textarray" :key="index" class="inline-flex pe-2">
-                                        <span class="split-text2 block"> {{ text }} </span>
+                                    <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
+                                        <span class="split-text2 inline-block"> {{ text }} </span>
                                     </span>
                                 </h4>
                             </div>
