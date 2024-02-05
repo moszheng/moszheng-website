@@ -38,6 +38,9 @@
 }
 
 @layer components {
+  .line-btn{
+    @apply d-flex-center rounded-full border-4 bg-transparent group-hover:bg-main-neutral border-main-neutral;
+  }
   .index-btn{
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);

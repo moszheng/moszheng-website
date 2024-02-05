@@ -15,8 +15,8 @@ import ExpData from "@/data/Experience.json";
                     <!-- Exp Job Duration & timeline -->
                     <div class="relative flex max-w-full flex-1 flex-grow flex-wrap justify-center xl:px-4">
                         <!-- Toggle Duration -->
-                        <div class="hidden 2xl:block relative max-w-full flex-1 flex-grow px-2 py-8 text-center">
-                            <p>{{ item.duration }}</p>
+                        <div class="hidden 2xl:block relative max-w-full flex-1 flex-grow px-2 py-7 text-center">
+                            <h6>{{ item.duration }}</h6>
                         </div>
                         <!-- Mid -->
                         <div class="flex w-1/4 justify-center">
@@ -29,14 +29,14 @@ import ExpData from "@/data/Experience.json";
                     <!-- Exp Job Content -->
                     <div class="w-4/5 rounded-lg bg-gradient-to-r py-6 pl-2 pr-4 group-hover:from-transparent group-hover:to-[#242222] xl:w-3/4 xl:pl-4">
                         <div class="mb-6">
-                            <h4 class="exp-job-title relative mb-2 max-w-full flex-1 flex-grow">{{ item.title }}</h4>
+                            <h3 class="exp-job-title relative mb-2 max-w-full flex-1 flex-grow">{{ item.title }}</h3>
                             <div class="flex">
-                                <h6 class="exp-job-title mb-0 mr-4">{{ item.company }}</h6>
+                                <h5 class="exp-job-title mb-0 mr-4">{{ item.company }}</h5>
                                 <span class="block 2xl:hidden text-neutral-400">{{ item.duration }}</span>
                             </div>
                         </div>
                         <!-- Job detail -->
-                        <ul class="max-w-2xl list-disc space-y-2 pl-3 text-neutral-400">
+                        <ul class="max-w-2xl list-disc space-y-2 pl-3 text-neutral-400 group-hover:text-neutral-400">
                             <li v-for="content in item.detail" :key="content" class="exp-job-detail">
                                 <h6>{{ content }}</h6>
                             </li>

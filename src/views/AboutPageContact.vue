@@ -45,12 +45,14 @@ const splitText = (string) => {
                         <span class="block font-bold" id="contact-title"> {{ text }} </span>
                     </span>
                 </h1>
-                <router-link :to="{ name: 'Contact' }" class="d-flex-center me-md-5 max-w-xl rounded-full border-4 border-main-neutral bg-transparent px-2 py-1 lg:py-5">
-                    <h3 class="text-main-neutral">Contact</h3>
-                    <svg class="lg:24 h-24 w-36 fill-main-neutral lg:w-48">
-                        <use xlink:href="#icon-arrowxl"></use>
-                    </svg>
-                </router-link>
+                <div class="group">
+                    <router-link :to="{ name: 'Contact' }" class="line-btn me-md-5 max-w-xl px-2 py-1 lg:py-5">
+                        <h3 class="text-main-neutral group-hover:text-black">Contact</h3>
+                        <svg class="lg:24 h-24 w-36 fill-main-neutral lg:w-48 group-hover:fill-black">
+                            <use xlink:href="#icon-arrowxl"></use>
+                        </svg>
+                    </router-link>
+                </div>
             </div>
         </div>
     </section>

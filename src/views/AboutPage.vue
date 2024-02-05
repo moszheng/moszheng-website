@@ -139,6 +139,15 @@ onMounted(() => {
                 trigger: ".about-intro-info2",
                 start: "top 65%",
                 end: "bottom 30%",
+                onEnter: (self) => {
+                    changeNavbarState(true);
+                },
+                onEnterBack: (self) => {
+                    changeNavbarState(true);
+                },
+                onLeaveBack: (self) => {
+                    changeNavbarState(false);
+                },
                 // markers: true,
             },
             defaults: { ease: "power3.out" },
@@ -155,17 +164,11 @@ onMounted(() => {
                 start: "top top",
                 end: "bottom top",
                 // markers: true,
-                onEnter: (self) => {
-                    changeNavbarState(true);
-                },
                 onLeave: (self) => {
                     changeNavbarState(false);
                 },
                 onEnterBack: (self) => {
                     changeNavbarState(true);
-                },
-                onLeaveBack: (self) => {
-                    changeNavbarState(false);
                 },
             },
         });
@@ -243,7 +246,7 @@ onUnmounted(() => {
     matchmedia.revert();
 });
 
-/* Transition GSAP */
+/* Enter AboutPage Motion */
 const loadingEnter = (el, done) => {
     // gsap.set("#about-loadinglogo", { scale: 60, rotationZ: -30, });
 };
@@ -270,131 +273,146 @@ const heroMotion = () => {
         @enter="loadingEnter" 
         @leave="loadingLeave"
     >
-        <div class="d-flex-center fixed top-0 z-[90] h-full w-full" v-show="!finishloading" id="about-loading">
-            <div class="d-flex-center container z-[91] mx-auto h-full sm:px-4" id="about-loadinglogo">
+        <div class="d-flex-center fixed top-0 z-[998] h-full w-full" v-show="!finishloading" id="about-loading">
+            <div class="d-flex-center container z-[999] mx-auto h-full sm:px-4" id="about-loadinglogo">
                 <svg id="mos-logo" class="fill-white">
                     <use xlink:href="#icon-mosLogo"></use>
                 </svg>
             </div>
-            <div class="about-loadingbg absolute h-[300vh] w-[150vw] rounded-full bg-black"></div>
+            <div class="about-loadingbg absolute h-[300vh] w-[150vw] rounded-full bg-main-yellow"></div>
         </div>
     </Transition>
     <main class="bg-main-black" ref="imgContainer">
-        <!-- Hero -->
-        <section class="about-hero d-flex-center h-svh flex-wrap bg-stone-100 px-3 pt-5 xl:h-screen xl:px-16 xl:py-12">
-            <!-- profile image -->
-            <div class="d-flex-center mt-16 pl-4 pr-4 xl:mt-0 2xl:w-1/2">
-                <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
-                    <figure class="profile-img-1 absolute top-[8%] z-20 scale-[1.35] blur-none">
-                        <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
-                            <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage1" />
-                        </div>
-                    </figure>
-                    <figure class="profile-img-2 absolute top-[8%] z-10 scale-[1.35] blur-none">
-                        <div class="parallax heroRot" data-depth="3.2" data-scale="1.15">
-                            <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage2" />
-                        </div>
-                    </figure>
-                </div>
-            </div>
-            <!-- text -->
-            <div class="about-hero-info d-flex-center 2xl:w-1/2 2xl:ps-6">
-                <div class="mb-3 md:mb-1">
-                    <!-- Name -->
-                    <h1 class="mobile-center mb-2 text-stone-950 md:mb-0">
-                        <span v-for="(text, index) in splitText('Hello, I\'m')" :key="index" class="inline-flex pe-2 xl:pe-4">
-                            <span class="block font-bold" id="hero-hello"> {{ text }} </span>
-                        </span>
-                    </h1>
-                    <!-- Name -->
-                    <h1 class="mobile-center mb-8 text-stone-950 md:mb-10">
-                        <span v-for="(text, index) in splitText('Sheng Wen Cheng')" :key="index" class="inline-flex pe-2 xl:pe-4">
-                            <span class="block font-bold" id="hero-name"> {{ text }} </span>
-                        </span>
-                    </h1>
-                    <!-- Subtitle -->
-                    <div class="flex">
-                        <div class="mobile-center flex flex-col items-center">
-                            <h4 class="mb-10 text-center text-stone-950 md:mb-12 md:text-left">
-                                <span class="block font-bold" id="hero-detail">
-                                    <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong> <br />
-                                </span>
-                                <span class="block font-bold" id="hero-detail">
-                                    based in Taiwan.
-                                </span>
-                            </h4>
-                            <div class="text-center" id="hero-4" style="rotate: 180deg">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
-                                    <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z" />
-                                </svg>
+        <div class="about-herointro duration-500" :class="{'bg-stone-100':!store.navbardarkmode, 'bg-main-black': store.navbardarkmode }">
+            <!-- Hero -->
+            <section class="about-hero d-flex-center h-svh flex-wrap px-3 pt-5 xl:h-screen xl:px-16 xl:py-12">
+                <!-- profile image -->
+                <div class="d-flex-center mt-16 pl-4 pr-4 xl:mt-0 2xl:w-1/2">
+                    <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
+                        <figure class="profile-img-1 absolute top-[8%] z-20 scale-[1.35] blur-none">
+                            <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
+                                <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage1" />
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Intro 2-->
-        <section class="about-intro d-flex-center min-h-[85vh] rounded-b-lg bg-stone-100 p-6 xl:px-20 xl:py-12">
-            <div class="about-intro-block container w-full">
-                <!-- Group1 -->
-                <div class="about-intro-info mb-24 min-h-[40vh] items-center lg:flex lg:justify-around xl:mb-36">
-                    <!-- Intro -->
-                    <div class="mb-12 flex h-full max-w-2xl pr-0 lg:mb-0 xl:w-2/5 xl:pr-10 4xl:pr-5">
-                        <div class="">
-                            <h2 class="mb-8 inline-block overflow-hidden text-stone-950 xl:mb-16">
-                                <span v-for="(text, index) in splitText(ExpData.about.para1.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
-                                    <span class="block font-bold" id="intro-title"> {{ text }} </span>
-                                </span>
-                            </h2>
-                            <div class="space-y-10">
-                                <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para1.content)" :key="indexz" class="intro-info leading-normal text-stone-950">
-                                    <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
-                                        <span class="split-text inline-block"> {{ text }} </span>
-                                    </span>
-                                </h4>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Img -->
-                    <div class="intro-container relative overflow-hidden xl:w-1/2">
-                        <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
-                        <figure class="profile-img-3 d-flex-center scale-[1.2]">
-                            <div class="introparallax" data-depth="3">
-                                <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3" />
+                        </figure>
+                        <figure class="profile-img-2 absolute top-[8%] z-10 scale-[1.35] blur-none">
+                            <div class="parallax heroRot" data-depth="3.2" data-scale="1.15">
+                                <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage2" />
                             </div>
                         </figure>
                     </div>
                 </div>
-                <!-- Group2 -->
-                <div class="about-intro-info2 mb-36 min-h-[40vh] items-center lg:flex lg:justify-around">
-                    <!-- Img -->
-                    <div class="intro-container2 relative overflow-hidden xl:w-1/2">
-                        <figure class="profile-img-4 d-flex-center scale-[1.35]">
-                            <div class="introparallax" data-depth="3">
-                                <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
-                            </div>
-                        </figure>
-                    </div>
-                    <!-- Intro -->
-                    <div class="mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12 4xl:pr-5">
-                        <div class="">
-                            <h2 class="intro-title2 mb-8 inline-block overflow-hidden text-stone-950 xl:mb-16">
-                                <span v-for="(text, index) in splitText(ExpData.about.para2.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
-                                    <span class="inline-block font-bold" id="intro-title2"> {{ text }} </span>
-                                </span>
-                            </h2>
-                            <div class="space-y-10">
-                                <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para2.content)" :key="indexz" class="intro-info leading-normal text-stone-950">
-                                    <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
-                                        <span class="split-text2 inline-block"> {{ text }} </span>
+                <!-- Hero text -->
+                <div class="about-hero-info d-flex-center 2xl:w-1/2 2xl:ps-6">
+                    <div class="mb-3 md:mb-1">
+                        <!-- Name -->
+                        <h1 class="mobile-center mb-2 text-stone-950 md:mb-0">
+                            <span v-for="(text, index) in splitText('Hello, I\'m')" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                <span class="block font-bold" id="hero-hello"> {{ text }} </span>
+                            </span>
+                        </h1>
+                        <!-- Name -->
+                        <h1 class="mobile-center mb-8 text-stone-950 md:mb-10">
+                            <span v-for="(text, index) in splitText('Sheng Wen Cheng')" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                <span class="block font-bold" id="hero-name"> {{ text }} </span>
+                            </span>
+                        </h1>
+                        <!-- Subtitle -->
+                        <div class="flex">
+                            <div class="mobile-center flex flex-col items-center">
+                                <h4 class="mb-10 text-center text-stone-950 md:mb-12 md:text-left">
+                                    <span class="block font-bold" id="hero-detail">
+                                        <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong> <br />
+                                    </span>
+                                    <span class="block font-bold" id="hero-detail">
+                                        based in Taiwan.
                                     </span>
                                 </h4>
+                                <div class="text-center" id="hero-4" style="rotate: 180deg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
+                                        <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z" />
+                                    </svg>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+            <!-- Intro -->
+            <section class="about-intro d-flex-center min-h-[85vh] rounded-b-lg p-6 xl:px-20 xl:py-12"
+                :class="{'text-main-neutral':store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
+            >
+                <div class="about-intro-block container w-full">
+                    <!-- Group1 -->
+                    <div class="about-intro-info mb-16 min-h-[70vh] items-center lg:flex lg:justify-around xl:mb-24">
+                        <!-- Intro -->
+                        <div class="mb-12 flex h-full max-w-2xl pr-0 lg:mb-0 xl:w-2/5 xl:pr-10 4xl:pr-5">
+                            <div class="">
+                                <h2 class="mb-8 inline-block overflow-hidden text-stone-950 xl:mb-16">
+                                    <span v-for="(text, index) in splitText(ExpData.about.para1.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                        <span class="block font-bold" id="intro-title"> {{ text }} </span>
+                                    </span>
+                                </h2>
+                                <div class="space-y-10">
+                                    <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para1.content)" :key="indexz" class="intro-info leading-normal">
+                                        <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
+                                            <span class="split-text inline-block"> {{ text }} </span>
+                                        </span>
+                                    </h4>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Img -->
+                        <div class="intro-container relative overflow-hidden xl:w-1/2">
+                            <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
+                            <figure class="profile-img-3 d-flex-center scale-[1.2]">
+                                <div class="introparallax" data-depth="3">
+                                    <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3" />
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                    <!-- Group2 -->
+                    <div class="about-intro-info2 mb-16 min-h-[70vh] items-center lg:flex lg:justify-around">
+                        <!-- Img -->
+                        <div class="intro-container2 relative overflow-hidden xl:w-1/2">
+                            <figure class="profile-img-4 d-flex-center scale-[1.35]">
+                                <div class="introparallax" data-depth="3">
+                                    <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
+                                </div>
+                            </figure>
+                        </div>
+                        <!-- Intro -->
+                        <div class="mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12 4xl:pr-5">
+                            <div class="">
+                                <h2 class="intro-title2 mb-8 inline-block overflow-hidden xl:mb-16">
+                                    <span v-for="(text, index) in splitText(ExpData.about.para2.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                        <span class="inline-block font-bold" id="intro-title2"> {{ text }} </span>
+                                    </span>
+                                </h2>
+                                <div class="space-y-10 xl:mb-16 mb-8">
+                                    <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para2.content)" :key="indexz" class="intro-info leading-normal">
+                                        <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
+                                            <span class="split-text2 inline-block"> {{ text }} </span>
+                                        </span>
+                                    </h4>
+                                </div>
+                                <!-- <LineBottom :to="" :Word=""/> -->
+                                <div class="group max-w-md">
+                                    <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-2 py-1 group-hover:-translate-y-3 duration-200">
+                                        <h3 class= "group-hover:text-black duration-300">
+                                            Works
+                                        </h3>
+                                        <svg class="lg:h-18 h-24 w-36 fill-main-neutral group-hover:fill-black lg:w-36">
+                                            <use xlink:href="#icon-arrowxl"></use>
+                                        </svg>
+                                    </router-link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
         <AboutExp />
         <!-- Thinking -->
         <!-- <section class="about-contact min-h-screen d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
