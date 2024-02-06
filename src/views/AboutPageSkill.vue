@@ -38,8 +38,8 @@ import ExpData from "@/data/Experience.json";
                 <!-- tools block -->
                 <div class="skill-logo-block d-flex-center flex-wrap">
                     <div class="skill-logo-container d-flex-center group md:w-1/5" v-for="(item, index) in LogoData.logo" :key="item.name" :data-index="index">
-                        <figure class="mx-1 my-1 rounded-md px-4 py-2 duration-300 group-hover:bg-neutral-300 xl:py-4">
-                            <img :src="item.img" :alt="item.name" class="skill-logo h-auto w-10 max-w-full duration-200 group-hover:scale-105 xl:w-12" />
+                        <figure class="aspect-square mx-1 my-1 rounded-md px-4 py-2 duration-300 group-hover:bg-neutral-300 xl:py-4">
+                            <img :src="item.img" :alt="item.name" class="skill-logo w-16 max-w-full duration-200 group-hover:scale-125 group-hover:-rotate-[5deg] xl:w-12" />
                         </figure>
                         <span
                             class="absolute -bottom-2 rounded-lg bg-gray-900 px-3 py-1 text-white opacity-0 duration-300 group-hover:-bottom-5 group-hover:opacity-100"
