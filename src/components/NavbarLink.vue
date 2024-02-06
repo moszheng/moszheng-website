@@ -30,7 +30,7 @@ const isActive = computed(() => {
 
 <style>
 .nav-link {
-    transition: 0.4s cubic-bezier(0.83, 0, 0.14, 1.02);
+    transition: 0.15s ease;
 }
 .nav-link:hover {
     color: var(--main-color) !important;
@@ -46,6 +46,6 @@ const isActive = computed(() => {
     width: 0%;
     height: 10px;
     border-top: 0.2em solid;
-    transition: 0.4s cubic-bezier(0.83, 0, 0.14, 1.02);
+    transition: width 0.4s cubic-bezier(0.83, 0, 0.14, 1.02), color 0.1s ease;
 }
 </style>
