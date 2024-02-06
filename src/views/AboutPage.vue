@@ -125,6 +125,15 @@ onMounted(() => {
                 trigger: ".about-intro",
                 start: "top 65%",
                 end: "bottom 30%",
+                onEnter: (self) => {
+                    changeNavbarState(true);
+                },
+                onEnterBack: (self) => {
+                    changeNavbarState(true);
+                },
+                onLeaveBack: (self) => {
+                    changeNavbarState(false);
+                },
                 // markers: true,
             },
             defaults: { ease: "power3.out" },
@@ -139,15 +148,6 @@ onMounted(() => {
                 trigger: ".about-intro-info2",
                 start: "top 65%",
                 end: "bottom 30%",
-                onEnter: (self) => {
-                    changeNavbarState(true);
-                },
-                onEnterBack: (self) => {
-                    changeNavbarState(true);
-                },
-                onLeaveBack: (self) => {
-                    changeNavbarState(false);
-                },
                 // markers: true,
             },
             defaults: { ease: "power3.out" },
@@ -249,22 +249,24 @@ onUnmounted(() => {
 /* Enter AboutPage Motion */
 const loadingEnter = (el, done) => {
     // gsap.set("#about-loadinglogo", { scale: 60, rotationZ: -30, });
+    // gsap.fromTo(el, { yPercent: -200 },{ yPercent: 0, duration: 1.2, ease: "power4.inOut" });
 };
 /* Loading */
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
     // tl.to("#about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
-    tl.to(el, { yPercent: -200, delay: 0.75, duration: 1.2, ease: "power4.inOut", onStart: heroMotion });
+    tl.to(el, { yPercent: -200, scaleY: 0.2, delay: 0.75, duration: 2, ease: "power4.inOut", onStart: heroMotion });
+    tl.to(el, { display: "hidden" });
 };
 const heroMotion = () => {
     const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-    herotl.fromTo(".user-container", { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0.3);
-    herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0.3);
-    herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0.3);
-    herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.75);
-    herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 1.2);
-    herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.35, stagger: 0.4 }, 1.5);
-    herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.2);
+    herotl.fromTo(".user-container", { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0.5);
+    herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0.5);
+    herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0.5);
+    herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.9);
+    herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 1.4);
+    herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.35, stagger: 0.4 }, 1.7);
+    herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.4);
 };
 </script>
 <template>
@@ -273,13 +275,13 @@ const heroMotion = () => {
         @enter="loadingEnter" 
         @leave="loadingLeave"
     >
-        <div class="d-flex-center fixed top-0 z-[998] h-full w-full" v-show="!finishloading" id="about-loading">
-            <div class="d-flex-center container z-[999] mx-auto h-full sm:px-4" id="about-loadinglogo">
-                <svg id="mos-logo" class="fill-white">
+        <div class="d-flex-center fixed top-0 z-[90] h-full w-full" v-show="!finishloading" id="about-loading">
+            <div class="d-flex-center container z-[91] mx-auto h-full sm:px-4" id="about-loadinglogo">
+                <svg id="mos-logo" class="fill-black">
                     <use xlink:href="#icon-mosLogo"></use>
                 </svg>
             </div>
-            <div class="about-loadingbg absolute h-[300vh] w-[150vw] rounded-full bg-main-yellow"></div>
+            <div class="about-loadingbg absolute h-[300vh] w-[150vw] rounded-full bg-main-orange"></div>
         </div>
     </Transition>
     <main class="bg-main-black" ref="imgContainer">
@@ -302,16 +304,18 @@ const heroMotion = () => {
                     </div>
                 </div>
                 <!-- Hero text -->
-                <div class="about-hero-info d-flex-center 2xl:w-1/2 2xl:ps-6">
+                <div class="about-hero-info d-flex-center 2xl:w-1/2 2xl:ps-6"
+                    :class="{'text-main-neutral':store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
+                >
                     <div class="mb-3 md:mb-1">
                         <!-- Name -->
-                        <h1 class="mobile-center mb-2 text-stone-950 md:mb-0">
+                        <h1 class="mobile-center mb-2 md:mb-0">
                             <span v-for="(text, index) in splitText('Hello, I\'m')" :key="index" class="inline-flex pe-2 xl:pe-4">
                                 <span class="block font-bold" id="hero-hello"> {{ text }} </span>
                             </span>
                         </h1>
                         <!-- Name -->
-                        <h1 class="mobile-center mb-8 text-stone-950 md:mb-10">
+                        <h1 class="mobile-center mb-8 md:mb-10">
                             <span v-for="(text, index) in splitText('Sheng Wen Cheng')" :key="index" class="inline-flex pe-2 xl:pe-4">
                                 <span class="block font-bold" id="hero-name"> {{ text }} </span>
                             </span>
@@ -319,7 +323,7 @@ const heroMotion = () => {
                         <!-- Subtitle -->
                         <div class="flex">
                             <div class="mobile-center flex flex-col items-center">
-                                <h4 class="mb-10 text-center text-stone-950 md:mb-12 md:text-left">
+                                <h4 class="mb-10 text-center md:mb-12 md:text-left">
                                     <span class="block font-bold" id="hero-detail">
                                         <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong> <br />
                                     </span>
@@ -347,7 +351,7 @@ const heroMotion = () => {
                         <!-- Intro -->
                         <div class="mb-12 flex h-full max-w-2xl pr-0 lg:mb-0 xl:w-2/5 xl:pr-10 4xl:pr-5">
                             <div class="">
-                                <h2 class="mb-8 inline-block overflow-hidden text-stone-950 xl:mb-16">
+                                <h2 class="mb-8 inline-block overflow-hidden xl:mb-16 pb-1">
                                     <span v-for="(text, index) in splitText(ExpData.about.para1.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
                                         <span class="block font-bold" id="intro-title"> {{ text }} </span>
                                     </span>
@@ -413,6 +417,11 @@ const heroMotion = () => {
                 </div>
             </section>
         </div>
+        <!-- <section class="d-flex-center w-full h-24 text-white">
+            <div class="">
+                <h3 class=""> Mos </h3>
+            </div>
+        </section> -->
         <AboutExp />
         <!-- Thinking -->
         <!-- <section class="about-contact min-h-screen d-flex-center lg:px-5 px-4 py-5 bg-main-gray">

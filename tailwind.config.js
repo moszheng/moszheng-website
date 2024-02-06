@@ -25,7 +25,10 @@ module.exports = {
       transitionTimingFunction: {
         'power4': 'cubic-bezier(.05,.52,0,1)',
         'back': 'cubic-bezier(.81,.56,.54,1.36)',
-      }
+      },
+      aspectRatio: {
+        '4/3': '4 / 3',
+      },
       // fontSize: {
       //   sm: '0.8rem',
       //   base: '1rem',
