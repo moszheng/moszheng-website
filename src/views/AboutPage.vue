@@ -378,7 +378,7 @@ const heroMotion = () => {
                     <!-- Group2 -->
                     <div class="about-intro-info2 mb-16 min-h-[70vh] items-center lg:flex lg:justify-around">
                         <!-- Img -->
-                        <div class="intro-container2 relative overflow-hidden xl:w-1/2">
+                        <div class="intro-container2 relative overflow-hidden xl:w-1/2 xl:mb-0 mb-8">
                             <figure class="profile-img-4 d-flex-center scale-[1.35]">
                                 <div class="introparallax" data-depth="3">
                                     <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />

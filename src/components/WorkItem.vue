@@ -228,7 +228,7 @@ function ScrollTop() {
             </section>
             <!-- credit -->
             <section class="workitem-credit mx-1 mb-5 flex flex-wrap px-3 md:mx-4 xl:px-12">
-                <div class="flex px-4 lg:justify-center xl:w-2/5">
+                <div class="flex px-4 lg:justify-center xl:w-2/5 lg:h-16 overflow-hidden">
                     <h3 class="credit-title mb-10 xl:mb-0 text-stone-950">Credit</h3>
                 </div>
                 <div class="px-4 xl:w-3/5">

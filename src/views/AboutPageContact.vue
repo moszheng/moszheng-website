@@ -7,7 +7,7 @@ const splitText = (string) => {
 };
 </script>
 <template>
-    <section class="about-contact d-flex-center min-h-[80vh] w-full bg-main-black px-4 py-8 lg:px-5">
+    <section class="about-contact d-flex-center min-h-[85vh] w-full bg-main-black px-4 py-8 lg:px-5">
         <div class="container flex flex-col lg:flex-row lg:justify-around">
             <!-- Links -->
             <div class="mb-12 px-0 md:px-12 lg:mb-0 xl:flex xl:px-0">
