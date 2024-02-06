@@ -33,11 +33,17 @@ const navfolder = ref(false);
 let lastPos = 0;
 let deltaPos = 0;
 const handleScroll = () => {
+    const navbarToggler = document.querySelector(".navbar-toggler");
     const currentPos = window.scrollY;
     deltaPos = currentPos - lastPos;
+    
     if (deltaPos > 10 && navfolder.value == false) {
         navfolder.value = true;
         gsap.to(".navcontainer", { yPercent: -90, duration: 0.5, ease: "back.inOut(1.7)" });
+        
+        if (store.isNavbarExpanded) {
+            navbarToggler.click();
+        }
     } else if (deltaPos < 0 && navfolder.value == true) {
         navfolder.value = false;
         gsap.to(".navcontainer", { yPercent: 0, duration: 0.75, ease: "back.inOut(1.7)" });
