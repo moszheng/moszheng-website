@@ -6,6 +6,7 @@ import { useNavStore } from "@/stores/navstore";
 import WorkPage from "@/views/WorksPage.vue";
 
 import "./assets/main.css";
+import Lenis from '@studio-freight/lenis'
 
 import App from "./App.vue";
 
@@ -65,6 +66,16 @@ const router = createRouter({
         })
     },
 });
+
+// Lenis
+const lenis = new Lenis()
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
 
 // Pinia store
 const pinia = createPinia();
