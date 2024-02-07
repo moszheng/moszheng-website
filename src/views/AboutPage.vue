@@ -85,7 +85,7 @@ onMounted(() => {
         });
         gsap.utils.toArray(".introparallax").forEach((layer) => {
             const depth = layer.dataset.depth;
-            const movement = depth * -4;
+            const movement = depth * -5;
             gsap.to(layer, {
                 yPercent: movement,
                 ease: "none",
@@ -93,7 +93,7 @@ onMounted(() => {
                     trigger: ".about-intro",
                     start: "clamp(top center)",
                     end: "clamp(bottom center)",
-                    scrub: 0.5,
+                    scrub: 0.75,
                     // markers: true,
                 },
             }); // scale from 1.3
@@ -260,9 +260,9 @@ const loadingLeave = (el, done) => {
 };
 const heroMotion = () => {
     const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-    herotl.fromTo(".user-container", { clipPath: "inset(50% 0% 50% 0% round 12% 0%)" }, { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0.5);
-    herotl.from(".profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0.5);
-    herotl.from(".profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0.5);
+    herotl.fromTo(".profile-container", { clipPath: "inset(50% 0% 50% 0% round 6% 0%)" }, { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0.5);
+    herotl.from("#profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0.5);
+    herotl.from("#profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0.5);
     herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.9);
     herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 1.4);
     herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.35, stagger: 0.4 }, 1.7);
@@ -287,18 +287,18 @@ const heroMotion = () => {
     <main class="bg-main-black" ref="imgContainer">
         <div class="about-herointro duration-500" :class="{'bg-stone-100':!store.navbardarkmode, 'bg-main-black': store.navbardarkmode }">
             <!-- Hero -->
-            <section class="about-hero d-flex-center h-svh flex-wrap px-3 pt-5 xl:h-screen xl:px-16 xl:py-12">
+            <section class="about-hero d-flex-center h-svh flex-wrap px-3 pt-5 xl:h-screen xl:px-16 xl:py-12 xl:mb-0 mb-12">
                 <!-- profile image -->
-                <div class="d-flex-center mt-16 pl-4 pr-4 xl:mt-0 2xl:w-1/2">
-                    <div class="user-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
-                        <figure class="profile-img-1 absolute top-[8%] z-20 scale-[1.35] blur-none">
-                            <div class="parallax heroRot" data-depth="1.05" data-scale="1.05">
-                                <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage1" />
+                <div class="d-flex-center mt-16 pl-4 pr-4 xl:mt-0 2xl:w-1/2 xl:mb-0 mb-5">
+                    <div class="profile-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
+                        <figure class="absolute z-20 scale-[1.2] blur-none h-full" id="profile-img-1">
+                            <div class="parallax heroRot h-full" data-depth="1.05" data-scale="1.05">
+                                <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage1" />
                             </div>
                         </figure>
-                        <figure class="profile-img-2 absolute top-[8%] z-10 scale-[1.35] blur-none">
-                            <div class="parallax heroRot" data-depth="3.2" data-scale="1.15">
-                                <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage2" />
+                        <figure class="absolute z-10 scale-[1.2] blur-none h-full" id="profile-img-2">
+                            <div class="parallax heroRot h-full" data-depth="3.2" data-scale="1.15">
+                                <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage2" />
                             </div>
                         </figure>
                     </div>
@@ -387,6 +387,11 @@ const heroMotion = () => {
                         </div>
                         <!-- Intro -->
                         <div class="mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12 4xl:pr-5">
+                            <!-- <div class="absolute right-5 -top-10">
+                                <svg class="icon-gear size-32 fill-main-orange">
+                                    <use xlink:href="#icon-gear"></use>
+                                </svg>
+                            </div> -->
                             <div class="">
                                 <h2 class="intro-title2 mb-8 inline-block overflow-hidden xl:mb-16">
                                     <span v-for="(text, index) in splitText(ExpData.about.para2.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
@@ -459,17 +464,37 @@ const heroMotion = () => {
         display: flex;
         justify-content: center !important;
     }
-    .user-container {
+    .profile-container {
         width: 35vmax !important;
         min-height: 40vmax !important;
     }
 }
+
+@keyframes rotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes gearRotation {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(25deg);
+    }
+}
+.icon-gear{
+    /* animation: gearRotation 1s cubic-bezier(0.075, 0.82, 0.165, 1) infinite; */
+    animation: rotation 5s linear infinite;
+}
 /*------ Img --------*/
-.user-container {
+.profile-container {
     width: 48vmin;
     min-height: 56vmin;
-    /* width: 40vmin;
-    min-height: 48vmin; */
     clip-path: inset(0% 0% 0% 0% round 12% 0%);
     -webkit-clip-path: inset(0 0% 0 0 round 12% 0%);
 }
