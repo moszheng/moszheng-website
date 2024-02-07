@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { useNavStore } from "@/stores/navstore";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
@@ -232,7 +232,6 @@ onMounted(() => {
                 trigger: ".about-contact",
                 start: "top 80%",
                 end: "bottom 30%",
-                // markers: true,
             },
             defaults: { ease: "power3.Out(1.7)", duration: 0.5 },
         });
@@ -255,7 +254,7 @@ const loadingEnter = (el, done) => {
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
     // tl.to("#about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
-    tl.to(el, { yPercent: -200, scaleY: 0.2, delay: 0.75, duration: 2, ease: "power4.inOut", onStart: heroMotion });
+    tl.to(el, { yPercent: -100, scaleY: 0.2, delay: 0.75, duration: 1, ease: "power4.in", onStart: heroMotion });
     tl.to(el, { display: "hidden" });
 };
 const heroMotion = () => {
@@ -277,7 +276,7 @@ const heroMotion = () => {
     >
         <div class="d-flex-center fixed top-0 z-[90] h-full w-full" v-show="!finishloading" id="about-loading">
             <div class="d-flex-center container z-[91] mx-auto h-full sm:px-4" id="about-loadinglogo">
-                <svg id="mos-logo" class="fill-black">
+                <svg id="mos-logo" class="fill-black w-48">
                     <use xlink:href="#icon-mosLogo"></use>
                 </svg>
             </div>
@@ -307,7 +306,12 @@ const heroMotion = () => {
                 <div class="about-hero-info d-flex-center 2xl:w-1/2 2xl:ps-6"
                     :class="{'text-main-neutral':store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
                 >
-                    <div class="mb-3 md:mb-1">
+                    <div class="relative mb-3 md:mb-1">
+                        <!-- <div class="absolute right-[10%] xl:-top-4">
+                            <svg class="icon-gear size-24 fill-main-orange">
+                                <use xlink:href="#icon-gear"></use>
+                            </svg>
+                        </div> -->
                         <!-- Name -->
                         <h1 class="mobile-center mb-2 md:mb-0">
                             <span v-for="(text, index) in splitText('Hello, I\'m')" :key="index" class="inline-flex pe-2 xl:pe-4">
@@ -387,11 +391,6 @@ const heroMotion = () => {
                         </div>
                         <!-- Intro -->
                         <div class="mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12 4xl:pr-5">
-                            <!-- <div class="absolute right-5 -top-10">
-                                <svg class="icon-gear size-32 fill-main-orange">
-                                    <use xlink:href="#icon-gear"></use>
-                                </svg>
-                            </div> -->
                             <div class="">
                                 <h2 class="intro-title2 mb-8 inline-block overflow-hidden xl:mb-16">
                                     <span v-for="(text, index) in splitText(ExpData.about.para2.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
@@ -489,7 +488,7 @@ const heroMotion = () => {
 }
 .icon-gear{
     /* animation: gearRotation 1s cubic-bezier(0.075, 0.82, 0.165, 1) infinite; */
-    animation: rotation 5s linear infinite;
+    animation: rotation 10s linear infinite;
 }
 /*------ Img --------*/
 .profile-container {
