@@ -1,5 +1,11 @@
 {
-    "homepage": "A 3D Generalist and Motion Designer based in Taiwan. Offering professional design services for digital arts and product motion design, catering to companies and brands.",
+    "homepage": {
+        "title": "Sheng Wen (Mos) Cheng",
+        "content": [
+            "A 3D Generalist and Motion Designer based in Taiwan.",
+            "Offering professional design services for digital arts and product motion design, catering to companies and brands."
+        ]
+    },
     "about": {
         "para1": {
             "title": "Crafting Perfection",

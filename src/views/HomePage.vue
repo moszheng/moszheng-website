@@ -1,18 +1,37 @@
 <script setup>
-import { ref, computed } from "vue";
-import homeContent from "../data/Experience.json";
+import { ref, onMounted, computed } from "vue";
+import ExpData from "@/data/Experience.json";
 import gsap from "gsap";
+import Player from '@vimeo/player';
 
 // Loading Page
 const finishloading = ref(false);
 
-function onMyFrameLoad() {
-    finishloading.value = true;
-}
-
-const homecontent = computed(() => {
-    return homeContent.homepage.split(" ");
+onMounted(() => {
+    // Vimeo API
+    const iframe = document.querySelector('iframe');
+    const player = new Player(iframe);
+    
+    player.on('progress', function(data) {
+        // console.log(data)
+        if( data.percent > 0.1){
+            finishloading.value = true;
+        }
+    });
+    // homemotion();
 });
+
+const splitPara = (para) => {
+    const arr = [];
+    para.forEach((el) => {
+        arr.push(el.split(" "));
+    });
+    return arr;
+};
+const splitText = (string) => {
+    const arr = string.split(" ");
+    return arr;
+};
 
 /* Transition GSAP */
 const beforeEnter = (el) => {
@@ -24,22 +43,15 @@ const enter = (el, done) => {
 /* Loading */
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
-    tl.to(el, {
-        opacity: 0,
-        delay: 1.5,
-        duration: 0.75,
-        ease: "power3.Out",
-        onComplete: done,
-        // onComplete: homemotion,
-    });
+    tl.to(el, { opacity: 0, delay: 1, duration: 0.75, ease: "power3.Out", onComplete: done, onStart: homemotion });
 };
 /* ---------- Enter ---------- */
-// function homemotion() {
-//   const tl = gsap.timeline({});
-//   tl.from("#home-name", { opacity: 0, yPercent: 65, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.15 }, 0);
-//   tl.from("#home-text", { opacity: 0, yPercent: 20, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.05 }, 0.6);
-//   tl.from(".index-btnarea", { opacity: 0, yPercent: 65, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.2 }, 0.9);
-// }
+const homemotion = () => {
+  const tl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
+  tl.from("#home-name", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
+  tl.fromTo("#home-text",{ opacity: 0, yPercent: 20 }, { opacity: 1, yPercent: 0, stagger: 0.02 }, 0.6);
+  tl.from(".index-btnarea", { opacity: 0, yPercent: 65 }, 1.1);
+}
 </script>
 
 <template>
@@ -60,7 +72,8 @@ const loadingLeave = (el, done) => {
         </Transition>
         <!----- BG ----->
         <div class="index-bgcover absolute left-0 top-0 h-screen w-screen">
-            <iframe class="aspect-video" src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3" allow="autoplay" @load="onMyFrameLoad"></iframe>
+            <iframe class="aspect-video" src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3&amp"></iframe>
+            
         </div>
         <!--  Intro ---->
         <div class="index-info absolute top-0 z-10 h-full w-full">
@@ -68,14 +81,21 @@ const loadingLeave = (el, done) => {
                 <!----- Main Content----->
                 <div class="px-4 text-white lg:px-0">
                     <h5 class="mb-2" id="home-name">Freelance 3D Generalist</h5>
-                    <h2 class="mb-12 lg:mb-10" id="home-name">Sheng Wen (Mos) Cheng</h2>
-                    <div class="test mb-12 space-y-4 lg:mb-10">
-                        <h5 id="home-text">A 3D Generalist and Motion Designer based in Taiwan.</h5>
-                        <h5 id="home-text">Offering professional design services for digital arts and product motion design, <br />catering to companies and brands.</h5>
+                    <h2 class="inline-block overflow-hidden mb-12 lg:mb-10 pb-1">
+                        <span v-for="(text, index) in splitText(ExpData.homepage.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
+                            <span class="inline-block font-bold" id="home-name"> {{ text }} </span>
+                        </span>
+                    </h2>
+                    <div class="mb-12 space-y-4 lg:mb-10 max-w-[48rem]">
+                        <h5 v-for="(textarray, indexz) in splitPara(ExpData.homepage.content)" :key="indexz" class="intro-info leading-normal">
+                            <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
+                                <span class="inline-block" id="home-text"> {{ text }} </span>
+                            </span>
+                        </h5>
                     </div>
                     <div class="index-btnarea">
                         <router-link :to="{ name: 'Works' }">
-                            <button type="button" class="index-btn inline-block select-none rounded px-3 py-1 leading-normal">Explore</button>
+                            <button type="button" class="index-btn text-xl inline-block select-none rounded-lg px-3 py-1 leading-normal duration-300">Explore</button>
                         </router-link>
                     </div>
                 </div>
@@ -100,6 +120,18 @@ const loadingLeave = (el, done) => {
     width: 21vh;
     height: 14vh;
     transition: 0.8s ease;
+}
+.index-btn{
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    background-color: hsla(0, 0%, 95.3%, 0.25);
+    min-width: 20vh;
+    box-shadow: none;
+    color: #FFF;
+}
+.index-btn:hover{
+    background-color: hsla(0, 0%, 95.3%, 0.6);
+    color: #000;
 }
 .index-bgcover {
     background-repeat: no-repeat;
