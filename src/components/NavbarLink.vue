@@ -36,16 +36,19 @@ const isActive = computed(() => {
     color: var(--main-color) !important;
 }
 .nav-link.navactive::after {
-    width: 100%;
+    transform: scaleX(1);
+    transform-origin: left;
 }
 .nav-link::after {
     content: "";
     position: absolute;
     left: 0;
     bottom: -0.3em;
-    width: 0%;
-    height: 10px;
-    border-top: 0.2em solid;
-    transition: width 0.4s cubic-bezier(0.83, 0, 0.14, 1.02), color 0.1s ease;
+    width: 100%;
+    height: 10px; 
+    border-top: 0.175em solid;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform 0.4s cubic-bezier(0.83, 0, 0.14, 1.02), color 0.1s ease;
 }
 </style>
