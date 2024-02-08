@@ -26,7 +26,7 @@ shuffleprj.value = WorksData.project
 const vimeoPage = (item) => {
     return `https://vimeo.com/${item[1]}`;
 };
-const vimeoEmbed = (item) => {
+const videoEmbed = (item) => {
     if (item[0] == "vimeo") {
         return `https://player.vimeo.com/video/${item[1]}?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`;
     } else if (item[0] == "youtube") {
@@ -79,17 +79,6 @@ onMounted(() => {
         });
     });
     ctx = gsap.context((self) => {
-        // img
-        gsap.utils.toArray(".prj-img").forEach((layer) => {
-            gsap.to(layer, {
-                scrollTrigger: {
-                    trigger: layer,
-                    // markers: true,
-                    start: "clamp(top 80%)",
-                },
-                autoAlpha: 1,
-            });
-        });
         // Hero GSAP
         const herotl = gsap.timeline({
             scrollTrigger: {
@@ -108,18 +97,28 @@ onMounted(() => {
         herotl.from(".hero-sep", { scaleX: 0, ease: "power3.Out(1.7)", stagger: 0.25 }, 0.8);
         herotl.from(".head-img-container", { clipPath: "inset(0 100% 0 0)", duration: 2.5, ease: "expo.out" }, 0.7);
         herotl.from("#content-context", { opacity: 0, yPercent: 25, ease: "power3.Out(1.7)", stagger: 0.1 }, 1.1);
+        // img
+        gsap.utils.toArray(".prj-img").forEach((layer) => {
+            gsap.from(layer, {
+                scrollTrigger: {
+                    trigger: layer,
+                    start: "clamp(top 65%)",
+                },
+                opacity: 0,
+                yPercent: 10,
+                duration: 0.8
+            });
+        });
         /* Credit */
         const credittl = gsap.timeline({
             scrollTrigger: {
                 trigger: ".workitem-credit",
-                start: "top 80%",
-                end: "bottom 30%",
-                // markers: true,
+                start: "top 65%",
             },
             defaults: { ease: "back.inOut(1.7)", duration: 0.8 },
         });
         credittl.from(".credit-title", { opacity: 0, yPercent: 50 });
-        credittl.from(".credit-text", { opacity: 0, yPercent: 50, stagger: 0.08 }, 0.25);
+        credittl.from(".credit-text", { opacity: 0, yPercent: 50, stagger: 0.06 }, 0.2);
     }, imgContainer.value);
 });
 /* ---------Router Fix-----------*/
@@ -152,7 +151,6 @@ onUnmounted(() => {
 function ScrollTop() {
     window.scrollTo({
         top: 0,
-        left: 0,
         behavior: "smooth",
     });
 }
@@ -163,7 +161,7 @@ function ScrollTop() {
     <main class="mt-12 pt-5">
         <!-- video -->
         <section class="relative mb-12">
-            <iframe class="aspect-video w-full" :src="vimeoEmbed(prjdata.video)" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe class="aspect-video w-full" :src="videoEmbed(prjdata.video)" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
         </section>
         <section class="container mx-auto sm:px-4" ref="imgContainer">
             <!-- Workitem-info -->
@@ -199,14 +197,14 @@ function ScrollTop() {
             </section>
             <hr class="hero-sep my-10" />
             <!-- Workitem-Content -->
-            <section class="workitem-content mx-1 mb-5 px-3 md:mx-4 xl:px-12">
+            <section class="workitem-content mx-1 mb-12 px-3 md:mx-4 xl:px-12">
                 <div class="mb-5 flex flex-wrap md:mb-0">
                     <!-- first-img -->
                     <div class="mb-5 max-w-full xl:mb-6 xl:w-1/2">
                         <div class="head-img-container d-flex-center w-full overflow-hidden">
-                            <div class="parallax">
+                            <figure class="parallax">
                                 <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img lazy h-[1080px] w-[1920px] object-cover" alt="firstImg" />
-                            </div>
+                            </figure>
                         </div>
                     </div>
                     <!-- Right Content -->
@@ -219,12 +217,12 @@ function ScrollTop() {
                     </div>
                 </div>
                 <!-- imgs -->
-                <div class="prj-imgs">
-                    <div class="prj-img d-flex-center mb-3 bg-gray-300" v-for="(item, index) in contextImg" :key="item">
-                        <img :src="imgLocation(contextImg[index])" class="d-flex-center lazy h-full max-w-full flex-1 flex-grow" alt="contextImg" />
-                    </div>
+                <div class="prj-imgs mb-12">
+                    <figure class="prj-img mb-3 bg-gray-300" v-for="(item, index) in contextImg" :key="item">
+                        <img :src="imgLocation(contextImg[index])" class="lazy aspect-16/9 w-full object-cover" alt="contextImg" />
+                    </figure>
                 </div>
-                <hr class="mt-5" />
+                <hr />
             </section>
             <!-- credit -->
             <section class="workitem-credit mx-1 mb-5 flex flex-wrap px-3 md:mx-4 xl:px-12">
@@ -248,7 +246,7 @@ function ScrollTop() {
             </div>
         </section>
         <!-- Other Prj -->
-        <section class="workitem-otherprj d-flex-center px-1 md:px-12" data-scroll-section>
+        <section class="workitem-otherprj d-flex-center min-h-[40vh] bg-main-black px-1 md:px-12" data-scroll-section>
             <div class="container mx-auto sm:px-4">
                 <h3 class="my-4 md:mx-0 mx-4 text-white">Other Projects</h3>
                 <!-- projects -->
@@ -278,9 +276,6 @@ function ScrollTop() {
 </div>
 </template>
 <style scoped>
-.prj-img {
-    opacity: 0;
-}
 /* -----Section------ */
 @media only screen and (min-width: 1200px) {
     .workitem-info {
@@ -298,16 +293,10 @@ function ScrollTop() {
 .workitem-credit {
     min-height: 60vh;
 }
-.workitem-otherprj {
-    min-height: 40vh;
-    background-color: var(--main-black);
-}
 
 /* First Img */
 .head-img-container {
-    /* width: 35vmax; */
     height: 50vh;
-    /* clip-path: rect(0px 500px 500px 0px); */
     clip-path: inset(0 0% 0 0);
     -webkit-clip-path: inset(0 0% 0 0);
 }
