@@ -66,16 +66,16 @@ const navbarExpand = () => {
     if (store.isNavbarExpanded) {
         store.navbardarkmode = false; // insure homepage
         /* Button */
-        tl.to(".top-bar", { rotation: 135, y: "6px", duration: 0.25 }, 0);
+        tl.to(".top-bar", { rotation: 135, y: "0.375rem", duration: 0.25 }, 0);
         tl.to(".mid-bar", { opacity: 0.5, scaleX: 0, duration: 0.2 }, 0);
-        tl.to(".bot-bar", { rotation: -135, y: "-6px", duration: 0.25 }, 0);
+        tl.to(".bot-bar", { rotation: -135, y: "-0.375rem", duration: 0.25 }, 0);
         /* collapse */
         tl.to(navbarCollapse, { height: "50vh", ease: "back.Out(1.7)", duration: 0.5 }, 0.01);
         /* -- bg -- */
         tl.to(navContainer, { backgroundColor: "rgba(255, 255, 255, 1)", duration: 0.3 }, 0.05);
         tl.to(darkOverlay, { autoAlpha: 0.7, duration: 1 }, 0);
         /* -Links-- */
-        tl.fromTo(navItems, { xPercent: 60, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 }, 0);
+        tl.fromTo(navItems, { xPercent: 30, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 }, 0);
     } else {
         /* Button */
         outtl.to(
@@ -83,7 +83,7 @@ const navbarExpand = () => {
             {
                 keyframes: {
                     "0%": { rotation: 135 },
-                    "45%": { y: "6px" },
+                    "45%": { y: "0.375rem" },
                     "100%": { rotation: 360, y: 0 },
                     ease: "none",
                 },
@@ -97,7 +97,7 @@ const navbarExpand = () => {
             {
                 keyframes: {
                     "0%": { rotation: -135 },
-                    "45%": { y: "-6px" },
+                    "45%": { y: "-0.375rem" },
                     "100%": { rotation: -360, y: 0 },
                     ease: "none",
                 },
@@ -106,7 +106,7 @@ const navbarExpand = () => {
             0,
         );
         /* -Links-- */
-        outtl.to(navItems, { xPercent: 60, autoAlpha: 0, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.04, onComplete: navComplete }, 0);
+        outtl.to(navItems, { xPercent: 40, autoAlpha: 0, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.04, onComplete: navComplete }, 0);
         /* -- bg -- */
         outtl.to(navContainer, { backgroundColor: "rgba(255, 255, 255, 0)", ease: "power3.inOut", duration: 0.4 }, 0.5);
         outtl.to(darkOverlay, { autoAlpha: 0, ease: "power3.inOut", duration: 0.7 }, 0.3);
