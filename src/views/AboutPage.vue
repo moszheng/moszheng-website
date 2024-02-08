@@ -140,7 +140,7 @@ onMounted(() => {
         });
         introtl.fromTo(".intro-container", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
         introtl.from("#intro-title", { opacity: 0, yPercent: 150, duration: 0.8, stagger: 0.1 }, 0);
-        introtl.from(".split-text", { opacity: 0, yPercent: 90, duration: 1, stagger: 0.03 }, 0.4);
+        introtl.from(".split-text", { opacity: 0, yPercent: 70, duration: 1, stagger: 0.03 }, 0.4);
         introtl.from(".profile-img-3", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
 
         const introtl2 = gsap.timeline({
@@ -154,7 +154,7 @@ onMounted(() => {
         });
         introtl2.fromTo(".intro-container2", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
         introtl2.from("#intro-title2", { opacity: 0, yPercent: 150, duration: 1.5, stagger: 0.15 }, 0);
-        introtl2.from(".split-text2", { opacity: 0, yPercent: 90, duration: 1, stagger: 0.03 }, 0.5);
+        introtl2.from(".split-text2", { opacity: 0, yPercent: 70, duration: 1, stagger: 0.03 }, 0.5);
         introtl2.from(".profile-img-4", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
 
         /* --------------- Exp Section--------------*/
@@ -405,8 +405,8 @@ const heroMotion = () => {
                                     </h4>
                                 </div>
                                 <!-- <LineBottom :to="" :Word=""/> -->
-                                <div class="group max-w-md">
-                                    <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-2 py-1 group-hover:-translate-y-3 duration-200">
+                                <div class="group max-w-sm">
+                                    <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-1 group-hover:-translate-y-3 duration-200">
                                         <h3 class= "group-hover:text-black duration-300">
                                             Works
                                         </h3>

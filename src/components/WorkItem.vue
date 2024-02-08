@@ -40,6 +40,19 @@ const contextImg = computed(() => {
     return prjdata.value.img_md.slice(1);
 });
 
+// Split text function
+const splitPara = (para) => {
+    const arr = [];
+    para.forEach((el) => {
+        arr.push(el.split(" "));
+    });
+    return arr;
+};
+const splitText = (string) => {
+    const arr = string.split(" ");
+    return arr;
+};
+
 /* onMounted, preloading img & gsap scrollTrigger */
 const lazyloadimgs = ref(document.querySelectorAll(".lazy"));
 const imgContainer = ref();
@@ -89,7 +102,7 @@ onMounted(() => {
             },
             defaults: { ease: "back.inOut(1.7)", duration: 0.8 },
         });
-        herotl.from(".hero-1", { opacity: 0, yPercent: 50, rotationX: 90 });
+        herotl.from("#prj-name", { opacity: 0, yPercent: 50, rotationX: 90, stagger: 0.05  });
         herotl.from(".hero-2", { opacity: 0, yPercent: 40, rotationX: 90, stagger: 0.25 }, 0.1);
         herotl.from(".hero-social", { opacity: 0, yPercent: 30, scale: 0.1, duration: 0.5, stagger: 0.25 }, 0.65);
         herotl.from(".hero-3", { opacity: 0, yPercent: 50, rotationX: 90 }, 0.6);
@@ -168,7 +181,11 @@ function ScrollTop() {
             <section class="workitem-info mx-2 flex flex-col flex-wrap justify-between px-3 md:mx-4 lg:flex-row xl:px-12">
                 <!-- Left-info -->
                 <div class="mb-8 pl-4 pr-4 md:mb-12 xl:mb-0">
-                    <h3 class="hero-1 mb-8 text-stone-950">{{ prjdata.en_name }}</h3>
+                    <h3 class="hero-1 mb-8 text-stone-950">
+                        <span v-for="(text, index) in splitText(prjdata.en_name)" :key="index" class="inline-flex pe-2">
+                            <span class="inline-block font-bold" id="prj-name"> {{ text }} </span>
+                        </span>
+                    </h3>
                     <div class="flex flex-row justify-between md:flex-col">
                         <div>
                             <h5 class="hero-2 mb-3 text-stone-950">@{{ prjdata.company }}</h5>
