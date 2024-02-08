@@ -61,7 +61,7 @@ const homemotion = () => {
         <Transition name="move" mode="out-in" @before-enter="beforeEnter" @enter="onEnter" @leave="loadingLeave">
             <div class="index-loading absolute top-0 z-20 h-full w-full bg-white" v-show="!finishloading">
                 <div class="d-flex-center container mx-auto h-full sm:px-4">
-                    <svg class="mos-logo w-[21vh] h-[14vh]" id="home-logo">
+                    <svg class="mos-logo h-[14vh] w-[21vh]" id="home-logo">
                         <use xlink:href="#icon-mosLogo"></use>
                     </svg>
                 </div>

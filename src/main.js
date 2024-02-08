@@ -6,7 +6,7 @@ import { useNavStore } from "@/stores/navstore";
 import WorkPage from "@/views/WorksPage.vue";
 
 import "./assets/main.css";
-import Lenis from '@studio-freight/lenis'
+import Lenis from "@studio-freight/lenis";
 
 import App from "./App.vue";
 
@@ -62,21 +62,21 @@ const router = createRouter({
     scrollBehavior(to, from, savedPosition) {
         // always scroll to top
         return new Promise((resolve) => {
-            resolve({ top: 0, behavior: "smooth" })
-        })
+            resolve({ top: 0, behavior: "smooth" });
+        });
     },
 });
 
 // Lenis
 const lenis = new Lenis({
     lerp: 0.07,
-})
+});
 
 function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
+    lenis.raf(time);
+    requestAnimationFrame(raf);
 }
-requestAnimationFrame(raf)
+requestAnimationFrame(raf);
 
 // Pinia store
 const pinia = createPinia();

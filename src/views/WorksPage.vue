@@ -90,24 +90,26 @@ function ScrollTop() {
     <main class="container mx-auto mt-12 overflow-hidden pt-10 sm:px-4">
         <section class="mx-1 columns-1 gap-4 md:mx-0 lg:columns-3">
             <div v-for="(item, index) in WorksData.project" :key="index" class="group w-full px-4 lg:mb-4 lg:px-0">
-                <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name"
-                    class="card overflow-hidden relative mb-3 flex min-w-0 flex-col bg-gray-400 text-white lg:mb-0"
+                <router-link
+                    :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }"
+                    :title="item.name"
+                    class="card relative mb-3 flex min-w-0 flex-col overflow-hidden bg-gray-400 text-white lg:mb-0"
                     :style="randomHeight(index)"
                 >
                     <figure class="parallax absolute h-full">
                         <img :src="imgLocation(item.img_md[0])" class="lazy left-0 min-h-[110%] w-auto object-cover group-hover:scale-105" :alt="item.name" />
                     </figure>
                     <!-- desktop title -->
-                    <div class="opacity-0 group-hover:opacity-100 duration-500">
-                        <div class="works-black absolute bottom-0 group-hover:h-3/5 w-full overflow-hidden h-1/5 duration-500"></div>
-                        <div class="works-destop-title absolute bottom-0 group-hover:bottom-4 w-full px-5 text-white duration-500 hidden lg:block">
+                    <div class="opacity-0 duration-500 group-hover:opacity-100">
+                        <div class="works-black absolute bottom-0 h-1/5 w-full overflow-hidden duration-500 group-hover:h-3/5"></div>
+                        <div class="works-destop-title absolute bottom-0 hidden w-full px-5 text-white duration-500 group-hover:bottom-4 lg:block">
                             <h4 class="mb-3">{{ item.en_name }}</h4>
                             <p class="mb-0">{{ item.date }}</p>
                         </div>
                     </div>
                 </router-link>
                 <!-- mobile title -->
-                <div class="work-mobile-title lg:hidden mb-3 px-1">
+                <div class="work-mobile-title mb-3 px-1 lg:hidden">
                     <h4 class="mb-1 text-stone-950">{{ item.en_name }}</h4>
                     <p>{{ item.date }}</p>
                 </div>

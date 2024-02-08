@@ -48,7 +48,7 @@ const splitText = (string) => {
                 <div class="group">
                     <router-link :to="{ name: 'Contact' }" class="line-btn me-md-5 max-w-xl px-2 py-1 lg:py-5">
                         <h3 class="text-main-neutral group-hover:text-black">Contact</h3>
-                        <svg class="lg:24 h-24 w-36 fill-main-neutral lg:w-48 group-hover:fill-black">
+                        <svg class="lg:24 h-24 w-36 fill-main-neutral group-hover:fill-black lg:w-48">
                             <use xlink:href="#icon-arrowxl"></use>
                         </svg>
                     </router-link>

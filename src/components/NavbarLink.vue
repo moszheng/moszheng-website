@@ -45,10 +45,12 @@ const isActive = computed(() => {
     left: 0;
     bottom: -0.3em;
     width: 100%;
-    height: 10px; 
+    height: 10px;
     border-top: 0.175em solid;
     transform-origin: right;
     transform: scaleX(0);
-    transition: transform 0.4s cubic-bezier(0.83, 0, 0.14, 1.02), color 0.1s ease;
+    transition:
+        transform 0.4s cubic-bezier(0.83, 0, 0.14, 1.02),
+        color 0.1s ease;
 }
 </style>

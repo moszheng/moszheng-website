@@ -102,7 +102,7 @@ onMounted(() => {
             },
             defaults: { ease: "back.inOut(1.7)", duration: 0.8 },
         });
-        herotl.from("#prj-name", { opacity: 0, yPercent: 50, rotationX: 90, stagger: 0.05  });
+        herotl.from("#prj-name", { opacity: 0, yPercent: 50, rotationX: 90, stagger: 0.05 });
         herotl.from(".hero-2", { opacity: 0, yPercent: 40, rotationX: 90, stagger: 0.25 }, 0.1);
         herotl.from(".hero-social", { opacity: 0, yPercent: 30, scale: 0.1, duration: 0.5, stagger: 0.25 }, 0.65);
         herotl.from(".hero-3", { opacity: 0, yPercent: 50, rotationX: 90 }, 0.6);
@@ -119,7 +119,7 @@ onMounted(() => {
                 },
                 opacity: 0,
                 yPercent: 10,
-                duration: 0.8
+                duration: 0.8,
             });
         });
         /* Credit */
@@ -193,13 +193,13 @@ function ScrollTop() {
                         </div>
                         <div class="flex">
                             <a class="hero-social me-6" :href="prjdata.behance" target="_blank" rel="noopener">
-                                <svg class="lg:size-8 size-6 " id="icon_social">
+                                <svg class="size-6 lg:size-8" id="icon_social">
                                     <use xlink:href="#icon-behance"></use>
                                 </svg>
                             </a>
                             <!-- vimeo Link -->
                             <a class="hero-social" :href="vimeoPage(prjdata.video)" target="_blank" rel="noopener">
-                                <svg class="lg:size-8 size-6 " id="icon_social">
+                                <svg class="size-6 lg:size-8" id="icon_social">
                                     <use xlink:href="#icon-vimeo"></use>
                                 </svg>
                             </a>
@@ -243,8 +243,8 @@ function ScrollTop() {
             </section>
             <!-- credit -->
             <section class="workitem-credit mx-1 mb-5 flex flex-wrap px-3 md:mx-4 xl:px-12">
-                <div class="flex px-4 lg:justify-center xl:w-2/5 lg:h-16 overflow-hidden">
-                    <h3 class="credit-title mb-10 xl:mb-0 text-stone-950">Credit</h3>
+                <div class="flex overflow-hidden px-4 lg:h-16 lg:justify-center xl:w-2/5">
+                    <h3 class="credit-title mb-10 text-stone-950 xl:mb-0">Credit</h3>
                 </div>
                 <div class="px-4 xl:w-3/5">
                     <div v-for="(value, key) in prjdata.credit" class="credit-text mb-5 flex flex-wrap" :key="value">
@@ -265,18 +265,18 @@ function ScrollTop() {
         <!-- Other Prj -->
         <section class="workitem-otherprj d-flex-center min-h-[40vh] bg-main-black px-1 md:px-12" data-scroll-section>
             <div class="container mx-auto sm:px-4">
-                <h3 class="my-4 md:mx-0 mx-4 text-white">Other Projects</h3>
+                <h3 class="mx-4 my-4 text-white md:mx-0">Other Projects</h3>
                 <!-- projects -->
                 <div class="bd-content px-3 md:py-4 xl:px-0">
                     <div class="flex flex-wrap">
-                        <div v-for="item in shuffleprj" class="w-full max-w-full shrink-0 px-2 lg:w-1/3 group" :key="item.url_name">
-                            <div class="card overflow-hidden relative mb-4 flex bg-gray-800 text-white">
+                        <div v-for="item in shuffleprj" class="group w-full max-w-full shrink-0 px-2 lg:w-1/3" :key="item.url_name">
+                            <div class="card relative mb-4 flex overflow-hidden bg-gray-800 text-white">
                                 <!-- routerlink -->
                                 <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name">
                                     <img :src="imgLocation(item.img_md[0])" class="lazy absolute left-0 top-0 h-full w-full object-cover" alt="otherprjImg" />
-                                    <div class="opacity-0 group-hover:opacity-100 duration-500">
-                                        <div class="works-black absolute bottom-0 group-hover:h-3/5 w-full overflow-hidden h-1/5 duration-500"></div>
-                                        <div class="works-destop-title absolute bottom-0 group-hover:bottom-4 w-full px-5 text-white duration-500">
+                                    <div class="opacity-0 duration-500 group-hover:opacity-100">
+                                        <div class="works-black absolute bottom-0 h-1/5 w-full overflow-hidden duration-500 group-hover:h-3/5"></div>
+                                        <div class="works-destop-title absolute bottom-0 w-full px-5 text-white duration-500 group-hover:bottom-4">
                                             <h4 class="mb-3">{{ item.en_name }}</h4>
                                             <p class="mb-0">{{ item.date }}</p>
                                         </div>
@@ -327,4 +327,3 @@ function ScrollTop() {
     height: 25vh;
 }
 </style>
-

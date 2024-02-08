@@ -10,13 +10,15 @@
         "para1": {
             "title": "Crafting Perfection",
             "content": [
-                "As a diverse motion designer, I am eager to explore the possibilities of animation, focusing on creating stunning vision throught keen insights and pushing team's ideas to practice.", 
+                "As a diverse motion designer, I am eager to explore the possibilities of animation, focusing on creating stunning vision throught keen insights and pushing team's ideas to practice.",
                 "Take on challenges in any project and develop workflows or pipelines to solve problems."
             ]
         },
         "para2": {
             "title": "Every Second Counts",
-            "content": ["Worked at JL Design and Mixcode as Motion Designer during 2018 to 2023, we made several brilliant achievement including awarded TV packages, channel branding and commercials, every second of our work was crafted with precision and creativity."]
+            "content": [
+                "Worked at JL Design and Mixcode as Motion Designer during 2018 to 2023, we made several brilliant achievement including awarded TV packages, channel branding and commercials, every second of our work was crafted with precision and creativity."
+            ]
         }
     },
     "experience": [
@@ -51,7 +53,7 @@
     "service": {
         "cgdesign": {
             "title": "3D Prodution",
-            "logo":"../src/assets/icon/3ddesign.png",
+            "logo": "../src/assets/icon/3ddesign.png",
             "content": [
                 { "name": "Modeling / Sculpting" },
                 { "name": "Texturing / Procedural Material" },
@@ -63,12 +65,12 @@
         },
         "motiondesign": {
             "title": "Motion Design",
-            "logo":"../src/assets/icon/motiondesign.png",
+            "logo": "../src/assets/icon/motiondesign.png",
             "content": [{ "name": "Storyboard" }, { "name": "Scripting" }, { "name": "Animating" }, { "name": "Cel animation" }]
         },
         "development": {
             "title": "Developement",
-            "logo":"../src/assets/icon/slothfellas.png",
+            "logo": "../src/assets/icon/slothfellas.png",
             "content": [
                 { "name": "Cinema 4D Python Plug-in" },
                 { "name": "Houdini workflow R&D" },

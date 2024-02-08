@@ -15,7 +15,7 @@ import ExpData from "@/data/Experience.json";
                     <!-- Exp Job Duration & timeline -->
                     <div class="relative flex max-w-full flex-1 flex-grow flex-wrap justify-center xl:px-4">
                         <!-- Toggle Duration -->
-                        <div class="hidden 2xl:block relative max-w-full flex-1 flex-grow px-2 py-7 text-center">
+                        <div class="relative hidden max-w-full flex-1 flex-grow px-2 py-7 text-center 2xl:block">
                             <h6>{{ item.duration }}</h6>
                         </div>
                         <!-- Mid -->
@@ -32,7 +32,7 @@ import ExpData from "@/data/Experience.json";
                             <h3 class="exp-job-title relative mb-2 max-w-full flex-1 flex-grow">{{ item.title }}</h3>
                             <div class="flex">
                                 <h5 class="exp-job-title mb-0 mr-4">{{ item.company }}</h5>
-                                <span class="block 2xl:hidden text-neutral-400">{{ item.duration }}</span>
+                                <span class="block text-neutral-400 2xl:hidden">{{ item.duration }}</span>
                             </div>
                         </div>
                         <!-- Job detail -->
