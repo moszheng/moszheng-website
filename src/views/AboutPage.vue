@@ -140,7 +140,7 @@ onMounted(() => {
         });
         introtl.fromTo(".intro-container", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
         introtl.from("#intro-title", { opacity: 0, yPercent: 150, duration: 0.8, stagger: 0.1 }, 0);
-        introtl.from(".split-text", { opacity: 0, yPercent: 70, duration: 1, stagger: 0.03 }, 0.4);
+        introtl.from(".split-text", { opacity: 0, yPercent: 40, duration: 1, stagger: 0.03 }, 0.4);
         introtl.from(".profile-img-3", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
 
         const introtl2 = gsap.timeline({
@@ -154,7 +154,7 @@ onMounted(() => {
         });
         introtl2.fromTo(".intro-container2", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
         introtl2.from("#intro-title2", { opacity: 0, yPercent: 150, duration: 1.5, stagger: 0.15 }, 0);
-        introtl2.from(".split-text2", { opacity: 0, yPercent: 70, duration: 1, stagger: 0.03 }, 0.5);
+        introtl2.from(".split-text2", { opacity: 0, yPercent: 40, duration: 1, stagger: 0.03 }, 0.5);
         introtl2.from(".profile-img-4", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
 
         /* --------------- Exp Section--------------*/
@@ -254,8 +254,8 @@ const loadingEnter = (el, done) => {
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
     // tl.to("#about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
-    tl.to(el, { yPercent: -100, scaleY: 0.2, delay: 0.75, duration: 1, ease: "power4.in", onStart: heroMotion });
-    tl.to(el, { display: "hidden" });
+    tl.to(el, { yPercent: -70, scaleY: 0.1, duration: 1, ease: "power4.in", onStart: heroMotion }, 0.75);
+    tl.to(el, { display: "none" }, 1.65);
 };
 const heroMotion = () => {
     const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
@@ -274,14 +274,14 @@ const heroMotion = () => {
         @enter="loadingEnter" 
         @leave="loadingLeave"
     >
-        <div class="d-flex-center fixed top-0 z-[90] h-full w-full" v-show="!finishloading" id="about-loading">
+        <section class="d-flex-center fixed top-0 z-[90] h-full w-full" v-show="!finishloading" id="about-loading">
             <div class="d-flex-center container z-[91] mx-auto h-full sm:px-4" id="about-loadinglogo">
                 <svg id="mos-logo" class="fill-black w-48">
                     <use xlink:href="#icon-mosLogo"></use>
                 </svg>
             </div>
             <div class="about-loadingbg absolute h-[300vh] w-[150vw] rounded-full bg-main-orange"></div>
-        </div>
+        </section>
     </Transition>
     <main class="bg-main-black" ref="imgContainer">
         <div class="about-herointro duration-500" :class="{'bg-stone-100':!store.navbardarkmode, 'bg-main-black': store.navbardarkmode }">

@@ -37,13 +37,14 @@ const splitText = (string) => {
 const beforeEnter = (el) => {
     el.style.opacity = 0;
 };
-const enter = (el, done) => {
+const onEnter = (el, done) => {
     gsap.to(el, { opacity: 1, duration: 1, ease: "power3.Out", onComplete: done });
 };
 /* Loading */
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
-    tl.to(el, { opacity: 0, delay: 1, duration: 0.75, ease: "power3.Out", onComplete: done, onStart: homemotion });
+    tl.to("#home-logo", { filter: "blur(60px)", fill: "#FFF", duration: 2, ease: "power3.Out" }, 0.7);
+    tl.to(el, { opacity: 0, duration: 0.75, ease: "power3.Out", onComplete: done, onStart: homemotion }, 1);
 };
 /* ---------- Enter ---------- */
 const homemotion = () => {
@@ -57,10 +58,10 @@ const homemotion = () => {
 <template>
     <main class="homepage">
         <!-- Loading Page -->
-        <Transition name="move" mode="out-in" @before-enter="beforeEnter" @enter="enter" @leave="loadingLeave">
+        <Transition name="move" mode="out-in" @before-enter="beforeEnter" @enter="onEnter" @leave="loadingLeave">
             <div class="index-loading absolute top-0 z-20 h-full w-full bg-white" v-show="!finishloading">
                 <div class="d-flex-center container mx-auto h-full sm:px-4">
-                    <svg id="mos-logo">
+                    <svg class="mos-logo w-[21vh] h-[14vh]" id="home-logo">
                         <use xlink:href="#icon-mosLogo"></use>
                     </svg>
                 </div>
@@ -68,9 +69,7 @@ const homemotion = () => {
         </Transition>
         <!----- BG ----->
         <div class="index-bgcover absolute left-0 top-0 h-screen w-screen overflow-hidden object-cover">
-            <iframe class="absolute min-h-full min-w-full aspect-video bg-black" 
-                src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3&amp">
-            </iframe>
+            <iframe class="absolute aspect-video min-h-full min-w-full bg-black" src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3&amp"> </iframe>
         </div>
         <!--  Intro ---->
         <div class="index-info absolute top-0 z-10 h-full w-full">
@@ -112,11 +111,6 @@ const homemotion = () => {
     .index-btn {
         width: 90vw;
     }
-}
-#mos-logo {
-    width: 21vh;
-    height: 14vh;
-    transition: 0.8s ease;
 }
 .index-btn {
     -webkit-backdrop-filter: blur(8px);
