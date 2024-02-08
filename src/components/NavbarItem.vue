@@ -121,7 +121,7 @@ const navComplete = () => {
         store.navbardarkmode = false;
     }
 };
-/* Nav Bar social */
+/* -------------Nav Bar social ----------------*/
 const showIcon = ref(false);
 
 const rotateButton = () => {
@@ -138,11 +138,13 @@ function onBeforeEnter(el) {
 }
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, { width: "50px", autoAlpha: 1, scale: 1, duration: 0.5, delay: delay, ease: "back.Out(2.5)" });
+    const tl = gsap.timeline( { defaults: { overwrite: "auto" } });
+    tl.to(el, { width: "2.5rem", autoAlpha: 1, duration: 0.3, delay: delay, ease: "back.Out(2.5)" }, 0);
+    tl.to(el, { scale: 1, duration: 0.8, delay: delay, ease: "elastic.out(1,0.4)" }, 0.2);
 }
 function onLeave(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, { width: 0, autoAlpha: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(1.7)" });
+    gsap.to(el, { width: 0, autoAlpha: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(2.5)" });
 }
 </script>
 
