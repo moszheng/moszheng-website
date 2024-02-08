@@ -68,7 +68,9 @@ const router = createRouter({
 });
 
 // Lenis
-const lenis = new Lenis()
+const lenis = new Lenis({
+    lerp: 0.07,
+})
 
 function raf(time) {
   lenis.raf(time)

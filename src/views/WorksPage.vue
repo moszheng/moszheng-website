@@ -60,7 +60,7 @@ onMounted(() => {
 });
 onBeforeUnmount(() => {
     const herotl = gsap.timeline({});
-    herotl.to(".card", { xPercent: -250, scaleY: 0.4, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.02 });
+    // herotl.to(".card", { xPercent: -250, scaleY: 0.4, ease: "back.inOut(1.7)", duration: 0.8, stagger: 0.02 });
     herotl.to(".work-mobile-title", { xPercent: -150, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.2 }, 0.2);
 });
 onUnmounted(() => {
