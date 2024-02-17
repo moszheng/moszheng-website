@@ -33,7 +33,10 @@ const onLeave = (el, done) => {
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">
         <!-- <svg xmlns="http://www.w3.org/2000/svg" class="navbar-nav-svg d-inline-block align-text-top" viewBox="0 0 512 499.36" role="img"> -->
         <symbol id="icon-mosLogo" viewBox="0 0 100 25">
-            <path d="m1.58,6.16h4.8l1.94,7.05h.04l1.94-7.05h4.83v12.61h-3.33v-7.9h-.04l-2.1,7.9h-2.7l-2.1-7.9h-.04v7.9H1.58V6.16Z" shape-rendering="geometricPrecision" />
+            <path
+                d="m1.58,6.16h4.8l1.94,7.05h.04l1.94-7.05h4.83v12.61h-3.33v-7.9h-.04l-2.1,7.9h-2.7l-2.1-7.9h-.04v7.9H1.58V6.16Z"
+                shape-rendering="geometricPrecision"
+            />
             <path
                 d="m15.62,12.51c0-3.77,2.47-6.58,6.38-6.58s6.42,2.8,6.42,6.58-2.5,6.56-6.42,6.56-6.38-2.79-6.38-6.56Zm9.07,0c0-2.06-.9-3.63-2.66-3.63s-2.66,1.57-2.66,3.63.9,3.62,2.66,3.62,2.66-1.55,2.66-3.62Z"
                 shape-rendering="geometricPrecision"
