@@ -7,9 +7,9 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import ExpData from "@/data/Experience.json";
-import AboutExp from "@/views/AboutPageExp.vue";
-import AboutSkill from "@/views/AboutPageSkill.vue";
-import AboutContact from "@/views/AboutPageContact.vue";
+import AboutExp from "@/components/AboutPageExp.vue";
+import AboutSkill from "@/components/AboutPageSkill.vue";
+import AboutContact from "@/components/AboutPageContact.vue";
 
 // Return Real route
 const profileImage1 = "../src/img/profile_1_md.webp";
