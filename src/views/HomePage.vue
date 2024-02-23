@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import { splitPara, splitText } from "@/module/SplitText.js";
 import ExpData from "@/data/Experience.json";
 import gsap from "gsap";
 import Player from "@vimeo/player";
@@ -19,19 +20,6 @@ onMounted(() => {
         }
     });
 });
-
-// Split text function
-const splitPara = (para) => {
-    const arr = [];
-    para.forEach((el) => {
-        arr.push(el.split(" "));
-    });
-    return arr;
-};
-const splitText = (string) => {
-    const arr = string.split(" ");
-    return arr;
-};
 
 /* Transition GSAP */
 const beforeEnter = (el) => {

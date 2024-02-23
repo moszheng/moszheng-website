@@ -1,6 +1,7 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { onBeforeRouteUpdate } from "vue-router";
+import { splitPara, splitText } from "@/module/SplitText.js";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
@@ -39,19 +40,6 @@ const imgLocation = (item) => {
 const contextImg = computed(() => {
     return prjdata.value.img_md.slice(1);
 });
-
-// Split text function
-const splitPara = (para) => {
-    const arr = [];
-    para.forEach((el) => {
-        arr.push(el.split(" "));
-    });
-    return arr;
-};
-const splitText = (string) => {
-    const arr = string.split(" ");
-    return arr;
-};
 
 /* onMounted, preloading img & gsap scrollTrigger */
 const lazyloadimgs = ref(document.querySelectorAll(".lazy"));

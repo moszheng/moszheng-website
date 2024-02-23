@@ -1,12 +1,12 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import { useNavStore } from "@/stores/navstore";
+import { splitPara, splitText } from "@/module/SplitText.js";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import ExpData from "@/data/Experience.json";
-
 import AboutExp from "@/views/AboutPageExp.vue";
 import AboutSkill from "@/views/AboutPageSkill.vue";
 import AboutContact from "@/views/AboutPageContact.vue";
@@ -17,17 +17,6 @@ const profileImage2 = "../src/img/profile_2_md.webp";
 const profileImage3 = "../src/img/02_gha56_md_02.webp";
 const profileImage4 = "../src/img/profile_4_md.webp";
 
-const splitPara = (para) => {
-    const arr = [];
-    para.forEach((el) => {
-        arr.push(el.split(" "));
-    });
-    return arr;
-};
-const splitText = (string) => {
-    const arr = string.split(" ");
-    return arr;
-};
 /* ------------ Transition GSAP --------------------*/
 const store = useNavStore();
 const changeNavbarState = (state) => {
