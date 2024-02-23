@@ -36,7 +36,7 @@ import ExpData from "@/data/Experience.json";
                             </div>
                         </div>
                         <!-- Job detail -->
-                        <ul class="max-w-2xl list-disc space-y-2 pl-3 text-neutral-400 group-hover:text-neutral-400">
+                        <ul class="max-w-2xl list-disc space-y-3 pl-3 text-neutral-400 group-hover:text-neutral-400">
                             <li v-for="content in item.detail" :key="content" class="exp-job-detail">
                                 <h6>{{ content }}</h6>
                             </li>
