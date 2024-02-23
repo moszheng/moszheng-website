@@ -162,7 +162,12 @@ function ScrollTop() {
     <main class="mt-12 pt-5">
         <!-- video -->
         <section class="relative mb-12">
-            <iframe class="aspect-video w-full" :src="videoEmbed(prjdata.video)" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <iframe
+                class="aspect-video w-full"
+                :src="videoEmbed(prjdata.video)"
+                allow="autoplay; fullscreen; picture-in-picture"
+                allowfullscreen
+            ></iframe>
         </section>
         <section class="container mx-auto sm:px-4" ref="imgContainer">
             <!-- Workitem-info -->
@@ -208,7 +213,11 @@ function ScrollTop() {
                     <div class="mb-5 max-w-full xl:mb-6 xl:w-1/2">
                         <div class="head-img-container d-flex-center w-full overflow-hidden">
                             <figure class="parallax">
-                                <img :src="imgLocation(prjdata.img_md[0])" class="head-img-container-img lazy h-[1080px] w-[1920px] object-cover" alt="firstImg" />
+                                <img
+                                    :src="imgLocation(prjdata.img_md[0])"
+                                    class="head-img-container-img lazy h-[1080px] w-[1920px] object-cover"
+                                    alt="firstImg"
+                                />
                             </figure>
                         </div>
                     </div>
@@ -243,8 +252,18 @@ function ScrollTop() {
             </section>
             <div class="work-end mx-auto w-full max-w-full sm:px-4">
                 <a @click="ScrollTop" class="d-flex-center flex-col p-4">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up mb-1" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z" />
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="32"
+                        height="32"
+                        fill="currentColor"
+                        class="bi bi-chevron-compact-up mb-1"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"
+                        />
                     </svg>
                     <p class="text-sm">BACK TO TOP</p>
                 </a>
@@ -261,10 +280,18 @@ function ScrollTop() {
                             <div class="card relative mb-4 flex overflow-hidden bg-gray-800 text-white">
                                 <!-- routerlink -->
                                 <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name">
-                                    <img :src="imgLocation(item.img_md[0])" class="lazy absolute left-0 top-0 h-full w-full object-cover" alt="otherprjImg" />
+                                    <img
+                                        :src="imgLocation(item.img_md[0])"
+                                        class="lazy absolute left-0 top-0 h-full w-full object-cover"
+                                        alt="otherprjImg"
+                                    />
                                     <div class="opacity-0 duration-500 group-hover:opacity-100">
-                                        <div class="works-black absolute bottom-0 h-1/5 w-full overflow-hidden duration-500 group-hover:h-3/5"></div>
-                                        <div class="works-destop-title absolute bottom-0 w-full px-5 text-white duration-500 group-hover:bottom-4">
+                                        <div
+                                            class="works-black absolute bottom-0 h-1/5 w-full overflow-hidden duration-500 group-hover:h-3/5"
+                                        ></div>
+                                        <div
+                                            class="works-destop-title absolute bottom-0 w-full px-5 text-white duration-500 group-hover:bottom-4"
+                                        >
                                             <h4 class="mb-3">{{ item.en_name }}</h4>
                                             <p class="mb-0">{{ item.date }}</p>
                                         </div>

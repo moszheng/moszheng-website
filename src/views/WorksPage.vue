@@ -97,7 +97,8 @@ function ScrollTop() {
                     :style="randomHeight(index)"
                 >
                     <figure class="parallax absolute h-full">
-                        <img class="lazy left-0 min-h-[110%] w-auto object-cover group-hover:scale-105"
+                        <img
+                            class="lazy left-0 min-h-[110%] w-auto object-cover group-hover:scale-105"
                             :src="imgLocation(item.img_md[0])"
                             :alt="item.name"
                         />
@@ -120,7 +121,10 @@ function ScrollTop() {
         </section>
         <div class="work-end mx-auto w-full max-w-full sm:px-4">
             <a @click="ScrollTop" class="d-flex-center flex-col p-4">
-                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="32"
+                    height="32"
                     fill="currentColor"
                     class="bi bi-chevron-compact-up mb-1"
                     viewBox="0 0 16 16"

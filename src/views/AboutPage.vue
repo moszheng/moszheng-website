@@ -17,7 +17,7 @@ const profileImage2 = "../src/img/profile_2_md.webp";
 const profileImage3 = "../src/img/02_gha56_md_02.webp";
 const profileImage4 = "../src/img/profile_4_md.webp";
 
-/* ------------ Transition GSAP --------------------*/
+/* -------------- Store --------------------*/
 const store = useNavStore();
 const changeNavbarState = (state) => {
     store.navbardarkmode = state;
@@ -28,7 +28,7 @@ const imgContainer = ref();
 let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
-    // Preloading status
+    /* -------------- Preloading status --------------------- */
     lazyloadimgs.value = document.querySelectorAll(".lazy");
     function loaded(img) {
         if (img instanceof HTMLImageElement) {
@@ -50,10 +50,9 @@ onMounted(() => {
         });
     });
     Promise.all(loadImagePromises).then(() => {
-        // console.log("all finished")
         finishloading.value = true;
     });
-    /* Desktop only Motion */
+    /* --------- Desktop only Motion ----------------------*/
     matchmedia.add("(min-width: 768px)", (context) => {
         /* ----------- Depth --------------- */
         gsap.utils.toArray(".parallax").forEach((layer) => {
@@ -106,7 +105,7 @@ onMounted(() => {
         //     });
         // };
     });
-    /* Main GSAP Animation*/
+    /* ------------- Main GSAP Animation -----------------------*/
     ctx = gsap.context((self) => {
         /* ----------- Intro Section ----------------*/
         const introtl = gsap.timeline({
@@ -127,7 +126,12 @@ onMounted(() => {
             },
             defaults: { ease: "power3.out" },
         });
-        introtl.fromTo(".intro-container", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
+        introtl.fromTo(
+            ".intro-container",
+            { clipPath: "inset(0% 100% 0% 0%)" },
+            { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" },
+            0,
+        );
         introtl.from("#intro-title", { opacity: 0, yPercent: 150, duration: 0.8, stagger: 0.1 }, 0);
         introtl.from(".split-text", { opacity: 0, yPercent: 40, duration: 1, stagger: 0.03 }, 0.4);
         introtl.from(".profile-img-3", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
@@ -141,7 +145,12 @@ onMounted(() => {
             },
             defaults: { ease: "power3.out" },
         });
-        introtl2.fromTo(".intro-container2", { clipPath: "inset(0% 100% 0% 0%)" }, { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" }, 0);
+        introtl2.fromTo(
+            ".intro-container2",
+            { clipPath: "inset(0% 100% 0% 0%)" },
+            { clipPath: "inset(0% 0% 0% 0%)", duration: 3, ease: "power4.out" },
+            0,
+        );
         introtl2.from("#intro-title2", { opacity: 0, yPercent: 150, duration: 1.5, stagger: 0.15 }, 0);
         introtl2.from(".split-text2", { opacity: 0, yPercent: 40, duration: 1, stagger: 0.03 }, 0.5);
         introtl2.from(".profile-img-4", { scale: 1.6, duration: 3.5, ease: "power4.out" }, 0);
@@ -248,7 +257,12 @@ const loadingLeave = (el, done) => {
 };
 const heroMotion = () => {
     const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-    herotl.fromTo(".profile-container", { clipPath: "inset(50% 0% 50% 0% round 6% 0%)" }, { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" }, 0.5);
+    herotl.fromTo(
+        ".profile-container",
+        { clipPath: "inset(50% 0% 50% 0% round 6% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" },
+        0.5,
+    );
     herotl.from("#profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0.5);
     herotl.from("#profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0.5);
     herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.9);
@@ -259,13 +273,10 @@ const heroMotion = () => {
 </script>
 <template>
 <div class="About">
-    <Transition name="move" mode="out-in" appear 
-        @enter="loadingEnter" 
-        @leave="loadingLeave"
-    >
+    <Transition name="move" mode="out-in" appear @enter="loadingEnter" @leave="loadingLeave">
         <section class="d-flex-center fixed top-0 z-[90] h-full w-full" v-show="!finishloading" id="about-loading">
             <div class="d-flex-center container z-[91] mx-auto h-full sm:px-4" id="about-loadinglogo">
-                <svg id="mos-logo" class="fill-black w-48">
+                <svg id="mos-logo" class="w-48 fill-black">
                     <use xlink:href="#icon-mosLogo"></use>
                 </svg>
             </div>
@@ -273,18 +284,18 @@ const heroMotion = () => {
         </section>
     </Transition>
     <main class="bg-main-black" ref="imgContainer">
-        <div class="about-herointro duration-500" :class="{'bg-stone-100':!store.navbardarkmode, 'bg-main-black': store.navbardarkmode }">
+        <div class="about-herointro duration-500" :class="{ 'bg-stone-100': !store.navbardarkmode, 'bg-main-black': store.navbardarkmode }">
             <!-- Hero -->
-            <section class="about-hero d-flex-center h-svh flex-wrap px-3 pt-5 xl:h-screen xl:px-16 xl:py-12 xl:mb-0 mb-12">
+            <section class="about-hero d-flex-center mb-12 h-svh flex-wrap px-3 pt-5 xl:mb-0 xl:h-screen xl:px-16 xl:py-12">
                 <!-- profile image -->
-                <div class="d-flex-center mt-16 pl-4 pr-4 xl:mt-0 2xl:w-1/2 xl:mb-0 mb-5">
+                <div class="d-flex-center mb-5 mt-16 pl-4 pr-4 xl:mb-0 xl:mt-0 2xl:w-1/2">
                     <div class="profile-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
-                        <figure class="absolute z-20 scale-[1.2] blur-none h-full" id="profile-img-1">
+                        <figure class="absolute z-20 h-full scale-[1.2] blur-none" id="profile-img-1">
                             <div class="parallax heroRot h-full" data-depth="1.05" data-scale="1.05">
                                 <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage1" />
                             </div>
                         </figure>
-                        <figure class="absolute z-10 scale-[1.2] blur-none h-full" id="profile-img-2">
+                        <figure class="absolute z-10 h-full scale-[1.2] blur-none" id="profile-img-2">
                             <div class="parallax heroRot h-full" data-depth="3.2" data-scale="1.15">
                                 <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage2" />
                             </div>
@@ -293,7 +304,7 @@ const heroMotion = () => {
                 </div>
                 <!-- Hero text -->
                 <div class="about-hero-info d-flex-center 2xl:w-1/2 2xl:ps-6"
-                    :class="{'text-main-neutral':store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
+                    :class="{ 'text-main-neutral': store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
                 >
                     <div class="relative mb-3 md:mb-1">
                         <!-- <div class="absolute right-[10%] xl:-top-4">
@@ -318,15 +329,21 @@ const heroMotion = () => {
                             <div class="mobile-center flex flex-col items-center">
                                 <h4 class="mb-10 text-center md:mb-12 md:text-left">
                                     <span class="block font-bold" id="hero-detail">
-                                        <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong> <br />
+                                        <strong class="text-main-orange">3D Generalist</strong> and
+                                        <strong class="text-main-orange">Motion Designer</strong> <br />
                                     </span>
-                                    <span class="block font-bold" id="hero-detail">
-                                        based in Taiwan.
-                                    </span>
+                                    <span class="block font-bold" id="hero-detail"> based in Taiwan. </span>
                                 </h4>
                                 <div class="text-center" id="hero-4" style="rotate: 180deg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-chevron-compact-up" viewBox="0 0 16 16">
-                                        <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z" />
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="32"
+                                        height="32"
+                                        fill="currentColor"
+                                        class="bi bi-chevron-compact-up"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
                                     </svg>
                                 </div>
                             </div>
@@ -335,8 +352,9 @@ const heroMotion = () => {
                 </div>
             </section>
             <!-- Intro -->
-            <section class="about-intro d-flex-center min-h-[85vh] rounded-b-lg p-6 xl:px-20 xl:py-12"
-                :class="{'text-main-neutral':store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
+            <section
+                class="about-intro d-flex-center min-h-[85vh] rounded-b-lg p-6 xl:px-20 xl:py-12"
+                :class="{ 'text-main-neutral': store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
             >
                 <div class="about-intro-block container w-full">
                     <!-- Group1 -->
@@ -344,13 +362,21 @@ const heroMotion = () => {
                         <!-- Intro -->
                         <div class="mb-12 flex h-full max-w-2xl pr-0 lg:mb-0 xl:w-2/5 xl:pr-10 4xl:pr-5">
                             <div class="">
-                                <h2 class="mb-8 inline-block overflow-hidden xl:mb-16 pb-1">
-                                    <span v-for="(text, index) in splitText(ExpData.about.para1.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                <h2 class="mb-8 inline-block overflow-hidden pb-1 xl:mb-16">
+                                    <span
+                                        v-for="(text, index) in splitText(ExpData.about.para1.title)"
+                                        :key="index"
+                                        class="inline-flex pe-2 xl:pe-4"
+                                    >
                                         <span class="block font-bold" id="intro-title"> {{ text }} </span>
                                     </span>
                                 </h2>
                                 <div class="space-y-10">
-                                    <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para1.content)" :key="indexz" class="intro-info leading-normal">
+                                    <h4
+                                        v-for="(textarray, indexz) in splitPara(ExpData.about.para1.content)"
+                                        :key="indexz"
+                                        class="intro-info leading-normal"
+                                    >
                                         <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
                                             <span class="split-text inline-block"> {{ text }} </span>
                                         </span>
@@ -371,7 +397,7 @@ const heroMotion = () => {
                     <!-- Group2 -->
                     <div class="about-intro-info2 mb-16 min-h-[70vh] items-center lg:flex lg:justify-around">
                         <!-- Img -->
-                        <div class="intro-container2 relative overflow-hidden xl:w-1/2 xl:mb-0 mb-8">
+                        <div class="intro-container2 relative mb-8 overflow-hidden xl:mb-0 xl:w-1/2">
                             <figure class="profile-img-4 d-flex-center scale-[1.35]">
                                 <div class="introparallax" data-depth="3">
                                     <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
@@ -382,12 +408,20 @@ const heroMotion = () => {
                         <div class="mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12 4xl:pr-5">
                             <div class="">
                                 <h2 class="intro-title2 mb-8 inline-block overflow-hidden xl:mb-16">
-                                    <span v-for="(text, index) in splitText(ExpData.about.para2.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
+                                    <span
+                                        v-for="(text, index) in splitText(ExpData.about.para2.title)"
+                                        :key="index"
+                                        class="inline-flex pe-2 xl:pe-4"
+                                    >
                                         <span class="inline-block font-bold" id="intro-title2"> {{ text }} </span>
                                     </span>
                                 </h2>
-                                <div class="space-y-10 xl:mb-16 mb-8">
-                                    <h4 v-for="(textarray, indexz) in splitPara(ExpData.about.para2.content)" :key="indexz" class="intro-info leading-normal">
+                                <div class="mb-8 space-y-10 xl:mb-16">
+                                    <h4
+                                        v-for="(textarray, indexz) in splitPara(ExpData.about.para2.content)"
+                                        :key="indexz"
+                                        class="intro-info leading-normal"
+                                    >
                                         <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
                                             <span class="split-text2 inline-block"> {{ text }} </span>
                                         </span>
@@ -395,10 +429,8 @@ const heroMotion = () => {
                                 </div>
                                 <!-- <LineBottom :to="" :Word=""/> -->
                                 <div class="group max-w-sm">
-                                    <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-1 group-hover:-translate-y-3 duration-200">
-                                        <h3 class= "group-hover:text-black duration-300">
-                                            Works
-                                        </h3>
+                                    <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-1 duration-200 group-hover:-translate-y-3">
+                                        <h3 class="duration-300 group-hover:text-black">Works</h3>
                                         <svg class="lg:h-18 h-24 w-36 fill-main-neutral group-hover:fill-black lg:w-36">
                                             <use xlink:href="#icon-arrowxl"></use>
                                         </svg>
@@ -411,34 +443,34 @@ const heroMotion = () => {
             </section>
         </div>
         <!-- <section class="d-flex-center w-full h-24 text-white">
-            <div class="">
-                <h3 class=""> Mos </h3>
-            </div>
-        </section> -->
+        <div class="">
+            <h3 class=""> Mos </h3>
+        </div>
+    </section> -->
         <AboutExp />
         <!-- Thinking -->
         <!-- <section class="about-contact min-h-screen d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
-            <div class="flex">
-                <div>
-                    <h1 class="text-stone-950">Procedural Thinking</h1>
-                    <h4> teoiutsotusotuiu1d23fsf1sd6f54s6df4 </h4>
+        <div class="flex">
+            <div>
+                <h1 class="text-stone-950">Procedural Thinking</h1>
+                <h4> teoiutsotusotuiu1d23fsf1sd6f54s6df4 </h4>
+            </div>
+            <div class="space-y-5">
+                <div class="flex justify-center">
+                    <div>
+                        <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
+                    </div>
+                    <h4>Idea</h4>
                 </div>
-                <div class="space-y-5">
-                    <div class="flex justify-center">
-                        <div>
-                            <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
-                        </div>
-                        <h4>Idea</h4>
+                <div class="flex justify-center">
+                    <div>
+                        <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
                     </div>
-                    <div class="flex justify-center">
-                        <div>
-                            <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
-                        </div>
-                        <h4>Idea</h4>
-                    </div>
+                    <h4>Idea</h4>
                 </div>
             </div>
-        </section> -->
+        </div>
+    </section> -->
         <AboutSkill />
         <AboutContact />
     </main>
@@ -475,7 +507,7 @@ const heroMotion = () => {
         transform: rotate(25deg);
     }
 }
-.icon-gear{
+.icon-gear {
     /* animation: gearRotation 1s cubic-bezier(0.075, 0.82, 0.165, 1) infinite; */
     animation: rotation 10s linear infinite;
 }
