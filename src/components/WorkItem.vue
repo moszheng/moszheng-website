@@ -42,13 +42,12 @@ const contextImg = computed(() => {
 });
 
 /* onMounted, preloading img & gsap scrollTrigger */
-const lazyloadimgs = ref(document.querySelectorAll(".lazy"));
+const lazyPics = ref([]);
 const imgContainer = ref();
 let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
     /* Preloading status */
-    lazyloadimgs.value = document.querySelectorAll(".lazy");
     function loaded(img) {
         if (img instanceof HTMLImageElement) {
             // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
@@ -58,7 +57,7 @@ onMounted(() => {
             img.target.classList.add("loaded");
         }
     }
-    lazyloadimgs.value.forEach(function (img) {
+    lazyPics.value.forEach(function (img) {
         if (img.complete) {
             loaded(img);
         } else {
@@ -215,8 +214,9 @@ function ScrollTop() {
                             <figure class="parallax">
                                 <img
                                     :src="imgLocation(prjdata.img_md[0])"
-                                    class="head-img-container-img lazy h-[1080px] w-[1920px] object-cover"
+                                    class="head-img-container-img h-[1080px] w-[1920px] object-cover"
                                     alt="firstImg"
+                                    ref="lazyPics"
                                 />
                             </figure>
                         </div>
@@ -233,7 +233,7 @@ function ScrollTop() {
                 <!-- imgs -->
                 <div class="prj-imgs mb-12">
                     <figure class="prj-img mb-3 bg-gray-300" v-for="(item, index) in contextImg" :key="item">
-                        <img :src="imgLocation(contextImg[index])" class="lazy aspect-16/9 w-full object-cover" alt="contextImg" />
+                        <img :src="imgLocation(contextImg[index])" class="aspect-16/9 w-full object-cover" alt="contextImg" ref="lazyPics" />
                     </figure>
                 </div>
                 <hr />
@@ -282,8 +282,9 @@ function ScrollTop() {
                                 <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name">
                                     <img
                                         :src="imgLocation(item.img_md[0])"
-                                        class="lazy absolute left-0 top-0 h-full w-full object-cover"
+                                        class="absolute left-0 top-0 h-full w-full object-cover"
                                         alt="otherprjImg"
+                                        ref="lazyPics"
                                     />
                                     <div class="opacity-0 duration-500 group-hover:opacity-100">
                                         <div

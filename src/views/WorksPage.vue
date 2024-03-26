@@ -11,12 +11,11 @@ import WorksData from "@/data/WorksData.json";
 const imgLocation = (item) => {
     return "../src/img/" + item;
 };
-const lazyloadimgs = ref(document.querySelectorAll(".lazy"));
+const lazyPics = ref([]);
 let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
     // Preloading status
-    lazyloadimgs.value = document.querySelectorAll(".lazy");
     function loaded(img) {
         if (img instanceof HTMLImageElement) {
             // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
@@ -26,7 +25,7 @@ onMounted(() => {
             img.target.classList.add("loaded");
         }
     }
-    lazyloadimgs.value.forEach(function (img) {
+    lazyPics.value.forEach(function (img) {
         if (img.complete) {
             loaded(img);
         } else {
@@ -101,6 +100,7 @@ function ScrollTop() {
                             class="lazy left-0 min-h-[110%] w-auto object-cover group-hover:scale-105"
                             :src="imgLocation(item.img_md[0])"
                             :alt="item.name"
+                            ref="lazyPics"
                         />
                     </figure>
                     <!-- desktop title -->

@@ -23,13 +23,12 @@ const changeNavbarState = (state) => {
     store.navbardarkmode = state;
 };
 const finishloading = ref(false);
-const lazyloadimgs = ref(document.querySelectorAll(".lazy"));
+const lazyPics = ref([]);
 const imgContainer = ref();
 let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
     /* -------------- Preloading status --------------------- */
-    lazyloadimgs.value = document.querySelectorAll(".lazy");
     function loaded(img) {
         if (img instanceof HTMLImageElement) {
             // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
@@ -40,7 +39,7 @@ onMounted(() => {
         }
     }
     /* Async Method */
-    const loadImagePromises = Array.from(lazyloadimgs.value).map((img) => {
+    const loadImagePromises = Array.from(lazyPics.value).map((img) => {
         return new Promise((resolve) => {
             img.onload = () => {
                 // console.log(img, "finished")
