@@ -19,7 +19,7 @@ import ExpData from "@/data/Experience.json";
             >
                 <div class="h-full rounded-3xl bg-[#f0efee] p-10 shadow-xl duration-300 hover:scale-y-105 hover:bg-main-orange">
                     <figure class="skill-card-icon d-flex-center mb-28 mt-8 h-40 w-full duration-500 group-hover:-translate-y-6 group-hover:scale-105">
-                        <img class="h-auto w-2/3 object-cover" alt="cardimg" :src="skill.logo" ref="lazyPics"/>
+                        <img class="lazy h-auto w-2/3 object-cover" alt="cardimg" :src="skill.logo"/>
                     </figure>
                     <h3 class="mb-4 text-[#ff8a47] group-hover:text-white md:mb-8" id="skill-card-title">{{ skill.title }}</h3>
                     <h5 class="mb-3 group-hover:text-white" id="skill-card-text" v-for="(item, index) in skill.content" :key="item.name" :data-index="index">

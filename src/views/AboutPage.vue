@@ -23,12 +23,14 @@ const changeNavbarState = (state) => {
     store.navbardarkmode = state;
 };
 const finishloading = ref(false);
-const lazyPics = ref([]);
+const lazyPics = ref(document.querySelectorAll(".lazy"));
+// const lazyPics = ref([]);
 const imgContainer = ref();
 let ctx;
 let matchmedia = gsap.matchMedia();
 onMounted(() => {
     /* -------------- Preloading status --------------------- */
+    lazyPics.value = document.querySelectorAll(".lazy");
     function loaded(img) {
         if (img instanceof HTMLImageElement) {
             // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
@@ -291,12 +293,12 @@ const heroMotion = () => {
                     <div class="profile-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
                         <figure class="absolute z-20 h-full scale-[1.2] blur-none" id="profile-img-1">
                             <div class="parallax heroRot h-full" data-depth="1.05" data-scale="1.05">
-                                <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage1" />
+                                <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage1"/>
                             </div>
                         </figure>
                         <figure class="absolute z-10 h-full scale-[1.2] blur-none" id="profile-img-2">
                             <div class="parallax heroRot h-full" data-depth="3.2" data-scale="1.15">
-                                <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage2" />
+                                <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage2"/>
                             </div>
                         </figure>
                     </div>
@@ -388,7 +390,7 @@ const heroMotion = () => {
                             <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
                             <figure class="profile-img-3 d-flex-center scale-[1.2]">
                                 <div class="introparallax" data-depth="3">
-                                    <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3" />
+                                    <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3"/>
                                 </div>
                             </figure>
                         </div>
@@ -399,7 +401,7 @@ const heroMotion = () => {
                         <div class="intro-container2 relative mb-8 overflow-hidden xl:mb-0 xl:w-1/2">
                             <figure class="profile-img-4 d-flex-center scale-[1.35]">
                                 <div class="introparallax" data-depth="3">
-                                    <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
+                                    <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4"/>
                                 </div>
                             </figure>
                         </div>

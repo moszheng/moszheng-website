@@ -33,7 +33,7 @@ const navfolder = ref(false);
 let lastPos = 0;
 let deltaPos = 0;
 const handleScroll = () => {
-    const navbarToggler = document.querySelector(".navbar-toggler");
+    const navbarToggler = ref();
     const currentPos = window.scrollY;
     deltaPos = currentPos - lastPos;
     
@@ -160,7 +160,7 @@ function onLeave(el, done) {
                 </Transition>
             </router-link>
             <!-- navbar responsive button -->
-            <button @click="navbarExpand" class="navbar-toggler collapsed relative h-6 w-6 bg-transparent leading-normal lg:hidden" type="button">
+            <button @click="navbarExpand" class="collapsed relative h-6 w-6 bg-transparent leading-normal lg:hidden" type="button" ref="navbarToggler">
                 <span class="toggler-icon top-bar -mt-1.5">
                     <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
