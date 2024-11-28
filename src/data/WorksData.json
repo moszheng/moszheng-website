@@ -390,6 +390,28 @@
             }
         },
         {
+            "name": "鉅鋼",
+            "en_name": "KINGSTEEL NexFlow",
+            "url_name": "kingsteel",
+            "date": "2024 Aug",
+            "behance": "https://www.behance.net/gallery/89590877/56-Golden-Horse-Awards-56th-Logo-Bumper-Breakdown",
+            "video": ["youtube", "Gf8BbBYkVaA"],
+            "img": "11_KingSteel_md_01.webp",
+            "img_md": ["11_KingSteel_md_01.webp", "11_KingSteel_md_02.webp", "11_KingSteel_md_03.webp", "11_KingSteel_md_04.webp", "11_KingSteel_md_05.webp"],
+            "company": "JL Design",
+            "msg": [
+                "NexFlow is a foaming manufacturing that creates objects with unique patterns. Our goal is to convey the product's characteristics to customers through the imagery of flow.",
+                "In this animation, we designed some shoes and developed an special workflow that makes the NexFlow patterns move and flow across the product. It was a really fun project to work on!"
+            ],
+            "roles": ["3D production", "Lighting", "Modeling", "Texturing", "FX"],
+            "credit": {
+                
+            },
+            "creditZH": {
+                
+            }
+        },
+        {
             "name": "聲林之王",
             "en_name": "Jungle Voice - Logo Production",
             "url_name": "Jungle_Voice",
