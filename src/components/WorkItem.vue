@@ -47,23 +47,8 @@ const imgContainer = ref();
 let ctx;
 const matchmedia = gsap.matchMedia();
 onMounted(() => {
-    /* Preloading status */
-    function loaded(img) {
-        if (img instanceof HTMLImageElement) {
-            // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
-            img.classList.add("loaded");
-        } else {
-            // is Object Event
-            img.target.classList.add("loaded");
-        }
-    }
-    lazyPics.value.forEach(function (img) {
-        if (img.complete) {
-            loaded(img);
-        } else {
-            img.addEventListener("load", loaded);
-        }
-    });
+    lazyPics.value = document.querySelectorAll(".lazy");
+    preloadImages();
     /* Scroll picture*/
     matchmedia.add("(min-width: 768px)", (context) => {
         /* heropic */
@@ -85,6 +70,20 @@ onMounted(() => {
     }, imgContainer.value);
 });
 
+/* Preloading status */
+const preloadImages = () => {
+    const loadImagePromises = Array.from(lazyPics.value).map((img) => {
+        return new Promise((resolve) => {
+            img.onload = () => {
+                img.classList.add("loaded");
+                resolve(img);
+            };
+        });
+    });
+    Promise.all(loadImagePromises).then(() => {
+        finishloading.value = true;
+    });
+};
 const animateHero = (self) => {
     // Hero GSAP
     const herotl = gsap.timeline({
