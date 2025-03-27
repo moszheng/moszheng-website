@@ -1,30 +1,22 @@
-name: Deploy GitHub Pages
+# name: Deploy GitHub Pages
 
-on:
-    push:
-        branches:
-            - main # 或您的主要分支名稱
+# on:
+#     push:
+#         branches:
+#             - main # 或您的主要分支名稱
 
-jobs:
-    build-and-deploy:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout code
-              uses: actions/checkout@v2
+# jobs:
+#     build-and-deploy:
+#         runs-on: ubuntu-latest
+#         steps:
+#             - name: Checkout code
+#               uses: actions/checkout@v4
 
-            - name: Setup Node.js
-              uses: actions/setup-node@v2
-              with:
-                  node-version: "16" # 或您的 Node.js 版本
+#             - name: Build project
+#               run: npm run build
 
-            - name: Install dependencies
-              run: npm install
-
-            - name: Build project
-              run: npm run build
-
-            - name: Deploy to GitHub Pages
-              uses: JamesIves/github-pages-deploy-action@v4
-              with:
-                  branch: main # moszheng.github.io 的分支
-                  folder: dist # 您的 build 輸出目錄
+#             - name: Deploy to GitHub Pages
+#               uses: JamesIves/github-pages-deploy-action@v4
+#               with:
+#                   branch: main # moszheng.github.io 的分支
+#                   folder: dist # 您的 build 輸出目錄

@@ -47,22 +47,8 @@ const imgContainer = ref();
 let ctx;
 const matchmedia = gsap.matchMedia();
 onMounted(() => {
-    lazyPics.value = document.querySelectorAll(".lazy");
     preloadImages();
-    /* Scroll picture*/
-    matchmedia.add("(min-width: 768px)", (context) => {
-        /* heropic */
-        gsap.to(".parallax", {
-            scrollTrigger: {
-                trigger: ".head-img-container",
-                start: "clamp(top bottom)",
-                end: "bottom 50px",
-                scrub: 0.5,
-                // markers: true
-            },
-            yPercent: -16,
-        });
-    });
+    setupDesktopAnimations();
     ctx = gsap.context((self) => {
         animateHero(self);
         animateImgTrigger(self);
@@ -72,7 +58,8 @@ onMounted(() => {
 
 /* Preloading status */
 const preloadImages = () => {
-    const loadImagePromises = Array.from(lazyPics.value).map((img) => {
+    const images = document.querySelectorAll(".lazy");
+    const loadImagePromises = Array.from(images).map((img) => {
         return new Promise((resolve) => {
             img.onload = () => {
                 img.classList.add("loaded");
@@ -80,8 +67,20 @@ const preloadImages = () => {
             };
         });
     });
-    Promise.all(loadImagePromises).then(() => {
-        finishloading.value = true;
+    Promise.all(loadImagePromises);
+};
+/* Desktop animation */
+const setupDesktopAnimations = () => {
+    matchmedia.add("(min-width: 768px)", () => {
+        gsap.to(".parallax", {
+            scrollTrigger: {
+                trigger: ".head-img-container",
+                start: "clamp(top bottom)",
+                end: "bottom 50px",
+                scrub: 0.5,
+            },
+            yPercent: -16,
+        });
     });
 };
 const animateHero = (self) => {
