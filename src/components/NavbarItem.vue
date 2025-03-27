@@ -32,17 +32,18 @@ onMounted(() => {
 const navfolder = ref(false);
 let lastPos = 0;
 let deltaPos = 0;
+const navbarToggler = ref(null);
+
 const handleScroll = () => {
-    const navbarToggler = ref();
     const currentPos = window.scrollY;
     deltaPos = currentPos - lastPos;
-    
+
     if (deltaPos > 10 && navfolder.value == false) {
         navfolder.value = true;
         gsap.to(".navcontainer", { yPercent: -90, duration: 0.5, ease: "back.inOut(1.7)" });
-        
-        if (store.isNavbarExpanded) {
-            navbarToggler.click();
+
+        if (store.isNavbarExpanded && navbarToggler.value) {
+            navbarToggler.value.click();
         }
     } else if (deltaPos < 0 && navfolder.value == true) {
         navfolder.value = false;
@@ -138,7 +139,7 @@ function onBeforeEnter(el) {
 }
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    const tl = gsap.timeline( { defaults: { overwrite: "auto" } });
+    const tl = gsap.timeline({ defaults: { overwrite: "auto" } });
     tl.to(el, { width: "2.5rem", autoAlpha: 1, duration: 0.3, delay: delay, ease: "back.Out(2.5)" }, 0);
     tl.to(el, { scale: 1, duration: 0.8, delay: delay, ease: "elastic.out(1,0.4)" }, 0.2);
 }
@@ -150,17 +151,24 @@ function onLeave(el, done) {
 
 <template>
     <header class="lg:flex-no-wrap relative flex flex-wrap content-between items-center px-4">
-        <div class="navcontainer fixed left-0 top-0 z-[100] mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pb-6 pt-2 lg:px-16 xl:pb-2">
+        <div
+            class="navcontainer fixed left-0 top-0 z-[100] mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pb-6 pt-2 lg:px-16 xl:pb-2"
+        >
             <!-- LOGO -->
             <router-link :to="{ name: 'Home' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4" aria-current="page">
                 <Transition name="fade" mode="out-in">
-                    <svg class="w-36 h-12" id="mos-logo" :style="colormode">
+                    <svg class="h-12 w-36" id="mos-logo" :style="colormode">
                         <use xlink:href="#icon-mosLogo"></use>
                     </svg>
                 </Transition>
             </router-link>
             <!-- navbar responsive button -->
-            <button @click="navbarExpand" class="collapsed relative h-6 w-6 bg-transparent leading-normal lg:hidden" type="button" ref="navbarToggler">
+            <button
+                @click="navbarExpand"
+                class="collapsed relative h-6 w-6 bg-transparent leading-normal lg:hidden"
+                type="button"
+                ref="navbarToggler"
+            >
                 <span class="toggler-icon top-bar -mt-1.5">
                     <svg id="icon_collapse" :style="colormode">
                         <use xlink:href="#icon-line"></use>
@@ -179,7 +187,10 @@ function onLeave(el, done) {
             </button>
             <!-- Canvas -->
             <nav class="navbar-collapse">
-                <ul class="mb-0 mt-8 h-0 flex-grow flex-col flex-wrap items-center space-y-5 pl-0 md:ml-auto lg:mt-0 lg:flex lg:h-10 lg:flex-row lg:space-y-0" :style="colormode">
+                <ul
+                    class="mb-0 mt-8 h-0 flex-grow flex-col flex-wrap items-center space-y-5 pl-0 md:ml-auto lg:mt-0 lg:flex lg:h-10 lg:flex-row lg:space-y-0"
+                    :style="colormode"
+                >
                     <NavLink :to="'Works'" />
                     <NavLink :to="'Showreel'" />
                     <NavLink :to="'About'" />
