@@ -112,6 +112,33 @@ const setupDesktopAnimations = () => {
         // };
     });
 };
+
+/* Enter AboutPage Motion */
+const loadingEnter = (el, done) => {
+    // gsap.set("#about-loadinglogo", { scale: 60, rotationZ: -30, });
+    // gsap.fromTo(el, { yPercent: -200 },{ yPercent: 0, duration: 1.2, ease: "power4.inOut" });
+};
+const loadingLeave = (el, done) => {
+    const tl = gsap.timeline();
+    // tl.to("#about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
+    tl.to(el, { yPercent: -70, scaleY: 0.1, duration: 1, ease: "power4.in", onStart: animateHero }, 0.75);
+    tl.to(el, { display: "none" }, 1.65);
+};
+const animateHero = () => {
+    const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
+    herotl.fromTo(
+        ".profile-container",
+        { clipPath: "inset(50% 0% 50% 0% round 6% 0%)" },
+        { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" },
+        0.5,
+    );
+    herotl.from("#profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0.5);
+    herotl.from("#profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0.5);
+    herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.9);
+    herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 1.4);
+    herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.35, stagger: 0.4 }, 1.7);
+    herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.4);
+};
 const animateIntro = (self) => {
     const introtl = gsap.timeline({
         scrollTrigger: {
@@ -187,11 +214,6 @@ const animateExp = (self) => {
     exptl.from(".exp-job-detail", { opacity: 0, yPercent: -30, duration: 0.8, stagger: 0.25 }, 0.9);
     exptl.from(".timeline", { scaleY: 0, ease: "back.Out(1.7)", duration: 0.5, stagger: 0.5 }, 1.1);
 };
-/* -----------Skill Section--------
-    1. Title
-    2. skill-card
-    3. Tools
-*/
 const animateSkill = (self) => {
     const skilltl = gsap.timeline({
         scrollTrigger: {
@@ -227,8 +249,6 @@ const animateSkill = (self) => {
     icontl.from("#skill-tooltitle", { opacity: 0, yPercent: 20, rotateX: 40 }, 0.5);
     icontl.from(".skill-logo-container", { opacity: 0, yPercent: 20, scale: 0.8, stagger: 0.1 }, 0.5);
 };
-
-// Contact G
 const animateContact = (self) => {
     const contacttl = gsap.timeline({
         scrollTrigger: {
@@ -241,34 +261,6 @@ const animateContact = (self) => {
     contacttl.from("#contact-title", { opacity: 0, yPercent: 100, duration: 0.8, stagger: 0.1 }, 0);
     contacttl.from(".intro-infosocial", { opacity: 0, xPercent: -30, scale: 0.8, duration: 0.5, stagger: 0.1 }, 0.45);
     contacttl.from(".intro-infocontact", { opacity: 0, yPercent: 25, duration: 1.5, stagger: 0.2 }, 0.8);
-};
-
-/* Enter AboutPage Motion */
-const loadingEnter = (el, done) => {
-    // gsap.set("#about-loadinglogo", { scale: 60, rotationZ: -30, });
-    // gsap.fromTo(el, { yPercent: -200 },{ yPercent: 0, duration: 1.2, ease: "power4.inOut" });
-};
-/* Loading */
-const loadingLeave = (el, done) => {
-    const tl = gsap.timeline();
-    // tl.to("#about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
-    tl.to(el, { yPercent: -70, scaleY: 0.1, duration: 1, ease: "power4.in", onStart: heroMotion }, 0.75);
-    tl.to(el, { display: "none" }, 1.65);
-};
-const heroMotion = () => {
-    const herotl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-    herotl.fromTo(
-        ".profile-container",
-        { clipPath: "inset(50% 0% 50% 0% round 6% 0%)" },
-        { clipPath: "inset(0% 0% 0% 0% round 12% 0%)", duration: 3, ease: "power4.out" },
-        0.5,
-    );
-    herotl.from("#profile-img-1 ", { scale: 2.2, duration: 3.5, filter: "blur(20px)", ease: "power4.out" }, 0.5);
-    herotl.from("#profile-img-2 ", { scale: 1.6, duration: 3.5, filter: "blur(10px)", ease: "power4.out" }, 0.5);
-    herotl.from("#hero-hello", { opacity: 0, yPercent: 150, rotationX: 90, stagger: 0.25 }, 0.9);
-    herotl.from("#hero-name", { opacity: 0, yPercent: 150, rotationX: 90, rotationZ: 10, stagger: 0.1 }, 1.4);
-    herotl.from("#hero-detail", { opacity: 0, yPercent: 20, ease: "power4.inOut", duration: 1.35, stagger: 0.4 }, 1.7);
-    herotl.from("#hero-4", { opacity: 0, yPercent: -15 }, 2.4);
 };
 </script>
 <template>
