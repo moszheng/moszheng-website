@@ -31,21 +31,24 @@ const matchmedia = gsap.matchMedia();
 onMounted(() => {
     /* -------------- Preloading status --------------------- */
     lazyPics.value = document.querySelectorAll(".lazy");
-    function loaded(img) {
-        if (img instanceof HTMLImageElement) {
-            // is HTMLImageElement, for some reason will escape addEvetlis and enter loaded() directly.
-            img.classList.add("loaded");
-        } else {
-            // is Object Event
-            img.target.classList.add("loaded");
-        }
-    }
-    /* Async Method */
+    preloadImages();
+    setupDesktopAnimations();
+    ctx = gsap.context((self) => {
+        animateIntro(self);
+        animateExp(self);
+        animateSkill(self);
+        animateContact(self);
+    }, imgContainer.value);
+});
+onUnmounted(() => {
+    ctx.revert();
+    matchmedia.revert();
+});
+const preloadImages = () => {
     const loadImagePromises = Array.from(lazyPics.value).map((img) => {
         return new Promise((resolve) => {
             img.onload = () => {
-                // console.log(img, "finished")
-                loaded(img);
+                img.classList.add("loaded");
                 resolve(img);
             };
         });
@@ -53,7 +56,9 @@ onMounted(() => {
     Promise.all(loadImagePromises).then(() => {
         finishloading.value = true;
     });
-    /* --------- Desktop only Motion ----------------------*/
+};
+/* --------- Desktop only Motion ----------------------*/
+const setupDesktopAnimations = () => {
     matchmedia.add("(min-width: 768px)", (context) => {
         /* ----------- Depth --------------- */
         gsap.utils.toArray(".parallax").forEach((layer) => {
@@ -106,18 +111,7 @@ onMounted(() => {
         //     });
         // };
     });
-    /* ------------- Main GSAP Animation -----------------------*/
-    ctx = gsap.context((self) => {
-        animateIntro(self);
-        animateExp(self);
-        animateSkill(self);
-        animateContact(self);
-    }, imgContainer.value);
-});
-onUnmounted(() => {
-    ctx.revert();
-    matchmedia.revert();
-});
+};
 const animateIntro = (self) => {
     const introtl = gsap.timeline({
         scrollTrigger: {
