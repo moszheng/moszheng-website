@@ -56,8 +56,12 @@ const homemotion = () => {
             </div>
         </Transition>
         <!----- BG ----->
-        <div class="index-bgcover absolute left-0 top-0 h-screen w-screen overflow-hidden object-cover">
-            <iframe class="absolute aspect-video min-h-full min-w-full bg-black" src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3&amp"> </iframe>
+        <div class="index-bgcover absolute top-0 left-0 h-screen w-screen overflow-hidden object-cover">
+            <iframe
+                class="absolute aspect-video min-h-full min-w-full bg-black"
+                src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3&amp"
+            >
+            </iframe>
         </div>
         <!--  Intro ---->
         <div class="index-info absolute top-0 z-10 h-full w-full">
@@ -79,7 +83,9 @@ const homemotion = () => {
                     </div>
                     <div class="index-btnarea">
                         <router-link :to="{ name: 'Works' }">
-                            <button type="button" class="index-btn inline-block select-none rounded-lg px-3 py-1 text-xl leading-normal duration-300">Explore</button>
+                            <button type="button" class="index-btn inline-block rounded-lg px-3 py-1 text-xl leading-normal duration-300 select-none">
+                                Explore
+                            </button>
                         </router-link>
                     </div>
                 </div>

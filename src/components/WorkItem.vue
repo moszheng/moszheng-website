@@ -9,9 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 import FooterItem from "./FooterItem.vue";
 import WorksData from "@/data/WorksData.json";
 
-const props = defineProps({
-    projecturl: String,
-});
+const props = defineProps({ projecturl: String });
 
 // data initial
 const prjdata = ref("null");
@@ -73,12 +71,7 @@ const preloadImages = () => {
 const setupDesktopAnimations = () => {
     matchmedia.add("(min-width: 768px)", () => {
         gsap.to(".parallax", {
-            scrollTrigger: {
-                trigger: ".head-img-container",
-                start: "clamp(top bottom)",
-                end: "bottom 50px",
-                scrub: 0.5,
-            },
+            scrollTrigger: { trigger: ".head-img-container", start: "clamp(top bottom)", end: "bottom 50px", scrub: 0.5 },
             yPercent: -16,
         });
     });
@@ -105,24 +98,13 @@ const animateHero = (self) => {
 };
 const animateImgTrigger = (self) => {
     gsap.utils.toArray(".prj-img").forEach((layer) => {
-        gsap.from(layer, {
-            scrollTrigger: {
-                trigger: layer,
-                start: "clamp(top 65%)",
-            },
-            opacity: 0,
-            yPercent: 10,
-            duration: 0.8,
-        });
+        gsap.from(layer, { scrollTrigger: { trigger: layer, start: "clamp(top 65%)" }, opacity: 0, yPercent: 10, duration: 0.8 });
     });
 };
 /* Credit */
 const animateCredit = (self) => {
     const credittl = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".workitem-credit",
-            start: "top 65%",
-        },
+        scrollTrigger: { trigger: ".workitem-credit", start: "top 65%" },
         defaults: { ease: "back.inOut(1.7)", duration: 0.8 },
     });
     credittl.from(".credit-title", { opacity: 0, yPercent: 50 });
@@ -157,10 +139,7 @@ onUnmounted(() => {
 
 /* --------Animation--------- */
 function ScrollTop() {
-    window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
 }
 </script>
 
@@ -178,9 +157,9 @@ function ScrollTop() {
             </section>
             <section class="container mx-auto sm:px-4" ref="imgContainer">
                 <!-- Workitem-info -->
-                <section class="workitem-info mx-2 flex flex-col flex-wrap justify-between px-3 md:mx-4 lg:flex-row xl:px-12">
+                <section class="workitem-info mx-2 flex flex-col flex-wrap justify-between px-3 md:mx-4 lg:flex-row xl:min-h-[20vh] xl:px-12">
                     <!-- Left-info -->
-                    <div class="mb-8 pl-4 pr-4 md:mb-12 xl:mb-0">
+                    <div class="mb-8 pr-4 pl-4 md:mb-12 xl:mb-0">
                         <h3 class="hero-1 mb-8 text-stone-950">
                             <span v-for="(text, index) in splitText(prjdata.en_name)" :key="index" class="inline-flex pe-2">
                                 <span class="inline-block font-bold" id="prj-name"> {{ text }} </span>
@@ -207,7 +186,7 @@ function ScrollTop() {
                         </div>
                     </div>
                     <!-- Right - Roles -->
-                    <div class="pl-4 pr-4 xl:ml-auto">
+                    <div class="pr-4 pl-4 xl:ml-auto">
                         <h3 class="hero-3 mb-4 text-stone-950">Roles</h3>
                         <h5 class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item">{{ item }}</h5>
                     </div>
@@ -278,7 +257,7 @@ function ScrollTop() {
                 </div>
             </section>
             <!-- Other Prj -->
-            <section class="workitem-otherprj d-flex-center min-h-[40vh] bg-main-black px-1 md:px-12" data-scroll-section>
+            <section class="workitem-otherprj d-flex-center bg-main-black min-h-[40vh] px-1 md:px-12" data-scroll-section>
                 <div class="container mx-auto sm:px-4">
                     <h3 class="mx-4 my-4 text-white md:mx-0">Other Projects</h3>
                     <!-- projects -->
@@ -290,7 +269,7 @@ function ScrollTop() {
                                     <router-link :to="{ name: 'WorksItem', params: { projecturl: item.url_name } }" :title="item.name">
                                         <img
                                             :src="imgLocation(item.img_md[0])"
-                                            class="absolute left-0 top-0 h-full w-full object-cover"
+                                            class="absolute top-0 left-0 h-full w-full object-cover"
                                             alt="otherprjImg"
                                             ref="lazyPics"
                                         />
@@ -317,12 +296,6 @@ function ScrollTop() {
     </div>
 </template>
 <style scoped>
-/* -----Section------ */
-@media only screen and (min-width: 1200px) {
-    .workitem-info {
-        min-height: 20vh;
-    }
-}
 /* Mobile */
 @media only screen and (max-width: 1500px) {
     /* img */
