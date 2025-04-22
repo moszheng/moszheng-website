@@ -119,17 +119,19 @@ const getWorksData = (id) => {
         }, 0);
     });
 };
-onBeforeRouteUpdate(async (to, from) => {
+onBeforeRouteUpdate((to, from) => {
     ctx.revert();
     matchmedia.revert();
     /* Route Fix */
-    if (to.params.projecturl !== from.params.projecturl) {
-        prjdata.value = await getWorksData(to.params.projecturl);
-        shuffleprj.value = WorksData.project
-            .filter((item) => item.url_name !== prjdata.value.url_name)
-            .sort(() => Math.random() - 0.5)
-            .slice(0, 3);
-    }
+    (async () => {
+        if (to.params.projecturl !== from.params.projecturl) {
+            prjdata.value = await getWorksData(to.params.projecturl);
+            shuffleprj.value = WorksData.project
+                .filter((item) => item.url_name !== prjdata.value.url_name)
+                .sort(() => Math.random() - 0.5)
+                .slice(0, 3);
+        }
+    })();
 });
 onUnmounted(() => {
     // Clear gsap
