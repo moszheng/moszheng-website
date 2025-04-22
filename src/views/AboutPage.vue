@@ -438,35 +438,7 @@ const animateContact = (self) => {
                     </div>
                 </section>
             </div>
-            <!-- <section class="d-flex-center w-full h-24 text-white">
-        <div class="">
-            <h3 class=""> Mos </h3>
-        </div>
-    </section> -->
             <AboutExp />
-            <!-- Thinking -->
-            <!-- <section class="about-contact min-h-screen d-flex-center lg:px-5 px-4 py-5 bg-main-gray">
-        <div class="flex">
-            <div>
-                <h1 class="text-stone-950">Procedural Thinking</h1>
-                <h4> teoiutsotusotuiu1d23fsf1sd6f54s6df4 </h4>
-            </div>
-            <div class="space-y-5">
-                <div class="flex justify-center">
-                    <div>
-                        <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
-                    </div>
-                    <h4>Idea</h4>
-                </div>
-                <div class="flex justify-center">
-                    <div>
-                        <div class="d-flex-center bg-gray-400 w-96 h-24 rounded-2xl border-4 border-black">test</div>
-                    </div>
-                    <h4>Idea</h4>
-                </div>
-            </div>
-        </div>
-    </section> -->
             <AboutSkill />
             <AboutContact />
         </main>
