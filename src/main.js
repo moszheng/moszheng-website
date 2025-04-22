@@ -6,7 +6,7 @@ import { useNavStore } from "@/stores/navstore";
 import WorkPage from "@/views/WorksPage.vue";
 
 import "./assets/main.css";
-// import Lenis from "@studio-freight/lenis";
+// import Lenis from "lenis";
 
 import App from "./App.vue";
 
@@ -43,11 +43,13 @@ const router = createRouter({
 // Lenis
 // const lenis = new Lenis({ lerp: 0.07 });
 
-// function raf(time) {
-//     lenis.raf(time);
-//     requestAnimationFrame(raf);
-// }
-// requestAnimationFrame(raf);
+// lenis.on("scroll", ScrollTrigger.update);
+
+// gsap.ticker.add((time) => {
+//     lenis.raf(time * 1000); // Convert time from seconds to milliseconds
+// });
+
+// gsap.ticker.lagSmoothing(0);
 
 // Pinia store
 const pinia = createPinia();
