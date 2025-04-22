@@ -1,28 +1,26 @@
-@import './base.css' layer(base);
-@import 'tailwindcss';
+/* @import "./base.css" layer(base); */
+@import "tailwindcss";
 
 @theme {
-  --font-*: initial;
-  --font-sans:
-    DM Sans, PingFang TC, Noto Sans TC, Segoe UI, Helvetica, sans-serif,
-    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+    --font-*: initial;
+    --font-sans: DM Sans, PingFang TC, Noto Sans TC, Segoe UI, Helvetica, sans-serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 
-  --color-main-orange: #ff6a21;
-  --color-main-yellow: #faa927;
-  --color-main-blue: #0552a4;
-  --color-main-black: #141414;
-  --color-main-gray: #e4e4e4;
-  --color-main-neutral: #fffcf7;
+    --color-main-orange: #ff6a21;
+    --color-main-yellow: #faa927;
+    --color-main-blue: #0552a4;
+    --color-main-black: #141414;
+    --color-main-gray: #e4e4e4;
+    --color-main-neutral: #fffcf7;
 
-  --breakpoint-3xl: 1792px;
-  --breakpoint-4xl: 2148px;
+    --breakpoint-3xl: 1792px;
+    --breakpoint-4xl: 2148px;
 
-  --ease-power4: cubic-bezier(0.05, 0.52, 0, 1);
-  --ease-back: cubic-bezier(0.81, 0.56, 0.54, 1.36);
+    --ease-power4: cubic-bezier(0.05, 0.52, 0, 1);
+    --ease-back: cubic-bezier(0.81, 0.56, 0.54, 1.36);
 
-  --aspect-3\/2: 3 / 2;
-  --aspect-4\/3: 4 / 3;
-  --aspect-16\/9: 16 / 9;
+    --aspect-3\/2: 3 / 2;
+    --aspect-4\/3: 4 / 3;
+    --aspect-16\/9: 16 / 9;
 }
 
 /*
@@ -34,116 +32,117 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
-  }
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentcolor);
+    }
 }
 
 @utility line-btn {
-  @apply d-flex-center rounded-full border-4 bg-transparent group-hover:bg-main-neutral border-main-neutral;
+    @apply d-flex-center group-hover:bg-main-neutral border-main-neutral rounded-full border-4 bg-transparent;
 }
 
 @utility d-flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 @utility lazy {
-  /* lazy load */
-  &.loaded {
-    opacity: 1;
-    transition: all 0.5s;
-  }
-  opacity: 0;
+    /* lazy load */
+    &.loaded {
+        opacity: 1;
+        transition: all 0.5s;
+    }
+    opacity: 0;
 }
 
 @utility loaded {
-  /* lazy load */
-  &.lazy {
-    opacity: 1;
-    transition: all 0.5s;
-  }
+    /* lazy load */
+    &.lazy {
+        opacity: 1;
+        transition: all 0.5s;
+    }
 }
 
 /* Type */
 @layer base {
-  h1 {
-    @apply xl:text-7xl text-4xl font-bold;
-  }
-  h2 {
-    @apply xl:text-6xl text-3xl font-bold;
-  }
-  h3 {
-    @apply xl:text-4xl text-2xl font-bold;
-  }
-  h4 {
-    @apply xl:text-2xl text-xl font-bold;
-  }
-  h5 {
-    @apply xl:text-xl text-lg;
-  }
-  h6 {
-    @apply text-base;
-  }
-  main{
-    @apply px-0;
-  }
-  a {
-    @apply cursor-pointer;
-  }
-  input, textarea {
-    @apply block appearance-none w-full py-1 px-2 mt-2 mb-5 text-base leading-normal bg-white text-gray-800 border border-gray-200 rounded-lg
-  }
-  canvas {
-    @apply aspect-auto overflow-clip;
-  }
-  img {
-    @apply overflow-clip;
-  }
+    h1 {
+        @apply text-4xl font-bold xl:text-7xl;
+    }
+    h2 {
+        @apply text-3xl font-bold xl:text-6xl;
+    }
+    h3 {
+        @apply text-2xl font-bold xl:text-4xl;
+    }
+    h4 {
+        @apply text-xl font-bold xl:text-2xl;
+    }
+    h5 {
+        @apply text-lg xl:text-xl;
+    }
+    h6 {
+        @apply text-base;
+    }
+    main {
+        @apply px-0;
+    }
+    a {
+        @apply cursor-pointer;
+    }
+    input,
+    textarea {
+        @apply mt-2 mb-5 block w-full appearance-none rounded-lg border border-gray-200 bg-white px-2 py-1 text-base leading-normal text-gray-800;
+    }
+    canvas {
+        @apply aspect-auto overflow-clip;
+    }
+    img {
+        @apply overflow-clip;
+    }
 }
 
 @layer components {
-  /* icon */
-  #icon_social{
-    transition: all 0.2s;
-  }
-  #icon_social:hover{
-    transform: scale(1.1);
-    fill: var(--main-color);
-  }
+    /* icon */
+    #icon_social {
+        transition: all 0.2s;
+    }
+    #icon_social:hover {
+        transform: scale(1.1);
+        fill: var(--main-color);
+    }
 }
 
 /*--------------- Works Block ----------------  */
-.works-black{
-  background: linear-gradient( transparent, rgba(0, 0, 0, 0.75));
+.works-black {
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
 }
 
 /*------------ svg icon --------*/
 #icon_collapse {
-  width: 30px;
-  height: 30px;
-  transition: all 0.2s;
+    width: 30px;
+    height: 30px;
+    transition: all 0.2s;
 }
 
 /* ::-webkit-scrollbar{
   display:none
 } */
-::-webkit-scrollbar{
-  background:0 0;
-  width: 0.25rem;
+::-webkit-scrollbar {
+    background: 0 0;
+    width: 0.25rem;
 }
-::-webkit-scrollbar-track{
-  background:hsla(0,0%,100%,.1)
+::-webkit-scrollbar-track {
+    background: hsla(0, 0%, 100%, 0.1);
 }
-::-webkit-scrollbar-thumb{
-  background: var(--main-color);
-  border-radius:8px;
+::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 8px;
 }
-::-webkit-scrollbar-thumb:hover{
-  background:#ffad76
+::-webkit-scrollbar-thumb:hover {
+    background: #ffad76;
 }
