@@ -152,7 +152,7 @@ function onLeave(el, done) {
 <template>
     <header class="lg:flex-no-wrap relative flex flex-wrap content-between items-center px-4">
         <div
-            class="navcontainer fixed left-0 top-0 z-[100] mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pb-6 pt-2 lg:px-16 xl:pb-2"
+            class="navcontainer fixed left-0 top-0 z-100 mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pb-6 pt-2 lg:px-16 xl:pb-2"
         >
             <!-- LOGO -->
             <router-link :to="{ name: 'Home' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4" aria-current="page">
@@ -188,7 +188,7 @@ function onLeave(el, done) {
             <!-- Canvas -->
             <nav class="navbar-collapse">
                 <ul
-                    class="mb-0 mt-8 h-0 flex-grow flex-col flex-wrap items-center space-y-5 pl-0 md:ml-auto lg:mt-0 lg:flex lg:h-10 lg:flex-row lg:space-y-0"
+                    class="mb-0 mt-8 h-0 grow flex-col flex-wrap items-center space-y-5 pl-0 md:ml-auto lg:mt-0 lg:flex lg:h-10 lg:flex-row lg:space-y-0"
                     :style="colormode"
                 >
                     <NavLink :to="'Works'" />
@@ -216,7 +216,7 @@ function onLeave(el, done) {
                 </ul>
             </nav>
         </div>
-        <div class="dark-overlay invisible fixed left-0 top-0 z-[60] h-full w-full bg-black"></div>
+        <div class="dark-overlay invisible fixed left-0 top-0 z-60 h-full w-full bg-black"></div>
     </header>
 </template>
 <style scoped>

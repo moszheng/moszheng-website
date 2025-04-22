@@ -6,7 +6,7 @@ import FooterItem from "@/components/FooterItem.vue";
     <main class="contact d-flex-center container mx-auto h-screen sm:px-4">
         <div class="flex-fill flex w-full flex-wrap px-4 py-5 lg:px-0 xl:mb-6">
             <div class="xl:w-1/2"></div>
-            <div class="contact-form w-full lg:max-w-screen-sm xl:w-1/2">
+            <div class="contact-form w-full lg:max-w-(--breakpoint-sm) xl:w-1/2">
                 <form action="https://formspree.io/f/meqbdlnk" method="POST">
                     <h2 class="mb-4 text-stone-950 lg:mb-12">Contact</h2>
                     <div class="space-y-4">

@@ -266,8 +266,8 @@ const animateContact = (self) => {
 <template>
     <div class="About">
         <Transition name="move" mode="out-in" appear @enter="loadingEnter" @leave="loadingLeave">
-            <section class="d-flex-center fixed top-0 z-[90] h-full w-full" v-show="!finishloading" id="about-loading">
-                <div class="d-flex-center container z-[91] mx-auto h-full sm:px-4" id="about-loadinglogo">
+            <section class="d-flex-center fixed top-0 z-90 h-full w-full" v-show="!finishloading" id="about-loading">
+                <div class="d-flex-center container z-91 mx-auto h-full sm:px-4" id="about-loadinglogo">
                     <svg id="mos-logo" class="w-48 fill-black">
                         <use xlink:href="#icon-mosLogo"></use>
                     </svg>

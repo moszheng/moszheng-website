@@ -1,7 +1,74 @@
-@import './base.css';
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import './base.css' layer(base);
+@import 'tailwindcss';
+
+@theme {
+  --font-*: initial;
+  --font-sans:
+    DM Sans, PingFang TC, Noto Sans TC, Segoe UI, Helvetica, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
+
+  --color-main-orange: #ff6a21;
+  --color-main-yellow: #faa927;
+  --color-main-blue: #0552a4;
+  --color-main-black: #141414;
+  --color-main-gray: #e4e4e4;
+  --color-main-neutral: #fffcf7;
+
+  --breakpoint-3xl: 1792px;
+  --breakpoint-4xl: 2148px;
+
+  --ease-power4: cubic-bezier(0.05, 0.52, 0, 1);
+  --ease-back: cubic-bezier(0.81, 0.56, 0.54, 1.36);
+
+  --aspect-3\/2: 3 / 2;
+  --aspect-4\/3: 4 / 3;
+  --aspect-16\/9: 16 / 9;
+}
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+}
+
+@utility line-btn {
+  @apply d-flex-center rounded-full border-4 bg-transparent group-hover:bg-main-neutral border-main-neutral;
+}
+
+@utility d-flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@utility lazy {
+  /* lazy load */
+  &.loaded {
+    opacity: 1;
+    transition: all 0.5s;
+  }
+  opacity: 0;
+}
+
+@utility loaded {
+  /* lazy load */
+  &.lazy {
+    opacity: 1;
+    transition: all 0.5s;
+  }
+}
 
 /* Type */
 @layer base {
@@ -41,24 +108,6 @@
 }
 
 @layer components {
-  .line-btn{
-    @apply d-flex-center rounded-full border-4 bg-transparent group-hover:bg-main-neutral border-main-neutral;
-  }
-
-  .d-flex-center{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  /* lazy load */
-  .lazy.loaded{
-    opacity: 1;
-    transition: all 0.5s;
-  }
-  .lazy{
-    opacity: 0;
-  }
   /* icon */
   #icon_social{
     transition: all 0.2s;

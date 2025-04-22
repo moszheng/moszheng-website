@@ -253,8 +253,8 @@ function ScrollTop() {
                     </div>
                     <div class="px-4 xl:w-3/5">
                         <div v-for="(value, key) in prjdata.credit" class="credit-text mb-5 flex flex-wrap" :key="value">
-                            <p class="relative max-w-full flex-1 flex-grow lg:w-1/3">{{ key }}</p>
-                            <p class="relative max-w-full flex-1 flex-grow pl-4 lg:w-2/3">{{ value }}</p>
+                            <p class="relative max-w-full flex-1 grow lg:w-1/3">{{ key }}</p>
+                            <p class="relative max-w-full flex-1 grow pl-4 lg:w-2/3">{{ value }}</p>
                         </div>
                     </div>
                 </section>

@@ -3,7 +3,7 @@ import LogoData from "@/data/LogoData.json";
 import ExpData from "@/data/Experience.json";
 </script>
 <template>
-<!-- bg-gradient-to-r from-[#fc7a00] to-[#ffc354] -->
+<!-- bg-linear-to-r from-[#fc7a00] to-[#ffc354] -->
 <section class="about-skill d-flex-center min-h-screen rounded-b-3xl bg-stone-200 px-4 py-5 xl:rounded-b-[12em] xl:px-24 xl:py-16">
     <div class="container mb-4 mt-4 xl:mt-0">
         <!-- Skill Title -->
