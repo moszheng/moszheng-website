@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@studio-freight/lenis": "^1.0.34",
+    "@tailwindcss/vite": "^4.1.4",
     "@vimeo/player": "^2.25.0",
     "gsap": "^3.12.5",
     "pinia": "^2.1.6",
