@@ -1,4 +1,3 @@
-/* @import "./base.css" layer(base); */
 @import "tailwindcss";
 
 @theme {
@@ -12,8 +11,17 @@
     --color-main-gray: #e4e4e4;
     --color-main-neutral: #fffcf7;
 
-    --breakpoint-3xl: 1792px;
-    --breakpoint-4xl: 2148px;
+    /* 
+        sm	40rem (640px)	@media (width >= 40rem) { ... }
+        md	48rem (768px)	@media (width >= 48rem) { ... }
+        lg	64rem (1024px)	@media (width >= 64rem) { ... }
+        xl	80rem (1280px)	@media (width >= 80rem) { ... }
+        2xl	96rem (1536px)	@media (width >= 96rem) { ... }
+        3xl 112rem (1792px)
+        4xl 135rem (2148px)
+    */
+    --breakpoint-3xl: 112rem;
+    --breakpoint-4xl: 135rem;
 
     --ease-power4: cubic-bezier(0.05, 0.52, 0, 1);
     --ease-back: cubic-bezier(0.81, 0.56, 0.54, 1.36);
@@ -23,14 +31,6 @@
     --aspect-16\/9: 16 / 9;
 }
 
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
 @layer base {
     *,
     ::after,
@@ -39,37 +39,17 @@
     ::file-selector-button {
         border-color: var(--color-gray-200, currentcolor);
     }
-}
-
-@utility line-btn {
-    @apply d-flex-center group-hover:bg-main-neutral border-main-neutral rounded-full border-4 bg-transparent;
-}
-
-@utility d-flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-@utility lazy {
-    /* lazy load */
-    &.loaded {
-        opacity: 1;
-        transition: all 0.5s;
+    body {
+        min-height: 100vh;
+        transition:
+            color 0.5s,
+            background-color 0.5s;
+        line-height: 1.6;
+        font-size: 15px;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
     }
-    opacity: 0;
-}
-
-@utility loaded {
-    /* lazy load */
-    &.lazy {
-        opacity: 1;
-        transition: all 0.5s;
-    }
-}
-
-/* Type */
-@layer base {
     h1 {
         @apply text-4xl font-bold xl:text-7xl;
     }
@@ -113,25 +93,47 @@
     }
     #icon_social:hover {
         transform: scale(1.1);
-        fill: var(--main-color);
+        fill: var(--color-main-orange);
+    }
+    /*----------- Works Block ------------*/
+    .works-black {
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    }
+    /*------------ svg icon --------*/
+    #icon_collapse {
+        width: 30px;
+        height: 30px;
+        transition: all 0.2s;
     }
 }
 
-/*--------------- Works Block ----------------  */
-.works-black {
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+@utility line-btn {
+    @apply d-flex-center group-hover:bg-main-neutral border-main-neutral rounded-full border-4 bg-transparent;
 }
 
-/*------------ svg icon --------*/
-#icon_collapse {
-    width: 30px;
-    height: 30px;
-    transition: all 0.2s;
+@utility d-flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-/* ::-webkit-scrollbar{
-  display:none
-} */
+/* lazy load */
+@utility lazy {
+    &.loaded {
+        opacity: 1;
+        transition: all 0.5s;
+    }
+    opacity: 0;
+}
+
+/* lazy load */
+@utility loaded {
+    &.lazy {
+        opacity: 1;
+        transition: all 0.5s;
+    }
+}
+
 ::-webkit-scrollbar {
     background: 0 0;
     width: 0.25rem;
@@ -140,7 +142,7 @@
     background: hsla(0, 0%, 100%, 0.1);
 }
 ::-webkit-scrollbar-thumb {
-    background: var(--main-color);
+    background: var(--color-main-orange);
     border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {

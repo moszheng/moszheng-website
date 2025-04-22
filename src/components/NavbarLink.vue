@@ -2,9 +2,7 @@
 import { ref, watch, computed } from "vue";
 import { useRoute } from "vue-router";
 
-const props = defineProps({
-    to: String,
-});
+const props = defineProps({ to: String });
 
 /* Active Route */
 const route = useRoute();
@@ -18,14 +16,14 @@ const isActive = computed(() => {
 });
 </script>
 <template>
-<li class="nav-item">
-    <div class="flex items-center">
-        <!-- :style="colormode" -->
-        <router-link :to="{ name: to }" class="nav-link relative p-1 text-xl font-bold md:me-12" :class="{ navactive: isActive }">
-            {{ props.to }}
-        </router-link>
-    </div>
-</li>
+    <li class="nav-item">
+        <div class="flex items-center">
+            <!-- :style="colormode" -->
+            <router-link :to="{ name: to }" class="nav-link relative p-1 text-xl font-bold md:me-12" :class="{ navactive: isActive }">
+                {{ props.to }}
+            </router-link>
+        </div>
+    </li>
 </template>
 
 <style>
@@ -33,7 +31,7 @@ const isActive = computed(() => {
     transition: 0.15s ease;
 }
 .nav-link:hover {
-    color: var(--main-color) !important;
+    color: var(--color-main-orange) !important;
 }
 .nav-link.navactive::after {
     transform: scaleX(1);
