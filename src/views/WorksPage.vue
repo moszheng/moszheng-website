@@ -100,7 +100,7 @@ function randomHeight(index) {
                         <div class="opacity-0 duration-500 group-hover:opacity-100">
                             <div class="works-black absolute bottom-0 h-1/5 w-full overflow-hidden duration-500 group-hover:h-3/5"></div>
                             <div
-                                class="works-destop-title absolute bottom-0 hidden w-full px-5 text-white duration-500 group-hover:bottom-4 lg:block"
+                                class="works-desktop-title absolute bottom-0 hidden w-full px-5 text-white duration-500 group-hover:bottom-4 lg:block"
                             >
                                 <h4 class="mb-3">{{ item.en_name }}</h4>
                                 <p class="mb-0">{{ item.date }}</p>
