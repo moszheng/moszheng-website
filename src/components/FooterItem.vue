@@ -11,7 +11,7 @@ import IconMosLogo from "@/assets/icon/IconMosLogo.vue";
                     <IconMosLogo class="h-12 w-48 lg:h-16 lg:w-64" />
                 </div>
                 <div class="hidden h-full items-end lg:flex">
-                    <h5>Copyright © 2024 moszheng.</h5>
+                    <h5>Copyright © {{ new Date().getFullYear() }} moszheng.</h5>
                 </div>
             </div>
             <!-- Links -->
@@ -37,7 +37,7 @@ import IconMosLogo from "@/assets/icon/IconMosLogo.vue";
                 </div>
             </div>
             <div class="flex h-full items-end lg:hidden">
-                <h5>Copyright © 2024 moszheng.</h5>
+                <h5>Copyright © {{ new Date().getFullYear() }} moszheng.</h5>
             </div>
         </div>
     </footer>
