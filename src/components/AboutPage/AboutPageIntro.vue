@@ -2,6 +2,7 @@
 import { useNavStore } from "@/stores/navstore";
 import { splitPara, splitText } from "@/module/SplitText.js";
 import ExpData from "@/data/Experience.json";
+import IconArrowXL from "@/assets/icon/IconArrowXL.vue";
 const store = useNavStore();
 
 const profileImage3 = "../src/img/02_gha56_md_02.webp";
@@ -71,9 +72,7 @@ const profileImage4 = "../src/img/profile_4_md.webp";
                         <div class="group max-w-sm">
                             <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-1 duration-200 group-hover:-translate-y-3">
                                 <h3 class="duration-300 group-hover:text-black">Works</h3>
-                                <svg class="fill-main-neutral h-24 w-36 group-hover:fill-black lg:h-18 lg:w-36">
-                                    <use xlink:href="#icon-arrowxl"></use>
-                                </svg>
+                                <IconArrowXL class="fill-main-neutral h-24 w-36 group-hover:fill-black lg:h-18 lg:w-36" />
                             </router-link>
                         </div>
                     </div>

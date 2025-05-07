@@ -54,7 +54,7 @@ const router = createRouter({
 // Pinia store
 const pinia = createPinia();
 
-// if enter to home page, update navbar state
+// if enter to index, update navbar state
 router.beforeEach((to, from, next) => {
     const store = useNavStore();
 
@@ -63,7 +63,7 @@ router.beforeEach((to, from, next) => {
     if (store.isNavbarExpanded) {
         navbarToggler.click();
     }
-    if (to.name == "Home") {
+    if (to.name == "Index") {
         store.navbardarkmode = true;
     } else {
         // dark mode

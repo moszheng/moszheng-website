@@ -9,6 +9,8 @@ gsap.registerPlugin(ScrollTrigger);
 import Back2Top from "@/components/ui/back2Top.vue";
 import FooterItem from "@/components/FooterItem.vue";
 import WorksData from "@/data/WorksData.json";
+import IconBehance from "@/assets/icon/IconBehance.vue";
+import IconVimeo from "../assets/icon/IconVimeo.vue";
 
 const props = defineProps({ projecturl: String });
 
@@ -175,15 +177,11 @@ function ScrollTop() {
                             </div>
                             <div class="flex">
                                 <a class="hero-social me-6" :href="prjdata.behance" target="_blank" rel="noopener">
-                                    <svg class="size-6 lg:size-8" id="icon_social">
-                                        <use xlink:href="#icon-behance"></use>
-                                    </svg>
+                                    <IconBehance class="size-6 lg:size-8" id="icon_social" />
                                 </a>
                                 <!-- vimeo Link -->
                                 <a class="hero-social" :href="vimeoPage(prjdata.video)" target="_blank" rel="noopener">
-                                    <svg class="size-6 lg:size-8" id="icon_social">
-                                        <use xlink:href="#icon-vimeo"></use>
-                                    </svg>
+                                    <IconVimeo class="size-6 lg:size-8" id="icon_social" />
                                 </a>
                             </div>
                         </div>

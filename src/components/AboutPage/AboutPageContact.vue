@@ -1,5 +1,7 @@
 <script setup>
 import LinkData from "@/data/LinkData.json";
+import IconMosLogo from "@/assets/icon/IconMosLogo.vue";
+import IconArrowXL from "../../assets/icon/IconArrowXL.vue";
 
 const splitText = (string) => {
     const arr = string.split(" ");
@@ -12,10 +14,8 @@ const splitText = (string) => {
             <!-- Links -->
             <div class="mb-12 px-0 md:px-12 lg:mb-0 xl:flex xl:px-0">
                 <div class="about-intro-social">
-                    <div class="mb-10 fill-white">
-                        <svg class="h-16 w-54" id="mos-logo">
-                            <use xlink:href="#icon-mosLogo"></use>
-                        </svg>
+                    <div class="mb-10">
+                        <IconMosLogo class="h-16 w-54 fill-white" />
                     </div>
                     <ul class="list-reset mb-5 flex flex-row flex-wrap lg:mb-10">
                         <li v-for="item in LinkData.socialmedia" :key="item" class="intro-infosocial w-1/5">
@@ -53,9 +53,7 @@ const splitText = (string) => {
                 <div class="group">
                     <router-link :to="{ name: 'Contact' }" class="line-btn me-md-5 max-w-xl px-2 py-1 lg:py-5">
                         <h3 class="text-main-neutral group-hover:text-black">Contact</h3>
-                        <svg class="lg:24 fill-main-neutral h-24 w-36 group-hover:fill-black lg:w-48">
-                            <use xlink:href="#icon-arrowxl"></use>
-                        </svg>
+                        <IconArrowXL class="lg:24 fill-main-neutral h-24 w-36 group-hover:fill-black lg:w-48" />
                     </router-link>
                 </div>
             </div>

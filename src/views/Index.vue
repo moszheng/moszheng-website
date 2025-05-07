@@ -5,6 +5,8 @@ import ExpData from "@/data/Experience.json";
 import gsap from "gsap";
 import Player from "@vimeo/player";
 
+import IconMosLogo from "@/assets/icon/IconMosLogo.vue";
+
 // Loading Page
 const finishloading = ref(false);
 
@@ -49,9 +51,7 @@ const indexmotion = () => {
         <Transition name="move" mode="out-in" @before-enter="beforeEnter" @enter="onEnter" @leave="loadingLeave">
             <div class="index-loading absolute top-0 z-20 h-full w-full bg-white" v-show="!finishloading">
                 <div class="d-flex-center container mx-auto h-full sm:px-4">
-                    <svg class="mos-logo h-[14vh] w-[21vh]" id="index-logo">
-                        <use xlink:href="#icon-mosLogo"></use>
-                    </svg>
+                    <IconMosLogo class="h-[14vh] w-[21vh]" id="index-logo" />
                 </div>
             </div>
         </Transition>

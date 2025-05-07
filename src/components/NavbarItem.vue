@@ -7,6 +7,10 @@ import gsap from "gsap";
 import NavLink from "./NavbarLink.vue";
 import LinkData from "@/data/LinkData.json";
 
+import IconMosLogo from "@/assets/icon/IconMosLogo.vue";
+import IconLine from "@/assets/icon/IconLine.vue";
+import IconPlus from "@/assets/icon/IconPlus.vue";
+
 /* ---------- Color mode --------*/
 const store = useNavStore();
 const route = useRoute();
@@ -129,7 +133,7 @@ const rotateButton = () => {
     showIcon.value = !showIcon.value;
     const tl = gsap.timeline({ defaults: { overwrite: "auto" } });
     // motion
-    tl.to("#icon-plus-area", { rotation: "+=135", duration: 0.5, ease: "elastic.Out", onComplete: done });
+    tl.to("#icon-plus-area", { rotation: "+=135", duration: 0.5, ease: "elastic.Out" });
     tl.from("#icon-plus-area", { scale: 0.8, duration: 1.4, ease: "elastic.out(1,0.3)" }, 0.1);
 };
 
@@ -157,9 +161,7 @@ function onLeave(el, done) {
             <!-- LOGO -->
             <router-link :to="{ name: 'Index' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4" aria-current="page">
                 <Transition name="fade" mode="out-in">
-                    <svg class="h-12 w-36" id="mos-logo" :style="colormode">
-                        <use xlink:href="#icon-mosLogo"></use>
-                    </svg>
+                    <IconMosLogo class="h-12 w-36" :style="colormode" />
                 </Transition>
             </router-link>
             <!-- navbar responsive button -->
@@ -170,19 +172,13 @@ function onLeave(el, done) {
                 ref="navbarToggler"
             >
                 <span class="toggler-icon top-bar -mt-1.5">
-                    <svg id="icon_collapse" :style="colormode">
-                        <use xlink:href="#icon-line"></use>
-                    </svg>
+                    <IconLine id="icon_collapse" :style="colormode" />
                 </span>
                 <span class="toggler-icon mid-bar">
-                    <svg id="icon_collapse" :style="colormode">
-                        <use xlink:href="#icon-line"></use>
-                    </svg>
+                    <IconLine id="icon_collapse" :style="colormode" />
                 </span>
                 <span class="toggler-icon bot-bar mt-1.5">
-                    <svg id="icon_collapse" :style="colormode">
-                        <use xlink:href="#icon-line"></use>
-                    </svg>
+                    <IconLine id="icon_collapse" :style="colormode" />
                 </span>
             </button>
             <!-- Canvas -->
@@ -208,9 +204,7 @@ function onLeave(el, done) {
                             </TransitionGroup>
                         </div>
                         <button class="toggler-icon-xl p-2" type="button" @click="rotateButton">
-                            <svg class="size-7" id="icon-plus-area" :style="colormode">
-                                <use xlink:href="#icon-plus"></use>
-                            </svg>
+                            <IconPlus class="size-7" id="icon-plus-area" :style="colormode" />
                         </button>
                     </li>
                 </ul>

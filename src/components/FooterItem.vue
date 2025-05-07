@@ -1,15 +1,14 @@
 <script setup>
 import LinkData from "../data/LinkData.json";
 import NavLink from "./NavbarLink.vue";
+import IconMosLogo from "@/assets/icon/IconMosLogo.vue";
 </script>
 <template>
     <footer class="d-flex-center bg-main-black min-h-[35vh] text-white">
         <div class="text-main-neutral container mx-auto flex flex-wrap px-6 py-5 lg:px-12 lg:py-10">
             <div class="mb-12 flex flex-col lg:mb-0 lg:w-3/5">
                 <div class="mb-3 fill-white">
-                    <svg class="h-12 w-48 lg:h-16 lg:w-64">
-                        <use xlink:href="#icon-mosLogo"></use>
-                    </svg>
+                    <IconMosLogo class="h-12 w-48 lg:h-16 lg:w-64" />
                 </div>
                 <div class="hidden h-full items-end lg:flex">
                     <h5>Copyright © 2024 moszheng.</h5>

@@ -10,6 +10,7 @@ import AboutIntro from "@/components/AboutPage/AboutPageIntro.vue";
 import AboutExp from "@/components/AboutPage/AboutPageExp.vue";
 import AboutSkill from "@/components/AboutPage/AboutPageSkill.vue";
 import AboutContact from "@/components/AboutPage/AboutPageContact.vue";
+import IconMosLogo from "../assets/icon/IconMosLogo.vue";
 
 /* -------------- Store --------------------*/
 const store = useNavStore();
@@ -262,9 +263,7 @@ const animateContact = (self) => {
         <Transition name="move" mode="out-in" appear @enter="loadingEnter" @leave="loadingLeave">
             <section class="d-flex-center fixed top-0 z-90 h-full w-full" v-show="!finishloading" id="about-loading">
                 <div class="d-flex-center z-91 container mx-auto h-full sm:px-4" id="about-loadinglogo">
-                    <svg id="mos-logo" class="w-48 fill-black">
-                        <use xlink:href="#icon-mosLogo"></use>
-                    </svg>
+                    <IconMosLogo class="h-24 w-72 fill-black" />
                 </div>
                 <div class="about-loadingbg bg-main-orange absolute h-[300vh] w-[150vw] rounded-full"></div>
             </section>
