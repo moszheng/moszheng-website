@@ -1,21 +1,15 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from "vue";
 import { useNavStore } from "@/stores/navstore";
-import { splitPara, splitText } from "@/module/SplitText.js";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
-import ExpData from "@/data/Experience.json";
+import AboutHero from "@/components/AboutPage/AboutPageHero.vue";
+import AboutIntro from "@/components/AboutPage/AboutPageIntro.vue";
 import AboutExp from "@/components/AboutPage/AboutPageExp.vue";
 import AboutSkill from "@/components/AboutPage/AboutPageSkill.vue";
 import AboutContact from "@/components/AboutPage/AboutPageContact.vue";
-
-// Return Real route
-const profileImage1 = "../src/img/profile_1_md.webp";
-const profileImage2 = "../src/img/profile_2_md.webp";
-const profileImage3 = "../src/img/02_gha56_md_02.webp";
-const profileImage4 = "../src/img/profile_4_md.webp";
 
 /* -------------- Store --------------------*/
 const store = useNavStore();
@@ -277,166 +271,8 @@ const animateContact = (self) => {
         </Transition>
         <main class="bg-main-black" ref="imgContainer">
             <div class="about-herointro duration-500" :class="{ 'bg-stone-100': !store.navbardarkmode, 'bg-main-black': store.navbardarkmode }">
-                <!-- Hero -->
-                <section class="about-hero d-flex-center mb-12 h-svh flex-wrap px-3 pt-5 xl:mb-0 xl:h-screen xl:px-16 xl:py-12">
-                    <!-- profile image -->
-                    <div class="d-flex-center mt-16 mb-5 pr-4 pl-4 xl:mt-0 xl:mb-0 2xl:w-1/2">
-                        <div class="profile-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
-                            <figure class="absolute z-20 h-full scale-[1.2] blur-none" id="profile-img-1">
-                                <div class="parallax heroRot h-full" data-depth="1.05" data-scale="1.05">
-                                    <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage1" />
-                                </div>
-                            </figure>
-                            <figure class="absolute z-10 h-full scale-[1.2] blur-none" id="profile-img-2">
-                                <div class="parallax heroRot h-full" data-depth="3.2" data-scale="1.15">
-                                    <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage2" />
-                                </div>
-                            </figure>
-                        </div>
-                    </div>
-                    <!-- Hero text -->
-                    <div
-                        class="about-hero-info d-flex-center 2xl:w-1/2 2xl:ps-6"
-                        :class="{ 'text-main-neutral': store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
-                    >
-                        <div class="relative mb-3 md:mb-1">
-                            <!-- <div class="absolute right-[10%] xl:-top-4">
-                            <svg class="icon-gear size-24 fill-main-orange">
-                                <use xlink:href="#icon-gear"></use>
-                            </svg>
-                        </div> -->
-                            <!-- Name -->
-                            <h1 class="mobile-center mb-2 md:mb-0">
-                                <span v-for="(text, index) in splitText('Hello, I\'m')" :key="index" class="inline-flex pe-2 xl:pe-4">
-                                    <span class="block font-bold" id="hero-hello"> {{ text }} </span>
-                                </span>
-                            </h1>
-                            <!-- Name -->
-                            <h1 class="mobile-center mb-8 md:mb-10">
-                                <span v-for="(text, index) in splitText('Sheng Wen Cheng')" :key="index" class="inline-flex pe-2 xl:pe-4">
-                                    <span class="block font-bold" id="hero-name"> {{ text }} </span>
-                                </span>
-                            </h1>
-                            <!-- Subtitle -->
-                            <div class="flex">
-                                <div class="mobile-center flex flex-col items-center">
-                                    <h4 class="mb-10 text-center md:mb-12 md:text-left">
-                                        <span class="block font-bold" id="hero-detail">
-                                            <strong class="text-main-orange">3D Generalist</strong> and
-                                            <strong class="text-main-orange">Motion Designer</strong> <br />
-                                        </span>
-                                        <span class="block font-bold" id="hero-detail"> based in Taiwan. </span>
-                                    </h4>
-                                    <div class="text-center" id="hero-4" style="rotate: 180deg">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            width="32"
-                                            height="32"
-                                            fill="currentColor"
-                                            class="bi bi-chevron-compact-up"
-                                            viewBox="0 0 16 16"
-                                        >
-                                            <path
-                                                fill-rule="evenodd"
-                                                d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"
-                                            />
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-                <!-- Intro -->
-                <section
-                    class="about-intro d-flex-center min-h-[85vh] rounded-b-lg p-6 xl:px-20 xl:py-12"
-                    :class="{ 'text-main-neutral': store.navbardarkmode, 'text-stone-950': !store.navbardarkmode }"
-                >
-                    <div class="about-intro-block container w-full">
-                        <!-- Group1 -->
-                        <div class="about-intro-info mb-16 min-h-[70vh] items-center lg:flex lg:justify-around xl:mb-24">
-                            <!-- Intro -->
-                            <div class="4xl:pr-5 mb-12 flex h-full max-w-2xl pr-0 lg:mb-0 xl:w-2/5 xl:pr-10">
-                                <div class="">
-                                    <h2 class="mb-8 inline-block overflow-hidden pb-1 xl:mb-16">
-                                        <span
-                                            v-for="(text, index) in splitText(ExpData.about.para1.title)"
-                                            :key="index"
-                                            class="inline-flex pe-2 xl:pe-4"
-                                        >
-                                            <span class="block font-bold" id="intro-title"> {{ text }} </span>
-                                        </span>
-                                    </h2>
-                                    <div class="space-y-10">
-                                        <h4
-                                            v-for="(textarray, indexz) in splitPara(ExpData.about.para1.content)"
-                                            :key="indexz"
-                                            class="intro-info leading-normal"
-                                        >
-                                            <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
-                                                <span class="split-text inline-block"> {{ text }} </span>
-                                            </span>
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Img -->
-                            <div class="intro-container relative overflow-hidden xl:w-1/2">
-                                <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
-                                <figure class="profile-img-3 d-flex-center scale-[1.2]">
-                                    <div class="introparallax" data-depth="3">
-                                        <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3" />
-                                    </div>
-                                </figure>
-                            </div>
-                        </div>
-                        <!-- Group2 -->
-                        <div class="about-intro-info2 mb-16 min-h-[70vh] items-center lg:flex lg:justify-around">
-                            <!-- Img -->
-                            <div class="intro-container2 relative mb-8 overflow-hidden xl:mb-0 xl:w-1/2">
-                                <figure class="profile-img-4 d-flex-center scale-[1.35]">
-                                    <div class="introparallax" data-depth="3">
-                                        <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
-                                    </div>
-                                </figure>
-                            </div>
-                            <!-- Intro -->
-                            <div class="4xl:pr-5 mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12">
-                                <div class="">
-                                    <h2 class="intro-title2 mb-8 inline-block overflow-hidden xl:mb-16">
-                                        <span
-                                            v-for="(text, index) in splitText(ExpData.about.para2.title)"
-                                            :key="index"
-                                            class="inline-flex pe-2 xl:pe-4"
-                                        >
-                                            <span class="inline-block font-bold" id="intro-title2"> {{ text }} </span>
-                                        </span>
-                                    </h2>
-                                    <div class="mb-8 space-y-10 xl:mb-16">
-                                        <h4
-                                            v-for="(textarray, indexz) in splitPara(ExpData.about.para2.content)"
-                                            :key="indexz"
-                                            class="intro-info leading-normal"
-                                        >
-                                            <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
-                                                <span class="split-text2 inline-block"> {{ text }} </span>
-                                            </span>
-                                        </h4>
-                                    </div>
-                                    <!-- <LineBottom :to="" :Word=""/> -->
-                                    <div class="group max-w-sm">
-                                        <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-1 duration-200 group-hover:-translate-y-3">
-                                            <h3 class="duration-300 group-hover:text-black">Works</h3>
-                                            <svg class="fill-main-neutral h-24 w-36 group-hover:fill-black lg:h-18 lg:w-36">
-                                                <use xlink:href="#icon-arrowxl"></use>
-                                            </svg>
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
+                <AboutHero />
+                <AboutIntro />
             </div>
             <AboutExp />
             <AboutSkill />
@@ -446,18 +282,6 @@ const animateContact = (self) => {
 </template>
 
 <style scoped>
-/* Mobile (below XL) */
-@media only screen and (max-width: 1439px) {
-    .mobile-center {
-        display: flex;
-        justify-content: center !important;
-    }
-    .profile-container {
-        width: 35vmax !important;
-        min-height: 40vmax !important;
-    }
-}
-
 @keyframes rotation {
     from {
         transform: rotate(0deg);
@@ -478,22 +302,5 @@ const animateContact = (self) => {
 .icon-gear {
     /* animation: gearRotation 1s cubic-bezier(0.075, 0.82, 0.165, 1) infinite; */
     animation: rotation 10s linear infinite;
-}
-/*------ Img --------*/
-.profile-container {
-    width: 48vmin;
-    min-height: 56vmin;
-    clip-path: inset(0% 0% 0% 0% round 12% 0%);
-    -webkit-clip-path: inset(0 0% 0 0 round 12% 0%);
-}
-.intro-container {
-    min-height: 20vmin;
-    clip-path: inset(0% 0% 0% 0%);
-    -webkit-clip-path: inset(0 0% 0 0);
-}
-.intro-container2 {
-    min-height: 20vmin;
-    clip-path: inset(0% 0% 0% 0%);
-    -webkit-clip-path: inset(0 0% 0 0);
 }
 </style>
