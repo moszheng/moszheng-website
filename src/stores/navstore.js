@@ -1,8 +1,8 @@
-import { defineStore } from 'pinia'
+import { defineStore } from "pinia";
 
-export const useNavStore = defineStore('navstore', {
+export const useNavStore = defineStore("navstore", {
     state: () => ({
         navbardarkmode: true,
         isNavbarExpanded: false,
     }),
-})
+});

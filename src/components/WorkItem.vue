@@ -6,6 +6,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+import Back2Top from "@/components/ui/back2Top.vue";
 import FooterItem from "./FooterItem.vue";
 import WorksData from "@/data/WorksData.json";
 
@@ -239,24 +240,7 @@ function ScrollTop() {
                         </div>
                     </div>
                 </section>
-                <div class="work-end mx-auto w-full max-w-full sm:px-4">
-                    <a @click="ScrollTop" class="d-flex-center flex-col p-4">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="32"
-                            height="32"
-                            fill="currentColor"
-                            class="bi bi-chevron-compact-up mb-1"
-                            viewBox="0 0 16 16"
-                        >
-                            <path
-                                fill-rule="evenodd"
-                                d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"
-                            />
-                        </svg>
-                        <p class="text-sm">BACK TO TOP</p>
-                    </a>
-                </div>
+                <Back2Top />
             </section>
             <!-- Other Prj -->
             <section class="workitem-otherprj d-flex-center bg-main-black min-h-[40vh] px-1 md:px-12" data-scroll-section>
