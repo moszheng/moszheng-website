@@ -7,9 +7,9 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import ExpData from "@/data/Experience.json";
-import AboutExp from "@/components/AboutPageExp.vue";
-import AboutSkill from "@/components/AboutPageSkill.vue";
-import AboutContact from "@/components/AboutPageContact.vue";
+import AboutExp from "@/components/AboutPage/AboutPageExp.vue";
+import AboutSkill from "@/components/AboutPage/AboutPageSkill.vue";
+import AboutContact from "@/components/AboutPage/AboutPageContact.vue";
 
 // Return Real route
 const profileImage1 = "../src/img/profile_1_md.webp";
@@ -267,12 +267,12 @@ const animateContact = (self) => {
     <div class="About">
         <Transition name="move" mode="out-in" appear @enter="loadingEnter" @leave="loadingLeave">
             <section class="d-flex-center fixed top-0 z-90 h-full w-full" v-show="!finishloading" id="about-loading">
-                <div class="d-flex-center container z-91 mx-auto h-full sm:px-4" id="about-loadinglogo">
+                <div class="d-flex-center z-91 container mx-auto h-full sm:px-4" id="about-loadinglogo">
                     <svg id="mos-logo" class="w-48 fill-black">
                         <use xlink:href="#icon-mosLogo"></use>
                     </svg>
                 </div>
-                <div class="about-loadingbg absolute h-[300vh] w-[150vw] rounded-full bg-main-orange"></div>
+                <div class="about-loadingbg bg-main-orange absolute h-[300vh] w-[150vw] rounded-full"></div>
             </section>
         </Transition>
         <main class="bg-main-black" ref="imgContainer">
@@ -280,7 +280,7 @@ const animateContact = (self) => {
                 <!-- Hero -->
                 <section class="about-hero d-flex-center mb-12 h-svh flex-wrap px-3 pt-5 xl:mb-0 xl:h-screen xl:px-16 xl:py-12">
                     <!-- profile image -->
-                    <div class="d-flex-center mb-5 mt-16 pl-4 pr-4 xl:mb-0 xl:mt-0 2xl:w-1/2">
+                    <div class="d-flex-center mt-16 mb-5 pr-4 pl-4 xl:mt-0 xl:mb-0 2xl:w-1/2">
                         <div class="profile-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
                             <figure class="absolute z-20 h-full scale-[1.2] blur-none" id="profile-img-1">
                                 <div class="parallax heroRot h-full" data-depth="1.05" data-scale="1.05">
@@ -356,7 +356,7 @@ const animateContact = (self) => {
                         <!-- Group1 -->
                         <div class="about-intro-info mb-16 min-h-[70vh] items-center lg:flex lg:justify-around xl:mb-24">
                             <!-- Intro -->
-                            <div class="mb-12 flex h-full max-w-2xl pr-0 lg:mb-0 xl:w-2/5 xl:pr-10 4xl:pr-5">
+                            <div class="4xl:pr-5 mb-12 flex h-full max-w-2xl pr-0 lg:mb-0 xl:w-2/5 xl:pr-10">
                                 <div class="">
                                     <h2 class="mb-8 inline-block overflow-hidden pb-1 xl:mb-16">
                                         <span
@@ -401,7 +401,7 @@ const animateContact = (self) => {
                                 </figure>
                             </div>
                             <!-- Intro -->
-                            <div class="mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12 4xl:pr-5">
+                            <div class="4xl:pr-5 mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12">
                                 <div class="">
                                     <h2 class="intro-title2 mb-8 inline-block overflow-hidden xl:mb-16">
                                         <span
@@ -427,7 +427,7 @@ const animateContact = (self) => {
                                     <div class="group max-w-sm">
                                         <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-1 duration-200 group-hover:-translate-y-3">
                                             <h3 class="duration-300 group-hover:text-black">Works</h3>
-                                            <svg class="lg:h-18 h-24 w-36 fill-main-neutral group-hover:fill-black lg:w-36">
+                                            <svg class="fill-main-neutral h-24 w-36 group-hover:fill-black lg:h-18 lg:w-36">
                                                 <use xlink:href="#icon-arrowxl"></use>
                                             </svg>
                                         </router-link>

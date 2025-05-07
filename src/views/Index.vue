@@ -31,25 +31,25 @@ const onEnter = (el, done) => {
 /* Loading */
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
-    tl.to("#home-logo", { filter: "blur(60px)", fill: "#FFF", duration: 2, ease: "power3.Out" }, 0.7);
-    tl.to(el, { opacity: 0, duration: 0.75, ease: "power3.Out", onComplete: done, onStart: homemotion }, 1);
+    tl.to("#index-logo", { filter: "blur(60px)", fill: "#FFF", duration: 2, ease: "power3.Out" }, 0.7);
+    tl.to(el, { opacity: 0, duration: 0.75, ease: "power3.Out", onComplete: done, onStart: indexmotion }, 1);
 };
 /* ---------- Enter ---------- */
-const homemotion = () => {
+const indexmotion = () => {
     const tl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-    tl.from("#home-name", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
-    tl.from("#home-text", { opacity: 0, yPercent: 20, stagger: 0.02 }, 0.6);
+    tl.from("#index-name", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
+    tl.from("#index-text", { opacity: 0, yPercent: 20, stagger: 0.02 }, 0.6);
     tl.from(".index-btnarea", { opacity: 0, yPercent: 65 }, 1.1);
 };
 </script>
 
 <template>
-    <main class="homepage">
+    <main class="index">
         <!-- Loading Page -->
         <Transition name="move" mode="out-in" @before-enter="beforeEnter" @enter="onEnter" @leave="loadingLeave">
             <div class="index-loading absolute top-0 z-20 h-full w-full bg-white" v-show="!finishloading">
                 <div class="d-flex-center container mx-auto h-full sm:px-4">
-                    <svg class="mos-logo h-[14vh] w-[21vh]" id="home-logo">
+                    <svg class="mos-logo h-[14vh] w-[21vh]" id="index-logo">
                         <use xlink:href="#icon-mosLogo"></use>
                     </svg>
                 </div>
@@ -68,16 +68,16 @@ const homemotion = () => {
             <div class="container mx-auto flex h-full items-center justify-center sm:px-4 xl:justify-end">
                 <!----- Main Content----->
                 <div class="px-4 text-white lg:px-0">
-                    <h5 class="mb-2" id="home-name">Freelance 3D Generalist</h5>
+                    <h5 class="mb-2" id="index-name">Freelance 3D Generalist</h5>
                     <h2 class="mb-12 inline-block overflow-hidden pb-1 lg:mb-10">
-                        <span v-for="(text, index) in splitText(ExpData.homepage.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
-                            <span class="inline-block font-bold" id="home-name"> {{ text }} </span>
+                        <span v-for="(text, index) in splitText(ExpData.index.title)" :key="index" class="inline-flex pe-2 xl:pe-4">
+                            <span class="inline-block font-bold" id="index-name"> {{ text }} </span>
                         </span>
                     </h2>
                     <div class="mb-12 max-w-[48rem] space-y-4 lg:mb-10">
-                        <h5 v-for="(textarray, indexz) in splitPara(ExpData.homepage.content)" :key="indexz" class="intro-info leading-normal">
+                        <h5 v-for="(textarray, indexz) in splitPara(ExpData.index.content)" :key="indexz" class="intro-info leading-normal">
                             <span v-for="(text, index) in textarray" :key="index" class="inline-block pe-2">
-                                <span class="inline-block" id="home-text"> {{ text }} </span>
+                                <span class="inline-block" id="index-text"> {{ text }} </span>
                             </span>
                         </h5>
                     </div>

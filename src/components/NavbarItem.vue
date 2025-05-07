@@ -116,8 +116,8 @@ const navbarExpand = () => {
     }
 };
 const navComplete = () => {
-    if (route.name == "Home") {
-        store.navbardarkmode = true; // insure homepage
+    if (route.name == "Index") {
+        store.navbardarkmode = true; // insure index
     } else {
         store.navbardarkmode = false;
     }
@@ -152,10 +152,10 @@ function onLeave(el, done) {
 <template>
     <header class="lg:flex-no-wrap relative flex flex-wrap content-between items-center px-4">
         <div
-            class="navcontainer fixed left-0 top-0 z-100 mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pb-6 pt-2 lg:px-16 xl:pb-2"
+            class="navcontainer fixed top-0 left-0 z-100 mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pt-2 pb-6 lg:px-16 xl:pb-2"
         >
             <!-- LOGO -->
-            <router-link :to="{ name: 'Home' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4" aria-current="page">
+            <router-link :to="{ name: 'Index' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4" aria-current="page">
                 <Transition name="fade" mode="out-in">
                     <svg class="h-12 w-36" id="mos-logo" :style="colormode">
                         <use xlink:href="#icon-mosLogo"></use>
@@ -188,7 +188,7 @@ function onLeave(el, done) {
             <!-- Canvas -->
             <nav class="navbar-collapse">
                 <ul
-                    class="mb-0 mt-8 h-0 grow flex-col flex-wrap items-center space-y-5 pl-0 md:ml-auto lg:mt-0 lg:flex lg:h-10 lg:flex-row lg:space-y-0"
+                    class="mt-8 mb-0 h-0 grow flex-col flex-wrap items-center space-y-5 pl-0 md:ml-auto lg:mt-0 lg:flex lg:h-10 lg:flex-row lg:space-y-0"
                     :style="colormode"
                 >
                     <NavLink :to="'Works'" />
@@ -216,7 +216,7 @@ function onLeave(el, done) {
                 </ul>
             </nav>
         </div>
-        <div class="dark-overlay invisible fixed left-0 top-0 z-60 h-full w-full bg-black"></div>
+        <div class="dark-overlay invisible fixed top-0 left-0 z-60 h-full w-full bg-black"></div>
     </header>
 </template>
 <style scoped>

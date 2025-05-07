@@ -7,7 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
 import Back2Top from "@/components/ui/back2Top.vue";
-import FooterItem from "./FooterItem.vue";
+import FooterItem from "@/components/FooterItem.vue";
 import WorksData from "@/data/WorksData.json";
 
 const props = defineProps({ projecturl: String });

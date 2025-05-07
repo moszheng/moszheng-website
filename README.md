@@ -2,7 +2,7 @@
 
 ### App.vue
 
-- Home.vue
+- Index.vue
 - Works.vue
 - About.vue
 - Contact.vue

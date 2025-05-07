@@ -3,7 +3,7 @@ import { createRouter, createWebHistory, createWebHashHistory } from "vue-router
 import { createPinia } from "pinia";
 import { useNavStore } from "@/stores/navstore";
 
-import WorkPage from "@/views/WorksPage.vue";
+import Project from "@/views/Project.vue";
 
 import "./assets/main.css";
 // import Lenis from "lenis";
@@ -11,15 +11,15 @@ import "./assets/main.css";
 import App from "./App.vue";
 
 const routes = [
-    { path: "/", name: "Home", component: () => import("@/views/HomePage.vue") },
+    { path: "/", name: "Index", component: () => import("@/views/Index.vue") },
     {
         path: "/works",
         name: "Works",
         // component: () => import('@/views/WorksPage.vue'),
-        component: WorkPage,
+        component: Project,
         meta: { keepAlive: true },
     },
-    { path: "/works/:projecturl", name: "WorksItem", component: () => import("@/components/WorkItem.vue"), props: true },
+    { path: "/works/:projecturl", name: "WorksItem", component: () => import("@/views/ProjectItem.vue"), props: true },
     { path: "/showreel", name: "Showreel", component: () => import("@/views/Showreel.vue") },
     { path: "/about", name: "About", component: () => import("@/views/AboutPage.vue"), meta: { keepAlive: false } },
     { path: "/contact", name: "Contact", component: () => import("@/views/ContactPage.vue") },
