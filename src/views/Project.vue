@@ -96,7 +96,6 @@ function randomHeight(index) {
                                 ref="lazyPics"
                             />
                         </figure>
-                        <!-- desktop title -->
                         <div class="opacity-0 duration-500 group-hover:opacity-100">
                             <div class="works-black absolute bottom-0 h-1/5 w-full overflow-hidden duration-500 group-hover:h-3/5"></div>
                             <div
@@ -107,7 +106,6 @@ function randomHeight(index) {
                             </div>
                         </div>
                     </router-link>
-                    <!-- mobile title -->
                     <div class="work-mobile-title mb-3 px-1 lg:hidden">
                         <h4 class="mb-1 text-stone-950">{{ item.en_name }}</h4>
                         <p>{{ item.date }}</p>

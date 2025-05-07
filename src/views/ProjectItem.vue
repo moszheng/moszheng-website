@@ -1,20 +1,18 @@
 <script setup>
 import { ref, computed, onMounted, onUnmounted } from "vue";
 import { onBeforeRouteUpdate } from "vue-router";
-import { splitPara, splitText } from "@/module/SplitText.js";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 gsap.registerPlugin(ScrollTrigger);
 
+import ProjectItemInfo from "@/components/ProjectItem/ProjectItemInfo.vue";
+import ProjectItemIntro from "@/components/ProjectItem/ProjectItemIntro.vue";
 import Back2Top from "@/components/ui/back2Top.vue";
 import FooterItem from "@/components/FooterItem.vue";
 import WorksData from "@/data/WorksData.json";
-import IconBehance from "@/assets/icon/IconBehance.vue";
-import IconVimeo from "../assets/icon/IconVimeo.vue";
-
-const props = defineProps({ projecturl: String });
 
 // data initial
+const props = defineProps({ projecturl: String });
 const prjdata = ref("null");
 const shuffleprj = ref("null");
 prjdata.value = WorksData.project.find((item) => item.url_name == props.projecturl);
@@ -25,9 +23,7 @@ shuffleprj.value = WorksData.project
 
 // Transfer Data
 // Other Project Random method
-const vimeoPage = (item) => {
-    return `https://vimeo.com/${item[1]}`;
-};
+
 const videoEmbed = (item) => {
     if (item[0] == "vimeo") {
         return `https://player.vimeo.com/video/${item[1]}?h=6ea64f06ea&color=ffffff&title=0&byline=0&portrait=0`;
@@ -161,63 +157,11 @@ function ScrollTop() {
                 ></iframe>
             </section>
             <section class="container mx-auto sm:px-4" ref="imgContainer">
-                <!-- Workitem-info -->
-                <section class="workitem-info mx-2 flex flex-col flex-wrap justify-between px-3 md:mx-4 lg:flex-row xl:min-h-[20vh] xl:px-12">
-                    <!-- Left-info -->
-                    <div class="mb-8 pr-4 pl-4 md:mb-12 xl:mb-0">
-                        <h3 class="hero-1 mb-8 text-stone-950">
-                            <span v-for="(text, index) in splitText(prjdata.en_name)" :key="index" class="inline-flex pe-2">
-                                <span class="inline-block font-bold" id="prj-name"> {{ text }} </span>
-                            </span>
-                        </h3>
-                        <div class="flex flex-row justify-between md:flex-col">
-                            <div>
-                                <h5 class="hero-2 mb-3 text-stone-950">@{{ prjdata.company }}</h5>
-                                <h6 class="hero-2 mb-6 text-stone-950">{{ prjdata.date }}</h6>
-                            </div>
-                            <div class="flex">
-                                <a class="hero-social me-6" :href="prjdata.behance" target="_blank" rel="noopener">
-                                    <IconBehance class="size-6 lg:size-8" id="icon_social" />
-                                </a>
-                                <!-- vimeo Link -->
-                                <a class="hero-social" :href="vimeoPage(prjdata.video)" target="_blank" rel="noopener">
-                                    <IconVimeo class="size-6 lg:size-8" id="icon_social" />
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Right - Roles -->
-                    <div class="pr-4 pl-4 xl:ml-auto">
-                        <h3 class="hero-3 mb-4 text-stone-950">Roles</h3>
-                        <h5 class="hero-4 mb-2" v-for="item in prjdata.roles" :key="item">{{ item }}</h5>
-                    </div>
-                </section>
+                <ProjectItemInfo :prjdata="prjdata" />
                 <hr class="hero-sep my-10" />
                 <!-- Workitem-Content -->
                 <section class="workitem-content mx-1 mb-12 px-3 md:mx-4 xl:px-12">
-                    <div class="mb-5 flex flex-wrap md:mb-0">
-                        <!-- first-img -->
-                        <div class="mb-5 max-w-full xl:mb-6 xl:w-1/2">
-                            <div class="head-img-container d-flex-center w-full overflow-hidden">
-                                <figure class="parallax">
-                                    <img
-                                        :src="imgLocation(prjdata.img_md[0])"
-                                        class="head-img-container-img h-[1080px] w-[1920px] object-cover"
-                                        alt="firstImg"
-                                        ref="lazyPics"
-                                    />
-                                </figure>
-                            </div>
-                        </div>
-                        <!-- Right Content -->
-                        <div class="mb-5 flex justify-center xl:mb-0 xl:w-1/2">
-                            <div class="content-container max-w-2xl space-y-5 px-5">
-                                <p v-for="item in prjdata.msg" :key="item" class="text-lg" id="content-context">
-                                    {{ item }}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    <ProjectItemIntro :prjdata="prjdata" />
                     <!-- imgs -->
                     <div class="prj-imgs mb-12">
                         <figure class="prj-img mb-3 bg-gray-300" v-for="(item, index) in contextImg" :key="item">
