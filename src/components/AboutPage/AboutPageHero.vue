@@ -7,10 +7,16 @@ const profileImage1 = "../src/img/profile_1_md.webp";
 const profileImage2 = "../src/img/profile_2_md.webp";
 </script>
 <template>
-    <section class="about-hero d-flex-center mb-12 h-svh flex-wrap px-3 pt-5 xl:mb-0 xl:h-screen xl:px-16 xl:py-12">
+    <section class="about-hero d-flex-center mb-12 h-svh flex-wrap px-3 pt-5 xl:mb-0 xl:h-screen xl:px-10 xl:py-12 2xl:px-16">
         <!-- profile image -->
         <div class="d-flex-center mt-16 mb-5 pr-4 pl-4 xl:mt-0 xl:mb-0 2xl:w-1/2">
-            <div class="profile-container parallax relative max-h-[600px] overflow-hidden" data-depth="2" data-scale="1.2">
+            <div class="profile-container parallax relative max-h-[600px] overflow-hidden w-[48vmin] min-h-[56vmin] max-xl:w-[35vmax] max-xl:min-h-[40vmax]" 
+                data-depth="2" data-scale="1.2"
+            >
+                <!-- profile-container
+                    w-[48vmin] min-h-[56vmin] 
+                    max-xl:w-[35vmax] max-xl:min-h-[40vmax]
+                -->
                 <figure class="absolute z-20 h-full scale-[1.2] blur-none" id="profile-img-1">
                     <div class="parallax heroRot h-full" data-depth="1.05" data-scale="1.05">
                         <img class="lazy aspect-3/2 h-full object-cover" alt="profile_image" :src="profileImage1" />
@@ -43,7 +49,7 @@ const profileImage2 = "../src/img/profile_2_md.webp";
                 </h1>
                 <!-- Subtitle -->
                 <div class="flex">
-                    <div class="mobile-center flex flex-col items-center">
+                    <div class="flex flex-col items-center">
                         <h4 class="mb-10 text-center md:mb-12 md:text-left">
                             <span class="block font-bold" id="hero-detail">
                                 <strong class="text-main-orange">3D Generalist</strong> and <strong class="text-main-orange">Motion Designer</strong>
@@ -51,7 +57,7 @@ const profileImage2 = "../src/img/profile_2_md.webp";
                             </span>
                             <span class="block font-bold" id="hero-detail"> based in Taiwan. </span>
                         </h4>
-                        <div class="text-center" id="hero-4" style="rotate: 180deg">
+                        <div class="flex items-center rotate-180" id="hero-4">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="32"
@@ -79,16 +85,10 @@ const profileImage2 = "../src/img/profile_2_md.webp";
     .mobile-center {
         display: flex;
         justify-content: center !important;
-    }
-    .profile-container {
-        width: 35vmax !important;
-        min-height: 40vmax !important;
-    }
+    }   
 }
 /*------ Img --------*/
 .profile-container {
-    width: 48vmin;
-    min-height: 56vmin;
     clip-path: inset(0% 0% 0% 0% round 12% 0%);
     -webkit-clip-path: inset(0 0% 0 0 round 12% 0%);
 }
