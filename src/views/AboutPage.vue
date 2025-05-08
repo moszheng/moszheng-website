@@ -114,7 +114,7 @@ const setupDesktopAnimations = () => {
         // };
     });
 };
-
+const noScroll = ref(true);
 /* Enter AboutPage Motion */
 const loadingEnter = (el, done) => {
     // gsap.set("#about-loadinglogo", { scale: 60, rotationZ: -30, });
@@ -122,8 +122,7 @@ const loadingEnter = (el, done) => {
 };
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
-    // tl.to("#about-loadinglogo", { scale: 1, rotationZ: 0, duration: 0.75, ease: "power4.out" }, 0);
-    tl.to(el, { yPercent: -70, scaleY: 0.1, duration: 1, ease: "power4.in", onStart: animateHero }, 0.75);
+    tl.to(el, { yPercent: -70, scaleY: 0.1, duration: 1, ease: "power4.in", onStart: animateHero, onComplete: ()=> noScroll.value = false }, 0.75);
     tl.to(el, { display: "none" }, 1.65);
 };
 const animateHero = () => {
@@ -275,7 +274,7 @@ const animateContact = (self) => {
                 <div class="about-loadingbg bg-main-orange absolute h-[300vh] w-[150vw] rounded-full"></div>
             </section>
         </Transition>
-        <main class="bg-main-black" ref="imgContainer">
+        <main class="bg-main-black" :class="{'no-scroll': noScroll}" ref="imgContainer">
             <div class="about-herointro duration-500" :class="{ 'bg-stone-100': !store.navbardarkmode, 'bg-main-black': store.navbardarkmode }">
                 <AboutHero />
                 <AboutIntro />
@@ -309,4 +308,9 @@ const animateContact = (self) => {
     /* animation: gearRotation 1s cubic-bezier(0.075, 0.82, 0.165, 1) infinite; */
     animation: rotation 10s linear infinite;
 }
+.no-scroll {
+    height: 100vh;
+    overflow: hidden;
+}
+
 </style>
