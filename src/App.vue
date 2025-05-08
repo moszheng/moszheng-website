@@ -21,13 +21,6 @@ const onLeave = (el, done) => {
         <Transition name="fade" mode="out-in">
             <component :is="Component" :key="route.path"></component>
         </Transition>
-        <!-- <Transition name="fade" mode="out-in" :css="false"
-        @before-enter="beforeEnter"
-        @enter="onEnter"
-        @leave="onLeave"
-    >
-        <component :is="Component" :key="route.path"></component>
-    </Transition> -->
     </router-view>
 
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none">

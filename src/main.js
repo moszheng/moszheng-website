@@ -6,7 +6,6 @@ import { useNavStore } from "@/stores/navstore";
 import Project from "@/views/Project.vue";
 
 import "./assets/main.css";
-// import Lenis from "lenis";
 
 import App from "./App.vue";
 
@@ -39,17 +38,6 @@ const router = createRouter({
         return { top: 0, behavior: "smooth" };
     },
 });
-
-// Lenis
-// const lenis = new Lenis({ lerp: 0.07 });
-
-// lenis.on("scroll", ScrollTrigger.update);
-
-// gsap.ticker.add((time) => {
-//     lenis.raf(time * 1000); // Convert time from seconds to milliseconds
-// });
-
-// gsap.ticker.lagSmoothing(0);
 
 // Pinia store
 const pinia = createPinia();

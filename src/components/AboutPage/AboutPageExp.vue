@@ -20,7 +20,9 @@ import ExpData from "@/data/Experience.json";
                         </div>
                         <!-- Mid -->
                         <div class="flex w-1/4 justify-center" >
-                            <div class="timeline invisible top-[70px] w-px origin-top bg-linear-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"></div>
+                            <div class="absolute invisible h-[calc(100%-1rem)] last:h-0 top-[3.75rem] w-px origin-top bg-linear-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"
+                                :class="{timeline: index < 2}"
+                            ></div>
                             <div class="flex justify-center py-9">
                                 <div class="bg-main-gray group-hover:bg-main-orange h-2.5 w-2.5 rounded-full duration-200"></div>
                             </div>
@@ -45,19 +47,7 @@ import ExpData from "@/data/Experience.json";
                         </ul>
                     </div>
                 </li>
-                <div class="timeline invisible top-[70px] w-px origin-top bg-linear-to-b from-[#4e4e4e] via-[#818181] to-[#3a3a3a]"  :style="{ willChange: 'transform, opacity' }">
-                </div>
             </ul>
         </div>
     </section>
 </template>
-<style>
-/*------- Job timeline-------*/
-.about-job:last-child .timeline {
-    height: 0;
-}
-.timeline {
-    position: absolute;
-    height: calc(100% - 10px);
-}
-</style>

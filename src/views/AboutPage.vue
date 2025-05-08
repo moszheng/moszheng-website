@@ -3,7 +3,8 @@ import { ref, onMounted, onUnmounted } from "vue";
 import { useNavStore } from "@/stores/navstore";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-gsap.registerPlugin(ScrollTrigger);
+import ScrollSmoother from "gsap/ScrollSmoother";
+gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
 import AboutHero from "@/components/AboutPage/AboutPageHero.vue";
 import AboutIntro from "@/components/AboutPage/AboutPageIntro.vue";
@@ -19,7 +20,6 @@ const changeNavbarState = (state) => {
 };
 const finishloading = ref(false);
 const lazyPics = ref(document.querySelectorAll(".lazy"));
-// const lazyPics = ref([]);
 const imgContainer = ref();
 let ctx;
 const matchmedia = gsap.matchMedia();
@@ -28,6 +28,12 @@ onMounted(() => {
     lazyPics.value = document.querySelectorAll(".lazy");
     preloadImages();
     setupDesktopAnimations();
+    // let smoother = ScrollSmoother.create({
+    //     content: imgContainer.value,
+    //     smooth: 2,
+    //     effects: true,
+    //     normalizeScroll: true
+    // });
     ctx = gsap.context((self) => {
         animateIntro(self);
         animateExp(self);
@@ -94,24 +100,6 @@ const setupDesktopAnimations = () => {
                 },
             }); // scale from 1.3
         });
-        // window.addEventListener('mousemove', (e)=>{
-        //     heroRot(e);
-        // });
-        // const heroRot = (e)=>{
-        //     gsap.utils.toArray(".about-skill-card").forEach((el) => {
-        //         let xPos = e.clientX / window.innerWidth - 0.5;
-        //         let yPos = e.clientY / window.innerHeight - 0.5;
-        //         // let depth = el.dataset.depth;
-        //         // console.log( xPos, ", ", yPos)
-        //         let depth = 1;
-        //         gsap.to(el, {
-        //             xPercent: xPos * depth * 1,
-        //             yPercent: yPos * depth * 0.5,
-        //             rotationY: xPos * depth * 1,
-        //             rotationX: yPos * depth * -1,
-        //         });
-        //     });
-        // };
     });
 };
 const noScroll = ref(true);
@@ -122,7 +110,11 @@ const loadingEnter = (el, done) => {
 };
 const loadingLeave = (el, done) => {
     const tl = gsap.timeline();
-    tl.to(el, { yPercent: -70, scaleY: 0.1, duration: 1, ease: "power4.in", onStart: animateHero, onComplete: ()=> noScroll.value = false }, 0.75);
+    tl.to(el, { yPercent: -70, scaleY: 0.1, duration: 1, ease: "power4.in", onStart: animateHero, 
+        onComplete: ()=> {
+            noScroll.value = false;
+        }
+    }, 0.75);
     tl.to(el, { display: "none" }, 1.65);
 };
 const animateHero = () => {
@@ -301,7 +293,7 @@ const animateContact = (self) => {
 };
 </script>
 <template>
-    <div class="About">
+    <div class="About" id="smooth-wrapper">
         <Transition name="move" mode="out-in" appear @enter="loadingEnter" @leave="loadingLeave">
             <section class="d-flex-center fixed top-0 z-90 h-full w-full" v-show="!finishloading" id="about-loading">
                 <div class="d-flex-center z-91 container mx-auto h-full sm:px-4" id="about-loadinglogo">
