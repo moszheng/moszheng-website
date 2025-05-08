@@ -8,7 +8,7 @@ import ExpData from "@/data/Experience.json";
         <div class="container mt-4 mb-4 xl:mt-0">
             <!-- Skill Title -->
             <div class="my-2 px-3 md:mb-12 md:pe-12 lg:ps-0">
-                <h2 class="mb-5 text-center text-stone-950 md:mb-6" id="skill-title">Service & Skill</h2>
+                <h2 class="mb-5 text-center text-stone-950 md:mb-6" id="skill-title" :style="{ willChange: 'transform, opacity' }">Service & Skill</h2>
             </div>
             <!-- Skill card block -->
             <div class="mb-6 flex min-h-[20vh] flex-wrap md:mb-6 lg:w-full lg:gap-x-6">
@@ -16,15 +16,15 @@ import ExpData from "@/data/Experience.json";
                     class="about-skill-card group ease-back my-2 max-w-full flex-1 transition-[flex] duration-300 hover:flex-[1.2] xl:my-0"
                     v-for="skill in ExpData.service"
                     :key="skill"
+                    :style="{ willChange: 'transform, opacity' }"
                 >
                     <div class="hover:bg-main-orange h-full rounded-3xl bg-[#f0efee] p-10 shadow-xl duration-300 hover:scale-y-105">
-                        <figure
-                            class="skill-card-icon d-flex-center mt-8 mb-28 h-40 w-full duration-500 group-hover:-translate-y-6 group-hover:scale-105"
-                        >
+                        <figure class="skill-card-icon d-flex-center mt-8 mb-28 h-40 w-full duration-500 group-hover:-translate-y-6 group-hover:scale-105">
                             <img class="lazy h-auto w-2/3 object-cover" alt="cardimg" :src="skill.logo" />
                         </figure>
-                        <h3 class="mb-4 text-[#ff8a47] group-hover:text-white md:mb-8" id="skill-card-title">{{ skill.title }}</h3>
+                        <h3 class="mb-4 text-[#ff8a47] group-hover:text-white md:mb-8" id="skill-card-title" :style="{ willChange: 'transform, opacity' }">{{ skill.title }}</h3>
                         <h5
+                            :style="{ willChange: 'transform, opacity' }"
                             class="mb-3 group-hover:text-white"
                             id="skill-card-text"
                             v-for="(item, index) in skill.content"
@@ -40,7 +40,7 @@ import ExpData from "@/data/Experience.json";
             <div class="d-flex-center py-12">
                 <div class="vw-80 2xl:vw-50">
                     <div class="my-6 md:my-12">
-                        <h3 class="mb-4 text-center text-stone-950" id="skill-tooltitle">Tools</h3>
+                        <h3 class="mb-4 text-center text-stone-950" id="skill-tooltitle" :style="{ willChange: 'transform, opacity' }">Tools</h3>
                         <h5 class="text-center" id="skill-toolsubtitle">My Teammate and homies</h5>
                     </div>
                     <!-- tools block -->
@@ -49,6 +49,7 @@ import ExpData from "@/data/Experience.json";
                             class="skill-logo-container d-flex-center group md:w-1/5"
                             v-for="(item, index) in LogoData.logo"
                             :key="item.name"
+                            :style="{ willChange: 'transform, opacity' }"
                             :data-index="index"
                         >
                             <figure class="mx-1 my-1 aspect-square rounded-md px-4 py-2 duration-300 group-hover:bg-neutral-300 xl:py-4">

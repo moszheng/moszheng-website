@@ -21,7 +21,13 @@ const splitText = (string) => {
                         <li v-for="item in LinkData.socialmedia" :key="item" class="intro-infosocial w-1/5">
                             <a class="inline-block rounded-full p-6 md:p-2" :href="item.url" target="_blank" rel="noopener">
                                 <svg class="fill-main-neutral size-7 lg:size-9" id="icon_social">
-                                    <use :xlink:href="item.icon"></use>
+                                    <use
+                                        :xlink:href="item.icon"
+                                        :style="{
+                                            willChange: 'transform, opacity',
+                                        }"
+                                    >
+                                    </use>
                                 </svg>
                             </a>
                         </li>
@@ -32,7 +38,8 @@ const splitText = (string) => {
                                 v-for="(item, index) in LinkData.profile_link"
                                 :key="item.text"
                                 :data-index="index"
-                                class="intro-infocontact flex items-center p-2"
+                                class="flex items-center p-2 intro-infocontact"
+                                :style="{ willChange: 'transform, opacity' }"
                             >
                                 <svg class="fill-main-neutral mr-5 size-6 lg:size-7" id="icon_social">
                                     <use :xlink:href="item.icon"></use>
@@ -47,7 +54,13 @@ const splitText = (string) => {
             <div class="">
                 <h1 class="text-main-neutral mb-8 uppercase lg:mb-12">
                     <span v-for="(text, index) in splitText('Let\'s Get in Touch')" :key="index" class="inline-flex pe-2 xl:pe-4">
-                        <span class="block font-bold" id="contact-title"> {{ text }} </span>
+                        <span
+                            class="block font-bold"
+                            id="contact-title"
+                            :style="{ willChange: 'transform, opacity' }"
+                        >
+                            {{ text }}
+                        </span>
                     </span>
                 </h1>
                 <div class="group">

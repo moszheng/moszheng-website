@@ -35,14 +35,14 @@ import profileImage4 from '@/img/profile_4_md.webp';
                     </div>
                 </div>
                 <!-- Img -->
-                <div class="intro-container relative overflow-hidden xl:w-1/2">
+                <div class="intro-container relative overflow-hidden xl:w-1/2" :style="{ willChange: 'transform, opacity, clip-path' }">
                     <!-- <div class="intro-reveal absolute top-0 left-0 z-50 w-full h-full bg-main-orange"></div> -->
-                    <figure class="profile-img-3 d-flex-center scale-[1.2]">
+                    <figure class="profile-img-3 d-flex-center scale-[1.2]" :style="{ willChange: 'transform, opacity' }">
                         <div class="introparallax" data-depth="3">
                             <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage3" />
                         </div>
                     </figure>
-                </div>
+                </div>                
             </div>
             <!-- Group2 -->
             <div class="about-intro-info2 mb-16 min-h-[70vh] items-center lg:flex lg:justify-around">
@@ -52,7 +52,7 @@ import profileImage4 from '@/img/profile_4_md.webp';
                         <div class="introparallax" data-depth="3">
                             <img class="lazy left-0 h-auto w-full object-cover" alt="profile_image" :src="profileImage4" />
                         </div>
-                    </figure>
+                    </figure>                    
                 </div>
                 <!-- Intro -->
                 <div class="4xl:pr-5 mb-12 flex h-full max-w-2xl pl-0 lg:mb-0 xl:pl-12">
