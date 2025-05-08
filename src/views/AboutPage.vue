@@ -40,17 +40,24 @@ onUnmounted(() => {
     matchmedia.revert();
 });
 const preloadImages = () => {
-    const loadImagePromises = Array.from(lazyPics.value).map((img) => {
-        return new Promise((resolve) => {
-            img.onload = () => {
-                img.classList.add("loaded");
-                resolve(img);
-            };
-        });
+  const loadImagePromises = Array.from(lazyPics.value).map((img) => {
+    return new Promise((resolve, reject) => {
+      img.onload = () => {
+        img.classList.add("loaded");
+        resolve(img);
+      };
+      img.onerror = () => {
+        console.error("Error loading image:", img.src);
+        reject(new Error("Failed to load image"));
+      };
+    }).catch((error) => {
+        console.error("Error in individual image loading",error)
     });
-    Promise.all(loadImagePromises).then(() => {
-        finishloading.value = true;
-    });
+  });
+  Promise.all(loadImagePromises)
+    .then(() => {
+      finishloading.value = true;
+    }).catch((error)=>{console.error("Error in overall preloading",error)});
 };
 /* --------- Desktop only Motion ----------------------*/
 const setupDesktopAnimations = () => {
