@@ -4,10 +4,11 @@ import { splitPara, splitText } from "@/module/SplitText.js";
 import ExpData from "@/data/Experience.json";
 import IconArrowXL from "@/assets/icon/IconArrowXL.vue";
 const store = useNavStore();
-
-const profileImage3 = "../src/img/02_gha56_md_02.webp";
-const profileImage4 = "../src/img/profile_4_md.webp";
+import profileImage3 from '@/img/02_gha56_md_02.webp';
+import profileImage4 from '@/img/profile_4_md.webp';
 </script>
+
+
 <template>
     <section
         class="about-intro d-flex-center min-h-[85vh] rounded-b-lg p-6 xl:px-20 xl:py-12"

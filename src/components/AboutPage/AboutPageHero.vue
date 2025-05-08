@@ -2,9 +2,8 @@
 import { useNavStore } from "@/stores/navstore";
 import { splitText } from "@/module/SplitText.js";
 const store = useNavStore();
-
-const profileImage1 = "../src/img/profile_1_md.webp";
-const profileImage2 = "../src/img/profile_2_md.webp";
+import profileImage1 from '@/img/profile_1_md.webp';
+import profileImage2 from '@/img/profile_2_md.webp';
 </script>
 <template>
     <section class="about-hero d-flex-center mb-12 h-svh flex-wrap px-3 pt-5 xl:mb-0 xl:h-screen xl:px-10 xl:py-12 2xl:px-16">
