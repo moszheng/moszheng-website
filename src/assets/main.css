@@ -108,7 +108,7 @@
 }
 
 @utility line-btn {
-    @apply d-flex-center group-hover:bg-main-neutral border-main-neutral rounded-full border-4 bg-transparent;
+    @apply d-flex-center md:me-5 group-hover:bg-main-neutral border-main-neutral rounded-full border-4 bg-transparent duration-200 group-hover:-translate-y-3;
 }
 
 @utility d-flex-center {

@@ -71,7 +71,7 @@ import profileImage4 from '@/img/profile_4_md.webp';
                         </div>
                         <!-- <LineBottom :to="" :Word=""/> -->
                         <div class="group max-w-sm">
-                            <router-link :to="{ name: 'Works' }" class="line-btn me-md-5 px-1 duration-200 group-hover:-translate-y-3">
+                            <router-link :to="{ name: 'Works' }" class="line-btn">
                                 <h3 class="duration-300 group-hover:text-black">Works</h3>
                                 <IconArrowXL class="fill-main-neutral h-24 w-36 group-hover:fill-black lg:h-18 lg:w-36" />
                             </router-link>
