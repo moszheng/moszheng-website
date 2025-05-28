@@ -1,5 +1,5 @@
 <script setup>
-import { splitPara, splitText } from "@/module/SplitText.js";
+import { splitPara, splitText } from "@/utils/SplitText.js";
 
 import IconBehance from "@/assets/icon/IconBehance.vue";
 import IconVimeo from "@/assets/icon/IconVimeo.vue";
@@ -11,11 +11,17 @@ const vimeoPage = (item) => {
 const { prjdata } = defineProps({ prjdata: Object });
 </script>
 <template>
-    <section class="workitem-info mx-2 flex flex-col flex-wrap justify-between px-3 md:mx-4 lg:flex-row xl:min-h-[20vh] xl:px-12">
+    <section
+        class="workitem-info mx-2 flex flex-col flex-wrap justify-between px-3 md:mx-4 lg:flex-row xl:min-h-[20vh] xl:px-12"
+    >
         <!-- Left-info -->
         <div class="mb-8 md:mb-12 xl:mb-0">
             <h3 class="hero-1 mb-8 text-stone-950">
-                <span v-for="(text, index) in splitText(prjdata.en_name)" :key="index" class="inline-flex pe-2">
+                <span
+                    v-for="(text, index) in splitText(prjdata.en_name)"
+                    :key="index"
+                    class="inline-flex pe-2"
+                >
                     <span class="inline-block font-bold" id="prj-name"> {{ text }} </span>
                 </span>
             </h3>
@@ -25,10 +31,20 @@ const { prjdata } = defineProps({ prjdata: Object });
                     <h6 class="hero-2 mb-6 text-stone-950">{{ prjdata.date }}</h6>
                 </div>
                 <div class="flex items-center">
-                    <a class="hero-social me-6" :href="prjdata.behance" target="_blank" rel="noopener">
+                    <a
+                        class="hero-social me-6"
+                        :href="prjdata.behance"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         <IconBehance class="size-12 lg:size-10" id="icon_social" />
                     </a>
-                    <a class="hero-social" :href="vimeoPage(prjdata.video)" target="_blank" rel="noopener">
+                    <a
+                        class="hero-social"
+                        :href="vimeoPage(prjdata.video)"
+                        target="_blank"
+                        rel="noopener"
+                    >
                         <IconVimeo class="size-6 lg:size-8" id="icon_social" />
                     </a>
                 </div>
