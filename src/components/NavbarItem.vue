@@ -80,7 +80,12 @@ const navbarExpand = () => {
         tl.to(navContainer, { backgroundColor: "rgba(255, 255, 255, 1)", duration: 0.3 }, 0.05);
         tl.to(darkOverlay, { autoAlpha: 0.7, duration: 1 }, 0);
         /* -Links-- */
-        tl.fromTo(navItems, { xPercent: 30, autoAlpha: 0 }, { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 }, 0);
+        tl.fromTo(
+            navItems,
+            { xPercent: 30, autoAlpha: 0 },
+            { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 },
+            0,
+        );
     } else {
         /* Button */
         outtl.to(
@@ -111,9 +116,24 @@ const navbarExpand = () => {
             0,
         );
         /* -Links-- */
-        outtl.to(navItems, { xPercent: 40, autoAlpha: 0, ease: "back.inOut(1.7)", duration: 0.5, stagger: 0.04, onComplete: navComplete }, 0);
+        outtl.to(
+            navItems,
+            {
+                xPercent: 40,
+                autoAlpha: 0,
+                ease: "back.inOut(1.7)",
+                duration: 0.5,
+                stagger: 0.04,
+                onComplete: navComplete,
+            },
+            0,
+        );
         /* -- bg -- */
-        outtl.to(navContainer, { backgroundColor: "rgba(255, 255, 255, 0)", ease: "power3.inOut", duration: 0.4 }, 0.5);
+        outtl.to(
+            navContainer,
+            { backgroundColor: "rgba(255, 255, 255, 0)", ease: "power3.inOut", duration: 0.4 },
+            0.5,
+        );
         outtl.to(darkOverlay, { autoAlpha: 0, ease: "power3.inOut", duration: 0.7 }, 0.3);
         /* collase */
         outtl.to(navbarCollapse, { height: 0, ease: "back.inOut(1.7)", duration: 0.5 }, 0.4);
@@ -137,19 +157,30 @@ const rotateButton = () => {
     tl.from("#icon-plus-area", { scale: 0.8, duration: 1.4, ease: "elastic.out(1,0.3)" }, 0.1);
 };
 
-/* icon_social Enter animation */
+/* icon-social Enter animation */
 function onBeforeEnter(el) {
     gsap.set(el, { width: 0, autoAlpha: 0, scale: 0.1 });
 }
 function onEnter(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
     const tl = gsap.timeline({ defaults: { overwrite: "auto" } });
-    tl.to(el, { width: "2.5rem", autoAlpha: 1, duration: 0.3, delay: delay, ease: "back.Out(2.5)" }, 0);
+    tl.to(
+        el,
+        { width: "2.5rem", autoAlpha: 1, duration: 0.3, delay: delay, ease: "back.Out(2.5)" },
+        0,
+    );
     tl.to(el, { scale: 1, duration: 0.8, delay: delay, ease: "elastic.out(1,0.4)" }, 0.2);
 }
 function onLeave(el, done) {
     const delay = 0.2 - 0.05 * el.dataset.index;
-    gsap.to(el, { width: 0, autoAlpha: 0, scale: 0.5, duration: 1, delay: delay, ease: "back.inOut(2.5)" });
+    gsap.to(el, {
+        width: 0,
+        autoAlpha: 0,
+        scale: 0.5,
+        duration: 1,
+        delay: delay,
+        ease: "back.inOut(2.5)",
+    });
 }
 </script>
 
@@ -159,7 +190,11 @@ function onLeave(el, done) {
             class="navcontainer fixed top-0 left-0 z-100 mx-auto flex w-full max-w-full flex-wrap items-center justify-between px-6 pt-2 pb-6 lg:px-16 xl:pb-2"
         >
             <!-- LOGO -->
-            <router-link :to="{ name: 'Index' }" class="navbar-brand mr-4 flex justify-center py-2 pr-4" aria-current="page">
+            <router-link
+                :to="{ name: 'Index' }"
+                class="navbar-brand mr-4 flex justify-center py-2 pr-4"
+                aria-current="page"
+            >
                 <Transition name="fade" mode="out-in">
                     <IconMosLogo class="h-12 w-36" :style="colormode" />
                 </Transition>
@@ -193,10 +228,25 @@ function onLeave(el, done) {
                     <NavLink :to="'Contact'" />
                     <li class="nav-item navtext flex items-center">
                         <div class="flex flex-row flex-wrap xl:ms-auto">
-                            <TransitionGroup @before-enter="onBeforeEnter" @enter="onEnter" @leave="onLeave">
-                                <li class="w-1/5" v-for="(item, index) in LinkData.socialmedia" v-show="showIcon" :key="item.url" :data-index="index">
-                                    <a class="inline-block" :href="item.url" target="_blank" rel="noopener">
-                                        <svg class="size-7" id="icon_social" :style="colormode">
+                            <TransitionGroup
+                                @before-enter="onBeforeEnter"
+                                @enter="onEnter"
+                                @leave="onLeave"
+                            >
+                                <li
+                                    class="w-1/5"
+                                    v-for="(item, index) in LinkData.socialmedia"
+                                    v-show="showIcon"
+                                    :key="item.url"
+                                    :data-index="index"
+                                >
+                                    <a
+                                        class="inline-block"
+                                        :href="item.url"
+                                        target="_blank"
+                                        rel="noopener"
+                                    >
+                                        <svg class="icon-social size-7" :style="colormode">
                                             <use :xlink:href="item.icon"></use>
                                         </svg>
                                     </a>

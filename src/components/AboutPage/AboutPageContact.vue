@@ -27,7 +27,7 @@ import { splitText } from "@/utils/SplitText.js";
                                 target="_blank"
                                 rel="noopener"
                             >
-                                <svg class="fill-main-neutral size-7 lg:size-9" id="icon_social">
+                                <svg class="icon-social fill-main-neutral size-7 lg:size-9">
                                     <use
                                         :xlink:href="item.icon"
                                         :style="{
@@ -47,10 +47,7 @@ import { splitText } from "@/utils/SplitText.js";
                                 class="intro-infocontact flex items-center p-2"
                                 :style="{ willChange: 'transform, opacity' }"
                             >
-                                <svg
-                                    class="fill-main-neutral mr-5 size-6 lg:size-7"
-                                    id="icon_social"
-                                >
+                                <svg class="icon-social fill-main-neutral mr-5 size-6 lg:size-7">
                                     <use :xlink:href="item.icon"></use>
                                 </svg>
                                 <h5 class="text-main-neutral">{{ item.text }}</h5>

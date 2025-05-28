@@ -37,7 +37,7 @@ const { prjdata } = defineProps({ prjdata: Object });
                         target="_blank"
                         rel="noopener"
                     >
-                        <IconBehance class="size-12 lg:size-10" id="icon_social" />
+                        <IconBehance class="icon-social size-12 lg:size-10" />
                     </a>
                     <a
                         class="hero-social"
@@ -45,7 +45,7 @@ const { prjdata } = defineProps({ prjdata: Object });
                         target="_blank"
                         rel="noopener"
                     >
-                        <IconVimeo class="size-6 lg:size-8" id="icon_social" />
+                        <IconVimeo class="icon-social size-6 lg:size-8" />
                     </a>
                 </div>
             </div>
