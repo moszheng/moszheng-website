@@ -14,7 +14,6 @@ const routes = [
     {
         path: "/works",
         name: "Works",
-        // component: () => import('@/views/WorksPage.vue'),
         component: Project,
         meta: { keepAlive: true },
     },
@@ -31,10 +30,6 @@ const router = createRouter({
     routes,
     scrollBehavior(to, from, savedPosition) {
         // always scroll to top
-
-        // return new Promise((resolve) => {
-        //     resolve({ top: 0, behavior: "smooth" });
-        // });
         return { top: 0, behavior: "smooth" };
     },
 });
