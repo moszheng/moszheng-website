@@ -5,10 +5,25 @@ import WorksData from "@/data/WorksData.json";
 const projects = ref(WorksData.project);
 const isDev = import.meta.env.DEV;
 const statusMessage = ref("");
-const selectedIndex = ref(0);
 
-const selectedProject = computed(() => {
-    return projects.value[selectedIndex.value];
+// Sorting State
+const sortOrder = ref('default'); // 'default', 'year', 'name'
+
+// Selection State (Object Reference)
+const selectedProject = ref(projects.value[0]);
+
+const sortedProjects = computed(() => {
+    let list = [...projects.value];
+    if (sortOrder.value === 'year') {
+        return list.sort((a, b) => {
+            const yearA = parseInt(a.date) || 0;
+            const yearB = parseInt(b.date) || 0;
+            return yearB - yearA; // Newest first
+        });
+    } else if (sortOrder.value === 'name') {
+        return list.sort((a, b) => a.name.localeCompare(b.name));
+    }
+    return projects.value;
 });
 
 // Image helper for preview
@@ -55,13 +70,17 @@ const addProject = () => {
         roles: [],
         credit: {},
     });
-    selectedIndex.value = 0; // Select new project
+    projects.value.unshift(newProj);
+    selectedProject.value = newProj; // Select new project
 };
 
-const removeProject = (index) => {
+const removeProject = (project) => {
     if (confirm("Are you sure you want to delete this project?")) {
-        projects.value.splice(index, 1);
-        selectedIndex.value = 0;
+        const index = projects.value.indexOf(project);
+        if (index > -1) {
+            projects.value.splice(index, 1);
+            selectedProject.value = projects.value[0] || null;
+        }
     }
 };
 
@@ -112,19 +131,38 @@ const updateRolesJson = (e) => {
         <div v-else class="flex flex-1 pt-16 h-screen overflow-hidden">
             
             <!-- Sidebar (Project List) -->
+            <!-- Sidebar (Project List) -->
             <aside class="w-1/4 min-w-[250px] bg-white border-r overflow-y-auto h-full px-4">
-                <div class="p-4 border-b bg-gray-50">
-                    <h2 class="font-bold text-gray-500 uppercase text-xs tracking-wider">All Projects ({{ projects.length }})</h2>
-                </div>
-                <ul>
-                    <li v-for="(item, index) in projects" :key="index">
+                <div class="p-4 border-b bg-gray-50 flex flex-col space-y-2 sticky top-0 bg-white z-10">
+                    <h2 class="font-bold text-gray-500 uppercase text-xs tracking-wider">Projects ({{ projects.length }})</h2>
+                    <div class="flex space-x-1">
                         <button 
-                            @click="selectedIndex = index"
+                            @click="sortOrder = 'default'" 
+                            class="text-xs px-2 py-1 rounded border transition"
+                            :class="sortOrder === 'default' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
+                        >Default</button>
+                        <button 
+                            @click="sortOrder = 'year'" 
+                            class="text-xs px-2 py-1 rounded border transition"
+                            :class="sortOrder === 'year' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
+                        >Year</button>
+                        <button 
+                            @click="sortOrder = 'name'" 
+                            class="text-xs px-2 py-1 rounded border transition"
+                            :class="sortOrder === 'name' ? 'bg-gray-800 text-white' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'"
+                        >Name</button>
+                    </div>
+                </div>
+                <ul class="mt-2">
+                    <li v-for="(item, index) in sortedProjects" :key="index">
+                        <button 
+                            @click="selectedProject = item"
                             class="w-full text-left p-4 border-b hover:bg-blue-50 transition border-l-4 cursor-pointer"
-                            :class="selectedIndex === index ? 'rounded-lg bg-main-orange border-blue-500' : 'border-transparent'"
+                            :class="selectedProject === item ? 'rounded-lg bg-main-orange border-blue-500' : 'border-transparent'"
                         >
                             <h4 class="font-bold text-gray-800 truncate">{{ item.name }}</h4>
                             <p class="text-xs text-gray-500 truncate">{{ item.en_name }}</p>
+                            <span class="text-[10px] text-gray-400 font-mono">{{ item.date }}</span>
                         </button>
                     </li>
                 </ul>
@@ -149,8 +187,8 @@ const updateRolesJson = (e) => {
                              <p class="text-white/80">{{ selectedProject.en_name }}</p>
                         </div>
                         
-                        <!-- Floating Delete Button -->
-                         <button @click="removeProject(selectedIndex)" class="absolute top-4 right-4 bg-white/90 hover:bg-red-500 hover:text-white text-red-500 p-2 rounded-full shadow transition" title="Delete Project">
+                         <!-- Floating Delete Button -->
+                         <button @click="removeProject(selectedProject)" class="absolute top-4 right-4 bg-white/90 hover:bg-red-500 hover:text-white text-red-500 p-2 rounded-full shadow transition" title="Delete Project">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                             </svg>
@@ -161,15 +199,17 @@ const updateRolesJson = (e) => {
                     <div class="p-6 md:p-8 space-y-6">
                         
                         <!-- Basic Info Group -->
+                         <div class="grid gap-6">
+                             <div class="space-y-1">
+                                 <label class="text-xs font-bold text-gray-500 uppercase">Project Name (ZH)</label>
+                                 <input v-model="selectedProject.name" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" />
+                             </div>
+                             <div class="space-y-1">
+                                 <label class="text-xs font-bold text-gray-500 uppercase">Project Name (EN)</label>
+                                 <input v-model="selectedProject.en_name" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" />
+                             </div>
+                         </div>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="space-y-1">
-                                <label class="text-xs font-bold text-gray-500 uppercase">Project Name (ZH)</label>
-                                <input v-model="selectedProject.name" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" />
-                            </div>
-                            <div class="space-y-1">
-                                <label class="text-xs font-bold text-gray-500 uppercase">Project Name (EN)</label>
-                                <input v-model="selectedProject.en_name" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" />
-                            </div>
                             <div class="space-y-1">
                                 <label class="text-xs font-bold text-gray-500 uppercase">Date</label>
                                 <input v-model="selectedProject.date" class="w-full border border-gray-300 rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none transition" />
