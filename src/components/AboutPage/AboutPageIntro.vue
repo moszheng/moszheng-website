@@ -141,11 +141,9 @@ import LazyImage from "@/components/ui/LazyImage.vue";
 .intro-container {
     min-height: 20vmin;
     clip-path: inset(0% 0% 0% 0%);
-    -webkit-clip-path: inset(0 0% 0 0);
 }
 .intro-container2 {
     min-height: 20vmin;
     clip-path: inset(0% 0% 0% 0%);
-    -webkit-clip-path: inset(0 0% 0 0);
 }
 </style>

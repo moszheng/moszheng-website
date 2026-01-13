@@ -127,7 +127,6 @@ const { beforeEnter, onEnter, loadingLeave } = useHomeAnimations();
     }
 }
 .index-btn {
-    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     background-color: hsla(0, 0%, 95.3%, 0.25);
     min-width: 20vh;

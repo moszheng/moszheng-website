@@ -121,7 +121,6 @@ import LazyImage from "@/components/ui/LazyImage.vue";
 /*------ Img --------*/
 .profile-container {
     clip-path: inset(0% 0% 0% 0% round 12% 0%);
-    -webkit-clip-path: inset(0 0% 0 0 round 12% 0%);
 }
 .will-change-transform-opacity {
     will-change: transform, opacity;
