@@ -32,7 +32,7 @@ const onLoad = () => {
 <style scoped>
 .lazy {
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 .lazy.loaded {
     opacity: 1;
