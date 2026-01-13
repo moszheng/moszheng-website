@@ -2,13 +2,14 @@
 import { ref, onMounted } from "vue";
 import { splitPara, splitText } from "@/utils/SplitText.js";
 import ExpData from "@/data/Experience.json";
-import gsap from "gsap";
 import Player from "@vimeo/player";
+import { useHomeAnimations } from "@/composables/useHomeAnimations";
 
 import IconMosLogo from "@/assets/icon/IconMosLogo.vue";
 
 // Loading Page
 const finishloading = ref(false);
+const loadingProgress = ref(0);
 const iframeRef = ref(null);
 
 onMounted(() => {
@@ -17,7 +18,7 @@ onMounted(() => {
         const player = new Player(iframeRef.value);
 
         player.on("progress", function (data) {
-            // console.log(data)
+            loadingProgress.value = Math.min(Math.round(data.percent * 100), 100);
             if (data.percent > 0.1) {
                 finishloading.value = true;
             }
@@ -25,35 +26,7 @@ onMounted(() => {
     }
 });
 
-/* Transition GSAP */
-const beforeEnter = (el) => {
-    el.style.opacity = 0;
-};
-const onEnter = (el, done) => {
-    gsap.to(el, { opacity: 1, duration: 1, ease: "power3.Out", onComplete: done });
-};
-/* Loading */
-const loadingLeave = (el, done) => {
-    const tl = gsap.timeline();
-    tl.to(
-        "#index-logo",
-        { filter: "blur(60px)", fill: "#FFF", duration: 2, ease: "power3.Out" },
-        0.7,
-    );
-    tl.to(
-        el,
-        { opacity: 0, duration: 0.75, ease: "power3.Out", onComplete: done, onStart: indexmotion },
-        1,
-    );
-};
-/* ---------- Enter ---------- */
-const indexmotion = () => {
-    const tl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
-    tl.from("#index-name", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
-    tl.from(".index-name-text", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
-    tl.from(".index-text-span", { opacity: 0, yPercent: 20, stagger: 0.02 }, 0.6);
-    tl.from(".index-btnarea", { opacity: 0, yPercent: 65 }, 1.1);
-};
+const { beforeEnter, onEnter, loadingLeave } = useHomeAnimations();
 </script>
 
 <template>
@@ -70,8 +43,15 @@ const indexmotion = () => {
                 class="index-loading absolute top-0 z-20 h-full w-full bg-white"
                 v-show="!finishloading"
             >
-                <div class="d-flex-center container mx-auto h-full sm:px-4">
-                    <IconMosLogo class="h-[14vh] w-[21vh]" id="index-logo" />
+                <div class="d-flex-center container mx-auto h-full sm:px-4 flex-col">
+                    <IconMosLogo class="h-[14vh] w-[21vh] animate-pulse" id="index-logo" />
+                    <!-- Progress Bar -->
+                    <div class="w-[21vh] h-1 bg-gray-100 rounded-full overflow-hidden">
+                        <div 
+                            class="h-full bg-main-orange transition-all duration-300 ease-out"
+                            :style="{ width: loadingProgress + '%' }"
+                        ></div>
+                    </div>
                 </div>
             </div>
         </Transition>
