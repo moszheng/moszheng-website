@@ -15,7 +15,6 @@ const onLeave = (el, done) => {
     gsap.to(el, { opacity: 0, duration: 1, ease: "power4.inOut", onComplete: done });
 };
 </script>
-</script>
 <template>
     <Navbar />
 
