@@ -39,6 +39,11 @@ const routes = [
         path: "/:catchAll(.*)", 
         component: () => import("@/views/NotFoundPage.vue") 
     },
+    {
+        path: "/admin",
+        name: "Admin",
+        component: () => import("@/views/AdminPage.vue"),
+    },
 ];
 
 const router = createRouter({
