@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, onMounted } from "vue";
+import { ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "vue-router";
 import { useNavStore } from "@/stores/navstore";
 import gsap from "gsap";
@@ -46,8 +46,8 @@ const handleScroll = () => {
         navfolder.value = true;
         gsap.to(".navcontainer", { yPercent: -90, duration: 0.5, ease: "back.inOut(1.7)" });
 
-        if (store.isNavbarExpanded && navbarToggler.value) {
-            navbarToggler.value.click();
+        if (store.isNavbarExpanded) {
+            store.isNavbarExpanded = false;
         }
     } else if (deltaPos < 0 && navfolder.value == true) {
         navfolder.value = false;
@@ -58,87 +58,98 @@ const handleScroll = () => {
 /* Toggle Nav BG */
 
 const navbarExpand = () => {
+    store.isNavbarExpanded = !store.isNavbarExpanded;
+};
+
+// Watch for state changes (e.g. from Router or Toggle)
+watch(
+    () => store.isNavbarExpanded,
+    (newVal) => {
+        if (newVal) {
+            openMenu();
+        } else {
+            closeMenu();
+        }
+    }
+);
+
+const openMenu = () => {
     const tl = gsap.timeline({ defaults: { overwrite: true, ease: "power3.Out" } });
+
+    store.navbardarkmode = false; // insure homepage
+    /* Button */
+    tl.to(".top-bar", { rotation: 135, y: "0.375rem", duration: 0.25 }, 0);
+    tl.to(".mid-bar", { opacity: 0.5, scaleX: 0, duration: 0.2 }, 0);
+    tl.to(".bot-bar", { rotation: -135, y: "-0.375rem", duration: 0.25 }, 0);
+    /* collapse */
+    tl.to(".navbar-collapse", { height: "50vh", ease: "back.Out(1.7)", duration: 0.5 }, 0.01);
+    /* -- bg -- */
+    tl.to(".navcontainer", { backgroundColor: "rgba(255, 255, 255, 1)", duration: 0.3 }, 0.05);
+    tl.to(".dark-overlay", { autoAlpha: 0.7, duration: 1 }, 0);
+    /* -Links-- */
+    tl.fromTo(
+        ".nav-item",
+        { xPercent: 30, autoAlpha: 0 },
+        { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 },
+        0,
+    );
+};
+
+const closeMenu = () => {
     const outtl = gsap.timeline({ defaults: { overwrite: true, ease: "power3.Out" } });
 
-    const navContainer = document.querySelector(".navcontainer");
-    const navbarCollapse = document.querySelector(".navbar-collapse");
-    const darkOverlay = document.querySelector(".dark-overlay");
-    const navItems = document.querySelectorAll(".nav-item");
-
-    store.isNavbarExpanded = !store.isNavbarExpanded;
-
-    if (store.isNavbarExpanded) {
-        store.navbardarkmode = false; // insure homepage
-        /* Button */
-        tl.to(".top-bar", { rotation: 135, y: "0.375rem", duration: 0.25 }, 0);
-        tl.to(".mid-bar", { opacity: 0.5, scaleX: 0, duration: 0.2 }, 0);
-        tl.to(".bot-bar", { rotation: -135, y: "-0.375rem", duration: 0.25 }, 0);
-        /* collapse */
-        tl.to(navbarCollapse, { height: "50vh", ease: "back.Out(1.7)", duration: 0.5 }, 0.01);
-        /* -- bg -- */
-        tl.to(navContainer, { backgroundColor: "rgba(255, 255, 255, 1)", duration: 0.3 }, 0.05);
-        tl.to(darkOverlay, { autoAlpha: 0.7, duration: 1 }, 0);
-        /* -Links-- */
-        tl.fromTo(
-            navItems,
-            { xPercent: 30, autoAlpha: 0 },
-            { xPercent: 0, autoAlpha: 1, ease: "back.inOut(1.7)", duration: 1, stagger: 0.04 },
-            0,
-        );
-    } else {
-        /* Button */
-        outtl.to(
-            ".top-bar",
-            {
-                keyframes: {
-                    "0%": { rotation: 135 },
-                    "45%": { y: "0.375rem" },
-                    "100%": { rotation: 360, y: 0 },
-                    ease: "none",
-                },
-                duration: 0.3,
+    /* Button */
+    outtl.to(
+        ".top-bar",
+        {
+            keyframes: {
+                "0%": { rotation: 135 },
+                "45%": { y: "0.375rem" },
+                "100%": { rotation: 360, y: 0 },
+                ease: "none",
             },
-            0,
-        );
-        outtl.to(".mid-bar", { opacity: 1, scaleX: 1, duration: 0.25 }, 0.01);
-        outtl.to(
-            ".bot-bar",
-            {
-                keyframes: {
-                    "0%": { rotation: -135 },
-                    "45%": { y: "-0.375rem" },
-                    "100%": { rotation: -360, y: 0 },
-                    ease: "none",
-                },
-                duration: 0.3,
+            duration: 0.3,
+        },
+        0,
+    );
+    outtl.to(".mid-bar", { opacity: 1, scaleX: 1, duration: 0.25 }, 0.01);
+    outtl.to(
+        ".bot-bar",
+        {
+            keyframes: {
+                "0%": { rotation: -135 },
+                "45%": { y: "-0.375rem" },
+                "100%": { rotation: -360, y: 0 },
+                ease: "none",
             },
-            0,
-        );
-        /* -Links-- */
-        outtl.to(
-            navItems,
-            {
-                xPercent: 40,
-                autoAlpha: 0,
-                ease: "back.inOut(1.7)",
-                duration: 0.5,
-                stagger: 0.04,
-                onComplete: navComplete,
-            },
-            0,
-        );
-        /* -- bg -- */
-        outtl.to(
-            navContainer,
-            { backgroundColor: "rgba(255, 255, 255, 0)", ease: "power3.inOut", duration: 0.4 },
-            0.5,
-        );
-        outtl.to(darkOverlay, { autoAlpha: 0, ease: "power3.inOut", duration: 0.7 }, 0.3);
-        /* collase */
-        outtl.to(navbarCollapse, { height: 0, ease: "back.inOut(1.7)", duration: 0.5 }, 0.4);
-    }
+            duration: 0.3,
+        },
+        0,
+    );
+    /* -Links-- */
+    outtl.to(
+        ".nav-item",
+        {
+            xPercent: 40,
+            autoAlpha: 0,
+            ease: "back.inOut(1.7)",
+            duration: 0.5,
+            stagger: 0.04,
+            onComplete: navComplete,
+        },
+        0,
+    );
+    /* -- bg -- */
+    outtl.to(
+        ".navcontainer",
+        { backgroundColor: "rgba(255, 255, 255, 0)", ease: "power3.inOut", duration: 0.4 },
+        0.5,
+    );
+    outtl.to(".dark-overlay", { autoAlpha: 0, ease: "power3.inOut", duration: 0.7 }, 0.3);
+    /* collase */
+    outtl.to(".navbar-collapse", { height: 0, ease: "back.inOut(1.7)", duration: 0.5 }, 0.4);
 };
+
 const navComplete = () => {
     if (route.name == "Index") {
         store.navbardarkmode = true; // insure index
