@@ -6,6 +6,7 @@ import IconArrowXL from "@/assets/icon/IconArrowXL.vue";
 const store = useNavStore();
 import profileImage3 from "@/img/02_gha56_md_02.webp";
 import profileImage4 from "@/img/profile_4_md.webp";
+import LazyImage from "@/components/ui/LazyImage.vue";
 </script>
 
 <template>
@@ -63,8 +64,8 @@ import profileImage4 from "@/img/profile_4_md.webp";
                         :style="{ willChange: 'transform, opacity' }"
                     >
                         <div class="introparallax" data-depth="3">
-                            <img
-                                class="lazy left-0 h-auto w-full object-cover"
+                            <LazyImage
+                                class="left-0 h-auto w-full object-cover"
                                 alt="profile_image"
                                 :src="profileImage3"
                             />
@@ -80,8 +81,8 @@ import profileImage4 from "@/img/profile_4_md.webp";
                 <div class="intro-container2 relative mb-8 overflow-hidden xl:mb-0 xl:w-1/2">
                     <figure class="profile-img-4 d-flex-center scale-[1.35]">
                         <div class="introparallax" data-depth="3">
-                            <img
-                                class="lazy left-0 h-auto w-full object-cover"
+                            <LazyImage
+                                class="left-0 h-auto w-full object-cover"
                                 alt="profile_image"
                                 :src="profileImage4"
                             />

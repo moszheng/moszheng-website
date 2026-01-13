@@ -4,6 +4,7 @@ import { splitText } from "@/utils/SplitText.js";
 const store = useNavStore();
 import profileImage1 from "@/img/profile_1_md.webp";
 import profileImage2 from "@/img/profile_2_md.webp";
+import LazyImage from "@/components/ui/LazyImage.vue";
 </script>
 <template>
     <section
@@ -29,20 +30,20 @@ import profileImage2 from "@/img/profile_2_md.webp";
                         data-depth="1.05"
                         data-scale="1.05"
                     >
-                        <img
-                            class="lazy aspect-3/2 h-full object-cover"
-                            alt="profile_image"
-                            :src="profileImage1"
-                        />
+                        <LazyImage
+                             class="aspect-3/2 h-full object-cover"
+                             alt="profile_image"
+                             :src="profileImage1"
+                         />
                     </div>
                 </figure>
                 <figure class="absolute z-10 h-full scale-[1.2] blur-none" id="profile-img-2">
                     <div class="parallax heroRot h-full" data-depth="3.2" data-scale="1.15">
-                        <img
-                            class="lazy aspect-3/2 h-full object-cover"
-                            alt="profile_image"
-                            :src="profileImage2"
-                        />
+                        <LazyImage
+                             class="aspect-3/2 h-full object-cover"
+                             alt="profile_image"
+                             :src="profileImage2"
+                         />
                     </div>
                 </figure>
             </div>
