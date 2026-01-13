@@ -9,18 +9,20 @@ import IconMosLogo from "@/assets/icon/IconMosLogo.vue";
 
 // Loading Page
 const finishloading = ref(false);
+const iframeRef = ref(null);
 
 onMounted(() => {
     // Vimeo API
-    const iframe = document.querySelector("iframe");
-    const player = new Player(iframe);
+    if (iframeRef.value) {
+        const player = new Player(iframeRef.value);
 
-    player.on("progress", function (data) {
-        // console.log(data)
-        if (data.percent > 0.1) {
-            finishloading.value = true;
-        }
-    });
+        player.on("progress", function (data) {
+            // console.log(data)
+            if (data.percent > 0.1) {
+                finishloading.value = true;
+            }
+        });
+    }
 });
 
 /* Transition GSAP */
@@ -48,7 +50,8 @@ const loadingLeave = (el, done) => {
 const indexmotion = () => {
     const tl = gsap.timeline({ defaults: { ease: "back.inOut(1.7)", duration: 0.8 } });
     tl.from("#index-name", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
-    tl.from("#index-text", { opacity: 0, yPercent: 20, stagger: 0.02 }, 0.6);
+    tl.from(".index-name-text", { opacity: 0, yPercent: 65, stagger: 0.05 }, 0.1);
+    tl.from(".index-text-span", { opacity: 0, yPercent: 20, stagger: 0.02 }, 0.6);
     tl.from(".index-btnarea", { opacity: 0, yPercent: 65 }, 1.1);
 };
 </script>
@@ -77,6 +80,7 @@ const indexmotion = () => {
             class="index-bgcover absolute top-0 left-0 h-screen w-screen overflow-hidden object-cover"
         >
             <iframe
+                ref="iframeRef"
                 class="absolute aspect-video min-h-full min-w-full bg-black"
                 src="https://player.vimeo.com/video/881388756?background=1&amp;muted=1&amp;loop=3&amp"
             >
@@ -96,7 +100,7 @@ const indexmotion = () => {
                             :key="index"
                             class="inline-flex pe-2 xl:pe-4"
                         >
-                            <span class="inline-block font-bold" id="index-name"> {{ text }} </span>
+                            <span class="inline-block font-bold index-name-text"> {{ text }} </span>
                         </span>
                     </h2>
                     <div class="mb-12 max-w-[48rem] space-y-4 lg:mb-10">
@@ -110,7 +114,7 @@ const indexmotion = () => {
                                 :key="index"
                                 class="inline-block pe-2"
                             >
-                                <span class="inline-block" id="index-text"> {{ text }} </span>
+                                <span class="inline-block index-text-span"> {{ text }} </span>
                             </span>
                         </h5>
                     </div>
